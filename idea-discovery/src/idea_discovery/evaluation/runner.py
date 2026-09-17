@@ -119,6 +119,8 @@ class ExperimentRunner:
                                     fam, inst, runner, base_config, compute, self.config.conditions, rep,
                                     experiment_id=self.config.experiment_id, model_name=name, render_format=self.config.render_format,
                                     extra_metadata={"run_id": self.run_id, "code_version": __version__},
+                                    structured_max_output_tokens=self.config.model_settings.get("structured_max_output_tokens"),
+                                    supplied_idea_on_controls=bool(self.config.model_settings.get("supplied_idea_on_controls", False)),
                                 )
                             except Exception as e:  # noqa: BLE001 - log and continue; never lose completed trials
                                 n_errors += 1

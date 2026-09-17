@@ -57,7 +57,7 @@ class SubtractionGameFamily(ProblemFamily):
     domain = "combinatorial game theory"
     size_parameter = "maximum heap size n (3 heaps; game tree ~ n^3 positions)"
     certificate_type = "xor_invariant"
-    certificate_types = ("xor_invariant",)
+    certificate_types = ("xor_invariant", "losing_set")
     verification_method = "exhaustive"
     generation_method = "seeded heaps in [1, n] with random max_take in 2..7; theorem ground truth (confirmed by DP in tests); rejection sampling for the answer mix"
     answer_options = ("first", "second")
@@ -267,11 +267,16 @@ class SubtractionGameFamily(ProblemFamily):
             "  - allowed: + - * // % and parentheses, ^ or xor(...) for bitwise XOR, e.g. \"xor(h1 % 3, h2 % 3, h3 % 3)\" or \"h1 ^ h2 ^ h3\".\n"
             "    The claim: from any position where the expression is 0 every move makes it nonzero, from any position where it is nonzero\n"
             "    some move makes it 0, and it is 0 at the terminal position.\n"
+            '{"certificate_type": "losing_set", "member_expr": "<condition on ' + names + ' that is true exactly on a set L of positions>"}\n'
+            "  - a pairing / mirroring strategy: L contains the terminal position, no move from L stays in L, and from every position\n"
+            '    reachable from L in one move some move returns to L (e.g. "h1 % 8 == 0 and h2 % 8 == 0 and h3 % 8 == 0"). L need not\n'
+            "    contain every losing position, but it must decide the starting position (in L, or one move away from L).\n"
             '{"certificate_type": "none"}  - if no such principle was used.'
         )
 
     # -- deterministic extraction ------------------------------------------
     _XOR_RE = re.compile(r"\b(nim[- ]?sum|xor|exclusive[- ]or|bitwise\s+sum|binary\s+digital\s+sum|sum\s+without\s+carr\w+)\b", re.IGNORECASE)
+    _MULTIPLE_RE = re.compile(r"\b(?:every|each|all)\s+(?:heap|pile|row|stack)(?:\s+size)?s?\b[^.\n]{0,40}?\bmultiples?\s+of\s+(\d+)\b|\bmultiples?\s+of\s+(\d+)\b[^.\n]{0,40}?\b(?:every|each|all)\s+(?:heap|pile|row|stack)s?\b", re.IGNORECASE)
     _MOD_RE = re.compile(r"\b(remainders?|residues?|mod(?:ulo)?)\b[^.\n]{0,30}?\b(\d+)\b|\b(\d+)\b[^.\n]{0,10}\b(remainders?|residues?)", re.IGNORECASE)
 
     def extract_candidates(self, instance: Instance, response: str) -> list[ExtractedCertificate]:
@@ -281,22 +286,34 @@ class SubtractionGameFamily(ProblemFamily):
                 out.append(ExtractedCertificate(hit.obj, hit.text, hit.start, hit.end, "json_block", "json_block"))
         s = instance.structure
         names = [f"h{i + 1}" for i in range(len(s["heaps"]))]
-        m = self._XOR_RE.search(response)
-        if not m:
-            return out
-        start, end = _sentence_span(response, m.start(), m.end())
-        window = response[max(0, start - 200) : end + 200]
-        moduli = []
-        for mm in self._MOD_RE.finditer(window):
-            val = mm.group(2) or mm.group(3)
-            if val:
-                moduli.append(int(val))
-        if moduli:
-            mod = moduli[0]
-            expr = "xor(" + ", ".join(f"{n} % {mod}" for n in names) + ")"
-            rule = "xor_of_remainders"
-        else:
-            expr = "xor(" + ", ".join(names) + ")"
-            rule = "plain_xor"
-        out.append(ExtractedCertificate({"certificate_type": "xor_invariant", "losing_expr": expr}, response[start:end], start, end, f"deterministic:{rule}", rule))
+        # every XOR mention is a candidate site; every modulus named near it is a candidate
+        # modulus (the verifier decides). Pilot finding: the first mention alone missed the
+        # modulus, and "{0,1,2}" was read as modulus 0.
+        seen: set[str] = set()
+        for m in list(self._XOR_RE.finditer(response))[:8]:
+            start, end = _sentence_span(response, m.start(), m.end())
+            window = response[max(0, start - 200) : end + 200]
+            moduli = []
+            for mm in self._MOD_RE.finditer(window):
+                val = mm.group(2) or mm.group(3)
+                if val and int(val) >= 2 and int(val) not in moduli:
+                    moduli.append(int(val))
+            exprs = [("xor_of_remainders", "xor(" + ", ".join(f"{n} % {mod}" for n in names) + ")") for mod in moduli]
+            exprs.append(("plain_xor", "xor(" + ", ".join(names) + ")"))
+            for rule, expr in exprs:
+                if expr in seen:
+                    continue
+                seen.add(expr)
+                out.append(ExtractedCertificate({"certificate_type": "xor_invariant", "losing_expr": expr}, response[start:end], start, end, f"deterministic:{rule}", rule))
+        # pairing / mirroring strategies: "keep every heap a multiple of 8" (pilot finding, 2026-09-17)
+        for m in list(self._MULTIPLE_RE.finditer(response))[:6]:
+            mod = int(m.group(1) or m.group(2))
+            if mod < 2:
+                continue
+            expr = " and ".join(f"{n} % {mod} == 0" for n in names)
+            if expr in seen:
+                continue
+            seen.add(expr)
+            start, end = _sentence_span(response, m.start(), m.end())
+            out.append(ExtractedCertificate({"certificate_type": "losing_set", "member_expr": expr}, response[start:end], start, end, "deterministic:all_heaps_multiple_of", "all_heaps_multiple_of"))
         return out

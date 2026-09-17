@@ -17,6 +17,7 @@ IDEA_CERTIFICATE_TYPES = (
     "permutation_parity",
     "gcd_invariant",
     "xor_invariant",
+    "losing_set",  # partial P-position set / pairing strategy (heap games)
     "potential_function",
     "monovariant",
     "conservation_law",

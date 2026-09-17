@@ -296,7 +296,7 @@ class SlidingPuzzleFamily(ProblemFamily):
     # -- deterministic extraction ------------------------------------------
     _SIGN_RE = re.compile(r"\b(sign|parity)\s+of\s+(the\s+)?permutation\b|\bpermutation\b[^.\n]{0,40}\b(sign|parity|odd|even)\b|\b(odd|even)\s+permutation\b", re.IGNORECASE)
     _INVERSION_RE = re.compile(r"\binversions?\b", re.IGNORECASE)
-    _TAXICAB_RE = re.compile(r"\b(taxicab|manhattan|row\s*\+\s*col(umn)?|r\s*\+\s*c\b|distance\s+of\s+the\s+(blank|empty|hole)|(blank|empty|hole)[^.\n]{0,40}\bdistance|colou?r\s+of\s+the\s+(blank|empty|hole)|(blank|empty|hole)[^.\n]{0,40}\b(checkerboard|chessboard|bipartite|class))", re.IGNORECASE)
+    _TAXICAB_RE = re.compile(r"\b(taxicab|manhattan|row\s*\+\s*col(umn)?|r\s*\+\s*c\b|distance\s+of\s+the\s+(blank|empty|hole)|(blank|empty|hole)[^.\n]{0,40}\bdistance|colou?r\s+of\s+the\s+(blank|empty|hole)|(blank|empty|hole)[^.\n]{0,40}\b(checkerboard|chessboard|bipartite|class|colou?r)|colou?r\s+of\s+(the\s+)?cell[^.\n]{0,40}\b(blank|empty|hole)|\(?\s*[a-z]\s*\+\s*[a-z]\s*\)?\s*(mod(ulo)?|%)\s*2\b)", re.IGNORECASE)
     _ROW_RE = re.compile(r"\brow\s+(of|containing|number\s+of)\s+the\s+(blank|empty|hole)|\b(blank|empty|hole)[^.\n]{0,25}\brow\b", re.IGNORECASE)
 
     def extract_candidates(self, instance: Instance, response: str) -> list[ExtractedCertificate]:

@@ -1,6 +1,6 @@
 # Project status and what the API would be used for
 
-*Written 2026-09-17. Read this before enabling any API key.*
+*Written 2026-09-17; updated the same day after the first pilot. See `PILOT_REPORT.md` for what the pilot found.*
 
 ## 1. What this project is for
 
@@ -45,13 +45,17 @@ alongside ordinary accuracy `S(n)`, `S(d)`, `S(c)`.
 | The experimental protocol (free solve → post-hoc formalization → supplied-idea baseline → recognition probe) | done |
 | A **mock model** that fakes answers so the whole pipeline could be exercised end to end | done; all demo runs under `data/raw_runs/mock_*` were produced by it, **not by any real model** |
 | Raw logging, tidy tables, metrics with confidence intervals, figures | done |
-| Adapter for Anthropic's API | written, **never executed** |
+| Adapter for Anthropic's API | working; first pilot run completed 2026-09-17 (80 calls, ≈ $3, 0 errors) |
 
 Seed problems come from the `math-insight-examples` corpus (the other agent's
 repository); the three newest families load their classical statements from it.
 
-**Not done:** no real language model has been run yet. That is the next step,
-and it is the only step that needs an API key.
+**Done since:** the pilot in section 4 ran once (`data/raw_runs/pilot_anthropic_v0/pilot1`).
+All 20 answers were correct and every idea-bearing instance produced a verifier-checked idea.
+Six pipeline problems were found and fixed (`PILOT_REPORT.md`): wasted supplied-idea calls on
+balance controls, a degenerate population-game generator, LaTeX defeating the extractors,
+a wrong-modulus rule, an idea the vocabulary could not express (now `losing_set`), and a
+missed sliding-puzzle phrasing. Tests: 143 passing.
 
 ## 3. What the API is for, concretely
 
@@ -96,6 +100,7 @@ Config: `configs/experiments/pilot_anthropic_v0.yaml`
 | Tokens | prompts ~0.3–2k tokens; free-solve answers typically 1–5k; max output capped at 16k |
 | Rough cost | a few US dollars at Opus 5 list prices ($5 / $25 per million input / output tokens); well under $1 with Sonnet 5 |
 | Purpose | **not** a result — a pilot to read every response by hand and find failure modes (bad prompts, extraction misses, format problems) before anything is scaled up |
+| Status | run once (pilot1); a re-run with the fixes costs ≈ $2 (supplied-idea calls skipped on the 6 controls; structured calls capped at 6k tokens) |
 
 The run is resumable and writes each trial as soon as it finishes, so an
 interruption never wastes completed calls. `--dry-run` prints the plan without
@@ -103,7 +108,9 @@ calling anything.
 
 ## 5. What would come after the pilot (each needs a decision from you)
 
-* Fix whatever the pilot reveals, re-pilot if needed.
+* Re-pilot with the fixes, or go straight to a **transfer pilot** (d2 surfaces): the pilot
+  showed d1 instances are recognised as the classical problems 20/20, so only d2/d3 can
+  separate retrieval from discovery.
 * Size-scaling experiment (more instances per size, several models).
 * Transfer experiment (d0/d1/d2 for every family).
 * Compute sweep (effort low / medium / high / max) on two models.
@@ -116,7 +123,7 @@ from the pilot's token usage, which is recorded per call.
 
 * One-off, in a terminal: `export ANTHROPIC_API_KEY=sk-ant-...` (PowerShell:
   `$env:ANTHROPIC_API_KEY = "sk-ant-..."`), then
-  `python scripts/run_experiment.py --config configs/experiments/pilot_anthropic_v0.yaml --run-id pilot1`.
+  `python scripts/run_experiment.py --config configs/experiments/pilot_anthropic_v0.yaml --run-id pilot2` (pilot1 exists).
 * Inside a Claude Code session: `! export ANTHROPIC_API_KEY=sk-ant-...` at the
   prompt (the key then appears in that session's transcript).
 * The key is read from the environment only; it is never written to disk by

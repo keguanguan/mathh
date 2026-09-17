@@ -21,6 +21,7 @@ Transfer surfaces:
 """
 from __future__ import annotations
 
+import math
 import random
 import re
 from itertools import product
@@ -67,7 +68,7 @@ class PopulationGameFamily(ProblemFamily):
     verification_method = "local_rule"
     generation_method = "seeded (modulus, form) then kernel-sampled moves; exact BFS ground truth; rejection sampling"
     supported_transfer_levels = (0, 1, 2)
-    version = "0.1"
+    version = "0.2"
 
     def __init__(self, possible_fraction: float = 0.35, n_classes: int = 3, moduli=(3, 4, 5), min_nonzero_coefficients: int = 2, max_attempts: int = 2000):
         self.possible_fraction = possible_fraction
@@ -125,6 +126,14 @@ class PopulationGameFamily(ProblemFamily):
             moves = rng.sample(kernel, n_moves)
             # every class must be consumable by some move, otherwise the game is degenerate
             if any(all(v[i] >= 0 for v in moves) for i in range(k)):
+                continue
+            # the moves must span the whole conservation hyperplane over Q: otherwise an *integer*
+            # linear invariant (e.g. two mutually inverse moves -> p - k constant) decides the
+            # question without any modular idea (pilot finding, 2026-09-17)
+            if vg.rank_over_q(moves) < k - 1:
+                continue
+            # and must not all be multiples of one d > 1 (then every count is invariant mod d)
+            if math.gcd(*(abs(x) for v in moves for x in v)) != 1:
                 continue
             cuts = sorted(rng.sample(range(1, size), k - 1))
             initial = [b - a for a, b in zip([0] + cuts, cuts + [size])]

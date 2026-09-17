@@ -24,7 +24,7 @@ Nothing is collapsed into a single "intuition score".
 | ProblemFamily interface, Instance record | `src/idea_discovery/families/base.py` |
 | Certificate / verifier interface, registry, `VerificationResult` | `src/idea_discovery/verifiers/base.py` |
 | Families: `domino_tiling`, `population_game`, `sliding_puzzle`, `subtraction_game`, `difference_board` | `src/idea_discovery/families/` |
-| Exact verifiers: `coloring_invariant`, `modular_invariant`, `permutation_parity`, `xor_invariant`, `gcd_invariant`, `explicit_construction` (witness) | `src/idea_discovery/verifiers/` |
+| Exact verifiers: `coloring_invariant`, `modular_invariant`, `permutation_parity`, `xor_invariant`, `losing_set`, `gcd_invariant`, `explicit_construction` (witness) | `src/idea_discovery/verifiers/` |
 | Seed corpus access (classical d0 statements from `math-insight-examples`) | `src/idea_discovery/generation/seeds.py` |
 | Seeded novel-instance generation + sanity checks | `families/*.py`, `generation/instances.py` |
 | Transfer: d0 classical, d1 novel, d2 changed surface (graph cover; string rewriting) | `families/*.apply_surface` |
@@ -53,6 +53,12 @@ python scripts/process_results.py --run data/raw_runs/mock_scaling_v0/demo
 
 # 4. re-verify every stored certificate independently of the run
 python scripts/verify_certificates.py --run data/raw_runs/mock_scaling_v0/demo
+
+# 5. read raw responses by hand (one line per trial with --summary; --full for whole responses)
+python scripts/inspect_run.py --run data/raw_runs/pilot_anthropic_v0/pilot1 --summary
+
+# 6. after an extractor fix: re-extract stored responses without new API calls (raw run untouched)
+python scripts/process_results.py --run data/raw_runs/pilot_anthropic_v0/pilot1 --reextract
 ```
 
 Other mock configs: `mock_scaling_v1.yaml` / `mock_transfer_v1.yaml` (all five
@@ -152,6 +158,10 @@ failure_reason, details, method, exact, is_idea, ...)`.
 * `xor_invariant`: a proposed losing-position expression is checked **exhaustively** over the
   state box (terminal is losing; losing -> only winning successors; winning -> some losing
   successor). The theorem is never used by the verifier; keep max heap <= 64 (3 heaps) for speed.
+* `losing_set` (added after pilot 1): a *partial* set of losing positions / pairing strategy
+  (`member_expr`, e.g. "every heap a multiple of 8"): terminal in L, no move from L stays in L,
+  every position one move from L has a move back (**exhaustive**); relevant only if the start is
+  in L or one move away. Credits mirroring arguments that `xor_invariant` would reject.
 * `gcd_invariant`: divisor divides every initial number and the operation preserves divisibility
   (**symbolic**, residue classes); relevance = target not a multiple. `divisor = 1` is degenerate.
 * `explicit_construction`: a witness, `is_idea=False`; never counts as I = 1.

@@ -127,3 +127,24 @@ def kernel_vectors_mod(moves: Sequence[Sequence[int]], modulus: int, k: int) -> 
         if all(linear_form(alpha, m, modulus) == 0 for m in moves):
             out.append(alpha)
     return out
+
+
+def rank_over_q(vectors: Sequence[Sequence[int]]) -> int:
+    """Rank of the integer vectors over the rationals (Gaussian elimination with Fractions)."""
+    from fractions import Fraction
+
+    rows = [[Fraction(x) for x in v] for v in vectors]
+    rank = 0
+    ncols = len(rows[0]) if rows else 0
+    for col in range(ncols):
+        pivot = next((i for i in range(rank, len(rows)) if rows[i][col] != 0), None)
+        if pivot is None:
+            continue
+        rows[rank], rows[pivot] = rows[pivot], rows[rank]
+        pr = rows[rank]
+        for i in range(len(rows)):
+            if i != rank and rows[i][col] != 0:
+                f = rows[i][col] / pr[col]
+                rows[i] = [a - f * b for a, b in zip(rows[i], pr)]
+        rank += 1
+    return rank

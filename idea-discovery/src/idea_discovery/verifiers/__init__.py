@@ -3,7 +3,7 @@
 Importing this package registers all built-in verifiers. Use
 :func:`verify_certificate` to dispatch on ``certificate_type``.
 """
-from . import coloring_invariant, explicit_construction, gcd_invariant, modular_invariant, permutation_parity, xor_invariant  # noqa: F401  (registration)
+from . import coloring_invariant, explicit_construction, gcd_invariant, losing_set, modular_invariant, permutation_parity, xor_invariant  # noqa: F401  (registration)
 from .base import (
     CertificateError,
     StepResult,

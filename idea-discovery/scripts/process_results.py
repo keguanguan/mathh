@@ -18,8 +18,9 @@ def main() -> None:
     ap.add_argument("--results-root", type=Path, default=Path("data/results"))
     ap.add_argument("--n-boot", type=int, default=1000)
     ap.add_argument("--no-figures", action="store_true")
+    ap.add_argument("--reextract", action="store_true", help="re-run free-response extraction with the current extractors (raw trials untouched)")
     args = ap.parse_args()
-    out = process_run(args.run, args.processed_root, args.results_root, n_boot=args.n_boot, figures=not args.no_figures)
+    out = process_run(args.run, args.processed_root, args.results_root, n_boot=args.n_boot, figures=not args.no_figures, reextract=args.reextract)
     print(f"tidy table : {out['processed_dir'] / 'tidy.csv'} ({out['n_trials']} trials)")
     print(f"metrics    : {out['results_dir'] / 'metrics'}")
     for fig in out["figures"]:

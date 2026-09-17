@@ -16,5 +16,5 @@ repetitions: 1
 instances_per_cell: 2
 generation_seeds: {base_seed: 2026}
 conditions: {free_solve: true, posthoc: true, supplied_idea: true, recognition: true}
-model_settings: {max_output_tokens: 16000}
+model_settings: {max_output_tokens: 16000, structured_max_output_tokens: 6000}  # structured = post-hoc / supplied-idea calls; supplied idea is skipped on balance controls
 output_dir: data/raw_runs
