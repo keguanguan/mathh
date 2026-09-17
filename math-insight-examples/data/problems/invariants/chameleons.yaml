@@ -1,0 +1,79 @@
+id: chameleons
+
+title: Chameleons of Three Colours
+
+aliases:
+  - chameleon problem
+  - 13 red 15 green 17 blue chameleons
+  - three-colour chameleons
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/Chameleons.shtml
+  original_title: Chameleons of Three Colors
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: A Tournament of Towns problem (1984), widely reprinted.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 1 (The Invariance Principle) contains this problem.
+
+problem:
+  statement: >
+    On an island live 13 red, 15 green and 17 blue chameleons. Whenever two
+    chameleons of different colours meet, both change to the third colour.
+    Can all chameleons eventually be the same colour?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: differences of the colour counts are invariant modulo 3
+  category: modular_invariant
+  summary: >
+    A meeting changes the counts by (-1, -1, +2) in some order, so every
+    pairwise difference changes by 0 or +-3: the differences are invariant
+    mod 3. Initially all differences are nonzero mod 3, while a
+    single-colour state has two differences equal to 0 mod 3.
+
+intuitive_proof:
+  explanation: >
+    Let (r, g, b) be the counts. A meeting of red and green gives
+    (r-1, g-1, b+2); the difference r - g is unchanged and g - b, r - b each
+    change by -3. Similarly for the other meetings. Thus r - g, g - b, b - r
+    are all invariant modulo 3. At the start they are 13 - 15 = -2,
+    15 - 17 = -2 and 17 - 13 = 4, all nonzero mod 3. In a one-colour state,
+    say (45, 0, 0), the difference g - b is 0 mod 3. So that state is
+    unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Simulate meetings trying to eliminate colours, or reason about which
+    colour to eliminate first.
+  crucial_observation: >
+    The moves (-1, -1, +2) all change the count differences by multiples of 3.
+  why_it_simplifies: >
+    A residue computed once at the start decides the question; no sequence
+    of meetings needs to be examined.
+
+tags:
+  - invariant
+  - modular arithmetic
+  - mod 3
+  - impossibility
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Same structure as squares_circles_triangles, one modulus higher. The
+  condition "some difference is 0 mod 3" is also sufficient for reaching a
+  monochrome state when the counts are large enough.

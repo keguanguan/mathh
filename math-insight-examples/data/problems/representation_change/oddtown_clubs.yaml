@@ -1,0 +1,91 @@
+id: oddtown_clubs
+
+title: Oddtown, Clubs as Vectors over GF(2)
+
+aliases:
+  - Oddtown theorem
+  - odd-size clubs with even intersections
+  - linear algebra bound on set systems
+
+source:
+  name: Matousek - Thirty-three Miniatures
+  url: https://bookstore.ams.org/stml-53
+  original_title: "Miniature 2: Oddtown"
+  author: Jiri Matousek
+  accessed: 2026-09-16
+  notes: >
+    AMS Student Mathematical Library 53 (2010). The theorem is due to
+    Berlekamp (1969); the exposition follows Babai and Frankl, Linear
+    Algebra Methods in Combinatorics.
+
+additional_sources:
+  - name: Babai & Frankl - Linear Algebra Methods in Combinatorics
+    notes: Chapter 1, the Oddtown theorem.
+
+problem:
+  statement: >
+    A town of n people has clubs such that every club has an odd number of
+    members and every two distinct clubs share an even number of members.
+    Show that there are at most n clubs.
+  domain: combinatorics
+  answer: proved (at most n clubs; n singletons show the bound is sharp)
+
+key_idea:
+  name: represent each club by its 0/1 membership vector over GF(2); the conditions say the vectors are orthonormal, hence linearly independent
+  category: algebraic_encoding
+  summary: >
+    Let v_i in GF(2)^n be the indicator vector of club i. Then the dot
+    product v_i . v_j is the parity of |C_i intersect C_j|: 1 when i = j
+    (odd size) and 0 otherwise (even intersections). Vectors with such
+    dot products are linearly independent over GF(2), and there are at
+    most n independent vectors in GF(2)^n.
+
+intuitive_proof:
+  explanation: >
+    Encode club C_i as the vector v_i in GF(2)^n with a 1 in position p
+    iff person p belongs to C_i. Over GF(2) the standard dot product
+    v_i . v_j equals |C_i intersect C_j| mod 2, so the hypotheses say
+    v_i . v_i = 1 and v_i . v_j = 0 for i != j. Suppose a linear relation
+    sum of a_i v_i = 0 held with coefficients in GF(2). Dotting with v_j
+    kills every term except a_j v_j . v_j = a_j, so a_j = 0 for all j: the
+    vectors are linearly independent. A space of dimension n contains at
+    most n linearly independent vectors, so there are at most n clubs.
+
+reasoning_structure:
+  naive_approach: >
+    Try to build many clubs by hand and argue combinatorially about
+    intersections, which gives no clean bound; note that with "even" and
+    "odd" swapped (Eventown) exponentially many clubs are possible, so
+    pure counting cannot work.
+  crucial_observation: >
+    Parity conditions on intersections are exactly inner-product
+    conditions over the two-element field.
+  why_it_simplifies: >
+    Linear independence, a two-line argument, gives the sharp bound n; the
+    method (the "linear algebra bound") solves a whole family of extremal
+    set problems.
+
+related:
+  - lights_out_linear_algebra
+
+tags:
+  - algebraic encoding
+  - linear algebra
+  - GF(2)
+  - set systems
+  - dimension bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The first "miniature" in Matousek's book of thirty-three linear-algebra
+  gems; compare lights_out_linear_algebra, which encodes moves rather
+  than sets over GF(2).

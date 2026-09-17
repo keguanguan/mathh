@@ -1,0 +1,80 @@
+id: point_reflections_return_after_six
+
+title: Six Successive Point Reflections Return Every Point
+
+aliases:
+  - composition of point reflections
+  - reflect in A then B then C
+  - half-turns compose to translations
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 12, Geometry (transformations)
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Point_reflection
+    original_title: Point reflection (composition)
+
+problem:
+  statement: >
+    Three points A, B, C are given. A point P is reflected through A, then
+    the image through B, then through C, and the three reflections are
+    repeated once more. Show that P returns to its original position.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the composition of two point reflections is a translation, so three of them make a point reflection, which is an involution
+  category: symmetry
+  summary: >
+    Reflecting through A then B sends P to P + 2(B - A), a translation.
+    Hence reflecting through A, B, C in turn is a translation followed by a
+    point reflection, itself a point reflection (through A - B + C).
+    Applying a point reflection twice is the identity.
+
+intuitive_proof:
+  explanation: >
+    Use vectors. Reflection through a point X sends P to 2X - P. Two
+    reflections: P -> 2A - P -> 2B - (2A - P) = P + 2(B - A), a translation
+    by 2(B - A). Three reflections: P -> 2C - (P + 2(B - A)) = 2(A - B + C)
+    - P, the reflection through the point A - B + C. Doing the triple
+    reflection twice is applying this point reflection twice, which returns
+    P. (The same holds for any odd number of points.)
+
+reasoning_structure:
+  naive_approach: >
+    Track the six images with coordinates, which works but obscures why the
+    result is independent of P and of the triangle.
+  crucial_observation: >
+    Point reflections compose to translations in pairs, and translations
+    plus one reflection give a reflection again.
+  why_it_simplifies: >
+    Group structure of the transformations makes the six-step return a
+    one-line consequence, valid for any three points and any starting point.
+
+related:
+  - regular_polygon_vectors_sum_zero
+
+tags:
+  - symmetry
+  - point reflection
+  - composition of transformations
+  - vectors
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  For an even number of points the composition is a translation and P
+  returns only if a vector alternating sum vanishes.

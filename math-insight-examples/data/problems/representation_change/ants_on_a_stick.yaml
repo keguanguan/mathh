@@ -1,0 +1,82 @@
+id: ants_on_a_stick
+
+title: Ants on a Stick
+
+aliases:
+  - one-dimensional ants
+  - ants bouncing on a rod
+  - ants on a metre stick
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/Ants.shtml
+  original_title: One Dimensional Ants
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny follows P. Winkler, Mathematical Puzzles (2004) and Mathematical Mind-Benders (2007).
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+    notes: A K Peters, 2004, pp. 36-38.
+
+problem:
+  statement: >
+    Some ants are dropped at random points of a 1-metre stick, each facing
+    left or right, and all walk at 1 cm per second. When two ants meet they
+    both reverse direction; an ant reaching an end falls off. What is the
+    longest time before the stick is certainly empty?
+  domain: combinatorics
+  answer: 100 seconds, regardless of the number of ants
+
+key_idea:
+  name: bouncing ants are indistinguishable from ants that pass through each other
+  category: isomorphism_to_another_problem
+  summary: >
+    Two identical ants bouncing off each other produce exactly the same set
+    of occupied positions over time as two ants walking straight through
+    each other. In the pass-through picture every ant walks in a straight
+    line and falls off within 100 seconds.
+
+intuitive_proof:
+  explanation: >
+    Imagine each ant carries a flag and that at a collision the ants swap
+    flags as they reverse. Then each flag moves in a straight line at
+    constant speed, never turning, as though ants passed through one
+    another. Since the ants are indistinguishable, the pattern of ants on
+    the stick is the same as the pattern of flags. Every flag falls off
+    within 100 seconds (the time to traverse the whole stick), so by then
+    there are no flags and hence no ants. The bound is attained by an ant at
+    one end facing the other end.
+
+reasoning_structure:
+  naive_approach: >
+    Simulate the collisions, or try to bound the number of collisions and
+    the delay each one causes.
+  crucial_observation: >
+    A collision of identical particles is, up to relabelling, no collision
+    at all.
+  why_it_simplifies: >
+    The interacting system becomes a set of independent straight-line
+    motions; the answer becomes obvious and independent of the number of
+    ants and their positions.
+
+tags:
+  - representation change
+  - relabelling
+  - isomorphism
+  - physics-style argument
+  - indistinguishability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same relabelling shows the order of ants is preserved, which answers
+  follow-up questions about which ant falls off where.

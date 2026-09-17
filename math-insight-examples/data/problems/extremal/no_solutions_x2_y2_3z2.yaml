@@ -1,0 +1,77 @@
+id: no_solutions_x2_y2_3z2
+
+title: x^2 + y^2 = 3z^2 Has No Non-Trivial Integer Solutions
+
+aliases:
+  - descent mod 3
+  - sum of two squares equals three times a square
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Proof_by_infinite_descent
+    original_title: Proof by infinite descent
+
+problem:
+  statement: >
+    Show that the only integer solution of x^2 + y^2 = 3z^2 is x = y = z =
+    0.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: modulo 3, x and y must both be divisible by 3, then z is too, and a smaller solution appears
+  category: infinite_descent
+  summary: >
+    Squares are 0 or 1 mod 3, so x^2 + y^2 = 0 mod 3 forces 3 | x and 3 | y.
+    Then 9 | 3z^2 gives 3 | z, and (x/3, y/3, z/3) is a smaller solution.
+    Descent from a minimal positive solution gives a contradiction.
+
+intuitive_proof:
+  explanation: >
+    Suppose a solution with (x, y, z) != (0, 0, 0) exists, and choose one
+    with |x| + |y| + |z| minimal. Modulo 3 every square is 0 or 1, so x^2 +
+    y^2 = 0 mod 3 is possible only when both x and y are multiples of 3.
+    Write x = 3a, y = 3b: then 9(a^2 + b^2) = 3z^2, so 3 divides z^2 and
+    hence z; write z = 3c. Then (a, b, c) is a solution with a smaller
+    positive sum of absolute values, contradicting minimality. Hence only
+    the trivial solution exists.
+
+reasoning_structure:
+  naive_approach: >
+    Search for small solutions, or try to factor the equation.
+  crucial_observation: >
+    A modular obstruction forces every variable to be divisible by 3, which
+    shrinks any solution.
+  why_it_simplifies: >
+    A single residue computation plus well-ordering rules out infinitely
+    many candidates at once.
+
+related:
+  - sqrt2_irrational_descent
+
+tags:
+  - infinite descent
+  - modular arithmetic
+  - Diophantine equation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Equivalent to the irrationality of sqrt(3) in the form 'x^2 + y^2 = 3
+  z^2'; the same descent shows x^2 + y^2 + z^2 = 2xyz has only the trivial
+  solution.

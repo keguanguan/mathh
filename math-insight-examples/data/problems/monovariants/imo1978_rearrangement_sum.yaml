@@ -1,0 +1,78 @@
+id: imo1978_rearrangement_sum
+
+title: A Sum of a_k/k^2 Is at Least the Harmonic Sum (IMO 1978 Problem 5)
+
+aliases:
+  - IMO 1978 problem 5
+  - sum a_k/k^2 >= sum 1/k
+  - rearrangement inequality application
+
+source:
+  name: International Mathematical Olympiad 1978, Problem 5
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1978 Problem 5
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Rearrangement_inequality
+    original_title: Rearrangement inequality (applications)
+
+problem:
+  statement: >
+    Let a_1, a_2, ..., a_n be distinct positive integers. Show that a_1/1^2
+    + a_2/2^2 + ... + a_n/n^2 >= 1/1 + 1/2 + ... + 1/n.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the sequence 1/k^2 is decreasing, so by the rearrangement inequality the sum is minimised when the a_k are sorted increasingly, and then a_k >= k
+  category: smoothing
+  summary: >
+    Pair the weights 1/k^2 (decreasing) with the numbers a_k. By the
+    rearrangement inequality the sum is at least what it would be with the
+    a_k sorted in increasing order, b_1 < b_2 < ... < b_n. Distinct positive
+    integers sorted increasingly satisfy b_k >= k, so the sum is at least
+    the sum of k/k^2 = 1/k.
+
+intuitive_proof:
+  explanation: >
+    Let b_1 < b_2 < ... < b_n be the a_k sorted increasingly. Since 1/1^2 >
+    1/2^2 > ... > 1/n^2, the rearrangement inequality says the sum of
+    a_k/k^2 is minimised when the largest weights go with the smallest
+    numbers, i.e. sum of a_k/k^2 >= sum of b_k/k^2. As the b_k are distinct
+    positive integers in increasing order, b_1 >= 1, b_2 >= 2, ..., b_k >= k
+    by induction. Therefore sum of b_k/k^2 >= sum of k/k^2 = sum of 1/k.
+
+reasoning_structure:
+  naive_approach: >
+    Try induction on n or attempt to bound each term individually, which
+    fails because some a_k may be smaller than k.
+  crucial_observation: >
+    A weighted sum with fixed weights is minimised by sorting, and sorted
+    distinct integers dominate 1, 2, ..., n termwise.
+  why_it_simplifies: >
+    The rearrangement inequality plus a trivial termwise bound gives the
+    result; the same two-step pattern solves many olympiad inequalities
+    involving permutations.
+
+related:
+  - rearrangement_inequality_swapping
+
+tags:
+  - rearrangement inequality
+  - smoothing
+  - olympiad
+  - inequality
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

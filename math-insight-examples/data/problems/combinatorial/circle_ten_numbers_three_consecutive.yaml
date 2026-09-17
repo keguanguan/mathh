@@ -1,0 +1,68 @@
+id: circle_ten_numbers_three_consecutive
+
+title: Three Consecutive Numbers on a Circle Sum to at Least 17
+
+aliases:
+  - averaging on a circle
+  - 1 to 10 on a circle three consecutive
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the pigeonhole principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    The numbers 1, 2, ..., 10 are placed around a circle in any order. Show
+    that some three consecutive numbers sum to at least 17.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: "add up all ten consecutive triples: each number is counted three times"
+  category: pigeonhole
+  summary: >
+    The ten triple-sums add up to 3 * (1 + ... + 10) = 165, so their average
+    is 16.5, and some triple sum is at least 17.
+
+intuitive_proof:
+  explanation: >
+    There are ten triples of consecutive numbers around the circle, and
+    every number belongs to exactly three of them. So the sum of the ten
+    triple-sums is 3 * 55 = 165. The largest of ten numbers is at least
+    their average, 16.5, and being an integer it is at least 17.
+
+reasoning_structure:
+  naive_approach: >
+    Try arrangements that keep the triples small, and check them one by one.
+  crucial_observation: >
+    The triples cover the numbers uniformly, so their total is fixed.
+  why_it_simplifies: >
+    The averaging (pigeonhole) principle gives the bound with no case
+    analysis; 17 is attained, so it is sharp.
+
+tags:
+  - pigeonhole
+  - averaging
+  - double counting
+  - circle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

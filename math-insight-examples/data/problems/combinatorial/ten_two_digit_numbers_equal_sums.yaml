@@ -1,0 +1,71 @@
+id: ten_two_digit_numbers_equal_sums
+
+title: Ten Two-Digit Numbers Contain Two Disjoint Subsets with Equal Sums
+
+aliases:
+  - IMO 1972 problem 1
+  - equal subset sums pigeonhole
+
+source:
+  name: International Mathematical Olympiad 1972, Problem 1
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1972 Problem 1
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Ten distinct two-digit numbers are given. Show that there are two
+    disjoint non-empty subsets of them with the same sum.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: there are more subsets than possible sums
+  category: pigeonhole
+  summary: >
+    The set has 2^10 - 1 = 1023 non-empty subsets, but any subset sum is at
+    most 91 + 92 + ... + 99 + 90 < 1000. Two subsets share a sum; removing
+    their common elements leaves two disjoint subsets with equal sums.
+
+intuitive_proof:
+  explanation: >
+    Each non-empty subset has a sum between 10 and 90 + 91 + ... + 99 = 945,
+    so at most 936 distinct sums are possible, while there are 1023
+    non-empty subsets. By pigeonhole two different subsets A and B have the
+    same sum. Remove the elements common to both: A minus B and B minus A
+    are disjoint, still have equal sums, and are non-empty because A != B
+    and the sums were equal (if one became empty the other would sum to
+    zero, impossible with positive numbers).
+
+reasoning_structure:
+  naive_approach: >
+    Try to pair up numbers or construct the subsets explicitly from the
+    digits.
+  crucial_observation: >
+    Sums live in a small range while subsets are numerous.
+  why_it_simplifies: >
+    A comparison of two counts proves existence with no construction; the
+    trimming step handles disjointness.
+
+tags:
+  - pigeonhole
+  - subset sums
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

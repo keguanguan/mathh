@@ -1,0 +1,85 @@
+id: finite_differences_polynomial_degree
+
+title: A Degree-d Polynomial Has Constant d-th Differences
+
+aliases:
+  - finite differences of polynomials
+  - difference table
+  - d-th difference equals d! times the leading coefficient
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Finite_difference
+  original_title: Finite difference (relation with derivatives and polynomials)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For a polynomial p of degree d define the difference sequence (Delta
+    p)(n) = p(n + 1) - p(n). Show that Delta p has degree d - 1 with leading
+    coefficient d times that of p, so the d-th difference is the constant d!
+    a_d and the (d+1)-st is 0.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the difference of the leading term (n + 1)^d - n^d has leading term d n^{d-1} by the binomial theorem, and lower terms only produce lower degrees
+  category: telescoping
+  summary: >
+    For p = a_d n^d + lower terms, (n + 1)^d - n^d = d n^{d-1} + lower terms
+    by the binomial theorem, and differences of lower-degree terms have even
+    lower degree. So Delta p = d a_d n^{d-1} + lower terms. Iterating,
+    Delta^d p = d! a_d, a constant, and Delta^{d+1} p = 0. Consequently a
+    sequence whose d-th differences are constant is given by a polynomial of
+    degree d.
+
+intuitive_proof:
+  explanation: >
+    Write p(n) = a_d n^d + q(n) with deg q < d. Then Delta p(n) = a_d((n +
+    1)^d - n^d) + Delta q(n) = a_d(d n^{d-1} + C(d,2) n^{d-2} + ...) + Delta
+    q(n), and Delta q has degree at most d - 2. So Delta p has degree
+    exactly d - 1 with leading coefficient d a_d. By induction, Delta^k p
+    has degree d - k with leading coefficient d(d - 1)...(d - k + 1) a_d, so
+    Delta^d p is the constant d! a_d and Delta^{d+1} p = 0. Conversely, if
+    the d-th differences of a sequence are constant, the sequence agrees
+    with a polynomial of degree d (by induction, using that Delta is a
+    bijection from polynomials of degree k + 1 up to constants onto
+    polynomials of degree k).
+
+reasoning_structure:
+  naive_approach: >
+    Compute difference tables numerically and observe the constant row.
+  crucial_observation: >
+    Differencing is a discrete derivative: it lowers the degree by one and
+    multiplies the leading coefficient by the degree.
+  why_it_simplifies: >
+    One binomial expansion explains the whole difference table and gives a
+    practical test for polynomial sequences (used to find formulas for sums
+    of powers).
+
+related:
+  - sum_of_squares_formula_telescoping_cubes
+
+tags:
+  - telescoping
+  - finite differences
+  - polynomials
+  - sequences
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

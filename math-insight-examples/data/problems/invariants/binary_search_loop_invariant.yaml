@@ -1,0 +1,83 @@
+id: binary_search_loop_invariant
+
+title: "Binary Search Is Correct: an Invariant and a Halving Monovariant"
+
+aliases:
+  - binary search correctness
+  - loop invariant
+  - logarithmic search
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binary_search
+  original_title: Binary search (procedure)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Knuth - The Art of Computer Programming, vol. 3
+    notes: Section 6.2.1
+
+problem:
+  statement: >
+    An array is sorted. Maintain indices lo <= hi such that the target, if
+    present, lies in positions lo..hi; compare the target with the middle
+    element and discard the half that cannot contain it. Show that this
+    finds the target (or reports absence) in about log_2 n steps.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: the invariant 'if the target is in the array, it is in lo..hi' is preserved, and the interval length at least halves each step
+  category: invariant
+  summary: >
+    Comparing the target with the middle element m tells, by sortedness,
+    that the target cannot lie left of m (if target > a[m]) or right of m
+    (if target < a[m]); discarding that part preserves the invariant. The
+    interval length shrinks from L to at most floor(L/2), so after about
+    log_2 n steps the interval is empty (target absent) or the middle
+    element equals the target.
+
+intuitive_proof:
+  explanation: >
+    Invariant: if the target x is in the array then x is in a[lo..hi].
+    Initially lo = 1, hi = n. At each step let m be the middle index. If
+    a[m] = x we are done. If a[m] < x, sortedness gives a[i] < x for all i
+    <= m, so x, if present, is in a[m+1..hi]: set lo = m + 1. Symmetrically
+    if a[m] > x set hi = m - 1. The invariant is preserved. The length hi -
+    lo + 1 decreases to at most half its value at each step, so after at
+    most floor(log_2 n) + 1 steps the interval is empty, at which point the
+    invariant says x is absent.
+
+reasoning_structure:
+  naive_approach: >
+    Scan the array from the beginning, using n comparisons.
+  crucial_observation: >
+    Sortedness lets one comparison exclude half the candidates, and the
+    halving is a monovariant with a logarithmic bound.
+  why_it_simplifies: >
+    Invariant plus monovariant is the template for correctness proofs of
+    iterative algorithms; here it gives correctness and the log_2 n bound at
+    once.
+
+related:
+  - nine_coins_two_weighings_ternary
+  - euclid_gcd_algorithm_invariant
+
+tags:
+  - invariant
+  - monovariant
+  - algorithm
+  - logarithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The information bound shows log_2 n comparisons are also necessary.

@@ -1,0 +1,85 @@
+id: happy_numbers_eventually_periodic
+
+title: Iterating the Sum of Squared Digits Always Ends in a Cycle
+
+aliases:
+  - happy numbers
+  - sum of squares of digits iteration
+  - digit iteration enters a finite set
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Happy_number
+  original_title: Happy number (sequence behavior)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Starting from any positive integer, repeatedly replace the number by the
+    sum of the squares of its digits. Show that the process always reaches 1
+    or enters the cycle 4, 16, 37, 58, 89, 145, 42, 20, 4.
+  domain: dynamical systems
+  answer: proved
+
+key_idea:
+  name: for numbers with at least four digits the map decreases, so every orbit enters {1, ..., 999} and stays there, and a deterministic map on a finite set is eventually periodic
+  category: finite_state_periodicity
+  summary: >
+    A number with d >= 4 digits is at least 10^{d-1}, but the sum of the
+    squares of its digits is at most 81d, which is smaller. So the map
+    decreases on large numbers, every orbit enters {1, ..., 999} and stays
+    there, and a deterministic map on a finite set is eventually periodic; a
+    finite check finds the two cycles.
+
+intuitive_proof:
+  explanation: >
+    Let s(n) be the sum of the squares of the digits of n. If n has d digits
+    then s(n) <= 81d, while n >= 10^{d-1}; for d >= 4, 81d < 10^{d-1}, so
+    s(n) < n. Hence the orbit of any n decreases until it has at most three
+    digits, and then s(n) <= 243 keeps it below 1000 forever. A sequence in
+    a finite set defined by a deterministic rule must eventually repeat a
+    value and from then on cycle. Computing s on 1..243 (a finite check)
+    reveals exactly two cycles: the fixed point 1 and 4 -> 16 -> 37 -> 58 ->
+    89 -> 145 -> 42 -> 20 -> 4.
+
+reasoning_structure:
+  naive_approach: >
+    Compute orbits of many starting numbers and observe the two outcomes,
+    without a reason why nothing else can happen.
+  crucial_observation: >
+    Growth of the map is linear in the number of digits while the number
+    itself is exponential, so large numbers shrink; then finiteness forces
+    periodicity.
+  why_it_simplifies: >
+    A monovariant (for large n) followed by 'finite state space implies
+    eventual periodicity' reduces an infinite question to a finite check.
+
+related:
+  - fibonacci_mod_m_periodic
+  - digit_sum_iteration_imo1975
+
+tags:
+  - periodicity
+  - monovariant
+  - digits
+  - dynamical systems
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Numbers reaching 1 are called happy; the same argument works for sums of
+  cubes of digits and other digit maps.

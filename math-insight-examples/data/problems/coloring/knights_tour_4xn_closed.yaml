@@ -1,0 +1,81 @@
+id: knights_tour_4xn_closed
+
+title: No Closed Knight's Tour on a 4 x n Board
+
+aliases:
+  - closed knight's tour on four rows
+  - knight's tour impossibility 4xn
+  - two-colouring knight's tour argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Knight%27s_tour
+  original_title: Knight's tour (section on Schwenk's theorem)
+  accessed: 2026-09-16
+  notes: >
+    The 4 x n case is one part of A. J. Schwenk's classification of boards
+    admitting closed tours (Mathematics Magazine 64, 1991). The two-colouring
+    argument is classical.
+
+problem:
+  statement: >
+    Show that a knight cannot make a closed tour (a cycle visiting every
+    square exactly once and returning to the start) on any 4 x n chessboard.
+  domain: graph theory
+  answer: proved (no closed tour exists)
+
+key_idea:
+  name: compare two colourings, one of which the knight is forced to alternate
+  category: coloring_invariant
+  summary: >
+    Colour the two outer rows "outer" and the two inner rows "inner". From an
+    outer square a knight must land on an inner square. In a closed tour with
+    equally many outer and inner squares, the tour must therefore alternate
+    outer/inner. It also alternates black/white. Two alternating patterns of
+    the same period coincide or are complementary, so all outer squares would
+    be one chessboard colour, which is false.
+
+intuitive_proof:
+  explanation: >
+    A knight moves two rows away or one row away. On a 4-row board, from an
+    outer row (row 1 or 4) it can only reach rows 2 or 3, the inner rows. In a
+    closed tour visiting all 4n squares, each of the 2n outer squares is
+    followed by an inner square; since there are only 2n inner squares, the
+    tour strictly alternates outer, inner, outer, inner, .... A knight's move
+    also always changes the chessboard colour, so the tour alternates black,
+    white, black, .... Two strict alternations along the same cycle must
+    agree everywhere or disagree everywhere; either way every outer square
+    has the same chessboard colour as every other outer square. But row 1
+    contains squares of both colours. Contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Search for tours by computer, or analyse the corner squares' forced
+    moves case by case.
+  crucial_observation: >
+    Two different two-colourings are both forced to alternate along the tour,
+    and they are incompatible.
+  why_it_simplifies: >
+    A structural contradiction rules out every tour on every 4 x n board in
+    one stroke, independent of n.
+
+tags:
+  - coloring
+  - parity
+  - graph theory
+  - Hamiltonian cycle
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Open tours do exist on 4 x n boards for n >= 5, so the argument genuinely
+  uses closure. An example of playing two invariants against each other.

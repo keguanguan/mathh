@@ -1,0 +1,80 @@
+id: same_number_of_acquaintances
+
+title: Two People at a Party Have the Same Number of Acquaintances
+
+aliases:
+  - two vertices of equal degree
+  - equal number of friends at a party
+  - degree pigeonhole
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+  original_title: Pigeonhole principle (examples)
+  accessed: 2026-09-16
+  notes: A standard first pigeonhole example in graph theory; in Engel, Chapter 4.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 4, The Box Principle.
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/pigeon.shtml
+    original_title: Pigeonhole Principle
+
+problem:
+  statement: >
+    At a party with n >= 2 people, acquaintance is mutual. Show that two
+    people have exactly the same number of acquaintances present.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: the degrees 0 and n - 1 cannot both occur, leaving only n - 1 possible values for n people
+  category: pigeonhole
+  summary: >
+    Each person knows between 0 and n - 1 others, n possible values. But
+    someone who knows nobody and someone who knows everybody cannot both
+    be present, so at most n - 1 values occur among n people, and two
+    coincide.
+
+intuitive_proof:
+  explanation: >
+    The number of acquaintances of a person lies in {0, 1, ..., n - 1}. If
+    some person knows everyone (value n - 1), then nobody has value 0,
+    since everyone knows that person; and if someone has value 0, nobody
+    has value n - 1. Either way the n people use at most n - 1 distinct
+    values, so by pigeonhole two people share a value.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a party where all acquaintance counts differ and see
+    what goes wrong, or induct on n.
+  crucial_observation: >
+    The two extreme values exclude each other, so there is one box fewer
+    than there are people.
+  why_it_simplifies: >
+    A one-sentence observation about the boxes turns the statement into a
+    direct pigeonhole count.
+
+related:
+  - handshake_lemma
+
+tags:
+  - pigeonhole
+  - graph theory
+  - degree
+  - extremes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The trick "the extreme boxes are mutually exclusive" recurs in many
+  pigeonhole problems.

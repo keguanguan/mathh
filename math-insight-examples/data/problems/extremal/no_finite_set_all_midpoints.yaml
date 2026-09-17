@@ -1,0 +1,73 @@
+id: no_finite_set_all_midpoints
+
+title: No Finite Set Where Every Point Is a Midpoint
+
+aliases:
+  - every point is the midpoint of two others
+  - extremal point of a finite set
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the extremal principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Show that there is no finite set of points in the plane (with at least
+    two points) such that every point of the set is the midpoint of two
+    other points of the set.
+  domain: combinatorial geometry
+  answer: proved (impossible)
+
+key_idea:
+  name: an extreme point of the set cannot be a midpoint
+  category: extremal_principle
+  summary: >
+    Take a point of the set with the largest x-coordinate (and, among those,
+    the largest y). It cannot be the midpoint of two other points, because
+    one of them would have to lie strictly beyond it.
+
+intuitive_proof:
+  explanation: >
+    Order the points lexicographically by (x, y) and let P be the largest.
+    If P were the midpoint of A and B, then A and B would lie on opposite
+    sides of P along the segment AB, so one of them would be
+    lexicographically larger than P (larger x, or equal x and larger y).
+    This contradicts the choice of P. Hence P is not a midpoint, and no such
+    set exists. (Alternatively: a vertex of the convex hull is not a
+    midpoint.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct such a set by adding points to fill in midpoints, which
+    never terminates.
+  crucial_observation: >
+    An extreme point has nothing beyond it, so it cannot be 'inside' a pair.
+  why_it_simplifies: >
+    One extremal choice gives an immediate contradiction; infinite sets (all
+    lattice points, or all reals) show finiteness is essential.
+
+tags:
+  - extremal principle
+  - convex hull
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

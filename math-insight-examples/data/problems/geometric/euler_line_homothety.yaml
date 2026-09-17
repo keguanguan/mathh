@@ -1,0 +1,83 @@
+id: euler_line_homothety
+
+title: The Euler Line via the Homothety at the Centroid
+
+aliases:
+  - Euler line
+  - orthocentre centroid circumcentre collinear
+  - medial triangle homothety
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euler_line
+  original_title: Euler line (proof using homothety)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the orthocentre H, the centroid G and the circumcentre O of a
+    triangle are collinear, with HG = 2 GO.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the homothety with centre G and ratio -1/2 maps the triangle to its medial triangle, and maps H to the orthocentre of the medial triangle, which is O
+  category: homothety_or_inversion
+  summary: >
+    The homothety h with centre G and ratio -1/2 sends each vertex to the
+    midpoint of the opposite side (since G divides each median 2:1), so it
+    sends the triangle to the medial triangle. It sends altitudes to
+    altitudes of the medial triangle, which are the perpendicular bisectors
+    of the original sides. Hence h(H) = O, so H, G, O are collinear with GO
+    = GH/2.
+
+intuitive_proof:
+  explanation: >
+    The centroid G lies on each median at two thirds of the way from the
+    vertex, so the homothety h with centre G and ratio -1/2 maps vertex A to
+    the midpoint of BC and similarly for B and C: it maps triangle ABC onto
+    its medial triangle. A homothety sends lines to parallel lines, so the
+    altitude from A (through A, perpendicular to BC) is sent to the line
+    through the midpoint of BC perpendicular to BC, the perpendicular
+    bisector of BC. Therefore the orthocentre H, the intersection of the
+    altitudes, is sent to the intersection of the perpendicular bisectors,
+    the circumcentre O. Since h(H) = O with centre G and ratio -1/2, the
+    points H, G, O are collinear with O on the opposite side of G from H and
+    GO = GH/2.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates or vectors to compute H, G and O explicitly and verify
+    collinearity.
+  crucial_observation: >
+    One homothety carries the whole triangle to its medial triangle and,
+    being a similarity, carries the orthocentre to the orthocentre of the
+    image.
+  why_it_simplifies: >
+    A single transformation explains the collinearity and the ratio 2:1 at
+    once; the nine-point circle follows from the same homothety applied to
+    the circumcircle.
+
+tags:
+  - homothety
+  - Euler line
+  - triangle centres
+  - geometric transformation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

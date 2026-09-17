@@ -1,0 +1,80 @@
+id: rolle_theorem_via_extremum
+
+title: "Rolle's Theorem: a Horizontal Tangent between Equal Values"
+
+aliases:
+  - Rolle's theorem
+  - derivative vanishes at an interior extremum
+  - mean value theorem base case
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Rolle%27s_theorem
+  original_title: Rolle's theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on calculus
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let f be continuous on [a, b], differentiable on (a, b), with f(a) =
+    f(b). Show that f'(c) = 0 for some c in (a, b).
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: look at the point where f is largest (or smallest); at an interior extremum the derivative must vanish
+  category: extremal_principle
+  summary: >
+    A continuous function on a closed interval attains a maximum and a
+    minimum. If both occur at the endpoints, f is constant (since f(a) =
+    f(b)) and f' = 0 everywhere. Otherwise an extremum lies at an interior
+    point c, and there the difference quotients from the left and right have
+    opposite signs, so f'(c) = 0.
+
+intuitive_proof:
+  explanation: >
+    By the extreme value theorem f attains a maximum M and a minimum m on
+    [a, b]. If M = m then f is constant and any c works. Otherwise, since
+    f(a) = f(b), at least one of M, m is not the common endpoint value and
+    is attained at an interior point c. Say f(c) = M. For h > 0, (f(c + h) -
+    f(c))/h <= 0 and (f(c - h) - f(c))/(-h) >= 0; letting h -> 0 the
+    derivative f'(c) is both <= 0 and >= 0, hence 0.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct c from the formula of f, which is impossible in
+    general.
+  crucial_observation: >
+    The extremal point of a function carries a first-order condition
+    automatically.
+  why_it_simplifies: >
+    Choosing an extreme point converts existence of a zero derivative into a
+    one-line sign argument; the mean value theorem follows by subtracting a
+    line.
+
+related:
+  - odd_degree_polynomial_real_root
+
+tags:
+  - extremal principle
+  - derivative
+  - Rolle's theorem
+  - analysis
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The mean value theorem is Rolle's theorem applied to f(x) - (secant line).

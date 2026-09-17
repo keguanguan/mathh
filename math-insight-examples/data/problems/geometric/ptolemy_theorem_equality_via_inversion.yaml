@@ -1,0 +1,82 @@
+id: ptolemy_theorem_equality_via_inversion
+
+title: Ptolemy's Theorem by Inversion
+
+aliases:
+  - Ptolemy's theorem via inversion
+  - cyclic quadrilateral product of diagonals
+  - AC * BD = AB * CD + AD * BC
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/PtolemyByInversion.shtml
+  original_title: Ptolemy by Inversion
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Ptolemy%27s_theorem
+    original_title: Ptolemy's theorem (proof by inversion)
+
+problem:
+  statement: >
+    For a cyclic quadrilateral ABCD show that AC * BD = AB * CD + AD * BC.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "invert in a circle centred at A: the circumcircle becomes a line through the images of B, C, D, and distances transform by a known formula, so 'collinear' (B'C' + C'D' = B'D') becomes Ptolemy's equation"
+  category: homothety_or_inversion
+  summary: >
+    Invert about A: the circumcircle, passing through A, becomes a line on
+    which B', C', D' lie in order, so B'D' = B'C' + C'D'. Distances
+    transform as P'Q' = r^2 PQ/(AP * AQ), and substituting and clearing
+    denominators turns this collinearity into AC * BD = AB * CD + AD * BC.
+
+intuitive_proof:
+  explanation: >
+    Invert about A with radius r. For any points P, Q with images P', Q',
+    the triangles APQ and AQ'P' are similar (from AP * AP' = AQ * AQ'),
+    giving P'Q' = PQ * r^2/(AP * AQ). The circumcircle passes through the
+    centre A, so its image is a line containing B', C', D', and since B, C,
+    D lie on the circle in this order, C' lies between B' and D': B'D' =
+    B'C' + C'D'. Now substitute: BD r^2/(AB * AD) = BC r^2/(AB * AC) + CD
+    r^2/(AC * AD). Multiplying through by AB * AC * AD / r^2 yields BD * AC
+    = BC * AD + CD * AB, Ptolemy's theorem. For four points not on a circle,
+    C' is off the line B'D' and the triangle inequality gives Ptolemy's
+    inequality.
+
+reasoning_structure:
+  naive_approach: >
+    Use the classical auxiliary point construction (a point E with angle BAE
+    = angle CAD), or trigonometry.
+  crucial_observation: >
+    Inversion straightens the circle into a line, where the metric relation
+    is just additivity of lengths on a line.
+  why_it_simplifies: >
+    A transformation that turns the circumcircle into a line converts
+    Ptolemy's theorem into the triangle-degenerate case of the triangle
+    inequality.
+
+related:
+  - ptolemy_inequality_via_similar_triangles
+  - inversion_circle_through_centre_to_line
+
+tags:
+  - inversion
+  - cyclic quadrilateral
+  - Ptolemy
+  - geometric transformation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

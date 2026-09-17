@@ -1,0 +1,83 @@
+id: vandermonde_determinant_roots
+
+title: The Vandermonde Determinant by Counting Roots
+
+aliases:
+  - Vandermonde determinant
+  - product of differences
+  - polynomial argument for determinants
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Vandermonde_matrix
+  original_title: Vandermonde matrix (determinant)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Matousek - Thirty-three Miniatures
+    url: https://bookstore.ams.org/stml-53
+    original_title: Miniatures on determinants
+    author: Jiri Matousek
+
+problem:
+  statement: >
+    Show that the determinant of the matrix with rows (1, x_i, x_i^2, ...,
+    x_i^{n-1}) equals the product over i < j of (x_j - x_i).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the determinant is a polynomial in the x_i that vanishes whenever two variables coincide, so it is divisible by every x_j - x_i; comparing degrees and one coefficient fixes it
+  category: auxiliary_object
+  summary: >
+    The determinant D is a polynomial in the x_i that vanishes whenever x_i
+    = x_j (two equal rows), so every difference x_j - x_i divides it. The
+    product P of all differences has the same total degree C(n, 2) as D, so
+    D = cP, and comparing the coefficient of the diagonal monomial gives c =
+    1.
+
+intuitive_proof:
+  explanation: >
+    D is a polynomial in the variables x_1, ..., x_n, of total degree at
+    most 0 + 1 + ... + (n - 1) = C(n, 2). Setting x_i = x_j makes two rows
+    equal, so D vanishes on the hyperplane x_i = x_j and is divisible by the
+    irreducible polynomial x_j - x_i. The differences for distinct pairs are
+    pairwise coprime, so their product P divides D. Since deg P = C(n, 2) >=
+    deg D, D = c P for a constant c. The monomial x_2 x_3^2 ... x_n^{n-1}
+    appears in D with coefficient 1 (from the main diagonal) and in P with
+    coefficient 1 (choose x_j from each factor x_j - x_i), so c = 1.
+
+reasoning_structure:
+  naive_approach: >
+    Expand the determinant or perform row reduction with symbolic entries,
+    which is laborious.
+  crucial_observation: >
+    A determinant is a polynomial whose zeros are forced by row equality,
+    and a polynomial is determined by its zeros up to a constant when
+    degrees match.
+  why_it_simplifies: >
+    Treating the determinant as an auxiliary polynomial replaces computation
+    by a divisibility and degree argument.
+
+related:
+  - polynomial_difference_divisibility
+
+tags:
+  - auxiliary object
+  - determinant
+  - polynomials
+  - linear algebra
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same 'vanishes when x_i = x_j' argument evaluates many alternant
+  determinants.

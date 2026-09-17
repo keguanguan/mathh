@@ -1,0 +1,91 @@
+id: regular_pentagon_lattice_descent
+
+title: No Regular Pentagon Has All Vertices on the Integer Lattice
+
+aliases:
+  - lattice pentagon impossible
+  - regular polygons on a lattice
+  - shrinking pentagon argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Regular_polygon
+  original_title: Regular polygon (regular polygons on lattices)
+  accessed: 2026-09-16
+  notes: >
+    The shrinking argument is classical; the only regular polygon with all
+    vertices on the square lattice is the square.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 3, The Extremal Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that no regular pentagon has all five vertices at points with
+    integer coordinates.
+  domain: number theory
+  answer: >
+    proved (impossible; the same holds for every regular n-gon with n != 4)
+
+key_idea:
+  name: from a lattice regular pentagon one constructs a strictly smaller lattice regular pentagon, so a smallest one cannot exist
+  category: infinite_descent
+  summary: >
+    Given a lattice regular pentagon ABCDE, translate each side vector to
+    start at the next vertex: the points A + (C - B), B + (D - C), ... are
+    lattice points (sums of lattice vectors) and form a regular pentagon
+    rotated by 36 degrees and scaled down (its vertices are the
+    intersections of the diagonals). Repeating produces ever smaller lattice
+    pentagons, impossible since lattice distances are at least 1.
+
+intuitive_proof:
+  explanation: >
+    Suppose a regular pentagon with lattice vertices A_1, ..., A_5 exists;
+    choose one with the smallest side. For each i let B_i = A_i + (A_{i+2} -
+    A_{i+1}) (indices mod 5): translate the side A_{i+1} A_{i+2} to start at
+    A_i. Each B_i is a lattice point, being a sum and difference of lattice
+    points. By the symmetry of the regular pentagon under rotation by 72
+    degrees, the five points B_i are the images of one another under that
+    rotation, so they form a regular pentagon; a short computation (or a
+    picture) shows they are the inner pentagon formed by the diagonals, with
+    side 1/phi^2 times the original. This contradicts the minimality of the
+    side. Hence no lattice regular pentagon exists. The same construction
+    works for any regular n-gon with n >= 5 (and for the triangle and
+    hexagon a different argument, e.g. the irrational area, applies),
+    leaving only the square.
+
+reasoning_structure:
+  naive_approach: >
+    Compute coordinates using cos 72 degrees and argue about irrationality,
+    which is messy.
+  crucial_observation: >
+    Regular pentagons carry a lattice-preserving operation (translate sides)
+    that produces a smaller regular pentagon.
+  why_it_simplifies: >
+    A geometric descent uses only that lattice points are discrete; the
+    golden ratio appears as the shrinking factor.
+
+related:
+  - equilateral_triangle_lattice_impossible
+  - four_pegs_square_reversibility
+
+tags:
+  - infinite descent
+  - lattice
+  - regular polygon
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

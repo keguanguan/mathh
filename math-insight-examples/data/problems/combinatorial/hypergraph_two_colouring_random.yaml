@@ -1,0 +1,79 @@
+id: hypergraph_two_colouring_random
+
+title: A Hypergraph with Fewer than 2^{k-1} Edges Is 2-Colourable
+
+aliases:
+  - property B
+  - Erdos 2-colouring of hypergraphs
+  - union bound colouring
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Probability makes counting (sometimes) easy"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Property_B
+    original_title: Property B (bounds)
+
+problem:
+  statement: >
+    A family of fewer than 2^{k-1} sets, each of size k, is given. Show that
+    the underlying points can be coloured red and blue so that no set is
+    monochromatic.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: colour each point by a fair coin; each set is monochromatic with probability 2^{1-k}, so the expected number of bad sets is less than 1
+  category: probabilistic_argument
+  summary: >
+    Under a uniformly random 2-colouring, a fixed k-set is monochromatic
+    with probability 2 * 2^{-k} = 2^{1-k}. With m < 2^{k-1} sets the
+    expected number of monochromatic sets is m 2^{1-k} < 1, so some
+    colouring has none.
+
+intuitive_proof:
+  explanation: >
+    Colour every point independently red or blue with probability 1/2. A
+    given set of k points is all red with probability 2^{-k} and all blue
+    with the same probability, so it is monochromatic with probability
+    2^{1-k}. By linearity of expectation (the events need not be
+    independent), the expected number of monochromatic sets is m 2^{1-k},
+    which is less than 1 when m < 2^{k-1}. A non-negative integer random
+    variable with mean less than 1 takes the value 0 with positive
+    probability, so some colouring has no monochromatic set.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a colouring greedily, set by set, and repair conflicts.
+  crucial_observation: >
+    Random colourings almost never make a fixed set monochromatic, and few
+    sets means few chances.
+  why_it_simplifies: >
+    The first-moment method gives existence in three lines; refining it
+    (alternating colourings, the local lemma) gives much better bounds.
+
+related:
+  - ramsey_lower_bound_random
+
+tags:
+  - probabilistic method
+  - hypergraph coloring
+  - expectation
+  - union bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

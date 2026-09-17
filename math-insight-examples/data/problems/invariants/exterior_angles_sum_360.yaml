@@ -1,0 +1,78 @@
+id: exterior_angles_sum_360
+
+title: The Exterior Angles of a Convex Polygon Sum to 360 Degrees
+
+aliases:
+  - exterior angle sum
+  - walking around a polygon
+  - turning angle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Internal_and_external_angles
+  original_title: Internal and external angles (sum of exterior angles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the exterior angles of any convex polygon add up to 360
+    degrees, and deduce that the interior angles of an n-gon sum to (n - 2)
+    * 180 degrees.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "walk around the polygon: the total turning is one full revolution"
+  category: geometric_invariant
+  summary: >
+    Walk along the boundary. At each vertex you turn through the exterior
+    angle. After going all the way around you face your original direction
+    again, having turned exactly 360 degrees in total. Each interior angle
+    is 180 minus the exterior one, so the interior angles sum to 180n - 360.
+
+intuitive_proof:
+  explanation: >
+    Traverse the polygon counterclockwise. At each vertex the direction of
+    travel changes by the exterior angle at that vertex, all turns being in
+    the same sense for a convex polygon. Returning to the starting point
+    facing the starting direction means the total turn is one full
+    revolution, 360 degrees. Hence the exterior angles sum to 360. Since
+    interior + exterior = 180 at each of the n vertices, the interior angles
+    sum to 180n - 360 = (n - 2) 180.
+
+reasoning_structure:
+  naive_approach: >
+    Triangulate from one vertex into n - 2 triangles and add their angle
+    sums, which works but is a construction rather than an insight into why
+    the answer is constant.
+  crucial_observation: >
+    The direction of travel is a state that must return to itself, and it
+    changes by exactly the exterior angles.
+  why_it_simplifies: >
+    A global 'return to start' invariant gives the sum without any
+    subdivision; for non-convex polygons the same argument counts turning
+    number.
+
+tags:
+  - turning number
+  - angles
+  - polygon
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

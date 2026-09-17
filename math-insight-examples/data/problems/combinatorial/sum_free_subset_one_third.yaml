@@ -1,0 +1,87 @@
+id: sum_free_subset_one_third
+
+title: Every Set of Integers Has a Sum-Free Subset of at Least a Third of Its Size
+
+aliases:
+  - sum-free subset theorem
+  - Erdos sum-free
+  - random dilation argument
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Probability makes counting (sometimes) easy"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Sum-free_set
+    original_title: Sum-free set (Erdos's theorem)
+
+problem:
+  statement: >
+    Show that every set A of n nonzero integers contains a subset B with
+    more than n/3 elements that is sum-free: no two elements of B (equal or
+    not) add up to an element of B.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: pick a prime p = 3k + 2 larger than all |a| and a random multiplier x; the elements a with xa mod p in the middle third (k+1..2k+1) form a sum-free set, and each element lands there with probability more than 1/3
+  category: probabilistic_argument
+  summary: >
+    Take a prime p = 3k + 2 larger than all |a| and the middle third M =
+    {k+1, ..., 2k+1} of residues, which is sum-free mod p and makes up more
+    than a third of the nonzero residues. For a random multiplier x, each xa
+    mod p lands in M with probability above 1/3, so on average more than n/3
+    elements land there, and those elements form a sum-free set because
+    dilation preserves sums.
+
+intuitive_proof:
+  explanation: >
+    Choose a prime p = 3k + 2 with p > 2 max|a| (such primes exist by
+    Dirichlet, or take any prime of that form large enough). Let M = {k + 1,
+    ..., 2k + 1} mod p; if u, v, w are in M then u + v is between 2k + 2 and
+    4k + 2, which reduced mod p lies in {2k + 2, ..., 3k + 1} or {0, ...,
+    k}, never in M, so M is sum-free. Pick x uniformly from 1, ..., p - 1.
+    Since a is nonzero mod p, xa mod p is uniformly distributed on the
+    nonzero residues, and lies in M with probability (k + 1)/(3k + 1) > 1/3.
+    By linearity of expectation the expected size of B_x = {a in A : xa mod
+    p in M} exceeds n/3, so some x gives |B_x| > n/3. If a + b = c with a,
+    b, c in B_x, then xa + xb = xc mod p with all three residues in M,
+    contradicting sum-freeness of M. So B_x is sum-free.
+
+reasoning_structure:
+  naive_approach: >
+    Try greedy selections or structural arguments about large and small
+    elements, which give weaker bounds.
+  crucial_observation: >
+    A random modular dilation makes every element land in a sum-free window
+    with the same probability, and sum-freeness is preserved by dilation.
+  why_it_simplifies: >
+    Averaging over dilations yields the bound with no structure theory; the
+    constant 1/3 is best possible up to the additive term.
+
+related:
+  - bipartite_subgraph_half_edges
+
+tags:
+  - probabilistic method
+  - sum-free
+  - expectation
+  - modular arithmetic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Erdos (1965). Eberhard, Green and Manners (2014) showed 1/3 cannot be
+  improved.

@@ -1,0 +1,81 @@
+id: pins_chain_head_head_equals_tail_tail
+
+title: "Pins in a Closed Chain: as Many Head-to-Head as Tail-to-Tail Junctions"
+
+aliases:
+  - heads and tails pins chain
+  - HH junctions equal TT junctions
+  - closed chain of pins
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Algebra/FirstProof.shtml
+  original_title: Heads and Tails
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    N pins, each with a head end and a tail end, are laid end to end in a
+    closed chain, in arbitrary orientations. Show that the number of
+    junctions where two heads meet equals the number where two tails meet,
+    and that the total number of pin ends at these two kinds of junctions is
+    even.
+  domain: combinatorics
+  answer: >
+    HH = TT, so the ends involved number 2 HH + 2 TT, which is even
+
+key_idea:
+  name: "count heads and tails: each of the N pins contributes one head and one tail, and the mixed junctions use equally many of each, so the remaining heads (all at HH junctions) equal the remaining tails (all at TT junctions)"
+  category: double_counting
+  summary: >
+    There are N heads and N tails in total. Each mixed junction (head
+    against tail) uses one head and one tail, so after discarding the mixed
+    junctions equally many heads and tails remain. The remaining heads sit
+    two per HH junction and the remaining tails two per TT junction, so 2 HH
+    = 2 TT.
+
+intuitive_proof:
+  explanation: >
+    Let HH, TT and HT denote the numbers of junctions of each type; every
+    junction joins exactly two pin ends, and in a closed chain there are N
+    junctions. Counting heads: each HH junction contains two heads, each HT
+    junction one, each TT junction none, so 2 HH + HT = N (the total number
+    of heads, one per pin). Counting tails: 2 TT + HT = N. Subtracting, HH =
+    TT. The number of pin ends at HH or TT junctions is 2 HH + 2 TT = 4 HH,
+    which is even.
+
+reasoning_structure:
+  naive_approach: >
+    Try to track the orientations of the pins one by one, or argue by cases
+    on how many pins are reversed.
+  crucial_observation: >
+    The same set of pin ends can be counted by junction type and by
+    head/tail type, and the two counts must agree.
+  why_it_simplifies: >
+    Double counting turns an arrangement-dependent question into a two-line
+    identity that holds for every orientation pattern.
+
+related:
+  - handshake_lemma
+  - coins_on_round_table
+
+tags:
+  - double counting
+  - parity
+  - invariant
+  - arrangements
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  A small example of the counting-two-ways technique that Cut-the-Knot
+  presents as a 'first proof'.

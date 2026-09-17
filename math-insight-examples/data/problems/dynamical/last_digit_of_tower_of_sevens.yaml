@@ -1,0 +1,79 @@
+id: last_digit_of_tower_of_sevens
+
+title: The Last Digit of 7^(7^7)
+
+aliases:
+  - last digit of a power tower
+  - cycles of last digits
+  - 7^7^7 mod 10
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Modular_exponentiation
+    original_title: Modular exponentiation
+
+problem:
+  statement: >
+    Find the last decimal digit of 7^(7^7).
+  domain: number theory
+  answer: "3"
+
+key_idea:
+  name: last digits of powers of 7 cycle with period 4, so only the exponent mod 4 matters
+  category: finite_state_periodicity
+  summary: >
+    7^1, 7^2, 7^3, 7^4 end in 7, 9, 3, 1 and then the cycle repeats, because
+    the last digit of 7^{k+1} depends only on the last digit of 7^k. The
+    exponent 7^7 is 3 mod 4 (since 7 = -1 mod 4 and 7 is odd), so the answer
+    is the third digit of the cycle, 3.
+
+intuitive_proof:
+  explanation: >
+    The last digit of 7^{k+1} is determined by the last digit of 7^k
+    (multiply by 7 and keep the units digit), so the sequence of last digits
+    is an orbit of a map on the finite set {0, ..., 9}: it is eventually
+    periodic. Computing, 7, 9, 3, 1, 7, ... has period 4 from the start.
+    Thus the last digit of 7^m depends only on m mod 4. The exponent m = 7^7
+    satisfies 7 = -1 mod 4, so 7^7 = (-1)^7 = -1 = 3 mod 4. Hence the last
+    digit is that of 7^3, namely 3.
+
+reasoning_structure:
+  naive_approach: >
+    Attempt to compute 7^7 = 823543 and then raise 7 to that power, which is
+    hopeless.
+  crucial_observation: >
+    Digits of powers evolve by a deterministic map on a finite set, so they
+    cycle, and the exponent only matters modulo the period.
+  why_it_simplifies: >
+    Two small computations (a 4-cycle and a residue mod 4) replace a number
+    with hundreds of thousands of digits.
+
+related:
+  - fibonacci_mod_m_periodic
+
+tags:
+  - periodicity
+  - modular arithmetic
+  - last digit
+  - power tower
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Euler's theorem gives the period in general: the order of 7 mod 10 divides
+  phi(10) = 4.

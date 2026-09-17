@@ -1,0 +1,80 @@
+id: odd_degree_polynomial_real_root
+
+title: Every Real Polynomial of Odd Degree Has a Real Root
+
+aliases:
+  - odd degree polynomial has a root
+  - intermediate value theorem for polynomials
+  - leading term dominates
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Intermediate_value_theorem
+  original_title: Intermediate value theorem (applications)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9 / algebra
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a polynomial with real coefficients and odd degree has at
+    least one real root.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: for large |x| the leading term dominates, so the polynomial has opposite signs at +M and -M
+  category: structural_obstruction
+  summary: >
+    Write p(x) = x^n (a_n + a_{n-1}/x + ... + a_0/x^n). For |x| large the
+    bracket is close to a_n, so p(x) has the sign of a_n x^n, which for odd
+    n is opposite at x = M and x = -M. By the intermediate value theorem p
+    vanishes in between.
+
+intuitive_proof:
+  explanation: >
+    Let p(x) = a_n x^n + ... + a_0 with a_n > 0 (multiply by -1 if
+    necessary) and n odd. For |x| >= M := 1 + (|a_{n-1}| + ... + |a_0|)/a_n,
+    the lower-order terms sum to at most (|a_{n-1}| + ... + |a_0|) |x|^{n-1}
+    < a_n |x|^n, so p(x) has the sign of a_n x^n: positive at x = M and
+    negative at x = -M (n odd). Since p is continuous, the intermediate
+    value theorem gives a root in (-M, M).
+
+reasoning_structure:
+  naive_approach: >
+    Try to find the root explicitly, which is impossible in general for
+    degree 5 and above (Abel-Ruffini).
+  crucial_observation: >
+    Odd degree makes the polynomial's behaviour at the two infinities
+    opposite, and continuity fills in the gap.
+  why_it_simplifies: >
+    A structural fact about the leading term plus the intermediate value
+    theorem gives existence with no formula; even degree polynomials (x^2 +
+    1) show the parity of the degree is essential.
+
+related:
+  - fixed_point_interval_ivt
+
+tags:
+  - intermediate value theorem
+  - polynomials
+  - existence proof
+  - structural obstruction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Complex roots of real polynomials come in conjugate pairs, which gives a
+  second proof from the fundamental theorem of algebra.

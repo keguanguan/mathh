@@ -1,0 +1,80 @@
+id: medians_form_a_triangle_vectors
+
+title: The Three Medians of a Triangle Can Form a Triangle
+
+aliases:
+  - medians form a triangle
+  - median vectors sum to zero
+  - triangle of medians
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 12, Geometry (vectors)
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Median_%28geometry%29
+    original_title: Median (geometry) (properties)
+
+problem:
+  statement: >
+    Show that the three medians of a triangle, translated to start at a
+    common point, form a triangle (their lengths satisfy the triangle
+    inequalities).
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: as vectors, the three medians sum to zero, and three vectors summing to zero form a triangle
+  category: complex_or_vector_coordinates
+  summary: >
+    The median from A is the vector (b + c)/2 - a, and similarly for B and
+    C. Adding the three gives (a + b + c) - (a + b + c) = 0. Three vectors
+    with zero sum, placed head to tail, close up into a triangle, so the
+    medians' lengths satisfy the triangle inequalities.
+
+intuitive_proof:
+  explanation: >
+    Let a, b, c be the position vectors of the vertices. The median from A
+    is m_a = (b + c)/2 - a, and similarly m_b = (c + a)/2 - b, m_c = (a +
+    b)/2 - c. Their sum is (a + b + c) - (a + b + c) = 0. Placing m_a, m_b,
+    m_c head to tail therefore returns to the starting point, forming a
+    (possibly degenerate) triangle with sides equal to the three median
+    lengths; it is non-degenerate since the medians are not parallel. (The
+    triangle of medians has 3/4 of the original area.)
+
+reasoning_structure:
+  naive_approach: >
+    Compute the median lengths with Apollonius's formula and verify the
+    triangle inequalities algebraically.
+  crucial_observation: >
+    A symmetric expression for the medians makes their vector sum vanish,
+    and 'sum zero' is 'closes a triangle'.
+  why_it_simplifies: >
+    Vector representation turns the existence of the triangle into a
+    one-line cancellation.
+
+related:
+  - medians_concur_centroid_vectors
+  - regular_polygon_vectors_sum_zero
+
+tags:
+  - vectors
+  - medians
+  - triangle inequality
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

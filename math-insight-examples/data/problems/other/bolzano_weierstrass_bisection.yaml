@@ -1,0 +1,83 @@
+id: bolzano_weierstrass_bisection
+
+title: Bolzano-Weierstrass by Repeated Bisection
+
+aliases:
+  - Bolzano-Weierstrass theorem
+  - bounded sequence has a convergent subsequence
+  - bisection argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bolzano%E2%80%93Weierstrass_theorem
+  original_title: Bolzano–Weierstrass theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on sequences and analysis
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every bounded sequence of real numbers has a convergent
+    subsequence.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: bisect the interval and keep the half containing infinitely many terms; the nested halves shrink to a point that is a limit of a subsequence
+  category: recursive_structure
+  summary: >
+    The sequence lies in some interval I_0. Split I_0 in half; at least one
+    half contains infinitely many terms, call it I_1. Repeat to get nested
+    intervals I_0 > I_1 > I_2 > ... of lengths shrinking to 0, each
+    containing infinitely many terms. Choosing one term from each I_k with
+    increasing indices gives a subsequence that is Cauchy, hence convergent
+    to the common point of the intervals.
+
+intuitive_proof:
+  explanation: >
+    Let all terms lie in I_0 = [A, B]. Given I_k containing infinitely many
+    terms of the sequence, split it into two closed halves; at least one
+    half contains infinitely many terms, and we let I_{k+1} be that half.
+    The intervals are nested with length (B - A)/2^k, so they have exactly
+    one common point L. Pick indices n_1 < n_2 < ... with x_{n_k} in I_k
+    (possible because each I_k contains infinitely many terms). Then
+    |x_{n_k} - L| <= (B - A)/2^k, so the subsequence converges to L.
+
+reasoning_structure:
+  naive_approach: >
+    Try to find a monotone subsequence first (the peaks argument), or reason
+    about accumulation points abstractly.
+  crucial_observation: >
+    Infinitude is preserved by at least one half at every bisection, and
+    nested halves converge.
+  why_it_simplifies: >
+    A self-similar halving procedure turns a compactness statement into a
+    constructive recursion; the same bisection proves the intermediate value
+    theorem.
+
+related:
+  - infinite_monotone_subsequence
+
+tags:
+  - recursion
+  - bisection
+  - compactness
+  - analysis
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Combined with the peaks lemma, one gets a second proof: a bounded monotone
+  sequence converges.

@@ -1,0 +1,79 @@
+id: pompeiu_theorem_rotation
+
+title: Pompeiu's Theorem by Rotation
+
+aliases:
+  - Pompeiu's theorem
+  - distances to vertices of an equilateral triangle form a triangle
+  - 60 degree rotation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pompeiu%27s_theorem
+  original_title: Pompeiu's theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    P is any point in the plane of an equilateral triangle ABC. Show that
+    segments of lengths PA, PB, PC can form a triangle (degenerate if P lies
+    on the circumcircle).
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: rotate by 60 degrees about a vertex; the three distances become the sides of one triangle
+  category: rotation
+  summary: >
+    Rotate the plane by 60 degrees about A, taking B to C and P to P'. Then
+    AP = AP' = PP' (equilateral triangle APP'), and CP' = BP. So triangle
+    PP'C has sides PP' = PA, P'C = PB and PC.
+
+intuitive_proof:
+  explanation: >
+    Let R be the rotation about A through 60 degrees that maps B to C, and
+    let P' = R(P). Since AP' = AP and angle PAP' = 60 degrees, triangle APP'
+    is equilateral, so PP' = PA. Rotations preserve length, so P'C =
+    R(P)R(B) = PB. Hence the triangle with vertices P, P', C has side
+    lengths PA, PB, PC. It degenerates exactly when P, P', C are collinear,
+    which happens iff angle APC + 60 = 180 degrees, i.e. P lies on the
+    circumcircle (Ptolemy's equality case).
+
+reasoning_structure:
+  naive_approach: >
+    Verify the three triangle inequalities PA + PB >= PC etc. by coordinates
+    or by Ptolemy's inequality.
+  crucial_observation: >
+    A 60-degree rotation about a vertex turns two of the distances into
+    sides emanating from a common point and the third into the connecting
+    side.
+  why_it_simplifies: >
+    The triangle is exhibited rather than proved to exist; the same rotation
+    solves the Fermat point problem.
+
+related:
+  - fermat_point_rotation
+
+tags:
+  - rotation
+  - equilateral triangle
+  - triangle inequality
+  - geometric transformation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

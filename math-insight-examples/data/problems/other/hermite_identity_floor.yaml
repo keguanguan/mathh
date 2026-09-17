@@ -1,0 +1,78 @@
+id: hermite_identity_floor
+
+title: Hermite's Identity for the Floor Function
+
+aliases:
+  - Hermite's identity
+  - sum of floor(x + k/n) = floor(nx)
+  - floor function identity
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hermite%27s_identity
+  original_title: Hermite's identity
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that for every real x and positive integer n, floor(x) + floor(x +
+    1/n) + ... + floor(x + (n-1)/n) = floor(nx).
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: both sides, as functions of x, are unchanged when x increases by 1/n, so it suffices to check x in [0, 1/n)
+  category: auxiliary_object
+  summary: >
+    Let f(x) be the left side minus the right side. Replacing x by x + 1/n
+    shifts the terms of the left sum cyclically (the last term becomes
+    floor(x + 1) = floor(x) + 1) and increases floor(nx) by 1, so f(x + 1/n)
+    = f(x). On [0, 1/n) every floor on the left is 0 and floor(nx) = 0, so f
+    = 0 there, hence everywhere.
+
+intuitive_proof:
+  explanation: >
+    Define f(x) = sum over k = 0..n-1 of floor(x + k/n) - floor(nx). Then
+    f(x + 1/n) = sum over k = 1..n of floor(x + k/n) - floor(nx + 1) = [sum
+    over k = 1..n-1 of floor(x + k/n) + floor(x) + 1] - floor(nx) - 1 =
+    f(x). So f is periodic with period 1/n. For 0 <= x < 1/n, all of x + k/n
+    lie in [0, 1), so each floor on the left is 0, and 0 <= nx < 1 gives
+    floor(nx) = 0; thus f(x) = 0 on [0, 1/n) and by periodicity for all x.
+
+reasoning_structure:
+  naive_approach: >
+    Write x = m + t with 0 <= t < 1 and split into cases according to which
+    interval [j/n, (j+1)/n) contains t, a tedious but valid case analysis.
+  crucial_observation: >
+    The difference of the two sides is periodic with a very small period, so
+    it need only be checked on a tiny interval where everything vanishes.
+  why_it_simplifies: >
+    The auxiliary function f and its periodicity replace a case analysis by
+    a single trivial check.
+
+related:
+  - universal_chord_theorem
+
+tags:
+  - auxiliary object
+  - floor function
+  - periodicity
+  - identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

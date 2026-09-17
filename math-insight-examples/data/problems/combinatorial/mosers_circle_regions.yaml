@@ -1,0 +1,82 @@
+id: mosers_circle_regions
+
+title: Moser's Circle Problem, Regions Cut by Chords
+
+aliases:
+  - Moser's circle problem
+  - 1, 2, 4, 8, 16, 31
+  - regions from chords between n points on a circle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dividing_a_circle_into_areas
+  original_title: Dividing a circle into areas
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wolfram MathWorld
+    url: https://mathworld.wolfram.com/CircleDivisionbyChords.html
+    original_title: Circle Division by Chords
+
+problem:
+  statement: >
+    n points on a circle are joined by all chords, no three chords
+    concurrent. Into how many regions is the disc divided? (The sequence
+    starts 1, 2, 4, 8, 16, and the next term is not 32.)
+  domain: combinatorics
+  answer: 1 + C(n, 2) + C(n, 4)
+
+key_idea:
+  name: each region beyond the first is created by a chord or by a crossing, and crossings correspond to 4-subsets of the points
+  category: bijection
+  summary: >
+    Add the chords one at a time: a chord crossing k earlier chords adds k +
+    1 regions. Summing, the total is 1 + (number of chords) + (number of
+    crossings) = 1 + C(n,2) + C(n,4), because every crossing is determined
+    by the four endpoints involved.
+
+intuitive_proof:
+  explanation: >
+    Start with the whole disc, one region. When a new chord is drawn it is
+    cut by its k crossings with earlier chords into k + 1 pieces, each
+    splitting one region, so it adds k + 1 regions. Adding all chords gives
+    1 + (total number of chords) + (total number of crossings). There are
+    C(n, 2) chords, and each interior crossing is the intersection of the
+    two diagonals of the convex quadrilateral formed by 4 of the points, so
+    there are C(n, 4) crossings. Hence 1 + C(n,2) + C(n,4): for n = 6 this
+    is 1 + 15 + 15 = 31, not 32. (Euler's formula gives the same count.)
+
+reasoning_structure:
+  naive_approach: >
+    Extrapolate the pattern 1, 2, 4, 8, 16 to 32, or count regions in
+    drawings by hand.
+  crucial_observation: >
+    Regions are produced by chords and by crossings, and both are counted by
+    binomial coefficients through bijections with 2- and 4-subsets.
+  why_it_simplifies: >
+    Two bijections replace any geometric case analysis and expose why the
+    doubling pattern breaks.
+
+related:
+  - diagonal_intersections_convex_polygon
+  - lines_in_general_position_regions
+
+tags:
+  - bijection
+  - counting
+  - circle
+  - Euler's formula
+  - pattern breaking
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  A standard warning against guessing formulas from small cases.

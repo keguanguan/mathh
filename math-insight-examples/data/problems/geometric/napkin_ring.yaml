@@ -1,0 +1,86 @@
+id: napkin_ring
+
+title: The Napkin Ring Problem
+
+aliases:
+  - napkin ring problem
+  - hole drilled through a sphere
+  - volume of a spherical ring depends only on its height
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Napkin_ring_problem
+  original_title: Napkin ring problem
+  accessed: 2026-09-16
+  notes: >
+    Popularised by Martin Gardner (Scientific American, 1959; Mathematical
+    Puzzles and Diversions); the "hole of length 6" version is due to Samuel
+    I. Jones (1912).
+
+additional_sources:
+  - name: Gardner - My Best Mathematical and Logic Puzzles
+    notes: Dover, 1994.
+
+problem:
+  statement: >
+    A cylindrical hole 6 inches long is drilled straight through the centre
+    of a solid sphere. What is the volume of the remaining ring?
+  domain: geometry
+  answer: 36 pi cubic inches, whatever the radius of the sphere
+
+key_idea:
+  name: if the answer is determined, it equals the degenerate case
+  category: continuous_deformation
+  summary: >
+    The problem gives only the hole's length, so the volume must be the same
+    for every sphere radius. Take the radius to be 3: the hole then has
+    zero width and the "ring" is the whole sphere, of volume (4/3) pi 27 =
+    36 pi. (A Cavalieri cross-section argument confirms the independence.)
+
+intuitive_proof:
+  explanation: >
+    Since the problem does not tell us the sphere's radius, the answer,
+    if well defined, cannot depend on it. So shrink the sphere until its
+    diameter equals the hole's length, 6 inches. The hole has become
+    infinitely thin, and the ring is the whole sphere of radius 3, with
+    volume (4/3) pi 3^3 = 36 pi. To see that the volume really is
+    independent of the radius, slice the ring horizontally at height y
+    above the centre: the cross-section is an annulus with outer radius
+    sqrt(R^2 - y^2) and inner radius sqrt(R^2 - 9), of area
+    pi (9 - y^2), which does not involve R; by Cavalieri's principle the
+    volume equals that of a sphere of radius 3.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the volume of the sphere minus the cylinder minus two spherical
+    caps, in terms of R, and simplify; the R's cancel at the end.
+  crucial_observation: >
+    Independence of R (given by the problem's form, and proved by the
+    annulus cross-sections) lets one evaluate at the most degenerate
+    radius.
+  why_it_simplifies: >
+    The calculation collapses to the volume of a sphere; the Cavalieri
+    argument also explains why the cancellation happens.
+
+tags:
+  - degenerate case
+  - Cavalieri's principle
+  - continuous deformation
+  - geometry
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The planar analogue: the area of an annulus depends only on the length
+  of a chord of the outer circle tangent to the inner one (Mamikon's
+  "tangent sweep"). Using the degenerate case alone is a heuristic; the
+  cross-section argument makes it a proof.

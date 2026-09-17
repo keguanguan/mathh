@@ -1,0 +1,79 @@
+id: bertrand_box_paradox
+
+title: Bertrand's Box Paradox
+
+aliases:
+  - Bertrand's box paradox
+  - three boxes two coins each
+  - gold coin conditional probability
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bertrand%27s_box_paradox
+  original_title: Bertrand's box paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Bertrand - Calcul des probabilites
+    notes: "1889"
+
+problem:
+  statement: >
+    Three boxes contain two gold coins, two silver coins, and one of each. A
+    box is chosen at random and a random coin from it is gold. What is the
+    probability that the other coin in the box is also gold?
+  domain: probability
+  answer: 2/3, not 1/2
+
+key_idea:
+  name: "count coins, not boxes: three gold coins are equally likely to be the one drawn, and two of them have a gold partner"
+  category: probabilistic_argument
+  summary: >
+    Drawing a random box then a random coin is the same as drawing one of
+    the six coins uniformly. Given the coin is gold, it is one of the three
+    gold coins with equal probability; two of those three share their box
+    with another gold coin. So the probability is 2/3.
+
+intuitive_proof:
+  explanation: >
+    The procedure picks each of the six coins with probability 1/6.
+    Condition on the drawn coin being gold: the three gold coins remain
+    equally likely. Two of them lie in the gold-gold box, where the other
+    coin is gold; one lies in the mixed box, where the other coin is silver.
+    Hence P(other coin gold | drawn coin gold) = 2/3. The tempting answer
+    1/2 ('it is either the GG box or the GS box') forgets that observing a
+    gold coin is twice as likely from the GG box.
+
+reasoning_structure:
+  naive_approach: >
+    Argue that the box must be GG or GS, so the answer is 1/2.
+  crucial_observation: >
+    The observation is more likely under one hypothesis than the other, and
+    conditioning must weight hypotheses by how well they explain the
+    observation.
+  why_it_simplifies: >
+    Re-describing the experiment as a uniform choice of coin makes the
+    conditional probability a plain count.
+
+related:
+  - monty_hall_switch
+
+tags:
+  - conditional probability
+  - counting
+  - paradox
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Structurally identical to the Monty Hall problem and the 'boy or girl'
+  paradox.

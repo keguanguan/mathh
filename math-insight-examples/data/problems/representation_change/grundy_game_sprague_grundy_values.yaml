@@ -1,0 +1,96 @@
+id: grundy_game_sprague_grundy_values
+
+title: Grundy's Game and the Sprague-Grundy Function
+
+aliases:
+  - Grundy's game
+  - split a heap into two unequal heaps
+  - mex rule
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/Grundy.shtml
+  original_title: Grundy's Game
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Grundy%27s_game
+    original_title: Grundy's game
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Sprague%E2%80%93Grundy_theorem
+    original_title: Sprague–Grundy theorem
+
+problem:
+  statement: >
+    Heaps of counters are given; a move splits one heap into two heaps of
+    different sizes. The player who cannot move loses. How does one find the
+    winning positions?
+  domain: combinatorial games
+  answer: >
+    assign each heap size its Grundy value g(n) = mex of the values g(a) XOR
+    g(b) over splits n = a + b with a != b; a position is losing iff the XOR
+    of its heaps' Grundy values is 0
+
+key_idea:
+  name: every impartial game position is equivalent to a Nim heap whose size is the mex of the values of its options, and independent heaps combine by XOR
+  category: algebraic_encoding
+  summary: >
+    The Sprague-Grundy theorem encodes any impartial game as Nim: a position
+    whose options have values v_1, ..., v_k has value mex{v_1, ..., v_k},
+    and independent components combine by XOR. For Grundy's game g(0) = g(1)
+    = g(2) = 0, g(3) = 1, g(4) = 0, g(5) = 2, ..., and the player to move
+    wins iff the XOR of the heap values is nonzero.
+
+intuitive_proof:
+  explanation: >
+    Define the Grundy value of a position recursively as the mex of the
+    Grundy values of its options; terminal positions get 0. From a position
+    of value 0 every move leads to a nonzero value (0 is not among the
+    options' values), and from a position of nonzero value v some move leads
+    to value 0 (since v = mex, 0 is among the options' values); the values
+    are also such that from value v every smaller value is reachable, which
+    is exactly the behaviour of a Nim heap of size v. Therefore a component
+    behaves like a Nim heap of its Grundy value, and a sum of components (a
+    move affects one component) behaves like Nim with those heap sizes,
+    whose losing positions are those with XOR 0 (Bouton). For Grundy's game
+    the values are computed from the splitting rule: 0, 0, 0, 1, 0, 2, 1, 0,
+    2, 1, 0, 2, 1, 3, 2, 1, 3, 2, 4, 3, 0, ....
+
+reasoning_structure:
+  naive_approach: >
+    Analyse multi-heap positions directly by backward induction on the whole
+    configuration, which is exponential in the number of heaps.
+  crucial_observation: >
+    Every impartial game is Nim in disguise: the mex rule computes the
+    equivalent heap size, and XOR combines components.
+  why_it_simplifies: >
+    The encoding reduces any sum of games to one table of Grundy values plus
+    the XOR test; Grundy's game is the classic example whose table has no
+    known closed form.
+
+related:
+  - nim
+  - turning_turtles
+
+tags:
+  - algebraic encoding
+  - Sprague-Grundy
+  - Nim
+  - combinatorial game
+  - mex
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Whether the Grundy values of Grundy's game are eventually periodic is an
+  open problem.

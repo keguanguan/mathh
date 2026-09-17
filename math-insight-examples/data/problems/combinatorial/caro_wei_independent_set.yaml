@@ -1,0 +1,85 @@
+id: caro_wei_independent_set
+
+title: An Independent Set of Size at Least Sum 1/(d(v) + 1) (Caro-Wei)
+
+aliases:
+  - Caro-Wei theorem
+  - independence number bound
+  - random ordering argument
+  - Turan's theorem via random permutation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Independent_set_%28graph_theory%29
+  original_title: Independent set (graph theory) (Caro-Wei bound)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Alon & Spencer - The Probabilistic Method
+    notes: Chapter 6, the random-ordering proof of Turan's theorem
+
+problem:
+  statement: >
+    Show that every graph has an independent set (no two vertices adjacent)
+    of size at least the sum over vertices v of 1/(d(v) + 1). Deduce Turan's
+    bound: a graph with n vertices and average degree d has an independent
+    set of size at least n/(d + 1).
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: order the vertices randomly and select those that come before all their neighbours; a vertex is selected with probability 1/(d(v) + 1)
+  category: probabilistic_argument
+  summary: >
+    Choose a uniformly random ordering of the vertices and let S be the set
+    of vertices preceding all their neighbours. S is independent (of two
+    adjacent vertices, only the earlier one can be in S). Vertex v is first
+    among itself and its d(v) neighbours with probability 1/(d(v) + 1), so
+    E|S| = sum of 1/(d(v) + 1), and some ordering achieves at least that.
+    Convexity of 1/(x + 1) then gives n/(d + 1).
+
+intuitive_proof:
+  explanation: >
+    Pick a random permutation of the vertices. Put v into S if v appears
+    before every neighbour of v. Two adjacent vertices cannot both be in S,
+    so S is independent. Among v and its d(v) neighbours, each is equally
+    likely to come first in the permutation, so P(v in S) = 1/(d(v) + 1). By
+    linearity, E|S| = sum over v of 1/(d(v) + 1), so some permutation gives
+    an independent set at least this large. Since 1/(x + 1) is convex,
+    Jensen's inequality gives sum of 1/(d(v) + 1) >= n/(d + 1) where d is
+    the average degree.
+
+reasoning_structure:
+  naive_approach: >
+    Greedily pick a vertex of minimum degree, delete it and its neighbours,
+    and repeat; this works but the accounting is messier.
+  crucial_observation: >
+    A random ordering assigns each vertex a fair chance of being 'locally
+    first', and locally-first vertices never touch.
+  why_it_simplifies: >
+    The probabilistic viewpoint gives a clean bound and, through convexity,
+    Turan's theorem in a few lines.
+
+related:
+  - mantel_triangle_free
+  - bipartite_subgraph_half_edges
+
+tags:
+  - probabilistic method
+  - independent set
+  - random ordering
+  - Turan
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Applying the bound to the complement gives a clique bound; the greedy
+  algorithm achieves the same guarantee deterministically.

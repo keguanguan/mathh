@@ -1,0 +1,76 @@
+id: regular_polygon_tilings_of_plane
+
+title: Only Triangles, Squares and Hexagons Tile the Plane Regularly
+
+aliases:
+  - regular tessellations
+  - which regular polygons tile the plane
+  - 360 divided by interior angle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euclidean_tilings_by_convex_regular_polygons
+  original_title: Euclidean tilings by convex regular polygons (regular tilings)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the only regular polygons that can tile the plane by
+    themselves, edge to edge, are the equilateral triangle, the square and
+    the regular hexagon.
+  domain: geometry
+  answer: n = 3, 4, 6
+
+key_idea:
+  name: the interior angle 180(n - 2)/n must divide 360, which forces 2n/(n - 2) to be an integer
+  category: double_counting
+  summary: >
+    At a vertex of the tiling, k copies of the interior angle 180(n - 2)/n
+    fill 360 degrees, so k = 2n/(n - 2) = 2 + 4/(n - 2) must be an integer.
+    Then n - 2 divides 4, giving n = 3, 4 or 6 (with k = 6, 4, 3).
+
+intuitive_proof:
+  explanation: >
+    In an edge-to-edge tiling by regular n-gons, some number k >= 3 of
+    polygons meet at each vertex and their interior angles sum to 360
+    degrees: k * 180(n - 2)/n = 360, so k(n - 2) = 2n, i.e. k = 2n/(n - 2) =
+    2 + 4/(n - 2). For k to be an integer, n - 2 must divide 4, so n - 2 is
+    1, 2 or 4 and n = 3, 4 or 6. Each of these does tile the plane, with 6,
+    4 and 3 polygons at each vertex.
+
+reasoning_structure:
+  naive_approach: >
+    Try to fit pentagons, heptagons and so on around a point by drawing.
+  crucial_observation: >
+    A single angle count at one vertex is a Diophantine condition with three
+    solutions.
+  why_it_simplifies: >
+    The counting equation answers the question for all n at once; the
+    analogous count 1/p + 1/q > 1/2 classifies the Platonic solids.
+
+related:
+  - five_platonic_solids
+
+tags:
+  - angle counting
+  - tilings
+  - Diophantine equation
+  - regular polygons
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

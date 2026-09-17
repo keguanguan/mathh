@@ -1,0 +1,79 @@
+id: boy_or_girl_sample_space
+
+title: "The Boy or Girl Paradox: Write Down the Sample Space"
+
+aliases:
+  - boy or girl paradox
+  - two-child problem
+  - at least one is a boy
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Boy_or_girl_paradox
+  original_title: Boy or girl paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Second Scientific American Book of Mathematical Puzzles and Diversions
+
+problem:
+  statement: >
+    A family has two children. Given that at least one is a boy, what is the
+    probability that both are boys? And given that the older one is a boy?
+  domain: probability
+  answer: 1/3 in the first case, 1/2 in the second
+
+key_idea:
+  name: list the four equally likely ordered outcomes BB, BG, GB, GG and count those compatible with the condition
+  category: representation_change
+  summary: >
+    The sample space is {BB, BG, GB, GG}, each with probability 1/4. 'At
+    least one boy' leaves three outcomes of which one is BB: probability
+    1/3. 'The older is a boy' leaves BB and BG, of which one is BB:
+    probability 1/2. The two conditions are different events, which the
+    words obscure.
+
+intuitive_proof:
+  explanation: >
+    Model the children as an ordered pair (older, younger) with the four
+    equally likely outcomes BB, BG, GB, GG. Conditioning on 'at least one
+    boy' restricts to {BB, BG, GB}, and BB is one of three equally likely
+    outcomes, so the conditional probability is 1/3. Conditioning on 'the
+    older child is a boy' restricts to {BB, BG}, giving 1/2. The paradox
+    arises from treating the two conditions as the same; the explicit sample
+    space shows they exclude different outcomes. (How the information 'at
+    least one boy' was obtained can change the answer, which is the deeper
+    point.)
+
+reasoning_structure:
+  naive_approach: >
+    Argue that the other child is a boy with probability 1/2 regardless,
+    since children's genders are independent.
+  crucial_observation: >
+    Conditional probability is a ratio of counts in an explicit sample
+    space, and the two conditions correspond to different subsets.
+  why_it_simplifies: >
+    Writing the sample space explicitly replaces intuition by counting and
+    dissolves the paradox.
+
+related:
+  - monty_hall_switch
+  - bertrand_box_paradox
+
+tags:
+  - representation change
+  - conditional probability
+  - sample space
+  - paradox
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,82 @@
+id: lagrange_interpolation_basis
+
+title: "Lagrange Interpolation: Build the Polynomial from Indicator Polynomials"
+
+aliases:
+  - Lagrange interpolation
+  - polynomial through n + 1 points
+  - Lagrange basis polynomials
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Lagrange_polynomial
+  original_title: Lagrange polynomial (definition)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7 / algebra of polynomials
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Given distinct x_0, ..., x_n and values y_0, ..., y_n, show that there
+    is exactly one polynomial of degree at most n with p(x_i) = y_i for all
+    i.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: for each i build a polynomial L_i that is 1 at x_i and 0 at the other nodes, namely the product of (x - x_j)/(x_i - x_j) over j != i; then p = sum of y_i L_i
+  category: auxiliary_object
+  summary: >
+    L_i(x) = product over j != i of (x - x_j)/(x_i - x_j) has degree n,
+    vanishes at every x_j with j != i, and equals 1 at x_i. So p = sum of
+    y_i L_i takes the value y_i at x_i. Uniqueness: two such polynomials
+    differ by a polynomial of degree at most n with n + 1 roots, which must
+    be zero.
+
+intuitive_proof:
+  explanation: >
+    Existence: the polynomial L_i(x) = product over j != i of (x - x_j)/(x_i
+    - x_j) is well defined since the nodes are distinct; it has degree n,
+    L_i(x_j) = 0 for j != i (a factor vanishes) and L_i(x_i) = 1 (each
+    factor equals 1). Hence p(x) = sum over i of y_i L_i(x) has degree at
+    most n and p(x_k) = y_k for every k. Uniqueness: if p and q both
+    interpolate, then p - q has degree at most n and vanishes at the n + 1
+    distinct nodes, so it is the zero polynomial.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the (n + 1) x (n + 1) linear system for the coefficients and
+    prove it is nonsingular (the Vandermonde determinant).
+  crucial_observation: >
+    The problem is linear in the data, so it suffices to solve it for the
+    basis data 'one value 1, the rest 0', and those solutions are products
+    of linear factors.
+  why_it_simplifies: >
+    Auxiliary indicator polynomials turn a linear system into an explicit
+    formula; uniqueness is the root-counting bound.
+
+related:
+  - vandermonde_determinant_roots
+  - polynomial_difference_divisibility
+
+tags:
+  - auxiliary object
+  - interpolation
+  - polynomials
+  - linearity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

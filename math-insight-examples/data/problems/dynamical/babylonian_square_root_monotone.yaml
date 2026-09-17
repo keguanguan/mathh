@@ -1,0 +1,80 @@
+id: babylonian_square_root_monotone
+
+title: The Babylonian Square Root Iteration Converges
+
+aliases:
+  - Heron's method for square roots
+  - Newton's method for x^2 - a
+  - x -> (x + a/x)/2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+  original_title: Methods of computing square roots (Babylonian method)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For a > 0 and any x_0 > 0, define x_{n+1} = (x_n + a/x_n)/2. Show that
+    x_n converges to sqrt(a).
+  domain: dynamical systems
+  answer: proved (and the convergence is quadratic)
+
+key_idea:
+  name: after one step the iterates are above sqrt(a) by AM-GM, and from then on they decrease
+  category: attracting_structure
+  summary: >
+    x_{n+1} is the arithmetic mean of x_n and a/x_n, whose geometric mean is
+    sqrt(a); so x_{n+1} >= sqrt(a) for n >= 0. Once x_n >= sqrt(a), a/x_n <=
+    x_n, so x_{n+1} <= x_n. A decreasing sequence bounded below converges,
+    and the limit L satisfies L = (L + a/L)/2, i.e. L = sqrt(a).
+
+intuitive_proof:
+  explanation: >
+    By AM-GM, x_{n+1} = (x_n + a/x_n)/2 >= sqrt(x_n * a/x_n) = sqrt(a) for
+    every n >= 0. For n >= 1 we then have x_n >= sqrt(a), hence a/x_n <=
+    sqrt(a) <= x_n and x_{n+1} <= (x_n + x_n)/2 = x_n. So from x_1 on the
+    sequence is non-increasing and bounded below by sqrt(a); it converges to
+    some L >= sqrt(a) > 0 with L = (L + a/L)/2, which gives L^2 = a.
+    Moreover x_{n+1} - sqrt(a) = (x_n - sqrt(a))^2/(2 x_n), so the error
+    squares at each step.
+
+reasoning_structure:
+  naive_approach: >
+    Apply the general theory of Newton's method with its convergence
+    conditions, or compute examples and trust them.
+  crucial_observation: >
+    One inequality (AM-GM) traps the iterates above the root, after which
+    monotonicity is automatic.
+  why_it_simplifies: >
+    Convergence follows from 'monotone and bounded' with a single
+    inequality, and the error identity explains the doubling of correct
+    digits.
+
+related:
+  - am_hm_iteration_geometric_mean
+  - nested_radical_fixed_point
+
+tags:
+  - iteration
+  - AM-GM
+  - monotone convergence
+  - Newton's method
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

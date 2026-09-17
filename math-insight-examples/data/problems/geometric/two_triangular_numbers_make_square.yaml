@@ -1,0 +1,79 @@
+id: two_triangular_numbers_make_square
+
+title: Two Consecutive Triangular Numbers Sum to a Square
+
+aliases:
+  - T(n-1) + T(n) = n^2
+  - consecutive triangular numbers
+  - staircase picture of a square
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Triangular_number
+  original_title: Triangular number (relations to other figurate numbers)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Nelsen - Proofs Without Words
+    notes: Section on figurate numbers
+
+problem:
+  statement: >
+    Show that the sum of the (n-1)-th and n-th triangular numbers, T_{n-1} +
+    T_n, equals n^2.
+  domain: number theory / combinatorics
+  answer: proved
+
+key_idea:
+  name: "cut an n x n square of dots along its diagonal: the diagonal and one side form a staircase of T_n dots, the other side a staircase of T_{n-1} dots"
+  category: decomposition
+  summary: >
+    Draw an n x n array of dots and separate the dots on or below the main
+    diagonal from those strictly above it. The first set is a staircase with
+    rows of lengths 1, 2, ..., n, i.e. T_n dots; the second is a staircase
+    with rows of lengths 1, ..., n - 1, i.e. T_{n-1} dots. Together they
+    make n^2.
+
+intuitive_proof:
+  explanation: >
+    Consider the n x n grid of dots at positions (i, j) with 1 <= i, j <= n.
+    The dots with j <= i form rows of lengths 1, 2, ..., n, so there are 1 +
+    2 + ... + n = T_n of them. The dots with j > i form rows of lengths 0,
+    1, ..., n - 1, so there are T_{n-1} of them. Every dot is in exactly one
+    of the two sets, so T_{n-1} + T_n = n^2. Algebraically, (n - 1)n/2 + n(n
+    + 1)/2 = n(2n)/2 = n^2. The same picture shows that T_n = C(n + 1, 2)
+    counts pairs with repetition and T_{n-1} = C(n, 2) counts pairs without.
+
+reasoning_structure:
+  naive_approach: >
+    Verify the identity algebraically from the formula T_n = n(n + 1)/2,
+    which proves it but does not show why.
+  crucial_observation: >
+    A square decomposes along its diagonal into two staircases, and
+    staircases are triangular numbers.
+  why_it_simplifies: >
+    The geometric decomposition makes the identity visible and links to
+    counting ordered pairs by whether i < j, i = j, or i > j.
+
+related:
+  - sum_of_first_n_odd_numbers
+  - gauss_pairing_sum
+  - nicomachus_sum_of_cubes
+
+tags:
+  - decomposition
+  - figurate numbers
+  - proof without words
+  - triangular numbers
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

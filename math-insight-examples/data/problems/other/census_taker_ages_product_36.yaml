@@ -1,0 +1,78 @@
+id: census_taker_ages_product_36
+
+title: "The Census Taker: Ages with Product 36"
+
+aliases:
+  - census taker puzzle
+  - product 36 sum equals house number
+  - the oldest plays the piano
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ages_of_Three_Children_puzzle
+  original_title: Ages of Three Children puzzle
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A census taker is told the three children's ages multiply to 36 and add
+    up to the house number next door. Seeing the number, she says that is
+    not enough; told that the oldest plays the piano, she knows the ages.
+    What are they?
+  domain: combinatorics
+  answer: 2, 2, 9
+
+key_idea:
+  name: the second clue is informative only if the sum is ambiguous, and exactly one sum (13) occurs for two factorisations; 'the oldest' then rules out the triple with twin oldest children
+  category: information_counting_bound
+  summary: >
+    List the triples with product 36 and their sums. All sums are distinct
+    except 13, shared by (1, 6, 6) and (2, 2, 9). The census taker's 'not
+    enough' reveals the sum is 13. The existence of a unique oldest child
+    excludes (1, 6, 6), leaving (2, 2, 9).
+
+intuitive_proof:
+  explanation: >
+    The factorisations of 36 into three positive integers are (1,1,36),
+    (1,2,18), (1,3,12), (1,4,9), (1,6,6), (2,2,9), (2,3,6), (3,3,4) with
+    sums 38, 21, 16, 14, 13, 13, 11, 10. Knowing the sum would identify the
+    ages unless the sum is 13, so the fact that she needed more information
+    means the sum is 13 and the ages are (1, 6, 6) or (2, 2, 9). 'The oldest
+    plays the piano' says there is a unique oldest child, which fails for
+    (1, 6, 6). Hence the ages are 2, 2 and 9.
+
+reasoning_structure:
+  naive_approach: >
+    Try to deduce the ages from the product alone, or ignore the information
+    contained in the statement 'that is not enough'.
+  crucial_observation: >
+    The statement that a clue was insufficient is itself a clue: it selects
+    the ambiguous case.
+  why_it_simplifies: >
+    Counting the solutions consistent with each clue (an
+    information-theoretic view) turns a vague story into a two-step
+    elimination.
+
+related:
+  - mislabeled_boxes_one_draw
+
+tags:
+  - information
+  - logic puzzle
+  - factorisation
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

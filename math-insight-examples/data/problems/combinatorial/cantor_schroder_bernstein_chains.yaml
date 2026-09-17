@@ -1,0 +1,91 @@
+id: cantor_schroder_bernstein_chains
+
+title: "Cantor-Schroder-Bernstein: Injections Both Ways Give a Bijection"
+
+aliases:
+  - Schroder-Bernstein theorem
+  - Cantor-Bernstein theorem
+  - injections both ways imply equal cardinality
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Schr%C3%B6der%E2%80%93Bernstein_theorem
+  original_title: Schröder–Bernstein theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Sets, functions, and the continuum hypothesis"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    If there are injections f: A -> B and g: B -> A, show that there is a
+    bijection between A and B.
+  domain: set theory
+  answer: proved
+
+key_idea:
+  name: follow each element backwards through f and g as far as possible; the chains starting in A are matched by f, the chains starting in B by g, and the two-way infinite chains by either
+  category: bijection
+  summary: >
+    Trace each element backwards through f and g; by injectivity the chain
+    of predecessors is unique and either stops in A, stops in B, or never
+    stops. Use f on elements of A whose chain stops in A or never stops, and
+    g^{-1} on those whose chain stops in B. Within each chain, an
+    alternating sequence of A- and B-elements, the chosen map pairs the
+    elements off perfectly.
+
+intuitive_proof:
+  explanation: >
+    Think of the disjoint union of A and B with arrows a -> f(a) and b ->
+    g(b). Because f and g are injective, every element has at most one
+    incoming arrow, so following arrows backwards from any element gives a
+    unique chain of predecessors that either ends at an element with no
+    predecessor (an 'A-stopper' if that element is in A, a 'B-stopper' if it
+    is in B) or continues forever. Following arrows forwards never stops, so
+    each connected component is a sequence alternating between A and B, of
+    the form: infinite in both directions, or starting at an A-element, or
+    starting at a B-element. Define h: A -> B by h(a) = f(a) if a's
+    component is an A-stopper or doubly infinite chain, and h(a) = g^{-1}(a)
+    if a's component is a B-stopper (in that case a is not the first
+    element, so g^{-1}(a) exists). Within an A-stopper chain a_0 -> b_0 ->
+    a_1 -> b_1 -> ..., f pairs a_i with b_i and hits every b; within a
+    B-stopper chain b_0 -> a_0 -> b_1 -> ..., g^{-1} pairs a_i with b_i and
+    hits every b; within a doubly infinite chain, f is a bijection between
+    the A-elements and B-elements. Since the components partition A and B, h
+    is a bijection.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the bijection by 'combining' f and g without noticing
+    that some elements of B are missed by f and must be handled through g.
+  crucial_observation: >
+    The two injections organise A and B into chains, and the only question
+    for each chain is which map to use, decided by where the chain starts.
+  why_it_simplifies: >
+    Decomposing into chains turns a subtle set-theoretic statement into a
+    transparent case analysis on three kinds of sequences.
+
+related:
+  - hilbert_hotel_infinite_guests
+  - cantor_diagonal_uncountable
+
+tags:
+  - bijection
+  - set theory
+  - cardinality
+  - chains
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

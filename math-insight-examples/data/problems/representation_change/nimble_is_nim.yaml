@@ -1,0 +1,79 @@
+id: nimble_is_nim
+
+title: "Nimble: Coins on a Strip Are Nim Heaps"
+
+aliases:
+  - Nimble
+  - coins sliding left game
+  - position of a coin equals heap size
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/recurrence/Nimble.shtml
+  original_title: Nimble
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    Coins sit on the squares of a strip numbered 0, 1, 2, ...; several coins
+    may share a square. A move slides one coin any number of squares to the
+    left. The last player to move wins. Who wins?
+  domain: combinatorial games
+  answer: >
+    a coin on square k is a Nim heap of size k; the player to move loses iff
+    the XOR of all coin positions is 0
+
+key_idea:
+  name: each coin's position is a heap size; sliding it left removes counters from that heap
+  category: isomorphism_to_another_problem
+  summary: >
+    A coin on square k can move to any square 0..k-1, exactly the options of
+    a Nim heap of k counters. Coins do not interact, so the game is the sum
+    of the heaps and Bouton's XOR rule applies.
+
+intuitive_proof:
+  explanation: >
+    The options of a coin on square k are the squares 0, 1, ..., k - 1, the
+    same as the options of a heap of k counters (reduce to any smaller
+    size). Coins move independently and the game ends when all coins are on
+    square 0, i.e. all heaps are empty. So the game is precisely Nim with
+    heap sizes equal to the coin positions, and the player to move wins iff
+    the XOR of the positions is nonzero.
+
+reasoning_structure:
+  naive_approach: >
+    Compute winning positions for small numbers of coins by hand.
+  crucial_observation: >
+    Position = heap size is a literal translation, with no analysis
+    required.
+  why_it_simplifies: >
+    Zero new theory: once the dictionary is written the game is solved. The
+    Sprague-Grundy value of a single coin on square k is k.
+
+related:
+  - nim
+  - northcotts_game_nim
+
+tags:
+  - Nim
+  - isomorphism
+  - combinatorial game
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  With the restriction 'slide at most m squares' the heap values become k
+  mod (m + 1).

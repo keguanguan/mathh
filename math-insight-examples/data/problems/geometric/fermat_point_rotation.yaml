@@ -1,0 +1,95 @@
+id: fermat_point_rotation
+
+title: The Fermat Point via a 60-Degree Rotation
+
+aliases:
+  - Fermat-Torricelli point
+  - point minimising the sum of distances to three vertices
+  - Hofmann's rotation proof
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fermat_point
+  original_title: Fermat point
+  accessed: 2026-09-16
+  notes: Posed by Fermat to Torricelli (c. 1640); the rotation proof is due to J. E. Hofmann (1929).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/FermatPoint.shtml
+    original_title: Fermat's Point
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 12, Geometry (transformations).
+
+problem:
+  statement: >
+    In a triangle ABC with all angles less than 120 degrees, find the point
+    P minimising PA + PB + PC.
+  domain: geometry
+  answer: >
+    The point from which each side subtends 120 degrees (the Fermat point);
+    the minimum equals the distance from C to the apex of the equilateral
+    triangle erected outward on AB.
+
+key_idea:
+  name: rotate by 60 degrees about a vertex so the three segments become one broken path
+  category: rotation
+  summary: >
+    Rotate the plane by 60 degrees about B, sending P to P' and A to A'.
+    Then PBP' is equilateral, so PB = PP', and PA = P'A'. Hence
+    PA + PB + PC = CP + PP' + P'A', a path from C to the fixed point A',
+    which is shortest when it is straight. That happens exactly when the
+    angles at P are all 120 degrees.
+
+intuitive_proof:
+  explanation: >
+    Let R be the rotation by 60 degrees about B, and put P' = R(P) and
+    A' = R(A); A' is the apex of the equilateral triangle on AB, a fixed
+    point independent of P. Triangle BPP' has two equal sides and a
+    60-degree angle at B, so it is equilateral and PP' = PB. Rotations
+    preserve length, so P'A' = PA. Therefore PA + PB + PC = A'P' + P'P + PC,
+    the length of the broken path A' - P' - P - C. This is at least A'C,
+    with equality when P' and P lie on the segment A'C in order. The
+    straightness conditions say that angle BPC = 180 - 60 = 120 degrees
+    and angle A'P'B = 120 degrees, i.e. angle APB = 120 degrees, so also
+    angle APC = 120 degrees. The minimising point is the one seeing every
+    side under 120 degrees, and the minimum value is A'C.
+
+reasoning_structure:
+  naive_approach: >
+    Set up coordinates, differentiate PA + PB + PC, and solve the
+    resulting system of equations with square roots; or reason about
+    level curves (ellipses) of the distance sums.
+  crucial_observation: >
+    A rotation converts the three distances, which point in different
+    directions, into three consecutive segments of one path between two
+    fixed points.
+  why_it_simplifies: >
+    The minimisation becomes "a straight line is shortest" (as in Heron's
+    problem), and both the location of the optimum and its value are read
+    off the picture.
+
+related:
+  - herons_shortest_path
+  - regular_polygon_vectors_sum_zero
+
+tags:
+  - rotation
+  - geometric transformation
+  - optimisation
+  - triangle inequality
+  - Fermat point
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Rotation plays here the role reflection plays in Heron's problem:
+  "straighten the path" is the shared principle.

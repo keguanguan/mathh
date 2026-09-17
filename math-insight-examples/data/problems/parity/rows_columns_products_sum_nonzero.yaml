@@ -1,0 +1,73 @@
+id: rows_columns_products_sum_nonzero
+
+title: Row and Column Products of a Grid of Plus and Minus Ones
+
+aliases:
+  - sum of row and column products is nonzero
+  - n x n grid of +-1, n odd
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on parity
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Each cell of a 5x5 grid contains +1 or -1. Let r_i be the product of row
+    i and c_j the product of column j. Show that r_1 + ... + r_5 + c_1 + ...
+    + c_5 is never 0.
+  domain: combinatorics
+  answer: proved (the sum is never zero)
+
+key_idea:
+  name: the product of all ten line-products is a perfect square, so an even number of them are -1
+  category: parity_invariant
+  summary: >
+    The product r_1 ... r_5 c_1 ... c_5 equals (product of all 25 entries)^2
+    = 1, so the number of -1 values among the ten is even. A zero sum would
+    need exactly five values equal to -1, an odd number.
+
+intuitive_proof:
+  explanation: >
+    Every entry appears in exactly one row product and one column product,
+    so multiplying all ten line-products gives the square of the product of
+    all entries, which is +1. Hence the ten numbers r_i, c_j contain an even
+    number of -1s. For their sum to be 0 there would have to be five +1s and
+    five -1s, an odd number of -1s. Contradiction. The same works for any
+    odd n (for even n the sum can be 0).
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a grid with sum 0 and, after failing, attempt a case
+    analysis on rows.
+  crucial_observation: >
+    Multiplying all line-products counts every entry twice.
+  why_it_simplifies: >
+    A single parity fact about the ten values excludes the sum 0 without
+    further analysis.
+
+tags:
+  - parity
+  - invariant
+  - products
+  - grid
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

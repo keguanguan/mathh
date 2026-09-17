@@ -1,0 +1,88 @@
+id: sum_of_prime_reciprocals_diverges_erdos
+
+title: The Sum of the Reciprocals of the Primes Diverges (Erdos's Proof)
+
+aliases:
+  - sum of 1/p diverges
+  - Erdos's proof of the divergence of prime reciprocals
+  - Euler's theorem on primes
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divergence_of_the_sum_of_the_reciprocals_of_the_primes
+  original_title: Divergence of the sum of the reciprocals of the primes (Erdős's proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Infinity of primes"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that the series 1/2 + 1/3 + 1/5 + 1/7 + 1/11 + ... over all primes
+    diverges.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: if the tail sum over 'large' primes were less than 1/2, then for a huge N fewer than N/2 integers up to N would have a large prime factor, but the integers with only small prime factors number at most 2^k sqrt N, which is also less than N/2 for large N
+  category: double_counting
+  summary: >
+    If the sum converged, some k would make the sum of 1/p over primes
+    beyond p_k less than 1/2; call those primes large. Up to N, fewer than
+    N/2 integers have a large prime factor, while integers with only small
+    prime factors are a square-free part (2^k choices) times a square (sqrt
+    N choices): at most 2^k sqrt N. For N = 2^{2k+2} this is N/2, so the two
+    classes cannot cover all N integers.
+
+intuitive_proof:
+  explanation: >
+    Assume the series converges and list the primes p_1 < p_2 < .... Then
+    some k satisfies sum over i > k of 1/p_i < 1/2; call p_1, ..., p_k small
+    and the rest large. Fix N and split {1, ..., N} into the numbers with at
+    least one large prime factor and the numbers with only small prime
+    factors. The first class has at most sum over large p of floor(N/p) <= N
+    sum 1/p < N/2 elements. Every number n in the second class factors as n
+    = a b^2 with a square-free; a is a product of a subset of the k small
+    primes (2^k possibilities) and b <= sqrt N, so the second class has at
+    most 2^k sqrt N elements. Taking N = 2^{2k+2} gives 2^k sqrt N =
+    2^{2k+1} = N/2. The two classes then contain fewer than N/2 + N/2 = N
+    elements, yet they exhaust {1, ..., N}: a contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Try to compare with the harmonic series or use the product formula for
+    the zeta function, which requires analysis.
+  crucial_observation: >
+    Counting integers up to N in two ways (by whether they have a large
+    prime factor, and via the square-free-times-square decomposition) gives
+    incompatible bounds if the prime reciprocals converge.
+  why_it_simplifies: >
+    A purely counting argument, with the choice N = 2^{2k+2} making the two
+    bounds collide exactly, proves a theorem that usually needs Euler
+    products.
+
+related:
+  - infinitely_many_primes_euclid
+  - harmonic_series_diverges_grouping
+
+tags:
+  - double counting
+  - primes
+  - divergence
+  - counting bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Erdos, 1938. The same counting shows the primes are 'denser' than squares.

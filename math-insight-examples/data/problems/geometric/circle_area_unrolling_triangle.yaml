@@ -1,0 +1,75 @@
+id: circle_area_unrolling_triangle
+
+title: The Area of a Circle by Unrolling It into a Triangle
+
+aliases:
+  - Archimedes' area of a circle
+  - circle unrolled into a triangle
+  - area equals half circumference times radius
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Area_of_a_circle
+  original_title: Area of a circle (Archimedes' proof / rearrangement)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Archimedes - Measurement of a Circle
+
+problem:
+  statement: >
+    Show that a circle of radius r has area (1/2) * (2 pi r) * r = pi r^2,
+    assuming the circumference is 2 pi r.
+  domain: geometry
+  answer: pi r^2
+
+key_idea:
+  name: cut the disc into thin concentric rings and straighten each ring into a thin strip; the strips form a triangle of base 2 pi r and height r
+  category: decomposition
+  summary: >
+    A ring at radius s of thickness ds straightens into a strip of length 2
+    pi s and width ds. Stacking the strips with their left ends aligned
+    gives a right triangle with legs r (the stack of widths) and 2 pi r (the
+    longest strip), of area (1/2)(2 pi r) r.
+
+intuitive_proof:
+  explanation: >
+    Slice the disc into n concentric rings of equal thickness r/n. The k-th
+    ring, at radius about kr/n, unrolls to an almost rectangular strip of
+    length 2 pi kr/n and width r/n. Laying the strips flat, one above the
+    other, produces a staircase approximating a triangle with height r and
+    base 2 pi r. As n grows the staircase converges to the triangle, whose
+    area is (1/2)(2 pi r)(r) = pi r^2. (Alternatively, cut the disc into 2n
+    equal sectors and interleave them to form an approximate parallelogram
+    of base pi r and height r.)
+
+reasoning_structure:
+  naive_approach: >
+    Integrate 2 pi s ds from 0 to r, which is this argument in symbols, or
+    approximate by polygons.
+  crucial_observation: >
+    Rings become strips of known length and width, and the strips assemble
+    into a triangle.
+  why_it_simplifies: >
+    A decomposition into pieces of obvious area makes the formula visible,
+    and shows why the area is 'half the circumference times the radius'.
+
+tags:
+  - decomposition
+  - area
+  - circle
+  - proof without words
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same slicing idea shows that the surface area of a sphere is the
+  derivative of its volume with respect to the radius.

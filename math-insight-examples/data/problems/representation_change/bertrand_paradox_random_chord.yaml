@@ -1,0 +1,92 @@
+id: bertrand_paradox_random_chord
+
+title: "Bertrand's Paradox: 'Random Chord' Has Three Answers"
+
+aliases:
+  - Bertrand paradox
+  - random chord longer than the inscribed triangle's side
+  - 1/2, 1/3, 1/4
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bertrand_paradox_%28probability%29
+  original_title: Bertrand paradox (probability)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Bertrand - Calcul des probabilites
+    notes: "1889"
+
+problem:
+  statement: >
+    A chord of a circle is chosen 'at random'. What is the probability that
+    it is longer than the side of the inscribed equilateral triangle? Show
+    that three natural procedures give 1/3, 1/2 and 1/4.
+  domain: probability
+  answer: >
+    1/3 (random endpoints), 1/2 (random distance from the centre), 1/4
+    (random midpoint in the disc)
+
+key_idea:
+  name: each procedure is a different measure on the set of chords, and the chord is long iff its midpoint lies within half the radius of the centre; the three measures give that region weight 1/3, 1/2 and 1/4
+  category: representation_change
+  summary: >
+    A chord is longer than the triangle's side exactly when its midpoint
+    lies inside the concentric disc of half the radius. Random endpoints:
+    fix one at a triangle vertex; the other must lie on the far arc, a third
+    of the circle: 1/3. Midpoint distance uniform on [0, r]: 1/2. Midpoint
+    uniform in the disc: the inner disc has a quarter of the area: 1/4.
+
+intuitive_proof:
+  explanation: >
+    Let the circle have radius r; the inscribed equilateral triangle has
+    side r sqrt 3, and a chord exceeds this length iff its distance from the
+    centre is less than r/2, i.e. its midpoint lies in the disc of radius
+    r/2. Method 1: choose two endpoints uniformly on the circle. By symmetry
+    fix the first at a vertex A of the triangle; the chord is long iff the
+    second endpoint lies on the arc between the other two vertices, which
+    has length one third of the circle: probability 1/3. Method 2: choose a
+    direction, then the chord's distance from the centre uniformly in [0,
+    r]; long iff the distance is below r/2: probability 1/2. Method 3:
+    choose the midpoint uniformly in the disc; long iff it falls in the
+    inner disc of radius r/2, which has a quarter of the area: probability
+    1/4. Each computation is correct for its own model; 'random chord' does
+    not specify the model.
+
+reasoning_structure:
+  naive_approach: >
+    Assume there is a unique answer and defend whichever computation comes
+    to mind first.
+  crucial_observation: >
+    The question is about a probability measure on chords, and different
+    parametrisations induce different measures; the geometric criterion
+    (midpoint inside the half-radius disc) makes the three computations
+    one-liners.
+  why_it_simplifies: >
+    Translating each procedure into the same geometric criterion exposes
+    exactly where the ambiguity lies; the paradox is a lesson in
+    representation, not a contradiction.
+
+related:
+  - broken_stick_triangle_probability
+  - three_random_points_semicircle
+
+tags:
+  - representation change
+  - geometric probability
+  - paradox
+  - measure
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Jaynes argued that translation and scale invariance single out the answer
+  1/2.

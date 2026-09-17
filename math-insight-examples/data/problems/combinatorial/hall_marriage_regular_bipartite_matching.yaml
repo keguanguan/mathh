@@ -1,0 +1,84 @@
+id: hall_marriage_regular_bipartite_matching
+
+title: A Regular Bipartite Graph Has a Perfect Matching
+
+aliases:
+  - regular bipartite perfect matching
+  - Hall's condition for regular graphs
+  - Konig's theorem on regular bipartite graphs
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem
+  original_title: Hall's marriage theorem (applications)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on Hall's theorem / marriage
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Every bipartite graph in which all vertices have the same degree k >= 1
+    has a perfect matching. (Assume Hall's theorem: a bipartite graph has a
+    matching covering side A iff every subset S of A has at least |S|
+    neighbours.)
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: "count the edges leaving a subset S of one side: k|S| edges land on the neighbourhood N(S), which absorbs at most k|N(S)| edges, so |N(S)| >= |S|"
+  category: double_counting
+  summary: >
+    For a subset S of the left side, the k|S| edges out of S all end in
+    N(S). Each vertex of N(S) has degree k, so N(S) can receive at most
+    k|N(S)| edges. Hence k|S| <= k|N(S)|, i.e. |N(S)| >= |S|: Hall's
+    condition holds, and a perfect matching exists (both sides have the same
+    size by the same count applied to S = A).
+
+intuitive_proof:
+  explanation: >
+    Let the parts be A and B with all degrees equal to k. Counting edges,
+    k|A| = k|B|, so |A| = |B|. For any subset S of A, the edges with an
+    endpoint in S number exactly k|S|, and every such edge has its other
+    endpoint in N(S). Since each vertex of N(S) is incident to exactly k
+    edges, at most k|N(S)| edges end in N(S), so k|S| <= k|N(S)| and |N(S)|
+    >= |S|. By Hall's theorem A can be matched into B, and as |A| = |B| the
+    matching is perfect. Removing it leaves a (k - 1)-regular bipartite
+    graph, so by induction the edges split into k perfect matchings.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the matching greedily or by augmenting paths, which
+    works but requires the full algorithmic machinery.
+  crucial_observation: >
+    Regularity turns Hall's condition into a comparison of two edge counts.
+  why_it_simplifies: >
+    A double count verifies Hall's condition in two lines, and induction
+    gives the decomposition into perfect matchings (Konig's theorem).
+
+related:
+  - regular_bipartite_equal_sides
+  - handshake_lemma
+
+tags:
+  - double counting
+  - matching
+  - Hall's theorem
+  - regular graph
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  This is how a Latin rectangle is completed row by row, and how round-robin
+  tournaments are scheduled.

@@ -1,0 +1,79 @@
+id: euler_formula_planar
+
+title: Euler's Formula V - E + F = 2
+
+aliases:
+  - Euler's polyhedron formula
+  - Euler characteristic of a planar graph
+  - V - E + F = 2
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three applications of Euler's formula"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Euler_characteristic
+    original_title: Euler characteristic (plane graphs)
+
+problem:
+  statement: >
+    A connected planar graph is drawn in the plane with V vertices, E edges
+    and F faces (including the outer face). Show that V - E + F = 2.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: removing an edge from a cycle merges two faces; removing a leaf edge removes a vertex; both preserve V - E + F
+  category: induction
+  summary: >
+    Delete edges one at a time: an edge on a cycle merges two faces (E and F
+    drop by one), a leaf edge goes with its leaf (V and E drop by one).
+    Either way V - E + F is unchanged, and the process ends at a single
+    vertex with one face, where V - E + F = 2.
+
+intuitive_proof:
+  explanation: >
+    Induct on E. With E = 0 the connected graph is a single vertex and F =
+    1, so V - E + F = 2. If E > 0 and the graph contains a cycle, delete an
+    edge of the cycle; the two faces on its sides merge into one, so E and F
+    decrease by one each and the graph stays connected. If there is no cycle
+    the graph is a tree and has a leaf; delete the leaf and its edge, so V
+    and E decrease by one each. In both cases V - E + F is unchanged, and
+    induction applies.
+
+reasoning_structure:
+  naive_approach: >
+    Verify the formula on the five Platonic solids and hope, or attempt a
+    direct count of faces of a general drawing.
+  crucial_observation: >
+    A single quantity survives two natural reduction moves, one for cycles
+    and one for trees.
+  why_it_simplifies: >
+    An invariant under reductions proves the formula for every planar graph
+    at once; corollaries include E <= 3V - 6 and the nonplanarity of K5 and
+    K3,3.
+
+related:
+  - counting_diagonals_convex_polygon
+
+tags:
+  - induction
+  - invariant
+  - planar graphs
+  - Euler's formula
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

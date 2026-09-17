@@ -1,0 +1,88 @@
+id: max_distance_pairs_at_most_n
+
+title: The Maximum Distance Among n Points Is Attained at Most n Times
+
+aliases:
+  - diameter pairs of a point set
+  - number of diametral pairs
+  - Hopf-Pannwitz theorem
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Diameter
+    original_title: Diameter (diameter of a set)
+
+problem:
+  statement: >
+    Among n points in the plane let d be the largest distance between two of
+    them. Show that at most n pairs of points are at distance d.
+  domain: combinatorial geometry
+  answer: >
+    proved (at most n pairs; n is attained by a regular odd polygon)
+
+key_idea:
+  name: two diametral segments must cross, and if a point had three diametral partners the middle one would have no other partner
+  category: extremal_principle
+  summary: >
+    Join every pair at distance d; any two of these segments must cross. If
+    P had three partners A, B, C with PB in the middle, a second segment
+    from B would have to cross both PA and PC and so end at P: B is a leaf.
+    Deleting such private leaves one at a time leaves a graph of maximum
+    degree 2, so there are at most n edges in all.
+
+intuitive_proof:
+  explanation: >
+    Let G be the graph whose edges are the pairs at distance d. Step 1: two
+    edges AB and CD with distinct endpoints cross. Otherwise the convex hull
+    of A, B, C, D is a quadrilateral with AB and CD as sides or a triangle
+    with a point inside, and in either case the triangle inequality shows
+    that some pair among the four points is farther apart than one of AB,
+    CD, contradicting maximality of d. Step 2: suppose P has three partners
+    A, B, C, with the ray PB inside the angle APC. Any other edge BX would,
+    by Step 1, cross both PA and PC; a segment starting at B inside the
+    angle can cross both only by passing through P, so X = P. Thus B has
+    degree 1. Step 3: while some vertex has degree at least 3, delete one of
+    its private leaves together with its edge; each deletion removes one
+    vertex and one edge. When the process stops every vertex has degree at
+    most 2, so the remaining graph has at most as many edges as vertices.
+    Adding back the deleted vertices and edges, the total number of edges is
+    at most n.
+
+reasoning_structure:
+  naive_approach: >
+    Try configurations such as the regular pentagon (5 points, 5 diametral
+    pairs) and attempt to argue no configuration does better by case
+    analysis.
+  crucial_observation: >
+    Diametral segments pairwise cross, a strong geometric constraint that
+    forces the diameter graph to be nearly a matching plus a cycle.
+  why_it_simplifies: >
+    The crossing property, itself an extremal consequence, converts a metric
+    problem into a simple graph-counting one.
+
+tags:
+  - extremal principle
+  - diameter
+  - combinatorial geometry
+  - crossing segments
+
+quality:
+  clarity_of_key_idea: medium
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Hopf and Pannwitz (1934). In three dimensions the bound becomes 2n - 2
+  (Grunbaum, Heppes, Straszewicz).

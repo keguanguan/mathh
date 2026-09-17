@@ -1,0 +1,86 @@
+id: gas_stations_circular_track
+
+title: Gas Stations on a Circular Track
+
+aliases:
+  - gas station problem
+  - circular road with fuel depots
+  - petrol stations around a circuit
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/GasStations.shtml
+  original_title: Gasoline Stations on a Circular Trek
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Bogomolny cites Bollobas, The Art of Mathematics: Coffee Time in Memphis
+    (pp. 56-57) and Winkler, Mathematical Puzzles: A Connoisseur's Collection.
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+    notes: A K Peters, 2004.
+
+problem:
+  statement: >
+    Several gas stations lie along a circular road, and together they hold
+    exactly enough fuel for one car to drive once around the circle. Show
+    that there is a station from which a car with an empty tank, collecting
+    all the fuel at each station it reaches, can complete the loop.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: start where the imaginary fuel level is lowest
+  category: extremal_principle
+  summary: >
+    Imagine driving the loop with a huge tank, picking up all fuel; the fuel
+    level returns to its starting value after one loop. Start the real trip
+    at the station where that imaginary level was at its minimum: from there
+    the level never drops below its value at the start, i.e. never below
+    zero.
+
+intuitive_proof:
+  explanation: >
+    Drive around once from any station with an enormous tank that starts
+    with plenty of fuel, collecting all fuel as you go, and record the fuel
+    level on arrival at each station. Because the total fuel equals the fuel
+    consumed in one loop, you return to the start with the same level you
+    began with. Let the minimum recorded level occur at station X. Now start
+    the real trip at X with an empty tank. The fuel level along the real trip
+    is the imaginary level minus the level at X (the record just shifts
+    cyclically), and since the imaginary level was minimal at X, this
+    difference is never negative. So the car never runs dry.
+
+reasoning_structure:
+  naive_approach: >
+    Try to choose a station by looking at how much fuel each has relative to
+    the distance to the next, or argue by induction on the number of
+    stations by merging adjacent stations.
+  crucial_observation: >
+    Only the minimum of the cumulative fuel balance matters, and starting
+    there shifts the whole balance curve up to be non-negative.
+  why_it_simplifies: >
+    An extremal choice made on an auxiliary quantity (the imaginary level)
+    produces the answer without any case analysis.
+
+tags:
+  - extremal principle
+  - auxiliary object
+  - prefix sums
+  - cyclic shift
+  - existence proof
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same "cyclic shift so the minimum prefix sum becomes zero" idea is
+  the Raney/cycle lemma used to count Dyck paths and Catalan numbers.

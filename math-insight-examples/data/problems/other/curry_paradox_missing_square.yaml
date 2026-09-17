@@ -1,0 +1,88 @@
+id: curry_paradox_missing_square
+
+title: The Missing Square Puzzle (Curry's Paradox)
+
+aliases:
+  - missing square puzzle
+  - Curry's paradox
+  - 64 = 65 dissection
+  - Fibonacci dissection fallacy
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Fallacies/CurryParadox.shtml
+  original_title: Curry's Paradox
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Missing_square_puzzle
+    original_title: Missing square puzzle
+
+problem:
+  statement: >
+    Four pieces (two triangles of legs 2x5 and 3x8, and two L-shaped pieces)
+    seem to form a 13 x 5 'triangle' in two ways, one with a missing unit
+    square. Where does the square come from? Similarly, an 8 x 8 square cut
+    into four pieces seems to reassemble into a 5 x 13 rectangle of area 65.
+    Explain.
+  domain: geometry
+  answer: >
+    the 'hypotenuse' is not straight: slopes 2/5 and 3/8 differ, and the
+    thin sliver between the two bent lines has area exactly 1
+
+key_idea:
+  name: "compare the slopes of the pieces' hypotenuses: 2/5 != 3/8, so the assembled 'triangle' is a quadrilateral with a slight bend, and the bend accounts for exactly one unit of area"
+  category: structural_obstruction
+  summary: >
+    The two triangular pieces have slopes 2/5 and 3/8, so laid along one
+    'hypotenuse' they form a slightly bent line, bulging outward in one
+    arrangement and inward in the other. The lens between the two bent lines
+    has area exactly 1. In the 64 = 65 version, 5 * 13 - 8 * 8 = 1 is
+    Cassini's identity.
+
+intuitive_proof:
+  explanation: >
+    If the composite figure were a genuine right triangle with legs 13 and
+    5, the points (0, 0), (8, 3) and (13, 5) would be collinear; but the
+    slopes 3/8 and 5/13 differ. The signed area of the triangle with
+    vertices (0, 0), (8, 3), (13, 5) is (8 * 5 - 3 * 13)/2 = 1/2, so the
+    outline is a quadrilateral that deviates from the straight hypotenuse by
+    a sliver of area 1/2. In the two arrangements the sliver lies on
+    opposite sides of the line, so the two figures differ in area by exactly
+    1: the missing square. In the 8 x 8 into 5 x 13 puzzle the pieces'
+    slopes 3/8, 2/5 and 5/13 are consecutive Fibonacci ratios, and the thin
+    parallelogram along the diagonal has area 13 * 5 - 64 = 1 by Cassini's
+    identity.
+
+reasoning_structure:
+  naive_approach: >
+    Recount the squares in the picture, or trust the drawing.
+  crucial_observation: >
+    Area is conserved by rearrangement, so a discrepancy of 1 must come from
+    a piece of area 1 hidden in the picture, and the slopes reveal it.
+  why_it_simplifies: >
+    Conservation of area plus a slope comparison locates the fallacy exactly
+    and explains why Fibonacci numbers make the illusion convincing
+    (Cassini's identity keeps the discrepancy at 1).
+
+tags:
+  - fallacy
+  - area
+  - Fibonacci
+  - Cassini's identity
+  - slopes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Larger Fibonacci numbers make the sliver thinner and the illusion better.

@@ -1,0 +1,79 @@
+id: medians_concur_centroid_vectors
+
+title: The Medians of a Triangle Meet at a Point Dividing Each in Ratio 2:1
+
+aliases:
+  - centroid of a triangle
+  - medians are concurrent
+  - centroid divides medians 2:1
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Median_%28geometry%29
+  original_title: Median (geometry) (concurrency)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the three medians of a triangle pass through one point, which
+    divides each median in the ratio 2 : 1 from the vertex.
+  domain: geometry
+  answer: "proved: the centroid (a + b + c)/3"
+
+key_idea:
+  name: the point (a + b + c)/3 lies on every median, two thirds of the way from the vertex, by a one-line vector identity
+  category: complex_or_vector_coordinates
+  summary: >
+    With position vectors a, b, c, the median from A goes to (b + c)/2. The
+    point G = (a + b + c)/3 satisfies G = a + (2/3)((b + c)/2 - a), so G
+    lies on that median at two thirds of the way from A. By symmetry of the
+    formula in a, b, c, G lies on all three medians.
+
+intuitive_proof:
+  explanation: >
+    Let a, b, c be the position vectors of the vertices and M_A = (b + c)/2
+    the midpoint of BC. Compute a + (2/3)(M_A - a) = a/3 + (b + c)/3 = (a +
+    b + c)/3 = G. So G is on segment A M_A at the point dividing it 2 : 1.
+    The expression (a + b + c)/3 is symmetric, so the same computation with
+    B or C in place of A shows G is on the other two medians at the same
+    ratio. Hence the medians concur at G.
+
+reasoning_structure:
+  naive_approach: >
+    Prove concurrency synthetically with similar triangles (Euclid-style),
+    then separately establish the ratio.
+  crucial_observation: >
+    The centroid has a symmetric formula, and lying on a median is an affine
+    relation checked by one line of algebra.
+  why_it_simplifies: >
+    A symmetric vector expression proves concurrency and the ratio
+    simultaneously, and generalises to the centroid of a tetrahedron (ratio
+    3 : 1).
+
+related:
+  - centroid_minimises_sum_of_squared_distances
+  - euler_line_homothety
+
+tags:
+  - vectors
+  - centroid
+  - medians
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

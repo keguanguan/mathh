@@ -1,0 +1,75 @@
+id: totient_sum_over_divisors
+
+title: The Sum of phi(d) over Divisors d of n Equals n
+
+aliases:
+  - Gauss's totient identity
+  - sum of Euler's phi over divisors
+  - classify fractions by denominator
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euler%27s_totient_function
+  original_title: Euler's totient function (divisor sum)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on number theory
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that the sum of phi(d) over all positive divisors d of n equals n.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the fractions 1/n, 2/n, ..., n/n, written in lowest terms, have denominators dividing n, and exactly phi(d) of them have denominator d
+  category: bijection
+  summary: >
+    Reduce each of the n fractions k/n (1 <= k <= n) to lowest terms a/d.
+    The denominator d divides n, and the fractions with denominator d are
+    exactly the a/d with 1 <= a <= d and gcd(a, d) = 1, phi(d) of them.
+    Summing over d counts all n fractions.
+
+intuitive_proof:
+  explanation: >
+    Consider the set {1/n, 2/n, ..., n/n}. Writing k/n in lowest terms gives
+    a/d with d | n and gcd(a, d) = 1, 1 <= a <= d. Conversely every such a/d
+    equals k/n for k = a n/d in {1, ..., n}, and different pairs (a, d) give
+    different fractions. So the n fractions are partitioned according to
+    their reduced denominator d, and the class of denominator d has phi(d)
+    members. Hence n = sum over d | n of phi(d).
+
+reasoning_structure:
+  naive_approach: >
+    Verify the identity from the multiplicativity of phi and the formula
+    phi(p^k) = p^k - p^{k-1}, checking prime powers and then products.
+  crucial_observation: >
+    A set of size n (the fractions k/n) is naturally partitioned into
+    classes of sizes phi(d).
+  why_it_simplifies: >
+    A bijective classification proves the identity with no formula for phi;
+    it is a model of 'partition a set you can count'.
+
+tags:
+  - bijection
+  - Euler's totient
+  - fractions
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Equivalently: the cyclic group of order n has exactly phi(d) elements of
+  order d for each divisor d.

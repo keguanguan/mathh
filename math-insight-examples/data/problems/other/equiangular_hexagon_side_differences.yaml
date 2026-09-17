@@ -1,0 +1,83 @@
+id: equiangular_hexagon_side_differences
+
+title: In an Equiangular Hexagon, Opposite Sides Differ by the Same Amount
+
+aliases:
+  - equiangular hexagon
+  - hexagon with all angles 120 degrees
+  - extend alternate sides to an equilateral triangle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Geometry/EquiangularPoly.shtml
+  original_title: A Property of Equiangular Polygons
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    A hexagon has all six angles equal to 120 degrees and consecutive sides
+    a, b, c, d, e, f. Show that a - d = e - b = c - f.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: extend the sides a, c, e; they form an equilateral triangle, and the three corners cut off are equilateral triangles with sides b, d, f
+  category: auxiliary_object
+  summary: >
+    Extending the sides a, c, e gives an equilateral triangle, and the
+    corners it cuts off beyond the sides b, d, f are equilateral triangles
+    with those sides. Its three sides are f + a + b, b + c + d and d + e +
+    f, and equating them gives a - d = c - f = e - b.
+
+intuitive_proof:
+  explanation: >
+    Extend the sides of lengths a, c, e until they meet pairwise. At each
+    meeting point the angle is 60 degrees (the two adjacent hexagon angles
+    of 120 degrees have exterior angles of 60 degrees), so the three lines
+    form an equilateral triangle T. The corner of T cut off by the hexagon
+    side of length b is a triangle with two angles of 60 degrees, hence
+    equilateral with side b; similarly for d and f. The three sides of T
+    therefore have lengths f + a + b, b + c + d and d + e + f, which are
+    equal. From f + a + b = b + c + d we get a - d = c - f, and from b + c +
+    d = d + e + f we get c - f = e - b. Hence a - d = e - b = c - f.
+
+reasoning_structure:
+  naive_approach: >
+    Use vectors with directions at multiples of 60 degrees and equate the
+    components of the closed polygon, which works but obscures the picture.
+  crucial_observation: >
+    Equiangular hexagons are equilateral triangles with three equilateral
+    corners removed.
+  why_it_simplifies: >
+    One auxiliary triangle turns the constraint into three equal side
+    lengths, and the identities fall out by subtraction.
+
+related:
+  - triangle_angle_sum_parallel_line
+
+tags:
+  - auxiliary object
+  - equilateral triangle
+  - hexagon
+  - angles
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Conversely any six lengths with these differences and positive corner
+  sizes form such a hexagon.

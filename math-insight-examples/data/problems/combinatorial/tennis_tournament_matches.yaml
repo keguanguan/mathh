@@ -1,0 +1,76 @@
+id: tennis_tournament_matches
+
+title: Number of Matches in a Knockout Tournament
+
+aliases:
+  - knockout tournament matches
+  - single elimination tournament
+  - how many games to find a champion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Single-elimination_tournament
+  original_title: Single-elimination tournament
+  accessed: 2026-09-16
+  notes: >
+    A classic "aha" problem, discussed by Martin Gardner and in many
+    problem-solving books (e.g. Polya-style collections).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/proofs/chocolad.shtml
+    original_title: Breaking Chocolate Bars
+    notes: Structurally the same one-counter argument.
+
+problem:
+  statement: >
+    A knockout tennis tournament has n players. In each match one player
+    is eliminated; the tournament ends when one player remains. How many
+    matches are played (byes allowed, no fixed bracket shape)?
+  domain: combinatorics
+  answer: exactly n - 1
+
+key_idea:
+  name: matches correspond one-to-one to losers
+  category: bijection
+  summary: >
+    Every match produces exactly one loser and every player except the
+    champion loses exactly once. So matches are in bijection with the n - 1
+    non-champions.
+
+intuitive_proof:
+  explanation: >
+    Each match eliminates exactly one player, and a player once eliminated
+    plays no more. The tournament ends when n - 1 players have been
+    eliminated. Hence exactly n - 1 matches are played, regardless of byes,
+    seeding, or the shape of the draw.
+
+reasoning_structure:
+  naive_approach: >
+    Sum the matches round by round: n/2 + n/4 + ..., and worry about odd
+    numbers and byes.
+  crucial_observation: >
+    Count losers instead of matches; the two sets correspond exactly.
+  why_it_simplifies: >
+    A bijection replaces a round-by-round summation and handles all bracket
+    shapes uniformly.
+
+tags:
+  - bijection
+  - counting
+  - invariant
+  - tournament
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The prototype of "count the thing that is easy to count": compare
+  breaking_chocolate, where the counter is the number of pieces.

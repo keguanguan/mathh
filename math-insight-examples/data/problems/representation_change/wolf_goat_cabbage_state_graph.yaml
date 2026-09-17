@@ -1,0 +1,85 @@
+id: wolf_goat_cabbage_state_graph
+
+title: Wolf, Goat and Cabbage as a Path in a State Graph
+
+aliases:
+  - wolf goat cabbage
+  - river crossing puzzle
+  - state space search
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/ctk/GoatCabbageWolf.shtml
+  original_title: An old puzzle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Wolf%2C_goat_and_cabbage_problem
+    original_title: Wolf, goat and cabbage problem
+
+problem:
+  statement: >
+    A farmer must ferry a wolf, a goat and a cabbage across a river in a
+    boat that holds only the farmer and one item. Left alone, the wolf eats
+    the goat and the goat eats the cabbage. How can it be done, and why must
+    the goat cross three times?
+  domain: combinatorics
+  answer: >
+    take the goat over, return, take the wolf (or cabbage) over, bring the
+    goat back, take the cabbage (or wolf) over, return, take the goat over;
+    seven crossings
+
+key_idea:
+  name: draw the graph whose vertices are the safe configurations and whose edges are single crossings; the solution is a path
+  category: graph_reinterpretation
+  summary: >
+    A configuration records which of the four (farmer, wolf, goat, cabbage)
+    are on the far bank; only 10 of the 16 are safe. Joining configurations
+    that differ by one legal crossing gives a small graph in which the start
+    and goal are connected by exactly two shortest paths of length 7, both
+    starting and ending with the goat.
+
+intuitive_proof:
+  explanation: >
+    Encode a state by the subset of {farmer, wolf, goat, cabbage} on the far
+    bank; a state is safe unless the goat is with the wolf or the cabbage
+    without the farmer. That leaves 10 safe states. A crossing moves the
+    farmer, optionally with one item, and is an edge between two safe
+    states. Drawing the graph, the only safe first move from the start is to
+    take the goat (any other move leaves a forbidden pair), and the graph is
+    essentially a path of length 7 with one fork (wolf-then-cabbage or
+    cabbage-then-wolf). Since the goat is the only item compatible with both
+    others, it must be the item that is shuttled back, which is why it
+    crosses three times.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of crossings by trial and error, repeatedly running into
+    the forbidden pairs.
+  crucial_observation: >
+    The puzzle is a shortest path problem in a graph with ten vertices.
+  why_it_simplifies: >
+    Once the state graph is drawn, both the solution and its optimality (and
+    the necessity of moving the goat back) are visible at a glance.
+
+tags:
+  - state graph
+  - graph reinterpretation
+  - puzzle
+  - shortest path
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same encoding solves missionaries-and-cannibals and jealous-husbands
+  puzzles.

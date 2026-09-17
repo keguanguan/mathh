@@ -1,0 +1,85 @@
+id: expected_cycles_random_permutation_harmonic
+
+title: A Random Permutation Has about ln n Cycles on Average
+
+aliases:
+  - expected number of cycles
+  - cycles of a random permutation
+  - Chinese restaurant construction
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Random_permutation_statistics
+  original_title: Random permutation statistics (number of cycles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Graham, Knuth, Patashnik - Concrete Mathematics
+    notes: Chapter 6
+
+problem:
+  statement: >
+    Show that the expected number of cycles of a uniformly random
+    permutation of n elements is H_n = 1 + 1/2 + ... + 1/n.
+  domain: probability
+  answer: H_n
+
+key_idea:
+  name: build the permutation by inserting elements one at a time into the cycle structure; element k starts a new cycle with probability 1/k
+  category: linearity_of_expectation
+  summary: >
+    Insert the elements 1, 2, ..., n one after another, each element either
+    opening a new cycle or being placed after one of the k - 1 earlier
+    elements in its cycle; all k choices are equally likely and this
+    produces a uniform permutation. Element k starts a new cycle with
+    probability 1/k, so by linearity the expected number of cycles is sum of
+    1/k = H_n.
+
+intuitive_proof:
+  explanation: >
+    Construct a permutation by processing elements in order: element k is
+    either placed in a new cycle by itself, or inserted immediately after
+    one of the k - 1 elements already placed (inside that element's cycle).
+    The k options are taken with equal probability 1/k. Every permutation of
+    n elements arises from exactly one sequence of choices (read off by
+    removing n, then n - 1, and so on), so the result is uniform over all n!
+    permutations. The number of cycles equals the number of elements that
+    opened a new cycle, and element k does so with probability 1/k. By
+    linearity of expectation the expected number of cycles is sum over k of
+    1/k = H_n, about ln n + 0.577.
+
+reasoning_structure:
+  naive_approach: >
+    Sum over permutations using Stirling numbers of the first kind, which
+    requires their generating function.
+  crucial_observation: >
+    A sequential construction makes each element an independent 'new cycle'
+    indicator with an explicit probability.
+  why_it_simplifies: >
+    Choosing a representation of random permutations in which cycles are
+    built incrementally reduces the count to a sum of indicator
+    expectations.
+
+related:
+  - records_in_random_sequence_harmonic
+  - hundred_prisoners_boxes_cycles
+
+tags:
+  - linearity of expectation
+  - permutations
+  - cycles
+  - harmonic numbers
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same construction shows that the cycle containing a given element has
+  length uniformly distributed in 1..n.

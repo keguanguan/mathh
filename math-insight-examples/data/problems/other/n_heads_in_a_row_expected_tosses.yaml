@@ -1,0 +1,80 @@
+id: n_heads_in_a_row_expected_tosses
+
+title: Waiting for n Heads in a Row Takes 2^{n+1} - 2 Tosses on Average
+
+aliases:
+  - expected tosses for n consecutive heads
+  - run of n heads waiting time
+  - 2^(n+1) - 2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Penney%27s_game
+  original_title: Penney's game (waiting times for patterns)
+  accessed: 2026-09-16
+  notes: >
+    Standard exercise on conditioning; the answer 2^{n+1} - 2 appears in
+    Feller and in many problem books.
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+    notes: Chapter XIII
+
+problem:
+  statement: >
+    A fair coin is tossed until n consecutive heads appear. Show that the
+    expected number of tosses is 2^{n+1} - 2.
+  domain: probability
+  answer: 2^{n+1} - 2 (2 for one head, 6 for two, 14 for three)
+
+key_idea:
+  name: having achieved n - 1 heads in a row, one more toss either finishes or throws everything away, giving E_n = 2 E_{n-1} + 2
+  category: recursive_structure
+  summary: >
+    To get n heads in a row, first get n - 1 in a row (E_{n-1} tosses on
+    average), then toss once more: a head finishes, a tail restarts from
+    scratch. So E_n = E_{n-1} + 1 + (1/2) E_n, i.e. E_n = 2E_{n-1} + 2, and
+    E_0 = 0 gives E_n = 2^{n+1} - 2.
+
+intuitive_proof:
+  explanation: >
+    Condition on the first time n - 1 consecutive heads are achieved, which
+    takes E_{n-1} tosses on average. The next toss is a head with
+    probability 1/2, completing the run after one more toss; otherwise it is
+    a tail, and the process restarts with expected remaining time E_n. Hence
+    E_n = E_{n-1} + 1 + (1/2)(E_n), so (1/2) E_n = E_{n-1} + 1 and E_n = 2
+    E_{n-1} + 2. From E_0 = 0: E_1 = 2, E_2 = 6, E_3 = 14, and by induction
+    E_n = 2^{n+1} - 2 (check: 2(2^n - 2) + 2 = 2^{n+1} - 2).
+
+reasoning_structure:
+  naive_approach: >
+    Compute the distribution of the waiting time, which involves
+    Fibonacci-like recursions, and then its mean.
+  crucial_observation: >
+    A failed attempt destroys all progress, so the expectation satisfies a
+    simple restart recursion.
+  why_it_simplifies: >
+    Conditioning on the last step gives a one-line recursion; the
+    exponential growth reflects the total loss of progress on each failure.
+
+related:
+  - hh_versus_ht_waiting_times
+  - geometric_waiting_time_conditioning
+
+tags:
+  - recursion
+  - conditioning
+  - expected value
+  - runs
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,77 @@
+id: four_consecutive_product_plus_one_square
+
+title: The Product of Four Consecutive Integers Plus One Is a Perfect Square
+
+aliases:
+  - n(n+1)(n+2)(n+3) + 1 is a square
+  - product of four consecutive integers
+  - 1*2*3*4 + 1 = 25
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Perfect_square
+  original_title: Perfect square (examples)
+  accessed: 2026-09-16
+  notes: Classic algebra exercise; found in Engel and many olympiad primers.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on algebra / polynomials
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that n(n + 1)(n + 2)(n + 3) + 1 is a perfect square for every
+    integer n.
+  domain: algebra
+  answer: it equals (n^2 + 3n + 1)^2
+
+key_idea:
+  name: "pair the outer and inner factors: n(n + 3) = m - 1 and (n + 1)(n + 2) = m + 1 with m = n^2 + 3n + 1, so the product is m^2 - 1"
+  category: grouping_terms
+  summary: >
+    Group the factors as [n(n + 3)] [(n + 1)(n + 2)] = (n^2 + 3n)(n^2 + 3n +
+    2). With m = n^2 + 3n + 1 these are (m - 1)(m + 1) = m^2 - 1, so the
+    product plus one is m^2.
+
+intuitive_proof:
+  explanation: >
+    Multiply the outer pair and the inner pair: n(n + 3) = n^2 + 3n and (n +
+    1)(n + 2) = n^2 + 3n + 2. Setting m = n^2 + 3n + 1, the product of four
+    consecutive integers is (m - 1)(m + 1) = m^2 - 1. Therefore n(n + 1)(n +
+    2)(n + 3) + 1 = m^2 = (n^2 + 3n + 1)^2. Examples: 1 * 2 * 3 * 4 + 1 = 25
+    = 5^2, 2 * 3 * 4 * 5 + 1 = 121 = 11^2.
+
+reasoning_structure:
+  naive_approach: >
+    Expand the quartic fully and try to recognise it as a square by matching
+    coefficients.
+  crucial_observation: >
+    Pairing factors symmetrically about the middle produces two numbers that
+    differ by exactly 2.
+  why_it_simplifies: >
+    Grouping terms exposes the difference-of-squares pattern immediately, a
+    technique that recurs for products symmetric about a centre.
+
+related:
+  - sophie_germain_identity_composite
+  - consecutive_product_divisible_by_factorial
+
+tags:
+  - grouping
+  - perfect square
+  - difference of squares
+  - polynomial identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

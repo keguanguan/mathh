@@ -1,0 +1,6 @@
+name: mock_mixed
+provider: mock
+model: mock-v1
+parameters:
+  policy: mixed
+  seed: 0

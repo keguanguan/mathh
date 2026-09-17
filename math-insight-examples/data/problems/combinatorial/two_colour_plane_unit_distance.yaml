@@ -1,0 +1,77 @@
+id: two_colour_plane_unit_distance
+
+title: Two Colours in the Plane Force a Monochromatic Unit Distance
+
+aliases:
+  - two-coloured plane has two points of the same colour at distance 1
+  - chromatic number of the plane lower bound
+  - equilateral triangle pigeonhole
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/two_color.shtml
+  original_title: Coloring Points in the Plane and Elsewhere
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/proofs/three_colors.shtml
+    original_title: Three Colors - Two Points
+    notes: The three-colour version uses the Moser spindle.
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Hadwiger%E2%80%93Nelson_problem
+    original_title: Hadwiger-Nelson problem
+
+problem:
+  statement: >
+    Every point of the plane is coloured red or blue. Show that there are
+    two points of the same colour exactly 1 unit apart.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: look at an equilateral triangle of side 1
+  category: pigeonhole
+  summary: >
+    The three vertices of a unit equilateral triangle are pairwise at
+    distance 1; with two colours, two of the three vertices share a colour.
+
+intuitive_proof:
+  explanation: >
+    Place an equilateral triangle with side 1 anywhere in the plane. Its
+    three vertices are coloured with only two colours, so by pigeonhole two
+    vertices have the same colour, and those two are at distance exactly 1.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a colouring that avoids monochromatic unit distances
+    (e.g. stripes) and look for where it fails; or reason about unit circles
+    around a point.
+  crucial_observation: >
+    A small finite configuration (three mutually unit-distant points)
+    already forces the conclusion for any colouring.
+  why_it_simplifies: >
+    An infinite colouring problem reduces to pigeonhole on three points.
+
+tags:
+  - pigeonhole
+  - coloring
+  - unit distance graph
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With three colours the Moser spindle (7 points) is needed; with four
+  colours the question was open until de Grey (2018) showed that four
+  colours do not suffice either. The plane can be coloured with 7 colours
+  avoiding unit distances.

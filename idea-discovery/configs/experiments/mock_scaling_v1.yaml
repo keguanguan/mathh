@@ -1,0 +1,17 @@
+# Milestone-2 end-to-end run with the mock model over all five families.
+experiment_id: mock_scaling_v1
+description: Size-scaling smoke experiment with the mock model over five families (no API calls).
+families: [domino_tiling, population_game, sliding_puzzle, subtraction_game, difference_board]
+models: [mock_size_dependent, mock_mixed]
+instance_sizes:
+  domino_tiling: [6, 8, 12, 16]
+  population_game: [12, 24, 48, 96]
+  sliding_puzzle: [3, 4, 5, 6]
+  subtraction_game: [8, 16, 32, 64]
+  difference_board: [50, 100, 200, 400]
+transfer_levels: [1]
+compute_conditions: [default]
+repetitions: 1
+instances_per_cell: 6
+generation_seeds: {base_seed: 1234}
+output_dir: data/raw_runs

@@ -1,0 +1,84 @@
+id: i_cut_you_choose_fair_division
+
+title: "I Cut, You Choose: a Fair Division by Symmetry"
+
+aliases:
+  - I cut you choose
+  - divide and choose
+  - fair cake cutting for two
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divide_and_choose
+  original_title: Divide and choose
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Brams & Taylor - Fair Division
+    notes: Cambridge University Press, 1996
+
+problem:
+  statement: >
+    Two people with possibly different tastes must share a cake. One cuts it
+    into two pieces and the other chooses a piece. Show that both can
+    guarantee themselves a share they value at least one half.
+  domain: combinatorics
+  answer: >
+    the cutter cuts into two pieces of equal value in her own eyes; the
+    chooser takes the piece he values more
+
+key_idea:
+  name: the cutter neutralises the chooser's freedom by making the choice irrelevant to her, and the chooser's freedom guarantees him the better half
+  category: symmetry
+  summary: >
+    The cutter divides the cake into two pieces she values equally, so
+    whichever piece is taken she keeps exactly half of her value. The
+    chooser takes the piece he values at least as much as the other; since
+    the two pieces together are the whole cake, that piece is worth at least
+    half to him.
+
+intuitive_proof:
+  explanation: >
+    Let the cutter's valuation be v_1 and the chooser's v_2, both additive
+    with v_i(cake) = 1. The cutter cuts so that v_1(A) = v_1(B) = 1/2
+    (possible by continuity, sliding a knife). The chooser picks the piece
+    with larger v_2; as v_2(A) + v_2(B) = 1, the larger is at least 1/2.
+    Both therefore receive at least half by their own measure, whatever the
+    other does. The division is also envy-free: neither prefers the other's
+    piece.
+
+reasoning_structure:
+  naive_approach: >
+    Trust one person to divide fairly, or argue about what 'fair' means when
+    tastes differ.
+  crucial_observation: >
+    Splitting the roles (one controls the cut, the other the choice) makes
+    each party's guarantee independent of the other's preferences.
+  why_it_simplifies: >
+    A symmetry between the two pieces, created deliberately by the cutter,
+    removes all strategic uncertainty; generalising to three or more people
+    is a much deeper problem.
+
+related:
+  - coins_in_a_row_parity_strategy
+
+tags:
+  - symmetry
+  - fair division
+  - game theory
+  - guarantee
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For three players, the Selfridge-Conway procedure gives an envy-free
+  division; for n players the problem was solved only in 2016
+  (Aziz-Mackenzie).

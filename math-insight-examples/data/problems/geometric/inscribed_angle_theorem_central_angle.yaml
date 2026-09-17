@@ -1,0 +1,78 @@
+id: inscribed_angle_theorem_central_angle
+
+title: The Inscribed Angle Is Half the Central Angle
+
+aliases:
+  - inscribed angle theorem
+  - central angle theorem
+  - angles subtending the same arc are equal
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inscribed_angle
+  original_title: Inscribed angle (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book III, Proposition 20
+
+problem:
+  statement: >
+    Show that an angle inscribed in a circle equals half the central angle
+    subtending the same arc; deduce that all inscribed angles on the same
+    arc are equal.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "draw the diameter through the vertex of the inscribed angle: each half is an exterior angle of an isosceles triangle with two radii"
+  category: decomposition
+  summary: >
+    Let the inscribed angle be at P with the arc AB. Draw the diameter from
+    P through the centre O. In the isosceles triangle OPA, the exterior
+    angle AOQ (Q the other end of the diameter) equals twice angle OPA;
+    likewise for B. Adding (or subtracting, if O is outside the angle) gives
+    angle AOB = 2 angle APB.
+
+intuitive_proof:
+  explanation: >
+    Let O be the centre and extend PO to meet the circle again at Q.
+    Triangle OPA is isosceles (OP = OA), so its base angles are equal, and
+    the exterior angle at O, angle AOQ, equals the sum of the two base
+    angles, 2 angle OPA. Similarly angle BOQ = 2 angle OPB. If O lies inside
+    angle APB, adding gives angle AOB = 2 angle APB; if O lies outside,
+    subtracting gives the same. Since the central angle depends only on the
+    arc AB, all inscribed angles on that arc equal half of it and are
+    therefore equal to each other.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates or complex numbers, which work but hide the geometry.
+  crucial_observation: >
+    A diameter through the vertex splits the configuration into isosceles
+    triangles whose exterior angles double the base angles.
+  why_it_simplifies: >
+    The exterior-angle property of isosceles triangles does all the work;
+    Thales' theorem is the special case of a diameter.
+
+related:
+  - thales_angle_in_semicircle
+
+tags:
+  - decomposition
+  - circle
+  - isosceles triangle
+  - angle chasing
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

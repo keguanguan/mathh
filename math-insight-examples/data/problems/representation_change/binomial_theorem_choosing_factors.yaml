@@ -1,0 +1,80 @@
+id: binomial_theorem_choosing_factors
+
+title: The Binomial Theorem by Choosing Factors
+
+aliases:
+  - binomial theorem
+  - expansion of (x + y)^n
+  - combinatorial proof of the binomial theorem
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binomial_theorem
+  original_title: Binomial theorem (combinatorial proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Graham, Knuth, Patashnik - Concrete Mathematics
+    notes: Section 5.1
+
+problem:
+  statement: >
+    Show that (x + y)^n = sum over k of C(n, k) x^k y^{n-k}.
+  domain: algebra / combinatorics
+  answer: proved
+
+key_idea:
+  name: expanding the product of n factors (x + y) means choosing x or y from each factor; the term x^k y^{n-k} arises once for each choice of the k factors contributing x
+  category: combinatorial_interpretation
+  summary: >
+    (x + y)^n is a product of n identical factors. Multiplying out without
+    collecting terms gives 2^n products, one for each way of picking x or y
+    from each factor. The products equal to x^k y^{n-k} are those where x
+    was picked from exactly k of the n factors, and there are C(n, k) such
+    choices. Collecting terms gives the theorem.
+
+intuitive_proof:
+  explanation: >
+    Write (x + y)^n = (x + y)(x + y)...(x + y) with n factors. By the
+    distributive law, the expansion is the sum over all 2^n ways of
+    selecting one summand (x or y) from each factor of the product of the
+    selections. A selection contributes x^k y^{n-k} exactly when x is
+    selected from k factors and y from the remaining n - k. The number of
+    such selections is the number of k-element subsets of the n factors,
+    C(n, k). Summing over k gives (x + y)^n = sum over k of C(n, k) x^k
+    y^{n-k}. The same reasoning with more variables gives the multinomial
+    theorem, and setting x = y = 1 recovers the count 2^n of subsets.
+
+reasoning_structure:
+  naive_approach: >
+    Prove the formula by induction on n using Pascal's rule, which verifies
+    it without explaining where the binomial coefficients come from.
+  crucial_observation: >
+    Each monomial in the expansion is a record of which factors contributed
+    x, so its coefficient counts subsets.
+  why_it_simplifies: >
+    Interpreting the expansion combinatorially explains the coefficients
+    directly and generalises immediately to the multinomial theorem.
+
+related:
+  - pascal_rule_contains_element_or_not
+  - subsets_binary_strings
+  - lattice_paths_binomial
+
+tags:
+  - combinatorial interpretation
+  - binomial coefficients
+  - double counting
+  - polynomials
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

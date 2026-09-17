@@ -1,0 +1,85 @@
+id: doubling_map_binary_expansion
+
+title: The Doubling Map and Binary Expansions
+
+aliases:
+  - doubling map
+  - x -> 2x mod 1
+  - Bernoulli shift
+  - periodic points are rationals
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dyadic_transformation
+  original_title: Dyadic transformation
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Devaney - An Introduction to Chaotic Dynamical Systems
+    notes: Chapter 1
+
+problem:
+  statement: >
+    Consider the map T(x) = 2x mod 1 on [0, 1). Show that x is eventually
+    periodic under T if and only if x is rational, and find a point whose
+    orbit is dense.
+  domain: dynamical systems
+  answer: >
+    rationals are exactly the eventually periodic points; the number 0.0 1
+    00 01 10 11 000 ... (all binary blocks concatenated) has a dense orbit
+
+key_idea:
+  name: "in binary, T deletes the first digit after the point: it is the shift map on digit sequences"
+  category: algebraic_encoding
+  summary: >
+    If x = 0.b_1 b_2 b_3 ... in binary, then 2x mod 1 = 0.b_2 b_3 .... So T
+    shifts the binary expansion left. Eventually periodic orbits correspond
+    to eventually periodic digit strings, i.e. rationals; and a string
+    containing every finite block has an orbit that visits every dyadic
+    interval.
+
+intuitive_proof:
+  explanation: >
+    Write x in binary as 0.b_1 b_2 b_3 .... Doubling moves the point one
+    place right, and reducing mod 1 discards the integer part b_1, so T(x) =
+    0.b_2 b_3 .... Thus T^n(x) = 0.b_{n+1} b_{n+2} .... The orbit is
+    eventually periodic iff the digit sequence is eventually periodic, which
+    is the classical characterisation of rational numbers. Concatenating all
+    finite binary blocks in order gives a point whose digit sequence
+    contains every block; shifting to a copy of the block 'w' puts T^n(x)
+    inside the dyadic interval of numbers starting with w, so the orbit is
+    dense.
+
+reasoning_structure:
+  naive_approach: >
+    Compute orbits numerically (which fails badly, since rounding errors
+    double at each step) or solve 2^n x = x mod 1 case by case.
+  crucial_observation: >
+    Multiplication by 2 is a shift of binary digits, so dynamics becomes
+    symbol manipulation.
+  why_it_simplifies: >
+    The representation makes periodicity, density and sensitivity to initial
+    conditions all obvious at once; this is the model of chaos.
+
+related:
+  - josephus_binary
+  - benford_leading_digits_powers_of_two
+
+tags:
+  - binary expansion
+  - shift map
+  - dynamical systems
+  - chaos
+  - representation change
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

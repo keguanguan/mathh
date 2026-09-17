@@ -1,0 +1,81 @@
+id: counting_diagonals_convex_polygon
+
+title: Non-Crossing Diagonals in a Convex Polygon Always Number n - 3
+
+aliases:
+  - counting diagonals
+  - triangulation of a convex polygon has n - 2 triangles
+  - maximal set of non-crossing diagonals
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/Diagonals.shtml
+  original_title: Diagonal Count
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Polygon_triangulation
+    original_title: Polygon triangulation
+
+problem:
+  statement: >
+    In a convex n-gon, draw diagonals one at a time so that no two cross,
+    until no more can be added. Show that the number of diagonals drawn is
+    always n - 3, whatever choices were made.
+  domain: geometry
+  answer: proved (always n - 3 diagonals and n - 2 triangles)
+
+key_idea:
+  name: count the angle sum of the resulting triangles in two ways
+  category: double_counting
+  summary: >
+    The diagonals cut the polygon into T triangles with total angle sum
+    180 T degrees; these angles exactly fill the polygon's angles, which sum
+    to 180(n - 2). So T = n - 2. Counting triangle sides, 3T = n + 2D
+    (each diagonal is a side of two triangles), giving D = n - 3.
+
+intuitive_proof:
+  explanation: >
+    When no more non-crossing diagonals can be added, the polygon is
+    divided into triangles; say T of them with D diagonals. Each triangle
+    has angle sum 180 degrees, and because the diagonals meet only at
+    vertices, the triangles' angles at each polygon vertex add up to that
+    vertex's interior angle. Hence 180 T = 180 (n - 2), so T = n - 2. Now
+    count sides of triangles: 3T sides in all; each of the n polygon sides
+    is a side of one triangle and each diagonal is a side of two, so
+    3T = n + 2D. Substituting T = n - 2 gives D = n - 3, independent of
+    which diagonals were chosen.
+
+reasoning_structure:
+  naive_approach: >
+    Draw the diagonals from a single vertex (n - 3 of them) and try to argue
+    that other choices cannot do better or worse by local rearrangements.
+  crucial_observation: >
+    The angle sum of the polygon is fixed and is distributed exactly among
+    the triangles, so the number of triangles is forced.
+  why_it_simplifies: >
+    Two global counts (angles and sides) determine both T and D at once,
+    for every possible triangulation.
+
+tags:
+  - double counting
+  - invariant
+  - triangulation
+  - Euler formula
+  - geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Equivalently a special case of Euler's formula V - E + F = 2 for the
+  planar graph formed by the polygon and its diagonals.

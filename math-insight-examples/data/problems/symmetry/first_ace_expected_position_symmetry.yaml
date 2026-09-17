@@ -1,0 +1,80 @@
+id: first_ace_expected_position_symmetry
+
+title: Expected Position of the First Ace by Symmetry
+
+aliases:
+  - first ace in a shuffled deck
+  - expected number of cards before the first ace
+  - gaps between aces
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Exchangeable_random_variables
+  original_title: Exchangeable random variables
+  accessed: 2026-09-16
+  notes: >
+    Classic exercise; the 'four aces cut the deck into five exchangeable
+    gaps' argument appears in Mosteller's Fifty Challenging Problems.
+
+additional_sources:
+  - name: Mosteller - Fifty Challenging Problems in Probability
+    notes: Dover, 1987
+
+problem:
+  statement: >
+    A standard 52-card deck is shuffled. How many cards, on average, must be
+    turned over until the first ace appears?
+  domain: probability
+  answer: 10.6 (the first ace is at position 53/5 = 10.6 on average)
+
+key_idea:
+  name: the four aces divide the 48 other cards into five gaps that are exchangeable, so each gap has expected size 48/5
+  category: symmetry
+  summary: >
+    The 48 non-aces fall into five gaps: before the first ace, between
+    consecutive aces, and after the last. By symmetry of the random shuffle
+    the five gaps have the same distribution, and they sum to 48, so each
+    has mean 48/5 = 9.6. The first ace is at position 9.6 + 1 = 10.6.
+
+intuitive_proof:
+  explanation: >
+    Place the four aces first, creating five slots (before, between, after),
+    then insert the 48 other cards into the slots uniformly at random; this
+    produces a uniformly random deck. Any permutation of the five slots
+    gives the same distribution, so the slot sizes G_1, ..., G_5 are
+    exchangeable random variables with G_1 + ... + G_5 = 48. Taking
+    expectations, 5 E[G_1] = 48, so E[G_1] = 9.6, and the first ace is card
+    number G_1 + 1, with expectation 10.6.
+
+reasoning_structure:
+  naive_approach: >
+    Sum over positions k of k times the probability that the first ace is at
+    position k, using hypergeometric-type products.
+  crucial_observation: >
+    Exchangeability of the gaps means the expectation is determined by the
+    total alone.
+  why_it_simplifies: >
+    A symmetry argument replaces a sum of 49 complicated terms with one
+    division.
+
+related:
+  - gauss_pairing_sum
+
+tags:
+  - symmetry
+  - exchangeability
+  - expected value
+  - cards
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same reasoning gives the expected position of the k-th ace: k * 53/5.

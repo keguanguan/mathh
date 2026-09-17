@@ -1,0 +1,80 @@
+id: von_neumann_fair_coin_from_biased
+
+title: Extracting a Fair Coin from a Biased One (von Neumann)
+
+aliases:
+  - von Neumann's trick
+  - fair bit from a biased coin
+  - HT versus TH
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fair_coin
+  original_title: Fair coin (fair results from a biased coin)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: von Neumann - Various techniques used in connection with random digits
+    notes: "1951"
+
+problem:
+  statement: >
+    A coin shows heads with unknown probability p (0 < p < 1). Show how to
+    simulate a fair coin using only this coin.
+  domain: probability
+  answer: >
+    toss twice; HT means 'heads', TH means 'tails', and HH or TT means toss
+    again
+
+key_idea:
+  name: the outcomes HT and TH have the same probability p(1 - p) by symmetry, whatever p is
+  category: symmetry
+  summary: >
+    Two independent tosses give HT with probability p(1 - p) and TH with
+    probability (1 - p)p, equal for every p. Discarding HH and TT and
+    repeating, the first decisive pair is HT or TH with equal conditional
+    probability 1/2.
+
+intuitive_proof:
+  explanation: >
+    Toss the coin twice. P(HT) = p(1 - p) and P(TH) = (1 - p)p are equal. If
+    the pair is HH or TT, discard it and repeat; the repetitions are
+    independent, and the process ends with probability 1 since each round is
+    decisive with probability 2p(1 - p) > 0. Conditional on the round being
+    decisive, the two outcomes HT and TH are equally likely, so declaring HT
+    = 'heads' and TH = 'tails' yields a fair bit. The expected number of
+    tosses is 1/(p(1 - p)).
+
+reasoning_structure:
+  naive_approach: >
+    Try to estimate p from many tosses and correct for it, which is only
+    approximately fair.
+  crucial_observation: >
+    Reversing the order of two tosses is a symmetry that swaps HT and TH but
+    preserves probability.
+  why_it_simplifies: >
+    A symmetry of the sampling procedure produces exact fairness without
+    knowing p.
+
+related:
+  - first_ace_expected_position_symmetry
+
+tags:
+  - symmetry
+  - probability
+  - randomness extraction
+  - coin tossing
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Peres (1992) showed how to recycle the discarded pairs to approach the
+  entropy bound.

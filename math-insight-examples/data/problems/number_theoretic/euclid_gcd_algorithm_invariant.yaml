@@ -1,0 +1,81 @@
+id: euclid_gcd_algorithm_invariant
+
+title: "Euclid's Algorithm: gcd(a, b) = gcd(b, a mod b)"
+
+aliases:
+  - Euclidean algorithm correctness
+  - gcd invariant under remainder
+  - common divisors of a, b and b, a mod b coincide
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euclidean_algorithm
+  original_title: Euclidean algorithm (proof of validity)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/Euclid.shtml
+    original_title: Euclid's Algorithm
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Show that replacing the pair (a, b) by (b, a mod b) does not change the
+    set of common divisors, and hence that Euclid's algorithm computes the
+    greatest common divisor.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a = qb + r, so any number dividing two of a, b, r divides the third
+  category: gcd_structure
+  summary: >
+    Write a = qb + r with r = a mod b. A common divisor of a and b divides a
+    - qb = r; a common divisor of b and r divides qb + r = a. So the pairs
+    (a, b) and (b, r) have exactly the same common divisors, in particular
+    the same greatest one. The remainders strictly decrease, so the
+    algorithm stops at a pair (d, 0), whose gcd is d.
+
+intuitive_proof:
+  explanation: >
+    Let a = qb + r with 0 <= r < b. If d | a and d | b then d | a - qb = r,
+    so d is a common divisor of b and r. Conversely if d | b and d | r then
+    d | qb + r = a. Hence the set of common divisors, and therefore the gcd,
+    is invariant under (a, b) -> (b, r). Since the second component strictly
+    decreases and stays non-negative, the process reaches (d, 0) after
+    finitely many steps, and gcd(d, 0) = d. So the last nonzero remainder is
+    gcd(a, b).
+
+reasoning_structure:
+  naive_approach: >
+    Factor both numbers into primes and take the minimum exponents, which is
+    far slower for large numbers.
+  crucial_observation: >
+    The gcd is invariant under subtracting a multiple of one number from the
+    other.
+  why_it_simplifies: >
+    An invariant plus a decreasing quantity is the entire correctness proof
+    of the oldest algorithm in mathematics.
+
+related:
+  - euclids_game
+  - lame_theorem_euclid_steps
+
+tags:
+  - gcd
+  - invariant
+  - algorithm
+  - Euclidean algorithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,73 @@
+id: rotation_transform_sum_of_squares
+
+title: Replacing (a, b) by (0.6a - 0.8b, 0.8a + 0.6b)
+
+aliases:
+  - triple (3,4,12) to (4,6,12)
+  - rotation moves on a triple of numbers
+  - sum of squares invariant
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle (worked example)
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: One of the opening examples of Engel's first chapter.
+
+problem:
+  statement: >
+    Three real numbers (3, 4, 12) are written down. A move picks two of
+    them, a and b, and replaces them by 0.6a - 0.8b and 0.8a + 0.6b. Can
+    one reach (4, 6, 12)?
+  domain: algebra
+  answer: impossible
+
+key_idea:
+  name: the move is a rotation, so the sum of squares is invariant
+  category: algebraic_invariant
+  summary: >
+    (0.6a - 0.8b)^2 + (0.8a + 0.6b)^2 = a^2 + b^2 because 0.36 + 0.64 = 1
+    and the cross terms cancel; the move rotates the point (a, b) about the
+    origin. The sum of the three squares is therefore invariant: 169 at the
+    start, 196 at the target.
+
+intuitive_proof:
+  explanation: >
+    Expand: (0.6a - 0.8b)^2 + (0.8a + 0.6b)^2 = 0.36a^2 - 0.96ab + 0.64b^2
+    + 0.64a^2 + 0.96ab + 0.36b^2 = a^2 + b^2. So each move preserves
+    a^2 + b^2 + c^2. Initially 9 + 16 + 144 = 169; the target has
+    16 + 36 + 144 = 196. Since the invariant differs, the target is
+    unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Experiment with sequences of moves, or try to solve for a sequence
+    algebraically.
+  crucial_observation: >
+    The coefficients (0.6, 0.8) are a cosine and sine, so the move is a
+    rotation of the plane, and rotations preserve distance to the origin.
+  why_it_simplifies: >
+    One number (the squared length) settles reachability; the geometric
+    reading explains why exactly this quantity is invariant.
+
+tags:
+  - invariant
+  - sum of squares
+  - rotation
+  - geometric reinterpretation
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  A cousin of sums_and_products: there the hidden operation was
+  multiplication after a shift, here it is a rotation.

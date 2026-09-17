@@ -1,0 +1,103 @@
+id: conway_soldiers
+
+title: Conway's Soldiers (Sending Scouts into the Desert)
+
+aliases:
+  - Conway's soldiers
+  - checker-jumping problem
+  - sending scouts into the desert
+  - solitaire army
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/checker.shtml
+  original_title: A Problem in Checker-Jumping
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The problem and the golden-ratio potential are due to J. H. Conway (1961).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/ReverseDesert.shtml
+    original_title: Getting a Scout out of Desert
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Conway%27s_Soldiers
+    original_title: Conway's Soldiers
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 4, "The Solitaire Army".
+
+problem:
+  statement: >
+    An infinite grid is divided by a horizontal line. Below the line one may
+    place as many checkers as desired, one per cell. A move jumps a checker
+    horizontally or vertically over an adjacent checker into an empty cell
+    and removes the checker jumped over. How far above the line can a
+    checker be sent?
+  domain: combinatorial games
+  answer: >
+    Rows 1 to 4 above the line can be reached; row 5 cannot, however many
+    checkers are used.
+
+key_idea:
+  name: a golden-ratio weighting whose total never increases
+  category: potential_function
+  summary: >
+    Give the cell at distance d (taxicab) from the target the weight
+    phi^{-d}, where phi is the golden ratio; since phi^{-2} + phi^{-1} = 1,
+    a jump toward the target never increases the total weight and other
+    jumps decrease it. The whole half-plane below the line has total weight
+    exactly 1 when the target is in row 5, so a checker (weight 1) can never
+    arrive there.
+
+intuitive_proof:
+  explanation: >
+    Fix a target cell in row 5 and weight every cell by s^d, where d is
+    its taxicab distance to the target and s = (sqrt(5) - 1)/2 satisfies
+    s^2 + s = 1. A jump toward the target replaces checkers on cells of
+    weights s^{d+2} and s^{d+1} by one on a cell of weight s^d; since
+    s^{d+2} + s^{d+1} = s^d the total weight is unchanged. A jump away from
+    the target removes weights s^d + s^{d+1} and adds s^{d+2}, a net loss;
+    a jump across the target's row or column removes s^d + s^{d-1} and adds
+    s^d, again a loss. So the total weight never increases. Summing the geometric
+    series over the entire half-plane below the line gives exactly 1 (with
+    the target in row 5), and any finite army has total weight strictly less
+    than 1. Reaching the target would require a checker of weight 1 to be
+    present, which is impossible. For rows 1-4 explicit armies of 2, 4, 8 and
+    20 checkers succeed.
+
+reasoning_structure:
+  naive_approach: >
+    Build larger and larger armies by trial, hoping brute force reaches
+    higher rows; the armies for rows 1-4 grow quickly, and nothing suggests
+    where the limit is.
+  crucial_observation: >
+    Weights satisfying w(d) = w(d+1) + w(d+2) make every jump non-increasing
+    in total weight, and the golden ratio is the unique such geometric
+    weighting.
+  why_it_simplifies: >
+    An infinite family of possible armies and move sequences is defeated by
+    a single convergent series: the entire half-plane is "worth" no more
+    than the target.
+
+tags:
+  - monovariant
+  - potential function
+  - golden ratio
+  - geometric series
+  - impossibility
+  - peg solitaire
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The canonical example of a potential-function argument; contrast with
+  peg_solitaire where the invariant is group-valued rather than
+  real-valued.

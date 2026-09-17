@@ -1,0 +1,77 @@
+id: divisors_odd_iff_square
+
+title: A Number Has an Odd Number of Divisors Iff It Is a Perfect Square
+
+aliases:
+  - odd number of divisors
+  - divisor pairing d and n/d
+  - locker problem core lemma
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divisor_function
+  original_title: Divisor function (properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a positive integer n has an odd number of positive divisors if
+    and only if n is a perfect square.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: pair each divisor d with n/d; the pairing is an involution whose only possible fixed point is sqrt(n)
+  category: involution_parity
+  summary: >
+    The map d -> n/d pairs the divisors of n. A divisor is paired with
+    itself only when d = n/d, i.e. d^2 = n. So the divisors come in pairs,
+    plus one unpaired divisor exactly when n is a square.
+
+intuitive_proof:
+  explanation: >
+    For each divisor d of n, n/d is also a divisor, and the map d -> n/d is
+    an involution on the set of divisors. Non-fixed elements are matched in
+    pairs, so the number of divisors has the same parity as the number of
+    fixed points. A fixed point satisfies d = n/d, i.e. d = sqrt(n), which
+    exists (and is unique) iff n is a perfect square. Hence the divisor
+    count is odd iff n is a square.
+
+reasoning_structure:
+  naive_approach: >
+    Use the formula for the number of divisors, product of (e_i + 1), and
+    note it is odd iff all e_i are even.
+  crucial_observation: >
+    Divisors pair up naturally, and the parity of a set with an involution
+    is the parity of its fixed points.
+  why_it_simplifies: >
+    The involution argument needs no formula and explains the phenomenon; it
+    is the key to the locker puzzle.
+
+related:
+  - wilson_theorem_pairing
+  - hundred_lockers_puzzle
+
+tags:
+  - involution
+  - parity
+  - divisors
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

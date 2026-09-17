@@ -1,0 +1,93 @@
+id: turan_theorem_zykov_symmetrisation
+
+title: Turan's Theorem by Zykov Symmetrisation
+
+aliases:
+  - Turan's theorem
+  - Zykov symmetrisation
+  - K_{r+1}-free graphs have at most the edges of the Turan graph
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Turan's graph theorem"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tur%C3%A1n%27s_theorem
+    original_title: Turán's theorem (Zykov symmetrization)
+
+problem:
+  statement: >
+    Show that a graph on n vertices with no complete subgraph on r + 1
+    vertices has at most as many edges as the complete r-partite graph with
+    parts as equal as possible (the Turan graph).
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: if two non-adjacent vertices have different degrees, replace the one of smaller degree by a copy of the other; this does not create K_{r+1} and does not decrease the edge count, and repeating it makes the graph complete multipartite
+  category: smoothing
+  summary: >
+    Take an extremal K_{r+1}-free graph. Non-adjacency must be an
+    equivalence relation: if u is non-adjacent to v and w but v, w are
+    adjacent, then cloning the vertex of largest degree among u, v, w onto
+    the others would increase the edge count without creating a K_{r+1}. So
+    the vertices split into classes of pairwise non-adjacent 'twins' with
+    all edges between classes: a complete multipartite graph with at most r
+    parts, whose edge count is maximised by equal parts.
+
+intuitive_proof:
+  explanation: >
+    Let G be K_{r+1}-free with the maximum number of edges on n vertices.
+    Cloning: if u and v are non-adjacent, replacing u by a copy of v
+    (deleting u's edges and joining u to v's neighbours) keeps the graph
+    K_{r+1}-free (a copy of K_{r+1} would use u but not v, and then v could
+    replace u) and changes the edge count by d(v) - d(u). Claim:
+    non-adjacency is transitive in G. Suppose u is non-adjacent to v and to
+    w but vw is an edge. If d(u) < d(v) or d(u) < d(w), cloning v or w onto
+    u increases the edge count, contradiction. Otherwise d(u) >= d(v), d(w);
+    clone u onto both v and w: the edge count changes by (d(u) - d(v)) +
+    (d(u) - d(w)) + 1 > 0 (the +1 because the edge vw, counted in both d(v)
+    and d(w), is removed only once), again a contradiction. So non-adjacency
+    is an equivalence relation, G is complete multipartite, and being
+    K_{r+1}-free it has at most r parts. Among complete r-partite graphs,
+    moving a vertex from a larger part to a smaller one increases the edge
+    count, so equal parts are optimal.
+
+reasoning_structure:
+  naive_approach: >
+    Induct on n by deleting a maximal clique, which works but requires
+    careful counting.
+  crucial_observation: >
+    Cloning a high-degree vertex onto a non-neighbour is a local improvement
+    that never creates the forbidden clique.
+  why_it_simplifies: >
+    A smoothing operation forces the extremal graph into a rigid form
+    (complete multipartite), after which the optimisation is trivial.
+
+related:
+  - mantel_triangle_free
+  - caro_wei_independent_set
+
+tags:
+  - smoothing
+  - extremal graph theory
+  - Turan
+  - symmetrisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Aigner and Ziegler present five proofs of Turan's theorem; this is Zykov's
+  (1949).

@@ -1,0 +1,92 @@
+id: three_random_points_semicircle
+
+title: Three Random Points on a Circle Lie in a Semicircle with Probability 3/4
+
+aliases:
+  - random triangle is obtuse with probability 3/4
+  - three points in a semicircle
+  - clockwise-first point argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bertrand%27s_ballot_theorem
+  original_title: Bertrand's ballot theorem
+  accessed: 2026-09-16
+  notes: >
+    Standard geometric probability exercise; the 'clockwise-first point'
+    argument is folklore (see Mosteller's Fifty Challenging Problems).
+
+additional_sources:
+  - name: Mosteller - Fifty Challenging Problems in Probability
+    notes: Dover, 1987
+
+problem:
+  statement: >
+    Three points are chosen independently and uniformly on a circle. What is
+    the probability that they all lie in some semicircle? Deduce the
+    probability that the triangle they form is obtuse.
+  domain: probability
+  answer: >
+    3/4 for lying in a semicircle, hence 3/4 for an obtuse triangle (the
+    inscribed triangle is obtuse iff the points lie in a semicircle)
+
+key_idea:
+  name: the events 'the semicircle starting at point i (going clockwise) contains the other two' are disjoint and each has probability 1/4
+  category: symmetry
+  summary: >
+    If the three points lie in a semicircle, exactly one of them is the
+    'first' point of that semicircle in the clockwise direction. For a fixed
+    point, the other two lie in the clockwise semicircle starting there with
+    probability (1/2)^2 = 1/4. The three events are disjoint, so the
+    probability is 3 * 1/4 = 3/4. An inscribed triangle is obtuse iff its
+    vertices lie in a semicircle (Thales), so the obtuse probability is also
+    3/4.
+
+intuitive_proof:
+  explanation: >
+    For each point P_i let E_i be the event that the other two points lie in
+    the semicircle beginning at P_i and extending clockwise. Given P_i, each
+    other point independently lies in that semicircle with probability 1/2,
+    so P(E_i) = 1/4. The events E_i are pairwise disjoint: if P_j were in
+    P_i's clockwise semicircle and P_i in P_j's, the two would be antipodal,
+    a probability-zero event. The union of the E_i is exactly the event that
+    all three points lie in some semicircle (if they do, take the point from
+    which the clockwise arc covers the others). So the probability is 3/4. A
+    triangle inscribed in a circle is obtuse iff one side subtends an arc of
+    more than 180 degrees on the side away from the third vertex, i.e. iff
+    all three vertices lie in a semicircle; so a random inscribed triangle
+    is obtuse with probability 3/4 (and right with probability 0).
+
+reasoning_structure:
+  naive_approach: >
+    Integrate over the positions of the three points with careful case
+    distinctions.
+  crucial_observation: >
+    Membership in a semicircle can be attributed uniquely to the
+    clockwise-first point, splitting the event into three symmetric disjoint
+    pieces.
+  why_it_simplifies: >
+    Symmetry turns a two-dimensional integral into 3 times a trivial
+    probability, and the same trick gives n/2^{n-1} for n points.
+
+related:
+  - broken_stick_triangle_probability
+  - first_ace_expected_position_symmetry
+
+tags:
+  - symmetry
+  - geometric probability
+  - circle
+  - disjoint events
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,77 @@
+id: random_permutation_fixed_points_expectation
+
+title: A Random Permutation Has One Fixed Point on Average
+
+aliases:
+  - expected number of fixed points
+  - hat-check expectation
+  - indicator variables
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Random_permutation_statistics
+  original_title: Random permutation statistics (fixed points)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Probability makes counting (sometimes) easy"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    n hats are returned to n people at random. Show that the expected number
+    of people who get their own hat is 1, regardless of n.
+  domain: probability
+  answer: "1"
+
+key_idea:
+  name: write the count as a sum of n indicator variables, each with expectation 1/n
+  category: linearity_of_expectation
+  summary: >
+    Let I_k be 1 if person k gets their own hat. Then the number of correct
+    hats is I_1 + ... + I_n, and E[I_k] = 1/n. By linearity of expectation
+    the total has expectation n * (1/n) = 1, even though the I_k are
+    dependent.
+
+intuitive_proof:
+  explanation: >
+    Define indicator variables I_k = 1 if person k receives their own hat
+    and 0 otherwise. Person k's hat is equally likely to go to any of the n
+    people, so P(I_k = 1) = 1/n and E[I_k] = 1/n. The number of correct
+    returns is X = I_1 + ... + I_n, and linearity of expectation, which
+    needs no independence, gives E[X] = n * 1/n = 1.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the distribution of the number of fixed points via derangement
+    counts and then the mean, a substantial calculation.
+  crucial_observation: >
+    Expectation is linear even for dependent variables, so only the marginal
+    probabilities matter.
+  why_it_simplifies: >
+    Decomposing into indicators makes an apparently hard expectation
+    trivial; it is the basic tool of the probabilistic method.
+
+related:
+  - derangements_inclusion_exclusion
+
+tags:
+  - linearity of expectation
+  - indicator variables
+  - permutations
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The distribution tends to Poisson(1), but the mean needs none of that.

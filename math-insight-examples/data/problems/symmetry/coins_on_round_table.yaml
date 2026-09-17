@@ -1,0 +1,89 @@
+id: coins_on_round_table
+
+title: Coins on a Round Table
+
+aliases:
+  - round table coin game
+  - placing coins on a table
+  - mirror strategy game
+
+source:
+  name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+  url: https://bookstore.ams.org/mcl-7
+  original_title: Chapter on Games (symmetry strategies)
+  author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+  accessed: 2026-09-16
+  notes: AMS, 1996. The game is a standard first example of a symmetry strategy.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Strategy-stealing_argument
+    original_title: Strategy-stealing argument
+    notes: Discusses symmetry and strategy-stealing arguments in games.
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 13, Games.
+
+problem:
+  statement: >
+    Two players alternately place identical coins flat on a round table,
+    without overlapping previously placed coins. The player who cannot place
+    a coin loses. Who wins with best play?
+  domain: combinatorial games
+  answer: the first player
+
+key_idea:
+  name: take the centre, then mirror every move through the centre
+  category: pairing_strategy
+  summary: >
+    The first player places a coin at the centre and afterwards answers
+    each opponent move with its point reflection through the centre. The
+    reflected spot is always free (its mirror image was free before the
+    opponent's move and does not overlap the central coin), so the first
+    player always has a move.
+
+intuitive_proof:
+  explanation: >
+    The first player puts the first coin exactly at the centre. Thereafter,
+    whenever the second player places a coin at some spot, the first player
+    places a coin at the spot symmetric to it with respect to the centre.
+    After each such pair of moves the configuration is centrally symmetric.
+    The reflected spot is on the table (the table is symmetric), does not
+    overlap the central coin (the opponent's coin does not, and reflection
+    preserves distances from the centre), and does not overlap any other
+    coin (otherwise, by symmetry, the opponent's coin would have overlapped
+    the mirror image of that coin, which was already present). So the first
+    player can always reply, and since the game is finite the second player
+    runs out of moves first.
+
+reasoning_structure:
+  naive_approach: >
+    Think about how many coins fit on the table and whether that number is
+    odd or even; but coins need not be packed efficiently, so the count is
+    not determined.
+  crucial_observation: >
+    Central symmetry pairs up every possible position except the centre
+    itself, and the first player can take the unpaired position.
+  why_it_simplifies: >
+    A strategy defined by symmetry guarantees a reply forever, without any
+    analysis of positions.
+
+tags:
+  - symmetry
+  - pairing strategy
+  - game
+  - point reflection
+  - strategy
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The classic template for mirror strategies; it works on any centrally
+  symmetric table.

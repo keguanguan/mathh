@@ -1,0 +1,85 @@
+id: one_pile_take_at_most_k_or_double_scoring
+
+title: Losing Positions of the Scoring Game Are Multiples of k + 1
+
+aliases:
+  - scoring game
+  - single pile take up to k
+  - one pile games
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/ctk/OnePile.shtml
+  original_title: Single Pile Games
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Subtraction_game
+    original_title: Subtraction game
+
+problem:
+  statement: >
+    A single pile of n counters; a move removes between 1 and k counters. In
+    the misere version the player who takes the last counter loses.
+    Determine the losing positions in both the normal and the misere
+    versions.
+  domain: combinatorial games
+  answer: >
+    normal play: multiples of k + 1 lose; misere play: positions n with n =
+    1 mod (k + 1) lose
+
+key_idea:
+  name: the complement pairing m -> k + 1 - m works in both versions, shifted by one in the misere case
+  category: pairing_strategy
+  summary: >
+    Normal play: from a multiple of k + 1 every move leaves a non-multiple,
+    and from a non-multiple one can move to a multiple, so multiples of k +
+    1 lose. Misere play: taking the last counter loses, so leaving exactly 1
+    counter is the goal; the same pairing shows that positions n = 1 mod (k
+    + 1) lose.
+
+intuitive_proof:
+  explanation: >
+    Normal play: 0 is a loss for the player to move. From n = 0 mod (k+1)
+    any move m in 1..k leaves n - m, not a multiple; from n not a multiple,
+    removing n mod (k+1) counters leaves a multiple. By induction multiples
+    of k + 1 are exactly the losing positions, and the winning reply to a
+    removal of m is k + 1 - m. Misere play: the player forced to move from a
+    single counter loses, so 1 is losing. The pairing argument applied to
+    the shifted quantity n - 1 shows the losing positions are n = 1 mod (k +
+    1): from such n every move leaves a non-losing position, and from any
+    other n one moves to one.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the outcome for each n by backward induction and spot the
+    pattern.
+  crucial_observation: >
+    The shift by one for misere play is the only change; the complement
+    pairing is untouched.
+  why_it_simplifies: >
+    A single pairing idea solves both versions; misere Nim in general is
+    subtler, but for one pile it is a shift.
+
+related:
+  - subtraction_game_complement
+
+tags:
+  - pairing strategy
+  - misere play
+  - game
+  - modular arithmetic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

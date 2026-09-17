@@ -1,0 +1,74 @@
+id: planar_graph_vertex_degree_five
+
+title: Every Planar Graph Has a Vertex of Degree at Most 5
+
+aliases:
+  - planar graph min degree 5
+  - average degree of a planar graph below 6
+  - five colour theorem lemma
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three applications of Euler's formula"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Planar_graph
+    original_title: Planar graph (properties)
+
+problem:
+  statement: >
+    Show that every simple planar graph has a vertex of degree at most 5.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: the edge bound E <= 3V - 6 makes the average degree less than 6
+  category: double_counting
+  summary: >
+    Summing degrees counts each edge twice, so the average degree is 2E/V <=
+    (6V - 12)/V < 6. A set of integers with average less than 6 contains one
+    that is at most 5.
+
+intuitive_proof:
+  explanation: >
+    For a simple planar graph with V >= 3 vertices, Euler's formula and the
+    face count give E <= 3V - 6. The handshake lemma gives sum of degrees =
+    2E <= 6V - 12, so the average degree is at most 6 - 12/V < 6. Hence some
+    vertex has degree at most 5. (For V <= 2 the statement is trivial.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to draw a planar graph in which every vertex has degree at least 6
+    and observe failure.
+  crucial_observation: >
+    A global edge bound translates into a bound on the average degree, and
+    the minimum is at most the average.
+  why_it_simplifies: >
+    Two counts (Euler and handshake) give the lemma that powers the
+    five-colour theorem and the proof strategy for the four-colour theorem.
+
+related:
+  - planar_graph_edge_bound
+  - handshake_lemma
+
+tags:
+  - double counting
+  - planar graphs
+  - Euler's formula
+  - averaging
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,85 @@
+id: divisor_functions_multiplicative_bijection
+
+title: The Number and Sum of Divisors from Prime Exponents
+
+aliases:
+  - number of divisors formula
+  - sum of divisors formula
+  - divisors correspond to exponent vectors
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divisor_function
+  original_title: Divisor function (formulas at prime powers and multiplicativity)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let n = p_1^{e_1} ... p_k^{e_k}. Show that n has (e_1 + 1)...(e_k + 1)
+    divisors and that their sum is the product over i of (1 + p_i + ... +
+    p_i^{e_i}).
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a divisor is the same thing as a choice of an exponent 0..e_i for each prime, and expanding the product of geometric sums lists every divisor once
+  category: bijection
+  summary: >
+    By unique factorisation, d divides n iff d = p_1^{a_1} ... p_k^{a_k}
+    with 0 <= a_i <= e_i. The choices are independent, giving (e_1 +
+    1)...(e_k + 1) divisors. Expanding the product (1 + p_1 + ... +
+    p_1^{e_1}) ... (1 + p_k + ... + p_k^{e_k}) produces exactly one term per
+    divisor, namely the divisor itself, so the product is the sum of
+    divisors.
+
+intuitive_proof:
+  explanation: >
+    Unique factorisation gives a bijection between divisors of n and
+    exponent vectors (a_1, ..., a_k) with 0 <= a_i <= e_i: the divisor is
+    p_1^{a_1} ... p_k^{a_k}. Counting vectors gives the divisor count (e_1 +
+    1)...(e_k + 1). For the sum, multiply out the product of the k geometric
+    sums: choosing the term p_i^{a_i} from the i-th factor for each i gives
+    the term p_1^{a_1} ... p_k^{a_k}, and each divisor arises from exactly
+    one choice. Hence the expanded product equals the sum of all divisors.
+    Both functions are therefore multiplicative for coprime arguments.
+
+reasoning_structure:
+  naive_approach: >
+    List divisors for specific numbers and add them up, or prove
+    multiplicativity through the Chinese remainder theorem.
+  crucial_observation: >
+    Divisors are exponent vectors, and sums over independent choices factor
+    into products.
+  why_it_simplifies: >
+    One bijection gives both formulas and their multiplicativity, with the
+    product expansion doing the bookkeeping.
+
+related:
+  - gcd_times_lcm_exponents
+  - divisors_odd_iff_square
+
+tags:
+  - bijection
+  - divisors
+  - multiplicative functions
+  - prime factorisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Euclid's even perfect numbers 2^{p-1}(2^p - 1) follow immediately from the
+  sum formula.

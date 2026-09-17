@@ -1,0 +1,75 @@
+id: random_walk_distance_sqrt_n
+
+title: A Random Walk of n Steps Ends about sqrt(n) from the Start
+
+aliases:
+  - random walk root n
+  - variance of a sum of independent steps
+  - drunkard's walk
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Random_walk
+  original_title: Random walk (one-dimensional random walk)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+
+problem:
+  statement: >
+    A walker takes n independent steps of +1 or -1 with equal probability.
+    Show that the expected squared distance from the start after n steps is
+    exactly n, so the typical distance is about sqrt(n).
+  domain: probability
+  answer: E[S_n^2] = n
+
+key_idea:
+  name: expand S_n^2 = sum of X_i^2 + 2 sum of X_i X_j; the squares are 1 and the cross terms have mean 0 by independence
+  category: linearity_of_expectation
+  summary: >
+    Let S_n = X_1 + ... + X_n with independent X_i = +-1. Then S_n^2 = sum
+    X_i^2 + 2 sum over i < j of X_i X_j. Each X_i^2 = 1 and E[X_i X_j] =
+    E[X_i] E[X_j] = 0 for i != j. By linearity E[S_n^2] = n.
+
+intuitive_proof:
+  explanation: >
+    Expanding the square, S_n^2 = sum over i of X_i^2 + 2 sum over i < j of
+    X_i X_j. Since X_i^2 = 1 always, the first sum is n. For i != j,
+    independence gives E[X_i X_j] = E[X_i] E[X_j] = 0 * 0 = 0. Taking
+    expectations term by term (linearity), E[S_n^2] = n + 0 = n. By Jensen's
+    inequality E|S_n| <= sqrt(n), and in fact E|S_n| is about sqrt(2n/pi).
+    The same computation shows that variances of independent summands add.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the distribution of S_n via binomial coefficients and evaluate
+    the second moment as a sum.
+  crucial_observation: >
+    Squaring a sum produces cross terms that vanish in expectation by
+    independence, leaving only the n diagonal terms.
+  why_it_simplifies: >
+    Linearity of expectation applied to the expanded square gives the
+    diffusive scaling law in three lines.
+
+related:
+  - random_permutation_fixed_points_expectation
+  - gamblers_ruin_fair_game
+
+tags:
+  - linearity of expectation
+  - random walk
+  - variance
+  - independence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

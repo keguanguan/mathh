@@ -1,0 +1,82 @@
+id: no_four_cycle_edge_bound_cherries
+
+title: A Graph without 4-Cycles Has at Most about n^{3/2}/2 Edges
+
+aliases:
+  - C4-free graphs
+  - Kovari-Sos-Turan for K_{2,2}
+  - counting cherries
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Zarankiewicz_problem
+  original_title: Zarankiewicz problem (Kovari-Sos-Turan)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Turan's graph theorem" / extremal problems
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that a graph on n vertices with no cycle of length 4 has at most
+    (n/4)(1 + sqrt(4n - 3)) edges, roughly n^{3/2}/2.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: "count 'cherries' (paths of length 2) in two ways: each pair of vertices has at most one common neighbour, so the number of cherries is at most C(n, 2); but each vertex v contributes C(d(v), 2) cherries"
+  category: double_counting
+  summary: >
+    No 4-cycle means any two vertices have at most one common neighbour, so
+    the number of paths u - w - v with u != v is at most C(n, 2). Counting
+    by the middle vertex, the number is sum of C(d(v), 2). By convexity, sum
+    of C(d(v), 2) >= n C(2m/n, 2). Combining gives a quadratic inequality in
+    m whose solution is the bound.
+
+intuitive_proof:
+  explanation: >
+    A cherry is an unordered pair {u, v} together with a common neighbour w.
+    If some pair {u, v} had two common neighbours w, w', then u w v w' would
+    be a 4-cycle. So each pair has at most one common neighbour and the
+    number of cherries is at most C(n, 2). Counting cherries by their middle
+    vertex gives sum over v of C(d(v), 2). Since x -> C(x, 2) is convex and
+    the degrees sum to 2m, Jensen gives sum of C(d(v), 2) >= n C(2m/n, 2) =
+    n (2m/n)(2m/n - 1)/2. Hence (2m/n)(2m/n - 1) <= n - 1, a quadratic
+    inequality in m, which yields m <= (n/4)(1 + sqrt(4n - 3)).
+
+reasoning_structure:
+  naive_approach: >
+    Try constructions (polarity graphs from projective planes achieve the
+    bound) and guess the order of magnitude without proof.
+  crucial_observation: >
+    The forbidden 4-cycle is exactly 'two vertices with two common
+    neighbours', a statement about cherries that can be counted from both
+    ends.
+  why_it_simplifies: >
+    Double counting one well-chosen configuration plus convexity gives the
+    sharp order n^{3/2}; the same method handles all K_{s,t}-free graphs.
+
+related:
+  - mantel_triangle_free
+  - friendship_paradox_cauchy_schwarz
+
+tags:
+  - double counting
+  - extremal graph theory
+  - convexity
+  - 4-cycles
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

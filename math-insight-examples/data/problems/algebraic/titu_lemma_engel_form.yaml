@@ -1,0 +1,77 @@
+id: titu_lemma_engel_form
+
+title: Titu's Lemma (the Engel Form of Cauchy-Schwarz)
+
+aliases:
+  - Titu's lemma
+  - Engel form of Cauchy-Schwarz
+  - sum of a_i^2/b_i >= (sum a_i)^2/(sum b_i)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality
+  original_title: Cauchy–Schwarz inequality (Engel form / Titu's lemma)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For real a_i and positive b_i show that a_1^2/b_1 + ... + a_n^2/b_n >=
+    (a_1 + ... + a_n)^2/(b_1 + ... + b_n).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: apply Cauchy-Schwarz to the vectors (a_i/sqrt(b_i)) and (sqrt(b_i))
+  category: algebraic_identity
+  summary: >
+    Cauchy-Schwarz gives (sum of (a_i/sqrt b_i) sqrt b_i)^2 <= (sum
+    a_i^2/b_i)(sum b_i). The left side is (sum a_i)^2, and dividing by sum
+    b_i gives the lemma.
+
+intuitive_proof:
+  explanation: >
+    Let u_i = a_i/sqrt(b_i) and v_i = sqrt(b_i). Then u_i v_i = a_i, u_i^2 =
+    a_i^2/b_i and v_i^2 = b_i. The Cauchy-Schwarz inequality (sum u_i v_i)^2
+    <= (sum u_i^2)(sum v_i^2) reads (sum a_i)^2 <= (sum a_i^2/b_i)(sum b_i).
+    Dividing by the positive number sum b_i gives the claim, with equality
+    iff a_i/b_i is constant. Example: with a_i = 1 it gives sum of 1/b_i >=
+    n^2/(sum b_i), the AM-HM inequality.
+
+reasoning_structure:
+  naive_approach: >
+    Prove each application separately by clearing denominators.
+  crucial_observation: >
+    Fractions a^2/b are squared lengths of the vector a/sqrt b, so
+    Cauchy-Schwarz applies after a substitution.
+  why_it_simplifies: >
+    A single substitution turns Cauchy-Schwarz into a tool that handles sums
+    of fractions with squares in the numerator, a shape that appears in many
+    olympiad inequalities.
+
+related:
+  - cauchy_schwarz_discriminant
+  - nesbitt_inequality_am_hm
+
+tags:
+  - algebraic identity
+  - Cauchy-Schwarz
+  - inequality
+  - substitution
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

@@ -1,0 +1,77 @@
+id: pythagorean_triples_rational_points
+
+title: Pythagorean Triples from Rational Points on the Circle
+
+aliases:
+  - parametrisation of Pythagorean triples
+  - rational points on the unit circle
+  - stereographic projection of the circle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pythagorean_triple
+  original_title: Pythagorean triple (rational points on a unit circle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on sums of two squares and rational points
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Find all integer solutions of a^2 + b^2 = c^2.
+  domain: number theory
+  answer: >
+    up to scaling and order, a = m^2 - n^2, b = 2mn, c = m^2 + n^2
+
+key_idea:
+  name: "divide by c^2: a Pythagorean triple is a rational point on the unit circle, and lines of rational slope through (-1, 0) hit the circle in exactly the rational points"
+  category: geometric_reinterpretation
+  summary: >
+    (a/c, b/c) is a rational point on x^2 + y^2 = 1. Project from (-1, 0): a
+    line of slope t through (-1, 0) meets the circle again at ((1 - t^2)/(1
+    + t^2), 2t/(1 + t^2)), which is rational iff t is rational. Writing t =
+    n/m and clearing denominators gives the classical formula.
+
+intuitive_proof:
+  explanation: >
+    A primitive triple corresponds to the rational point (x, y) = (a/c, b/c)
+    on the unit circle. The line through (-1, 0) and (x, y) has rational
+    slope t = y/(x + 1). Conversely, intersecting the line y = t(x + 1) with
+    the circle gives the quadratic (1 + t^2) x^2 + 2t^2 x + (t^2 - 1) = 0
+    with the known root x = -1, so the other root is x = (1 - t^2)/(1 + t^2)
+    and y = 2t/(1 + t^2), rational whenever t is. Putting t = n/m in lowest
+    terms and clearing denominators yields a = m^2 - n^2, b = 2mn, c = m^2 +
+    n^2 (up to a common factor and swapping a and b).
+
+reasoning_structure:
+  naive_approach: >
+    Manipulate a^2 = (c - b)(c + b) and analyse common factors of c - b and
+    c + b, which works but needs care with parity and gcds.
+  crucial_observation: >
+    An equation in integers is a question about rational points on a curve,
+    and a rational point on a conic through one known rational point can be
+    reached by a rational line.
+  why_it_simplifies: >
+    Geometry gives a complete parametrisation at once; the same projection
+    method solves every conic with one rational point.
+
+tags:
+  - geometric reinterpretation
+  - rational points
+  - Pythagorean triples
+  - parametrisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

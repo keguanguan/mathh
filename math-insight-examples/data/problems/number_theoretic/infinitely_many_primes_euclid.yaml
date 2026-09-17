@@ -1,0 +1,77 @@
+id: infinitely_many_primes_euclid
+
+title: Euclid's Proof That There Are Infinitely Many Primes
+
+aliases:
+  - infinitude of primes
+  - Euclid's theorem on primes
+  - product of primes plus one
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter 1, Six proofs of the infinity of primes
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Euclid, Elements, Book IX, Proposition 20.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Euclid%27s_theorem
+    original_title: Euclid's theorem
+
+problem:
+  statement: >
+    Show that there are infinitely many prime numbers.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: multiply the given primes together and add one
+  category: number_theoretic_structure
+  summary: >
+    Given any finite list of primes, N = (their product) + 1 leaves
+    remainder 1 on division by each of them, so any prime factor of N is a
+    prime not in the list.
+
+intuitive_proof:
+  explanation: >
+    Take any finite set of primes p_1, ..., p_k and form
+    N = p_1 p_2 ... p_k + 1. N is larger than 1, so it has a prime factor
+    q. But N leaves remainder 1 when divided by each p_i, so q is none of
+    the p_i. Thus no finite set contains all primes; there are infinitely
+    many. (N itself need not be prime, only its prime factors matter.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to produce ever-larger primes explicitly, or estimate how many
+    primes there are below x.
+  crucial_observation: >
+    An auxiliary number can be built that is coprime to every prime in a
+    given list, so its prime factors are new.
+  why_it_simplifies: >
+    A one-line construction defeats every finite list at once; no
+    knowledge of the distribution of primes is required.
+
+tags:
+  - number theory
+  - auxiliary object
+  - primes
+  - contradiction
+  - divisibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Proofs from THE BOOK opens with six proofs of this fact (Euclid, Fermat
+  numbers, Mersenne numbers, Euler's product, topology, and a
+  combinatorial estimate), a compact tour of different key ideas for the
+  same statement.

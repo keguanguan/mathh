@@ -1,0 +1,81 @@
+id: meno_doubling_the_square
+
+title: Doubling the Square (Plato's Meno)
+
+aliases:
+  - Meno's slave boy problem
+  - square on the diagonal has twice the area
+  - doubling a square
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/half_sq.shtml
+  original_title: Halving a square
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Meno
+    original_title: Meno (the geometry lesson)
+
+problem:
+  statement: >
+    Construct a square whose area is exactly twice that of a given square.
+  domain: geometry
+  answer: the square built on the diagonal of the given square
+
+key_idea:
+  name: the square on the diagonal is made of four half-squares, while the original square is made of two
+  category: decomposition
+  summary: >
+    Draw a 2x2 array of copies of the given square and the tilted square
+    whose sides are the diagonals of the four copies. Each copy is cut by
+    its diagonal into two congruent right triangles; the tilted square
+    consists of four such triangles and the original square of two, so the
+    tilted square has twice the area.
+
+intuitive_proof:
+  explanation: >
+    Place four copies of the given square in a 2x2 arrangement. In each copy
+    draw the diagonal that borders the central region; these four diagonals
+    form a tilted square S. Each diagonal cuts its copy into two congruent
+    right triangles, one inside S and one outside, so S consists of exactly
+    four of these triangles while the original square consists of two. Hence
+    area(S) = 2 * area(original square), and S has side equal to the
+    diagonal, i.e. side * sqrt 2.
+
+reasoning_structure:
+  naive_approach: >
+    Try doubling the side, which quadruples the area, or search numerically
+    for the right side length.
+  crucial_observation: >
+    Counting congruent triangles compares areas without any formula.
+  why_it_simplifies: >
+    A decomposition into equal pieces makes the factor 2 visible; the
+    picture is a special case of the Pythagorean theorem and needs no
+    algebra.
+
+related:
+  - pythagoras_by_scaling
+  - sum_of_first_n_odd_numbers
+
+tags:
+  - decomposition
+  - area
+  - Pythagorean theorem
+  - proof without words
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Socrates leads a slave boy to this construction in Plato's Meno, an early
+  example of a proof by decomposition.

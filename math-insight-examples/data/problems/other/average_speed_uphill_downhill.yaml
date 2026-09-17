@@ -1,0 +1,74 @@
+id: average_speed_uphill_downhill
+
+title: You Cannot Average 60 mph if the Uphill Half Was at 30 mph
+
+aliases:
+  - average speed puzzle
+  - uphill 30 mph downhill
+  - harmonic mean of speeds
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Harmonic_mean
+  original_title: Harmonic mean (average speed)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A car drives up a hill at 30 mph. How fast must it come down the same
+    road to average 60 mph for the round trip?
+  domain: algebra
+  answer: >
+    impossible: the time budget for a 60 mph average is already used up on
+    the way up
+
+key_idea:
+  name: averaging 60 mph over a round trip of 2d miles allows a total time of 2d/60 = d/30 hours, which is exactly the time already spent going up
+  category: structural_obstruction
+  summary: >
+    For a round trip of 2d miles, an average of 60 mph means a total time of
+    2d/60 = d/30 hours. Going uphill at 30 mph takes d/30 hours by itself.
+    So no time remains for the descent, whatever its speed.
+
+intuitive_proof:
+  explanation: >
+    Let the hill be d miles long. Average speed is total distance over total
+    time, so averaging 60 mph over 2d miles requires a total time of 2d/60 =
+    d/30 hours. The uphill leg alone took d/30 hours. Hence the downhill leg
+    would need to take zero time, which is impossible. (In general the
+    average of two speeds over equal distances is their harmonic mean, and
+    the harmonic mean of 30 and v is below 60 for every finite v.)
+
+reasoning_structure:
+  naive_approach: >
+    Guess 90 mph by averaging the two speeds arithmetically.
+  crucial_observation: >
+    Average speed is a ratio of totals, and the time budget is already
+    exhausted.
+  why_it_simplifies: >
+    Reframing in terms of time rather than speed exposes the impossibility
+    instantly.
+
+related:
+  - two_trains_and_a_fly
+
+tags:
+  - harmonic mean
+  - average speed
+  - puzzle
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

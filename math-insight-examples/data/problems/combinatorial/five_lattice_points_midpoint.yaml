@@ -1,0 +1,69 @@
+id: five_lattice_points_midpoint
+
+title: Among Five Lattice Points, Two Have a Lattice Midpoint
+
+aliases:
+  - lattice midpoint pigeonhole
+  - five integer points midpoint
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+    original_title: Pigeonhole principle
+
+problem:
+  statement: >
+    Five points with integer coordinates are chosen in the plane. Show that
+    the midpoint of some pair of them also has integer coordinates.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: classify points by the parities of their coordinates
+  category: pigeonhole
+  summary: >
+    There are only four parity classes (even/odd, even/odd). Two of five
+    points share a class, and then both coordinate sums are even, so the
+    midpoint is a lattice point.
+
+intuitive_proof:
+  explanation: >
+    The midpoint of (a, b) and (c, d) is ((a + c)/2, (b + d)/2), which is a
+    lattice point iff a + c and b + d are both even, i.e. iff a, c have the
+    same parity and b, d have the same parity. Each point has a parity type
+    in {even, odd}^2, four types in all. Among five points two have the same
+    type, and their midpoint is a lattice point.
+
+reasoning_structure:
+  naive_approach: >
+    Consider possible positions of the five points and look for a geometric
+    reason.
+  crucial_observation: >
+    Only coordinate parities matter for the midpoint condition.
+  why_it_simplifies: >
+    Four boxes and five objects finish the proof; the same idea gives 2^d +
+    1 points in d dimensions.
+
+tags:
+  - pigeonhole
+  - parity
+  - lattice points
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

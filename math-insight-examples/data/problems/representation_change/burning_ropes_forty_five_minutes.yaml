@@ -1,0 +1,78 @@
+id: burning_ropes_forty_five_minutes
+
+title: Measuring 45 Minutes with Two Irregular Ropes
+
+aliases:
+  - burning rope puzzle
+  - two ropes 45 minutes
+  - fuse timing puzzle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Rope-burning_puzzle
+  original_title: Rope-burning puzzle
+  accessed: 2026-09-16
+  notes: Classic interview/puzzle-book problem.
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+
+problem:
+  statement: >
+    Two ropes each burn for exactly 60 minutes, but burn unevenly along
+    their lengths. Using only a lighter, measure exactly 45 minutes.
+  domain: combinatorics
+  answer: >
+    light rope A at both ends and rope B at one end; when A is consumed (30
+    min), light B's other end; B then burns out 15 minutes later
+
+key_idea:
+  name: a rope lit at both ends burns out in exactly half its time, whatever its unevenness
+  category: representation_change
+  summary: >
+    Lighting a rope at both ends creates two flames that together consume
+    it; at the moment they meet the whole rope has burned, and each flame
+    has burned for the same time, so the total is 30 minutes. This trick
+    halves any remaining burn time, giving 30 + 15 = 45.
+
+intuitive_proof:
+  explanation: >
+    If a 60-minute rope is lit at both ends, the two flames advance toward
+    each other and meet when the entire rope is consumed. Whatever the
+    unevenness, the sum of what the two flames burn is the whole rope, i.e.
+    60 minutes of burning, done at two flames simultaneously: 30 minutes.
+    Light rope A at both ends and rope B at one end at time 0. At 30 minutes
+    A is gone, and B has 30 minutes of burning left (from its lit end); now
+    light B's other end, and by the same argument the remainder burns out in
+    15 minutes. Total: 45 minutes.
+
+reasoning_structure:
+  naive_approach: >
+    Try to fold the rope or mark a quarter of its length, which fails
+    because the burn rate varies.
+  crucial_observation: >
+    Time, not length, is the conserved quantity, and two flames share the
+    remaining time equally.
+  why_it_simplifies: >
+    Reinterpreting the rope as a reservoir of burn-time rather than length
+    makes halving possible without any measurement.
+
+tags:
+  - representation change
+  - conservation
+  - timing puzzle
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With n ropes one can measure any multiple of 60/2^k minutes obtainable by
+  this halving.

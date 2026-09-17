@@ -1,0 +1,73 @@
+id: lattice_paths_binomial
+
+title: Lattice Paths Are Binomial Coefficients
+
+aliases:
+  - monotone lattice paths
+  - grid paths count C(m+n, n)
+  - paths as words in R and U
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Lattice_path
+  original_title: Lattice path (counting)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many paths lead from (0,0) to (m,n) using only unit steps to the
+    right and up?
+  domain: combinatorics
+  answer: C(m+n, n)
+
+key_idea:
+  name: a path is a word with m letters R and n letters U; choose the positions of the U's
+  category: bijection
+  summary: >
+    Each path is a sequence of m + n steps of which exactly n are 'up'.
+    Choosing which n of the m + n positions are up-steps determines the
+    path, and there are C(m+n, n) such choices.
+
+intuitive_proof:
+  explanation: >
+    Any such path consists of exactly m right-steps and n up-steps, in some
+    order, so it is a word of length m + n over {R, U} with n U's.
+    Conversely every such word is a path. The words are counted by choosing
+    the set of positions of the n U's: C(m+n, n).
+
+reasoning_structure:
+  naive_approach: >
+    Set up the recursion P(m, n) = P(m-1, n) + P(m, n-1) and solve it, or
+    count paths in small grids and guess.
+  crucial_observation: >
+    A geometric path is the same thing as a choice of a subset of positions.
+  why_it_simplifies: >
+    The bijection turns a recursion into a closed formula and makes many
+    binomial identities visible as path counts (e.g. Pascal's rule is 'last
+    step is R or U').
+
+related:
+  - ballot_theorem_reflection
+
+tags:
+  - bijection
+  - lattice paths
+  - binomial coefficients
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

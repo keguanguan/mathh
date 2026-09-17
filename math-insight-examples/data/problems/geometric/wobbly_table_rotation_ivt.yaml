@@ -1,0 +1,87 @@
+id: wobbly_table_rotation_ivt
+
+title: A Wobbly Four-Legged Table Can Be Stabilised by Rotating It
+
+aliases:
+  - wobbly table theorem
+  - four legs on uneven ground
+  - intermediate value theorem for tables
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Intermediate_value_theorem
+  original_title: "Intermediate value theorem (applications: the wobbly table)"
+  accessed: 2026-09-16
+  notes: >
+    Popularised by Martin Gardner and by a 2005 paper of Baritompa, Lowen,
+    Polster and Ross.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A square table with four equal legs stands on continuous but uneven
+    ground, and wobbles because only three legs touch. Show that rotating
+    the table about its centre (keeping the centre fixed and three legs on
+    the ground) reaches a position where all four legs touch.
+  domain: analysis
+  answer: proved (rotation by at most 90 degrees suffices)
+
+key_idea:
+  name: track the height of the hovering leg as the table rotates; after a quarter turn the roles of the legs swap and the height changes sign
+  category: continuous_deformation
+  summary: >
+    Rest three legs on the ground and let h(t) be the signed height of the
+    fourth leg above the ground at rotation angle t (negative if it would
+    have to go below ground). Rotating by 90 degrees brings the table into
+    the same set of positions with a different leg free, and one checks that
+    h(90) has the opposite sign to h(0). By continuity h vanishes at some
+    angle in between, where all four legs touch.
+
+intuitive_proof:
+  explanation: >
+    Label the legs A, B, C, D in order. Place legs B, C, D on the ground
+    (three points always determine a stable rest) and let h(t) be the height
+    of leg A above the ground at rotation angle t; h(0) > 0 (A hovers). Now
+    imagine instead resting A, B, C and letting D hang: by symmetry of the
+    square, rotating by 90 degrees moves the table so that D takes the old
+    position of A, and the configuration with D pressed to the ground forces
+    A to be pushed into the ground, i.e. h(90) < 0 in the convention where h
+    is the signed gap of the fourth leg. Since the ground and the motion are
+    continuous, h is continuous, so by the intermediate value theorem there
+    is an angle between 0 and 90 with h = 0, where all four legs touch.
+
+reasoning_structure:
+  naive_approach: >
+    Try to model the ground explicitly or argue that four points cannot
+    generally be coplanar on a surface.
+  crucial_observation: >
+    A one-parameter family of positions connects two configurations in which
+    the same quantity has opposite signs.
+  why_it_simplifies: >
+    The intermediate value theorem turns an intractable geometric problem
+    into a sign-change argument; rigour needs mild assumptions on the ground
+    (e.g. slopes at most 35 degrees).
+
+related:
+  - two_monks_mountain
+  - fixed_point_interval_ivt
+
+tags:
+  - intermediate value theorem
+  - continuity
+  - symmetry
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

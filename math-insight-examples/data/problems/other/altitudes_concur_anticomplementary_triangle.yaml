@@ -1,0 +1,90 @@
+id: altitudes_concur_anticomplementary_triangle
+
+title: The Altitudes of a Triangle Are Concurrent (via the Anticomplementary Triangle)
+
+aliases:
+  - orthocentre exists
+  - altitudes concurrent
+  - Gauss's proof of the orthocentre
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Altitude_%28triangle%29
+  original_title: Altitude (triangle) (orthocenter)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/triangle/altitudes.shtml
+    original_title: Altitudes
+    author: Alexander Bogomolny
+  - name: Coxeter & Greitzer - Geometry Revisited
+    notes: Section 1.2
+
+problem:
+  statement: >
+    Show that the three altitudes of a triangle pass through a common point.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: draw through each vertex the line parallel to the opposite side; the altitudes of the original triangle are the perpendicular bisectors of the larger triangle so formed
+  category: auxiliary_object
+  summary: >
+    Through A, B, C draw lines parallel to BC, CA, AB; they form a triangle
+    A'B'C' whose sides are bisected at A, B, C (each of the four small
+    triangles is congruent to ABC by the parallelogram structure). The
+    altitude from A is perpendicular to BC, hence to B'C', and passes
+    through the midpoint A of B'C': it is the perpendicular bisector of
+    B'C'. So the three altitudes are the three perpendicular bisectors of
+    A'B'C', which are known to concur.
+
+intuitive_proof:
+  explanation: >
+    Draw the line through A parallel to BC, through B parallel to CA, and
+    through C parallel to AB. They form a triangle A'B'C', with A' opposite
+    A and so on. The quadrilaterals ABCB' and ACBC' (for example) are
+    parallelograms, so B'A = BC = AC': A is the midpoint of B'C', and
+    similarly B and C are the midpoints of C'A' and A'B'. The altitude of
+    ABC from A is perpendicular to BC, and B'C' is parallel to BC, so this
+    altitude is perpendicular to B'C' at its midpoint A: it is the
+    perpendicular bisector of B'C'. Likewise the other two altitudes are the
+    perpendicular bisectors of C'A' and A'B'. The perpendicular bisectors of
+    a triangle concur (at its circumcentre), so the three altitudes pass
+    through one point, the orthocentre H of ABC, which is the circumcentre
+    of A'B'C'.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the altitudes in coordinates, or attempt to show directly that
+    two altitudes' intersection lies on the third by angle chasing.
+  crucial_observation: >
+    Scaling the triangle by a factor -2 about the centroid turns altitudes
+    into perpendicular bisectors, for which concurrency is already known.
+  why_it_simplifies: >
+    An auxiliary triangle converts an unfamiliar concurrency into a familiar
+    one; the construction also shows H is the circumcentre of the doubled
+    triangle, a step toward the Euler line.
+
+related:
+  - circumcentre_perpendicular_bisectors
+  - orthocentre_reflection_circumcircle
+  - euler_line_homothety
+
+tags:
+  - auxiliary object
+  - concurrency
+  - orthocentre
+  - perpendicular bisector
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

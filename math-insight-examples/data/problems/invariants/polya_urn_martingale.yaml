@@ -1,0 +1,76 @@
+id: polya_urn_martingale
+
+title: In Polya's Urn the Colour Proportions Never Drift
+
+aliases:
+  - Polya urn
+  - probability the n-th ball is red
+  - martingale of the red fraction
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/P%C3%B3lya_urn_model
+  original_title: Pólya urn model
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+
+problem:
+  statement: >
+    An urn holds r red and b black balls. Repeatedly draw a ball at random,
+    then return it together with another ball of the same colour. Show that
+    the probability that the n-th draw is red is r/(r + b) for every n.
+  domain: probability
+  answer: r/(r + b), independent of n
+
+key_idea:
+  name: the expected fraction of red balls is conserved by each step (it is a martingale), and the probability of a red draw equals that expected fraction
+  category: conservation_law
+  summary: >
+    If the red fraction is p before a draw, the expected red fraction after
+    the draw is again p: the two possible outcomes average out exactly. So
+    the expected fraction is conserved (a martingale), and the probability
+    that draw n is red equals the expected fraction before it, r/(r + b).
+
+intuitive_proof:
+  explanation: >
+    Let R_n and N_n be the number of red balls and the total before draw n,
+    and p_n = R_n / N_n. Given the state, draw n is red with probability
+    p_n. If red, p_{n+1} = (R_n + 1)/(N_n + 1); if black, p_{n+1} = R_n/(N_n
+    + 1). Hence E[p_{n+1} | state] = p_n (R_n + 1)/(N_n + 1) + (1 - p_n)
+    R_n/(N_n + 1) = (R_n + p_n)/(N_n + 1) = (R_n + R_n/N_n)/(N_n + 1) = R_n
+    (N_n + 1)/(N_n (N_n + 1)) = p_n. So E[p_n] = p_1 = r/(r + b) for all n,
+    and P(draw n is red) = E[p_n] = r/(r + b).
+
+reasoning_structure:
+  naive_approach: >
+    Compute the probability for n = 2, 3 by enumerating draw sequences,
+    notice the constant value, and try to prove it by an unwieldy induction.
+  crucial_observation: >
+    The red proportion is conserved in expectation by every reinforcement
+    step.
+  why_it_simplifies: >
+    A conserved expectation (martingale) answers a question about arbitrary
+    n without any enumeration; exchangeability gives a second one-idea
+    proof.
+
+tags:
+  - conservation law
+  - martingale
+  - probability
+  - urn model
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The draws are in fact exchangeable, and the limiting red fraction has a
+  Beta(r, b) distribution.

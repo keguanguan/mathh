@@ -1,0 +1,76 @@
+id: x2_y2_z2_2xyz_descent
+
+title: x^2 + y^2 + z^2 = 2xyz Has Only the Trivial Solution
+
+aliases:
+  - Markov-type equation descent
+  - sum of three squares equals twice product
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Proof_by_infinite_descent
+    original_title: Proof by infinite descent
+
+problem:
+  statement: >
+    Show that x^2 + y^2 + z^2 = 2xyz has no integer solutions other than x =
+    y = z = 0.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: parity forces all three variables even, and dividing by 2 gives a solution of the same shape with a larger power of 2 on the right
+  category: infinite_descent
+  summary: >
+    The right side is even, so an even number of x, y, z are odd; if two
+    were odd the left side would be 2 mod 4 while the right is 0 mod 4. So
+    all are even; dividing gives x'^2 + y'^2 + z'^2 = 4x'y'z', and
+    repeating, the variables are divisible by every power of 2, hence zero.
+
+intuitive_proof:
+  explanation: >
+    Look at the equation x^2 + y^2 + z^2 = 2^k xyz with k >= 1. The right
+    side is even, so among x, y, z an even number are odd. If exactly two
+    are odd, the left side is 1 + 1 + 0 = 2 mod 4 while the right side,
+    containing the even variable and the factor 2, is divisible by 4:
+    contradiction. So all three are even, x = 2x', etc., and dividing by 4
+    gives x'^2 + y'^2 + z'^2 = 2^{k+1} x'y'z'. Repeating, every power of 2
+    divides x, y and z, which forces x = y = z = 0.
+
+reasoning_structure:
+  naive_approach: >
+    Attempt to bound the variables or search for solutions numerically.
+  crucial_observation: >
+    Modulo 4 the equation forces all variables to be even, and the equation
+    reproduces itself with a bigger power of 2.
+  why_it_simplifies: >
+    Self-similarity under halving plus a residue argument is an instant
+    descent.
+
+related:
+  - no_solutions_x2_y2_3z2
+
+tags:
+  - infinite descent
+  - parity
+  - modular arithmetic
+  - Diophantine equation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

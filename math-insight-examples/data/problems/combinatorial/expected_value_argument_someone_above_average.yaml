@@ -1,0 +1,83 @@
+id: expected_value_argument_someone_above_average
+
+title: Some Element Is at Least the Average
+
+aliases:
+  - averaging principle
+  - pigeonhole for averages
+  - maximum is at least the mean
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+  original_title: Pigeonhole principle (generalizations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that among real numbers with average A, some number is at least A
+    and some is at most A; deduce that if 26 students solve a total of 100
+    problems, some student solved at least 4.
+  domain: combinatorics
+  answer: >
+    proved; some student solved at least ceiling(100/26) = 4 problems
+
+key_idea:
+  name: if every number were below the average, the sum would be below n times the average
+  category: pigeonhole
+  summary: >
+    If all x_i were less than A, then the sum of the x_i would be less than
+    nA, contradicting the definition of A. So the maximum is at least the
+    average, and for integers at least the ceiling of the average. With 100
+    problems among 26 students the average is 3.85, so someone solved at
+    least 4.
+
+intuitive_proof:
+  explanation: >
+    Let x_1, ..., x_n have sum S and average A = S/n. If x_i < A for every
+    i, then S = sum of x_i < nA = S, a contradiction; hence max x_i >= A.
+    Likewise min x_i <= A. When the x_i are integers, max x_i >= ceiling(A).
+    For 26 students and 100 problems, A = 100/26 = 3.85, so some student
+    solved at least 4 problems; by the same token some student solved at
+    most 3.
+
+reasoning_structure:
+  naive_approach: >
+    Try to distribute the problems as evenly as possible and argue about the
+    leftover, which is the same idea in disguise.
+  crucial_observation: >
+    The average is a weighted 'pigeonhole' bound: not everything can be
+    below it.
+  why_it_simplifies: >
+    The averaging form of the pigeonhole principle is the workhorse behind
+    many bounds (expected value arguments are its probabilistic version).
+
+related:
+  - circle_ten_numbers_three_consecutive
+  - bipartite_subgraph_half_edges
+
+tags:
+  - pigeonhole
+  - averaging
+  - expected value
+  - maximum
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  In probability language: a random variable is at least its expectation
+  with positive probability.

@@ -1,0 +1,77 @@
+id: tournament_king
+
+title: Every Tournament Has a King
+
+aliases:
+  - king chicken theorem
+  - Landau's theorem on kings
+  - player reaching everyone in two steps
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tournament_%28graph_theory%29
+  original_title: Tournament (graph theory) (kings)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 3, The Extremal Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    In a round-robin tournament (every pair plays once, no draws), show that
+    some player K beats every other player either directly or through an
+    intermediary: for each X, either K beat X or K beat someone who beat X.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: the player with the most wins is a king
+  category: extremal_principle
+  summary: >
+    Let K have the maximum number of wins. If some X beat K and also beat
+    everyone K beat, then X would have more wins than K (all of K's victims
+    plus K), contradicting maximality.
+
+intuitive_proof:
+  explanation: >
+    Choose K with the maximum number of wins, and let W be the set of
+    players K beat. Suppose some X is not reached: X beat K and X beat every
+    member of W. Then X's wins include all of W and also K, so X has at
+    least |W| + 1 wins, more than K. This contradicts the choice of K. Hence
+    every X is either in W or lost to someone in W.
+
+reasoning_structure:
+  naive_approach: >
+    Trace chains of victories through the tournament looking for a suitable
+    player.
+  crucial_observation: >
+    Maximality of the win count forbids anyone from dominating the
+    champion's victims.
+  why_it_simplifies: >
+    The extremal choice supplies the contradiction in one step; no structure
+    of the tournament is needed.
+
+related:
+  - tournament_hamiltonian_path
+
+tags:
+  - extremal principle
+  - tournament
+  - graph theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Landau (1953). A tournament can have several kings; a player who beats
+  everyone is the unique king.

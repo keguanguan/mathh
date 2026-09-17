@@ -1,0 +1,89 @@
+id: points_in_triangle_of_area_four
+
+title: Points with All Triangles of Area at Most 1 Lie in a Triangle of Area 4
+
+aliases:
+  - triangle of area 4 covering
+  - maximal-area triangle argument
+  - n points every three of which span area at most 1
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A classical competition problem (e.g. Putnam and various national olympiads).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Well-ordering_principle
+    original_title: Well-ordering principle
+    notes: General background on extremal arguments.
+
+problem:
+  statement: >
+    Finitely many points in the plane have the property that any three of
+    them form a triangle of area at most 1. Show that all the points lie
+    inside some triangle of area at most 4.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: take the triangle of maximum area among the points; the triangle with twice its sides contains everything
+  category: extremal_principle
+  summary: >
+    Let ABC be a maximum-area triangle with vertices among the points
+    (area <= 1). Draw through each vertex the line parallel to the
+    opposite side; they bound a triangle of area 4 * area(ABC) <= 4. Any
+    point P outside it would lie farther from some side of ABC than the
+    opposite vertex does, so a triangle with P and that side would have
+    larger area than ABC, contradicting maximality.
+
+intuitive_proof:
+  explanation: >
+    Among the finitely many triangles formed by the points choose one,
+    ABC, of maximum area; by hypothesis its area is at most 1. Through A,
+    B, C draw lines parallel to BC, CA, AB respectively. They form a
+    triangle T whose medial triangle is ABC, so T has four times the area
+    of ABC, at most 4. Suppose some given point P lies outside T, say on
+    the far side of the line through A parallel to BC. Then the distance
+    from P to line BC exceeds the distance from A to BC, so triangle PBC
+    has larger area than ABC, contradicting the choice of ABC. Hence all
+    points lie in T.
+
+reasoning_structure:
+  naive_approach: >
+    Try to bound the diameter of the point set, or to find a covering
+    triangle by taking the convex hull and analysing it.
+  crucial_observation: >
+    The extremal (largest) triangle cannot be beaten, and "cannot be
+    beaten" is exactly a statement that every point lies inside a strip
+    around each side.
+  why_it_simplifies: >
+    A single maximal object plus a parallel-lines picture yields the
+    covering triangle, with a constant (4) that emerges from the medial
+    triangle.
+
+related:
+  - non_crossing_red_blue_matching
+
+tags:
+  - extremal principle
+  - area
+  - covering
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Template: "the extremal object defines a region that everything else
+  must respect".

@@ -1,0 +1,80 @@
+id: am_hm_iteration_geometric_mean
+
+title: Iterating Arithmetic and Harmonic Means Converges to the Geometric Mean
+
+aliases:
+  - arithmetic-harmonic mean
+  - AM-HM iteration
+  - product is invariant under mean iteration
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Arithmetic%E2%80%93harmonic_mean
+  original_title: Arithmetic–harmonic mean
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 1, The Invariance Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Start with positive numbers a and b and repeatedly replace (a, b) by
+    their arithmetic and harmonic means ((a + b)/2, 2ab/(a + b)). Show the
+    two numbers converge to a common limit and find it.
+  domain: dynamical systems
+  answer: both converge to sqrt(ab), the geometric mean
+
+key_idea:
+  name: the product ab is invariant, while the gap closes
+  category: invariant
+  summary: >
+    The arithmetic mean times the harmonic mean is exactly ab, so the
+    product never changes. The larger number decreases and the smaller
+    increases at every step, and their difference at least halves, so they
+    converge to a common value L with L^2 = ab.
+
+intuitive_proof:
+  explanation: >
+    Compute ((a + b)/2) * (2ab/(a + b)) = ab: the product is invariant. By
+    the AM-GM-HM inequalities the new pair lies between the old numbers, so
+    the maximum is non-increasing, the minimum non-decreasing, and the new
+    difference is (a + b)/2 - 2ab/(a + b) = (a - b)^2/(2(a + b)) < |a - b|/2
+    (for a != b). Hence both sequences converge to the same limit L, and
+    passing to the limit in the invariant gives L^2 = ab, so L = sqrt(ab).
+
+reasoning_structure:
+  naive_approach: >
+    Compute iterates numerically, guess sqrt(ab), and attempt to prove it
+    with explicit formulas for the n-th iterate.
+  crucial_observation: >
+    One symmetric function of the pair (the product) is exactly preserved.
+  why_it_simplifies: >
+    The limit is read off from the invariant; only convergence, which
+    follows from squeezing, needs a separate word.
+
+related:
+  - candy_sharing_circle
+
+tags:
+  - invariant
+  - means
+  - convergence
+  - dynamical systems
+  - monovariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Gauss's arithmetic-geometric mean iteration has no such elementary
+  invariant, which is why its limit involves an elliptic integral.

@@ -1,0 +1,84 @@
+id: handshake_puzzle_hosts_spouse
+
+title: "The Handshake Puzzle: Every Guest Shook a Different Number of Hands"
+
+aliases:
+  - handshake puzzle
+  - couples party handshake
+  - how many hands did the hostess shake
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Handshaking_lemma
+  original_title: Handshaking lemma (the handshake puzzle)
+  accessed: 2026-09-16
+  notes: A classic; often attributed to Lars Bertil Owe or to Gardner.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    At a party of n couples (including the host and hostess), nobody shakes
+    hands with their own partner or with anyone twice. The host asks
+    everyone else how many hands they shook and receives 2n - 1 different
+    answers. How many hands did the hostess shake?
+  domain: combinatorics
+  answer: n - 1
+
+key_idea:
+  name: the answers must be 0, 1, ..., 2n - 2; the person who shook 2n - 2 hands is married to the person who shook 0, and removing that couple reduces n by one
+  category: extremal_principle
+  summary: >
+    The 2n - 1 distinct answers must be exactly 0, 1, ..., 2n - 2. The
+    person who shook 2n - 2 hands shook everyone's except their partner's,
+    so the person who answered 0 is their partner. Removing this couple
+    lowers every other count by one and leaves the same situation with n - 1
+    couples; induction gives the hostess n - 1 handshakes.
+
+intuitive_proof:
+  explanation: >
+    Each of the 2n - 1 people other than the host shook between 0 and 2n - 2
+    hands, and the answers are distinct, so they are exactly 0, 1, ..., 2n -
+    2. The person P with 2n - 2 shook hands with everyone except their own
+    partner, so everyone except P's partner shook at least one hand; hence
+    the person who answered 0 must be P's partner. Neither P nor P's partner
+    is the host (the host did not answer) nor the hostess (unless n = 1).
+    Remove this couple: every remaining guest loses exactly one handshake
+    (with P), so the remaining 2n - 3 answers are again all distinct, from 0
+    to 2n - 4, and the situation is the same with n - 1 couples. By
+    induction, after removing n - 1 couples only the host and hostess
+    remain, and the hostess has shaken exactly one hand per removed couple:
+    n - 1 hands.
+
+reasoning_structure:
+  naive_approach: >
+    Try small cases (n = 2, 3) by drawing handshake diagrams and guess the
+    pattern.
+  crucial_observation: >
+    The extreme answers 2n - 2 and 0 must belong to a couple, which peels
+    off one couple and reproduces the problem.
+  why_it_simplifies: >
+    An extremal pairing plus induction solves all n at once; the host's own
+    count is also n - 1.
+
+related:
+  - same_number_of_acquaintances
+
+tags:
+  - extremal principle
+  - induction
+  - graph theory
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

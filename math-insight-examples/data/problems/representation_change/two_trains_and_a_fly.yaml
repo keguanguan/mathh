@@ -1,0 +1,73 @@
+id: two_trains_and_a_fly
+
+title: The Fly Between Two Trains
+
+aliases:
+  - fly and two trains
+  - von Neumann's fly
+  - bee between two cyclists
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/John_von_Neumann
+  original_title: John von Neumann (anecdotes)
+  accessed: 2026-09-16
+  notes: >
+    Classic puzzle, famous for the anecdote that von Neumann summed the
+    series in his head.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    Two trains 100 km apart approach each other, each at 50 km/h. A fly
+    starts on one train, flies at 75 km/h to the other, turns back
+    instantly, and so on until the trains meet. How far does the fly fly?
+  domain: algebra
+  answer: 75 km
+
+key_idea:
+  name: "ignore the zigzags: the fly flies for exactly as long as the trains take to meet"
+  category: representation_change
+  summary: >
+    The trains close their 100 km gap at 100 km/h, meeting after 1 hour. The
+    fly flies at 75 km/h for that whole hour, so it covers 75 km, regardless
+    of how many times it turns.
+
+intuitive_proof:
+  explanation: >
+    The trains approach each other at a combined speed of 100 km/h, so they
+    meet after 100/100 = 1 hour. During this hour the fly is continuously
+    flying at 75 km/h. Distance = speed x time = 75 km. The infinite
+    sequence of legs (75, then shorter and shorter) forms a geometric series
+    whose sum is the same 75 km, but there is no need to compute it.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the length of each leg of the fly's journey and sum the
+    resulting geometric series.
+  crucial_observation: >
+    Total distance is speed times total time, and total time is set by the
+    trains alone.
+  why_it_simplifies: >
+    Re-describing the quantity (time instead of path) removes the infinite
+    process entirely.
+
+tags:
+  - representation change
+  - kinematics
+  - geometric series
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

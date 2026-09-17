@@ -1,0 +1,77 @@
+id: polynomial_difference_divisibility
+
+title: a - b Divides P(a) - P(b) for Integer Polynomials
+
+aliases:
+  - P(a) - P(b) divisible by a - b
+  - no integer polynomial with P(1)=2 and P(3)=5
+  - integer polynomial lemma
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Polynomial
+    original_title: Polynomial (divisibility properties)
+
+problem:
+  statement: >
+    Let P be a polynomial with integer coefficients. Show that a - b divides
+    P(a) - P(b) for all integers a, b. Deduce that there is no such
+    polynomial with P(1) = 2 and P(3) = 5.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: each monomial difference a^k - b^k has the factor a - b
+  category: factorisation
+  summary: >
+    P(a) - P(b) is a sum of terms c_k (a^k - b^k), and a^k - b^k = (a -
+    b)(a^{k-1} + ... + b^{k-1}). Hence a - b divides P(a) - P(b). For the
+    application, 3 - 1 = 2 would have to divide 5 - 2 = 3.
+
+intuitive_proof:
+  explanation: >
+    Write P(x) = sum of c_k x^k with integers c_k. Then P(a) - P(b) = sum of
+    c_k (a^k - b^k), and each a^k - b^k factors as (a - b)(a^{k-1} + a^{k-2}
+    b + ... + b^{k-1}) with an integer second factor. So a - b divides every
+    term and hence the sum. If P(1) = 2 and P(3) = 5, then 3 - 1 = 2 would
+    divide 5 - 2 = 3, which is false.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a polynomial through the given points by interpolation
+    and observe that the coefficients come out fractional, which does not
+    prove impossibility for all degrees.
+  crucial_observation: >
+    Differences of values are always multiples of the difference of
+    arguments, because of the factorisation of a^k - b^k.
+  why_it_simplifies: >
+    A universal divisibility relation rules out infinitely many candidate
+    polynomials at once; it is the basic tool for 'no integer polynomial
+    takes these values' problems.
+
+tags:
+  - factorisation
+  - polynomials
+  - divisibility
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Corollary: a non-constant integer polynomial cannot take prime values at
+  every integer, since P(a + kP(a)) is divisible by P(a).

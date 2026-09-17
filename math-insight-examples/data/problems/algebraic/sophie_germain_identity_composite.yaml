@@ -1,0 +1,76 @@
+id: sophie_germain_identity_composite
+
+title: n^4 + 4 Is Never Prime for n > 1 (Sophie Germain's Identity)
+
+aliases:
+  - Sophie Germain identity
+  - a^4 + 4b^4 factorisation
+  - n^4 + 4 composite
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sophie_Germain%27s_identity
+  original_title: Sophie Germain's identity
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that n^4 + 4 is composite for every integer n > 1.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: "complete the square: n^4 + 4 = (n^2 + 2)^2 - (2n)^2, a difference of two squares"
+  category: factorisation
+  summary: >
+    n^4 + 4 = (n^2 + 2)^2 - 4n^2 = (n^2 - 2n + 2)(n^2 + 2n + 2). For n > 1
+    both factors exceed 1, so the number is composite.
+
+intuitive_proof:
+  explanation: >
+    Add and subtract 4n^2: n^4 + 4 = n^4 + 4n^2 + 4 - 4n^2 = (n^2 + 2)^2 -
+    (2n)^2 = (n^2 + 2 - 2n)(n^2 + 2 + 2n). The smaller factor is (n - 1)^2 +
+    1 >= 2 for n >= 2, and the larger is bigger still, so n^4 + 4 has a
+    non-trivial factorisation. (In general a^4 + 4b^4 = (a^2 - 2ab +
+    2b^2)(a^2 + 2ab + 2b^2).)
+
+reasoning_structure:
+  naive_approach: >
+    Test values (5, 20, 85, 260, ...) and look for factors, or attempt to
+    argue mod small primes, which fails.
+  crucial_observation: >
+    A term added and subtracted turns a sum into a difference of squares,
+    which always factors.
+  why_it_simplifies: >
+    A single algebraic identity settles infinitely many primality questions
+    at once.
+
+related:
+  - difference_of_two_squares_representable
+  - mersenne_fermat_prime_shapes
+
+tags:
+  - factorisation
+  - primes
+  - algebraic identity
+  - completing the square
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Similarly n^4 + n^2 + 1 = (n^2 + n + 1)(n^2 - n + 1) is composite for n >
+  1.

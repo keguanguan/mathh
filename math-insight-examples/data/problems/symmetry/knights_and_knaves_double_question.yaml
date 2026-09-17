@@ -1,0 +1,78 @@
+id: knights_and_knaves_double_question
+
+title: "Two Guards, One Question: Compose a Truth-Teller with a Liar"
+
+aliases:
+  - two doors two guards riddle
+  - knights and knaves
+  - what would the other guard say
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Knights_and_Knaves
+  original_title: Knights and Knaves
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Smullyan - What Is the Name of This Book?
+    notes: Prentice-Hall, 1978
+
+problem:
+  statement: >
+    Two doors lead to freedom and to death; two guards know which is which,
+    one always lies and one always tells the truth, and you do not know who
+    is who. With one yes/no question to one guard, find the door to freedom.
+  domain: combinatorics
+  answer: >
+    ask either guard 'If I asked the other guard whether this door leads to
+    freedom, would he say yes?' and take the opposite of the answer
+
+key_idea:
+  name: routing the question through both guards composes one truth and one lie, so the answer is always the negation of the truth, regardless of whom you ask
+  category: symmetry
+  summary: >
+    Whichever guard you ask, the hypothetical answer passes through one liar
+    and one truth-teller: the truth-teller reports the liar's lie, and the
+    liar misreports the truth-teller's truth. Either way the reply is the
+    negation of the truth, so the opposite of the reply is reliable.
+
+intuitive_proof:
+  explanation: >
+    Let T be the truth of 'this door leads to freedom'. Ask guard A what
+    guard B would say. If A is the truth-teller, B is the liar and would say
+    not-T, and A reports this faithfully: not-T. If A is the liar, B is the
+    truth-teller and would say T, and A lies about it: not-T. In both cases
+    the answer is not-T, so you learn T by negating the answer. The
+    composition of a truth function and a negation is a negation whichever
+    order they come in.
+
+reasoning_structure:
+  naive_approach: >
+    Try questions such as 'does this door lead to freedom?', which give
+    unusable answers without knowing who lies.
+  crucial_observation: >
+    The unknown identity of the guards is symmetric, and composing the two
+    guards' behaviours yields a fixed, known distortion.
+  why_it_simplifies: >
+    Symmetrising over the unknown makes the answer independent of it: a
+    one-question protocol with no case analysis at use time.
+
+tags:
+  - symmetry
+  - logic puzzle
+  - composition
+  - negation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Equivalently ask 'would you say this door leads to freedom?': a liar lies
+  about his lie.

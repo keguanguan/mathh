@@ -1,0 +1,87 @@
+id: inversions_adjacent_swaps
+
+title: Sorting by Adjacent Swaps Takes Exactly as Many Moves as There Are Inversions
+
+aliases:
+  - inversions and bubble sort
+  - adjacent transpositions and inversion count
+  - bubble sort terminates
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inversion_%28discrete_mathematics%29
+  original_title: Inversion (discrete mathematics) (sorting)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 1, The Invariance Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    A sequence of distinct numbers is to be sorted by repeatedly swapping
+    two adjacent entries. Show that the minimum number of swaps needed
+    equals the number of inversions (pairs out of order), and that any
+    strategy that only swaps adjacent out-of-order pairs terminates after
+    exactly that many swaps.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: swapping two adjacent entries changes the number of inversions by exactly plus or minus one
+  category: monovariant
+  summary: >
+    An adjacent swap affects only the relative order of the two swapped
+    elements, so it changes the inversion count by exactly 1. Sorted means 0
+    inversions, so at least I swaps are needed from a sequence with I
+    inversions, and swapping an adjacent out-of-order pair reduces I by one
+    each time, so exactly I such swaps sort the sequence.
+
+intuitive_proof:
+  explanation: >
+    Let I be the number of pairs (i, j) with i < j and a_i > a_j. Swapping
+    adjacent entries a_k and a_{k+1} does not change the relative order of
+    any other pair, and changes the pair (a_k, a_{k+1}) from ordered to
+    inverted or vice versa; so I changes by exactly +-1. The sorted sequence
+    has I = 0, so any sorting sequence of adjacent swaps has length at least
+    I. If we only ever swap an adjacent inverted pair, I decreases by
+    exactly 1 per swap, and while I > 0 some adjacent pair is inverted (if
+    all adjacent pairs were in order the whole sequence would be sorted).
+    Hence such a process stops after exactly I swaps, which is optimal.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse bubble sort by tracking the largest element bubbling to the end,
+    which proves termination but not optimality.
+  crucial_observation: >
+    The inversion count is a monovariant that changes by exactly one per
+    adjacent swap.
+  why_it_simplifies: >
+    One quantity gives both the lower bound (it must reach 0) and the exact
+    behaviour of any greedy strategy.
+
+related:
+  - fifteen_puzzle
+  - rearrangement_inequality_swapping
+
+tags:
+  - monovariant
+  - inversions
+  - sorting
+  - permutations
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The parity of the inversion count is the sign of the permutation, the
+  invariant behind the 15 puzzle.

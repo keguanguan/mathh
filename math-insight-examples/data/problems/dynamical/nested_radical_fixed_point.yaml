@@ -1,0 +1,81 @@
+id: nested_radical_fixed_point
+
+title: The Nested Radical sqrt(2 + sqrt(2 + ...)) Equals 2
+
+aliases:
+  - infinite nested radical
+  - sqrt(2 + sqrt(2 + ...))
+  - fixed point of x -> sqrt(2 + x)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Nested_radical
+  original_title: Nested radical (infinitely nested radicals)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Define a_1 = sqrt 2 and a_{n+1} = sqrt(2 + a_n). Show that the sequence
+    converges and find its limit.
+  domain: dynamical systems
+  answer: "2"
+
+key_idea:
+  name: the sequence is increasing and bounded by 2, and the limit must be a fixed point of x -> sqrt(2 + x)
+  category: attracting_structure
+  summary: >
+    By induction a_n < 2 (since sqrt(2 + a_n) < sqrt 4 = 2) and a_n <
+    a_{n+1} (since a_n^2 < 2 + a_n when 0 < a_n < 2). A bounded increasing
+    sequence converges, to some L with L = sqrt(2 + L), so L^2 - L - 2 = 0
+    and L = 2.
+
+intuitive_proof:
+  explanation: >
+    If 0 < a_n < 2 then 2 < 2 + a_n < 4, so 0 < a_{n+1} < 2: the sequence
+    stays below 2. Also a_n < a_{n+1} iff a_n^2 < 2 + a_n iff (a_n - 2)(a_n
+    + 1) < 0, which holds for 0 < a_n < 2. An increasing sequence bounded
+    above converges to a limit L, and passing to the limit in a_{n+1} =
+    sqrt(2 + a_n) gives L = sqrt(2 + L). Hence L^2 = 2 + L, whose positive
+    root is L = 2. (Alternatively, a_n = 2 cos(pi / 2^{n+1}) by the
+    half-angle formula.)
+
+reasoning_structure:
+  naive_approach: >
+    Compute decimals 1.414, 1.848, 1.962, ... and guess 2; or write the
+    radical formally as x and solve x = sqrt(2 + x) without justifying
+    convergence.
+  crucial_observation: >
+    The iteration is monotone and trapped, so it converges, and the limit is
+    a fixed point of the map, which is a solvable equation.
+  why_it_simplifies: >
+    Separating 'converges' (monotone and bounded) from 'to what'
+    (fixed-point equation) makes the whole analysis two lines.
+
+related:
+  - am_hm_iteration_geometric_mean
+
+tags:
+  - fixed point
+  - monotone convergence
+  - iteration
+  - nested radical
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The map x -> sqrt(2 + x) is a contraction near 2 with derivative 1/4,
+  which explains the fast convergence.

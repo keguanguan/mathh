@@ -1,0 +1,87 @@
+id: burnside_necklaces_prime_beads
+
+title: Counting Necklaces with Burnside's Lemma
+
+aliases:
+  - Burnside's lemma
+  - necklace counting
+  - orbit counting lemma
+  - (a^p + (p-1)a)/p necklaces
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Burnside%27s_lemma
+  original_title: Burnside's lemma (example application)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on counting orbits / Fermat via necklaces
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    How many necklaces of p beads (p prime) can be made with a colours,
+    counting two necklaces as the same when one is a rotation of the other?
+  domain: combinatorics
+  answer: (a^p + (p - 1)a)/p
+
+key_idea:
+  name: "count pairs (rotation, colouring fixed by it): the identity fixes all a^p colourings and each of the p - 1 nontrivial rotations fixes only the a constant colourings; orbits = fixed points averaged over the group"
+  category: double_counting
+  summary: >
+    Burnside's lemma says the number of orbits equals the average number of
+    colourings fixed by a group element. The identity rotation fixes a^p
+    colourings. A rotation by k != 0 positions, p prime, has a single cycle,
+    so it fixes only the a monochromatic colourings. Hence the number of
+    necklaces is (a^p + (p - 1)a)/p.
+
+intuitive_proof:
+  explanation: >
+    Count pairs (g, c) with g a rotation and c a colouring fixed by g in two
+    ways. Grouping by colourings, each colouring c contributes |stabiliser
+    of c| pairs, and by the orbit-stabiliser theorem the colourings in one
+    orbit contribute |G| = p in total; so the number of pairs is p times the
+    number of orbits. Grouping by rotations: the identity fixes all a^p
+    colourings; a rotation by k with 0 < k < p permutes the p positions in a
+    single cycle (as p is prime), so a fixed colouring must be constant,
+    giving a fixed colourings each. Hence p * (number of necklaces) = a^p +
+    (p - 1)a. In particular p divides a^p - a: Fermat's little theorem
+    again.
+
+reasoning_structure:
+  naive_approach: >
+    List colourings and identify rotations by hand, which becomes hopeless
+    quickly.
+  crucial_observation: >
+    Orbits can be counted by averaging fixed points over the group, and
+    fixed points of rotations are easy to count.
+  why_it_simplifies: >
+    The double count (pairs of group elements and fixed colourings) is the
+    whole content of Burnside's lemma, and it turns a symmetry-quotient
+    count into a short sum.
+
+related:
+  - fermat_little_theorem_necklaces
+
+tags:
+  - double counting
+  - Burnside's lemma
+  - group action
+  - necklaces
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  For composite n the fixed points of a rotation by k are the colourings
+  with period gcd(k, n), giving the general necklace formula (1/n) sum of
+  phi(d) a^{n/d}.

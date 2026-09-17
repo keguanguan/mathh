@@ -1,0 +1,89 @@
+id: sock_drawer_probability_mosteller
+
+title: "The Sock Drawer: Two Red Socks with Probability Exactly 1/2"
+
+aliases:
+  - sock drawer problem
+  - Mosteller's sock problem
+  - probability of two red socks is one half
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pell%27s_equation
+  original_title: Pell's equation (example)
+  accessed: 2026-09-16
+  notes: >
+    The problem is Problem 1 of Mosteller's Fifty Challenging Problems in
+    Probability; the Wikipedia page covers the Pell equation used in the
+    solution.
+
+additional_sources:
+  - name: Mosteller - Fifty Challenging Problems in Probability with Solutions
+    notes: Dover, 1987, Problem 1
+
+problem:
+  statement: >
+    A drawer contains red and black socks. Two socks drawn at random are
+    both red with probability exactly 1/2. What is the smallest possible
+    number of socks in the drawer? And if the number of black socks is even?
+  domain: probability / number theory
+  answer: >
+    4 socks (3 red, 1 black); with an even number of black socks the
+    smallest is 21 (15 red, 6 black)
+
+key_idea:
+  name: the condition r(r - 1)/(n(n - 1)) = 1/2 says r/n is slightly above 1/sqrt 2, and it is a Pell-type equation whose solutions grow geometrically
+  category: algebraic_encoding
+  summary: >
+    With r red socks among n, the condition r(r - 1)/(n(n - 1)) = 1/2 puts
+    r/n just above 1/sqrt 2; r = 3, n = 4 works. Substituting x = 2n - 1, y
+    = 2r - 1 gives the Pell equation x^2 - 2y^2 = -1, whose solutions yield
+    (r, n) = (3, 4), (15, 21), (85, 120), ...; the black count is first even
+    at n = 21.
+
+intuitive_proof:
+  explanation: >
+    Let there be r red socks among n. Two random socks are both red with
+    probability r(r - 1)/(n(n - 1)), so the condition is 2r(r - 1) = n(n -
+    1). Since the two factors r/n and (r - 1)/(n - 1) multiply to 1/2 and
+    the second is smaller, r/n > 1/sqrt 2 > (r - 1)/(n - 1), which pins r
+    down to within one unit for each n. Trying small n: n = 4 requires r/4 >
+    0.707, so r = 3, and indeed 3 * 2 = 6 = (4 * 3)/2. Substituting x = 2n -
+    1, y = 2r - 1 turns the equation into x^2 - 2y^2 = -1, a negative Pell
+    equation whose solutions come from powers of 1 + sqrt 2: (x, y) = (1,
+    1), (7, 5), (41, 29), (239, 169), ..., i.e. (n, r) = (1, 1), (4, 3),
+    (21, 15), (120, 85). The black counts n - r are 0, 1, 6, 35; the first
+    even one is 6, with 21 socks in total.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate drawer contents haphazardly, or assume the answer must involve
+    equal numbers of red and black socks.
+  crucial_observation: >
+    Encoding the probability condition as a Diophantine equation, and
+    noticing it is a Pell equation, gives all solutions at once.
+  why_it_simplifies: >
+    An algebraic encoding replaces trial and error by the theory of a
+    classical equation; the sqrt 2 bound explains why solutions are so
+    sparse.
+
+related:
+  - pell_equation_infinitely_many_solutions
+
+tags:
+  - algebraic encoding
+  - probability
+  - Pell equation
+  - Diophantine equation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

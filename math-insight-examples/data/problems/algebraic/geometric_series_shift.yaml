@@ -1,0 +1,73 @@
+id: geometric_series_shift
+
+title: Summing a Geometric Series by Shifting
+
+aliases:
+  - geometric series formula
+  - S - rS trick
+  - 1 + r + ... + r^n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Geometric_series
+  original_title: Geometric series (derivation of the sum)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Find a closed form for S = 1 + r + r^2 + ... + r^n.
+  domain: algebra
+  answer: (r^{n+1} - 1)/(r - 1) for r != 1
+
+key_idea:
+  name: "multiply the sum by r and subtract: almost everything cancels"
+  category: telescoping
+  summary: >
+    rS = r + r^2 + ... + r^{n+1}. Subtracting S from rS cancels all the
+    middle terms, leaving rS - S = r^{n+1} - 1.
+
+intuitive_proof:
+  explanation: >
+    Write S = 1 + r + ... + r^n and rS = r + r^2 + ... + r^{n+1}. The two
+    sums share the terms r, r^2, ..., r^n. Subtracting, rS - S = r^{n+1} -
+    1, so S (r - 1) = r^{n+1} - 1 and S = (r^{n+1} - 1)/(r - 1) when r != 1.
+    For |r| < 1, letting n grow gives the infinite sum 1/(1 - r).
+
+reasoning_structure:
+  naive_approach: >
+    Guess the formula from small cases and prove it by induction.
+  crucial_observation: >
+    The series is almost invariant under multiplication by r; the difference
+    between S and rS is two terms.
+  why_it_simplifies: >
+    A self-similarity of the sum reduces it to a single subtraction; the
+    same shift trick sums arithmetico-geometric series and evaluates
+    generating functions.
+
+related:
+  - telescoping_reciprocal_products
+  - gauss_pairing_sum
+
+tags:
+  - telescoping
+  - geometric series
+  - self-similarity
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

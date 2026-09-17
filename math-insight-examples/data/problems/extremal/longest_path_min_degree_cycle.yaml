@@ -1,0 +1,76 @@
+id: longest_path_min_degree_cycle
+
+title: A Graph with All Degrees at Least 2 Contains a Cycle
+
+aliases:
+  - longest path argument
+  - minimum degree two implies a cycle
+  - every tree has a leaf
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Cycle_%28graph_theory%29
+    original_title: Cycle (graph theory)
+
+problem:
+  statement: >
+    Every vertex of a finite graph has degree at least 2. Show that the
+    graph contains a cycle. Equivalently, every finite tree with at least
+    two vertices has a leaf.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: look at a longest path; its endpoint's other neighbours must lie on the path
+  category: extremal_principle
+  summary: >
+    Take a path of maximum length with endpoint v. Since v has degree at
+    least 2 it has a neighbour other than its predecessor; that neighbour
+    cannot extend the path, so it lies on the path, closing a cycle.
+
+intuitive_proof:
+  explanation: >
+    Let P = v_0 v_1 ... v_k be a longest path in the graph. The endpoint v_0
+    has degree at least 2, so it has a neighbour u other than v_1. If u were
+    not on P, then u v_0 v_1 ... v_k would be a longer path, contradicting
+    maximality. So u = v_i for some i >= 2, and v_0 v_1 ... v_i v_0 is a
+    cycle. For trees: a tree has no cycle, so some vertex has degree at most
+    1, i.e. a leaf.
+
+reasoning_structure:
+  naive_approach: >
+    Walk from a vertex without repeating edges and argue you must eventually
+    return, which needs care to make rigorous.
+  crucial_observation: >
+    An endpoint of a longest path cannot have neighbours outside the path.
+  why_it_simplifies: >
+    Maximality delivers the cycle immediately; the longest-path trick is
+    reusable in many graph arguments.
+
+related:
+  - tournament_hamiltonian_path
+
+tags:
+  - extremal principle
+  - longest path
+  - graph theory
+  - trees
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,72 @@
+id: five_points_sphere_hemisphere
+
+title: Five Points on a Sphere, Four in a Closed Hemisphere
+
+aliases:
+  - Putnam 2002 A2
+  - four of five points in a hemisphere
+
+source:
+  name: William Lowell Putnam Competition
+  url: https://kskedlaya.org/putnam-archive/
+  original_title: Putnam 2002 A2
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+    original_title: Pigeonhole principle
+
+problem:
+  statement: >
+    Five points lie on a sphere. Show that some closed hemisphere contains
+    at least four of them.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: take the great circle through two of the points; the other three split between the two hemispheres it bounds
+  category: pigeonhole
+  summary: >
+    Any two of the points lie on a great circle, which bounds two closed
+    hemispheres, both containing those two points. The remaining three
+    points are divided between the hemispheres, so one hemisphere gets at
+    least two of them, hence at least four points in total.
+
+intuitive_proof:
+  explanation: >
+    Choose two of the five points, P and Q, and a great circle through both
+    (any two points of a sphere lie on some great circle). The circle splits
+    the sphere into two closed hemispheres, each containing P and Q. The
+    other three points lie in one or the other (a point on the circle lies
+    in both), so by pigeonhole one hemisphere contains at least two of them.
+    That hemisphere contains at least 2 + 2 = 4 points.
+
+reasoning_structure:
+  naive_approach: >
+    Try to place five points as spread out as possible and argue by symmetry
+    or by continuity of a rotating hemisphere.
+  crucial_observation: >
+    Forcing the boundary through two points guarantees them in both halves,
+    leaving only three to split.
+  why_it_simplifies: >
+    A clever choice of the dividing circle turns the problem into 3 objects,
+    2 boxes.
+
+tags:
+  - pigeonhole
+  - sphere
+  - combinatorial geometry
+  - Putnam
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

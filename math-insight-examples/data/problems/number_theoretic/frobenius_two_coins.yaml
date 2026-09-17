@@ -1,0 +1,83 @@
+id: frobenius_two_coins
+
+title: The Largest Amount Not Payable with Two Coin Denominations
+
+aliases:
+  - Frobenius coin problem
+  - Chicken McNugget theorem
+  - Sylvester's formula ab - a - b
+  - postage stamp problem
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Coin_problem
+  original_title: Coin problem
+  accessed: 2026-09-16
+  notes: The two-denomination formula is due to J. J. Sylvester (1882).
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 6, Number Theory.
+
+problem:
+  statement: >
+    Coins of two coprime denominations a and b are available in unlimited
+    supply. Show that every amount larger than ab - a - b can be paid
+    exactly, while ab - a - b itself cannot.
+  domain: number theory
+  answer: the largest non-payable amount is ab - a - b
+
+key_idea:
+  name: sort amounts by their residue mod a; in each residue class the payable amounts are an arithmetic progression starting at the smallest multiple of b in that class
+  category: number_theoretic_structure
+  summary: >
+    Since gcd(a, b) = 1, the multiples 0, b, 2b, ..., (a-1)b hit every
+    residue mod a exactly once. An amount n is payable iff n >= kb where
+    kb is the multiple of b in n's residue class (then n = kb + (multiple
+    of a)). The worst class is the one containing (a-1)b, so the largest
+    non-payable amount is (a-1)b - a = ab - a - b.
+
+intuitive_proof:
+  explanation: >
+    Fix a residue r mod a. Among 0, b, ..., (a-1)b exactly one, say kb, is
+    congruent to r mod a, because b is invertible mod a. Any n = r mod a
+    with n >= kb can be written as kb + ma with m >= 0, so it is payable;
+    and any n = r mod a with n < kb is not: a representation xb + ya with
+    x, y >= 0 would force xb = r mod a, hence x = k mod a, hence x >= k
+    and n >= kb. So in each class the non-payable amounts are exactly
+    those below kb. The largest of all non-payable amounts is therefore the
+    largest kb minus a, namely (a-1)b - a = ab - a - b.
+
+reasoning_structure:
+  naive_approach: >
+    List payable amounts for small a, b, spot the pattern ab - a - b and
+    try to prove it by manipulating the equation xa + yb = n directly.
+  crucial_observation: >
+    Modulo a, the coin b generates every residue exactly once, and within
+    a residue class payability is monotone.
+  why_it_simplifies: >
+    The problem splits into a independent one-dimensional problems, each
+    solved by naming its threshold; the formula falls out of the largest
+    threshold.
+
+tags:
+  - number theory
+  - residues
+  - Frobenius number
+  - Diophantine
+  - structure of residue classes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same residue-class picture shows that exactly (a-1)(b-1)/2 positive
+  amounts are non-payable (Sylvester). For three or more denominations no
+  closed formula exists.

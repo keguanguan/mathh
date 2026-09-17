@@ -1,0 +1,78 @@
+id: base_rate_natural_frequencies
+
+title: Medical Tests and Base Rates via Natural Frequencies
+
+aliases:
+  - base rate fallacy
+  - false positive paradox
+  - Bayes' theorem with natural frequencies
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Base_rate_fallacy
+  original_title: Base rate fallacy (example)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gigerenzer - Calculated Risks
+    notes: Simon & Schuster, 2002
+
+problem:
+  statement: >
+    A disease affects 1 in 1000 people. A test detects it with probability
+    99% and gives a false positive with probability 5%. A random person
+    tests positive. What is the probability they have the disease?
+  domain: probability
+  answer: about 1.9%
+
+key_idea:
+  name: "imagine 100,000 people: 100 are ill and about 99 of them test positive, while about 4995 of the 99,900 healthy people also test positive; the ill are a small minority of the positives"
+  category: representation_change
+  summary: >
+    Out of 100,000 people, 100 have the disease and 99 of them test
+    positive. The remaining 99,900 are healthy and 5% of them, 4995, test
+    positive too. Among the 5094 positives only 99 are ill: 99/5094, about
+    1.9%. Bayes' theorem in disguise, but the counts make the base rate
+    visible.
+
+intuitive_proof:
+  explanation: >
+    Take a population of 100,000. Ill: 100, of whom 0.99 * 100 = 99 test
+    positive. Healthy: 99,900, of whom 0.05 * 99,900 = 4995 test positive.
+    Total positives: 5094. The conditional probability of being ill given a
+    positive test is 99/5094 = 0.0194. In symbolic form this is Bayes'
+    theorem P(ill | +) = P(+ | ill) P(ill)/(P(+ | ill) P(ill) + P(+ |
+    healthy) P(healthy)) = 0.99 * 0.001/(0.99 * 0.001 + 0.05 * 0.999).
+
+reasoning_structure:
+  naive_approach: >
+    Answer 99% or 95% by confusing P(positive | ill) with P(ill | positive).
+  crucial_observation: >
+    Conditional probabilities become ratios of head counts once the problem
+    is stated for a concrete population, and the large healthy population
+    dominates the positives.
+  why_it_simplifies: >
+    Changing the representation from percentages to natural frequencies
+    makes the correct computation, and its surprising answer, obvious.
+
+related:
+  - boy_or_girl_sample_space
+  - monty_hall_switch
+
+tags:
+  - representation change
+  - Bayes' theorem
+  - conditional probability
+  - base rate
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

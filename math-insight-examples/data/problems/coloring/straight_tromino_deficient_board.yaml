@@ -1,0 +1,88 @@
+id: straight_tromino_deficient_board
+
+title: Which Square Can Be Removed So Straight Trominoes Tile the 8x8 Board?
+
+aliases:
+  - straight tromino tiling of a deficient chessboard
+  - 1x3 tiles on 8x8 minus one square
+  - Golomb straight tromino
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tromino
+  original_title: Tromino (straight tromino tilings)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/TrominoPuzzle.shtml
+    original_title: "Tromino Puzzle: Interactive Illustration of Golomb's Theorem"
+    author: Alexander Bogomolny
+  - name: Golomb - Polyominoes
+    notes: Princeton University Press, 1994
+
+problem:
+  statement: >
+    One square is removed from an 8x8 board. For which removed squares can
+    the remaining 63 squares be tiled by straight trominoes (1x3 tiles)?
+  domain: tiling
+  answer: >
+    only the four squares (3,3), (3,6), (6,3), (6,6) (rows and columns
+    numbered 1 to 8)
+
+key_idea:
+  name: two diagonal three-colourings force the removed square to lie in the least-used colour class of both
+  category: coloring_invariant
+  summary: >
+    Colour cell (i, j) with (i + j) mod 3. Every straight tromino covers one
+    cell of each colour, and the colour counts are 21, 21, 22. So the
+    removed cell must have the colour with 22 cells. Colouring by (i - j)
+    mod 3 gives a second condition. Only four cells satisfy both, and for
+    those explicit tilings exist.
+
+intuitive_proof:
+  explanation: >
+    With colour (i + j) mod 3, three consecutive cells in a row or column
+    have three different colours, so any tiling by 21 trominoes covers 21
+    cells of each colour. The 8x8 board has 22 cells of one colour and 21 of
+    the other two, so the removed cell must be of the majority colour.
+    Repeat with the colouring (i - j) mod 3, which gives a different
+    majority class. The intersection of the two majority classes consists of
+    exactly the cells (3,3), (3,6), (6,3), (6,6); for each of these a tiling
+    is easily drawn. The colouring argument is necessary; the explicit
+    tiling makes it sufficient.
+
+reasoning_structure:
+  naive_approach: >
+    Try tiling the board with different squares removed and record which
+    succeed; there are 64 cases and failures are hard to certify.
+  crucial_observation: >
+    A tile that always covers one cell of each of three colours forces a
+    counting condition on the hole, and two independent colourings pin down
+    its location.
+  why_it_simplifies: >
+    Sixty cases are excluded by two colour counts; the remaining four need
+    only a picture.
+
+related:
+  - l_tromino_deficient_board
+  - straight_tetromino_10x10
+  - t_tetromino_10x10
+
+tags:
+  - coloring
+  - tiling
+  - modular arithmetic
+  - polyomino
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

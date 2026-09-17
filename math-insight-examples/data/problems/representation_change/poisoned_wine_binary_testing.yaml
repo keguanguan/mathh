@@ -1,0 +1,81 @@
+id: poisoned_wine_binary_testing
+
+title: Finding the Poisoned Bottle among 1000 with 10 Testers
+
+aliases:
+  - poisoned wine puzzle
+  - 1000 bottles 10 rats
+  - binary group testing
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Group_testing
+  original_title: Group testing (examples)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+
+problem:
+  statement: >
+    One of 1000 bottles is poisoned; the poison acts after exactly 24 hours.
+    Ten test animals are available and one day of time. How can the poisoned
+    bottle be identified?
+  domain: combinatorics
+  answer: >
+    number the bottles 0..999 in binary; animal i drinks from every bottle
+    whose i-th bit is 1; the set of animals that die spells out the bottle's
+    number
+
+key_idea:
+  name: each animal reads one binary digit of the bottle's number
+  category: algebraic_encoding
+  summary: >
+    Write each bottle's number in 10 binary digits (1000 <= 2^10). Give
+    animal i a sip from every bottle whose i-th digit is 1. After a day, the
+    pattern of dead animals is exactly the binary representation of the
+    poisoned bottle's number.
+
+intuitive_proof:
+  explanation: >
+    Label the bottles 0 to 999 and write each label as a 10-bit binary
+    string. Animal i (i = 1..10) drinks a mixture of all bottles whose i-th
+    bit is 1. Only the poisoned bottle's contents kill, so animal i dies iff
+    the i-th bit of the poisoned label is 1. Reading off the dead/alive
+    pattern as a binary number identifies the bottle. Ten animals
+    distinguish 2^10 = 1024 >= 1000 possibilities, and fewer cannot: nine
+    animals produce only 512 outcomes.
+
+reasoning_structure:
+  naive_approach: >
+    Test bottles in groups of 100 with each animal, which identifies only
+    the group, or serial testing, which needs more days.
+  crucial_observation: >
+    Mixing samples lets one animal test a whole subset, and subsets chosen
+    by binary digits make the outcomes decode the label.
+  why_it_simplifies: >
+    A representation change (bottle labels as bit strings) turns a search
+    over 1000 items into 10 parallel yes/no questions, the
+    information-theoretic optimum.
+
+related:
+  - bachet_weights_balanced_ternary
+  - twelve_coins_information_bound
+
+tags:
+  - binary encoding
+  - information
+  - group testing
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,80 @@
+id: three_utilities_problem_nonplanar
+
+title: "The Three Utilities Problem: K_{3,3} Is Not Planar"
+
+aliases:
+  - three utilities problem
+  - water gas electricity puzzle
+  - K3,3 nonplanar
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Three_utilities_problem
+  original_title: Three utilities problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Three houses must each be connected to three utilities (water, gas,
+    electricity) by lines in the plane that do not cross. Show that this is
+    impossible.
+  domain: graph theory
+  answer: impossible
+
+key_idea:
+  name: Euler's formula plus the fact that every face of a bipartite plane graph has at least 4 edges
+  category: double_counting
+  summary: >
+    A planar drawing of K_{3,3} would have V = 6, E = 9, hence F = 2 - 6 + 9
+    = 5 faces by Euler. K_{3,3} is bipartite, so it has no triangles and
+    every face is bounded by at least 4 edges; counting edge-face
+    incidences, 4F <= 2E, i.e. 20 <= 18. Contradiction.
+
+intuitive_proof:
+  explanation: >
+    Suppose the nine connections are drawn without crossings. The drawing is
+    a connected planar graph with V = 6 vertices and E = 9 edges, so by
+    Euler's formula it has F = 2 - V + E = 5 faces. Because houses are
+    joined only to utilities, every cycle has even length, so every face
+    boundary has at least 4 edges. Each edge borders at most 2 faces, so 4F
+    <= 2E, i.e. 20 <= 18, which is false.
+
+reasoning_structure:
+  naive_approach: >
+    Try to draw the connections, repeatedly failing to place the ninth line,
+    without a proof that it cannot be done.
+  crucial_observation: >
+    A face count from Euler's formula conflicts with the minimum face size
+    forced by bipartiteness.
+  why_it_simplifies: >
+    Two counts settle an impossibility that no amount of drawing can;
+    K_{3,3} and K_5 are the two obstructions to planarity (Kuratowski).
+
+related:
+  - planar_graph_edge_bound
+  - euler_formula_planar
+
+tags:
+  - double counting
+  - Euler's formula
+  - planar graphs
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  On a torus the puzzle can be solved.

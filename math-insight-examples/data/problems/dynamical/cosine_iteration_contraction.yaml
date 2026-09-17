@@ -1,0 +1,82 @@
+id: cosine_iteration_contraction
+
+title: Iterating the Cosine Converges from Any Start
+
+aliases:
+  - cosine fixed point
+  - Dottie number
+  - contraction mapping on an interval
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dottie_number
+  original_title: Dottie number
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Banach_fixed-point_theorem
+    original_title: Banach fixed-point theorem
+
+problem:
+  statement: >
+    Starting from any real number and pressing the cosine button repeatedly
+    on a calculator (in radians), show that the display converges to the
+    same number, about 0.739.
+  domain: dynamical systems
+  answer: >
+    converges to the unique solution of cos x = x, approximately 0.7391
+
+key_idea:
+  name: after one step the values lie in [-1, 1], where |cos'(x)| = |sin x| <= sin 1 < 1, so cosine is a contraction there
+  category: attracting_structure
+  summary: >
+    After the first step all iterates lie in [-1, 1], and on that interval
+    the derivative of cosine is bounded by sin 1 = 0.84 < 1. By the mean
+    value theorem consecutive differences shrink by at least this factor, so
+    the sequence is Cauchy and converges to a fixed point, which is unique
+    for the same reason.
+
+intuitive_proof:
+  explanation: >
+    Let x_1 = cos x_0; then x_1 and all later iterates lie in [-1, 1]. For
+    x, y in [-1, 1] the mean value theorem gives |cos x - cos y| = |sin c|
+    |x - y| <= (sin 1) |x - y| with sin 1 = 0.841 < 1. Hence |x_{n+1} - x_n|
+    <= (sin 1)^{n-1} |x_2 - x_1|, the sequence is Cauchy, and it converges
+    to some L; continuity gives cos L = L. If two fixed points existed their
+    distance would be strictly contracted by cosine yet fixed, so the fixed
+    point is unique. Thus every starting value leads to the same limit.
+
+reasoning_structure:
+  naive_approach: >
+    Experiment on a calculator and observe convergence, without knowing why
+    it must happen or why the limit is independent of the start.
+  crucial_observation: >
+    A map that shrinks distances by a fixed factor on an interval it maps
+    into itself has a unique attracting fixed point.
+  why_it_simplifies: >
+    One derivative bound gives convergence, uniqueness and the rate at once
+    (the contraction mapping principle).
+
+related:
+  - nested_radical_fixed_point
+
+tags:
+  - contraction mapping
+  - fixed point
+  - iteration
+  - convergence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The Dottie number is transcendental, but nothing about its value is needed
+  for the convergence.

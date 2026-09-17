@@ -1,0 +1,74 @@
+id: regular_bipartite_equal_sides
+
+title: A Regular Bipartite Graph Has Equally Many Vertices on Each Side
+
+aliases:
+  - dance problem
+  - boys and girls each danced with k partners
+  - k-regular bipartite graph
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter on graph theory / double counting
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Bipartite_graph
+    original_title: Bipartite graph (properties)
+
+problem:
+  statement: >
+    At a dance every boy danced with exactly k girls and every girl with
+    exactly k boys. Show that the numbers of boys and girls are equal.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: count the dancing pairs from the boys' side and from the girls' side
+  category: double_counting
+  summary: >
+    Each of the b boys accounts for k pairs, so there are bk pairs; each of
+    the g girls also accounts for k, so there are gk pairs. Hence bk = gk
+    and b = g.
+
+intuitive_proof:
+  explanation: >
+    Let there be b boys and g girls and count the (boy, girl) pairs who
+    danced together. Summing over boys gives k per boy, bk pairs in total.
+    Summing over girls gives k per girl, gk in total. The same set was
+    counted twice, so bk = gk, and since k > 0, b = g. More generally, if
+    boys danced with k partners each and girls with m each, then bk = gm.
+
+reasoning_structure:
+  naive_approach: >
+    Try to pair boys with girls explicitly (a matching), which exists but
+    requires Hall's theorem.
+  crucial_observation: >
+    A set of incidences counted from either side gives a product of a size
+    and a degree.
+  why_it_simplifies: >
+    The most basic double count settles the question with no matching
+    theory.
+
+related:
+  - handshake_lemma
+
+tags:
+  - double counting
+  - bipartite graph
+  - regular graph
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

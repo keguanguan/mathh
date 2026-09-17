@@ -1,0 +1,80 @@
+id: n_does_not_divide_2n_minus_1
+
+title: No Integer n > 1 Divides 2^n - 1
+
+aliases:
+  - n divides 2^n - 1 impossible
+  - smallest prime factor argument
+  - order argument
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Multiplicative_order
+    original_title: Multiplicative order (properties)
+
+problem:
+  statement: >
+    Show that there is no integer n > 1 such that n divides 2^n - 1.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: take the smallest prime factor p of n; the order of 2 modulo p divides both n and p - 1, hence divides gcd(n, p - 1) = 1
+  category: extremal_principle
+  summary: >
+    If n | 2^n - 1 then n is odd. Let p be its smallest prime factor. The
+    order d of 2 mod p divides n (since 2^n = 1 mod p) and divides p - 1
+    (Fermat). Every prime factor of p - 1 is smaller than p, hence not a
+    factor of n, so gcd(n, p - 1) = 1 and d = 1, i.e. 2 = 1 mod p:
+    impossible.
+
+intuitive_proof:
+  explanation: >
+    Suppose n > 1 and n | 2^n - 1; then n is odd. Let p be the least prime
+    dividing n and d the multiplicative order of 2 modulo p, the least
+    positive exponent with 2^d = 1 mod p. Since 2^n = 1 mod p, d divides n;
+    since 2^{p-1} = 1 mod p by Fermat's little theorem, d divides p - 1. Any
+    common divisor of n and p - 1 greater than 1 would have a prime factor
+    less than p dividing n, contradicting the minimality of p; so gcd(n, p -
+    1) = 1 and d = 1. But d = 1 means 2 = 1 mod p, i.e. p = 1, absurd.
+
+reasoning_structure:
+  naive_approach: >
+    Test small n and try to prove impossibility by considering 2^n - 1
+    modulo n directly.
+  crucial_observation: >
+    The smallest prime factor is coprime to everything below it, which
+    forces the order of 2 to be 1.
+  why_it_simplifies: >
+    The extremal choice of prime makes the two divisibility constraints on
+    the order collide; the same trick handles many 'n divides a^n - 1'-type
+    problems.
+
+related:
+  - fermat_little_theorem_necklaces
+
+tags:
+  - extremal principle
+  - multiplicative order
+  - Fermat's little theorem
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  In contrast n | 2^n + 1 has solutions (n = 3, 9, 27, ...).

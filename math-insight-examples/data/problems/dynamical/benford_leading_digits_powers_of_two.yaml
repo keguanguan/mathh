@@ -1,0 +1,105 @@
+id: benford_leading_digits_powers_of_two
+
+title: Benford's Law for Powers of Two via Rotation of the Circle
+
+aliases:
+  - Benford's law for 2^n
+  - leading digit of powers of two
+  - first-digit law
+  - equidistribution of n log 2 mod 1
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Benford%27s_law
+  original_title: Benford's law
+  accessed: 2026-09-16
+  notes: >
+    The circle-rotation explanation for geometric sequences goes back to the
+    equidistribution theorem of Weyl (1909/1916); Benford's 1938 paper
+    and Newcomb's 1881 note observed the law empirically.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Equidistribution_theorem
+    original_title: Equidistribution theorem
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/zipfLaw.shtml
+    original_title: Zipf's Law, Benford's Law
+  - name: Graham, Knuth, Patashnik - Concrete Mathematics
+    notes: Exercise on the leading digits of 2^n (Chapter 3, Integer Functions).
+
+problem:
+  statement: >
+    Among the powers 2, 4, 8, 16, 32, ..., what fraction begin with the digit
+    1? With the digit 9? Show that the leading digit d occurs with limiting
+    frequency log10(1 + 1/d), so about 30.1% of powers of two start with 1
+    and only 4.6% start with 9.
+  domain: dynamical systems
+  answer: >
+    Frequency of leading digit d is log10(1 + 1/d): 30.1% for 1, 17.6% for
+    2, ..., 4.6% for 9.
+
+key_idea:
+  name: take log10; the leading digit is read off from the position on a circle that rotates by an irrational angle
+  category: circle_rotation
+  summary: >
+    2^n has leading digit d exactly when the fractional part of n*log10(2)
+    lies in [log10(d), log10(d+1)). The fractional parts of n*alpha for
+    irrational alpha are equidistributed on the circle [0,1), so the
+    frequency equals the length of that arc, log10(1 + 1/d).
+
+intuitive_proof:
+  explanation: >
+    Write 2^n = 10^{n*alpha} with alpha = log10(2), an irrational number.
+    Splitting n*alpha into integer part k and fractional part f, we have
+    2^n = 10^k * 10^f with 1 <= 10^f < 10, so the leading digit of 2^n is
+    the leading digit of 10^f: it is d exactly when log10(d) <= f <
+    log10(d+1). Now the fractional parts f_n = {n*alpha} are the orbit of 0
+    under the rotation of the circle R/Z by the angle alpha. Because alpha
+    is irrational, this rotation has no periodic points and (Weyl's
+    equidistribution theorem, or Kronecker's theorem plus a counting
+    argument) the orbit spends, in the limit, a fraction of time in each
+    arc equal to the arc's length. The arc for digit d has length
+    log10(d+1) - log10(d) = log10(1 + 1/d).
+
+reasoning_structure:
+  naive_approach: >
+    Tabulate leading digits of 2^n for n up to a few thousand, observe the
+    skew toward small digits, and try to explain it by the carrying
+    behaviour of doubling.
+  crucial_observation: >
+    On a logarithmic scale, multiplying by 2 is a translation by a fixed
+    irrational amount, so successive powers walk around a circle in equal
+    irrational steps and cover it uniformly.
+  why_it_simplifies: >
+    The messy arithmetic of digits becomes the cleanest dynamical system
+    there is, an irrational rotation, whose statistics are completely known;
+    the same argument covers 3^n, Fibonacci numbers, and any geometric
+    growth with an irrational log-ratio.
+
+related:
+  - power_of_two_with_prescribed_leading_digits
+
+tags:
+  - dynamical systems
+  - circle rotation
+  - equidistribution
+  - logarithms
+  - Benford's law
+  - representation change
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Benford's law for "real-world" data is a different (scale-invariance)
+  story; the geometric-sequence case is a theorem. The logarithmic change
+  of variable is the representation change; the circle rotation is the
+  dynamics.

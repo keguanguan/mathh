@@ -1,0 +1,81 @@
+id: primes_4k_plus_3_infinite
+
+title: Infinitely Many Primes of the Form 4k + 3
+
+aliases:
+  - primes 3 mod 4
+  - Euclid's argument for 4k+3
+  - infinitely many primes in a residue class
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euclid%27s_theorem
+  original_title: Euclid's theorem (variations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter 1, Six proofs of the infinity of primes
+    author: Martin Aigner, Gunter M. Ziegler
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that there are infinitely many primes congruent to 3 modulo 4.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the number 4 p_1 ... p_k - 1 is 3 mod 4, so not all its prime factors can be 1 mod 4
+  category: number_theoretic_structure
+  summary: >
+    Given primes p_1, ..., p_k of the form 4k + 3, let N = 4 p_1 ... p_k -
+    1. N is odd and 3 mod 4. A product of primes that are all 1 mod 4 is 1
+    mod 4, so N has a prime factor that is 3 mod 4, and it is none of the
+    p_i since N = -1 mod p_i.
+
+intuitive_proof:
+  explanation: >
+    Suppose the primes of the form 4k + 3 were finitely many: p_1, ..., p_k.
+    Put N = 4 p_1 ... p_k - 1, which is 3 mod 4 and odd. Every odd prime is
+    1 or 3 mod 4, and products of numbers that are 1 mod 4 are 1 mod 4, so N
+    must have a prime factor q with q = 3 mod 4. But N leaves remainder -1
+    on division by each p_i, so q is not among the p_i. Contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Look for an explicit infinite family, or hope Euclid's construction N =
+    p_1...p_k + 1 works directly (it need not produce a 3 mod 4 prime).
+  crucial_observation: >
+    Residues mod 4 multiply, so a number that is 3 mod 4 cannot be built
+    from primes that are 1 mod 4 alone.
+  why_it_simplifies: >
+    A residue-class refinement of Euclid's trick handles this class in three
+    lines; the class 1 mod 4 needs a different idea (sums of two squares).
+
+related:
+  - infinitely_many_primes_euclid
+
+tags:
+  - number theory
+  - primes
+  - modular arithmetic
+  - auxiliary object
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The general case (Dirichlet's theorem) requires analysis; the classes 3
+  mod 4, 5 mod 6, and a few others admit Euclid-style proofs.

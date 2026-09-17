@@ -1,0 +1,81 @@
+id: golden_ratio_irrational_rectangle_descent
+
+title: "The Golden Ratio Is Irrational: Cut Off Squares Forever"
+
+aliases:
+  - golden ratio irrational
+  - golden rectangle descent
+  - Euclidean algorithm never terminates
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Golden_ratio
+  original_title: Golden ratio (irrationality)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/Euclid.shtml
+    original_title: Euclid's Algorithm
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Show that the golden ratio phi = (1 + sqrt 5)/2 is irrational.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a golden rectangle minus its largest square is a smaller golden rectangle, so the Euclidean algorithm on the side lengths never terminates; for integer sides it must
+  category: infinite_descent
+  summary: >
+    A rectangle with sides phi and 1 (phi = 1 + 1/phi) loses a 1 x 1 square
+    and leaves a rectangle with sides 1 and phi - 1 = 1/phi, again golden.
+    If phi = p/q, scale to a p x q rectangle with integer sides: cutting off
+    the largest square repeatedly is the Euclidean algorithm and yields ever
+    smaller golden rectangles with integer sides, which cannot go on
+    forever.
+
+intuitive_proof:
+  explanation: >
+    Suppose phi = p/q with positive integers p > q. A p x q rectangle has
+    the golden proportion. Since phi = 1 + 1/phi, removing a q x q square
+    leaves a q x (p - q) rectangle whose sides are again in the ratio q/(p -
+    q) = phi, and p - q is a positive integer smaller than q. Repeating, we
+    obtain an infinite strictly decreasing sequence of positive integers q >
+    p - q > ..., which is impossible. Hence phi is irrational. (Phrased
+    differently: the Euclidean algorithm on (p, q) would never terminate,
+    matching the continued fraction [1; 1, 1, 1, ...] of phi.)
+
+reasoning_structure:
+  naive_approach: >
+    Assume sqrt 5 is irrational and deduce it for phi, which just moves the
+    problem.
+  crucial_observation: >
+    Self-similarity of the golden rectangle produces an infinite descent
+    that integer sides cannot sustain.
+  why_it_simplifies: >
+    A geometric self-similarity is turned into a descent argument with no
+    algebra beyond phi = 1 + 1/phi.
+
+related:
+  - sqrt2_irrational_descent
+  - regular_pentagon_lattice_descent
+
+tags:
+  - infinite descent
+  - golden ratio
+  - self-similarity
+  - Euclidean algorithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

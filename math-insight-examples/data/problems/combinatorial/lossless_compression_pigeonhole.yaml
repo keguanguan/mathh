@@ -1,0 +1,81 @@
+id: lossless_compression_pigeonhole
+
+title: No Lossless Compressor Shrinks Every File
+
+aliases:
+  - compression impossibility
+  - counting argument against universal compression
+  - incompressible strings exist
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Lossless_compression
+  original_title: Lossless compression (limitations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Kolmogorov_complexity
+    original_title: Kolmogorov complexity (incompressible strings)
+
+problem:
+  statement: >
+    Show that no invertible map from binary strings to binary strings makes
+    every string of length n strictly shorter; in fact for every n some
+    string of length n cannot be compressed at all.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: there are 2^n strings of length n but only 2^n - 1 strings of length less than n
+  category: pigeonhole
+  summary: >
+    Strings of length less than n number 1 + 2 + 4 + ... + 2^{n-1} = 2^n -
+    1, fewer than the 2^n strings of length n. An injective compressor
+    cannot map 2^n strings into 2^n - 1 targets, so some string of length n
+    is not shortened. More generally, at most 2^{n-k+1} - 1 strings of
+    length n can be compressed by k or more bits, a fraction about 2^{1-k}.
+
+intuitive_proof:
+  explanation: >
+    Suppose C is an injective map on binary strings with |C(s)| < |s| for
+    all strings s of length n. Then C maps the 2^n strings of length n
+    injectively into the set of strings of length at most n - 1, which has
+    2^0 + 2^1 + ... + 2^{n-1} = 2^n - 1 elements. This contradicts the
+    pigeonhole principle. Counting the targets of length at most n - k
+    similarly shows that fewer than 2^{n-k+1} strings of length n can be
+    shortened by k bits or more.
+
+reasoning_structure:
+  naive_approach: >
+    Try to design a clever scheme that always saves at least one bit, and
+    repeatedly find inputs it expands.
+  crucial_observation: >
+    Invertibility means the compressor is injective, and injections cannot
+    go from a bigger set to a smaller one.
+  why_it_simplifies: >
+    A counting comparison rules out every conceivable scheme at once and
+    quantifies how rare compressible strings are.
+
+related:
+  - subsets_binary_strings
+  - cantor_diagonal_uncountable
+
+tags:
+  - pigeonhole
+  - counting
+  - compression
+  - information theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  This is also the reason 'most' strings have maximal Kolmogorov complexity.

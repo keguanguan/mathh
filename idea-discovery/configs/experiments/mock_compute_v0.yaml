@@ -1,0 +1,14 @@
+# Compute sweep (low / medium / high) with the mock model.
+experiment_id: mock_compute_v0
+description: Test-time-compute smoke experiment with the mock model.
+families: [domino_tiling, population_game]
+models: [mock_compute_dependent]
+instance_sizes:
+  domino_tiling: [8, 12]
+  population_game: [24, 48]
+transfer_levels: [1]
+compute_conditions: [low, medium, high]
+repetitions: 2
+instances_per_cell: 5
+generation_seeds: {base_seed: 7}
+output_dir: data/raw_runs

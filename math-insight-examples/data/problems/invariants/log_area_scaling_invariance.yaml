@@ -1,0 +1,81 @@
+id: log_area_scaling_invariance
+
+title: The Area under 1/x Is Additive under Scaling
+
+aliases:
+  - logarithm from areas under the hyperbola
+  - area under 1/x from 1 to xy
+  - scaling invariance of dx/x
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Natural_logarithm
+  original_title: Natural logarithm (definition as an area under the hyperbola)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Courant & Robbins - What Is Mathematics?
+    notes: Chapter VIII
+
+problem:
+  statement: >
+    Let A(a, b) be the area under the curve y = 1/x between x = a and x = b
+    (0 < a < b). Show that A(a, b) = A(ka, kb) for every k > 0, and deduce
+    that L(x) := A(1, x) satisfies L(xy) = L(x) + L(y).
+  domain: analysis
+  answer: proved (L is the natural logarithm)
+
+key_idea:
+  name: stretching the region horizontally by k and squashing it vertically by 1/k is an area-preserving map that carries the region over [a, b] to the region over [ka, kb]
+  category: geometric_invariant
+  summary: >
+    The map (x, y) -> (kx, y/k) multiplies areas by k * (1/k) = 1 and sends
+    the point (x, 1/x) on the hyperbola to (kx, 1/(kx)), again on the
+    hyperbola. So it maps the region under the curve between a and b onto
+    the region between ka and kb, and the areas agree. Then L(xy) = A(1, xy)
+    = A(1, x) + A(x, xy) = A(1, x) + A(1, y).
+
+intuitive_proof:
+  explanation: >
+    The linear map T(x, y) = (kx, y/k) has determinant 1, hence preserves
+    area, and preserves the hyperbola xy = 1. It maps the vertical strip a
+    <= x <= b onto ka <= x <= kb and the region 0 <= y <= 1/x onto 0 <= y <=
+    1/x. Therefore T maps the region under the hyperbola over [a, b]
+    bijectively onto the region over [ka, kb], and A(a, b) = A(ka, kb). Now
+    for x, y > 1, A(1, xy) = A(1, x) + A(x, xy) by additivity of area, and
+    A(x, xy) = A(1, y) by the scaling property with k = x. So L(xy) = L(x) +
+    L(y): the area function turns products into sums, which characterises
+    the logarithm.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the integral of 1/x by inventing the logarithm first, or
+    approximate areas numerically and observe the pattern.
+  crucial_observation: >
+    The hyperbola and the area form are both invariant under the hyperbolic
+    rotation (x, y) -> (kx, y/k).
+  why_it_simplifies: >
+    A geometric invariance proves the functional equation of the logarithm
+    without calculus; it is the historical route (Gregory of Saint-Vincent,
+    1647).
+
+related:
+  - napkin_ring
+
+tags:
+  - geometric invariant
+  - area
+  - logarithm
+  - scaling
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

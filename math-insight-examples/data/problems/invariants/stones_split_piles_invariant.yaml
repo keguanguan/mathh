@@ -1,0 +1,72 @@
+id: stones_split_piles_invariant
+
+title: Splitting Piles into Piles of Three
+
+aliases:
+  - 1001 stones into piles of 3
+  - remove one stone and split
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on invariants
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    A pile contains 1001 stones. A move takes any pile with at least three
+    stones, removes one stone from it, and splits the remainder into two
+    non-empty piles. Can one reach a position in which every pile has
+    exactly 3 stones?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: stones plus piles is invariant
+  category: invariant
+  summary: >
+    A move removes one stone and adds one pile, so (number of stones) +
+    (number of piles) is constant, equal to 1002. A position with k piles of
+    3 has 3k + k = 4k, and 1002 is not divisible by 4.
+
+intuitive_proof:
+  explanation: >
+    Let S be the total number of stones and P the number of piles. A move
+    decreases S by 1 and increases P by 1, so S + P is invariant; initially
+    S + P = 1001 + 1 = 1002. If all piles had 3 stones, with k piles, then S
+    + P = 3k + k = 4k, a multiple of 4. But 1002 = 4 * 250 + 2. So the
+    target is unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Simulate splits and look for a pattern in the pile sizes.
+  crucial_observation: >
+    Two changing quantities have a constant sum.
+  why_it_simplifies: >
+    A divisibility check on a single constant settles all sequences of
+    moves.
+
+tags:
+  - invariant
+  - counting
+  - divisibility
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

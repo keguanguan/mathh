@@ -1,0 +1,77 @@
+id: rearrangement_inequality_swapping
+
+title: The Rearrangement Inequality by Swapping
+
+aliases:
+  - rearrangement inequality
+  - sorted pairing maximises sum of products
+  - swap an inversion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Rearrangement_inequality
+  original_title: Rearrangement inequality
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let a_1 <= ... <= a_n and b_1 <= ... <= b_n. Show that among all
+    pairings of the a's with the b's, the sum of products a_i b_{sigma(i)}
+    is largest when the sequences are paired in the same order and smallest
+    when paired in opposite order.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: uncrossing one inverted pair never decreases the sum
+  category: smoothing
+  summary: >
+    If a_i < a_j are paired with b's in the wrong order, b_x > b_y, then
+    swapping to pair a_i with b_y and a_j with b_x changes the sum by (a_j -
+    a_i)(b_x - b_y) >= 0. Repeated swaps reach the sorted pairing without
+    ever decreasing the sum.
+
+intuitive_proof:
+  explanation: >
+    Take any pairing that is not the sorted one. Then there are indices with
+    a_i < a_j whose partners satisfy b_x > b_y. Replace the two products a_i
+    b_x + a_j b_y by a_i b_y + a_j b_x; the difference is (a_j - a_i)(b_x -
+    b_y) >= 0, so the sum does not decrease and the number of inverted pairs
+    strictly drops. After finitely many swaps the pairing is sorted, so the
+    sorted pairing has the maximum sum. The reverse pairing is the minimum
+    by the same argument with the b's reversed.
+
+reasoning_structure:
+  naive_approach: >
+    Compare all n! pairings, or apply an induction on n that keeps track of
+    where the largest elements go.
+  crucial_observation: >
+    A single local swap is a monovariant step: it fixes one inversion and
+    never hurts.
+  why_it_simplifies: >
+    Local improvement with a terminating count proves a global optimality
+    statement in two lines; the same swap proves Chebyshev's sum inequality.
+
+tags:
+  - smoothing
+  - monovariant
+  - inequality
+  - sorting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

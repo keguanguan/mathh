@@ -1,0 +1,87 @@
+id: chaos_game_sierpinski_addresses
+
+title: Why the Chaos Game Draws the Sierpinski Triangle
+
+aliases:
+  - chaos game
+  - Sierpinski triangle by random iteration
+  - addresses in the Sierpinski gasket
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Chaos_game
+  original_title: Chaos game
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/Tremas.shtml
+    original_title: Sierpinski gasket by trema removal
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Start at any point and repeatedly jump halfway toward a randomly chosen
+    vertex of a fixed triangle. Show that the plotted points converge to and
+    fill the Sierpinski triangle.
+  domain: dynamical systems
+  answer: >
+    proved: the points approach the gasket exponentially fast and visit
+    every part of it
+
+key_idea:
+  name: halving toward vertex i prepends the digit i to the point's ternary-like address; the gasket is the set of points with an address
+  category: algebraic_encoding
+  summary: >
+    Points of the Sierpinski triangle have addresses d_1 d_2 d_3 ...
+    recording which sub-triangle they lie in at each scale. Jumping halfway
+    toward vertex i prepends the digit i to the address. So after n random
+    jumps the first n address digits are random and the starting point only
+    affects digits beyond n, a region of size 2^{-n}.
+
+intuitive_proof:
+  explanation: >
+    The gasket S is the union of three copies of itself scaled by 1/2 toward
+    the three vertices; the map f_i(x) = (x + v_i)/2 sends the plane into
+    the sub-triangle at vertex v_i and S onto the copy of S there. A point
+    of S is specified by the sequence of sub-triangles it belongs to at each
+    scale, its address. Starting from any point x_0, the point after n jumps
+    is f_{i_n}(...f_{i_1}(x_0)...), which lies in the sub-triangle of scale
+    2^{-n} with address i_n ... i_1, at distance at most 2^{-n} times the
+    triangle's size from the gasket. As the digits are random, every finite
+    address occurs with positive probability, so the plotted points come
+    within 2^{-n} of every point of S. Hence the picture fills S.
+
+reasoning_structure:
+  naive_approach: >
+    Run the simulation and observe the fractal appear, without a reason; or
+    attempt to track the coordinates algebraically.
+  crucial_observation: >
+    The random jumps act on addresses by prepending a digit, so the point's
+    location is coded by the recent history of jumps.
+  why_it_simplifies: >
+    A symbolic coding explains both the convergence to the fractal and its
+    complete coverage in two sentences.
+
+related:
+  - doubling_map_binary_expansion
+
+tags:
+  - iterated function system
+  - symbolic coding
+  - fractal
+  - dynamical systems
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Choosing the vertices with unequal probabilities still fills the gasket,
+  but non-uniformly; the same coding explains this.

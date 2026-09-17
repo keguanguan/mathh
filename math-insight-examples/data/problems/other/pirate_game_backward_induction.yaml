@@ -1,0 +1,88 @@
+id: pirate_game_backward_induction
+
+title: The Pirate Game by Backward Induction
+
+aliases:
+  - pirate game
+  - five pirates 100 gold coins
+  - backward induction in voting games
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pirate_game
+  original_title: Pirate game
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Stewart - A Puzzle for Pirates
+    notes: Scientific American, May 1999
+
+problem:
+  statement: >
+    Five pirates, strictly ranked, must divide 100 gold coins. The senior
+    pirate proposes a division; if at least half the pirates (including the
+    proposer) accept, it is carried out, otherwise the proposer is thrown
+    overboard and the next pirate proposes. Each pirate wants to survive,
+    then to maximise gold, then to see others thrown overboard. What does
+    the senior pirate propose?
+  domain: combinatorial games
+  answer: >
+    98 coins for himself, 0 to the second, 1 to the third, 0 to the fourth,
+    1 to the fifth (98, 0, 1, 0, 1)
+
+key_idea:
+  name: "solve the game from the end: with two pirates the senior takes everything, and each earlier proposer buys the cheapest votes by giving one coin to those who would get nothing in the next round"
+  category: induction
+  summary: >
+    With 2 pirates, the senior proposes (100, 0) and his own vote carries
+    it. With 3, the junior would get 0 in the 2-pirate game, so the senior
+    buys his vote with 1 coin: (99, 0, 1). With 4: (99, 0, 1, 0). With 5:
+    (98, 0, 1, 0, 1). At each stage the proposer offers one coin to exactly
+    those who would receive nothing if he were thrown overboard.
+
+intuitive_proof:
+  explanation: >
+    Work backwards. Two pirates D, E: D proposes (100, 0) and votes for it;
+    one vote of two is half, so it passes. Three pirates C, D, E: if C is
+    eliminated, E gets 0, so C offers E one coin and keeps 99; E accepts (1
+    > 0), giving 2 votes of 3. Four pirates B, C, D, E: if B is eliminated,
+    D gets 0, so B offers D one coin: (99, 0, 1, 0), with votes from B and
+    D, 2 of 4. Five pirates A, B, C, D, E: if A is eliminated, C and E get
+    0, so A offers each one coin: (98, 0, 1, 0, 1), with 3 votes of 5. Each
+    pirate votes for the proposal iff it beats what they would get in the
+    continuation, which backward induction has already determined.
+
+reasoning_structure:
+  naive_approach: >
+    Assume the senior pirate must offer a generous split to avoid being
+    thrown overboard, or reason forward from the first proposal without
+    knowing the consequences of rejection.
+  crucial_observation: >
+    The value of rejecting a proposal is determined by the smaller game, so
+    solving the smallest game first determines every vote.
+  why_it_simplifies: >
+    Backward induction reduces a five-player negotiation to five one-line
+    steps and produces the counterintuitive 98-0-1-0-1 answer.
+
+related:
+  - blue_eyed_islanders_induction
+
+tags:
+  - induction
+  - backward induction
+  - game theory
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With more than 200 pirates and 100 coins the pattern changes: some pirates
+  cannot survive proposing at all.

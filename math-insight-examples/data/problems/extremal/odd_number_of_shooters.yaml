@@ -1,0 +1,81 @@
+id: odd_number_of_shooters
+
+title: "An Odd Number of Duellists: Someone Stays Dry"
+
+aliases:
+  - water pistol problem
+  - closest pair shoot each other
+  - odd number of people shooting nearest neighbour
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the extremal principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    An odd number of people stand in a field with pairwise distinct
+    distances. At a signal, everyone shoots the person nearest to them. Show
+    that at least one person is not shot.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: the closest pair shoot each other; remove them and induct
+  category: extremal_principle
+  summary: >
+    The two people at the smallest distance are each other's nearest
+    neighbours, so they shoot each other. If anyone else shoots one of them,
+    then some person is shot at least twice and, with as many shots as
+    people, someone is not shot. Otherwise remove the pair and repeat with
+    an odd number of people again.
+
+intuitive_proof:
+  explanation: >
+    Induct on the odd number n. For n = 1 the single person shoots nobody.
+    For n >= 3 let A and B be the pair at minimum distance; A's nearest
+    neighbour is B and vice versa, so they shoot each other. If a third
+    person shoots A or B, then A or B receives two of the n shots, so the n
+    shots hit at most n - 1 distinct people and someone is unshot. If nobody
+    else shoots A or B, remove them: the remaining n - 2 people (odd) shoot
+    within their own group, and by induction one of them is not shot.
+
+reasoning_structure:
+  naive_approach: >
+    Try to arrange people so that everyone gets shot and analyse why it
+    fails.
+  crucial_observation: >
+    The minimal distance produces a mutually shooting pair, which either
+    wastes a shot or can be removed.
+  why_it_simplifies: >
+    The extremal pair reduces the problem to a smaller instance of itself;
+    parity of n makes the induction close.
+
+related:
+  - nearest_neighbour_graph_no_cycle
+
+tags:
+  - extremal principle
+  - induction
+  - parity
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

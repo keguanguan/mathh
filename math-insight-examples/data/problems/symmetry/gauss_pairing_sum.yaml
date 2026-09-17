@@ -1,0 +1,76 @@
+id: gauss_pairing_sum
+
+title: Gauss's Pairing for 1 + 2 + ... + n
+
+aliases:
+  - Gauss sum trick
+  - sum of the first n integers
+  - write the sum forwards and backwards
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF
+  original_title: Triangular number / the Gauss anecdote
+  accessed: 2026-09-16
+  notes: >
+    The anecdote about the young Gauss is told by Sartorius von
+    Waltershausen (1856); the pairing argument itself is ancient.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Triangular_number
+    original_title: Triangular number
+
+problem:
+  statement: >
+    Find 1 + 2 + 3 + ... + n in closed form.
+  domain: algebra
+  answer: n(n+1)/2
+
+key_idea:
+  name: add the sum to its reversal
+  category: symmetry
+  summary: >
+    Write the sum forwards and backwards and add column-wise: every column
+    is 1 + n, 2 + (n-1), ..., all equal to n + 1. Two copies of the sum
+    therefore equal n(n+1).
+
+intuitive_proof:
+  explanation: >
+    Let S = 1 + 2 + ... + n. Write S again in reverse order,
+    S = n + (n-1) + ... + 1, and add the two lines term by term. Each of the
+    n columns sums to n + 1, so 2S = n(n+1) and S = n(n+1)/2. Pictorially,
+    two staircases of heights 1..n fit together into an n by (n+1)
+    rectangle.
+
+reasoning_structure:
+  naive_approach: >
+    Add the terms one at a time, or guess the formula from small cases and
+    prove it by induction.
+  crucial_observation: >
+    The sum is symmetric under reversal, and the symmetric pairing makes
+    every pair equal.
+  why_it_simplifies: >
+    A symmetry turns n different terms into n equal ones, so the sum is a
+    product.
+
+tags:
+  - symmetry
+  - pairing
+  - summation
+  - arithmetic progression
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The archetype of "reverse and add": the same move sums any arithmetic
+  progression and evaluates integrals of the form int f(x) dx over [a,b]
+  when f(x) + f(a+b-x) is constant.

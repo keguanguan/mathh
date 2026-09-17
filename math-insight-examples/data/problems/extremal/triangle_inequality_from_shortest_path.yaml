@@ -1,0 +1,79 @@
+id: triangle_inequality_from_shortest_path
+
+title: The Triangle Inequality Is 'The Straight Segment Is Shortest'
+
+aliases:
+  - triangle inequality
+  - "|a + b| <= |a| + |b|"
+  - shortest path between two points
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Triangle_inequality
+  original_title: Triangle inequality (Euclidean geometry)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book I, Proposition 20
+
+problem:
+  statement: >
+    Show that in any triangle each side is shorter than the sum of the other
+    two, and deduce that |x + y| <= |x| + |y| for vectors.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: extend one side beyond a vertex by the length of another side to form an isosceles triangle; the larger angle then lies opposite the larger side (Euclid's proof), or compare with the straight segment
+  category: extremal_principle
+  summary: >
+    Euclid: in triangle ABC extend BA beyond A to D with AD = AC. Triangle
+    ACD is isosceles, so angle ADC = angle ACD < angle BCD. In triangle BCD
+    the larger angle is at C, so the opposite side BD = BA + AC exceeds BC.
+    The vector form follows by placing the triangle's vertices at 0, x and x
+    + y.
+
+intuitive_proof:
+  explanation: >
+    Extend BA past A to a point D with AD = AC. Then triangle ADC is
+    isosceles and angle ADC = angle ACD. Since A lies inside angle BCD,
+    angle BCD > angle ACD = angle BDC. In triangle BCD the greater angle is
+    opposite the greater side, so BD > BC. But BD = BA + AD = BA + AC. Hence
+    AB + AC > BC. For vectors, take the triangle with vertices O, X = x, Y =
+    x + y: the side OY has length |x + y| while the other sides have lengths
+    |x| and |y|.
+
+reasoning_structure:
+  naive_approach: >
+    Take the inequality as an axiom of distance, or prove the vector version
+    by squaring and applying Cauchy-Schwarz.
+  crucial_observation: >
+    A single auxiliary isosceles triangle converts a length comparison into
+    an angle comparison, where 'larger angle faces larger side' applies.
+  why_it_simplifies: >
+    Euclid's proof shows the triangle inequality is a consequence of the
+    exterior angle theorem, not an independent axiom; the vector version is
+    the same picture.
+
+related:
+  - herons_shortest_path
+  - broken_line_in_triangle
+
+tags:
+  - extremal principle
+  - triangle inequality
+  - auxiliary object
+  - Euclid
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

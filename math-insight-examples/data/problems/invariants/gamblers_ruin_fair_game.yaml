@@ -1,0 +1,79 @@
+id: gamblers_ruin_fair_game
+
+title: Gambler's Ruin in a Fair Game by Conservation of Expected Fortune
+
+aliases:
+  - gambler's ruin
+  - fair random walk absorption probability
+  - martingale stopping
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Gambler%27s_ruin
+  original_title: Gambler's ruin (fair game)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+    notes: Chapter XIV
+
+problem:
+  statement: >
+    A gambler with k dollars bets 1 dollar on fair coin flips until reaching
+    N dollars or going broke. Show that the probability of reaching N is
+    k/N.
+  domain: probability
+  answer: k/N
+
+key_idea:
+  name: in a fair game the expected fortune is conserved, so the final expected fortune equals the initial fortune k
+  category: conservation_law
+  summary: >
+    Each bet has expected gain 0, so the expected fortune stays k
+    throughout, including at the (random) end of play. At the end the
+    fortune is N with probability p and 0 with probability 1 - p, so pN = k
+    and p = k/N.
+
+intuitive_proof:
+  explanation: >
+    Let F_t be the fortune after t bets. Since each bet is fair, E[F_{t+1} |
+    F_t] = F_t, so E[F_t] = k for all t. The game ends at a finite random
+    time T (the probability of never being absorbed is 0). Passing to the
+    stopping time (justified here because the fortune is bounded between 0
+    and N), E[F_T] = k. But F_T is N with probability p and 0 otherwise, so
+    E[F_T] = pN. Hence p = k/N.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the recursion p_k = (p_{k-1} + p_{k+1})/2 with p_0 = 0, p_N = 1
+    and solve the linear system.
+  crucial_observation: >
+    Fairness is a conservation law for expected money, and the terminal
+    distribution is two-valued, so one linear equation determines it.
+  why_it_simplifies: >
+    The conserved quantity turns a boundary-value recursion into a single
+    equation; the same idea with the potential (q/p)^k solves the biased
+    game.
+
+related:
+  - polya_urn_martingale
+
+tags:
+  - conservation law
+  - martingale
+  - random walk
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Also gives the expected duration k(N - k) via the conserved quantity F_t^2
+  - t.

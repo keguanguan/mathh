@@ -1,0 +1,90 @@
+id: zagier_two_squares_involution
+
+title: Zagier's One-Sentence Proof That Primes 1 mod 4 Are Sums of Two Squares
+
+aliases:
+  - Zagier's one-sentence proof
+  - Fermat's two-squares theorem
+  - Heath-Brown involution proof
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Representing numbers as sums of two squares"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: D. Zagier, American Mathematical Monthly 97 (1990), building on Heath-Brown and Liouville.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fermat%27s_theorem_on_sums_of_two_squares
+    original_title: Fermat's theorem on sums of two squares (Zagier's proof)
+
+problem:
+  statement: >
+    Show that every prime p = 1 mod 4 can be written as a sum of two
+    squares.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: two involutions on the same finite set, one of which has exactly one fixed point
+  category: involution_parity
+  summary: >
+    Let S be the finite set of triples (x, y, z) of positive integers with
+    x^2 + 4yz = p. Zagier's piecewise-linear involution on S has exactly
+    one fixed point, so |S| is odd. The simple involution (x, y, z) ->
+    (x, z, y) therefore also has a fixed point, i.e. a triple with y = z,
+    giving p = x^2 + (2y)^2.
+
+intuitive_proof:
+  explanation: >
+    The number of fixed points of an involution on a finite set has the
+    same parity as the set (non-fixed points come in pairs). Zagier's map
+    sends (x, y, z) to (x + 2z, z, y - x - z) if x < y - z, to
+    (2y - x, y, x - y + z) if y - z < x < 2y, and to (x - 2y, x - y + z, y)
+    if x > 2y; one checks it maps S to itself and is an involution. Its
+    only fixed point is (1, 1, (p-1)/4), which lies in S precisely because
+    p = 1 mod 4. So |S| is odd. The involution swapping y and z must then
+    also have an odd number of fixed points, in particular at least one:
+    a triple with y = z, so p = x^2 + 4y^2 = x^2 + (2y)^2.
+
+reasoning_structure:
+  naive_approach: >
+    Use Wilson's theorem to find a square root of -1 mod p, then apply
+    descent or Minkowski's lattice theorem or the Gaussian integers, each
+    of which needs a page of machinery.
+  crucial_observation: >
+    Existence of a fixed point for the easy involution follows from
+    parity, and parity can be read off a different involution whose fixed
+    points are trivial to find.
+  why_it_simplifies: >
+    All arithmetic is replaced by a parity count; the proof fits in one
+    sentence once the involution is written down, even if verifying it is
+    a tedious but mechanical check.
+
+related:
+  - wilson_theorem_pairing
+
+tags:
+  - involution
+  - parity
+  - fixed points
+  - number theory
+  - sums of two squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The key idea (parity of fixed points is an invariant of the set, not of
+  the involution) is crystal clear even though the specific involution
+  looks like magic; Spivak and others have since given geometric
+  "windmill" interpretations of it.

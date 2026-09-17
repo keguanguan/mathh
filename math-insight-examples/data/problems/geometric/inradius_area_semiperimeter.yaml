@@ -1,0 +1,79 @@
+id: inradius_area_semiperimeter
+
+title: The Inradius Equals Area over Semiperimeter
+
+aliases:
+  - r = A/s
+  - inradius formula
+  - area from the incircle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Incircle_and_excircles
+  original_title: Incircle and excircles (relation to area)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a triangle with area A, semiperimeter s and inradius r
+    satisfies A = rs.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "join the incentre to the vertices: the triangle splits into three triangles with bases a, b, c and common height r"
+  category: decomposition
+  summary: >
+    The incentre I is at distance r from all three sides. Segments IA, IB,
+    IC cut the triangle into triangles IBC, ICA, IAB with areas ra/2, rb/2,
+    rc/2. Adding gives A = r(a + b + c)/2 = rs.
+
+intuitive_proof:
+  explanation: >
+    Let I be the incentre, the point equidistant (distance r) from the three
+    sides. The segments from I to the vertices divide the triangle into
+    three triangles having the sides a, b, c as bases and r as the common
+    height (the perpendicular from I to each side is a radius of the
+    incircle). Their areas are ra/2, rb/2, rc/2, and they fill the triangle
+    without overlap, so A = r(a + b + c)/2 = rs.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the inradius from coordinates of the incentre, or via
+    trigonometric formulas for the angles.
+  crucial_observation: >
+    The incentre sees each side at the same height, so the triangle
+    decomposes into pieces whose areas share the factor r.
+  why_it_simplifies: >
+    One decomposition gives the formula; it is the same idea as Viviani's
+    theorem with the roles of point and distances reversed, and it yields
+    Heron's formula when combined with tangent lengths.
+
+related:
+  - viviani_theorem
+  - ceva_theorem_by_areas
+
+tags:
+  - decomposition
+  - area
+  - incircle
+  - triangle geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For a polygon with an inscribed circle the same argument gives A = rs.

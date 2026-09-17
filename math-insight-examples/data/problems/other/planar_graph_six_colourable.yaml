@@ -1,0 +1,82 @@
+id: planar_graph_six_colourable
+
+title: Every Planar Graph Is 6-Colourable
+
+aliases:
+  - six colour theorem
+  - planar graphs need at most six colours
+  - induction on a vertex of degree at most five
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Five_color_theorem
+  original_title: Five color theorem (the six colour theorem)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula" / "The five-colour theorem"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that the vertices of every planar graph can be coloured with six
+    colours so that adjacent vertices have different colours.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: a planar graph has a vertex of degree at most 5; remove it, colour the rest by induction, and put it back with a colour not used by its at most 5 neighbours
+  category: induction
+  summary: >
+    By Euler's formula some vertex v has degree at most 5. Deleting v leaves
+    a planar graph with fewer vertices, which is 6-colourable by induction.
+    Restoring v, its at most five neighbours use at most five colours, so a
+    sixth colour is free for v.
+
+intuitive_proof:
+  explanation: >
+    Induct on the number of vertices; graphs with at most 6 vertices are
+    trivially 6-colourable. For a planar graph G with more vertices, the
+    edge bound E <= 3V - 6 implies that some vertex v has degree at most 5.
+    The graph G - v is planar with fewer vertices, so by the induction
+    hypothesis it has a proper 6-colouring. The neighbours of v use at most
+    5 of the 6 colours, so v can be given a remaining colour, extending the
+    colouring to G.
+
+reasoning_structure:
+  naive_approach: >
+    Try to colour maps with few colours by hand, or attack the four-colour
+    theorem directly.
+  crucial_observation: >
+    Planarity guarantees a low-degree vertex, and low-degree vertices can
+    always be coloured last.
+  why_it_simplifies: >
+    The min-degree lemma plus 'colour the low-degree vertex last' is a
+    two-line induction; the five-colour theorem refines the last step with
+    Kempe chains.
+
+related:
+  - planar_graph_vertex_degree_five
+  - planar_graph_edge_bound
+
+tags:
+  - induction
+  - graph coloring
+  - planar graphs
+  - Euler's formula
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The four-colour theorem is true but its only known proofs are
+  computer-assisted.

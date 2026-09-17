@@ -1,0 +1,83 @@
+id: bicubal_domino_centre_removed
+
+title: Solid Dominoes Cannot Fill a 3x3x3 Cube with the Centre Removed
+
+aliases:
+  - bicubal domino
+  - 3x3x3 cube minus centre by 2x1x1 blocks
+  - three-dimensional checkerboard colouring
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Outline/Combinatorics/BicubalDomino.shtml
+  original_title: Bicubal Domino
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Mutilated_chessboard_problem
+    original_title: Mutilated chessboard problem (generalisations)
+
+problem:
+  statement: >
+    A 3x3x3 array of unit cubes has its central cube removed, leaving 26
+    cells. Can the remaining cells be filled with 13 solid dominoes (2x1x1
+    blocks)?
+  domain: tiling
+  answer: impossible
+
+key_idea:
+  name: colour the cubes in a three-dimensional checkerboard; the corners' colour has 14 cells and the other 13, and the centre is of the minority colour
+  category: coloring_invariant
+  summary: >
+    Colour cell (x, y, z) by the parity of x + y + z. The 3x3x3 cube has 14
+    cells of the corners' colour and 13 of the other; the centre is of the
+    minority colour, so removing it leaves 14 and 12. Every domino covers
+    one cell of each colour, so 13 dominoes would cover 13 and 13.
+
+intuitive_proof:
+  explanation: >
+    Give the cells coordinates (x, y, z) with 1 <= x, y, z <= 3 and colour a
+    cell black when x + y + z is odd, white when it is even; the corners
+    such as (1, 1, 1) are black. In the layers z = 1 and z = 3 the black
+    cells are those with x + y even, five per layer; in the layer z = 2 they
+    are those with x + y odd, four. So there are 14 black and 13 white
+    cells. The centre (2, 2, 2) has even sum and is white; removing it
+    leaves 14 black and 12 white cells. A solid domino covers two cells
+    whose coordinate sums differ by exactly 1, so one black and one white.
+    Thirteen dominoes would cover 13 black and 13 white cells, not 14 and
+    12.
+
+reasoning_structure:
+  naive_approach: >
+    Try to pack the blocks around the hole.
+  crucial_observation: >
+    The chessboard colouring works in any dimension, and the removed cell
+    has the wrong colour.
+  why_it_simplifies: >
+    The mutilated-checkerboard count settles the 3D puzzle without any
+    packing attempts.
+
+related:
+  - mutilated_checkerboard
+
+tags:
+  - coloring
+  - parity
+  - tiling
+  - three dimensions
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  In 2D the analogous 3x3 board minus its centre can be tiled, because there
+  the centre has the majority colour.

@@ -1,0 +1,77 @@
+id: regular_polygon_vectors_sum_zero
+
+title: The Vertex Vectors of a Regular Polygon Sum to Zero
+
+aliases:
+  - sum of roots of unity is zero
+  - sum of cos(2 pi k / n) equals zero
+  - centroid of a regular polygon
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Root_of_unity
+  original_title: Root of unity (sum of roots)
+  accessed: 2026-09-16
+  notes: A classical symmetry argument, found in most introductions to complex numbers and in physics (superposition of forces).
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 12 (Geometry, complex numbers) and the trigonometry exercises.
+
+problem:
+  statement: >
+    A regular n-gon (n >= 2) is centred at the origin. Show that the sum of
+    the vectors from the origin to the n vertices is zero; equivalently,
+    cos(2 pi k/n) summed over k = 0..n-1 equals 0.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the sum is invariant under a rotation that moves every non-zero vector
+  category: symmetry
+  summary: >
+    Rotating the plane by 2 pi/n permutes the vertices, so it maps the sum
+    vector to itself. The only vector fixed by a rotation through an angle
+    that is not a multiple of 2 pi is the zero vector.
+
+intuitive_proof:
+  explanation: >
+    Let v be the sum of the n vertex vectors, and let R be the rotation
+    about the centre by 2 pi/n. R sends each vertex to the next one, so
+    the set of vertex vectors is unchanged and R(v) = v. But a rotation by
+    an angle strictly between 0 and 2 pi moves every non-zero vector, so
+    v = 0. Taking real parts gives the cosine identity.
+
+reasoning_structure:
+  naive_approach: >
+    Sum the geometric series of n-th roots of unity, or manipulate
+    trigonometric identities for the cosines.
+  crucial_observation: >
+    The configuration has a symmetry that fixes only the origin, and the
+    sum inherits every symmetry of the configuration.
+  why_it_simplifies: >
+    No computation at all: a fixed vector of a non-trivial rotation must
+    vanish. The same argument shows the centroid of any symmetric
+    configuration is its centre of symmetry.
+
+tags:
+  - symmetry
+  - rotation
+  - roots of unity
+  - vectors
+  - invariance
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The identical argument in physics: n equal forces at equal angles are in
+  equilibrium. "A quantity invariant under a symmetry that fixes only one
+  value equals that value" is the general principle.

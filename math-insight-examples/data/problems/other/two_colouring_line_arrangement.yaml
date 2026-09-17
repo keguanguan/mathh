@@ -1,0 +1,83 @@
+id: two_colouring_line_arrangement
+
+title: Regions Cut Out by Lines Can Be Two-Coloured
+
+aliases:
+  - two-colouring the plane divided by lines
+  - map of lines is two-colourable
+  - flip one side when adding a line
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 8, The Induction Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A standard induction exercise; also in Fomin, Genkin, Itenberg, Mathematical Circles.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Arrangement_of_lines
+    original_title: Arrangement of lines
+
+problem:
+  statement: >
+    Finitely many straight lines divide the plane into regions. Show that
+    the regions can be coloured with two colours so that regions sharing a
+    boundary segment have different colours.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: add lines one at a time, flipping all colours on one side of the new line
+  category: induction
+  summary: >
+    Given a valid colouring for k lines, add a line and invert every colour
+    on one side of it. Neighbours across old lines stay different (both
+    flipped or both unflipped); neighbours across the new line were the
+    same region before and are now different.
+
+intuitive_proof:
+  explanation: >
+    With no lines, colour the whole plane white. Suppose the regions of
+    some k lines are properly two-coloured, and add a (k+1)-st line. Keep
+    the colours on one side of it and swap black and white on the other
+    side. Two regions adjacent across one of the old lines are on the same
+    side of the new line, so both keep or both swap and remain different.
+    Two regions adjacent across the new line came from a single old region
+    that the new line cut in two; one half swapped and the other did not,
+    so they now differ. The colouring is proper again, and induction
+    finishes the proof.
+
+reasoning_structure:
+  naive_approach: >
+    Attempt to colour a given arrangement by hand and worry about
+    consistency around each intersection point.
+  crucial_observation: >
+    The new line only disturbs the pairs it separates, and a global flip
+    on one side fixes exactly those pairs without breaking the others.
+  why_it_simplifies: >
+    The induction step is a single uniform operation; no local case
+    analysis is required. (Equivalently, colour by the parity of the number
+    of lines separating a region from a base region.)
+
+tags:
+  - induction
+  - parity
+  - coloring
+  - line arrangement
+  - planar graph
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The explicit colouring (parity of the number of lines crossed from a
+  fixed base point) is the invariant hiding inside the induction.

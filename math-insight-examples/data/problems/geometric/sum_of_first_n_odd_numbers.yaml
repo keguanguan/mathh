@@ -1,0 +1,71 @@
+id: sum_of_first_n_odd_numbers
+
+title: The Sum of the First n Odd Numbers Is n^2
+
+aliases:
+  - 1 + 3 + 5 + ... = n^2
+  - L-shaped gnomons
+  - proof without words for odd numbers
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Square_number
+  original_title: Square number (properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Nelsen - Proofs Without Words
+    notes: MAA, 1993
+
+problem:
+  statement: >
+    Show that 1 + 3 + 5 + ... + (2n - 1) = n^2.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: an n x n square of dots is a nest of L-shaped layers with 1, 3, 5, ... dots
+  category: decomposition
+  summary: >
+    Build the n x n square by adding an L-shaped border to the (n-1) x (n-1)
+    square; the border has (n-1) + (n-1) + 1 = 2n - 1 dots. So the square is
+    the sum of the first n odd numbers.
+
+intuitive_proof:
+  explanation: >
+    Arrange n^2 dots in an n x n square. Peel it into L-shaped layers around
+    the corner: the first layer is 1 dot, the k-th layer adds a row of k - 1
+    dots, a column of k - 1 dots and a corner dot, 2k - 1 in all, and turns
+    a (k-1) x (k-1) square into a k x k square. Summing the layers gives 1 +
+    3 + ... + (2n - 1) = n^2.
+
+reasoning_structure:
+  naive_approach: >
+    Prove by induction, or apply the arithmetic progression formula.
+  crucial_observation: >
+    Odd numbers are the sizes of the gnomons of a square.
+  why_it_simplifies: >
+    The picture is the proof; it also explains why consecutive squares
+    differ by odd numbers.
+
+related:
+  - nicomachus_sum_of_cubes
+  - gauss_pairing_sum
+
+tags:
+  - decomposition
+  - proof without words
+  - squares
+  - gnomon
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

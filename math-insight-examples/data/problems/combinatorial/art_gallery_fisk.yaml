@@ -1,0 +1,84 @@
+id: art_gallery_fisk
+
+title: The Art Gallery Theorem (Fisk's Three-Colouring Proof)
+
+aliases:
+  - art gallery problem
+  - Chvatal's art gallery theorem
+  - floor(n/3) guards suffice
+  - Fisk's proof
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "How to guard a museum"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Theorem of Chvatal (1975); the proof is Steve Fisk's (1978).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Art_gallery_problem
+    original_title: Art gallery problem
+
+problem:
+  statement: >
+    A museum is a simple polygon with n walls. Show that floor(n/3) guards,
+    each standing still but seeing in every direction, can be placed so
+    that every point of the museum is seen by some guard.
+  domain: combinatorial geometry
+  answer: proved (floor(n/3) guards always suffice, and are sometimes necessary)
+
+key_idea:
+  name: triangulate, three-colour the vertices, and post guards on the least-used colour
+  category: pigeonhole
+  summary: >
+    Triangulate the polygon with diagonals. The vertices of a triangulated
+    polygon can be coloured with three colours so that every triangle has
+    all three colours. Some colour is used at most n/3 times; a guard at
+    each vertex of that colour sees every triangle, hence the whole museum.
+
+intuitive_proof:
+  explanation: >
+    Every simple polygon can be cut into triangles by non-crossing
+    diagonals (an ear-clipping induction). The resulting triangulation is
+    3-colourable: remove an ear triangle, colour the rest by induction,
+    and the ear's tip gets the third colour not used on its base. So each
+    triangle receives all three colours. The colour classes partition the
+    n vertices, so the smallest class has at most floor(n/3) vertices. A
+    guard at a vertex of a triangle sees the whole triangle (it is convex),
+    and every triangle has a vertex of the chosen colour, so those
+    floor(n/3) guards see the entire museum.
+
+reasoning_structure:
+  naive_approach: >
+    Reason about the geometry of visibility regions and try to cover the
+    polygon with star-shaped pieces, which quickly becomes intricate.
+  crucial_observation: >
+    A triangle is seen from any of its vertices, and a triangulated
+    polygon can be 3-coloured so that every triangle sees all three
+    colours; pigeonhole picks the cheap colour.
+  why_it_simplifies: >
+    All geometry is reduced to triangles plus a colouring; the bound comes
+    out of a division by 3 with no optimisation.
+
+tags:
+  - pigeonhole
+  - coloring
+  - triangulation
+  - visibility
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  A comb-shaped museum with n = 3k walls needs k guards, so the bound is
+  sharp. A model of "colouring plus averaging".

@@ -1,0 +1,80 @@
+id: cayley_formula_prufer
+
+title: Cayley's Formula via Prufer Codes
+
+aliases:
+  - Cayley's formula
+  - n^(n-2) labelled trees
+  - Prufer sequence
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Cayley's formula for the number of trees"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pr%C3%BCfer_sequence
+    original_title: Prüfer sequence
+
+problem:
+  statement: >
+    Show that the number of labelled trees on n vertices is n^{n-2}.
+  domain: graph theory
+  answer: n^(n-2)
+
+key_idea:
+  name: repeatedly remove the smallest leaf and record its neighbour; the recorded sequence of length n - 2 is a bijective code
+  category: bijection
+  summary: >
+    Delete the leaf with the smallest label and write down its neighbour;
+    repeat until two vertices remain. This gives a sequence of n - 2 labels.
+    The process is reversible (the leaves are exactly the labels not yet in
+    the remaining code), so trees correspond bijectively to sequences in
+    {1..n}^{n-2}.
+
+intuitive_proof:
+  explanation: >
+    Encoding: while more than two vertices remain, remove the leaf with the
+    smallest label and append its unique neighbour to the code. Each step
+    removes a vertex, so the code has n - 2 entries. Decoding: the vertices
+    that never appear in the code are exactly the leaves of the original
+    tree; the smallest such label was the first leaf removed and its
+    neighbour is the first code entry. Remove it, update the set of labels
+    missing from the rest of the code, and repeat. Since every step is
+    forced, the map from trees to codes is injective, and since decoding
+    works for every code, it is surjective. Hence there are n^{n-2} trees.
+
+reasoning_structure:
+  naive_approach: >
+    Count trees by structure (number of leaves, degrees), which quickly
+    becomes an unmanageable sum, or verify small cases.
+  crucial_observation: >
+    A tree can be peeled leaf by leaf in a canonical order, and the record
+    of neighbours retains all the information.
+  why_it_simplifies: >
+    A bijection with plain sequences gives the exact count with no
+    summation; the code also shows vertex i has degree one more than its
+    number of appearances.
+
+tags:
+  - bijection
+  - trees
+  - Cayley's formula
+  - encoding
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Aigner and Ziegler give four proofs; Joyal's double-counting proof is the
+  shortest and Pitman's counts rooted forests.

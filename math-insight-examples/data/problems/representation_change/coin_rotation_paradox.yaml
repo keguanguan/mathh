@@ -1,0 +1,80 @@
+id: coin_rotation_paradox
+
+title: A Coin Rolled Around an Equal Coin Turns Twice
+
+aliases:
+  - coin rotation paradox
+  - rolling coin makes two revolutions
+  - sidereal versus solar rotation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Coin_rotation_paradox
+  original_title: Coin rotation paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A coin rolls without slipping once around another coin of the same size.
+    How many times does the rolling coin rotate about its own centre?
+  domain: geometry
+  answer: twice
+
+key_idea:
+  name: "follow the centre of the rolling coin: it travels a circle of radius 2r, twice the coin's circumference"
+  category: coordinate_transformation
+  summary: >
+    The centre of the rolling coin moves on a circle of radius 2r, of length
+    4 pi r, twice the coin's circumference. A coin rolling without slipping
+    turns once for every circumference its centre travels, so it turns
+    twice. Equivalently: one turn comes from the arc length rolled, one from
+    going once around the fixed coin.
+
+intuitive_proof:
+  explanation: >
+    Let both coins have radius r. The rolling coin's centre stays at
+    distance 2r from the fixed centre, so it traces a circle of length 4 pi
+    r. The orientation of the rolling coin relative to a fixed direction
+    changes by (arc length rolled)/r from the rolling itself, plus the
+    rotation of the line of centres, which turns through 2 pi as the coin
+    goes once around. The arc length rolled equals the circumference 2 pi r
+    of the fixed coin, contributing 2 pi; the line of centres contributes
+    another 2 pi; in total 4 pi, two full turns. In the frame rotating with
+    the line of centres the coin turns only once.
+
+reasoning_structure:
+  naive_approach: >
+    Argue that the coin covers a distance equal to one circumference, so it
+    rotates once.
+  crucial_observation: >
+    Rolling along a curved path adds the turning of the path itself to the
+    rotation from the rolling.
+  why_it_simplifies: >
+    Separating the two sources of rotation (translation along the path and
+    the path's own turning) makes the answer transparent and explains the
+    sidereal day.
+
+related:
+  - clock_hands_overlap_eleven
+
+tags:
+  - rolling
+  - rotation
+  - relative motion
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Rolling around a coin of radius R gives 1 + R/r turns.

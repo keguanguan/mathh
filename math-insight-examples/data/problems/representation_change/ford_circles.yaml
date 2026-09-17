@@ -1,0 +1,88 @@
+id: ford_circles
+
+title: Ford Circles Never Overlap
+
+aliases:
+  - Ford circles
+  - Ford's touching circles
+  - Farey neighbours as tangent circles
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/fords.shtml
+  original_title: Ford's touching circles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny follows Conway and Guy, The Book of Numbers, p. 153. The circles are due to L. R. Ford (1938).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Ford_circle
+    original_title: Ford circle
+
+problem:
+  statement: >
+    For every reduced fraction p/q draw the circle of diameter 1/q^2 lying
+    above the x-axis and touching it at p/q. Show that two such circles
+    never overlap, and that they are tangent exactly when the fractions are
+    Farey neighbours, i.e. |ps - qr| = 1 for p/q and r/s.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the gap between two Ford circles is ((ps - qr)^2 - 1)/(q s)^2
+  category: geometric_reinterpretation
+  summary: >
+    Comparing the squared distance of the centres with the squared sum of
+    the radii, everything cancels except (ps - qr)^2 - 1 over (qs)^2. Since
+    ps - qr is a nonzero integer, this is never negative, and it is zero
+    exactly when |ps - qr| = 1.
+
+intuitive_proof:
+  explanation: >
+    The circle for p/q has centre (p/q, 1/(2q^2)) and radius 1/(2q^2).
+    For two distinct fractions p/q and r/s, the squared distance between the
+    centres is (p/q - r/s)^2 + (1/(2q^2) - 1/(2s^2))^2, and the squared sum
+    of the radii is (1/(2q^2) + 1/(2s^2))^2. Subtracting, the squared
+    radius terms cancel except for the cross term, and one gets
+    (ps - qr)^2/(qs)^2 - 1/(qs)^2 = ((ps - qr)^2 - 1)/(qs)^2. Because the
+    fractions are distinct, ps - qr is a nonzero integer, so this quantity
+    is at least 0: the circles do not overlap. It is 0, meaning the circles
+    are tangent, exactly when |ps - qr| = 1, the defining property of
+    Farey neighbours. In particular the mediant (p + r)/(q + s) of two
+    neighbours is a neighbour of both, so its circle is tangent to both of
+    theirs.
+
+reasoning_structure:
+  naive_approach: >
+    Treat the arithmetic of Farey fractions (mediants, the determinant
+    condition) and the geometry of the circles as separate subjects and try
+    to match them case by case.
+  crucial_observation: >
+    The choice of radius 1/(2q^2) makes the algebraic determinant ps - qr
+    appear literally as the geometric gap between the circles.
+  why_it_simplifies: >
+    A single cancellation identifies "tangent" with "determinant one";
+    the whole theory of Farey neighbours becomes visible as a picture of
+    touching circles.
+
+tags:
+  - geometric reinterpretation
+  - Farey sequence
+  - number theory
+  - circles
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Ford circles give geometric proofs of Hurwitz-type Diophantine
+  approximation results and visualise the Stern-Brocot tree.

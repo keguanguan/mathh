@@ -1,0 +1,96 @@
+id: two_envelopes_paradox
+
+title: "The Two Envelopes Paradox: No Uniform Prior on All Amounts"
+
+aliases:
+  - two envelopes problem
+  - exchange paradox
+  - switching envelopes
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Two_envelopes_problem
+  original_title: Two envelopes problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - Aha! Gotcha
+    notes: "1982"
+
+problem:
+  statement: >
+    Two envelopes contain money, one twice as much as the other. You pick
+    one and see it contains A. The argument 'the other holds 2A or A/2 with
+    equal probability, so its expected value is 5A/4, so switch' applies
+    whichever envelope you hold. Where is the error?
+  domain: probability
+  answer: >
+    the assumption that 'the other is 2A or A/2 with probability 1/2 each'
+    for every A cannot hold: it would require a uniform prior on all
+    amounts, which does not exist
+
+key_idea:
+  name: write the two amounts as x and 2x; conditional on seeing A, the probability that A is the smaller amount depends on the prior distribution of x and cannot be 1/2 for all A
+  category: representation_change
+  summary: >
+    Model the envelopes as x and 2x with x drawn from some prior. Seeing A,
+    the odds that the other holds 2A rather than A/2 are P(x = A) : P(x =
+    A/2), which depends on the prior. If they were 1 : 1 for every A, the
+    prior would give equal weight to A, 2A, 4A, ..., which no probability
+    distribution can do. Unconditionally, switching gains or loses x with
+    equal probability: expected gain zero.
+
+intuitive_proof:
+  explanation: >
+    Let the smaller amount be x with some prior distribution, so the
+    envelopes contain x and 2x and you hold each with probability 1/2.
+    Without looking, switching gains x or loses x with equal probability:
+    expected gain 0. Now condition on the observed amount A. The other
+    envelope contains 2A if x = A and A/2 if x = A/2, so the conditional
+    probability that the other is larger is P(x = A)/(P(x = A) + P(x =
+    A/2)). The paradoxical argument sets this to 1/2 for every A, i.e. P(x =
+    A) = P(x = A/2) for all A, forcing P(x = 2^k A) to be constant in k; an
+    infinite sequence of equal positive probabilities sums to infinity, so
+    no such prior exists. With any genuine prior the conditional expected
+    gain from switching is positive for some values of A and negative for
+    others, and averages to zero (when the expectations are finite). The
+    paradox is a symptom of an implicit improper prior, not of a flaw in
+    expected value.
+
+reasoning_structure:
+  naive_approach: >
+    Accept the 5A/4 computation and conclude that one should always switch,
+    then notice the symmetry and declare mathematics paradoxical.
+  crucial_observation: >
+    The conditional probabilities used in the argument are not free
+    parameters: they are determined by a prior on the smaller amount, and
+    the prior the argument needs does not exist.
+  why_it_simplifies: >
+    Making the sample space explicit (the pair (x, 2x) plus a fair coin for
+    which envelope you hold) shows exactly which step of the symmetric
+    argument is illegitimate.
+
+related:
+  - boy_or_girl_sample_space
+  - st_petersburg_infinite_expectation
+
+tags:
+  - representation change
+  - conditional probability
+  - paradox
+  - prior
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Variants with priors of infinite expectation keep the switching argument
+  valid for every A, which is another manifestation of infinite expectations
+  behaving badly.

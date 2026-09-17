@@ -1,0 +1,106 @@
+id: square_billiards_unfolding
+
+title: Billiards in a Square, Unfolded onto a Torus
+
+aliases:
+  - square billiard periodic orbits
+  - unfolding a billiard table
+  - rational slope gives periodic billiard path
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dynamical_billiards
+  original_title: Dynamical billiards
+  accessed: 2026-09-16
+  notes: >
+    The unfolding trick for polygonal billiards is classical (Konig and
+    Szucs, 1913); it is the opening example of most introductions to
+    mathematical billiards (e.g. Tabachnikov, Geometry and Billiards).
+
+additional_sources:
+  - name: Tabachnikov - Geometry and Billiards
+    notes: AMS Student Mathematical Library 30, 2005, Chapter 1.
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Arithmetic/JEuclidGame.shtml
+    original_title: Euclid's Game on a Square Grid
+    notes: A related lattice-path picture of the gcd.
+
+problem:
+  statement: >
+    A point moves inside a unit square with constant speed and reflects off
+    the sides with angle of incidence equal to angle of reflection. Show
+    that its path is periodic if the tangent of its initial direction is
+    rational, and that otherwise the path comes arbitrarily close to every
+    point of the square.
+  domain: dynamical systems
+  answer: >
+    Rational slope p/q: periodic (period covering 2q horizontal and 2p
+    vertical crossings). Irrational slope: dense (in fact equidistributed).
+
+key_idea:
+  name: reflect the table instead of the ball, so the path becomes a straight line on a torus
+  category: circle_rotation
+  summary: >
+    Instead of bouncing the ball, reflect the square across the side it
+    hits; the path continues straight into the mirror-image square. Four
+    reflected copies form a 2x2 square whose opposite sides are identified,
+    a torus, on which the ball moves in a straight line with the original
+    slope. Straight lines on a torus close up exactly when the slope is
+    rational and are dense otherwise.
+
+intuitive_proof:
+  explanation: >
+    At each bounce, replace the reflection of the ball by a reflection of
+    the table: the trajectory continues as a straight line into the
+    reflected copy of the square. Reflecting twice in parallel sides is a
+    translation by 2, so all the copies the ball visits are translates of
+    the 2x2 block made of the square and its three reflections. Identify
+    opposite sides of that block: the straight line now lives on a torus
+    R^2/(2Z)^2, and the original bouncing path is its folded image. A line
+    of slope p/q (in lowest terms) on this torus returns to its starting
+    point after advancing 2q horizontally and 2p vertically, so the
+    billiard path is periodic. A line of irrational slope never returns;
+    its successive crossings of a horizontal circle of the torus advance by
+    a fixed irrational amount, i.e. form an irrational rotation, whose orbit
+    is dense (and equidistributed), so the line, and hence the folded
+    billiard path, is dense in the square.
+
+reasoning_structure:
+  naive_approach: >
+    Track the sequence of bounce points on the four sides with explicit
+    reflection formulas and look for a pattern in the coordinates.
+  crucial_observation: >
+    Reflection of the ball is the same as reflection of the table, and the
+    reflected tables tile the plane periodically, giving a torus.
+  why_it_simplifies: >
+    Bouncing disappears entirely; the question becomes the elementary one
+    of whether a straight line on a torus closes up, decided by the
+    rationality of its slope. The same unfolding handles rectangles and
+    equilateral triangles.
+
+related:
+  - herons_shortest_path
+  - benford_leading_digits_powers_of_two
+
+tags:
+  - dynamical systems
+  - unfolding
+  - torus
+  - circle rotation
+  - reflection
+  - periodic orbit
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Same reflection idea as herons_shortest_path and spider_and_fly, now
+  applied to an infinite path; the resulting circle rotation is the same
+  system as in the Benford entry.

@@ -1,0 +1,76 @@
+id: angle_bisector_theorem_by_areas
+
+title: The Angle Bisector Theorem by Areas
+
+aliases:
+  - angle bisector theorem
+  - BD/DC = AB/AC
+  - bisector divides opposite side proportionally
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Angle_bisector_theorem
+  original_title: Angle bisector theorem (proof by areas)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    In triangle ABC the bisector of angle A meets BC at D. Show that BD/DC =
+    AB/AC.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: BD/DC is the ratio of the areas of ABD and ACD, which share the height from A and also have equal heights from D onto AB and AC
+  category: decomposition
+  summary: >
+    Triangles ABD and ACD have the same height from A, so their areas are in
+    ratio BD : DC. They also have equal heights from D (D is equidistant
+    from the lines AB and AC, being on the bisector), so their areas are in
+    ratio AB : AC. Hence BD/DC = AB/AC.
+
+intuitive_proof:
+  explanation: >
+    Let [XYZ] denote area. Triangles ABD and ACD share the altitude from A
+    to BC, so [ABD]/[ACD] = BD/DC. On the other hand, D lies on the bisector
+    of angle A, so its distances to the lines AB and AC are equal, say h;
+    then [ABD] = (1/2) AB h and [ACD] = (1/2) AC h, so [ABD]/[ACD] = AB/AC.
+    Comparing the two expressions for the same ratio gives BD/DC = AB/AC.
+
+reasoning_structure:
+  naive_approach: >
+    Apply the law of sines in the two sub-triangles, or draw a parallel
+    through C to the bisector and use similar triangles (Euclid's route).
+  crucial_observation: >
+    One ratio of areas can be computed with two different choices of base
+    and height.
+  why_it_simplifies: >
+    Computing the same area ratio in two ways gives the theorem in three
+    lines with no auxiliary constructions.
+
+related:
+  - ceva_theorem_by_areas
+
+tags:
+  - decomposition
+  - area ratios
+  - angle bisector
+  - triangle geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

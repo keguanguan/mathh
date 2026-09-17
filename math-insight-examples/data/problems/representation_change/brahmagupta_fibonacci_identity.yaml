@@ -1,0 +1,76 @@
+id: brahmagupta_fibonacci_identity
+
+title: Products of Sums of Two Squares Are Sums of Two Squares
+
+aliases:
+  - Brahmagupta-Fibonacci identity
+  - (a^2+b^2)(c^2+d^2) as a sum of two squares
+  - multiplicativity of the norm
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Brahmagupta%E2%80%93Fibonacci_identity
+  original_title: Brahmagupta–Fibonacci identity
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Representing numbers as sums of two squares"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that a product of two sums of two squares is again a sum of two
+    squares.
+  domain: number theory
+  answer: "proved: (a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2"
+
+key_idea:
+  name: a^2 + b^2 is the squared modulus of the complex number a + bi, and moduli multiply
+  category: complex_or_vector_coordinates
+  summary: >
+    |a + bi|^2 = a^2 + b^2 and |zw| = |z||w|. So (a^2 + b^2)(c^2 + d^2) =
+    |(a + bi)(c + di)|^2 = |(ac - bd) + (ad + bc)i|^2, which is the
+    identity.
+
+intuitive_proof:
+  explanation: >
+    For complex numbers z = a + bi and w = c + di we have |z|^2 = a^2 + b^2,
+    and the modulus is multiplicative: |zw|^2 = |z|^2 |w|^2 (both sides
+    equal zw times its conjugate). Computing zw = (ac - bd) + (ad + bc)i and
+    reading off |zw|^2 gives (a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad +
+    bc)^2. Expanding both sides verifies it without complex numbers, but the
+    representation explains where the formula comes from.
+
+reasoning_structure:
+  naive_approach: >
+    Expand the product and try to regroup 4 terms into two squares by
+    guessing.
+  crucial_observation: >
+    Sums of two squares are norms from the Gaussian integers, and norms are
+    multiplicative.
+  why_it_simplifies: >
+    The identity is a one-line consequence of a multiplicative structure;
+    the same view gives the four-square identity via quaternions.
+
+related:
+  - zagier_two_squares_involution
+
+tags:
+  - complex numbers
+  - sums of two squares
+  - algebraic identity
+  - norm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

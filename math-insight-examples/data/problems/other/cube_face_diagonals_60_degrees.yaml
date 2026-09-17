@@ -1,0 +1,83 @@
+id: cube_face_diagonals_60_degrees
+
+title: Two Face Diagonals of a Cube Meet at 60 Degrees
+
+aliases:
+  - angle between face diagonals of a cube
+  - equilateral triangle in a cube
+  - cube diagonal angle 60
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cube
+  original_title: Cube (geometric relations)
+  accessed: 2026-09-16
+  notes: >
+    Classic spatial-visualisation puzzle; the equilateral-triangle argument
+    is folklore.
+
+additional_sources:
+  - name: Gardner - Mathematical Circus
+    notes: Chapter on geometric puzzles
+
+problem:
+  statement: >
+    Two face diagonals of a cube start at the same vertex and lie on
+    adjacent faces. What is the angle between them?
+  domain: geometry
+  answer: 60 degrees
+
+key_idea:
+  name: the third face diagonal joining their far endpoints has the same length, so the three form an equilateral triangle
+  category: auxiliary_object
+  summary: >
+    Let the diagonals go from vertex A to B and from A to C on two adjacent
+    faces. The segment BC is also a face diagonal (of the third face through
+    B and C), so AB = AC = BC and triangle ABC is equilateral: the angle is
+    60 degrees, not the 90 or 45 that the picture suggests.
+
+intuitive_proof:
+  explanation: >
+    Place the cube with vertex A at the origin and edge length 1, with the
+    two diagonals AB and AC on the faces z = 0 and y = 0, say B = (1, 1, 0)
+    and C = (1, 0, 1). The points B and C are two opposite corners of the
+    face x = 1, so BC is a face diagonal too. All three segments AB, AC, BC
+    are face diagonals of length sqrt 2, so ABC is an equilateral triangle
+    and the angle at A is 60 degrees. (Alternatively the dot product of (1,
+    1, 0) and (1, 0, 1) is 1 = sqrt 2 * sqrt 2 * cos(theta), so cos(theta) =
+    1/2.)
+
+reasoning_structure:
+  naive_approach: >
+    Estimate from a perspective drawing, where the angle looks like 90
+    degrees, or compute with coordinates without seeing the geometry.
+  crucial_observation: >
+    The segment closing the two diagonals is itself a face diagonal,
+    revealing an equilateral triangle hidden in the cube.
+  why_it_simplifies: >
+    Adding one auxiliary segment exposes symmetry that makes the angle
+    immediate.
+
+related:
+  - tetrahedron_in_cube_volume
+  - cube_vertex_walk_parity
+
+tags:
+  - auxiliary object
+  - cube
+  - equilateral triangle
+  - spatial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The equilateral triangle is a face of the regular tetrahedron inscribed in
+  the cube.

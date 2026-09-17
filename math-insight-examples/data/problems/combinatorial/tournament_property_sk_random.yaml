@@ -1,0 +1,84 @@
+id: tournament_property_sk_random
+
+title: Tournaments in Which Every k Players Are Beaten by Someone (Erdos)
+
+aliases:
+  - Schutte property
+  - property S_k for tournaments
+  - Erdos 1963 tournament
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Probability makes counting (sometimes) easy"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Alon & Spencer - The Probabilistic Method
+    notes: Chapter 1
+
+problem:
+  statement: >
+    Show that for every k there is a tournament in which for any set of k
+    players there is another player who beats all of them.
+  domain: graph theory
+  answer: >
+    proved (a random tournament on n players works once C(n,k)(1 -
+    2^{-k})^{n-k} < 1)
+
+key_idea:
+  name: orient each edge by a coin flip; a fixed k-set is left undominated with probability (1 - 2^{-k})^{n-k}, which decays exponentially in n
+  category: probabilistic_argument
+  summary: >
+    In a random tournament on n players, a fixed player beats all of a given
+    k-set with probability 2^{-k}, so none of the other n - k players does
+    with probability (1 - 2^{-k})^{n-k}. There are C(n, k) k-sets, and
+    C(n,k)(1 - 2^{-k})^{n-k} < 1 for n large, so some tournament has no
+    undominated k-set.
+
+intuitive_proof:
+  explanation: >
+    Take n players and orient each of the C(n, 2) games independently by a
+    fair coin. Fix a set K of k players. For a player v outside K, the
+    probability that v beats every member of K is 2^{-k}, and these events
+    are independent for different v, so the probability that no v outside K
+    dominates K is (1 - 2^{-k})^{n-k}. By the union bound over the C(n, k)
+    choices of K, the probability that some K is undominated is at most C(n,
+    k)(1 - 2^{-k})^{n-k} <= n^k e^{-(n-k)/2^k}, which tends to 0 as n grows.
+    For large n this is less than 1, so a tournament with the required
+    property exists.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct such tournaments explicitly (possible via quadratic
+    residues, but only with number theory).
+  crucial_observation: >
+    Each k-set is dominated by a random player with a fixed positive
+    probability, and there are many independent chances.
+  why_it_simplifies: >
+    The union bound turns a quantitative existence question into an
+    inequality between a polynomial and an exponential.
+
+related:
+  - ramsey_lower_bound_random
+  - tournament_king
+
+tags:
+  - probabilistic method
+  - tournament
+  - union bound
+  - existence proof
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Erdos (1963). Such tournaments need at least about k 2^k players.

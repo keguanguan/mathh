@@ -1,0 +1,80 @@
+id: chebyshev_sum_inequality_rearrangement
+
+title: Chebyshev's Sum Inequality from the Rearrangement Inequality
+
+aliases:
+  - Chebyshev's sum inequality
+  - similarly ordered sequences
+  - average of products versus product of averages
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Chebyshev%27s_sum_inequality
+  original_title: Chebyshev's sum inequality (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    If a_1 <= ... <= a_n and b_1 <= ... <= b_n, show that n (a_1 b_1 + ... +
+    a_n b_n) >= (a_1 + ... + a_n)(b_1 + ... + b_n).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: expand the right side as n sums of products a_i b_{sigma(i)} over the n cyclic shifts, each of which is at most the sorted sum by rearrangement
+  category: smoothing
+  summary: >
+    The product of the two sums is the sum over all pairs of a_i b_j, which
+    can be grouped into the n cyclic pairings j = i + k mod n. Each cyclic
+    pairing is a rearrangement of the b's, so its sum is at most the
+    similarly ordered sum. Adding the n bounds gives the inequality.
+
+intuitive_proof:
+  explanation: >
+    Write (sum a_i)(sum b_j) = sum over k = 0..n-1 of sum over i of a_i
+    b_{i+k}, indices mod n. For each fixed k the inner sum pairs the a's
+    with a permutation of the b's, so by the rearrangement inequality it is
+    at most sum of a_i b_i (the similarly ordered pairing). Summing over the
+    n values of k gives (sum a_i)(sum b_j) <= n sum a_i b_i. Equality holds
+    iff all cyclic shifts give the same sum, essentially iff one sequence is
+    constant.
+
+reasoning_structure:
+  naive_approach: >
+    Expand the difference n sum a_i b_i - (sum a_i)(sum b_j) as (1/2) sum
+    over i, j of (a_i - a_j)(b_i - b_j) >= 0, which is a fine alternative
+    but requires guessing that identity.
+  crucial_observation: >
+    The product of the sums is an average over cyclic pairings, each
+    dominated by the sorted pairing.
+  why_it_simplifies: >
+    One application of the rearrangement inequality to each cyclic shift
+    proves the result; the technique generalises to sequences ordered
+    oppositely (reverse inequality).
+
+related:
+  - rearrangement_inequality_swapping
+
+tags:
+  - smoothing
+  - rearrangement inequality
+  - inequality
+  - sorting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

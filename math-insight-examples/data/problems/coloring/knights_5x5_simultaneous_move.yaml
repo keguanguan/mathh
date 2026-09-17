@@ -1,0 +1,79 @@
+id: knights_5x5_simultaneous_move
+
+title: 25 Knights on a 5x5 Board Cannot All Move at Once
+
+aliases:
+  - knights on a 5x5 board simultaneous move
+  - knights swap squares
+  - colouring 13 versus 12
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 2, Coloring Proofs
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on parity
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    A knight stands on every square of a 5x5 board. Can all 25 knights
+    simultaneously make a legal move so that every square is again occupied
+    by exactly one knight?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: a knight move changes the colour of its square, and the 5x5 board has 13 squares of one colour and 12 of the other
+  category: coloring_invariant
+  summary: >
+    Every knight moves to a square of the opposite colour. If all knights
+    moved simultaneously onto distinct squares, the 13 knights on black
+    squares would need 13 distinct white squares, but there are only 12.
+
+intuitive_proof:
+  explanation: >
+    Colour the board like a chessboard; with 25 squares, 13 are black and 12
+    white. A knight always moves to a square of the opposite colour, so
+    after a simultaneous move the 13 knights starting on black squares
+    occupy 13 distinct white squares. Only 12 white squares exist, so two
+    knights would share a square. Hence the simultaneous move is impossible;
+    the same holds on any board with an odd number of squares.
+
+reasoning_structure:
+  naive_approach: >
+    Try to pair the squares by knight moves and fail to complete the
+    pairing.
+  crucial_observation: >
+    A simultaneous move is a bijection of the squares reversing colours,
+    which requires equal colour counts.
+  why_it_simplifies: >
+    The colouring count immediately decides the question; it is the
+    mutilated-checkerboard idea for a permutation instead of a tiling.
+
+related:
+  - knight_returns_even_moves
+  - mutilated_checkerboard
+
+tags:
+  - coloring
+  - parity
+  - knight
+  - bijection
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

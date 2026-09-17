@@ -1,0 +1,77 @@
+id: squares_and_circles
+
+title: Squares and Circles Replacement Game
+
+aliases:
+  - squares and circles
+  - two-symbol replacement game
+  - last shape remaining
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/one_two.shtml
+  original_title: Squares and Circles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites Fomin, Genkin, Itenberg, Mathematical Circles (Russian Experience), AMS 1996.
+
+problem:
+  statement: >
+    A row contains some circles and some squares. A move picks any two shapes
+    and replaces them by one shape: two identical shapes become a square, two
+    different shapes become a circle. Moves continue until a single shape is
+    left. Can one predict the final shape from the starting row?
+  domain: combinatorics
+  answer: >
+    Yes: the last shape is a circle if the initial number of circles is odd,
+    and a square if it is even, whatever moves are made.
+
+key_idea:
+  name: parity of the number of circles is invariant
+  category: parity_invariant
+  summary: >
+    Each move changes the number of circles by 0 or 2 (two circles vanish, or
+    a circle and a square become a circle, or two squares become a square),
+    so its parity never changes and the final shape is determined at the start.
+
+intuitive_proof:
+  explanation: >
+    Let C be the number of circles. Replacing two circles by a square lowers
+    C by 2; replacing a circle and a square by a circle leaves C unchanged;
+    replacing two squares by a square leaves C unchanged. In every case the
+    parity of C is preserved. At the end there is one shape: a circle if C is
+    1 (odd), a square if C is 0 (even). Hence the final shape is a circle
+    exactly when C was odd at the start.
+
+reasoning_structure:
+  naive_approach: >
+    Try different orders of replacement on small rows and look for a pattern,
+    or attempt to trace how each individual shape evolves.
+  crucial_observation: >
+    Squares are "neutral": only the number of circles matters, and it changes
+    by an even amount at every move.
+  why_it_simplifies: >
+    A single parity bit computed at the start predicts the outcome of every
+    possible sequence of moves.
+
+tags:
+  - invariant
+  - parity
+  - replacement game
+  - group Z/2
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Squares act as the identity and circles as the generator of Z/2; the game
+  computes the product of the row in that group. The three-symbol version
+  (squares_circles_triangles) and the mod-3 version (chameleons) push the
+  same idea further.

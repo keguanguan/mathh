@@ -1,0 +1,85 @@
+id: fixed_length_games_parity
+
+title: Games of Fixed Length Are Decided by Parity
+
+aliases:
+  - fixed-length games
+  - games where the number of moves is forced
+  - counting moves in games
+
+source:
+  name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+  url: https://bookstore.ams.org/mcl-7
+  original_title: Chapter on games
+  author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 13, Games
+    author: Arthur Engel
+
+problem:
+  statement: >
+    In some two-player games the number of moves is the same for every
+    possible play. Show that in such a game, if the last mover wins, the
+    winner is determined by the parity of that number, and give examples of
+    games of this kind.
+  domain: combinatorial games
+  answer: >
+    in a fixed-length game with the last mover winning, the first player
+    wins iff the number of moves is odd
+
+key_idea:
+  name: if the number of moves is invariant, no decision affects the outcome
+  category: parity_invariant
+  summary: >
+    When every play of a game takes exactly N moves, the player who moves
+    last is determined: the first player if N is odd, the second if N is
+    even. Spotting an invariant that fixes N (pieces of chocolate, coins
+    removed one per turn, edges deleted from a tree) solves the game with no
+    strategy.
+
+intuitive_proof:
+  explanation: >
+    If every play of the game consists of exactly N moves, then the first
+    player makes moves 1, 3, 5, ... and the second makes moves 2, 4, 6, ....
+    The last move, number N, belongs to the first player iff N is odd.
+    Examples: breaking an m x n bar (N = mn - 1); removing coins one at a
+    time from a pile of n (N = n); deleting edges of a tree with n vertices
+    one at a time until none remain (N = n - 1); adding a diagonal to a
+    convex n-gon until no non-crossing diagonal can be added (N = n - 3).
+
+reasoning_structure:
+  naive_approach: >
+    Analyse each such game by backward induction from terminal positions.
+  crucial_observation: >
+    An invariant count of moves means the game's outcome is independent of
+    play.
+  why_it_simplifies: >
+    Identifying the invariant replaces game-tree search by a parity check;
+    the diagonal-drawing game is the counting_diagonals result in game form.
+
+related:
+  - chocolate_breaking_game_parity
+  - counting_diagonals_convex_polygon
+  - tennis_tournament_matches
+
+tags:
+  - parity
+  - invariant
+  - game
+  - move count
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

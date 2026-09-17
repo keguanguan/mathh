@@ -1,0 +1,18 @@
+family_id: difference_board
+idea_type: gcd_invariant
+domain: elementary number theory / processes
+parameters:
+  possible_fraction: 0.35
+  n_numbers: 3
+  gcd_range: [2, 12]
+size_parameter: magnitude bound n on the initial numbers
+ground_truth_answer: possible | impossible (target reachable iff gcd | target and target <= max; closure-confirmed in tests)
+canonical_idea: every number ever written is a multiple of gcd(initial numbers)
+certificate_type: gcd_invariant
+verification_method: symbolic (residue classes), exact
+generation_method: seeded gcd g and multipliers; target chosen as a multiple / non-multiple of g below the maximum
+transfer_surfaces:
+  0: classical Euclid's game statement + reachability question
+  1: numbers on a board
+  2: rod lengths in a workshop
+seed_problem: euclids_game (math-insight-examples)

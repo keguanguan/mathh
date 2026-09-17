@@ -1,0 +1,78 @@
+id: hilbert_hotel_infinite_guests
+
+title: Hilbert's Hotel Accommodates Infinitely Many New Guests
+
+aliases:
+  - Hilbert's hotel
+  - infinite hotel paradox
+  - shift to even rooms
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hilbert%27s_paradox_of_the_Grand_Hotel
+  original_title: Hilbert's paradox of the Grand Hotel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Sets, functions, and the continuum hypothesis"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    A hotel with rooms numbered 1, 2, 3, ... is full. Show that it can still
+    accommodate one more guest, and even countably infinitely many more.
+  domain: analysis
+  answer: move guest n to room n + 1 (or to room 2n)
+
+key_idea:
+  name: an infinite set is in bijection with a proper subset of itself
+  category: bijection
+  summary: >
+    Sending the guest in room n to room n + 1 frees room 1. Sending the
+    guest in room n to room 2n frees all odd-numbered rooms, infinitely
+    many, for the newcomers.
+
+intuitive_proof:
+  explanation: >
+    The map n -> n + 1 is a bijection from the set of rooms to the rooms
+    numbered 2, 3, 4, ..., so after everyone moves up one room, room 1 is
+    empty and the new guest takes it. The map n -> 2n is a bijection onto
+    the even rooms, so after everyone doubles their room number, the odd
+    rooms 1, 3, 5, ... are free and the k-th new guest takes room 2k - 1.
+    Nobody is displaced because each map is injective.
+
+reasoning_structure:
+  naive_approach: >
+    Object that a full hotel has no free room, reasoning from finite
+    experience.
+  crucial_observation: >
+    Infinite sets admit injections into proper subsets, so 'full' does not
+    mean 'no room'.
+  why_it_simplifies: >
+    Two explicit bijections make the paradox a triviality; this property
+    characterises infinite sets (Dedekind).
+
+related:
+  - rationals_countable_zigzag
+
+tags:
+  - bijection
+  - "infinity"
+  - countable sets
+  - paradox
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Even countably many buses each with countably many passengers fit: send
+  passenger m of bus k to room 2^k 3^m.

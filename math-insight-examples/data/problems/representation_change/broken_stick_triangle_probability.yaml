@@ -1,0 +1,74 @@
+id: broken_stick_triangle_probability
+
+title: Probability That a Broken Stick Forms a Triangle
+
+aliases:
+  - broken stick problem
+  - three pieces form a triangle probability 1/4
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Broken_stick_problem
+  original_title: Broken stick problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A stick is broken at two points chosen uniformly and independently at
+    random. What is the probability that the three pieces can form a
+    triangle?
+  domain: probability
+  answer: 1/4
+
+key_idea:
+  name: represent the two break points as a point in the unit square; the triangle condition is 'no piece exceeds 1/2', a union of two triangles of total area 1/4
+  category: geometric_reinterpretation
+  summary: >
+    Let the break points be x < y in [0, 1]. The pieces x, y - x, 1 - y form
+    a triangle iff each is less than 1/2. In the (x, y) plane with x < y (a
+    triangle of area 1/2), these conditions cut out a triangle of area 1/8;
+    by symmetry the case y < x gives another 1/8. Total 1/4.
+
+intuitive_proof:
+  explanation: >
+    Let the breaks be at x and y. The three lengths satisfy the triangle
+    inequalities iff each length is less than 1/2 (the sum of the other two
+    is then greater). In the unit square of (x, y) pairs, restrict to x < y:
+    the conditions x < 1/2, y - x < 1/2, y > 1/2 describe the triangle with
+    vertices (0, 1/2), (1/2, 1/2), (1/2, 1), of area 1/8, out of the
+    half-square of area 1/2. The case y < x is symmetric. So the probability
+    is (1/8 + 1/8)/1 = 1/4.
+
+reasoning_structure:
+  naive_approach: >
+    Condition on the first break point and integrate the conditional
+    probability, which works but obscures the picture.
+  crucial_observation: >
+    Random breaks are a uniform point in a square, and the triangle
+    condition is a polygon whose area can be read off.
+  why_it_simplifies: >
+    Geometric probability turns the question into computing the area of a
+    triangle.
+
+tags:
+  - geometric probability
+  - area
+  - triangle inequality
+  - representation change
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Breaking one piece again (sequential breaking) gives a different answer,
+  which is why the problem must specify the model.

@@ -1,0 +1,91 @@
+id: misere_nim_bouton_rule
+
+title: "Misere Nim: Play Normal Nim until the Heaps Are Tiny"
+
+aliases:
+  - misere Nim
+  - last player to move loses Nim
+  - Bouton's misere rule
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Nim
+  original_title: Nim (misere game)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    Nim is played with the rule that the player taking the last counter
+    loses. Show that the winning strategy is the same as in normal Nim (keep
+    the XOR zero) as long as some heap has at least two counters, and that
+    the rule reverses exactly when all remaining heaps have size at most 1.
+  domain: combinatorial games
+  answer: >
+    play normal Nim (XOR = 0 after your move) while some heap exceeds 1;
+    when your move would leave only heaps of size 1, leave an odd number of
+    them
+
+key_idea:
+  name: the two games coincide until the position consists of single counters, and the player in control of normal Nim can decide how many singletons remain
+  category: isomorphism_to_another_problem
+  summary: >
+    While some heap has at least two counters, the normal-Nim strategy (XOR
+    zero after your move) keeps control, and its owner makes the last move
+    of that phase, reducing the final big heap to 0 or 1. That player
+    chooses the reduction leaving an odd number of singletons, so the
+    opponent takes the last counter. Only positions with all heaps of size
+    at most 1 follow the reversed parity rule.
+
+intuitive_proof:
+  explanation: >
+    Call a position 'large' if some heap has at least two counters. In a
+    large position with XOR nonzero, the normal-Nim move to XOR zero exists;
+    and one checks that from a large XOR-zero position every move leads to a
+    position that is either large with nonzero XOR or consists of
+    singletons, in which case the mover can choose the count. So the player
+    who holds XOR zero after their moves in the large phase will be the one
+    to make the last move of the large phase, reducing the final big heap to
+    0 or 1 while the others are singletons; that player chooses the
+    reduction leaving an odd number of singletons, so the opponent takes the
+    last one and loses. Positions with all heaps of size 0 or 1 are decided
+    by parity: an odd number of singletons is a loss for the player to move
+    (they take the last counter). Hence misere Nim's losing positions are:
+    large positions with XOR 0, and small positions with an odd number of
+    singletons.
+
+reasoning_structure:
+  naive_approach: >
+    Redo the entire Nim analysis from scratch for the misere rule.
+  crucial_observation: >
+    The misere rule only matters at the very end, and the normal strategy
+    keeps control until then.
+  why_it_simplifies: >
+    Recognising that the two games are isomorphic away from the endgame
+    reduces the new problem to Nim plus a one-line parity fix.
+
+related:
+  - nim
+  - one_pile_take_at_most_k_or_double_scoring
+
+tags:
+  - isomorphism
+  - Nim
+  - misere play
+  - combinatorial game
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  For most other impartial games misere play is far harder than normal play.

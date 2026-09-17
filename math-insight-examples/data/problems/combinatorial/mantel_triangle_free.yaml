@@ -1,0 +1,87 @@
+id: mantel_triangle_free
+
+title: Mantel's Theorem, a Triangle-Free Graph Has at Most n^2/4 Edges
+
+aliases:
+  - Mantel's theorem
+  - Turan's theorem for triangles
+  - maximum edges without a triangle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mantel%27s_theorem
+  original_title: Mantel's theorem
+  accessed: 2026-09-16
+  notes: Mantel (1907). The degree-sum proof below is the standard short one; Aigner and Ziegler give several proofs of the general Turan theorem.
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: Chapter "Turan's graph theorem".
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tur%C3%A1n%27s_theorem
+    original_title: Turan's theorem
+
+problem:
+  statement: >
+    A graph on n vertices contains no triangle. Show that it has at most
+    n^2/4 edges.
+  domain: graph theory
+  answer: proved (the bound is attained by the complete bipartite graph K_{n/2,n/2})
+
+key_idea:
+  name: for every edge uv, the neighbourhoods of u and v are disjoint, so d(u) + d(v) <= n; sum over edges
+  category: double_counting
+  summary: >
+    No triangle means an edge's two endpoints have no common neighbour, so
+    d(u) + d(v) <= n for every edge uv. Summing over all m edges counts
+    each vertex degree d(v) exactly d(v) times: sum of d(v)^2 <= mn. By
+    Cauchy-Schwarz (sum d(v))^2 = (2m)^2 <= n * sum d(v)^2 <= n^2 m, so
+    m <= n^2/4.
+
+intuitive_proof:
+  explanation: >
+    Let the graph have m edges and degrees d(v). If uv is an edge, no
+    vertex is adjacent to both u and v (that would form a triangle), so
+    the neighbourhoods of u and v are disjoint subsets of the n vertices
+    and d(u) + d(v) <= n. Add this inequality over all edges. On the left,
+    each vertex v appears once for each edge at v, contributing d(v)^2 in
+    total; on the right we get mn. So sum of d(v)^2 <= mn. The
+    Cauchy-Schwarz inequality gives (sum d(v))^2 <= n * sum d(v)^2, and
+    sum d(v) = 2m, hence 4m^2 <= n * mn, i.e. m <= n^2/4.
+
+reasoning_structure:
+  naive_approach: >
+    Try to add edges to a graph while avoiding triangles and argue that
+    the bipartite construction is best, or induct by deleting an edge and
+    its two endpoints (which also works but needs care).
+  crucial_observation: >
+    Triangle-freeness is exactly a statement about each edge's two
+    endpoints having disjoint neighbourhoods, which translates into a
+    linear inequality per edge.
+  why_it_simplifies: >
+    Summing local inequalities and one application of Cauchy-Schwarz
+    gives the global bound; the extremal graph emerges from the equality
+    case.
+
+related:
+  - handshake_lemma
+
+tags:
+  - double counting
+  - extremal graph theory
+  - Cauchy-Schwarz
+  - Turan
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Alternative one-idea proofs: take a maximum-degree vertex (extremal
+  principle) or move weights between non-adjacent vertices (Motzkin-Straus).

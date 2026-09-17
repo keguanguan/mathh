@@ -1,0 +1,79 @@
+id: noncrossing_handshakes_catalan_recursion
+
+title: Non-Crossing Handshakes around a Table Are Counted by Catalan Numbers
+
+aliases:
+  - non-crossing matchings
+  - handshakes across a round table
+  - Catalan recursion by the first person's partner
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Catalan_number
+  original_title: Catalan number (applications in combinatorics)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Stanley - Catalan Numbers
+
+problem:
+  statement: >
+    2n people sit around a round table and shake hands in pairs so that no
+    two handshakes cross. In how many ways can this happen?
+  domain: combinatorics
+  answer: the Catalan number C_n = C(2n, n)/(n + 1)
+
+key_idea:
+  name: person 1 shakes hands with someone, splitting the rest into two independent groups of even size on either side; this gives the Catalan recursion
+  category: recursive_structure
+  summary: >
+    Person 1 shakes hands with person 2k (an odd number of people between
+    them would leave someone unmatched on that side). The 2k - 2 people on
+    one side and the 2n - 2k on the other must shake hands among themselves
+    without crossing, independently. So H(n) = sum over k of H(k - 1) H(n -
+    k), the recursion defining the Catalan numbers, with H(0) = 1.
+
+intuitive_proof:
+  explanation: >
+    Fix person 1 and let their partner be person j. The handshake 1-j
+    separates the table into the j - 2 people between 1 and j and the 2n - j
+    people on the other side; a handshake from one side to the other would
+    cross 1-j, so each side is matched internally, which forces both sides
+    to have even size, j = 2k. The two sides are matched independently and
+    without crossings, in H(k - 1) and H(n - k) ways. Summing over k = 1..n
+    gives H(n) = sum of H(k - 1) H(n - k), with H(0) = 1. This is exactly
+    the recursion C_n = sum of C_{k-1} C_{n-k} of the Catalan numbers, so
+    H(n) = C_n.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate matchings for 2, 4, 6, 8 people (1, 2, 5, 14) and guess.
+  crucial_observation: >
+    One handshake splits the configuration into two smaller copies of the
+    same problem.
+  why_it_simplifies: >
+    A first-step decomposition gives the Catalan recursion instantly; the
+    closed form then comes from the Dyck path reflection argument.
+
+related:
+  - catalan_dyck_paths_reflection
+
+tags:
+  - recursion
+  - Catalan numbers
+  - non-crossing
+  - matchings
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Triangulations of a polygon and binary trees satisfy the same recursion by
+  the same 'first choice' split.

@@ -1,0 +1,83 @@
+id: herons_shortest_path
+
+title: Heron's Shortest Path via Reflection
+
+aliases:
+  - Heron's problem
+  - shortest path touching a line
+  - river problem (fetch water from the river)
+  - angle of incidence equals angle of reflection
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Geometry/HeronsProblem.shtml
+  original_title: Heron's Problem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The problem and its reflection solution go back to Heron of Alexandria.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fermat%27s_principle
+    original_title: Fermat's principle
+    notes: The law of reflection derived from the shortest-path (Heron) argument.
+
+problem:
+  statement: >
+    Points A and B lie on the same side of a line L. Find the point P on L
+    for which the path A -> P -> B is shortest.
+  domain: geometry
+  answer: >
+    P is the intersection of L with the segment from A to the reflection B'
+    of B in L; equivalently AP and PB make equal angles with L.
+
+key_idea:
+  name: reflect one endpoint across the line
+  category: reflection
+  summary: >
+    Reflecting B to B' across L preserves the length PB = PB' for every P on
+    L. So minimising AP + PB is the same as minimising AP + PB', and the
+    shortest route from A to B' is a straight segment.
+
+intuitive_proof:
+  explanation: >
+    Let B' be the mirror image of B in L. For any point P on L the triangle
+    inequality gives AP + PB = AP + PB' >= AB', with equality exactly when P
+    lies on segment AB'. Hence the optimal P is where AB' crosses L, and
+    since the reflection swaps the angles, the incoming and outgoing angles
+    with L are equal. Any other point on L gives a bent, hence longer, path
+    to B'.
+
+reasoning_structure:
+  naive_approach: >
+    Parametrise P along L, write AP + PB as a sum of two square roots, and
+    minimise by calculus; or guess the equal-angle condition and try to
+    justify it.
+  crucial_observation: >
+    A reflection converts the bent path into an ordinary path between two
+    fixed points, and straight lines are shortest.
+  why_it_simplifies: >
+    The minimisation becomes the statement that a straight line is the
+    shortest connection, with no computation; the equal-angle law falls out
+    for free.
+
+tags:
+  - reflection
+  - geometric transformation
+  - optimisation
+  - triangle inequality
+  - shortest path
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same trick (reflect, then straighten) handles billiard paths, the
+  spider-and-fly problem (spider_and_fly) and Fagnano's inscribed triangle.

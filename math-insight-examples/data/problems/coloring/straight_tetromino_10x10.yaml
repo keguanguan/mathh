@@ -1,0 +1,80 @@
+id: straight_tetromino_10x10
+
+title: A 10x10 Board Cannot Be Tiled by 1x4 Tiles
+
+aliases:
+  - straight tetromino tiling of a 10x10 board
+  - 1x4 tiles on a 10x10 board
+  - four-colouring tiling proof
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 2, Coloring Proofs
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: Springer, 1998. The problem appears among the worked examples of Chapter 2.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Combinatorics/DominoCovering.shtml
+    original_title: Dominoes on a Chessboard
+    notes: General discussion of polyomino tilings and colouring arguments.
+
+problem:
+  statement: >
+    Can a 10x10 board be tiled by 25 straight tetrominoes (1x4 tiles)?
+  domain: tiling
+  answer: impossible
+
+key_idea:
+  name: colour diagonally with four colours
+  category: coloring_invariant
+  summary: >
+    Give the cell (i, j) colour (i + j) mod 4. Every 1x4 tile, horizontal or
+    vertical, covers one cell of each colour. But the 10x10 board has
+    25, 26, 25, 24 cells of the four colours, so no tiling exists.
+
+intuitive_proof:
+  explanation: >
+    Colour cell (i, j) with i + j mod 4. Four consecutive cells in a row or
+    column have consecutive values of i + j, hence all four colours once
+    each. Therefore 25 tiles would cover exactly 25 cells of each colour.
+    Counting, the colours 0, 1, 2, 3 occur 25, 26, 25, 24 times on the
+    10x10 board. Since the counts are not all 25, the tiling is impossible.
+
+reasoning_structure:
+  naive_approach: >
+    Attempt tilings by hand, or argue about the boundary rows; each attempt
+    fails without explaining why.
+  crucial_observation: >
+    Choose a colouring under which the tile is "balanced" no matter where it
+    lies, then compare the board's colour counts.
+  why_it_simplifies: >
+    A single count of four colours refutes all tilings at once; the same
+    method decides which rectangles admit 1xk tilings in general.
+
+related:
+  - t_tetromino_10x10
+
+tags:
+  - coloring
+  - tiling
+  - modular arithmetic
+  - polyomino
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Generalisation: an m x n rectangle can be tiled by 1xk bars iff k divides
+  m or n; the colouring gives necessity. Compare mutilated_checkerboard
+  (two colours) and this entry (four colours).

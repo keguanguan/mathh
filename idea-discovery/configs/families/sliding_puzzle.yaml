@@ -1,0 +1,17 @@
+family_id: sliding_puzzle
+idea_type: permutation_parity
+domain: permutation puzzles / group actions
+parameters:
+  possible_fraction: 0.35
+  walk_factor: 20            # random-walk length = walk_factor * n^2 for 'possible' targets
+size_parameter: board side n (n x n, n^2 - 1 tiles)
+ground_truth_answer: possible | impossible (parity rule, exact on boards with >= 2 rows and columns; BFS-confirmed in tests)
+canonical_idea: sign(permutation of all cells, blank read as largest) x (-1)^(blank row + col) is invariant
+certificate_type: permutation_parity
+verification_method: local_rule (every edge of the grid graph), exact
+generation_method: random start; seeded random-walk target (+ tile swap for impossible)
+transfer_surfaces:
+  0: classical 14-15 puzzle
+  1: n x n numbered tiles with a blank
+  2: tokens on a randomly labelled graph, one vertex empty
+seed_problem: fifteen_puzzle (math-insight-examples)

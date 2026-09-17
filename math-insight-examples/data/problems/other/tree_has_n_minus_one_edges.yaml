@@ -1,0 +1,78 @@
+id: tree_has_n_minus_one_edges
+
+title: A Tree on n Vertices Has n - 1 Edges
+
+aliases:
+  - edges of a tree
+  - tree edge count
+  - leaf removal induction
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tree_%28graph_theory%29
+  original_title: Tree (graph theory) (properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on graph theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every tree (connected graph without cycles) with n vertices
+    has exactly n - 1 edges.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: remove a leaf; what remains is a smaller tree
+  category: induction
+  summary: >
+    A tree with at least two vertices has a leaf (a vertex of degree 1).
+    Deleting the leaf and its edge leaves a tree with one vertex and one
+    edge fewer, so by induction the edge count is always one less than the
+    vertex count.
+
+intuitive_proof:
+  explanation: >
+    Induct on n. A single vertex has 0 edges. For n >= 2, the tree has a
+    leaf v (take an endpoint of a longest path: it cannot have a second
+    neighbour, since that neighbour would lie on the path and close a
+    cycle). Removing v and its unique edge leaves a connected acyclic graph
+    on n - 1 vertices, which by induction has n - 2 edges. Adding back v's
+    edge gives n - 1.
+
+reasoning_structure:
+  naive_approach: >
+    Try to count edges by degrees or by building the tree up from a root
+    without a clear induction.
+  crucial_observation: >
+    Trees always have a removable corner (a leaf), and removal preserves the
+    tree property.
+  why_it_simplifies: >
+    A leaf-removal induction proves the count, and the same peeling proves
+    that trees have at least two leaves and gives Prufer codes.
+
+related:
+  - longest_path_min_degree_cycle
+  - cayley_formula_prufer
+
+tags:
+  - induction
+  - trees
+  - graph theory
+  - leaf removal
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,74 @@
+id: sixteen_kings_maximum
+
+title: At Most 16 Non-Attacking Kings on a Chessboard
+
+aliases:
+  - maximum kings on a chessboard
+  - kings in 2x2 blocks
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mathematical_chess_problem
+  original_title: Mathematical chess problem (domination and independence)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that at most 16 kings can be placed on an 8x8 board so that no two
+    attack each other.
+  domain: combinatorics
+  answer: "16"
+
+key_idea:
+  name: cut the board into sixteen 2x2 blocks; any two squares of a block are adjacent, so each block holds at most one king
+  category: pigeonhole
+  summary: >
+    A king attacks all eight neighbouring squares, so two kings in the same
+    2x2 block attack each other. The board splits into 16 such blocks,
+    giving at most 16 kings, and one king in the corner of each block
+    achieves 16.
+
+intuitive_proof:
+  explanation: >
+    Partition the board into 16 blocks of size 2x2. Any two squares within a
+    block share an edge or a corner, so they are a king's move apart, and a
+    block contains at most one king. Hence at most 16 kings in total.
+    Placing a king in the top-left square of every block gives 16 kings with
+    no two adjacent.
+
+reasoning_structure:
+  naive_approach: >
+    Try placements and count.
+  crucial_observation: >
+    The board partitions into pieces that can each hold only one king.
+  why_it_simplifies: >
+    Partition and pigeonhole give the bound; the same partition gives the
+    construction.
+
+related:
+  - fourteen_bishops_maximum
+  - five_points_unit_square
+
+tags:
+  - pigeonhole
+  - chess
+  - kings
+  - partition
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

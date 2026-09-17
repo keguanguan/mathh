@@ -1,0 +1,88 @@
+id: ramsey_two_colour_upper_bound_recursion
+
+title: "Ramsey Numbers Are Finite: R(s, t) <= R(s - 1, t) + R(s, t - 1)"
+
+aliases:
+  - Ramsey's theorem for two colours
+  - Erdos-Szekeres Ramsey bound
+  - R(s,t) recursion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ramsey%27s_theorem
+  original_title: Ramsey's theorem (proof of the two-colour case)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on Ramsey theory
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that for every s, t there is a number R(s, t) such that every
+    red/blue colouring of the edges of a complete graph on R(s, t) vertices
+    contains a red K_s or a blue K_t, and that R(s, t) <= R(s - 1, t) + R(s,
+    t - 1).
+  domain: graph theory
+  answer: proved; consequently R(s, t) <= C(s + t - 2, s - 1)
+
+key_idea:
+  name: pick a vertex; its red neighbourhood or its blue neighbourhood is large enough to apply the smaller Ramsey number
+  category: induction
+  summary: >
+    Take n = R(s - 1, t) + R(s, t - 1) vertices and any vertex v. Its n - 1
+    edges are red or blue, so v has at least R(s - 1, t) red neighbours or
+    at least R(s, t - 1) blue neighbours. In the first case the red
+    neighbourhood contains a red K_{s-1} (which with v gives a red K_s) or a
+    blue K_t; the second case is symmetric.
+
+intuitive_proof:
+  explanation: >
+    Induct on s + t, with R(s, 2) = s and R(2, t) = t as base cases (a
+    colouring of K_s either has a blue edge or is entirely red). Let n = R(s
+    - 1, t) + R(s, t - 1) and fix a vertex v of a 2-coloured K_n. Among the
+    n - 1 other vertices, either at least R(s - 1, t) are joined to v by red
+    edges or at least R(s, t - 1) by blue edges (otherwise n - 1 <=
+    (R(s-1,t) - 1) + (R(s,t-1) - 1)). In the first case, the complete graph
+    on the red neighbours contains a red K_{s-1}, which together with v and
+    its red edges forms a red K_s, or it contains a blue K_t. The second
+    case is symmetric. Hence R(s, t) <= n. Unrolling the recursion with the
+    base cases gives R(s, t) <= C(s + t - 2, s - 1).
+
+reasoning_structure:
+  naive_approach: >
+    Try to prove finiteness by exhaustive analysis for small s, t and hope
+    for a pattern.
+  crucial_observation: >
+    A single vertex splits the graph into two neighbourhoods, one of which
+    is large enough for the inductive hypothesis, exactly as in the
+    party-of-six argument.
+  why_it_simplifies: >
+    Induction on s + t with a pigeonhole step at one vertex proves existence
+    and gives an explicit bound.
+
+related:
+  - party_of_six_ramsey
+  - seventeen_points_three_colours
+  - ramsey_lower_bound_random
+
+tags:
+  - induction
+  - Ramsey theory
+  - pigeonhole
+  - recursion
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  R(3,3) = 6, R(4,4) = 18; R(5,5) is unknown (between 43 and 46).

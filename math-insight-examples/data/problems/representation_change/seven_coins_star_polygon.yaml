@@ -1,0 +1,85 @@
+id: seven_coins_star_polygon
+
+title: The Seven Coins Puzzle on a Star Polygon
+
+aliases:
+  - seven coins puzzle
+  - eight-pointed star coin puzzle
+  - octagram coin placement
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/SevenCoinsPuzzle.shtml
+  original_title: Seven Coins Puzzle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Dudeney - Amusements in Mathematics
+
+problem:
+  statement: >
+    Eight points on a circle are joined by the edges of the star polygon
+    {8/3} (each point joined to the third point round). A coin may be placed
+    on an empty point only by sliding it along an edge from another empty
+    point. Place seven coins.
+  domain: combinatorial games
+  answer: >
+    always slide onto the point from which the previous coin started (or its
+    partner): the star's edges form a single 8-cycle, and one walks
+    backwards along it
+
+key_idea:
+  name: the edges of {8/3} form one Hamiltonian cycle, so the puzzle is placing coins on an 8-cycle by sliding along cycle edges
+  category: graph_reinterpretation
+  summary: >
+    Because gcd(8, 3) = 1, following edges of the star visits all eight
+    points in one cycle: 0-3-6-1-4-7-2-5-0. Redraw the points along this
+    cycle and the rule becomes 'place a coin on a point by sliding from a
+    neighbour on the cycle'. Placing coins in cycle order, each new coin
+    starting from the point that the next coin will occupy, fills seven
+    points.
+
+intuitive_proof:
+  explanation: >
+    The edges join point i to point i + 3 mod 8; since 3 is coprime to 8,
+    starting from 0 and stepping by 3 visits every point before returning:
+    the star is a single cycle C of length 8. Now solve the puzzle on the
+    cycle: number the points along C as c_0, c_1, ..., c_7. Place the first
+    coin by sliding from c_1 to c_0. Then slide from c_2 to c_1, from c_3 to
+    c_2, and so on: each move starts at an empty point (the one just beyond
+    the last placed coin) and slides along a cycle edge onto the point
+    vacated by the previous start. After seven moves the points c_0, ...,
+    c_6 hold coins.
+
+reasoning_structure:
+  naive_approach: >
+    Try placements on the star as drawn, where the crossing edges make it
+    hard to see which points remain reachable.
+  crucial_observation: >
+    A star polygon with coprime parameters is a cycle drawn confusingly; on
+    the cycle the strategy is obvious.
+  why_it_simplifies: >
+    Unfolding the star into a cycle (as in the four knights puzzle) removes
+    all the apparent complexity.
+
+related:
+  - guarini_four_knights
+
+tags:
+  - graph reinterpretation
+  - star polygon
+  - cycle
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

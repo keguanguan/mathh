@@ -1,0 +1,101 @@
+id: peg_solitaire
+
+title: Peg Solitaire and the Klein Four-Group
+
+aliases:
+  - Hi-Q
+  - English peg solitaire final peg positions
+  - de Bruijn's peg solitaire invariant
+  - Brainvita
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/PegsAndGroups.shtml
+  original_title: Peg Solitaire and Group Theory
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    The group-labelling argument is due to N. G. de Bruijn (1972); it is also
+    presented in Berlekamp, Conway and Guy, Winning Ways, vol. 4.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/proofs/pegsolitaire.shtml
+    original_title: Peg Solitaire
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Peg_solitaire
+    original_title: Peg solitaire
+
+problem:
+  statement: >
+    The English peg-solitaire board has 33 holes in a cross shape. Initially
+    every hole but the central one holds a peg. A move jumps a peg
+    horizontally or vertically over an adjacent peg into an empty hole and
+    removes the peg jumped over. Suppose the game ends with a single peg.
+    Where on the board can that last peg be?
+  domain: combinatorial games
+  answer: >
+    Only at the centre or at one of the four holes three steps from the centre
+    along a row or column (five positions in all).
+
+key_idea:
+  name: label holes with elements of the Klein four-group
+  category: group_invariant
+  summary: >
+    Label hole (x,y) with A, B or C according to (x+y) mod 3, where A, B, C
+    are the non-identity elements of the Klein four-group (AB = C, each
+    element its own inverse). Three consecutive holes carry all three labels,
+    so a jump replaces two labels by their product and the product over
+    occupied holes is invariant. A second labelling by (x-y) mod 3 pins the
+    last peg down to five holes.
+
+intuitive_proof:
+  explanation: >
+    In the Klein group {e, A, B, C} every element squares to e and the
+    product of any two distinct non-identity elements is the third. Label
+    hole (x,y) with A, B or C according as x+y is 0, 1 or 2 mod 3. Three
+    holes in a row have consecutive values of x+y, hence all three labels.
+    A jump removes pegs from two of these holes and puts one on the third,
+    so the product of labels over all occupied holes is multiplied by
+    (product of two labels) x (third label) = e: it is invariant. The same
+    holds for the labelling by x-y mod 3. The initial position (everything
+    but the centre) has a definite pair of products; a lone peg at hole h
+    has pair (label_1(h), label_2(h)). Checking the 33 holes, exactly five
+    have the required pair: the centre and the four holes at distance three
+    from it along the axes. So the last peg cannot be anywhere else.
+
+reasoning_structure:
+  naive_approach: >
+    Play the game (or search by computer) and observe where the last peg can
+    end; try to explain the pattern by tracking individual pegs.
+  crucial_observation: >
+    A jump is a purely local event acting on three consecutive holes, and a
+    three-periodic labelling makes every such local event act trivially on a
+    global product.
+  why_it_simplifies: >
+    A group-valued invariant partitions all positions into classes that moves
+    cannot cross; the final peg's location is forced by class membership, with
+    no analysis of actual play.
+
+tags:
+  - invariant
+  - group theory
+  - Klein four-group
+  - modular labelling
+  - puzzle
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  All five positions are actually reachable, but that needs explicit
+  solutions. The invariant is a group-valued cousin of the parity and
+  mod-3 invariants elsewhere in this repository (see chameleons).

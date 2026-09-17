@@ -1,0 +1,70 @@
+id: bernoulli_inequality_induction
+
+title: Bernoulli's Inequality by Induction
+
+aliases:
+  - Bernoulli's inequality
+  - (1 + x)^n >= 1 + nx
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bernoulli%27s_inequality
+  original_title: Bernoulli's inequality (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 8, The Induction Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that (1 + x)^n >= 1 + nx for every integer n >= 0 and every real x
+    >= -1.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: multiply the inductive hypothesis by the non-negative factor 1 + x and drop the term nx^2
+  category: induction
+  summary: >
+    If (1 + x)^n >= 1 + nx, multiply by 1 + x >= 0: (1 + x)^{n+1} >= (1 +
+    nx)(1 + x) = 1 + (n + 1)x + nx^2 >= 1 + (n + 1)x.
+
+intuitive_proof:
+  explanation: >
+    For n = 0 both sides equal 1. Assume (1 + x)^n >= 1 + nx. Since 1 + x >=
+    0, multiplying preserves the inequality: (1 + x)^{n+1} >= (1 + nx)(1 +
+    x) = 1 + (n + 1)x + nx^2 >= 1 + (n + 1)x, because nx^2 >= 0. The
+    hypothesis x >= -1 is exactly what makes the multiplication legitimate.
+
+reasoning_structure:
+  naive_approach: >
+    Expand (1 + x)^n by the binomial theorem and argue about the signs of
+    the remaining terms, which is delicate for negative x.
+  crucial_observation: >
+    The inductive step is a single multiplication in which a discarded
+    square term makes the inequality only stronger.
+  why_it_simplifies: >
+    Induction with a monotone multiplication proves the inequality for all n
+    at once and explains the condition x >= -1.
+
+tags:
+  - induction
+  - inequality
+  - Bernoulli
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Bernoulli's inequality is the basic tool for showing (1 + 1/n)^n is
+  increasing and bounded.

@@ -1,0 +1,79 @@
+id: sprouts_game_bounded_length
+
+title: Sprouts Always Ends within 3n - 1 Moves
+
+aliases:
+  - Sprouts game length
+  - liberties in Sprouts
+  - Conway-Paterson sprouts
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sprouts_%28game%29
+  original_title: Sprouts (game) (analysis)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3
+
+problem:
+  statement: >
+    Sprouts starts with n dots. A move draws a curve joining two dots (or a
+    dot to itself) without crossing existing curves, and places a new dot on
+    it; each dot may have at most three curve-ends. Show that the game ends
+    after at most 3n - 1 moves and lasts at least 2n moves.
+  domain: combinatorial games
+  answer: at most 3n - 1 moves; at least 2n
+
+key_idea:
+  name: "count liberties: each dot has 3 minus its degree; a move uses two liberties and creates one"
+  category: monovariant
+  summary: >
+    Call the number of free curve-ends at a dot its liberties. Initially
+    there are 3n liberties. A move consumes two (one at each end of the new
+    curve) and the new dot brings one, so the total drops by exactly one per
+    move. The game cannot continue with fewer than one liberty, so at most
+    3n - 1 moves occur.
+
+intuitive_proof:
+  explanation: >
+    Define the liberties of the position as the sum over dots of (3 -
+    degree). At the start this is 3n. Each move adds two curve-ends to
+    existing dots (reducing liberties by 2) and adds one new dot of degree 2
+    (adding 1 liberty), so liberties decrease by exactly 1 per move. A move
+    needs at least one liberty (two, unless the curve is a loop from a dot
+    to itself, which still uses two), so after 3n - 1 moves at most one
+    liberty remains and no move is possible. For the lower bound, at the end
+    every surviving liberty is 'isolated'; a counting of dots near each
+    liberty shows the game lasts at least 2n moves.
+
+reasoning_structure:
+  naive_approach: >
+    Play out games and observe that they end, without a bound on their
+    length.
+  crucial_observation: >
+    A single count (liberties) decreases by exactly one per move.
+  why_it_simplifies: >
+    A monovariant gives a clean termination bound with no analysis of the
+    topology of the curves.
+
+tags:
+  - monovariant
+  - game
+  - counting
+  - termination
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Which player wins for each n is known only for small n (up to 44 or so by
+  computer).

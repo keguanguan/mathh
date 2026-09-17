@@ -1,0 +1,72 @@
+id: erase_two_write_difference
+
+title: Erase Two Numbers, Write Their Difference
+
+aliases:
+  - blackboard difference game
+  - 1 to 1989 erase two write difference
+  - parity of the last number
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on parity
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    The numbers 1, 2, ..., 1989 are written on a board. Repeatedly erase two
+    numbers and write their (non-negative) difference. Show that the last
+    remaining number is odd.
+  domain: number theory
+  answer: proved (the last number is odd)
+
+key_idea:
+  name: replacing a, b by |a - b| preserves the parity of the sum
+  category: parity_invariant
+  summary: >
+    a + b and |a - b| have the same parity, so the parity of the sum of all
+    numbers on the board is invariant. Initially the sum is 1989 * 1990 / 2,
+    which is odd, so the final single number is odd.
+
+intuitive_proof:
+  explanation: >
+    Since a + b - |a - b| equals 2 min(a, b), which is even, each move
+    changes the total sum by an even amount and the parity of the sum is
+    invariant. At the start the sum is 1 + 2 + ... + 1989 = 1989 * 995, an
+    odd number. At the end there is one number, and it must have that same
+    parity: odd.
+
+reasoning_structure:
+  naive_approach: >
+    Try to track which numbers remain or simulate the process, which has
+    enormous branching.
+  crucial_observation: >
+    The difference has the same parity as the sum.
+  why_it_simplifies: >
+    One parity invariant fixes the parity of the final number regardless of
+    choices.
+
+tags:
+  - parity
+  - invariant
+  - replacement process
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,78 @@
+id: fixed_point_interval_ivt
+
+title: Every Continuous Map of [0,1] to Itself Has a Fixed Point
+
+aliases:
+  - one-dimensional Brouwer
+  - fixed point theorem on an interval
+  - f(x) - x changes sign
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Brouwer_fixed-point_theorem
+  original_title: Brouwer fixed-point theorem (one-dimensional case)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on the intermediate value theorem
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let f be a continuous function from [0, 1] to [0, 1]. Show that f(x) = x
+    for some x.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: the auxiliary function g(x) = f(x) - x is non-negative at 0 and non-positive at 1
+  category: auxiliary_object
+  summary: >
+    g(0) = f(0) >= 0 and g(1) = f(1) - 1 <= 0. By the intermediate value
+    theorem g vanishes somewhere, and g(x) = 0 means f(x) = x. Graphically,
+    the graph of f must cross the diagonal.
+
+intuitive_proof:
+  explanation: >
+    Define g(x) = f(x) - x, continuous on [0, 1]. Since f(0) is in [0, 1],
+    g(0) = f(0) >= 0; since f(1) <= 1, g(1) <= 0. If either is zero we have
+    a fixed point; otherwise g changes sign, and the intermediate value
+    theorem gives x with g(x) = 0, i.e. f(x) = x.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the fixed point by iteration f(f(f(...))), which need
+    not converge, or reason about the shape of f.
+  crucial_observation: >
+    A fixed point is a zero of the auxiliary function f(x) - x, whose signs
+    at the endpoints are forced by the range.
+  why_it_simplifies: >
+    The auxiliary function converts a fixed-point statement into a sign
+    change; the same device underlies the monks-on-the-mountain argument and
+    the universal chord theorem.
+
+related:
+  - two_monks_mountain
+  - universal_chord_theorem
+
+tags:
+  - fixed point
+  - intermediate value theorem
+  - auxiliary object
+  - continuity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The higher-dimensional Brouwer theorem needs Sperner's lemma or topology,
+  but the one-dimensional case is this two-line argument.

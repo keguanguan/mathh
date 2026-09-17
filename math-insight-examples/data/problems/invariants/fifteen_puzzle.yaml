@@ -1,0 +1,96 @@
+id: fifteen_puzzle
+
+title: Fifteen Puzzle (Sam Loyd's 14-15 Puzzle)
+
+aliases:
+  - 15 puzzle
+  - Sam Loyd's fifteen puzzle
+  - 14-15 puzzle
+  - sliding puzzle unsolvability
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/pythagoras/fifteen.shtml
+  original_title: Sam Loyd's Fifteen
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    The impossibility proof is due to W. W. Johnson and W. E. Story,
+    American Journal of Mathematics 2 (1879).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Combinatorics/Fifteen.shtml
+    original_title: Group Theory for Sam Loyd's Fifteen Puzzle
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/15_puzzle
+    original_title: 15 puzzle
+
+problem:
+  statement: >
+    Fifteen numbered tiles sit in a 4x4 frame with one empty cell. A move
+    slides a tile adjacent to the empty cell into it. Starting from the
+    ordered arrangement 1, 2, ..., 15 with the blank in the bottom-right
+    corner, can one reach the arrangement in which only tiles 14 and 15 are
+    swapped (blank again bottom-right)?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: parity of the permutation, corrected by the blank's position
+  category: permutation_invariant
+  summary: >
+    Treat the blank as a 16th tile. Each move is a transposition of the blank
+    with a neighbour, so it flips the sign of the permutation and changes the
+    blank's taxicab distance from its home corner by one. The product
+    sign x (-1)^distance is therefore invariant; swapping 14 and 15 alone
+    changes it.
+
+intuitive_proof:
+  explanation: >
+    Read the 16 cells (blank included) row by row as a permutation of
+    1..16. A move swaps the blank with one adjacent tile: this is a single
+    transposition, so the sign of the permutation flips at every move. At the
+    same time the blank moves one step, so its taxicab distance from the
+    bottom-right corner changes by exactly one, and the parity of that
+    distance also flips at every move. Hence the quantity
+    sign(permutation) x (-1)^(blank distance) never changes. In the start
+    position it equals +1. In the target position the blank is home (distance
+    0) but the permutation is a single transposition (14 15), of sign -1. The
+    invariant would have to change, so the target is unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of slides, or run a computer search over the
+    16!/2 ~ 10^13 reachable positions, hoping either to find a solution or to
+    exhaust the state space.
+  crucial_observation: >
+    Every move is a transposition, so it acts on a global, easily computed
+    label (the sign of the permutation) in a completely predictable way.
+  why_it_simplifies: >
+    Reachability of any configuration is decided by evaluating one +-1 label
+    instead of exploring the state graph; the argument also shows that exactly
+    half of all arrangements are reachable.
+
+tags:
+  - invariant
+  - parity
+  - permutation
+  - group theory
+  - puzzle
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The converse (every configuration of the correct parity is reachable) is
+  also true but requires a constructive argument. The same sign-of-permutation
+  idea governs many sliding and swapping puzzles.

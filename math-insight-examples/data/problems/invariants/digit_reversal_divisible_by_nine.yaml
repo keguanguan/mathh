@@ -1,0 +1,76 @@
+id: digit_reversal_divisible_by_nine
+
+title: A Number Minus Its Digit Reversal Is Divisible by 9
+
+aliases:
+  - reverse digits difference divisible by 9
+  - casting out nines
+  - digit permutation invariant
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Casting_out_nines
+  original_title: Casting out nines
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the difference between a positive integer and the number
+    obtained by reversing (or arbitrarily permuting) its digits is divisible
+    by 9.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a number is congruent to its digit sum modulo 9, and permuting digits does not change the digit sum
+  category: modular_invariant
+  summary: >
+    Since 10 = 1 mod 9, every number is congruent mod 9 to the sum of its
+    digits. Reversing the digits leaves the digit sum unchanged, so the two
+    numbers are congruent mod 9 and their difference is divisible by 9.
+
+intuitive_proof:
+  explanation: >
+    For n = sum of d_k 10^k, reduce mod 9: 10^k = 1 mod 9, so n = sum of d_k
+    = digit sum mod 9. Any rearrangement of the digits has the same digit
+    sum, hence the same residue mod 9. The difference of two numbers with
+    equal residues is divisible by 9.
+
+reasoning_structure:
+  naive_approach: >
+    Write n = 10a + b for two-digit numbers and generalise by cases on the
+    number of digits.
+  crucial_observation: >
+    Modulo 9 the positional weights 10^k all equal 1, so only the multiset
+    of digits matters.
+  why_it_simplifies: >
+    One congruence makes the claim obvious for all digit permutations
+    simultaneously.
+
+related:
+  - digit_sum_iteration_imo1975
+
+tags:
+  - modular arithmetic
+  - digits
+  - invariant
+  - casting out nines
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Modulo 11 the alternating digit sum plays the same role.

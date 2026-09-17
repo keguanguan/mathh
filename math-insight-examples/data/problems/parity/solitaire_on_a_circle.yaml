@@ -1,0 +1,90 @@
+id: solitaire_on_a_circle
+
+title: Solitaire on a Circle
+
+aliases:
+  - circle solitaire with red and green counters
+  - remove a green counter and flip its neighbours
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/CSolitaire.shtml
+  original_title: Solitaire on a Circle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Bogomolny cites two solutions from the American Mathematical Monthly,
+    November 1997 (vol. 104, no. 9, p. 876).
+
+problem:
+  statement: >
+    Counters, each red on one side and green on the other, are arranged in a
+    circle. A move removes a green counter and flips its (at most two)
+    neighbours. Can all counters be removed, and how does the answer depend on
+    the starting arrangement?
+  domain: combinatorics
+  answer: >
+    All counters can be removed if and only if the number of green counters
+    is even and nonzero.
+
+key_idea:
+  name: each move flips the parity of the green count; then induct on a line
+  category: parity_invariant
+  summary: >
+    Removing a green counter and flipping two neighbours changes the number of
+    green counters by an odd amount, so the parity of the green count
+    alternates with each move. Combined with an induction on a line of
+    counters (solvable iff its green count is odd), this pins down exactly
+    which circles are solvable.
+
+intuitive_proof:
+  explanation: >
+    Removing a green counter subtracts one green; flipping each neighbour
+    changes the green count by +-1, so two flips change it by an even amount
+    (or one flip, if the neighbours coincide, but that is the two-counter
+    case). Thus every move on a circle of at least three counters changes the
+    parity of the green count. After the first move the circle becomes a line
+    with a gap at each end, and one proves by induction that a line can be
+    cleared exactly when it is empty or has an odd number of greens: choose a
+    green counter with an even number of greens on each side; removing it and
+    flipping its neighbours produces two shorter lines each with an odd
+    number of greens (or empty), which are cleared by induction. Conversely a
+    line with an even positive number of greens cannot be cleared, because
+    any move leaves at least one sub-line with an even positive count. A
+    circle with an even positive number of greens becomes, after one move, a
+    line with an odd count, hence solvable; a circle with an odd number of
+    greens becomes a line with an even count, hence not.
+
+reasoning_structure:
+  naive_approach: >
+    Search over sequences of removals; the branching is large and it is not
+    clear what makes a position hopeless.
+  crucial_observation: >
+    The parity of the green count is toggled by every move, and the relevant
+    structure after the first move is a line, where parity alone decides
+    solvability.
+  why_it_simplifies: >
+    A parity condition and a simple induction replace exhaustive search and
+    also give a constructive strategy (always remove a green with even
+    numbers of greens on each side).
+
+tags:
+  - parity
+  - invariant
+  - induction
+  - puzzle
+  - constructive strategy
+
+quality:
+  clarity_of_key_idea: medium
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Slightly more involved than the pure invariant puzzles: parity gives the
+  necessary condition, induction gives sufficiency.

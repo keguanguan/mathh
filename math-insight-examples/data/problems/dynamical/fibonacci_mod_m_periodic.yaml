@@ -1,0 +1,94 @@
+id: fibonacci_mod_m_periodic
+
+title: Fibonacci Numbers Modulo m Are Purely Periodic
+
+aliases:
+  - Pisano period
+  - some Fibonacci number is divisible by m
+  - Fibonacci mod m returns to 0, 1
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pisano_period
+  original_title: Pisano period
+  accessed: 2026-09-16
+  notes: >
+    The periodicity was noted by Lagrange (1774). The "invertible map on a
+    finite set" argument is the standard proof.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/arithmetic/algebra/FibonacciGCD.shtml
+    original_title: GCD of Fibonacci Numbers
+    notes: Related divisibility structure of Fibonacci numbers.
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 4, The Box Principle (periodicity of recurrences modulo m).
+
+problem:
+  statement: >
+    Let F_0 = 0, F_1 = 1, F_{n+1} = F_n + F_{n-1}. Show that for every
+    positive integer m, the sequence F_n mod m is periodic from the very
+    start; in particular infinitely many Fibonacci numbers are divisible
+    by m.
+  domain: dynamical systems
+  answer: proved
+
+key_idea:
+  name: the step (a, b) -> (b, a + b) is an invertible map on a finite set
+  category: finite_state_periodicity
+  summary: >
+    The pair of consecutive residues (F_n, F_{n+1}) mod m determines all
+    later pairs, and there are only m^2 possible pairs, so the sequence of
+    pairs eventually repeats. The step map is invertible (its inverse is
+    (a, b) -> (b - a, a)), so the repetition must include the very first
+    pair (0, 1), which then recurs forever.
+
+intuitive_proof:
+  explanation: >
+    Consider the pairs P_n = (F_n mod m, F_{n+1} mod m). Each pair
+    determines the next by the map T(a, b) = (b, a + b) taken mod m. There
+    are only m^2 possible pairs, so among P_0, P_1, ..., P_{m^2} two are
+    equal: P_i = P_j with i < j. Now T is a bijection of the finite set of
+    pairs, with inverse (a, b) -> (b - a, a), so from P_i = P_j we can step
+    backwards i times to get P_0 = P_{j-i}. Hence the sequence of pairs, and
+    so the Fibonacci sequence mod m, is periodic with period j - i starting
+    from n = 0. In particular F_{k(j-i)} = F_0 = 0 mod m for every k: there
+    are infinitely many Fibonacci numbers divisible by m.
+
+reasoning_structure:
+  naive_approach: >
+    Compute Fibonacci numbers mod m for specific m, observe the period, and
+    try to prove that 0 reappears by studying divisibility properties of
+    F_n directly.
+  crucial_observation: >
+    The sequence is an orbit of a map on a finite state space, and the map
+    is reversible, so "eventually periodic" upgrades to "periodic from the
+    start".
+  why_it_simplifies: >
+    Pigeonhole in time gives recurrence for free; invertibility places the
+    starting state on the cycle, so the target residue 0 must return.
+    Nothing specific about Fibonacci numbers is used beyond the recurrence
+    being invertible.
+
+tags:
+  - dynamical systems
+  - periodicity
+  - pigeonhole
+  - Fibonacci
+  - modular arithmetic
+  - reversibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same argument shows that any linear recurrence with an invertible
+  leading coefficient is purely periodic modulo m, and is a finite
+  instance of Poincare recurrence.

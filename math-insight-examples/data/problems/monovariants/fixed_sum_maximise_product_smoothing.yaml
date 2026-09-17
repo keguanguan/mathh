@@ -1,0 +1,81 @@
+id: fixed_sum_maximise_product_smoothing
+
+title: "Fixed Sum, Maximal Product: Equalise"
+
+aliases:
+  - smoothing argument
+  - AM-GM by smoothing
+  - maximum product with fixed sum
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 7, Inequalities
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+    original_title: Inequality of arithmetic and geometric means (proof by smoothing)
+
+problem:
+  statement: >
+    Positive integers (or reals) x_1, ..., x_n have a fixed sum S. Show the
+    product x_1 ... x_n is largest when all x_i are equal (for integers: as
+    equal as possible, differing by at most 1).
+  domain: algebra
+  answer: >
+    proved (all equal, or within 1 of each other in the integer case)
+
+key_idea:
+  name: moving two unequal numbers toward each other increases the product
+  category: smoothing
+  summary: >
+    If x < y, replacing them by x + t and y - t (0 < t <= y - x) keeps the
+    sum and raises the product, since (x + t)(y - t) - xy = t(y - x - t) > 0
+    for t < y - x. So any configuration with two unequal entries can be
+    improved; the optimum has all entries equal.
+
+intuitive_proof:
+  explanation: >
+    Suppose x_i < x_j. Replace them by x_i + t and x_j - t with 0 < t < x_j
+    - x_i; the sum is unchanged and the product is multiplied by (x_i +
+    t)(x_j - t)/(x_i x_j) > 1. Hence a product-maximising configuration
+    (which exists by compactness in the real case, by finiteness in the
+    integer case) cannot have two entries differing by more than the
+    smallest allowed step: all equal for reals, differing by at most 1 for
+    integers. This is the AM-GM inequality in the real case.
+
+reasoning_structure:
+  naive_approach: >
+    Use Lagrange multipliers or a direct proof of AM-GM, or for integers
+    test many splittings.
+  crucial_observation: >
+    The product responds to a transfer between two entries like a concave
+    function: closer is better.
+  why_it_simplifies: >
+    A two-variable computation plus 'an optimum cannot be improvable'
+    handles n variables at once; the technique proves many symmetric
+    inequalities.
+
+tags:
+  - smoothing
+  - inequality
+  - AM-GM
+  - optimisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Classic application: the largest product of positive integers summing to
+  100 is 3^32 * 2^2, since 100 = 3 * 32 + 4 and pieces larger than 4 or
+  equal to 1 can always be improved by smoothing.

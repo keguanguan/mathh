@@ -1,0 +1,81 @@
+id: string_around_cylinder_unfolding
+
+title: The Shortest Path around a Cylinder
+
+aliases:
+  - string wound around a can
+  - helix as a straight line
+  - shortest path on a cylinder
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Helix
+  original_title: Helix (geodesics on a cylinder)
+  accessed: 2026-09-16
+  notes: >
+    A classic problem in many puzzle books: a string wound n times around a
+    cylinder of given height and circumference.
+
+additional_sources:
+  - name: Dudeney - The Canterbury Puzzles
+
+problem:
+  statement: >
+    A string is wound exactly 4 times around a cylindrical post of
+    circumference 4 cm and height 12 cm, from the bottom edge to the top
+    edge, as tightly as possible. How long is the string?
+  domain: geometry
+  answer: 20 cm
+
+key_idea:
+  name: unroll the cylinder into a rectangle; the string becomes a straight line
+  category: unfolding
+  summary: >
+    Cut the cylinder along a vertical line and unroll it into a 4 x 12
+    rectangle; going once around the cylinder becomes crossing the rectangle
+    horizontally. Four turns over the full height unroll to a straight line
+    from corner to corner of a 16 x 12 rectangle (four rectangles side by
+    side), of length sqrt(16^2 + 12^2) = 20.
+
+intuitive_proof:
+  explanation: >
+    The surface of the cylinder is isometric to a rectangle of width 4 (the
+    circumference) and height 12, glued along the vertical sides. Lengths on
+    the surface equal lengths in the rectangle. A curve that winds once
+    around while rising h unrolls to a segment joining points 4 apart
+    horizontally and h apart vertically; winding four times while rising 12
+    in total, the tightest string is the straight segment from (0, 0) to
+    (16, 12) in the strip obtained by placing four copies of the rectangle
+    side by side. Its length is sqrt(256 + 144) = 20 cm. Each turn is a
+    segment of length 5 rising 3, so the string is a helix.
+
+reasoning_structure:
+  naive_approach: >
+    Try to compute the helix length with calculus, parametrising the curve.
+  crucial_observation: >
+    The cylinder is flat: unrolling turns the helix into a straight line
+    without distorting lengths.
+  why_it_simplifies: >
+    The unfolding reduces a three-dimensional problem to Pythagoras, exactly
+    as in the spider-and-fly problem.
+
+related:
+  - spider_and_fly
+
+tags:
+  - unfolding
+  - helix
+  - shortest path
+  - Pythagorean theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,87 @@
+id: prisoners_hats_parity
+
+title: The Prisoners and Hats Puzzle (Parity Announcement)
+
+aliases:
+  - hat puzzle in a line
+  - 100 prisoners and hats
+  - parity hat strategy
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hat_puzzle
+  original_title: Hat puzzle (prisoners in a line)
+  accessed: 2026-09-16
+  notes: A modern classic, popularised by Peter Winkler and others; the parity strategy is folklore.
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+    notes: A K Peters, 2004, chapter on information puzzles.
+
+problem:
+  statement: >
+    n prisoners stand in a line, each wearing a red or blue hat that they
+    cannot see, but they can see all hats in front of them. From the back
+    forward, each must call out a colour; those who guess their own hat
+    correctly are freed. They may agree on a strategy beforehand. How many
+    can be guaranteed to go free?
+  domain: combinatorics
+  answer: n - 1 (all but the first speaker, who has a 50% chance)
+
+key_idea:
+  name: "encode the whole configuration in one bit: the first speaker announces the parity of the red hats they see"
+  category: algebraic_encoding
+  summary: >
+    The first prisoner says "red" if they see an odd number of red hats
+    ahead, "blue" if even. Each subsequent prisoner knows the parity of
+    red hats among everyone in front of the first speaker, sees the hats
+    ahead, and has heard the hats behind, so their own colour is the
+    unique one that makes the parity work.
+
+intuitive_proof:
+  explanation: >
+    Fix the code: "red" means "I see an odd number of red hats", "blue"
+    means "even". The last person in line announces this parity (and is
+    right about their own hat only by luck). The next prisoner counts red
+    hats ahead and compares with the announced parity of red hats among
+    all those in front of the first speaker, which includes themselves; the
+    difference reveals their own colour. Each later prisoner does the same,
+    additionally subtracting the red hats already correctly announced
+    behind them. Every statement after the first is correct, so n - 1
+    prisoners are certainly freed. No strategy can do better, since the
+    first speaker has no information about their own hat.
+
+reasoning_structure:
+  naive_approach: >
+    Try to have each prisoner announce the colour of the hat in front, or
+    devise elaborate codes, and find that only about half are saved.
+  crucial_observation: >
+    One bit of shared information, the parity, together with what each
+    prisoner sees and hears, determines every hat except the first.
+  why_it_simplifies: >
+    The problem is an encoding problem: a single parity check bit suffices
+    for the remaining n - 1 unknowns to be decoded sequentially.
+
+related:
+  - plus_or_minus
+
+tags:
+  - parity
+  - encoding
+  - information
+  - puzzle
+  - error-correcting code
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With k colours, announce the sum of the colours mod k. The strategy is a
+  one-line parity-check code.

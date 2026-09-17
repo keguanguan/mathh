@@ -1,0 +1,81 @@
+id: cut_property_minimum_spanning_tree
+
+title: "The Cut Property: the Cheapest Edge across Any Cut Belongs to a Minimum Spanning Tree"
+
+aliases:
+  - cut property
+  - minimum spanning tree exchange argument
+  - Kruskal and Prim correctness
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Minimum_spanning_tree
+  original_title: Minimum spanning tree (cut property)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cormen, Leiserson, Rivest, Stein - Introduction to Algorithms
+    notes: Chapter 23
+
+problem:
+  statement: >
+    In a connected graph with distinct edge weights, partition the vertices
+    into two non-empty sets. Show that the lightest edge crossing the
+    partition belongs to the minimum spanning tree.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: add the light edge to any spanning tree not containing it; this closes a cycle that crosses the cut somewhere else, and swapping out that other crossing edge gives a lighter tree
+  category: smoothing
+  summary: >
+    Let e be the lightest edge across the cut and T a spanning tree not
+    containing e. Adding e to T creates a cycle, which must cross the cut an
+    even number of times, so it contains another crossing edge f with weight
+    greater than e. Then T + e - f is a spanning tree lighter than T. Hence
+    no tree without e is minimal, and the minimum spanning tree contains e.
+
+intuitive_proof:
+  explanation: >
+    Let e = uv be the lightest edge crossing the cut (S, V - S), and suppose
+    a minimum spanning tree T does not contain e. T contains a path from u
+    to v; since u and v are on opposite sides of the cut, this path uses
+    some edge f crossing the cut, with w(f) > w(e). Removing f from T
+    disconnects it into two parts, one containing u and one containing v,
+    and adding e reconnects them: T' = T - f + e is a spanning tree with
+    weight w(T) - w(f) + w(e) < w(T), contradicting minimality. So every
+    minimum spanning tree contains e. Kruskal's and Prim's algorithms only
+    ever add edges that are lightest across some cut, hence are correct.
+
+reasoning_structure:
+  naive_approach: >
+    Try to prove the greedy algorithms correct by tracking the whole tree,
+    or enumerate spanning trees.
+  crucial_observation: >
+    An exchange (swap e in, f out) is always available and always improves,
+    so an optimal tree cannot omit e.
+  why_it_simplifies: >
+    A single local improvement step certifies a global optimality property,
+    the template for greedy correctness proofs.
+
+related:
+  - non_crossing_red_blue_matching
+  - rearrangement_inequality_swapping
+
+tags:
+  - smoothing
+  - exchange argument
+  - greedy algorithm
+  - spanning tree
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

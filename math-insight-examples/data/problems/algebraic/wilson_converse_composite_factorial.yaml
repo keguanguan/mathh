@@ -1,0 +1,77 @@
+id: wilson_converse_composite_factorial
+
+title: For Composite n > 4, n Divides (n - 1)!
+
+aliases:
+  - converse of Wilson's theorem
+  - (n-1)! mod n for composite n
+  - factorial contains both factors
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Wilson%27s_theorem
+  original_title: Wilson's theorem (converse)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that if n > 4 is composite then (n - 1)! is divisible by n, so
+    Wilson's congruence (n - 1)! = -1 mod n characterises primes.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a composite n = ab with 1 < a < b < n has both factors among 1..n-1; if n = p^2 then p and 2p both appear once p > 2
+  category: factorisation
+  summary: >
+    If n = ab with a != b, both a and b are distinct numbers below n, so
+    their product n divides (n - 1)!. If n = p^2 with p > 2, then p and 2p
+    are distinct numbers below n = p^2 (since 2p < p^2 for p > 2), and their
+    product 2p^2 is divisible by n. Only n = 4 escapes: 3! = 6 = 2 mod 4.
+
+intuitive_proof:
+  explanation: >
+    Let n be composite. Case 1: n = ab with 1 < a < b. Then a and b are
+    distinct factors of (n - 1)! = 1 * 2 * ... * (n - 1), so ab = n divides
+    (n - 1)!. Case 2: n = p^2 for a prime p > 2. Then p < 2p < p^2 = n, so
+    both p and 2p occur in (n - 1)!, whose product 2p^2 is a multiple of n.
+    For n = 4, (n - 1)! = 6 = 2 mod 4, the single exception. Together with
+    Wilson's theorem for primes, (n - 1)! = -1 mod n holds iff n is prime.
+
+reasoning_structure:
+  naive_approach: >
+    Compute (n - 1)! mod n for small n and observe it is 0 for composite n >
+    4.
+  crucial_observation: >
+    A composite number's factors are smaller than it, so they both appear in
+    the factorial.
+  why_it_simplifies: >
+    A two-case factorisation argument makes the converse of Wilson's theorem
+    immediate and explains the exception 4.
+
+related:
+  - wilson_theorem_pairing
+
+tags:
+  - factorisation
+  - factorial
+  - Wilson's theorem
+  - primes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

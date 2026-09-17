@@ -1,0 +1,74 @@
+id: telescoping_product_one_minus_reciprocal_squares
+
+title: The Product of (1 - 1/k^2) Telescopes
+
+aliases:
+  - telescoping product
+  - product of (1 - 1/k^2) from 2 to n
+  - Wallis-type product
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Telescoping_series
+  original_title: Telescoping series (telescoping products)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Evaluate the product (1 - 1/4)(1 - 1/9)(1 - 1/16)...(1 - 1/n^2).
+  domain: algebra
+  answer: (n + 1)/(2n); the infinite product equals 1/2
+
+key_idea:
+  name: factor each term as ((k - 1)/k)((k + 1)/k) and let the two chains cancel
+  category: telescoping
+  summary: >
+    1 - 1/k^2 = (k - 1)(k + 1)/k^2. The product of (k - 1)/k over k = 2..n
+    is 1/n and the product of (k + 1)/k is (n + 1)/2. Multiplying gives (n +
+    1)/(2n).
+
+intuitive_proof:
+  explanation: >
+    Write 1 - 1/k^2 = (k^2 - 1)/k^2 = ((k - 1)/k) * ((k + 1)/k). Over k = 2,
+    ..., n the first factors give (1/2)(2/3)...((n-1)/n) = 1/n, everything
+    cancelling except the first numerator and the last denominator; the
+    second factors give (3/2)(4/3)...((n+1)/n) = (n + 1)/2. The product is
+    (n + 1)/(2n), which tends to 1/2.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the first few products, guess (n+1)/(2n), and prove it by
+    induction.
+  crucial_observation: >
+    Each factor is a ratio of consecutive terms of two simple sequences, so
+    the product collapses like a telescoping sum.
+  why_it_simplifies: >
+    Factorisation exposes the telescoping structure and gives the closed
+    form directly.
+
+related:
+  - telescoping_reciprocal_products
+
+tags:
+  - telescoping
+  - product
+  - factorisation
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

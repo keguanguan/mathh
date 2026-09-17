@@ -1,0 +1,84 @@
+id: catalan_dyck_paths_reflection
+
+title: Counting Balanced Parentheses by Reflecting Bad Paths
+
+aliases:
+  - Catalan numbers via reflection
+  - Dyck paths
+  - balanced parentheses count
+  - C(2n,n) - C(2n,n+1)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Catalan_number
+  original_title: Catalan number (second proof (reflection))
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Stanley - Catalan Numbers
+    notes: Cambridge University Press, 2015
+
+problem:
+  statement: >
+    How many sequences of n up-steps and n down-steps never go below their
+    starting level (equivalently, how many strings of n pairs of parentheses
+    are balanced)?
+  domain: combinatorics
+  answer: >
+    the Catalan number C(2n, n)/(n + 1) = C(2n, n) - C(2n, n + 1)
+
+key_idea:
+  name: reflect the part of a bad path after its first dip below zero; bad paths correspond to paths ending at level -2
+  category: bijection
+  summary: >
+    Among all C(2n, n) paths with n ups and n downs, the bad ones touch
+    level -1. Reflect the portion after the first visit to -1 (swap ups and
+    downs): the result ends at -2 and has n - 1 ups and n + 1 downs. This is
+    a bijection between bad paths and all paths to -2, of which there are
+    C(2n, n + 1). So the good paths number C(2n, n) - C(2n, n + 1).
+
+intuitive_proof:
+  explanation: >
+    Every sequence of n U's and n D's is a path from height 0 to height 0;
+    there are C(2n, n) of them. A path is bad if it reaches height -1. For a
+    bad path, take the first step at which it reaches -1 and reflect all
+    subsequent steps (U <-> D). The new path still starts at 0, reaches -1
+    at the same step, and then, since the remainder originally climbed from
+    -1 to 0, now descends from -1 to -2: it has n - 1 U's and n + 1 D's.
+    Conversely any path with n - 1 U's and n + 1 D's must reach -1, and
+    reflecting after its first visit to -1 recovers a bad path. So bad paths
+    are in bijection with paths having n + 1 D's, counted by C(2n, n + 1).
+    Good paths: C(2n, n) - C(2n, n + 1) = C(2n, n)/(n + 1).
+
+reasoning_structure:
+  naive_approach: >
+    Set up the Catalan recursion C_{n+1} = sum of C_k C_{n-k} by the first
+    return to zero and solve it with generating functions.
+  crucial_observation: >
+    Bad paths can be reflected into paths with a different endpoint, which
+    are trivial to count.
+  why_it_simplifies: >
+    One reflection gives a closed formula immediately; the same idea
+    (Andre's reflection) proves the ballot theorem.
+
+related:
+  - ballot_theorem_reflection
+  - lattice_paths_binomial
+
+tags:
+  - bijection
+  - reflection principle
+  - Catalan numbers
+  - lattice paths
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

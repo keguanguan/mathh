@@ -1,0 +1,7 @@
+name: mock_compute_dependent
+provider: mock
+model: mock-v1
+parameters:
+  policy: compute_dependent
+  seed: 2
+  compute_probs: [0.3, 0.5, 0.7]

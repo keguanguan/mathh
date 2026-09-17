@@ -1,0 +1,87 @@
+id: pancake_theorem_bisecting_line
+
+title: One Straight Cut Bisects Two Pancakes Simultaneously
+
+aliases:
+  - pancake theorem
+  - ham sandwich theorem in the plane
+  - bisecting two regions with one line
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ham_sandwich_theorem
+  original_title: Ham sandwich theorem (two-dimensional variant)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on the intermediate value theorem
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Two bounded regions lie in the plane. Show that some straight line
+    divides each of them into two parts of equal area.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: for each direction there is a unique line in that direction bisecting the first region; as the direction rotates by 180 degrees, the signed excess of the second region on the left of that line changes sign
+  category: continuous_deformation
+  summary: >
+    For each direction t let L(t) be the line in that direction bisecting
+    region A, which moves continuously with t. Let g(t) be the area of B to
+    the left of L(t) minus the area to the right. Rotating by 180 degrees
+    gives the same line with the sides swapped, so g(t + 180) = -g(t), and
+    the intermediate value theorem gives a direction with g = 0, where L(t)
+    bisects both regions.
+
+intuitive_proof:
+  explanation: >
+    Fix a direction t. Sliding a line of direction t across region A, the
+    area of A on its left increases continuously from 0 to area(A), so there
+    is a line L(t) with exactly half of A on each side (if A has positive
+    area the position is essentially unique; choose the midpoint of the
+    interval of valid positions to make it continuous in t). Define g(t) as
+    the area of B to the left of L(t) minus the area of B to the right. Then
+    g is continuous in t, and L(t + 180) is the same line as L(t) traversed
+    in the opposite direction, so g(t + 180) = -g(t). If g(0) = 0 we are
+    done; otherwise g(0) and g(180) have opposite signs and the intermediate
+    value theorem gives t with g(t) = 0. The line L(t) bisects A by
+    construction and B because g(t) = 0.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the line from centres of mass (which does not work in
+    general) or by solving equations for the line's parameters.
+  crucial_observation: >
+    Bisecting the first region uses up one degree of freedom continuously;
+    the remaining one-parameter family of lines has a sign-changing quantity
+    for the second region.
+  why_it_simplifies: >
+    The intermediate value theorem on a circle of directions does all the
+    work; the same idea in three dimensions is the ham sandwich theorem (via
+    Borsuk-Ulam).
+
+related:
+  - wobbly_table_rotation_ivt
+  - antipodal_points_same_temperature
+
+tags:
+  - intermediate value theorem
+  - continuity
+  - bisection
+  - topology
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

@@ -1,0 +1,82 @@
+id: petersen_word_puzzle_hamiltonian
+
+title: A Word Puzzle That Is the Petersen Graph in Disguise
+
+aliases:
+  - Petersen graph puzzle
+  - word chain puzzle
+  - Hamiltonian cycle in the Petersen graph
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/pigeonhole/Petersen.shtml
+  original_title: A nice puzzle modeled on the Petersen graph
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Petersen_graph
+    original_title: Petersen graph (Hamiltonian paths and cycles)
+
+problem:
+  statement: >
+    Ten cards bear the words HEN, HUT, WIT, SAW, CAR, CUB, MOB, DIM, RED,
+    SON. Can they be arranged in a closed chain so that adjacent words share
+    a letter? What if HUT and SON are replaced by HOT and SUN?
+  domain: graph theory
+  answer: the first arrangement is impossible, the second is possible
+
+key_idea:
+  name: make a graph with a vertex per word and an edge per shared letter; a closed chain is a Hamiltonian cycle, and the first graph is the Petersen graph, which has none
+  category: graph_reinterpretation
+  summary: >
+    Words sharing a letter are joined by an edge. For the first list the
+    graph is the Petersen graph, which famously has no Hamiltonian cycle; so
+    no closed chain exists. Replacing two words changes two vertices'
+    adjacencies and the new graph does have a Hamiltonian cycle.
+
+intuitive_proof:
+  explanation: >
+    Each word is a vertex and two vertices are adjacent when the words share
+    a letter. A closed chain of all ten cards with adjacent cards sharing a
+    letter is exactly a Hamiltonian cycle in this graph. For the given words
+    the graph is 3-regular on 10 vertices with girth 5, i.e. the Petersen
+    graph, which has no Hamiltonian cycle (a standard case analysis: it is
+    hypohamiltonian). Hence the puzzle has no solution. With HOT and SUN in
+    place of HUT and SON, the graph acquires different edges and a
+    Hamiltonian cycle can be exhibited explicitly.
+
+reasoning_structure:
+  naive_approach: >
+    Shuffle the cards looking for a chain; failure is not a proof.
+  crucial_observation: >
+    The puzzle is a Hamiltonian cycle problem, and the specific graph is a
+    famous non-Hamiltonian one.
+  why_it_simplifies: >
+    Recognising the Petersen graph turns 'I could not find it' into 'it does
+    not exist'.
+
+related:
+  - bridges_of_konigsberg
+  - wolf_goat_cabbage_state_graph
+
+tags:
+  - graph reinterpretation
+  - Hamiltonian cycle
+  - Petersen graph
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The Petersen graph does have a Hamiltonian path, so an open chain is
+  possible.

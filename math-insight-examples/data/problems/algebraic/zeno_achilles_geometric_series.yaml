@@ -1,0 +1,83 @@
+id: zeno_achilles_geometric_series
+
+title: "Achilles and the Tortoise: an Infinite Series with a Finite Sum"
+
+aliases:
+  - Zeno's paradox
+  - Achilles and the tortoise
+  - infinitely many steps in finite time
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Zeno%27s_paradoxes
+  original_title: Zeno's paradoxes (Achilles and the tortoise)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Courant & Robbins - What Is Mathematics?
+    notes: Chapter VI
+
+problem:
+  statement: >
+    Achilles runs ten times as fast as a tortoise that starts 100 metres
+    ahead. Zeno argues that Achilles must first reach the tortoise's
+    starting point, by which time the tortoise has moved on, and so on
+    forever, so he never catches up. Resolve the paradox.
+  domain: analysis
+  answer: >
+    Achilles catches the tortoise after 100 + 10 + 1 + ... = 111.11 metres
+
+key_idea:
+  name: the infinitely many stages have distances (and times) forming a geometric series with a finite sum
+  category: grouping_terms
+  summary: >
+    The stages have lengths 100, 10, 1, 0.1, ..., which sum to 100/(1 -
+    1/10) = 1000/9 metres, and the corresponding times likewise form a
+    convergent geometric series. Infinitely many stages fit into a finite
+    distance and a finite time, so the argument only shows that Achilles has
+    not caught up before that moment.
+
+intuitive_proof:
+  explanation: >
+    At each stage Achilles covers the gap while the tortoise covers a tenth
+    of it, so the gaps are 100, 10, 1, .... The total distance Achilles runs
+    through all stages is 100(1 + 1/10 + 1/100 + ...) = 100 * (1/(1 - 1/10))
+    = 1000/9, and the times form the same kind of series with a finite total
+    T. Zeno's description partitions the finite interval [0, T] into
+    infinitely many pieces; it never describes any moment after T. Directly,
+    Achilles at speed 10v and the tortoise at speed v with a 100 m head
+    start meet when 10 v t = 100 + v t, i.e. t = 100/(9v), consistent with
+    the series.
+
+reasoning_structure:
+  naive_approach: >
+    Conclude that infinitely many steps must take infinite time, or dismiss
+    the paradox without identifying the error.
+  crucial_observation: >
+    A finite quantity can be cut into infinitely many pieces whose sizes
+    shrink geometrically.
+  why_it_simplifies: >
+    Summing the geometric series shows exactly what the infinite description
+    covers (the time before the meeting) and what it does not.
+
+related:
+  - geometric_series_shift
+  - geometric_series_half_square_picture
+
+tags:
+  - grouping
+  - geometric series
+  - paradox
+  - convergence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

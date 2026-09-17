@@ -1,0 +1,97 @@
+id: escape_of_the_clones
+
+title: Escape of the Clones (Kontsevich's Prison)
+
+aliases:
+  - escape of the clones
+  - Kontsevich prisoner puzzle
+  - pebbling the corner of the quadrant
+  - chip splitting in a quarter-plane
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/CloneEscape.shtml
+  original_title: Escape of the Clones
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Attributed to Maxim Kontsevich (Tournament of Towns, Kvant 1981; solution
+    by A. Khodulev, Kvant 1982); generalised by Chung, Graham, Morrison and
+    Odlyzko, "Pebbling a chessboard", American Mathematical Monthly 1995.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Chip-firing_game
+    original_title: Chip-firing game
+    notes: The puzzle is a chip-splitting relative of chip-firing / graph pebbling.
+
+problem:
+  statement: >
+    A single counter sits in the corner cell (0,0) of an infinite quadrant
+    grid. A move removes a counter at (x,y) and places counters at (x+1,y)
+    and (x,y+1), provided both of those cells are empty. The "prison" is the
+    set of six cells with x + y <= 2. Can the prison be emptied of counters
+    by a finite sequence of moves?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: a weight 2^{-(x+y)} that every move conserves
+  category: potential_function
+  summary: >
+    Give cell (x,y) weight 2^{-(x+y)}. A move replaces a counter by two
+    counters of half its weight, so the total weight stays 1 forever. The
+    cells outside the prison cannot hold weight 1: the interior beyond the
+    prison sums to 3/4, and each axis can carry at most one counter outside
+    the prison (the corner is never refilled), worth at most 1/8 each.
+
+intuitive_proof:
+  explanation: >
+    Weight cell (x,y) by 2^{-(x+y)}; the corner has weight 1, and a move
+    splits a counter's weight equally between its two children, so the total
+    weight of all counters is always exactly 1. Now bound the weight that
+    can sit outside the prison. Interior cells (x >= 1, y >= 1) have total
+    weight (1/2 + 1/4 + ...)^2 = 1, of which the interior prison cell (1,1)
+    accounts for 1/4, leaving 3/4, and a finite configuration never
+    occupies all of them, so strictly less than 3/4. Along the bottom row,
+    a counter at (x,0) can only come from (x-1,0), and (0,0) is never
+    refilled, so at any time at most one counter lies on the row outside the
+    prison, of weight at most 1/8; the same holds for the left column. Hence
+    the counters outside the prison weigh less than 3/4 + 1/8 + 1/8 = 1,
+    while the counters in total weigh exactly 1. Some counter must remain in
+    the prison.
+
+reasoning_structure:
+  naive_approach: >
+    Play the game: counters multiply rapidly and block each other, and one
+    cannot tell whether a cleverer sequence would succeed.
+  crucial_observation: >
+    Each move is weight-preserving under the weighting 2^{-(x+y)}, so the
+    total "mass" is fixed at 1, and the space outside the prison is too small
+    to hold it.
+  why_it_simplifies: >
+    A conserved quantity plus a geometric series replaces search through an
+    unbounded game tree; the only extra observation needed is that the axes
+    can never fill up.
+
+tags:
+  - potential function
+  - conservation law
+  - geometric series
+  - pebbling
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Sibling of conway_soldiers: there the weight is monotone non-increasing,
+  here it is exactly conserved. Smaller prisons (the single corner cell, the
+  three cells with x + y <= 1, and the 2x2 square) can be emptied.

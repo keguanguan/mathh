@@ -1,0 +1,77 @@
+id: domino_tilings_2xn_fibonacci
+
+title: Domino Tilings of a 2 x n Board Are Counted by Fibonacci Numbers
+
+aliases:
+  - 2 x n domino tilings
+  - Fibonacci tilings
+  - counting tilings by the last column
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fibonacci_sequence
+  original_title: Fibonacci sequence (combinatorial identities)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    In how many ways can a 2 x n board be tiled by 2 x 1 dominoes?
+  domain: combinatorics
+  answer: the Fibonacci number F_{n+1} (1, 2, 3, 5, 8, ...)
+
+key_idea:
+  name: "look at the rightmost column: it is covered by one vertical domino or by two horizontal ones"
+  category: recursive_structure
+  summary: >
+    A tiling either ends with a vertical domino, leaving a 2 x (n-1) board,
+    or with two stacked horizontal dominoes, leaving a 2 x (n-2) board. So
+    T(n) = T(n-1) + T(n-2) with T(1) = 1, T(2) = 2: the Fibonacci recursion.
+
+intuitive_proof:
+  explanation: >
+    Consider the top-right cell. It is covered either by a vertical domino
+    occupying the whole last column, and then the rest is any tiling of the
+    2 x (n-1) board, or by a horizontal domino, which forces another
+    horizontal domino below it (the cell under it cannot be covered
+    otherwise), and then the rest is any tiling of the 2 x (n-2) board.
+    These cases are disjoint and exhaustive, so T(n) = T(n-1) + T(n-2). With
+    T(1) = 1 and T(2) = 2, T(n) = F_{n+1}.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate tilings for n = 1, ..., 5 by drawing, and guess.
+  crucial_observation: >
+    The last column can only be finished in two ways, each reducing to a
+    smaller board of the same shape.
+  why_it_simplifies: >
+    Self-similarity gives the recursion immediately; recognising the
+    recursion identifies the answer as Fibonacci numbers.
+
+related:
+  - fibonacci_tilings_identity
+
+tags:
+  - recursion
+  - tilings
+  - Fibonacci
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Binary strings with no two consecutive 1s are counted by the same
+  recursion, by looking at the last bit.

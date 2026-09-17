@@ -1,0 +1,89 @@
+id: three_five_jug_water_pouring
+
+title: Measuring 4 Litres with 3- and 5-Litre Jugs
+
+aliases:
+  - water pouring puzzle
+  - die hard jug problem
+  - 3 and 5 litre jugs
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Water_pouring_puzzle
+  original_title: Water pouring puzzle
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/water.shtml
+    original_title: 3 glass puzzle
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Two jugs hold 3 and 5 litres and have no markings; water is unlimited.
+    Which amounts can be measured exactly, and in particular can one obtain
+    4 litres? What if the jugs hold 4 and 6 litres?
+  domain: number theory
+  answer: >
+    every integer amount up to the larger jug that is a multiple of gcd(3,
+    5) = 1, in particular 4; with 4 and 6 only even amounts
+
+key_idea:
+  name: every reachable amount is an integer combination of the jug sizes, so a multiple of their gcd; and filling/emptying cycles realise all such multiples
+  category: gcd_structure
+  summary: >
+    Each action (fill, empty, pour until one jug is full or empty) keeps
+    both contents in the form 3x + 5y with integers x, y, so only multiples
+    of gcd(3,5) = 1 arise. Repeatedly filling the 5 and pouring into the 3,
+    emptying the 3 when full, runs through the amounts 5k mod 3 and produces
+    every residue, hence 4.
+
+intuitive_proof:
+  explanation: >
+    Water enters or leaves the system only in whole jugfuls, so the total in
+    the two jugs is always 3x + 5y for some integers x, y, and each jug's
+    content is such a number too. Hence only multiples of gcd(3, 5) = 1 can
+    appear; with jugs 4 and 6 only multiples of 2. Conversely, repeat 'fill
+    the 5-litre jug, pour into the 3-litre jug, empty the 3-litre jug
+    whenever it is full'. After k fillings a total of 5k litres has passed
+    through and only whole 3-litre jugfuls have been discarded, so the
+    amount left in the system is 5k mod 3; since 5 is invertible mod 3 every
+    residue occurs. Concretely: fill 5, pour 3 (2 left), empty the 3, pour
+    the 2 across, fill 5, top up the 3 with 1 litre: 4 litres remain in the
+    big jug.
+
+reasoning_structure:
+  naive_approach: >
+    Search the state graph of (content of jug A, content of jug B) by hand.
+  crucial_observation: >
+    Contents are integer combinations of the jug sizes, so the gcd is the
+    only obstruction, and Euclid's algorithm is a pouring strategy.
+  why_it_simplifies: >
+    Necessity is a one-line invariant; sufficiency is Bezout's identity
+    acted out with water.
+
+related:
+  - euclids_game
+  - pairs_of_heaps_gcd_reachability
+
+tags:
+  - gcd
+  - invariant
+  - Bezout
+  - puzzle
+  - state graph
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The state graph can also be drawn as a billiard path in a parallelogram
+  (the classical Cut-the-Knot applet).

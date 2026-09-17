@@ -1,0 +1,88 @@
+id: two_rooms_half_friends
+
+title: Splitting People into Two Rooms with Few Friends Inside
+
+aliases:
+  - two rooms problem
+  - max-cut local search
+  - each person has at most half their friends in their own room
+  - bipartite subgraph with at least half the edges (constructive)
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle (monovariant examples)
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: >
+    A folklore problem; the "move a person, the number of cross-room
+    friendships increases" argument is the local-search proof of the
+    existence of a large cut.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Maximum_cut
+    original_title: Maximum cut (section on approximation and local search)
+
+problem:
+  statement: >
+    Some pairs among a group of people are friends. Show that the people can
+    be divided into two rooms so that every person has at least half of
+    their friends in the other room.
+  domain: graph theory
+  answer: proved (such a division always exists)
+
+key_idea:
+  name: move any unhappy person; the number of cross-room friendships increases
+  category: monovariant
+  summary: >
+    Start with any division. If someone has more friends in their own room
+    than in the other, move them: the number of friendships that cross
+    between rooms strictly increases. This number is bounded by the total
+    number of friendships, so the moves stop, and when they stop everyone
+    is satisfied.
+
+intuitive_proof:
+  explanation: >
+    Call a person unhappy if more than half of their friends are in their
+    own room. Moving an unhappy person to the other room turns their
+    own-room friendships into cross-room ones and vice versa; since they had
+    more of the former, the total number of cross-room friendships goes up
+    by at least one. This total is a non-negative integer that cannot exceed
+    the number of friendships, so only finitely many moves are possible. When
+    no move is possible, nobody is unhappy, which is exactly the required
+    division. (Equivalently: take a division maximising the number of
+    cross-room friendships; it must satisfy everyone.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the rooms directly, e.g. by placing people one at a
+    time and fixing conflicts, which can cascade.
+  crucial_observation: >
+    One global count, the number of cross-room friendships, goes up whenever
+    a local complaint is fixed.
+  why_it_simplifies: >
+    Termination of the greedy fixing process follows from a bounded
+    monovariant, and the terminal state is automatically the desired one.
+
+tags:
+  - monovariant
+  - extremal principle
+  - graph theory
+  - local search
+  - maximum cut
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The maximising division has at least half of all friendships crossing;
+  compare the non-constructive probabilistic proof in
+  bipartite_subgraph_half_edges.

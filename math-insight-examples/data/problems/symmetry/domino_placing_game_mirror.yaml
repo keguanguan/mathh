@@ -1,0 +1,86 @@
+id: domino_placing_game_mirror
+
+title: "Placing Dominoes on an Even Board: the Second Player Mirrors"
+
+aliases:
+  - Cram on an even board
+  - domino placement game second player wins
+  - central symmetry strategy for dominoes
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cram_%28game%29
+  original_title: Cram (game) (symmetry strategy)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3, Cram
+
+problem:
+  statement: >
+    Two players alternately place 2x1 dominoes on an 8x8 board (any
+    orientation, no overlaps). The player who cannot move loses. Who wins?
+  domain: combinatorial games
+  answer: >
+    the second player, by placing each domino in the position centrally
+    symmetric to the first player's last domino
+
+key_idea:
+  name: central symmetry of the even board pairs up every domino position with a disjoint partner
+  category: pairing_strategy
+  summary: >
+    Rotate the board by 180 degrees about its centre. Every domino position
+    is mapped to another domino position, disjoint from the original because
+    the centre of the board is a corner point, not a cell (the board has
+    even sides). The second player always has the mirror move available: if
+    the mirror position overlapped an earlier domino, the original would
+    have overlapped that domino's mirror image, already present.
+
+intuitive_proof:
+  explanation: >
+    Let R be the 180-degree rotation about the centre of the board. Because
+    the board has even side, R maps every cell to a different cell, and no
+    domino is mapped onto an overlapping position: a domino D could overlap
+    R(D) only if D = {c, R(c)} for some cell c, but R(c) is the cell
+    diametrically opposite to c and is never edge-adjacent to c (the four
+    cells around the centre map to their diagonal neighbours). The second
+    player maintains the invariant that the set of placed dominoes is
+    R-symmetric. After the first player places D, the second places R(D): it
+    is on the board, disjoint from D, and disjoint from every earlier domino
+    E, since E's mirror R(E) is already on the board and D is disjoint from
+    R(E), so R(D) is disjoint from E. Thus the second player always has a
+    move and the first player is eventually stuck.
+
+reasoning_structure:
+  naive_approach: >
+    Search the game tree or look for local tactics on the board.
+  crucial_observation: >
+    An involution of the board without fixed cells whose domino images never
+    overlap gives a pairing of moves.
+  why_it_simplifies: >
+    The symmetry strategy is complete and needs no analysis of positions; it
+    is the same idea as the coins on a round table.
+
+related:
+  - coins_on_round_table
+
+tags:
+  - pairing strategy
+  - symmetry
+  - combinatorial game
+  - dominoes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  On boards with odd sides the strategy fails, and the analysis is genuinely
+  hard (Cram).

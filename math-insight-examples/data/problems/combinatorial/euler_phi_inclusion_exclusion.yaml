@@ -1,0 +1,79 @@
+id: euler_phi_inclusion_exclusion
+
+title: Euler's Totient Formula by Inclusion-Exclusion
+
+aliases:
+  - Euler's totient function formula
+  - phi(n) = n product of (1 - 1/p)
+  - counting coprime residues
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Euler%27s_totient_function
+  original_title: Euler's totient function (computing Euler's totient function)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the number phi(n) of integers in 1..n coprime to n equals n
+    times the product of (1 - 1/p) over the distinct primes p dividing n.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: count the integers divisible by at least one prime factor of n by inclusion-exclusion; multiples of a set of primes are counted exactly by n divided by their product
+  category: inclusion_exclusion
+  summary: >
+    An integer in 1..n is not coprime to n iff it is divisible by some prime
+    p dividing n. The number of multiples of p_1 ... p_k (distinct prime
+    factors of n) in 1..n is exactly n/(p_1 ... p_k). Inclusion-exclusion
+    gives phi(n) = n - sum n/p + sum n/(pq) - ... = n product (1 - 1/p).
+
+intuitive_proof:
+  explanation: >
+    Let p_1, ..., p_r be the distinct primes dividing n, and let A_i be the
+    set of integers in {1, ..., n} divisible by p_i. Then phi(n) = n - |A_1
+    union ... union A_r|. For any subset S of the primes, the intersection
+    of the A_i for i in S consists of the multiples of the product P_S of
+    those primes, and since P_S divides n there are exactly n/P_S of them.
+    Inclusion-exclusion gives phi(n) = sum over subsets S of (-1)^{|S|}
+    n/P_S, which is exactly the expansion of n (1 - 1/p_1)(1 - 1/p_2)...(1 -
+    1/p_r).
+
+reasoning_structure:
+  naive_approach: >
+    Prove multiplicativity of phi via the Chinese remainder theorem and
+    compute phi(p^k) separately, then combine.
+  crucial_observation: >
+    Divisibility by several primes is a clean intersection, and its size is
+    exact because all the products divide n.
+  why_it_simplifies: >
+    Inclusion-exclusion produces the product formula in one line, with its
+    factors appearing as the expansion of the product.
+
+related:
+  - derangements_inclusion_exclusion
+  - totient_sum_over_divisors
+
+tags:
+  - inclusion-exclusion
+  - Euler's totient
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

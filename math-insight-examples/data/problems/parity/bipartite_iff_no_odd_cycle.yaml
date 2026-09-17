@@ -1,0 +1,88 @@
+id: bipartite_iff_no_odd_cycle
+
+title: A Graph Is Bipartite Iff It Has No Odd Cycle
+
+aliases:
+  - bipartite characterisation
+  - two-colourable iff no odd cycle
+  - colour by parity of distance
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bipartite_graph
+  original_title: Bipartite graph (characterization)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on graph theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the vertices of a connected graph can be 2-coloured with no
+    monochromatic edge if and only if the graph contains no cycle of odd
+    length.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: colour each vertex by the parity of its distance from a fixed root; an edge joining two vertices of equal parity closes an odd cycle
+  category: parity_invariant
+  summary: >
+    Odd cycles obviously obstruct 2-colouring (colours alternate around a
+    cycle, so its length must be even). Conversely, fix a root r and colour
+    each vertex by the parity of its distance to r. If an edge uv joined
+    vertices of the same parity, the shortest paths from r to u and to v
+    together with the edge uv would form a closed walk of odd length, which
+    contains an odd cycle. So without odd cycles the parity colouring is
+    proper.
+
+intuitive_proof:
+  explanation: >
+    If the graph is 2-coloured properly, the colours alternate along any
+    cycle, so every cycle has even length; hence an odd cycle prevents
+    2-colouring. Conversely, suppose there is no odd cycle. Pick a root r
+    and colour v by the parity of d(r, v), the length of a shortest path
+    from r. Take any edge uv. Concatenating a shortest r-u path, the edge
+    uv, and a shortest v-r path gives a closed walk of length d(r,u) + 1 +
+    d(r,v). A closed walk of odd length always contains an odd cycle: if the
+    walk repeats a vertex, split it there into two shorter closed walks, one
+    of which has odd length, and repeat until an odd closed walk with no
+    repeated vertex, i.e. an odd cycle, remains. Hence d(r,u) + d(r,v) + 1
+    is even, so d(r,u) and d(r,v) have different parity and the edge uv is
+    properly coloured.
+
+reasoning_structure:
+  naive_approach: >
+    Try to 2-colour by trial and error, or test all cycles individually.
+  crucial_observation: >
+    Parity of distance is a canonical colouring, and a conflict along an
+    edge manufactures an odd closed walk.
+  why_it_simplifies: >
+    One parity invariant (distance mod 2) both produces the colouring and
+    identifies the unique obstruction; it is the basis of breadth-first
+    2-colouring algorithms.
+
+related:
+  - cube_vertex_walk_parity
+  - knight_returns_even_moves
+
+tags:
+  - parity
+  - bipartite
+  - graph coloring
+  - odd cycle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

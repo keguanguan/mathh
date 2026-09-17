@@ -1,0 +1,86 @@
+id: lame_theorem_euclid_steps
+
+title: "Lame's Theorem: Euclid's Algorithm Takes at Most Five Steps per Digit"
+
+aliases:
+  - Lame's theorem
+  - worst case of the Euclidean algorithm
+  - Fibonacci numbers are the slowest gcd inputs
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/LamesTheorem.shtml
+  original_title: Lame's Theorem - First Application of Fibonacci Numbers
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Euclidean_algorithm
+    original_title: Euclidean algorithm (worst case)
+
+problem:
+  statement: >
+    Show that if Euclid's algorithm applied to a > b > 0 takes k division
+    steps, then b >= F_{k+1} (the (k+1)-st Fibonacci number). Deduce that
+    the number of steps is at most about five times the number of decimal
+    digits of b.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: "run the algorithm backwards: each remainder is at least the sum of the next two, which is the Fibonacci recursion"
+  category: extremal_principle
+  summary: >
+    Each division step gives r_{i-1} >= r_i + r_{i+1}. Reading the
+    remainders backwards from the last one, r_k >= 1 = F_2 and r_{k-1} >= 2
+    = F_3, and by induction r_{k-i} >= F_{i+2}: the remainders grow at least
+    as fast as the Fibonacci numbers. Hence b = r_1 >= F_{k+1}, so k is at
+    most logarithmic in b, with the constant 5 per digit coming from phi^5 >
+    10.
+
+intuitive_proof:
+  explanation: >
+    Each division step gives r_{i-1} = q_i r_i + r_{i+1} with q_i >= 1 and 0
+    <= r_{i+1} < r_i, so r_{i-1} >= r_i + r_{i+1}. The last nonzero
+    remainder r_k satisfies r_k >= 1 = F_2, and r_{k-1} = q_k r_k with q_k
+    >= 2 (because r_{k-1} > r_k), so r_{k-1} >= 2 = F_3. By induction,
+    r_{k-i} >= F_{i+2}: r_{k-i} >= r_{k-i+1} + r_{k-i+2} >= F_{i+1} + F_i =
+    F_{i+2}. With i = k - 1 this gives b = r_1 >= F_{k+1}. Since F_{k+1} >=
+    phi^{k-1} and phi^5 > 10, a number b with D decimal digits satisfies
+    phi^{k-1} <= b < 10^D < phi^{5D}, so k < 5D + 1. Consecutive Fibonacci
+    numbers show the bound is essentially sharp.
+
+reasoning_structure:
+  naive_approach: >
+    Bound the number of steps by noting that the remainder at least halves
+    every two steps, which gives a weaker constant.
+  crucial_observation: >
+    Reversing the algorithm, the remainders must grow at least as fast as
+    the Fibonacci numbers, the slowest-growing sequence satisfying r_{i-1}
+    >= r_i + r_{i+1}.
+  why_it_simplifies: >
+    An extremal comparison with the Fibonacci sequence gives the sharp worst
+    case, the first practical appearance of Fibonacci numbers (Lame, 1844).
+
+related:
+  - euclids_game
+  - fibonacci_gcd_identity
+
+tags:
+  - extremal principle
+  - Euclidean algorithm
+  - Fibonacci
+  - complexity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

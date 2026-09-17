@@ -1,0 +1,83 @@
+id: straightedge_alone_center_impossible
+
+title: The Centre of a Circle Cannot Be Found with a Straightedge Alone
+
+aliases:
+  - straightedge-only construction impossibility
+  - projective invariance
+  - Hilbert's circle centre problem
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/impossible/straightedge.shtml
+  original_title: Geometric construction with the straightedge alone
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Straightedge_and_compass_construction
+    original_title: Straightedge and compass construction (constructions with straightedge alone)
+
+problem:
+  statement: >
+    Show that, given only a circle drawn in the plane and an unmarked
+    straightedge (no compass), one cannot construct the centre of the
+    circle.
+  domain: geometry
+  answer: proved (impossible)
+
+key_idea:
+  name: a projective transformation maps the circle to a circle (a suitable central projection between planes) but moves its centre; straightedge constructions are preserved by projective maps
+  category: homothety_or_inversion
+  summary: >
+    Any straightedge construction uses only points, lines through two points
+    and intersections of lines, all of which are preserved by projective
+    transformations. There is a projective map taking the given circle to
+    itself (as a set) but not fixing its centre. Applying it to a supposed
+    construction would produce the same construction with a different
+    'centre': contradiction.
+
+intuitive_proof:
+  explanation: >
+    Suppose a straightedge procedure, starting from the circle and some
+    arbitrary points, produced the centre O. Choose a projective
+    transformation T of the plane that maps the circle onto itself but sends
+    O to a different point (such maps exist: project the circle onto a cone
+    and back onto a tilted plane, or use a projective map of the conic). T
+    sends lines to lines and preserves incidences, so it carries every step
+    of the procedure to a valid step of the same procedure applied to the
+    transformed starting data. The result of the transformed procedure is
+    T(O), yet the procedure is supposed to yield the centre of the (same)
+    circle, namely O. Since T(O) != O, the procedure cannot be correct.
+
+reasoning_structure:
+  naive_approach: >
+    Try many clever straightedge constructions using chords, tangents and
+    diameters and observe that each needs the compass at some step.
+  crucial_observation: >
+    Straightedge constructions are invariant under a group of
+    transformations that does not preserve the centre.
+  why_it_simplifies: >
+    An invariance argument disposes of all conceivable constructions at
+    once; it is the model for impossibility proofs by symmetry.
+
+tags:
+  - projective transformation
+  - invariance
+  - impossibility
+  - constructions
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  With one additional circle with known centre, or two intersecting circles,
+  the centre becomes constructible (Poncelet-Steiner).

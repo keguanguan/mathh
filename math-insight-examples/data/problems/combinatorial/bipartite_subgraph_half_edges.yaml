@@ -1,0 +1,84 @@
+id: bipartite_subgraph_half_edges
+
+title: Every Graph Has a Bipartite Subgraph with at Least Half the Edges
+
+aliases:
+  - large bipartite subgraph
+  - random cut has half the edges in expectation
+  - Erdos large cut
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Probability makes counting (sometimes) easy"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: The argument is Erdos's and is the opening example of the probabilistic method.
+
+additional_sources:
+  - name: Alon & Spencer - The Probabilistic Method
+    notes: Chapter 1, the basic method.
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Maximum_cut
+    original_title: Maximum cut
+
+problem:
+  statement: >
+    Show that every graph with m edges contains a bipartite subgraph with at
+    least m/2 edges; that is, the vertices can be split into two parts with
+    at least half of all edges going between the parts.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: put each vertex on a random side; each edge crosses with probability 1/2
+  category: probabilistic_argument
+  summary: >
+    Assign each vertex independently to side A or B with a fair coin. Each
+    edge has its endpoints on different sides with probability 1/2, so the
+    expected number of crossing edges is m/2. Some outcome must achieve at
+    least the expectation.
+
+intuitive_proof:
+  explanation: >
+    Flip a fair coin for every vertex to decide its side. For a fixed edge,
+    the two endpoints land on different sides with probability exactly 1/2.
+    By linearity of expectation the expected number of edges that cross
+    between the sides is m/2. A random variable cannot always be below its
+    mean, so at least one assignment of sides has at least m/2 crossing
+    edges; those edges form a bipartite subgraph.
+
+reasoning_structure:
+  naive_approach: >
+    Construct the partition greedily vertex by vertex, or by moving vertices
+    until no move helps (the monovariant argument), tracking edge counts
+    throughout.
+  crucial_observation: >
+    Averaging over all partitions is trivial, because each edge is treated
+    symmetrically, and the maximum is at least the average.
+  why_it_simplifies: >
+    Linearity of expectation turns a global optimisation into a sum of
+    identical local probabilities; the existence proof is three lines and
+    needs no construction.
+
+tags:
+  - probabilistic method
+  - expectation
+  - averaging
+  - graph theory
+  - maximum cut
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Compare the constructive monovariant proof in two_rooms_half_friends,
+  which gives the same bound; the probabilistic version illustrates
+  "existence by averaging".

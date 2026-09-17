@@ -1,0 +1,77 @@
+id: cube_cuts_twenty_seven
+
+title: Cutting a 3x3x3 Cube into Unit Cubes Needs Six Cuts
+
+aliases:
+  - 27 unit cubes six cuts
+  - central cube argument
+  - Gardner's cube cutting
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Martin_Gardner
+  original_title: Martin Gardner
+  accessed: 2026-09-16
+  notes: >
+    Popularised by Martin Gardner (Scientific American, 1956); the
+    central-cube argument is due to Frank Hawthorne.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+    notes: W. W. Norton, 2006
+
+problem:
+  statement: >
+    A 3x3x3 wooden cube is to be cut into 27 unit cubes with straight planar
+    cuts, and pieces may be rearranged between cuts. Show that six cuts are
+    necessary.
+  domain: geometry
+  answer: 6 cuts (and six obviously suffice)
+
+key_idea:
+  name: the central unit cube has six faces, none of which is on the surface, and each cut creates at most one of them
+  category: structural_obstruction
+  summary: >
+    The unit cube in the centre shares no face with the outside, so each of
+    its six faces must be produced by a cut. A single planar cut can create
+    at most one face of that little cube. Hence at least six cuts are
+    required, whatever rearrangement is done.
+
+intuitive_proof:
+  explanation: >
+    Consider the central unit cube. All six of its faces are interior to the
+    big cube, so each must be exposed by some cut. A planar cut meets the
+    central cube in at most one plane, so it can expose at most one of its
+    faces. Therefore at least six cuts are needed. Six cuts (two parallel to
+    each coordinate plane) clearly suffice, so the minimum is 6.
+
+reasoning_structure:
+  naive_approach: >
+    Try clever stackings of pieces to cut several layers at once, hoping to
+    beat six.
+  crucial_observation: >
+    One specific piece needs six separate cuts no matter how the others are
+    handled.
+  why_it_simplifies: >
+    Focusing on the most constrained object gives a lower bound that matches
+    the obvious upper bound.
+
+tags:
+  - structural obstruction
+  - lower bound
+  - puzzle
+  - geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For an n x n x n cube with n > 3 stacking does help; the general minimum
+  was found by Gardner's readers.

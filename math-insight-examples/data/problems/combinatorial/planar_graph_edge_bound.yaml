@@ -1,0 +1,78 @@
+id: planar_graph_edge_bound
+
+title: A Planar Graph Has at Most 3V - 6 Edges
+
+aliases:
+  - E <= 3V - 6
+  - K5 is not planar
+  - face-edge double count
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three applications of Euler's formula"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Planar_graph
+    original_title: Planar graph (Euler's formula)
+
+problem:
+  statement: >
+    Show that a simple planar graph with V >= 3 vertices has at most 3V - 6
+    edges, and deduce that K5 is not planar.
+  domain: graph theory
+  answer: proved; K5 has 10 > 9 edges
+
+key_idea:
+  name: "count edge-face incidences: each face has at least 3 edges and each edge borders at most 2 faces"
+  category: double_counting
+  summary: >
+    Every face is bounded by at least 3 edges (the graph is simple) and
+    every edge touches at most 2 faces, so 3F <= 2E. Substituting into
+    Euler's V - E + F = 2 gives E <= 3V - 6.
+
+intuitive_proof:
+  explanation: >
+    Count pairs (edge, face) with the edge on the boundary of the face. Each
+    face contributes at least 3 (faces of a simple graph with at least 3
+    vertices have at least 3 boundary edges), so the count is at least 3F;
+    each edge contributes at most 2, so the count is at most 2E. Hence 3F <=
+    2E. By Euler's formula F = 2 - V + E, so 3(2 - V + E) <= 2E, i.e. E <=
+    3V - 6. For K5, E = 10 > 3 * 5 - 6 = 9, so K5 is not planar. (For
+    triangle-free graphs the same count with 4F <= 2E gives E <= 2V - 4,
+    which rules out K3,3.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to draw K5 without crossings and fail, or argue by case analysis on
+    where the fifth vertex can go.
+  crucial_observation: >
+    The incidence between edges and faces is bounded on both sides.
+  why_it_simplifies: >
+    A double count plus the Euler invariant gives a universal edge bound, so
+    non-planarity is a one-line arithmetic check.
+
+related:
+  - euler_formula_planar
+  - mantel_triangle_free
+
+tags:
+  - double counting
+  - planar graphs
+  - Euler's formula
+  - nonplanarity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

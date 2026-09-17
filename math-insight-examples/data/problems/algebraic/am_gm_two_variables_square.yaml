@@ -1,0 +1,74 @@
+id: am_gm_two_variables_square
+
+title: AM-GM for Two Numbers from a Single Square
+
+aliases:
+  - arithmetic mean geometric mean inequality
+  - (a+b)/2 >= sqrt(ab)
+  - (sqrt a - sqrt b)^2 >= 0
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+  original_title: Inequality of arithmetic and geometric means (two variables)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that (a + b)/2 >= sqrt(ab) for all non-negative a, b, with equality
+    only when a = b.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the difference of the two sides is half of (sqrt a - sqrt b)^2
+  category: algebraic_identity
+  summary: >
+    (a + b)/2 - sqrt(ab) = (sqrt a - sqrt b)^2 / 2 >= 0, with equality iff
+    sqrt a = sqrt b.
+
+intuitive_proof:
+  explanation: >
+    Expand (sqrt a - sqrt b)^2 = a - 2 sqrt(ab) + b >= 0. Rearranging gives
+    a + b >= 2 sqrt(ab), i.e. (a + b)/2 >= sqrt(ab), with equality exactly
+    when sqrt a = sqrt b, i.e. a = b. Geometrically: in a semicircle of
+    diameter a + b, the half-chord at the junction has length sqrt(ab) and
+    is at most the radius.
+
+reasoning_structure:
+  naive_approach: >
+    Square both sides and expand, which works but hides the equality case,
+    or appeal to convexity of the logarithm.
+  crucial_observation: >
+    The gap between the means is itself a perfect square.
+  why_it_simplifies: >
+    Writing the difference as a square makes both the inequality and the
+    equality case visible at once; it is the seed of all AM-GM proofs.
+
+related:
+  - sum_of_squares_inequality
+  - fixed_sum_maximise_product_smoothing
+
+tags:
+  - inequality
+  - AM-GM
+  - sum of squares
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

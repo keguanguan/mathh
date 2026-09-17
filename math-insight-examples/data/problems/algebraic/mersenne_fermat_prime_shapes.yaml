@@ -1,0 +1,82 @@
+id: mersenne_fermat_prime_shapes
+
+title: If 2^n - 1 Is Prime Then n Is Prime; If 2^n + 1 Is Prime Then n Is a Power of 2
+
+aliases:
+  - Mersenne prime exponent is prime
+  - Fermat prime exponent is a power of two
+  - a^n - 1 factorisation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mersenne_prime
+  original_title: Mersenne prime (basic facts)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fermat_number
+    original_title: Fermat number
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that if 2^n - 1 is prime then n is prime, and if 2^n + 1 is prime
+    then n is a power of 2.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: x^{ab} - 1 has the factor x^a - 1, and x^{ab} + 1 has the factor x^a + 1 when b is odd
+  category: factorisation
+  summary: >
+    If n = ab with 1 < a < n then 2^a - 1 is a proper divisor of 2^n - 1 by
+    the geometric series identity, so 2^n - 1 is composite. If n has an odd
+    factor b > 1, n = ab, then 2^a + 1 divides 2^n + 1 = (2^a)^b + 1, again
+    giving a proper factor.
+
+intuitive_proof:
+  explanation: >
+    For any x and positive integers a, b: x^{ab} - 1 = (x^a - 1)(x^{a(b-1)}
+    + ... + x^a + 1). With x = 2 and 1 < a < n this exhibits a factor of 2^n
+    - 1 strictly between 1 and 2^n - 1, so 2^n - 1 prime forces n to have no
+    such factorisation, i.e. n prime. Similarly, for odd b, x^b + 1 = (x +
+    1)(x^{b-1} - x^{b-2} + ... + 1); substituting x = 2^a shows 2^a + 1
+    divides 2^{ab} + 1. So if 2^n + 1 is prime, n has no odd factor greater
+    than 1, i.e. n is a power of 2.
+
+reasoning_structure:
+  naive_approach: >
+    Test values of n and look for a pattern, or try to reason about the
+    prime factors of 2^n - 1 directly.
+  crucial_observation: >
+    Both numbers are values of polynomials that factor whenever the exponent
+    factors appropriately.
+  why_it_simplifies: >
+    A polynomial identity supplies an explicit divisor, so primality forces
+    a condition on the exponent immediately.
+
+tags:
+  - factorisation
+  - primes
+  - Mersenne
+  - Fermat numbers
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The converses fail: 2^11 - 1 = 23 * 89 and 2^32 + 1 = 641 * 6700417. The
+  same identity shows that a repunit 11...1 with a composite number of
+  digits is composite.

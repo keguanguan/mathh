@@ -1,0 +1,84 @@
+id: t_tetromino_10x10
+
+title: A 10x10 Board Cannot Be Tiled by T-Tetrominoes
+
+aliases:
+  - T-tetromino tiling of a 10x10 board
+  - T-shaped tiles on a square board
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 2, Coloring Proofs
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A standard exercise; the T-tetromino result is due to D. W. Walkup (1965) in general.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tromino
+    original_title: Tromino
+    notes: Related polyomino tiling results.
+
+problem:
+  statement: >
+    Can a 10x10 board be tiled by 25 T-tetrominoes (four squares in a T
+    shape)?
+  domain: tiling
+  answer: impossible
+
+key_idea:
+  name: on a chessboard colouring every T covers 3 + 1 squares of the two colours
+  category: coloring_invariant
+  summary: >
+    A T-tetromino always covers three squares of one colour and one of the
+    other. If a tiles cover 3 black + 1 white and b tiles cover 1 black +
+    3 white, then a + b = 25 and 3a + b = 50 (black squares), giving
+    2a = 25, impossible.
+
+intuitive_proof:
+  explanation: >
+    Colour the board like a chessboard: 50 black, 50 white. However a T is
+    placed, its three squares in a row alternate colours and the stem
+    matches the middle one, so the T covers either 3 black and 1 white or
+    1 black and 3 white. Let a and b be the numbers of tiles of the two
+    kinds. Then a + b = 25 and, counting black squares, 3a + b = 50.
+    Subtracting gives 2a = 25, which has no integer solution.
+
+reasoning_structure:
+  naive_approach: >
+    Try tilings by hand (the T-tetromino tiles a 4x4 square, so this looks
+    plausible), or search by computer.
+  crucial_observation: >
+    Unlike the domino, the T is colour-unbalanced by exactly 2, in one of
+    two directions, so parity of the tile count enters.
+  why_it_simplifies: >
+    Two linear equations in the numbers of tiles of each type contradict
+    each other; no arrangement needs to be examined.
+
+related:
+  - straight_tetromino_10x10
+  - l_tromino_deficient_board
+  - mutilated_checkerboard
+
+tags:
+  - coloring
+  - tiling
+  - parity
+  - polyomino
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Walkup's theorem: a rectangle can be tiled by T-tetrominoes iff both
+  sides are multiples of 4. The colouring gives only the parity
+  obstruction; compare straight_tetromino_10x10.

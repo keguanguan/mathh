@@ -1,0 +1,14 @@
+# Transfer levels d0 (classical), d1 (novel), d2 (changed surface) with the mock model.
+experiment_id: mock_transfer_v0
+description: Structural-transfer smoke experiment with the mock model.
+families: [domino_tiling, population_game]
+models: [mock_mixed]
+instance_sizes:
+  domino_tiling: [8, 12]
+  population_game: [24, 48]
+transfer_levels: [0, 1, 2]
+compute_conditions: [default]
+repetitions: 1
+instances_per_cell: 5
+generation_seeds: {base_seed: 99}
+output_dir: data/raw_runs

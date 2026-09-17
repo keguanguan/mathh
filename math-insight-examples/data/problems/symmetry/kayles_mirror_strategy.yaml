@@ -1,0 +1,83 @@
+id: kayles_mirror_strategy
+
+title: "Kayles on a Row: the First Player Wins by Symmetry"
+
+aliases:
+  - Kayles
+  - bowling pins game
+  - knock down one or two adjacent pins
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Kayles
+  original_title: Kayles (analysis)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    A row of n pins; a move knocks down one pin or two adjacent pins. The
+    player who knocks down the last pin wins. Show that the first player
+    wins for every n >= 1.
+  domain: combinatorial games
+  answer: >
+    the first player knocks down the middle pin (n odd) or the middle two
+    pins (n even), then mirrors every move of the opponent in the other half
+
+key_idea:
+  name: remove the centre so that the remaining pins form two identical rows, then copy the opponent's moves symmetrically
+  category: pairing_strategy
+  summary: >
+    After the first move the row is split into two equal, non-interacting
+    rows. Whatever the second player does in one row, the first player does
+    the mirror image in the other row. The first player always has a reply,
+    so the second player runs out of moves first.
+
+intuitive_proof:
+  explanation: >
+    If n is odd, the first player knocks down the middle pin; if n is even,
+    the middle two pins. In both cases what remains is two rows of equal
+    length k with a gap between them, so a move in one row never affects the
+    other. Strategy: answer every move of the opponent in one row by the
+    mirror-image move in the other row. This keeps the position symmetric
+    after each of the first player's moves, so the first player can always
+    reply (the mirror move is available in the untouched row), and the
+    opponent eventually faces the empty position and loses.
+
+reasoning_structure:
+  naive_approach: >
+    Compute Sprague-Grundy values of rows (which are needed for general
+    Kayles positions, and have period 12).
+  crucial_observation: >
+    One central move creates a symmetric position, and symmetric positions
+    with the opponent to move are wins for the mirroring player.
+  why_it_simplifies: >
+    The mirror strategy settles the single-row game in two lines, avoiding
+    the full nim-value analysis.
+
+related:
+  - coins_on_round_table
+  - domino_placing_game_mirror
+
+tags:
+  - pairing strategy
+  - symmetry
+  - combinatorial game
+  - Kayles
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Dawson's Kayles and general Kayles positions need the Sprague-Grundy
+  theory; the row is the easy case.

@@ -1,0 +1,83 @@
+id: blue_eyed_islanders_induction
+
+title: The Blue-Eyed Islanders
+
+aliases:
+  - blue eyes puzzle
+  - muddy children puzzle
+  - common knowledge induction
+  - cheating husbands
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Common_knowledge_%28logic%29
+  original_title: Common knowledge (logic) (puzzle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Terence Tao - The blue-eyed islanders puzzle
+    notes: blog post, 2008
+
+problem:
+  statement: >
+    On an island, 100 people have blue eyes and the rest brown; nobody knows
+    their own eye colour, there are no mirrors, and anyone who learns their
+    colour must leave at dawn. Everyone can see everyone else. A visitor
+    announces publicly: 'at least one of you has blue eyes'. What happens?
+  domain: combinatorics
+  answer: >
+    all 100 blue-eyed islanders leave on the 100th dawn after the
+    announcement
+
+key_idea:
+  name: "induct on the number of blue-eyed people: if there were k, they would all leave on day k"
+  category: induction
+  summary: >
+    With one blue-eyed person, they see no blue eyes, so the announcement
+    tells them and they leave on day 1. If there are k, each blue-eyed
+    person sees k - 1 and reasons: 'if I were brown-eyed, those k - 1 would
+    leave on day k - 1'. When nobody leaves on day k - 1, each blue-eyed
+    person learns their colour and leaves on day k.
+
+intuitive_proof:
+  explanation: >
+    Claim: if exactly k islanders have blue eyes, they all leave on day k
+    and nobody else leaves. For k = 1 the sole blue-eyed person sees no blue
+    eyes, deduces from the announcement that it must be them, and leaves on
+    day 1. Assume the claim for k - 1. With k blue-eyed people, each of them
+    sees k - 1 blue-eyed people and knows, by the claim for k - 1 (which
+    everyone can reason through), that if they themselves were not blue-eyed
+    those k - 1 would leave on day k - 1. On the morning of day k nobody has
+    left, so each blue-eyed person concludes they are blue-eyed and leaves
+    that day. Brown-eyed people see k blue-eyed people, expect them to leave
+    on day k, and learn nothing about themselves before then.
+
+reasoning_structure:
+  naive_approach: >
+    Object that the announcement conveys no new information since everyone
+    already sees blue eyes, and conclude nothing happens.
+  crucial_observation: >
+    The announcement creates common knowledge, and the induction runs on the
+    depth of 'I know that you know that...' rather than on raw information.
+  why_it_simplifies: >
+    A clean induction hypothesis about k people makes the surprising 100-day
+    countdown inevitable.
+
+tags:
+  - induction
+  - common knowledge
+  - logic puzzle
+  - epistemic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Equivalent to the muddy children and cheating husbands puzzles.

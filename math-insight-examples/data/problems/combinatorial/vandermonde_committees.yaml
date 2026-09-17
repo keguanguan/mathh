@@ -1,0 +1,72 @@
+id: vandermonde_committees
+
+title: Vandermonde's Identity by Choosing a Committee
+
+aliases:
+  - Vandermonde's identity
+  - Vandermonde convolution
+  - committee from two groups
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Vandermonde%27s_identity
+  original_title: Vandermonde's identity (combinatorial proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that C(m + n, r) = sum over k of C(m, k) C(n, r - k).
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: count r-member committees from m women and n men by how many women they contain
+  category: double_counting
+  summary: >
+    The left side counts committees of size r from m + n people. Classifying
+    committees by the number k of members drawn from the first group gives
+    C(m, k) C(n, r - k) committees for each k; summing over k counts the
+    same committees.
+
+intuitive_proof:
+  explanation: >
+    Let a group consist of m people of one kind and n of another. The number
+    of r-person committees is C(m + n, r). Alternatively, a committee has
+    some number k of people of the first kind and r - k of the second; there
+    are C(m, k) C(n, r - k) committees of that type. Summing over all k
+    counts every committee exactly once. Equating the two counts proves the
+    identity.
+
+reasoning_structure:
+  naive_approach: >
+    Expand (1 + x)^m (1 + x)^n = (1 + x)^{m+n} and compare coefficients, or
+    manipulate factorials.
+  crucial_observation: >
+    Both sides count the same set of committees, split differently.
+  why_it_simplifies: >
+    A double count gives the identity without algebra and explains the
+    summation structure.
+
+tags:
+  - double counting
+  - binomial identity
+  - committees
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Setting m = n = r gives sum of C(n,k)^2 = C(2n, n).

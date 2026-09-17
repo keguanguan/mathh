@@ -1,0 +1,92 @@
+id: chomp_strategy_stealing
+
+title: The First Player Wins Chomp (Strategy Stealing)
+
+aliases:
+  - Chomp
+  - strategy-stealing argument
+  - poisoned chocolate game
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Chomp
+  original_title: Chomp
+  accessed: 2026-09-16
+  notes: >
+    The game is due to David Gale (1974); the strategy-stealing argument
+    is standard and is presented in Berlekamp, Conway and Guy, Winning
+    Ways.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Strategy-stealing_argument
+    original_title: Strategy-stealing argument
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3, chapter on Chomp and related games.
+
+problem:
+  statement: >
+    A rectangular chocolate bar of m x n squares (m, n >= 2) has a poisoned
+    square in the top-left corner. Players alternately choose a square and
+    eat it together with every square below and/or to the right of it. The
+    player who eats the poisoned square loses. Show that the first player
+    has a winning strategy.
+  domain: combinatorial games
+  answer: the first player wins (non-constructively)
+
+key_idea:
+  name: if the second player could win, the first player could steal that strategy
+  category: strategy_stealing
+  summary: >
+    Consider the first player biting off only the bottom-right square. If
+    that loses, the second player has a winning reply, which is some bite.
+    But the first player could have made that same bite as an opening move
+    (it removes the bottom-right square anyway), reaching the same position
+    with roles reversed. So either way the first player has a winning first
+    move.
+
+intuitive_proof:
+  explanation: >
+    Chomp is finite with no draws, so one player has a winning strategy.
+    Suppose it is the second player. Let the first player open by eating
+    just the bottom-right square. By assumption the second player has a
+    winning reply: a bite at some square s. Since every bite at s also
+    removes the bottom-right square, the position after "bottom-right,
+    then s" is identical to the position after opening directly with s.
+    Thus the first player could have opened with s and be in the winning
+    position with the second player to move. This contradicts the
+    assumption that the second player wins. Hence the first player has a
+    winning strategy, although the argument does not say what it is.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the game tree for small boards, which quickly becomes
+    intractable and reveals no general pattern.
+  crucial_observation: >
+    The smallest possible opening move is "dominated": any reply to it is
+    also available as an opening move, and leads to the same position.
+  why_it_simplifies: >
+    Existence of a winning strategy follows from a two-line contradiction,
+    without analysing any position; the proof is famously non-constructive.
+
+tags:
+  - strategy stealing
+  - game
+  - non-constructive
+  - contradiction
+  - combinatorial game
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same argument shows that the first player wins Hex and tic-tac-toe
+  variants where an extra move never hurts. Explicit winning strategies for
+  general Chomp boards are unknown.

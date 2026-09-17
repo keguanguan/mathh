@@ -1,0 +1,76 @@
+id: cauchy_functional_equation_rationals
+
+title: Additive Functions Are Linear on the Rationals
+
+aliases:
+  - Cauchy's functional equation
+  - f(x + y) = f(x) + f(y)
+  - additive functions on Q
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation
+  original_title: Cauchy's functional equation (solutions over the rational numbers)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aczel - Lectures on Functional Equations and Their Applications
+
+problem:
+  statement: >
+    A function f: Q -> R satisfies f(x + y) = f(x) + f(y) for all rationals
+    x, y. Show that f(x) = cx for all rational x, where c = f(1).
+  domain: algebra / analysis
+  answer: f(x) = f(1) x
+
+key_idea:
+  name: "bootstrap from f(1): induction gives f(n) = n f(1), then f(n/m) is forced by m f(n/m) = f(n)"
+  category: induction
+  summary: >
+    From f(0) = f(0) + f(0) we get f(0) = 0 and hence f(-x) = -f(x).
+    Induction gives f(n) = n f(1) for positive integers n. Applying the same
+    to the number n/m added to itself m times, m f(n/m) = f(n) = n f(1), so
+    f(n/m) = (n/m) f(1). Negative rationals follow from oddness.
+
+intuitive_proof:
+  explanation: >
+    Setting x = y = 0 gives f(0) = 2 f(0), so f(0) = 0; then f(x) + f(-x) =
+    f(0) = 0 gives f(-x) = -f(x). For a positive integer n, induction on n
+    with f(x + 1) = f(x) + f(1) gives f(n) = n f(1); more generally f(n x) =
+    n f(x) for every rational x by the same induction. For positive integers
+    n, m: m f(n/m) = f(m * n/m) = f(n) = n f(1), so f(n/m) = (n/m) f(1).
+    Combined with f(-x) = -f(x), this gives f(x) = c x with c = f(1) for
+    every rational x. (Over the reals, without continuity or boundedness,
+    non-linear solutions exist via a Hamel basis.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to differentiate or use continuity, which is not available on the
+    rationals.
+  crucial_observation: >
+    The equation lets you compute f on multiples and fractions of any value
+    from its value at that point, which is exactly what induction captures.
+  why_it_simplifies: >
+    Induction propagates a single value f(1) to all of Q, and the argument
+    shows exactly what extra hypothesis is needed for the reals.
+
+related:
+  - bernoulli_inequality_induction
+
+tags:
+  - induction
+  - functional equation
+  - additive
+  - rationals
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

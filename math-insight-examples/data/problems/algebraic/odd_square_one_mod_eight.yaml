@@ -1,0 +1,86 @@
+id: odd_square_one_mod_eight
+
+title: Every Odd Square Is 1 Modulo 8
+
+aliases:
+  - odd squares are 1 mod 8
+  - (2k + 1)^2 = 8 T_k + 1
+  - squares modulo 8
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Modular_arithmetic
+  original_title: Modular arithmetic (examples)
+  accessed: 2026-09-16
+  notes: >
+    Standard fact; the factorisation proof appears in most elementary number
+    theory texts.
+
+additional_sources:
+  - name: Niven, Zuckerman, Montgomery - An Introduction to the Theory of Numbers
+    notes: Chapter 2
+
+problem:
+  statement: >
+    Show that the square of any odd integer leaves remainder 1 when divided
+    by 8. Deduce that no number of the form 8k + 3, 8k + 6 or 8k + 7 is a
+    sum of two squares, and none of the form 8k + 7 is a sum of three
+    squares.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: (2k + 1)^2 - 1 = 4k(k + 1), and k(k + 1) is even as a product of consecutive integers
+  category: factorisation
+  summary: >
+    (2k + 1)^2 = 4k(k + 1) + 1, and one of k, k + 1 is even, so 8 divides
+    4k(k + 1) and the square is 1 mod 8. Even squares are 0 or 4 mod 8, so
+    squares are 0, 1, 4 mod 8; sums of two squares avoid 3, 6, 7 mod 8, and
+    sums of three avoid 7.
+
+intuitive_proof:
+  explanation: >
+    Write an odd integer as 2k + 1. Then (2k + 1)^2 = 4k^2 + 4k + 1 = 4k(k +
+    1) + 1. Among the consecutive integers k and k + 1 one is even, so k(k +
+    1) is even and 4k(k + 1) is divisible by 8; hence the square is 1 mod 8
+    (equivalently, (2k + 1)^2 = 8 T_k + 1 with T_k the k-th triangular
+    number). Even squares (2k)^2 = 4k^2 are 0 or 4 mod 8. So squares are 0,
+    1 or 4 mod 8. Sums of two of these residues give 0, 1, 2, 4, 5 mod 8,
+    never 3, 6 or 7; sums of three give everything except 7. Hence numbers
+    3, 6, 7 mod 8 are not sums of two squares and numbers 7 mod 8 are not
+    sums of three squares (the latter is half of Legendre's three-square
+    theorem).
+
+reasoning_structure:
+  naive_approach: >
+    Check the residues of 1^2, 3^2, 5^2, 7^2 modulo 8, which proves the
+    statement but does not show why.
+  crucial_observation: >
+    Subtracting 1 from an odd square factorises as 4 times a product of
+    consecutive integers, which supplies the extra factor of 2.
+  why_it_simplifies: >
+    A one-line factorisation explains the residue and yields immediate
+    obstructions for representations as sums of squares.
+
+related:
+  - squares_mod_four_obstruction
+  - sum_of_two_odd_squares_not_square
+  - six_divides_n_cubed_minus_n
+
+tags:
+  - factorisation
+  - modular arithmetic
+  - squares
+  - sums of squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,73 @@
+id: isoperimetric_rectangle_am_gm
+
+title: Among Rectangles of Given Perimeter the Square Has the Largest Area
+
+aliases:
+  - isoperimetric problem for rectangles
+  - maximum area rectangle with fixed perimeter
+  - AM-GM for rectangles
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Isoperimetric_inequality
+  original_title: Isoperimetric inequality (simple cases)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/Isoperimetric.shtml
+    original_title: An Isoperimetric Theorem
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Among all rectangles with perimeter 2s, which has the largest area?
+  domain: geometry
+  answer: the square, of area (s/2)^2
+
+key_idea:
+  name: write the sides as s/2 + t and s/2 - t; the area is (s/2)^2 - t^2
+  category: algebraic_identity
+  summary: >
+    Sides a + b = s can be written as s/2 + t and s/2 - t. The area (s/2 +
+    t)(s/2 - t) = (s/2)^2 - t^2 is largest when t = 0, i.e. for the square.
+
+intuitive_proof:
+  explanation: >
+    Let the sides be a and b with a + b = s. Put a = s/2 + t and b = s/2 - t
+    for some t with |t| < s/2. Then ab = (s/2)^2 - t^2 <= (s/2)^2, with
+    equality only for t = 0, when a = b = s/2. So the square maximises the
+    area, and the loss for any other rectangle is exactly the square of its
+    deviation from squareness.
+
+reasoning_structure:
+  naive_approach: >
+    Differentiate a(s - a) or list rectangles with integer sides and compare
+    areas.
+  crucial_observation: >
+    Parametrising by the deviation from the mean turns the product into a
+    difference of squares.
+  why_it_simplifies: >
+    A change of variable exposes the maximum and the exact loss at once,
+    with no calculus; this is AM-GM in disguise.
+
+related:
+  - am_gm_two_variables_square
+
+tags:
+  - algebraic identity
+  - AM-GM
+  - optimisation
+  - difference of squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

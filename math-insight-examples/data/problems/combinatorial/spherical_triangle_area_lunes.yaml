@@ -1,0 +1,82 @@
+id: spherical_triangle_area_lunes
+
+title: The Area of a Spherical Triangle (Girard's Theorem) via Lunes
+
+aliases:
+  - Girard's theorem
+  - spherical excess
+  - angle sum of a spherical triangle exceeds 180
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Spherical_trigonometry
+  original_title: Spherical trigonometry (area and spherical excess)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that a triangle on the unit sphere with angles A, B, C (in radians)
+    has area A + B + C - pi, so its angle sum exceeds pi.
+  domain: geometry
+  answer: area = A + B + C - pi
+
+key_idea:
+  name: the three lunes through the triangle's vertex pairs cover the sphere, overlapping exactly on the triangle and its antipode
+  category: inclusion_exclusion
+  summary: >
+    Two great circles meeting at angle A bound a lune of area 2A. The three
+    lunes at A, B, C containing the triangle T, together with their
+    antipodal copies, cover the sphere, with T and its antipode T' each
+    covered three times and everything else once. Adding areas: 4(A + B + C)
+    = 4 pi + 4 area(T).
+
+intuitive_proof:
+  explanation: >
+    A lune with angle theta (the region between two great semicircles
+    meeting at angle theta) has area 4 pi * theta/(2 pi) = 2 theta. Each
+    pair of great circles through the vertices of T determines two antipodal
+    lunes containing T and its antipode T' respectively; the lune at A
+    containing T has area 2A. The six lunes (three containing T, three
+    containing T') cover the sphere: every point of the sphere lies in at
+    least one, and points of T lie in all three lunes at T (and likewise for
+    T'), while every other point lies in exactly one. Adding the areas: 2(2A
+    + 2B + 2C) = 4 pi + 2 area(T) + 2 area(T'), and area(T') = area(T), so
+    4(A + B + C) = 4 pi + 4 area(T), i.e. area(T) = A + B + C - pi. Since
+    area is positive, A + B + C > pi.
+
+reasoning_structure:
+  naive_approach: >
+    Integrate the spherical metric over the triangle in spherical
+    coordinates.
+  crucial_observation: >
+    Lunes have trivially computable areas, and they overlap exactly on the
+    triangle.
+  why_it_simplifies: >
+    An inclusion-exclusion over three lunes yields the area formula with no
+    integration, and the spherical excess appears as the overlap.
+
+tags:
+  - inclusion-exclusion
+  - spherical geometry
+  - area
+  - lunes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Girard (1629). The same counting gives the Gauss-Bonnet theorem for
+  spherical polygons.

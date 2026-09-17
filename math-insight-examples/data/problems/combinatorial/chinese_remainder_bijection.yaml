@@ -1,0 +1,74 @@
+id: chinese_remainder_bijection
+
+title: The Chinese Remainder Theorem by Counting
+
+aliases:
+  - Chinese remainder theorem
+  - residues mod mn versus pairs of residues
+  - injective hence bijective
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Chinese_remainder_theorem
+  original_title: Chinese remainder theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/chinese.shtml
+    original_title: Chinese Remainder Theorem
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Let m and n be coprime. Show that for any residues a mod m and b mod n
+    there is exactly one x mod mn with x = a mod m and x = b mod n.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the map x -> (x mod m, x mod n) from Z/mn to Z/m x Z/n is injective, and both sets have mn elements, so it is a bijection
+  category: bijection
+  summary: >
+    If x and y in {0, ..., mn - 1} have the same residues mod m and mod n,
+    then both m and n divide x - y, and since they are coprime mn divides x
+    - y, so x = y. An injective map between finite sets of equal size mn is
+    surjective, so every pair (a, b) is hit exactly once.
+
+intuitive_proof:
+  explanation: >
+    Define f(x) = (x mod m, x mod n) for x in {0, 1, ..., mn - 1}. If f(x) =
+    f(y) then m | x - y and n | x - y; because gcd(m, n) = 1, mn | x - y,
+    and as |x - y| < mn we get x = y. Thus f is injective. The domain and
+    the codomain Z/m x Z/n both have mn elements, so f is also surjective:
+    every pair of residues (a, b) is f(x) for exactly one x mod mn.
+
+reasoning_structure:
+  naive_approach: >
+    Construct x explicitly with Bezout coefficients u m + v n = 1 (x = b u m
+    + a v n), which is fine for computing but hides why the solution is
+    unique.
+  crucial_observation: >
+    Injectivity is a one-line coprimality argument, and equal cardinalities
+    upgrade injective to bijective.
+  why_it_simplifies: >
+    The pigeonhole/counting principle replaces any construction; existence
+    and uniqueness come together.
+
+tags:
+  - bijection
+  - counting
+  - Chinese remainder theorem
+  - modular arithmetic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

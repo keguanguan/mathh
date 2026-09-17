@@ -1,0 +1,83 @@
+id: radical_axis_subtract_equations
+
+title: The Radical Axis of Two Circles Is a Straight Line
+
+aliases:
+  - radical axis
+  - locus of equal power
+  - subtracting circle equations
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Radical_axis
+  original_title: Radical axis (proof that the radical axis is a line)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the points having equal power with respect to two given
+    circles (equal values of |PO_1|^2 - r_1^2 and |PO_2|^2 - r_2^2) form a
+    straight line perpendicular to the line of centres.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the power with respect to a circle is x^2 + y^2 + (linear terms); subtracting two such expressions cancels the quadratic part and leaves a linear equation
+  category: algebraic_encoding
+  summary: >
+    Write the power of (x, y) with respect to circle i as x^2 + y^2 - 2a_i x
+    - 2b_i y + c_i. Setting the two powers equal, the terms x^2 + y^2 cancel
+    and what remains is 2(a_1 - a_2)x + 2(b_1 - b_2)y = c_1 - c_2, the
+    equation of a line whose normal vector (a_1 - a_2, b_1 - b_2) is the
+    direction of the line of centres.
+
+intuitive_proof:
+  explanation: >
+    The power of a point P = (x, y) with respect to the circle with centre
+    (a, b) and radius r is (x - a)^2 + (y - b)^2 - r^2 = x^2 + y^2 - 2ax -
+    2by + (a^2 + b^2 - r^2). For two circles the difference of the powers is
+    -2(a_1 - a_2)x - 2(b_1 - b_2)y + (const), a linear function of (x, y)
+    because the quadratic parts are identical. Its zero set is a line (the
+    circles have distinct centres), with normal vector (a_1 - a_2, b_1 -
+    b_2), i.e. perpendicular to the line joining the centres. When the
+    circles intersect, both intersection points have power 0 for each
+    circle, so the radical axis is their common chord.
+
+reasoning_structure:
+  naive_approach: >
+    Try to characterise the locus geometrically, for instance through
+    tangent lengths, and prove it is a line by synthetic arguments.
+  crucial_observation: >
+    All circles share the same quadratic part x^2 + y^2, which cancels in
+    any difference.
+  why_it_simplifies: >
+    An algebraic encoding makes the theorem a one-line subtraction and
+    immediately gives the direction of the line; three circles then have
+    concurrent radical axes (the radical centre).
+
+related:
+  - intersecting_chords_similar_triangles
+
+tags:
+  - algebraic encoding
+  - power of a point
+  - circles
+  - coordinates
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

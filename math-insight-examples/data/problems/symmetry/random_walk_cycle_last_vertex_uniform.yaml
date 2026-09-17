@@ -1,0 +1,84 @@
+id: random_walk_cycle_last_vertex_uniform
+
+title: On a Cycle, the Last New Vertex Visited by a Random Walk Is Uniform
+
+aliases:
+  - last vertex visited on a cycle
+  - random walk cover of a cycle
+  - uniform last vertex
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Random_walk
+  original_title: Random walk (on graphs)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: "Lovasz - Random walks on graphs: a survey"
+    notes: Combinatorics, Paul Erdos is Eighty (1993)
+
+problem:
+  statement: >
+    A random walk starts at vertex 0 of a cycle with n vertices and moves to
+    a random neighbour at each step. Show that every vertex other than 0 is
+    equally likely to be the last one visited for the first time.
+  domain: probability
+  answer: >
+    each of the n - 1 other vertices is last with probability 1/(n - 1)
+
+key_idea:
+  name: to be the last vertex, v must be reached only after the walk has covered everything else, which happens exactly when the walk, starting next to v, reaches the far side of v before v; by symmetry this probability does not depend on v
+  category: symmetry
+  summary: >
+    Fix a vertex v != 0 with neighbours u and w. Vertex v is visited last
+    iff, from the first moment the walk hits u or w (say u), it reaches w by
+    going the long way around before stepping onto v. This is the
+    gambler's-ruin probability of reaching a point at distance n - 1 before
+    a point at distance 1 on a line, namely 1/(n - 1), independent of v.
+
+intuitive_proof:
+  explanation: >
+    Let v be any vertex other than the start, with neighbours u and w.
+    Before v is visited the walk lives on the path obtained by cutting the
+    cycle at v, and v becomes the last visited vertex iff the walk visits
+    both u and w before v. The first of u, w to be visited, say u, is
+    reached at some time; from then on, v is last iff the walk from u
+    reaches w before v. On the path from v through u around to w (length n -
+    1 from v to w the long way), this is a fair gambler's ruin: starting at
+    distance 1 from v and distance n - 2 from w, the probability of hitting
+    w first is 1/(n - 1). The same holds if w is reached first. Thus P(v
+    last) = 1/(n - 1) for every v, so the last vertex is uniform.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the probabilities for small n by solving large linear systems
+    and observe they are equal.
+  crucial_observation: >
+    The event 'v is last' reduces to a fair gambler's ruin whose parameters
+    are the same for every v.
+  why_it_simplifies: >
+    Symmetry plus the gambler's ruin formula gives the uniform distribution
+    without any global computation.
+
+related:
+  - gamblers_ruin_fair_game
+
+tags:
+  - symmetry
+  - random walk
+  - gambler's ruin
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  A striking fact: the cycle and the complete graph are essentially the only
+  graphs with this property.

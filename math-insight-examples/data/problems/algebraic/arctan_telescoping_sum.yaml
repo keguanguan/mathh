@@ -1,0 +1,76 @@
+id: arctan_telescoping_sum
+
+title: A Telescoping Sum of Arctangents
+
+aliases:
+  - sum of arctan(1/(n^2+n+1))
+  - arctan difference formula telescoping
+  - arctan(1/2) + arctan(1/3) = pi/4
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 9, Sequences
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+    original_title: Inverse trigonometric functions (arctangent addition formula)
+
+problem:
+  statement: >
+    Show that the sum over n >= 0 of arctan(1/(n^2 + n + 1)) equals pi/2.
+  domain: algebra
+  answer: pi/2
+
+key_idea:
+  name: 1/(n^2 + n + 1) is the tangent of arctan(n + 1) - arctan(n)
+  category: telescoping
+  summary: >
+    By the subtraction formula, tan(arctan(n+1) - arctan n) = ((n+1) - n)/(1
+    + n(n+1)) = 1/(n^2 + n + 1). So each term is arctan(n+1) - arctan(n),
+    and the partial sums telescope to arctan(N+1), which tends to pi/2.
+
+intuitive_proof:
+  explanation: >
+    For a > b > 0, tan(arctan a - arctan b) = (a - b)/(1 + ab), and the
+    difference lies in (0, pi/2), so arctan a - arctan b = arctan((a - b)/(1
+    + ab)). With a = n + 1 and b = n this gives arctan(1/(n^2 + n + 1)) =
+    arctan(n + 1) - arctan(n). Summing from n = 0 to N, all intermediate
+    terms cancel: the partial sum is arctan(N + 1) - arctan(0) = arctan(N +
+    1), which tends to pi/2 as N grows.
+
+reasoning_structure:
+  naive_approach: >
+    Approximate numerically, or attempt to sum the series with complex
+    logarithms.
+  crucial_observation: >
+    The strange denominator n^2 + n + 1 = 1 + n(n + 1) is the denominator of
+    the tangent subtraction formula.
+  why_it_simplifies: >
+    Recognising each term as a difference makes the sum collapse; the same
+    recognition handles arctan(1/2) + arctan(1/3) = pi/4 and its relatives.
+
+related:
+  - telescoping_reciprocal_products
+  - seven_reals_arctan_pigeonhole
+
+tags:
+  - telescoping
+  - arctangent
+  - trigonometric identity
+  - series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

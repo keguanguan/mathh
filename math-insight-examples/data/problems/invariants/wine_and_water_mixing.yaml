@@ -1,0 +1,73 @@
+id: wine_and_water_mixing
+
+title: Wine in the Water Glass Equals Water in the Wine Glass
+
+aliases:
+  - wine water puzzle
+  - two glasses transfer puzzle
+  - mixing puzzle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Wine/water_mixing_problem
+  original_title: Wine/water mixing problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A glass of wine and a glass of water hold equal volumes. A spoonful of
+    wine is moved to the water, stirred, and a spoonful of the mixture moved
+    back. Is there more wine in the water or more water in the wine?
+  domain: combinatorics
+  answer: exactly equal amounts
+
+key_idea:
+  name: each glass ends with its original volume, so whatever wine left the wine glass was replaced by an equal volume of water
+  category: conservation_law
+  summary: >
+    After the two transfers each glass again holds its original volume. The
+    wine missing from the wine glass has been replaced, volume for volume,
+    by water; so the water in the wine glass equals the wine in the water
+    glass. Stirring, spoon size and even the number of transfers are
+    irrelevant.
+
+intuitive_proof:
+  explanation: >
+    Let each glass hold volume V at the start and at the end (one spoon out,
+    one spoon in). At the end the wine glass contains some volume w of wine
+    and V - w of water. The wine glass lost V - w of wine, and since no wine
+    was destroyed, that wine is now in the water glass. So the water glass
+    contains V - w of wine, exactly the amount of water in the wine glass.
+
+reasoning_structure:
+  naive_approach: >
+    Track concentrations through the transfers with spoon size s and glass
+    size V, and simplify the resulting fractions.
+  crucial_observation: >
+    Volume conservation in each glass forces the displaced quantities to be
+    equal.
+  why_it_simplifies: >
+    A conservation law makes the computation unnecessary and shows the
+    answer is independent of all details, including whether the mixture was
+    stirred.
+
+tags:
+  - conservation law
+  - invariant
+  - puzzle
+  - mixing
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

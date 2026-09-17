@@ -1,0 +1,86 @@
+id: divisor_naming_game_pairing
+
+title: "The Divisor-Naming Game: Pair d with n/d"
+
+aliases:
+  - divisor game
+  - name a divisor of 100 game
+  - pairing divisors strategy
+
+source:
+  name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+  url: https://bookstore.ams.org/mcl-7
+  original_title: Chapter on games (symmetry strategies)
+  author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 13, Games
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Two players alternately name a positive divisor of 100 that has not been
+    named before; naming 100 itself loses. Who wins?
+  domain: combinatorial games
+  answer: >
+    the second player, by answering every divisor d with its partner under
+    the pairing {1, 10}, {2, 50}, {4, 25}, {5, 20}
+
+key_idea:
+  name: the eight safe divisors pair up so that the second player can always answer with the partner of the first player's move, and the player naming the eighth safe divisor forces the other to say 100
+  category: pairing_strategy
+  summary: >
+    The safe divisors are 1, 2, 4, 5, 10, 20, 25, 50, eight in all, so the
+    second player names the last safe one and the first player is then
+    forced to name 100. To guarantee this the second player answers each
+    move by its partner in the pairing {1, 10}, {2, 50}, {4, 25}, {5, 20}:
+    the partner is always still available, so the second player always has a
+    safe move.
+
+intuitive_proof:
+  explanation: >
+    The divisors of 100 other than 100 itself are 1, 2, 4, 5, 10, 20, 25,
+    50. Pair them as {1, 10}, {2, 50}, {4, 25}, {5, 20}. Whenever the first
+    player names a divisor, the second player names its partner; the partner
+    has not been used, because names are used in complete pairs after each
+    of the second player's turns. Thus the second player always has a safe
+    reply, the eight safe divisors are exhausted after the second player's
+    fourth move, and the first player must then name 100 and lose. The
+    pairing d <-> 100/d would fail because it puts 1 with 100 and leaves 10
+    unpaired; the count of safe moves, not the multiplicative structure,
+    dictates the pairing.
+
+reasoning_structure:
+  naive_approach: >
+    Play the game and look for a pattern.
+  crucial_observation: >
+    Pairing the safe moves shows which player makes the last safe move;
+    parity of the number of safe moves decides the game.
+  why_it_simplifies: >
+    A pairing strategy settles the game with no search; the pairing must
+    cover all safe moves, which is why 1 and 10 are paired together.
+
+related:
+  - subtraction_game_complement
+  - coins_on_round_table
+
+tags:
+  - pairing strategy
+  - game
+  - divisors
+  - parity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

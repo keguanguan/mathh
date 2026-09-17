@@ -1,0 +1,20 @@
+# Milestone-1 end-to-end run with the mock model: I(n) and S(n) per family.
+experiment_id: mock_scaling_v0
+description: Size-scaling smoke experiment with the mock model (no API calls).
+families: [domino_tiling, population_game]
+family_parameters:
+  domino_tiling: {possible_fraction: 0.35}
+  population_game: {possible_fraction: 0.35}
+models: [mock_size_dependent, mock_mixed]
+instance_sizes:
+  domino_tiling: [6, 8, 12, 16]
+  population_game: [12, 24, 48, 96]
+transfer_levels: [1]
+compute_conditions: [default]
+repetitions: 1
+instances_per_cell: 6
+generation_seeds: {base_seed: 1234}
+conditions: {free_solve: true, posthoc: true, supplied_idea: true, recognition: true}
+model_settings: {temperature: 0.0, max_output_tokens: 4096}
+render_format: text
+output_dir: data/raw_runs

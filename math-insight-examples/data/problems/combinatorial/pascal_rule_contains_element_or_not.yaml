@@ -1,0 +1,77 @@
+id: pascal_rule_contains_element_or_not
+
+title: "Pascal's Rule: Does the Subset Contain a Fixed Element?"
+
+aliases:
+  - Pascal's rule
+  - C(n,k) = C(n-1,k-1) + C(n-1,k)
+  - Pascal's triangle recursion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pascal%27s_rule
+  original_title: Pascal's rule (combinatorial proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: split the k-subsets of an n-set according to whether they contain a fixed element x
+  category: bijection
+  summary: >
+    The k-subsets containing x correspond to (k-1)-subsets of the other n -
+    1 elements: C(n-1, k-1) of them. The k-subsets not containing x are
+    k-subsets of the other n - 1 elements: C(n-1, k). Every k-subset is of
+    exactly one kind.
+
+intuitive_proof:
+  explanation: >
+    Fix an element x of the n-element set. A k-subset either contains x, in
+    which case removing x leaves an arbitrary (k - 1)-subset of the
+    remaining n - 1 elements (and this correspondence is a bijection), or
+    does not contain x, in which case it is an arbitrary k-subset of the
+    remaining n - 1 elements. The two families are disjoint and cover all
+    k-subsets, so C(n, k) = C(n - 1, k - 1) + C(n - 1, k).
+
+reasoning_structure:
+  naive_approach: >
+    Expand the factorial formula for both sides and bring to a common
+    denominator.
+  crucial_observation: >
+    A single element partitions the subsets into two families that are
+    themselves subsets of a smaller set.
+  why_it_simplifies: >
+    One case distinction on one element gives the recursion behind Pascal's
+    triangle; the same distinction proves most binomial recursions.
+
+related:
+  - hockey_stick_largest_element
+  - subsets_binary_strings
+
+tags:
+  - bijection
+  - binomial coefficients
+  - Pascal's triangle
+  - case distinction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

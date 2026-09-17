@@ -1,0 +1,78 @@
+id: sums_and_products
+
+title: Sums and Products (Replace a, b by ab + a + b)
+
+aliases:
+  - sums and products
+  - ab + a + b replacement
+  - product of (a+1) invariant
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/Invariant.shtml
+  original_title: Sums and Products
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites Fomin, Genkin, Itenberg, Mathematical Circles (Russian Experience).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/arithmetic/SumsAndProducts.shtml
+    original_title: Sums and Products, a Generalization
+
+problem:
+  statement: >
+    The numbers 1, 2, ..., n are written on a board. A move erases two
+    numbers a and b and writes ab + a + b instead. After n - 1 moves one
+    number remains. What is it?
+  domain: algebra
+  answer: (n+1)! - 1, independent of the order of moves
+
+key_idea:
+  name: the product of (x + 1) over all numbers on the board is invariant
+  category: algebraic_invariant
+  summary: >
+    Since ab + a + b + 1 = (a+1)(b+1), replacing a, b by ab + a + b leaves
+    the product of (x+1) over the board unchanged. At the end that product
+    is (final + 1), and at the start it is 2 * 3 * ... * (n+1).
+
+intuitive_proof:
+  explanation: >
+    Add 1 to every number on the board in your head. The move sends the pair
+    (a+1, b+1) to ab + a + b + 1 = (a+1)(b+1): it multiplies the two shifted
+    numbers. So the product P of all shifted numbers never changes. Initially
+    P = 2 * 3 * ... * (n+1) = (n+1)!. Finally P = (last number) + 1. Hence the
+    last number is (n+1)! - 1, whatever the order of the moves.
+
+reasoning_structure:
+  naive_approach: >
+    Compute small cases in different orders, notice the answer is always the
+    same, and try to guess and prove a formula by induction.
+  crucial_observation: >
+    The strange rule is ordinary multiplication after the shift x -> x + 1.
+  why_it_simplifies: >
+    A change of variable turns the process into computing a product, which is
+    order-independent by commutativity; the answer is read off at once.
+
+tags:
+  - invariant
+  - algebraic identity
+  - change of variable
+  - replacement process
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The generalisation: any rule of the form f^{-1}(f(a) * f(b)) for a
+  bijection f and an associative commutative operation * gives an
+  order-independent outcome (see the "1-1 functions" follow-up on
+  Cut-the-Knot). Compare sums_and_products with breaking_chocolate, where
+  the invariant is additive.

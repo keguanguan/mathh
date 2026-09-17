@@ -1,0 +1,79 @@
+id: white_and_black_balls_urn
+
+title: The Last Ball in the Urn
+
+aliases:
+  - white and black balls in an urn
+  - two balls out one ball in
+  - urn replacement puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/algebra/WhiteAndBlackBallsReplaced.shtml
+  original_title: White and Black Balls in Urn. 1 in, 2 out. What Color Remains?
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Invariant_(mathematics)
+    original_title: Invariant (mathematics)
+    notes: Lists the urn puzzle among standard invariant examples.
+
+problem:
+  statement: >
+    An urn holds 75 white and 150 black balls; a pile of spare black balls is
+    nearby. Repeatedly draw two balls at random. If both are black, put one
+    back and discard the other. If one is white and one black, put the white
+    one back and discard the black. If both are white, discard both and put a
+    black ball from the pile into the urn. Each step reduces the urn by one
+    ball. What colour is the last ball?
+  domain: combinatorics
+  answer: white
+
+key_idea:
+  name: parity of the number of white balls is invariant
+  category: parity_invariant
+  summary: >
+    The white count changes by 0, 0 or -2 in the three cases, so its parity
+    never changes. It starts odd (75), so it can never be 0: the last ball is
+    white.
+
+intuitive_proof:
+  explanation: >
+    Track only the white balls. Two blacks drawn: whites unchanged. One of
+    each: the white goes back, whites unchanged. Two whites: whites drop by
+    two. So the number of white balls always keeps its parity, which is odd
+    at the start. The process ends with one ball, and a single black ball
+    would mean zero whites, an even number. Hence the last ball is white.
+
+reasoning_structure:
+  naive_approach: >
+    Reason probabilistically about the random draws, or simulate the process
+    and try to explain the outcome by cases.
+  crucial_observation: >
+    Randomness is a red herring: no rule changes the number of whites by an
+    odd amount.
+  why_it_simplifies: >
+    A parity invariant determines the final colour without considering any
+    particular sequence of draws.
+
+tags:
+  - parity
+  - invariant
+  - red herring
+  - replacement process
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Also known in the form of "coffee can problem" (Gries / Bentley). The
+  black balls are Z/2's identity in disguise, as in squares_and_circles.

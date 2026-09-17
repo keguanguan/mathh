@@ -1,0 +1,85 @@
+id: turning_turtles
+
+title: Turning Turtles Is Nim in Disguise
+
+aliases:
+  - turning turtles
+  - coin turning game
+  - Mock Turtles (relative)
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/tt.shtml
+  original_title: Turning Turtles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites Berlekamp, Conway and Guy, Winning Ways, vol. 1.
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1, chapter on coin-turning games.
+
+problem:
+  statement: >
+    A row of n squares each shows O or X. A move turns some O into X and may
+    additionally flip any one square to its left (in either direction). The
+    player making the last move wins. Who wins, and how?
+  domain: combinatorial games
+  answer: >
+    Read each O in position k as a Nim heap of size k; the position is a
+    loss for the player to move exactly when the XOR of the positions of
+    the O's is 0.
+
+key_idea:
+  name: an O at position k is a Nim heap of size k
+  category: isomorphism_to_another_problem
+  summary: >
+    Turning the O at position k to X removes a heap of size k; turning it
+    and flipping position j < k to O replaces heap k by heap j (and two
+    equal heaps cancel in Nim, which handles the case where j already had
+    an O). So the game is exactly Nim, solved by the XOR rule.
+
+intuitive_proof:
+  explanation: >
+    Interpret an O at position k as a heap of k counters. A move that turns
+    that O into X without flipping anything removes the heap. A move that
+    also flips square j < k from X to O turns heap k into heap j, i.e.
+    removes k - j counters. A move that flips square j from O to X turns
+    heaps k and j into nothing; but in Nim two heaps of equal size have XOR
+    0, and indeed "heap k becomes heap j" and "heap j disappears" is the same
+    as removing both, since j xor j = 0. Every Nim move is available and no
+    others are, so positions correspond exactly, with the same terminal
+    position (all X, no heaps). Bouton's theorem now says the player to move
+    loses if and only if the XOR of the positions of the O's is zero.
+
+reasoning_structure:
+  naive_approach: >
+    Compute winning and losing positions for short rows by backward
+    induction and try to spot a rule.
+  crucial_observation: >
+    The peculiar flipping rule is exactly "reduce a heap", once O's are
+    read as heap sizes and the cancellation of equal heaps is noticed.
+  why_it_simplifies: >
+    A completely solved game (Nim) is recognised under a change of
+    representation, so no new analysis is needed.
+
+tags:
+  - representation change
+  - isomorphism
+  - Nim
+  - XOR
+  - combinatorial game
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  A gateway to the general theory of coin-turning games in Winning Ways,
+  where the position values are nim-values of the "turning sets".

@@ -1,0 +1,80 @@
+id: diagonal_intersections_convex_polygon
+
+title: Interior Intersection Points of the Diagonals of a Convex n-gon
+
+aliases:
+  - number of diagonal crossings in a convex polygon
+  - C(n,4) intersection points
+  - diagonals in general position
+
+source:
+  name: Wolfram MathWorld
+  url: https://mathworld.wolfram.com/PolygonDiagonalIntersectionGraph.html
+  original_title: Polygon Diagonal Intersection Graph
+  accessed: 2026-09-16
+  notes: A standard bijection exercise; also in Engel, Chapter 5 (Enumerative Combinatorics).
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 5, Enumerative Combinatorics.
+
+problem:
+  statement: >
+    In a convex n-gon no three diagonals meet at an interior point. How
+    many interior points are there where two diagonals cross?
+  domain: combinatorics
+  answer: C(n, 4)
+
+key_idea:
+  name: a crossing is determined by, and determines, four vertices
+  category: bijection
+  summary: >
+    Any four vertices of a convex polygon form a convex quadrilateral
+    whose two diagonals cross at exactly one interior point; conversely a
+    crossing of two diagonals has four distinct endpoints. So crossings
+    correspond bijectively to 4-element subsets of the vertices.
+
+intuitive_proof:
+  explanation: >
+    Take any four of the n vertices. Because the polygon is convex they
+    form a convex quadrilateral, and of the three ways to pair them up
+    exactly one gives two crossing segments (the quadrilateral's
+    diagonals), which cross at one interior point. Conversely each interior
+    crossing point comes from two diagonals with four distinct endpoints,
+    and by the general-position assumption the point determines those two
+    diagonals. This is a bijection between crossings and 4-subsets, so
+    there are C(n, 4) crossings.
+
+reasoning_structure:
+  naive_approach: >
+    Count, for each diagonal, how many other diagonals cross it, and sum
+    (dividing by 2), which requires a sum over vertex positions.
+  crucial_observation: >
+    A crossing is "the same thing" as a choice of four vertices.
+  why_it_simplifies: >
+    The count becomes a single binomial coefficient with no summation; the
+    same bijection gives the number of regions of the polygon cut by its
+    diagonals.
+
+related:
+  - counting_diagonals_convex_polygon
+
+tags:
+  - bijection
+  - counting
+  - convex polygon
+  - binomial coefficient
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The regions formed number 1 + C(n,2) - n + C(n,4) by Euler's formula,
+  another two-way count.

@@ -1,0 +1,69 @@
+id: fifty_two_integers_sum_or_difference
+
+title: Among 52 Integers, Two Have Sum or Difference Divisible by 100
+
+aliases:
+  - sum or difference divisible by 100
+  - residue pairs pigeonhole
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the pigeonhole principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Show that among any 52 integers there are two whose sum or whose
+    difference is divisible by 100.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: group residues mod 100 into the 51 boxes {r, 100 - r}
+  category: pigeonhole
+  summary: >
+    The boxes {0}, {50}, {1,99}, {2,98}, ..., {49,51} number 51. Two of 52
+    integers have residues in the same box; if the residues are equal the
+    difference is divisible by 100, if they are r and 100 - r the sum is.
+
+intuitive_proof:
+  explanation: >
+    Reduce each integer mod 100. Form the 51 classes {0}, {50}, and {r, 100
+    - r} for r = 1, ..., 49. Two of the 52 integers have residues in the
+    same class. If the residues coincide, 100 divides their difference;
+    otherwise the residues are r and 100 - r and 100 divides their sum.
+
+reasoning_structure:
+  naive_approach: >
+    Look at residues mod 100 alone (100 boxes, not enough) and get stuck.
+  crucial_observation: >
+    Pairing r with -r halves the number of boxes, because both sums and
+    differences are allowed.
+  why_it_simplifies: >
+    Choosing boxes adapted to the two allowed operations makes the count
+    work exactly.
+
+tags:
+  - pigeonhole
+  - modular arithmetic
+  - residues
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

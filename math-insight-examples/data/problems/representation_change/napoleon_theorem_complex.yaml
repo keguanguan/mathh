@@ -1,0 +1,85 @@
+id: napoleon_theorem_complex
+
+title: Napoleon's Theorem via Complex Numbers
+
+aliases:
+  - Napoleon's theorem
+  - equilateral triangles on the sides of a triangle
+  - centres form an equilateral triangle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Napoleon%27s_theorem
+  original_title: Napoleon's theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/FermatPoint.shtml
+    original_title: Fermat's Point (Napoleon's Theorem links)
+    author: Alexander Bogomolny
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Equilateral triangles are erected outward on the three sides of an
+    arbitrary triangle. Show that their centres form an equilateral
+    triangle.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: a triangle with vertices z_1, z_2, z_3 is equilateral iff z_1 + w z_2 + w^2 z_3 = 0 for the cube root of unity w; the centres are linear in the vertices and the identity checks itself
+  category: complex_or_vector_coordinates
+  summary: >
+    Let w = e^{2 pi i / 3}, so 1 + w + w^2 = 0. The centre of the
+    equilateral triangle on side AB is a fixed linear combination of a and
+    b. Substituting the three centres into the equilateral criterion c_1 + w
+    c_2 + w^2 c_3 = 0 gives an expression in a, b, c whose coefficients each
+    simplify to 0 by 1 + w + w^2 = 0.
+
+intuitive_proof:
+  explanation: >
+    Identify points with complex numbers. A triangle with vertices z_1, z_2,
+    z_3 (counterclockwise) is equilateral iff z_3 - z_1 = -w^2 (z_2 - z_1),
+    which rearranges to z_1 + w z_2 + w^2 z_3 = 0. The apex of the outward
+    equilateral triangle on AB is a point p with a + w b + w^2 p = 0, so p =
+    -(a + w b) w, and the centre is c_3 = (a + b + p)/3. Similarly for the
+    other sides. Plugging c_1, c_2, c_3 into c_1 + w c_2 + w^2 c_3, every
+    coefficient of a, b and c becomes a multiple of 1 + w + w^2 = 0 after
+    using w^3 = 1. Hence the centres satisfy the equilateral criterion.
+
+reasoning_structure:
+  naive_approach: >
+    Compute side lengths of the triangle of centres with the law of cosines,
+    a page of trigonometry.
+  crucial_observation: >
+    Equilateral triangles have a linear characterisation over the complex
+    numbers, and the construction is linear in the vertices.
+  why_it_simplifies: >
+    Everything becomes a linear identity in w, so the theorem is a two-line
+    verification; the same method handles many 'erected figures' theorems.
+
+related:
+  - regular_polygon_vectors_sum_zero
+
+tags:
+  - complex numbers
+  - roots of unity
+  - equilateral triangle
+  - Napoleon
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

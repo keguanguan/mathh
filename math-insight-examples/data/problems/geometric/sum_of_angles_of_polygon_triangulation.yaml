@@ -1,0 +1,82 @@
+id: sum_of_angles_of_polygon_triangulation
+
+title: The Angle Sum of an n-gon by Triangulation from a Vertex
+
+aliases:
+  - polygon angle sum
+  - (n - 2) times 180
+  - fan triangulation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Polygon
+  original_title: Polygon (angles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the interior angles of a convex n-gon sum to (n - 2) * 180
+    degrees.
+  domain: geometry
+  answer: (n - 2) * 180 degrees
+
+key_idea:
+  name: "draw all diagonals from one vertex: the polygon splits into n - 2 triangles whose angles together make up the polygon's angles"
+  category: decomposition
+  summary: >
+    From a fixed vertex, the n - 3 diagonals cut the convex polygon into n -
+    2 triangles. Every angle of these triangles is part of an angle of the
+    polygon and the triangle angles exactly fill the polygon's angles, so
+    the total is (n - 2) * 180.
+
+intuitive_proof:
+  explanation: >
+    Choose a vertex V of the convex polygon and draw the diagonals from V to
+    the n - 3 non-adjacent vertices. They lie inside the polygon (convexity)
+    and divide it into n - 2 triangles. The angles of these triangles,
+    summed, equal the sum of the polygon's angles: at V the triangle angles
+    partition the angle of the polygon, at every other vertex the triangle
+    angles at that vertex likewise fill the polygon's angle there. Each
+    triangle contributes 180 degrees, giving (n - 2) * 180. For non-convex
+    polygons a suitable triangulation (ear clipping) gives the same count.
+
+reasoning_structure:
+  naive_approach: >
+    Measure angles of specific polygons, or attempt an induction adding one
+    vertex at a time.
+  crucial_observation: >
+    A fan of diagonals decomposes the polygon into a known number of
+    triangles without losing or gaining any angle.
+  why_it_simplifies: >
+    Decomposition into triangles reduces the polygon to the triangle angle
+    sum; the exterior-angle walk gives the same result from a different
+    viewpoint.
+
+related:
+  - exterior_angles_sum_360
+  - triangle_angle_sum_parallel_line
+  - counting_diagonals_convex_polygon
+
+tags:
+  - decomposition
+  - angles
+  - polygon
+  - triangulation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

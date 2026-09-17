@@ -1,0 +1,73 @@
+id: subsets_binary_strings
+
+title: A Set with n Elements Has 2^n Subsets
+
+aliases:
+  - number of subsets
+  - subsets as binary strings
+  - power set size
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Power_set
+  original_title: Power set (cardinality)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that an n-element set has exactly 2^n subsets.
+  domain: combinatorics
+  answer: 2^n
+
+key_idea:
+  name: a subset is a string of n yes/no decisions
+  category: bijection
+  summary: >
+    Order the elements; a subset is determined by, and determines, the
+    binary string recording which elements are in. There are 2^n binary
+    strings of length n.
+
+intuitive_proof:
+  explanation: >
+    List the elements as x_1, ..., x_n. Map a subset S to the string whose
+    i-th bit is 1 iff x_i is in S. Different subsets give different strings
+    and every string comes from a subset, so this is a bijection between
+    subsets and binary strings of length n, of which there are 2 * 2 * ... *
+    2 = 2^n.
+
+reasoning_structure:
+  naive_approach: >
+    Sum the binomial coefficients C(n, k) over k, which requires the
+    binomial theorem, or induct on n.
+  crucial_observation: >
+    Membership decisions are independent, and independent binary choices
+    multiply.
+  why_it_simplifies: >
+    The bijection makes the count a product, with no summation; the same
+    encoding underlies most subset arguments.
+
+related:
+  - even_and_odd_subsets
+
+tags:
+  - bijection
+  - counting
+  - binary strings
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

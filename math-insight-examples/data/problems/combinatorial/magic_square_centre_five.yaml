@@ -1,0 +1,74 @@
+id: magic_square_centre_five
+
+title: The Centre of a 3x3 Magic Square Is 5
+
+aliases:
+  - 3x3 magic square centre
+  - Lo Shu centre entry
+  - magic constant 15
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Magic_square
+  original_title: Magic square (the 3x3 case)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/game_st.shtml
+    original_title: Magic Squares
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    The numbers 1 to 9 fill a 3x3 grid so that every row, column and
+    diagonal has the same sum. Show that the centre entry must be 5 (and the
+    magic sum is 15).
+  domain: combinatorics
+  answer: centre 5, magic constant 15
+
+key_idea:
+  name: "add the four lines through the centre: they cover every cell once and the centre four times"
+  category: double_counting
+  summary: >
+    The magic sum is (1 + ... + 9)/3 = 15. The middle row, middle column and
+    two diagonals together contain each cell once and the centre three extra
+    times, so 4 * 15 = 45 + 3c, giving c = 5.
+
+intuitive_proof:
+  explanation: >
+    Rows partition the nine cells, so three rows sum to 45 and each line
+    sums to 15. Now add the four lines through the centre cell c: the middle
+    row, the middle column and the two diagonals. Every cell appears in
+    exactly one of these except the centre, which appears in all four. So 4
+    * 15 = 45 + 3c, hence c = 5.
+
+reasoning_structure:
+  naive_approach: >
+    Try to place numbers by trial, or reason about which numbers can share a
+    line with 9.
+  crucial_observation: >
+    Lines through the centre over-count exactly the centre.
+  why_it_simplifies: >
+    One double count determines the centre without touching the other cells;
+    the same idea shows the corners must be even.
+
+related:
+  - fif
+
+tags:
+  - double counting
+  - magic square
+  - combinatorics
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

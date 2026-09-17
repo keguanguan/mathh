@@ -1,0 +1,86 @@
+id: ptolemy_inequality_via_similar_triangles
+
+title: Ptolemy's Inequality by a Similar-Triangle Construction
+
+aliases:
+  - Ptolemy's theorem
+  - Ptolemy's inequality
+  - AB * CD + AD * BC >= AC * BD
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ptolemy%27s_theorem
+  original_title: Ptolemy's theorem (proof by similar triangles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For any four points A, B, C, D in the plane show that AB * CD + AD * BC
+    >= AC * BD, with equality iff ABCD is a cyclic quadrilateral (in this
+    order).
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: construct the point E with triangle ABE similar to triangle ACD; then triangle ABC is similar to AED, and the triangle inequality on B, E, D gives the result
+  category: auxiliary_object
+  summary: >
+    Choose E so that angle BAE = angle CAD and AB/AE = AC/AD; then triangles
+    ABE and ACD are similar, giving BE = AB * CD / AC, and the spiral
+    similarity also makes triangles ABC and AED similar, giving ED = BC * AD
+    / AC. The triangle inequality BE + ED >= BD, multiplied by AC, is
+    Ptolemy's inequality, with equality iff E lies on BD, which happens iff
+    angle ABD = angle ACD, i.e. ABCD is cyclic.
+
+intuitive_proof:
+  explanation: >
+    Let E be the point on the same side of line AB as C with angle BAE =
+    angle CAD and AE/AB = AD/AC. Then triangles ABE and ACD are similar (two
+    sides in proportion and the included angle), so BE/CD = AB/AC, i.e. BE =
+    AB * CD / AC. Adding angle EAC to the equal angles BAE and CAD gives
+    angle EAD = angle BAC, and AE/AD = AB/AC, so triangles AED and ABC are
+    similar, giving ED = AD * BC / AC. The triangle inequality BE + ED >= BD
+    becomes AB * CD / AC + AD * BC / AC >= BD, i.e. AB * CD + AD * BC >= AC
+    * BD. Equality holds iff E lies on segment BD, iff angle ABD = angle ABE
+    = angle ACD, iff A, B, C, D are concyclic.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates or the law of cosines, which becomes an algebraic mess;
+    or use inversion (elegant, but heavier machinery).
+  crucial_observation: >
+    One auxiliary point turns the four lengths into the sides of a single
+    triangle B, E, D, where the triangle inequality is the whole statement.
+  why_it_simplifies: >
+    The auxiliary construction converts an inequality among four points into
+    the triangle inequality, and the equality case falls out as the cyclic
+    condition.
+
+related:
+  - pompeiu_theorem_rotation
+
+tags:
+  - auxiliary object
+  - similar triangles
+  - triangle inequality
+  - cyclic quadrilateral
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Inversion at A gives a second one-idea proof: it turns the statement into
+  the triangle inequality for the images of B, C, D.

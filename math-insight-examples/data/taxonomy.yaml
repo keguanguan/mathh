@@ -1,0 +1,379 @@
+# Taxonomy of "key ideas" used in this repository.
+#
+# Every problem entry names exactly one main idea in `key_idea.category`.
+# That value must be one of the `id`s below.  Each category maps to the
+# folder under data/problems/ where entries with that main idea live, so
+# the directory layout is a coarse view of the taxonomy.
+#
+# A problem may carry additional ideas as free-form `tags`.
+
+version: 1
+
+categories:
+
+  # ---------------------------------------------------------------- invariants
+  - id: invariant
+    name: Invariant
+    folder: invariants
+    description: >
+      A quantity that no allowed move can change.  If the target state has a
+      different value of the quantity than the start, the target is unreachable;
+      if the quantity determines the final state, the outcome is forced.
+    children:
+      - id: parity_invariant
+        name: Parity invariant
+        folder: parity
+        description: A count whose parity (odd/even) is preserved by every move.
+      - id: modular_invariant
+        name: Modular invariant
+        folder: invariants
+        description: A quantity preserved modulo m for some m > 2.
+      - id: coloring_invariant
+        name: Coloring invariant
+        folder: coloring
+        description: >
+          Color the cells/points so that every allowed piece or move interacts
+          with the colors in a fixed way; then compare color counts.
+      - id: permutation_invariant
+        name: Permutation invariant
+        folder: invariants
+        description: >
+          The sign (parity) of a permutation, or a similar group-theoretic label,
+          is preserved by every move.
+      - id: algebraic_invariant
+        name: Algebraic invariant
+        folder: invariants
+        description: >
+          An algebraic expression in the current numbers (a product, a sum of
+          squares, a gcd, an XOR) is unchanged by every move.
+      - id: group_invariant
+        name: Group invariant
+        folder: invariants
+        description: >
+          Positions are labelled by elements of a finite group so that moves act
+          trivially on the label.
+      - id: geometric_invariant
+        name: Geometric invariant
+        folder: invariants
+        description: An area, length, angle or ratio preserved by every move.
+      - id: conservation_law
+        name: Conservation law
+        folder: invariants
+        description: >
+          A global total (of weight, of threads, of energy) that is redistributed
+          but never created or destroyed by moves.
+
+  # -------------------------------------------------------------- monovariants
+  - id: monovariant
+    name: Monovariant / potential function
+    folder: monovariants
+    description: >
+      A quantity that changes in only one direction with every move and is
+      bounded, so the process must terminate or can never reach a state where
+      the quantity would have to exceed its bound.
+    children:
+      - id: potential_function
+        name: Potential function
+        folder: monovariants
+        description: >
+          A weighted sum over the configuration whose total is bounded above
+          (or below) and compared against the target.
+      - id: smoothing
+        name: Smoothing / local improvement
+        folder: monovariants
+        description: >
+          Moving two variables closer together (or swapping a pair) improves
+          the objective, so the optimum is attained at an equal or sorted
+          configuration.
+
+  # ------------------------------------------------------------------ symmetry
+  - id: symmetry
+    name: Symmetry
+    folder: symmetry
+    description: >
+      Exploit a symmetry of the problem: pair objects with their mirror images,
+      reverse a sum, or copy the opponent's move.
+    children:
+      - id: pairing_strategy
+        name: Pairing / mirror strategy
+        folder: symmetry
+        description: A game strategy that answers each move with its symmetric partner.
+      - id: involution_parity
+        name: Involution / pairing-off argument
+        folder: symmetry
+        description: >
+          Pair the elements of a finite set by an involution; the unpaired
+          elements (fixed points) have the same parity as the whole set, so a
+          statement about the set reduces to a statement about the fixed points.
+
+  # ---------------------------------------------------------- extremal principle
+  - id: extremal_principle
+    name: Extremal principle
+    folder: extremal
+    description: >
+      Look at the largest, smallest, closest or first object.  Its extremality
+      forces a property that no other object need have.
+    children:
+      - id: infinite_descent
+        name: Infinite descent / minimal counterexample
+        folder: extremal
+        description: >
+          Assume a smallest counterexample and construct a smaller one.
+
+  # ----------------------------------------------------------------- pigeonhole
+  - id: pigeonhole
+    name: Pigeonhole principle
+    folder: combinatorial
+    description: >
+      Partition into fewer boxes than objects; two objects share a box.  The
+      art is choosing the boxes.
+
+  # ------------------------------------------------------ representation change
+  - id: representation_change
+    name: Representation change
+    folder: representation_change
+    description: >
+      Re-encode the problem so that the awkward rule becomes a familiar one.
+    children:
+      - id: geometric_reinterpretation
+        name: Geometric reinterpretation
+        folder: representation_change
+        description: Turn a non-geometric statement into a picture.
+      - id: graph_reinterpretation
+        name: Graph reinterpretation
+        folder: representation_change
+        description: Model the objects as vertices and the relations as edges.
+      - id: algebraic_encoding
+        name: Algebraic encoding
+        folder: representation_change
+        description: >
+          Encode configurations as numbers, polynomials, binary strings or
+          coordinates so that moves become arithmetic.
+      - id: coordinate_transformation
+        name: Coordinate transformation
+        folder: representation_change
+        description: Choose coordinates in which the problem becomes trivial.
+      - id: isomorphism_to_another_problem
+        name: Isomorphism to another problem
+        folder: representation_change
+        description: Recognise the problem as a known problem in disguise.
+      - id: combinatorial_interpretation
+        name: Combinatorial interpretation
+        folder: representation_change
+        description: >
+          Read an algebraic or arithmetic quantity as the size of a set, so
+          that its properties (integrality, an identity) become obvious.
+      - id: generating_function
+        name: Generating function
+        folder: representation_change
+        description: >
+          Encode a sequence as the coefficients of a power series so that a
+          combinatorial statement becomes an identity of functions.
+      - id: complex_or_vector_coordinates
+        name: Complex numbers / vectors
+        folder: representation_change
+        description: >
+          Represent points as complex numbers or vectors so that rotations,
+          centroids and similarity become one-line algebra.
+
+  # -------------------------------------------------------------- decomposition
+  - id: decomposition
+    name: Decomposition
+    folder: geometric
+    description: >
+      Cut the object into pieces whose contributions are individually obvious.
+
+  # --------------------------------------------------------- recursive structure
+  - id: recursive_structure
+    name: Recursive structure
+    folder: other
+    description: >
+      The problem contains a smaller copy of itself; solve by reducing to it.
+
+  # ------------------------------------------------------------------ induction
+  - id: induction
+    name: Induction
+    folder: other
+    description: >
+      Choose the right induction variable and the right way to grow the object.
+
+  # --------------------------------------------- contradiction via structure
+  - id: structural_obstruction
+    name: Contradiction via structural obstruction
+    folder: other
+    description: >
+      Suppose the object exists and derive a contradiction from a structural
+      feature (a forced overlap, a forced count, a forced strategy).
+    children:
+      - id: strategy_stealing
+        name: Strategy stealing
+        folder: other
+        description: >
+          If the second player had a winning strategy the first player could
+          steal it, so the first player wins (non-constructively).
+      - id: diagonalization
+        name: Diagonalization / self-reference
+        folder: other
+        description: >
+          Build an object that differs from the k-th listed object in the k-th
+          place, so no list can be complete.
+      - id: information_counting_bound
+        name: Information / counting bound
+        folder: other
+        description: >
+          A procedure with k steps of b outcomes each can distinguish at most
+          b^k cases; compare with the number of cases to be distinguished.
+
+  # ------------------------------------------------------------------ bijection
+  - id: bijection
+    name: Bijection
+    folder: combinatorial
+    description: >
+      Count something else that is in one-to-one correspondence with the
+      objects of interest.
+
+  # ------------------------------------------------------------ double counting
+  - id: double_counting
+    name: Double counting
+    folder: combinatorial
+    description: >
+      Count the same set in two ways and equate the results.
+    children:
+      - id: inclusion_exclusion
+        name: Inclusion-exclusion
+        folder: combinatorial
+        description: >
+          Count a union by adding and subtracting intersections; the sign
+          pattern makes an unwieldy count mechanical.
+
+  # ------------------------------------------------------ probabilistic argument
+  - id: probabilistic_argument
+    name: Probabilistic argument
+    folder: combinatorial
+    description: >
+      Show an object exists by showing a random object has the property with
+      positive probability, or by comparing an expectation with a bound.
+    children:
+      - id: linearity_of_expectation
+        name: Linearity of expectation
+        folder: combinatorial
+        description: >
+          Write the quantity as a sum of indicator variables; expectations add
+          even when the indicators are dependent.
+
+  # ---------------------------------------------------- geometric transformation
+  - id: geometric_transformation
+    name: Geometric transformation
+    folder: geometric
+    description: >
+      Apply a reflection, rotation, translation, unfolding or dilation that
+      straightens the problem out.
+    children:
+      - id: reflection
+        name: Reflection
+        folder: geometric
+        description: Reflect a point or figure across a line to straighten a path.
+      - id: rotation
+        name: Rotation
+        folder: geometric
+        description: >
+          Rotate part of the figure about a point so that separate segments
+          line up into one path or one triangle.
+      - id: homothety_or_inversion
+        name: Homothety / inversion / projective map
+        folder: geometric
+        description: >
+          Apply a scaling, an inversion or a projective transformation that
+          preserves the relevant structure but simplifies (or exposes) it.
+      - id: unfolding
+        name: Unfolding
+        folder: geometric
+        description: Flatten a surface so that a path on it becomes a straight line.
+      - id: continuous_deformation
+        name: Continuous deformation / degenerate case
+        folder: geometric
+        description: >
+          Sweep a parameter continuously; an intermediate-value or a degenerate
+          configuration settles the question.
+
+  # --------------------------------------------------- number-theoretic structure
+  - id: number_theoretic_structure
+    name: Number-theoretic structure
+    folder: number_theoretic
+    description: >
+      Divisibility, gcd, prime factorisation or residues carry the argument.
+    children:
+      - id: gcd_structure
+        name: gcd structure
+        folder: number_theoretic
+        description: The set of reachable numbers is the set of multiples of a gcd.
+
+  # ---------------------------------------------------------- dynamical systems
+  - id: dynamical_systems
+    name: Dynamical systems viewpoint
+    folder: dynamical
+    description: >
+      View a process as iterating a map, and ask about its orbits: where they
+      go, whether they return, how they are distributed.  The problem is
+      solved by identifying the map with a well-understood one.
+    children:
+      - id: circle_rotation
+        name: Rotation of the circle / linear flow on a torus
+        folder: dynamical
+        description: >
+          After a change of variable (typically a logarithm or an unfolding)
+          the process is x -> x + alpha on the circle, or a straight-line flow
+          on a torus; irrational alpha gives dense, equidistributed orbits,
+          rational alpha gives periodic ones.
+      - id: finite_state_periodicity
+        name: Finite state space forces periodicity
+        folder: dynamical
+        description: >
+          A deterministic map on a finite set must eventually repeat
+          (pigeonhole in time); if the map is invertible the orbit is purely
+          periodic, so it returns to its starting point.
+      - id: attracting_structure
+        name: Attracting structure / collapse of orbits
+        folder: dynamical
+        description: >
+          Every orbit is forced onto a small invariant set (a fixed point, a
+          cycle, or a lattice) by a monovariant or a modular argument.
+
+  # ----------------------------------------------------------- auxiliary object
+  - id: auxiliary_object
+    name: Auxiliary object
+    folder: other
+    description: >
+      Introduce an extra object (a number, a tank of fuel, a second traveller)
+      that is not in the problem but makes the argument visible.
+
+  # ---------------------------------------------------------- algebraic identity
+  - id: algebraic_identity
+    name: Algebraic identity
+    folder: algebraic
+    description: >
+      Rewrite an expression in a form (telescoping sum, sum of squares, product)
+      where the claim is visible.
+    children:
+      - id: telescoping
+        name: Telescoping
+        folder: algebraic
+        description: Write terms as differences so that a sum collapses.
+      - id: grouping_terms
+        name: Grouping / comparison of terms
+        folder: algebraic
+        description: >
+          Group the terms of a sum into blocks that can each be bounded by the
+          same simple quantity.
+      - id: factorisation
+        name: Factorisation
+        folder: algebraic
+        description: >
+          An algebraic factorisation exposes a divisor, so primality or
+          divisibility questions become immediate.
+
+  # ---------------------------------------------------------------------- other
+  - id: other
+    name: Other
+    folder: other
+    description: Ideas that fit none of the categories above.

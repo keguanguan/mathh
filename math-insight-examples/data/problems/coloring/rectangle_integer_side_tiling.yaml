@@ -1,0 +1,85 @@
+id: rectangle_integer_side_tiling
+
+title: A Rectangle Tiled by Rectangles with an Integer Side Has an Integer Side
+
+aliases:
+  - integer side theorem
+  - Wagon's fourteen proofs
+  - de Bruijn rectangle tiling
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter on tiling rectangles
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: S. Wagon, Fourteen Proofs of a Result About Tiling a Rectangle
+    notes: American Mathematical Monthly 94 (1987), 601-617
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/De_Bruijn%27s_theorem
+    original_title: De Bruijn's theorem
+    notes: Related brick-packing results of de Bruijn.
+
+problem:
+  statement: >
+    A rectangle is tiled by finitely many smaller rectangles, each of which
+    has at least one side of integer length. Show that the big rectangle
+    also has a side of integer length.
+  domain: tiling
+  answer: proved
+
+key_idea:
+  name: colour the plane as a checkerboard of 1/2 x 1/2 squares; every tile with an integer side is colour-balanced
+  category: coloring_invariant
+  summary: >
+    Colour the plane in a checkerboard pattern with squares of side 1/2,
+    corner at the big rectangle's corner. Any rectangle with an integer
+    side, however placed, contains equal black and white area. So the big
+    rectangle is balanced, and a rectangle with corner at the origin is
+    balanced only if one of its sides is an integer.
+
+intuitive_proof:
+  explanation: >
+    Fix a 1/2-checkerboard with a corner of the big rectangle at a lattice
+    corner. Consider a small rectangle whose horizontal side has integer
+    length: each horizontal strip of it crosses full periods of the
+    colouring, so black and white areas are equal; similarly for a vertical
+    integer side. Summing over the tiles, the big rectangle has equal black
+    and white area. Now compute the black minus white area of a rectangle
+    [0, a] x [0, b] directly: it factors as f(a) f(b) where f(t) is the
+    signed excess along one axis, which is zero exactly when t is an
+    integer. So f(a) f(b) = 0 forces a or b to be an integer.
+
+reasoning_structure:
+  naive_approach: >
+    Try induction on the number of tiles, or argue about which tiles touch
+    the corners; both become tangled.
+  crucial_observation: >
+    An integer side length is exactly the condition for a rectangle to be
+    balanced under a half-period checkerboard, and balance is additive.
+  why_it_simplifies: >
+    One colouring turns a hard structural statement into an additivity
+    argument; Wagon's paper lists thirteen other proofs, but the
+    checkerboard one is the shortest.
+
+tags:
+  - coloring
+  - tiling
+  - invariant
+  - additivity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  An equivalent proof integrates e^{2 pi i (x + y)} over each tile: the
+  integral over any rectangle with an integer side is zero.

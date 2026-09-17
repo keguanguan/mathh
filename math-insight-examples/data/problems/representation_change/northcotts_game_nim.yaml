@@ -1,0 +1,85 @@
+id: northcotts_game_nim
+
+title: Northcott's Game Is Nim with Gaps as Heaps
+
+aliases:
+  - Northcott's game
+  - checkers in rows sliding game
+  - Nim in disguise with backward moves
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/recurrence/Northcott.shtml
+  original_title: Northcott's game
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    Each row of a rectangular board holds one white and one black checker. A
+    player slides one of their own checkers within its row, any distance,
+    without jumping the other checker. The player who makes the last move
+    wins. How should one play?
+  domain: combinatorial games
+  answer: >
+    treat the gap between the two checkers in each row as a Nim heap; move
+    to make the XOR of the gaps zero, and answer any retreat by advancing
+    the same amount
+
+key_idea:
+  name: the gap in each row is a Nim heap; moves that enlarge a gap can be undone immediately, so they never help
+  category: isomorphism_to_another_problem
+  summary: >
+    Advancing toward the opponent's checker shrinks the row's gap, exactly
+    like removing counters from a heap. Retreating enlarges a gap, but the
+    opponent can restore it by advancing the same amount, and retreats are
+    bounded by the board edge, so they only delay the inevitable. Hence the
+    game is Nim on the gap sizes.
+
+intuitive_proof:
+  explanation: >
+    Let the heap sizes be the numbers of empty squares between the two
+    checkers in each row. A move toward the opponent reduces one heap by any
+    positive amount, as in Nim. A move away increases a heap, which ordinary
+    Nim does not allow; but the player with the Nim-winning position simply
+    answers by advancing their checker in that row by the same number of
+    squares, restoring the heap. Since each retreat uses up board space that
+    can never be regained, only finitely many retreats are possible, so the
+    Nim strategy (keep the XOR of the gaps equal to zero after your move)
+    eventually forces the opponent to have no move.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the two players' checkers separately as a partisan game.
+  crucial_observation: >
+    Only the distances between checkers matter, and the extra 'backward'
+    moves are neutralised by mirroring.
+  why_it_simplifies: >
+    Recognising Nim underneath, plus a one-line argument that reversible
+    moves are irrelevant, solves the game completely.
+
+related:
+  - nim
+  - turning_turtles
+
+tags:
+  - Nim
+  - isomorphism
+  - combinatorial game
+  - reversible moves
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: ""

@@ -1,0 +1,80 @@
+id: digit_sum_iteration_imo1975
+
+title: Iterated Digit Sums of 4444^4444 (IMO 1975 Problem 4)
+
+aliases:
+  - IMO 1975 problem 4
+  - digital root of 4444^4444
+  - sum of digits of the sum of digits
+
+source:
+  name: International Mathematical Olympiad 1975, Problem 4
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1975 Problem 4
+  accessed: 2026-09-16
+  notes: A standard example of the "digit sum is congruent to the number mod 9" invariant.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Digital_root
+    original_title: Digital root
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 6, Number Theory (digit-sum problems).
+
+problem:
+  statement: >
+    Let A be the sum of the decimal digits of 4444^4444, and B the sum of the
+    digits of A. Find the sum of the digits of B.
+  domain: number theory
+  answer: "7"
+
+key_idea:
+  name: taking the digit sum preserves the residue mod 9, and crude size bounds pin the answer down
+  category: modular_invariant
+  summary: >
+    Since 10 = 1 mod 9, a number and its digit sum are congruent mod 9. So
+    the digit sum of B is congruent to 4444^4444 = 7^4444 = 7 mod 9. Size
+    bounds show B < 100 and its digit sum is at most 18, and the only such
+    number that is 7 mod 9 is 7.
+
+intuitive_proof:
+  explanation: >
+    Because 10^k = 1 mod 9 for every k, any number is congruent mod 9 to
+    the sum of its digits. Hence 4444^4444, A, B and the digit sum of B are
+    all congruent mod 9. Now 4444 = 7 mod 9 and 7^3 = 343 = 1 mod 9, so
+    7^4444 = 7^(3*1481 + 1) = 7 mod 9. For the size: 4444^4444 < 10^(4*4444)
+    has at most 17776 digits, so A <= 9 * 17776 = 159984; then B <= 1 + 5*9
+    = 46; and the digit sum of B is at most 4 + 9 = 13. The only number at
+    most 13 that is 7 mod 9 is 7.
+
+reasoning_structure:
+  naive_approach: >
+    Try to say something about the actual digits of 4444^4444, which is
+    hopeless; the number has nearly 16000 digits.
+  crucial_observation: >
+    Digit summing is an operation that preserves a residue, and repeated
+    digit summing shrinks the number very fast.
+  why_it_simplifies: >
+    An invariant (residue mod 9) plus a trivial bound determines the value
+    without knowing a single digit of the original number.
+
+tags:
+  - modular arithmetic
+  - invariant
+  - digit sum
+  - olympiad
+  - size bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  "Casting out nines" is the same invariant in the service of arithmetic
+  checking.

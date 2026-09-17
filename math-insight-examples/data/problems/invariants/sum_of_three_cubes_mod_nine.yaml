@@ -1,0 +1,73 @@
+id: sum_of_three_cubes_mod_nine
+
+title: Numbers 4 or 5 mod 9 Are Not Sums of Three Cubes
+
+aliases:
+  - cubes mod 9
+  - sum of three cubes obstruction
+  - x^3 + y^3 + z^3 = 4 mod 9
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sums_of_three_cubes
+  original_title: Sums of three cubes (modular obstruction)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that no integer congruent to 4 or 5 modulo 9 is a sum of three
+    integer cubes.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: cubes are 0, 1 or -1 modulo 9
+  category: modular_invariant
+  summary: >
+    Every integer is 0, +-1, +-2, +-3 or +-4 mod 9, and cubing these gives
+    only 0, 1 and -1 mod 9. A sum of three such values lies between -3 and 3
+    mod 9, so it is never 4 or 5.
+
+intuitive_proof:
+  explanation: >
+    Write n = 3m + r with r in {-1, 0, 1}. Then n^3 = 27 m^3 + 27 m^2 r + 9
+    m r^2 + r^3 = r^3 mod 9, which is -1, 0 or 1. Hence x^3 + y^3 + z^3 mod
+    9 is a sum of three numbers from {-1, 0, 1}, i.e. in {-3, ..., 3} = {0,
+    1, 2, 3, 6, 7, 8} mod 9. The residues 4 and 5 never occur.
+
+reasoning_structure:
+  naive_approach: >
+    Search for representations of 4, 5, 13, 14, ... as sums of three cubes
+    and fail to find any, without a proof.
+  crucial_observation: >
+    Cubes collapse to three residues modulo 9.
+  why_it_simplifies: >
+    One residue table settles infinitely many numbers; for the other
+    residues the question is hard (33 and 42 were only settled in 2019).
+
+related:
+  - squares_mod_four_obstruction
+
+tags:
+  - modular arithmetic
+  - cubes
+  - Diophantine equation
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

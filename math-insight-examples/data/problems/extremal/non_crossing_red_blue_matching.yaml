@@ -1,0 +1,82 @@
+id: non_crossing_red_blue_matching
+
+title: Non-Crossing Matching of Red and Blue Points
+
+aliases:
+  - red-blue points non-crossing segments
+  - n red and n blue points can be matched without crossings
+  - shortest matching has no crossings
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A classical example in Chapter 3; also a Putnam / olympiad standard.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Well-ordering_principle
+    original_title: Well-ordering principle
+    notes: The extremal principle is the well-ordering principle applied to a finite set of candidates.
+
+problem:
+  statement: >
+    In the plane are n red and n blue points, no three collinear. Show that
+    one can draw n segments, each joining a red point to a blue point, using
+    every point once, so that no two segments cross.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: the matching of minimum total length has no crossings
+  category: extremal_principle
+  summary: >
+    Among the finitely many red-blue matchings, take one of least total
+    length. If two of its segments crossed, uncrossing them (swapping the
+    partners) would shorten the total by the triangle inequality, so the
+    minimal matching has no crossings.
+
+intuitive_proof:
+  explanation: >
+    There are finitely many ways to pair the red points with the blue
+    points, so some pairing M minimises the sum of the segment lengths.
+    Suppose two of its segments, R1B1 and R2B2, cross at a point X. Replace
+    them by R1B2 and R2B1. By the triangle inequality (strict, since no
+    three points are collinear), R1B2 < R1X + XB2 and R2B1 < R2X + XB1;
+    adding, R1B2 + R2B1 < R1B1 + R2B2. The new pairing is shorter,
+    contradicting minimality. Hence M has no crossings.
+
+reasoning_structure:
+  naive_approach: >
+    Construct the matching greedily or by sweeping a line, then repair
+    crossings; proving that repairs terminate is the whole difficulty.
+  crucial_observation: >
+    Uncrossing strictly shortens, so a length-minimal matching cannot have
+    a crossing.
+  why_it_simplifies: >
+    Existence follows immediately from taking an extremal object; the
+    "repair process" is replaced by one triangle-inequality picture.
+
+tags:
+  - extremal principle
+  - triangle inequality
+  - matching
+  - combinatorial geometry
+  - existence proof
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The repair process (uncross whenever possible) does terminate, with the
+  total length as monovariant; the extremal formulation hides that
+  monovariant inside the choice of a minimum.

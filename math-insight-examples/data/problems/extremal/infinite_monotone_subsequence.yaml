@@ -1,0 +1,79 @@
+id: infinite_monotone_subsequence
+
+title: Every Infinite Sequence Has an Infinite Monotone Subsequence
+
+aliases:
+  - infinite monotone subsequence
+  - peaks argument
+  - Bolzano-Weierstrass lemma
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bolzano%E2%80%93Weierstrass_theorem
+  original_title: Bolzano–Weierstrass theorem (monotone subsequence lemma)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 3, The Extremal Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every infinite sequence of real numbers has an infinite
+    subsequence that is monotone (non-increasing or non-decreasing).
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: call a term a peak if it is at least as large as everything after it; either there are infinitely many peaks or, after the last one, every term has a larger successor
+  category: extremal_principle
+  summary: >
+    If infinitely many terms are peaks, the peaks form a non-increasing
+    subsequence. If only finitely many are, then after the last peak every
+    term is exceeded by some later term, and following these gives a
+    strictly increasing subsequence.
+
+intuitive_proof:
+  explanation: >
+    Say a_n is a peak if a_n >= a_m for all m > n. Case 1: infinitely many
+    peaks. Listing them in order gives a non-increasing subsequence, because
+    each peak dominates all later terms including later peaks. Case 2:
+    finitely many peaks. Let N be beyond the last peak. Then a_N is not a
+    peak, so some later term exceeds it; that term is not a peak either, so
+    a still later term exceeds it; continuing produces an increasing
+    subsequence.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct the subsequence greedily from the beginning without a
+    rule for which terms to keep.
+  crucial_observation: >
+    The extremal notion of a 'peak' splits the situation into two cases,
+    each of which produces the subsequence automatically.
+  why_it_simplifies: >
+    A dichotomy on an extremal property replaces any analysis of the actual
+    values; this is the lemma behind Bolzano-Weierstrass.
+
+related:
+  - erdos_szekeres_monotone_subsequence
+
+tags:
+  - extremal principle
+  - subsequence
+  - analysis
+  - Ramsey theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The finite version with quantitative bounds is Erdos-Szekeres.

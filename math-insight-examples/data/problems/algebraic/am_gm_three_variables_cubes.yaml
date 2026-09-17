@@ -1,0 +1,78 @@
+id: am_gm_three_variables_cubes
+
+title: AM-GM for Three Variables from the Cube Factorisation
+
+aliases:
+  - three variable AM-GM
+  - a^3 + b^3 + c^3 >= 3abc
+  - AM-GM via x^3 + y^3 + z^3 - 3xyz
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 7, Inequalities
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+    original_title: Inequality of arithmetic and geometric means (three variables)
+
+problem:
+  statement: >
+    Show that a^3 + b^3 + c^3 >= 3abc for non-negative a, b, c, and deduce
+    the AM-GM inequality (x + y + z)/3 >= (xyz)^{1/3}.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: a^3 + b^3 + c^3 - 3abc = (a + b + c)((a-b)^2 + (b-c)^2 + (c-a)^2)/2 is a product of non-negative factors
+  category: factorisation
+  summary: >
+    The factorisation a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 -
+    ab - bc - ca) and the identity a^2 + b^2 + c^2 - ab - bc - ca = ((a-b)^2
+    + (b-c)^2 + (c-a)^2)/2 show the difference is non-negative. Substituting
+    a = x^{1/3} etc. gives AM-GM.
+
+intuitive_proof:
+  explanation: >
+    By the classical factorisation, a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2
+    + b^2 + c^2 - ab - bc - ca). The first factor is non-negative for
+    non-negative a, b, c, and the second equals half the sum of the squares
+    (a - b)^2 + (b - c)^2 + (c - a)^2, also non-negative. So a^3 + b^3 + c^3
+    >= 3abc, with equality iff a = b = c. Putting a = x^{1/3}, b = y^{1/3},
+    c = z^{1/3} gives x + y + z >= 3 (xyz)^{1/3}.
+
+reasoning_structure:
+  naive_approach: >
+    Apply the general AM-GM (Cauchy induction, Jensen) or Lagrange
+    multipliers to the three-variable case.
+  crucial_observation: >
+    The difference between the two sides of the inequality factors into
+    visibly non-negative pieces.
+  why_it_simplifies: >
+    A factorisation is a certificate of non-negativity, giving the
+    inequality and its equality case in one line.
+
+related:
+  - cubes_sum_factorisation_x_plus_y_plus_z
+  - sum_of_squares_inequality
+
+tags:
+  - factorisation
+  - AM-GM
+  - inequality
+  - sum of squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,16 @@
+experiment_id: mock_transfer_v1
+description: Structural-transfer smoke experiment with the mock model over five families.
+families: [domino_tiling, population_game, sliding_puzzle, subtraction_game, difference_board]
+models: [mock_mixed]
+instance_sizes:
+  domino_tiling: [8, 12]
+  population_game: [24, 48]
+  sliding_puzzle: [4, 5]
+  subtraction_game: [16, 32]
+  difference_board: [100, 200]
+transfer_levels: [0, 1, 2]
+compute_conditions: [default]
+repetitions: 1
+instances_per_cell: 5
+generation_seeds: {base_seed: 99}
+output_dir: data/raw_runs

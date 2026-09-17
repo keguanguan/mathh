@@ -1,0 +1,74 @@
+id: eight_rooks_black_squares_even
+
+title: Eight Non-Attacking Rooks Cover an Even Number of Black Squares
+
+aliases:
+  - rooks on black squares parity
+  - non-attacking rooks colouring
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 2, Coloring Proofs
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on parity
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Eight rooks are placed on a chessboard so that no two attack each other.
+    Show that the number of rooks on black squares is even.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: the rooks sit at (i, sigma(i)); a square is white iff i + sigma(i) is odd, and the sum of all i + sigma(i) is even
+  category: parity_invariant
+  summary: >
+    Non-attacking rooks occupy one square in each row and column, so their
+    positions are (i, sigma(i)) for a permutation sigma. The sum of i +
+    sigma(i) over all rooks is 2(1 + ... + 8) = 72, even, so an even number
+    of the terms i + sigma(i) are odd, i.e. an even number of rooks are on
+    white squares, hence also on black squares.
+
+intuitive_proof:
+  explanation: >
+    Since no two rooks share a row or column, the rooks are at (i, sigma(i))
+    for i = 1..8 with sigma a permutation of 1..8. Square (i, j) is black
+    iff i + j is even (say). The total sum over rooks of (i + sigma(i))
+    equals (1 + ... + 8) + (1 + ... + 8) = 72, which is even, so the number
+    of odd summands is even: an even number of rooks stand on white squares.
+    Subtracting from 8, an even number stand on black squares.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate placements or argue by moving rooks one at a time.
+  crucial_observation: >
+    Row and column indices are each a permutation of 1..8, so their total is
+    fixed and even.
+  why_it_simplifies: >
+    A parity count over a fixed total decides the question without any
+    geometry.
+
+tags:
+  - parity
+  - coloring
+  - permutation
+  - chess
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

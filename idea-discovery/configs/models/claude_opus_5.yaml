@@ -1,0 +1,8 @@
+# Real provider (milestone 2). Requires `pip install anthropic` and ANTHROPIC_API_KEY.
+name: claude_opus_5
+provider: anthropic
+model: claude-opus-5
+parameters:
+  send_sampling_params: false   # current Claude models reject temperature/top_p
+  stream: true
+  max_retries: 3

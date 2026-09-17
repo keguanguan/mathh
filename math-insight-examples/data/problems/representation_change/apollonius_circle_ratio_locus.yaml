@@ -1,0 +1,83 @@
+id: apollonius_circle_ratio_locus
+
+title: The Locus of Points with a Fixed Distance Ratio Is a Circle (Apollonius)
+
+aliases:
+  - Apollonian circle
+  - circle of Apollonius
+  - PA/PB constant locus
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Circles_of_Apollonius
+  original_title: Circles of Apollonius (definition of the Apollonian circle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Given two points A, B and a constant k > 0, k != 1, show that the points
+    P with PA/PB = k form a circle.
+  domain: geometry
+  answer: proved (a circle whose centre lies on line AB)
+
+key_idea:
+  name: "square the condition: PA^2 - k^2 PB^2 = 0 is a quadratic equation whose x^2 and y^2 terms have equal coefficients, hence a circle"
+  category: algebraic_encoding
+  summary: >
+    In coordinates, PA^2 = (x - a_1)^2 + (y - a_2)^2 and PB^2 similarly. The
+    condition PA^2 = k^2 PB^2 reads (1 - k^2)(x^2 + y^2) + (linear terms) +
+    const = 0. Dividing by 1 - k^2 != 0 gives x^2 + y^2 + (linear) + const =
+    0, the equation of a circle (or empty set; here it is non-empty since
+    points on line AB satisfy it).
+
+intuitive_proof:
+  explanation: >
+    Place A = (0, 0) and B = (d, 0). The condition PA^2 = k^2 PB^2 becomes
+    x^2 + y^2 = k^2((x - d)^2 + y^2), i.e. (1 - k^2)(x^2 + y^2) + 2 k^2 d x
+    - k^2 d^2 = 0. Since k != 1 we can divide by 1 - k^2 to get x^2 + y^2 +
+    2 k^2 d x/(1 - k^2) - k^2 d^2/(1 - k^2) = 0, a circle equation with
+    centre on the x-axis at (-k^2 d/(1 - k^2), 0). The two points of line AB
+    dividing AB internally and externally in ratio k lie on it, so it is a
+    genuine circle with those two points as a diameter. For k = 1 the locus
+    degenerates to the perpendicular bisector.
+
+reasoning_structure:
+  naive_approach: >
+    Try to identify the locus synthetically through the angle bisector
+    theorem, which works but requires several auxiliary constructions.
+  crucial_observation: >
+    Squaring the ratio condition produces a quadratic in which the
+    second-degree part is a multiple of x^2 + y^2, the signature of a
+    circle.
+  why_it_simplifies: >
+    An algebraic encoding makes the locus visible from the shape of the
+    equation in one line.
+
+related:
+  - radical_axis_subtract_equations
+
+tags:
+  - algebraic encoding
+  - locus
+  - circle
+  - coordinates
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The internal and external angle bisectors from P to AB meet line AB at the
+  diameter's endpoints.

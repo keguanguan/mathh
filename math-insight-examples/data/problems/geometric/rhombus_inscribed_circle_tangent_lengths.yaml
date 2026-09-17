@@ -1,0 +1,79 @@
+id: rhombus_inscribed_circle_tangent_lengths
+
+title: A Quadrilateral Has an Incircle Iff Opposite Sides Have Equal Sums (Pitot)
+
+aliases:
+  - Pitot theorem
+  - tangential quadrilateral
+  - a + c = b + d
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pitot_theorem
+  original_title: Pitot theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/proofs/InscriptibleQuadrilateral.shtml
+    original_title: When A Quadrilateral Is Inscriptible?
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Show that if a convex quadrilateral has an inscribed circle, then the
+    sums of its two pairs of opposite sides are equal: a + c = b + d.
+  domain: geometry
+  answer: proved (and the converse holds)
+
+key_idea:
+  name: the two tangent segments from each vertex to the circle are equal, so each side splits into two tangent lengths and the four lengths pair off oppositely
+  category: decomposition
+  summary: >
+    From a point outside a circle the two tangent segments are equal. Label
+    the tangent lengths from the four vertices p, q, r, s. Then the sides
+    are p + q, q + r, r + s, s + p, and (p + q) + (r + s) = (q + r) + (s +
+    p): opposite sides have equal sums.
+
+intuitive_proof:
+  explanation: >
+    Let the incircle touch the sides AB, BC, CD, DA at points that split
+    them into tangent segments. The two tangent segments from A have a
+    common length p, those from B length q, from C length r, from D length s
+    (tangents from an external point are equal). Then AB = p + q, BC = q +
+    r, CD = r + s, DA = s + p, so AB + CD = p + q + r + s = BC + DA. The
+    converse (equal sums imply an incircle) follows by a short argument
+    comparing with the circle tangent to three of the sides.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates of the incircle and the four tangent lines.
+  crucial_observation: >
+    Sides decompose into tangent lengths shared between adjacent sides, and
+    the shared lengths cancel in the alternating sum.
+  why_it_simplifies: >
+    One decomposition of each side makes the identity a rearrangement; it is
+    the same 'shared tangent lengths' idea that gives Heron's formula and
+    the inradius formula.
+
+related:
+  - inradius_area_semiperimeter
+
+tags:
+  - decomposition
+  - tangent lengths
+  - incircle
+  - quadrilateral
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Pitot (1725); the converse was proved by Steiner.

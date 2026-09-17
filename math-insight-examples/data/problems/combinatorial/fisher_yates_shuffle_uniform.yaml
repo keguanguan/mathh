@@ -1,0 +1,86 @@
+id: fisher_yates_shuffle_uniform
+
+title: The Fisher-Yates Shuffle Produces Every Permutation Equally Often
+
+aliases:
+  - Fisher-Yates shuffle
+  - Knuth shuffle
+  - uniform random permutation in place
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+  original_title: Fisher–Yates shuffle (the modern algorithm)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Knuth - The Art of Computer Programming, vol. 2
+    notes: Algorithm P
+
+problem:
+  statement: >
+    To shuffle a_1, ..., a_n, for i = n down to 2 swap a_i with a_j for a
+    uniformly random j in {1, ..., i}. Show that every permutation is
+    produced with probability 1/n!.
+  domain: probability
+  answer: proved
+
+key_idea:
+  name: the random choices (j_n, j_{n-1}, ..., j_2) range over n * (n - 1) * ... * 2 = n! equally likely sequences, and different sequences give different permutations
+  category: bijection
+  summary: >
+    There are n! sequences of choices, each with probability 1/n!. The map
+    from choice sequences to output permutations is injective: the first
+    choice determines which element ends in the last position, the next
+    choice which element ends in the second-last position, and so on, so the
+    output determines the choices. An injective map between two sets of size
+    n! is a bijection, so each permutation has probability exactly 1/n!.
+
+intuitive_proof:
+  explanation: >
+    The algorithm makes independent uniform choices j_n in {1..n}, j_{n-1}
+    in {1..n-1}, ..., j_2 in {1, 2}, so there are n(n - 1)...2 = n! equally
+    likely choice sequences. Given the final arrangement, the element in
+    position n was placed there by the first swap, which identifies j_n;
+    then the element in position n - 1 identifies j_{n-1}; and so on. Thus
+    the output determines the choice sequence, i.e. the map from choices to
+    permutations is injective. Both sets have n! elements, so the map is a
+    bijection and every permutation arises from exactly one choice sequence,
+    with probability 1/n!.
+
+reasoning_structure:
+  naive_approach: >
+    Swap random pairs many times and hope the result is uniform (it is only
+    approximately), or use the flawed variant with j always drawn from
+    {1..n}, which is biased.
+  crucial_observation: >
+    The number of random outcomes equals the number of permutations, and the
+    algorithm never produces the same permutation from two different
+    outcomes.
+  why_it_simplifies: >
+    A counting bijection replaces any distribution computation; it also
+    exposes why the 'j from 1..n' variant is wrong (n^n outcomes cannot map
+    uniformly onto n! permutations).
+
+related:
+  - reservoir_sampling_invariant
+
+tags:
+  - bijection
+  - algorithm
+  - random permutation
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  n^n is not divisible by n! for n >= 3, which is a one-line proof that the
+  naive variant is biased.

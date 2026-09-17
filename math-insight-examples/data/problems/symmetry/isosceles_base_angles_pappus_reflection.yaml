@@ -1,0 +1,72 @@
+id: isosceles_base_angles_pappus_reflection
+
+title: Base Angles of an Isosceles Triangle Are Equal (Pappus's Proof)
+
+aliases:
+  - pons asinorum
+  - isosceles triangle theorem
+  - Pappus's proof by congruence with the mirror image
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pons_asinorum
+  original_title: Pons asinorum (Pappus's proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book I, Proposition 5
+
+problem:
+  statement: >
+    In triangle ABC with AB = AC, show that the angles at B and C are equal.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "the triangle is congruent to its own mirror image: compare triangle ABC with triangle ACB"
+  category: symmetry
+  summary: >
+    Triangles ABC and ACB (the same triangle with B and C swapped) have AB =
+    AC, AC = AB and the included angle at A in common, so they are congruent
+    by SAS. Corresponding angles are equal: angle B of the first corresponds
+    to angle C of the second.
+
+intuitive_proof:
+  explanation: >
+    Consider the correspondence A -> A, B -> C, C -> B between triangle ABC
+    and itself. Under it, side AB corresponds to AC (equal by hypothesis),
+    side AC to AB (equal), and the included angle BAC to angle CAB (the same
+    angle). By the side-angle-side criterion the two triangles ABC and ACB
+    are congruent, so their remaining corresponding angles are equal: angle
+    ABC = angle ACB.
+
+reasoning_structure:
+  naive_approach: >
+    Bisect the angle at A and prove two triangles congruent (Euclid's own
+    proof needs an auxiliary construction, the 'bridge of asses').
+  crucial_observation: >
+    The triangle has a symmetry, and congruence can be applied to a figure
+    and its own relabelling.
+  why_it_simplifies: >
+    No auxiliary lines: the symmetry of the hypothesis is used directly.
+    Pappus's proof was famously rediscovered by an early theorem-proving
+    program.
+
+tags:
+  - symmetry
+  - congruence
+  - isosceles triangle
+  - reflection
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

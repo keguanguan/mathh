@@ -1,0 +1,83 @@
+id: partitions_odd_parts_equal_distinct_parts
+
+title: Partitions into Odd Parts and into Distinct Parts (Euler)
+
+aliases:
+  - Euler's partition identity
+  - odd parts equal distinct parts
+  - Glaisher's bijection
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Partition_%28number_theory%29
+  original_title: Partition (number theory) (odd parts and distinct parts)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on partitions / generating functions
+    author: Martin Aigner, Gunter M. Ziegler
+  - name: Andrews - The Theory of Partitions
+
+problem:
+  statement: >
+    Show that the number of ways to write n as a sum of odd positive
+    integers (order irrelevant) equals the number of ways to write n as a
+    sum of distinct positive integers.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: "compare generating functions: product of 1/(1 - x^{odd}) versus product of (1 + x^k), and use 1 + x^k = (1 - x^{2k})/(1 - x^k)"
+  category: generating_function
+  summary: >
+    The generating function for distinct parts is the product over k of (1 +
+    x^k) = product of (1 - x^{2k})/(1 - x^k). Every factor 1 - x^{2k} in the
+    numerator cancels the factor 1 - x^{2k} in the denominator, leaving
+    product over odd m of 1/(1 - x^m), the generating function for odd
+    parts.
+
+intuitive_proof:
+  explanation: >
+    Partitions of n into distinct parts are counted by the coefficient of
+    x^n in product over k >= 1 of (1 + x^k), since each k is used 0 or 1
+    times. Partitions into odd parts are counted by the coefficient in
+    product over odd m of (1 + x^m + x^{2m} + ...) = product over odd m of
+    1/(1 - x^m). Now 1 + x^k = (1 - x^{2k})/(1 - x^k), so product of (1 +
+    x^k) = product of (1 - x^{2k}) / product of (1 - x^k). The numerator is
+    the product of (1 - x^j) over even j, which cancels exactly the
+    even-indexed factors of the denominator, leaving product over odd m of
+    1/(1 - x^m). Equal generating functions mean equal coefficients.
+
+reasoning_structure:
+  naive_approach: >
+    Compare the two counts for small n (they agree: 1, 1, 2, 2, 3, 4, 5,
+    ...) and look for a bijection, which is not obvious (Glaisher's: split
+    each even part in half repeatedly).
+  crucial_observation: >
+    Encoding partitions as coefficients of products turns the statement into
+    a one-line algebraic cancellation.
+  why_it_simplifies: >
+    Generating functions make a non-obvious bijective statement into a
+    two-line identity of products.
+
+tags:
+  - generating functions
+  - partitions
+  - Euler
+  - bijection
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Glaisher's explicit bijection: write each multiplicity in binary and each
+  even part as 2^a times an odd number.

@@ -1,0 +1,83 @@
+id: sim_game_no_draw_ramsey
+
+title: The Game of Sim Cannot End in a Draw
+
+aliases:
+  - Sim (pencil game)
+  - Ramsey game on six points
+  - no draw in Sim
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sim_%28game%29
+  original_title: Sim (game)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Theorem_on_friends_and_strangers
+    original_title: Theorem on friends and strangers
+
+problem:
+  statement: >
+    Six points are drawn; two players alternately colour an uncoloured
+    segment between two of the points in their own colour, and a player who
+    completes a triangle of their colour loses. Show that the game cannot
+    end in a draw.
+  domain: combinatorial games
+  answer: >
+    proved (someone must complete a monochromatic triangle by the time all
+    15 segments are coloured)
+
+key_idea:
+  name: any 2-colouring of the 15 edges of K6 contains a monochromatic triangle (R(3,3) = 6)
+  category: structural_obstruction
+  summary: >
+    When all segments are coloured the six points and 15 coloured segments
+    form a 2-coloured complete graph on six vertices, which by the
+    friends-and-strangers theorem always contains a monochromatic triangle.
+    So the game ends with a loser at the latest on the 15th move.
+
+intuitive_proof:
+  explanation: >
+    Suppose all 15 segments are coloured and no monochromatic triangle
+    exists. Fix a point P; of the five segments at P at least three have the
+    same colour, say red, to points A, B, C. If any of AB, BC, CA were red
+    it would form a red triangle with P, so all three are blue, and ABC is a
+    blue triangle. Contradiction. Hence before or at the moment the last
+    segment is coloured, a monochromatic triangle appears, and its creator
+    loses.
+
+reasoning_structure:
+  naive_approach: >
+    Play many games and observe that draws never occur, or try to construct
+    a drawn final position by hand.
+  crucial_observation: >
+    The final position is a complete 2-colouring of K6, and Ramsey's theorem
+    for six points forbids triangle-free 2-colourings.
+  why_it_simplifies: >
+    A known extremal result about colourings rules out a draw without any
+    game-tree analysis.
+
+related:
+  - party_of_six_ramsey
+  - hex_no_draw
+
+tags:
+  - Ramsey theory
+  - game
+  - structural obstruction
+  - pigeonhole
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Who wins with perfect play was determined by computer: the second player.

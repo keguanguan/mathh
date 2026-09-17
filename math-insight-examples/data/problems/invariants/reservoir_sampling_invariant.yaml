@@ -1,0 +1,83 @@
+id: reservoir_sampling_invariant
+
+title: "Reservoir Sampling: Keep the k-th Item with Probability 1/k"
+
+aliases:
+  - reservoir sampling
+  - uniform sample from a stream
+  - algorithm R
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Reservoir_sampling
+  original_title: Reservoir sampling (simple algorithm)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Knuth - The Art of Computer Programming, vol. 2
+    notes: Section 3.4.2
+
+problem:
+  statement: >
+    Items arrive one at a time and their total number is unknown in advance.
+    Keep a single stored item, replacing it by the k-th arrival with
+    probability 1/k. Show that after n arrivals the stored item is uniformly
+    distributed among the n items.
+  domain: probability
+  answer: proved
+
+key_idea:
+  name: the invariant 'the stored item is uniform among the items seen so far' is preserved by each replacement step
+  category: invariant
+  summary: >
+    Suppose after k - 1 arrivals the stored item is uniform among them, each
+    with probability 1/(k - 1). The k-th item replaces it with probability
+    1/k, and otherwise (probability (k - 1)/k) the old item stays, so each
+    earlier item now has probability (1/(k - 1)) * ((k - 1)/k) = 1/k, the
+    same as the new item. The invariant holds for all k by induction.
+
+intuitive_proof:
+  explanation: >
+    Claim: after processing k items, each of them is the stored item with
+    probability 1/k. For k = 1 this is trivial. Assume it after k - 1 items.
+    When item k arrives it is stored with probability 1/k, giving it the
+    required probability. Any fixed earlier item is stored afterwards iff it
+    was stored before (probability 1/(k - 1) by the hypothesis) and item k
+    is not chosen (probability 1 - 1/k = (k - 1)/k); the product is 1/k. So
+    the claim holds after k items, and by induction after any number n of
+    items, with no knowledge of n needed in advance.
+
+reasoning_structure:
+  naive_approach: >
+    Store all items and pick one at the end, which needs memory proportional
+    to n; or replace with a fixed probability, which biases toward recent
+    items.
+  crucial_observation: >
+    A uniform distribution over the prefix is an invariant that the rule
+    'replace with probability 1/k' maintains exactly.
+  why_it_simplifies: >
+    Verifying one inductive invariant proves correctness for streams of
+    unknown length with constant memory.
+
+related:
+  - fisher_yates_shuffle_uniform
+
+tags:
+  - invariant
+  - algorithm
+  - probability
+  - sampling
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  To keep a sample of size m, replace a random stored item with probability
+  m/k.

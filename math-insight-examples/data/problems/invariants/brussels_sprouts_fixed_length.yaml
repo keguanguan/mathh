@@ -1,0 +1,88 @@
+id: brussels_sprouts_fixed_length
+
+title: Brussels Sprouts Always Lasts Exactly 5n - 2 Moves
+
+aliases:
+  - Brussels sprouts
+  - Conway's Brussels sprouts
+  - Euler's formula decides a game
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sprouts_%28game%29
+  original_title: Sprouts (game) (Brussels sprouts)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3
+
+problem:
+  statement: >
+    Brussels sprouts starts with n crosses (each with four free arms). A
+    move joins two free arms by a curve not crossing existing curves and
+    draws a short stroke across the new curve, creating two new free arms.
+    Show that the game always ends after exactly 5n - 2 moves, so the winner
+    is determined by the parity of n.
+  domain: combinatorial games
+  answer: always 5n - 2 moves; the first player wins iff n is odd
+
+key_idea:
+  name: the number of free arms never changes (each move uses two and creates two), and Euler's formula for the final planar map fixes the number of moves
+  category: invariant
+  summary: >
+    Every move consumes two free arms and creates two, so there are always
+    4n free arms, and the game ends when each face of the drawing contains
+    exactly one of them: 4n faces. After m moves there are n + m vertices
+    and 2m edges, so Euler's formula (n + m) - 2m + 4n = 2 gives m = 5n - 2.
+
+intuitive_proof:
+  explanation: >
+    Invariant: each move removes two free arms and adds two (the ends of the
+    stroke), so there are 4n free arms throughout. The game ends exactly
+    when no two free arms lie in the same face of the drawing, and since
+    every face contains at least one free arm (the drawing is built from
+    crosses whose arms point into the faces around them), the final map has
+    exactly F = 4n faces and is connected (two components would share a face
+    and could still be joined). Count vertices and edges after m moves: the
+    n crosses plus one new vertex per move (the stroke) give V = n + m, and
+    each move adds a curve that its stroke cuts into two edges, so E = 2m.
+    Euler's formula V - E + F = 2 gives n + m - 2m + 4n = 2, so m = 5n - 2.
+    The parity of 5n - 2 equals the parity of n, so the first player wins
+    iff n is odd.
+
+reasoning_structure:
+  naive_approach: >
+    Play the game and try to find good moves, as one would in ordinary
+    Sprouts.
+  crucial_observation: >
+    A conserved quantity (free arms) plus Euler's formula for the final
+    picture fixes the length of every play.
+  why_it_simplifies: >
+    The game has no strategy at all: an invariant and a topological identity
+    determine the outcome from n alone.
+
+related:
+  - sprouts_game_bounded_length
+  - fixed_length_games_parity
+  - euler_formula_planar
+
+tags:
+  - invariant
+  - Euler's formula
+  - game
+  - fixed length
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Conway introduced Brussels sprouts as a joke: it looks like Sprouts but is
+  a fixed-length game.

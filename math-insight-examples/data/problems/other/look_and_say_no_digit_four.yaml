@@ -1,0 +1,90 @@
+id: look_and_say_no_digit_four
+
+title: The Look-and-Say Sequence Never Contains a 4
+
+aliases:
+  - look-and-say sequence
+  - Conway's audioactive sequence
+  - 1, 11, 21, 1211, 111221
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Look-and-say_sequence
+  original_title: Look-and-say sequence (basic properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Conway - The weird and wonderful chemistry of audioactive decay
+    notes: Eureka 46 (1986)
+
+problem:
+  statement: >
+    The look-and-say sequence starts 1, 11, 21, 1211, 111221, 312211, ...,
+    each term describing the previous one by reading its runs aloud ('one 1'
+    -> 11, 'two 1s' -> 21). Show that no term ever contains a digit other
+    than 1, 2, 3.
+  domain: combinatorics
+  answer: >
+    proved: a digit 4 or more would require a run of four equal digits,
+    which never arises
+
+key_idea:
+  name: a run of four identical digits in some term would mean two consecutive runs of the previous term were described with the same digit and the same count, contradicting that runs are maximal
+  category: structural_obstruction
+  summary: >
+    Each term is a list of (count, digit) pairs describing maximal runs, so
+    consecutive run digits differ. A digit 4 could only be born as a count,
+    requiring a run of four equal digits in the previous term; but four
+    consecutive positions always contain two consecutive run digits, which
+    would then be equal, contradicting maximality. By induction from the
+    term 1, no digit beyond 3 ever appears.
+
+intuitive_proof:
+  explanation: >
+    Each term after the first is a list of pairs (c_1, d_1)(c_2, d_2)...
+    where c_i is the length of the i-th maximal run of the previous term and
+    d_i is its digit; maximality means d_i != d_{i+1}. Suppose a term (other
+    than the first) contained four equal consecutive digits xxxx. The
+    positions of the term alternate count, digit, count, digit, so a block
+    of four consecutive positions reads either c_i d_i c_{i+1} d_{i+1} or
+    d_i c_{i+1} d_{i+1} c_{i+2}; in both cases it contains two consecutive
+    run digits d_i and d_{i+1}, which would both equal x, contradicting
+    maximality of the runs. Hence no term has a run of length 4 or more, and
+    every count in the next term is 1, 2 or 3. Since the digits of a term
+    are the counts and the run digits of the previous term, induction from
+    the first term 1 shows that only the digits 1, 2, 3 ever appear.
+
+reasoning_structure:
+  naive_approach: >
+    Compute many terms and observe empirically that 4 never appears, without
+    a proof.
+  crucial_observation: >
+    A digit 4 could only be born as a count, and a count of 4 needs a run
+    that the run-encoding structure itself forbids.
+  why_it_simplifies: >
+    The structural constraint 'adjacent runs have different digits' is
+    preserved by the describing operation, and it blocks all digits above 3.
+
+related:
+  - kaprekar_6174_attractor
+  - champernowne_irrational
+
+tags:
+  - structural obstruction
+  - sequences
+  - runs
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Conway's cosmological theorem says every term eventually splits into 92
+  'elements'; the growth ratio is an algebraic number of degree 71.

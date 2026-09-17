@@ -1,0 +1,86 @@
+id: circumcentre_perpendicular_bisectors
+
+title: The Perpendicular Bisectors of a Triangle Meet at One Point
+
+aliases:
+  - circumcentre exists
+  - perpendicular bisectors concurrent
+  - circle through three points
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Circumscribed_circle
+  original_title: Circumscribed circle (triangles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book IV, Proposition 5
+
+problem:
+  statement: >
+    Show that the perpendicular bisectors of the three sides of a triangle
+    pass through a common point, and hence that a circle passes through the
+    three vertices.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the perpendicular bisector of a segment is exactly the set of points equidistant from its two endpoints; a point on two bisectors is equidistant from all three vertices, so it lies on the third bisector as well
+  category: geometric_reinterpretation
+  summary: >
+    A point P is on the perpendicular bisector of AB iff PA = PB. Let O be
+    the intersection of the bisectors of AB and BC (they are not parallel
+    since AB and BC are not). Then OA = OB and OB = OC, so OA = OC, which
+    puts O on the bisector of AC. The circle centred at O with radius OA
+    passes through A, B, C.
+
+intuitive_proof:
+  explanation: >
+    First, the perpendicular bisector of a segment XY consists exactly of
+    the points P with PX = PY (both directions follow from congruent right
+    triangles, or from Pythagoras applied to the foot of the perpendicular
+    from P). The perpendicular bisectors of AB and BC are perpendicular to
+    non-parallel lines, so they meet at a point O. Since O is on the
+    bisector of AB, OA = OB; since O is on the bisector of BC, OB = OC.
+    Hence OA = OC, so O lies on the perpendicular bisector of AC. The three
+    bisectors share the point O, and the circle with centre O and radius OA
+    = OB = OC passes through all three vertices. Uniqueness of this circle
+    follows because its centre must lie on all three bisectors.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the intersection of two bisectors in coordinates and check that
+    it satisfies the third equation.
+  crucial_observation: >
+    Perpendicular bisectors are 'equidistance loci', and equidistance is
+    transitive.
+  why_it_simplifies: >
+    Reinterpreting each bisector as the set of points equidistant from two
+    vertices makes concurrency a two-line consequence of transitivity of
+    equality.
+
+related:
+  - medians_concur_centroid_vectors
+  - law_of_sines_circumcircle
+  - altitudes_concur_anticomplementary_triangle
+
+tags:
+  - geometric reinterpretation
+  - locus
+  - circumcircle
+  - concurrency
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same 'locus' reasoning shows that the angle bisectors concur at the
+  incentre (equidistance from lines).

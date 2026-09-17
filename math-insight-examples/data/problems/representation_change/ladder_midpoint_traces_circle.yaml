@@ -1,0 +1,87 @@
+id: ladder_midpoint_traces_circle
+
+title: The Midpoint of a Sliding Ladder Traces a Circle
+
+aliases:
+  - sliding ladder midpoint locus
+  - median to the hypotenuse is half the hypotenuse
+  - ladder against a wall
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Right_triangle
+  original_title: Right triangle (Thales' theorem)
+  accessed: 2026-09-16
+  notes: >
+    The locus problem is a classic textbook exercise; the key fact is
+    Thales' theorem in reverse.
+
+additional_sources:
+  - name: Coxeter & Greitzer - Geometry Revisited
+    notes: Section 1.1, Thales and the circumcircle
+
+problem:
+  statement: >
+    A ladder of length L leans against a vertical wall with its foot on the
+    floor, and slides down with the foot moving away from the wall. What
+    curve does the midpoint of the ladder trace?
+  domain: geometry
+  answer: >
+    a quarter circle of radius L/2 centred at the corner where wall and
+    floor meet
+
+key_idea:
+  name: the ladder is the hypotenuse of a right triangle with the right angle at the corner, and the midpoint of a hypotenuse is equidistant from all three vertices
+  category: geometric_reinterpretation
+  summary: >
+    The wall, the floor and the ladder form a right triangle whose right
+    angle is at the corner O. The midpoint M of the hypotenuse is the centre
+    of the triangle's circumcircle (Thales' theorem), so OM = L/2 in every
+    position. Hence M moves on the circle of radius L/2 about O.
+
+intuitive_proof:
+  explanation: >
+    Let the ladder touch the wall at A and the floor at B, with O the
+    corner. Triangle AOB has a right angle at O, so by the converse of
+    Thales' theorem O lies on the circle with diameter AB. The centre of
+    that circle is the midpoint M of AB, and its radius is L/2, so OM = L/2
+    regardless of the ladder's position. Therefore M stays on the circle of
+    radius L/2 centred at O, tracing the quarter of it between the wall and
+    the floor as the ladder slides. (Coordinates confirm this: if A = (0, a)
+    and B = (b, 0) with a^2 + b^2 = L^2, then M = (b/2, a/2) has |OM| =
+    L/2.) Any other point of the ladder traces an ellipse, the trammel of
+    Archimedes.
+
+reasoning_structure:
+  naive_approach: >
+    Set up coordinates and eliminate the parameter, or guess that the path
+    is a straight line or a parabola.
+  crucial_observation: >
+    The corner sees the ladder at a right angle, so the ladder is a diameter
+    of a circle through the corner.
+  why_it_simplifies: >
+    Reinterpreting the configuration as a right triangle and its
+    circumcircle turns the locus into an immediate consequence of Thales'
+    theorem.
+
+related:
+  - thales_angle_in_semicircle
+  - string_around_cylinder_unfolding
+
+tags:
+  - geometric reinterpretation
+  - locus
+  - Thales' theorem
+  - circle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,85 @@
+id: shape_of_area_less_than_one_avoids_lattice
+
+title: A Shape of Area Less than 1 Can Be Placed to Avoid All Lattice Points
+
+aliases:
+  - Blichfeldt-type lemma
+  - shape avoiding lattice points
+  - fold the plane onto a unit square
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/lattice.shtml
+  original_title: Shapes in a lattice
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Blichfeldt%27s_theorem
+    original_title: Blichfeldt's theorem
+
+problem:
+  statement: >
+    A plane region has area less than 1. Show that it can be translated so
+    that no point with integer coordinates lies inside it.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: cut the plane into unit squares and stack them all on one square; the translated pieces of the region cover area less than 1, so some point of the square is uncovered, and translating that point to a lattice point works
+  category: coordinate_transformation
+  summary: >
+    Reduce coordinates mod 1: the map (x, y) -> ({x}, {y}) folds the plane
+    onto the unit square. The image of the region has area at most the
+    region's area, less than 1, so some point p of the unit square is not
+    covered. Translating the region by -p sends every point of it to a
+    position with non-integer coordinates.
+
+intuitive_proof:
+  explanation: >
+    Let R be the region and consider the folding map f(x, y) = (x mod 1, y
+    mod 1) onto the unit square Q. The image f(R) is covered by the
+    translates of the pieces R intersect (unit cell), whose total area
+    equals area(R) < 1 = area(Q). Hence some point p in Q is not in f(R).
+    Now translate R by -p (in the sense of subtracting p from all
+    coordinates): a point q of R lands on a lattice point iff q - p has
+    integer coordinates iff f(q) = p, which never happens. So the translated
+    region contains no lattice point. (The same argument with 'area > 1'
+    shows two points of R differ by a lattice vector: Blichfeldt's lemma.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to slide the shape around the grid by hand, reasoning about its
+    width and height.
+  crucial_observation: >
+    Folding the plane onto a single unit square turns 'avoid all lattice
+    points' into 'miss one point of a square of area 1', which area alone
+    guarantees.
+  why_it_simplifies: >
+    A coordinate reduction (mod the lattice) makes an area comparison decide
+    the question, with no information about the shape.
+
+related:
+  - five_lattice_points_midpoint
+  - dirichlet_approximation
+
+tags:
+  - coordinate transformation
+  - lattice
+  - area
+  - pigeonhole
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Blichfeldt's lemma and Minkowski's theorem are the same folding idea with
+  area greater than 1 (or 4).

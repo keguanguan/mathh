@@ -1,0 +1,88 @@
+id: tic_tac_toe_first_player_cannot_lose
+
+title: In Tic-Tac-Toe-Like Games the First Player Never Needs to Lose
+
+aliases:
+  - strategy stealing in tic-tac-toe
+  - extra move never hurts
+  - maker-maker games have no second-player win
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Strategy-stealing_argument
+  original_title: Strategy-stealing argument (tic-tac-toe and hex)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3
+
+problem:
+  statement: >
+    In a game where players alternately claim cells of a board and win by
+    completing a winning line (tic-tac-toe on any board, Hex, the n-in-a-row
+    games), show that the second player cannot have a winning strategy.
+  domain: combinatorial games
+  answer: "proved: the first player can at least draw"
+
+key_idea:
+  name: if the second player had a winning strategy, the first player could make an arbitrary first move, then play the second player's strategy; an extra claimed cell never hurts
+  category: strategy_stealing
+  summary: >
+    Suppose the second player had a winning strategy S. The first player
+    claims an arbitrary cell, then plays S as if he were the second player,
+    ignoring his extra cell (and claiming another arbitrary cell whenever S
+    asks for the extra one). Owning an extra cell never hurts in a game
+    where only your own cells count, so the first player wins, contradicting
+    the assumption.
+
+intuitive_proof:
+  explanation: >
+    Assume the second player has a winning strategy S. The first player
+    plays as follows: make an arbitrary first move X and then respond to
+    every move of the opponent with the move S prescribes for the second
+    player, treating X as if it were not on the board. If at some point S
+    prescribes the cell X, claim an arbitrary free cell instead and treat
+    that cell as the new 'extra' cell. In the resulting play the first
+    player has claimed all the cells that S would have claimed plus one
+    extra cell, and the opponent's cells are a subset of what S was designed
+    to beat. In a game where claiming additional cells never harms the
+    claimant (winning sets are monotone), the first player therefore wins
+    whenever S wins. This contradicts S being winning for the second player.
+    Hence with optimal play the first player wins or draws.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the full game tree (feasible for 3x3, hopeless for larger
+    boards).
+  crucial_observation: >
+    The two players' roles are symmetric except for the move order, and an
+    extra move can only help, so the first player can simulate being second.
+  why_it_simplifies: >
+    A non-constructive argument rules out second-player wins for an entire
+    class of games without examining any position; combined with the no-draw
+    theorem it shows the first player wins Hex.
+
+related:
+  - chomp_strategy_stealing
+  - hex_no_draw
+
+tags:
+  - strategy stealing
+  - game
+  - non-constructive
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The argument fails for games where an extra piece can hurt (e.g. chess) or
+  where the players have different goals.

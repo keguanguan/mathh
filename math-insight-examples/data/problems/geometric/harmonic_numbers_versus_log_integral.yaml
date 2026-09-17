@@ -1,0 +1,79 @@
+id: harmonic_numbers_versus_log_integral
+
+title: H_n Is Squeezed between ln(n + 1) and 1 + ln n
+
+aliases:
+  - harmonic numbers and the logarithm
+  - integral comparison for 1/x
+  - H_n is about ln n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Harmonic_number
+  original_title: Harmonic number (calculation)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that ln(n + 1) < 1 + 1/2 + ... + 1/n <= 1 + ln n.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: compare the staircase of unit-width rectangles of heights 1/k with the area under the curve y = 1/x
+  category: decomposition
+  summary: >
+    The rectangle on [k, k+1] of height 1/k lies above the curve y = 1/x, so
+    summing over k = 1..n, H_n exceeds the area under 1/x from 1 to n + 1,
+    which is ln(n + 1). The rectangle on [k - 1, k] of height 1/k lies below
+    the curve, so H_n - 1 is at most the area from 1 to n, which is ln n.
+
+intuitive_proof:
+  explanation: >
+    For x in [k, k + 1], 1/x <= 1/k, so the integral of 1/x over [k, k + 1]
+    is at most 1/k; summing for k = 1, ..., n gives ln(n + 1) < H_n (strict
+    since 1/x < 1/k inside the interval). For x in [k - 1, k] with k >= 2,
+    1/x >= 1/k, so 1/k <= integral of 1/x over [k - 1, k]; summing for k =
+    2, ..., n gives H_n - 1 <= ln n. Hence ln(n + 1) < H_n <= 1 + ln n, and
+    in particular H_n grows like ln n and diverges.
+
+reasoning_structure:
+  naive_approach: >
+    Compute H_n numerically and compare with ln n, or estimate the sum by
+    grouping (which gives only the order of growth).
+  crucial_observation: >
+    The sum is a Riemann-type staircase that sandwiches an integral with an
+    explicit value.
+  why_it_simplifies: >
+    Decomposing the sum into unit rectangles and comparing with the area
+    under the curve gives two-sided bounds with error at most 1.
+
+related:
+  - harmonic_series_diverges_grouping
+  - log_area_scaling_invariance
+
+tags:
+  - decomposition
+  - integral comparison
+  - harmonic numbers
+  - logarithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The difference H_n - ln n converges to the Euler-Mascheroni constant
+  0.5772....

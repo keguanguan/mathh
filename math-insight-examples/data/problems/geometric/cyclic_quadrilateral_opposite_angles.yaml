@@ -1,0 +1,80 @@
+id: cyclic_quadrilateral_opposite_angles
+
+title: Opposite Angles of a Cyclic Quadrilateral Are Supplementary
+
+aliases:
+  - cyclic quadrilateral angle property
+  - inscribed quadrilateral opposite angles sum to 180
+  - "converse: supplementary angles imply concyclic"
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cyclic_quadrilateral
+  original_title: Cyclic quadrilateral (characterizations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book III, Proposition 22
+
+problem:
+  statement: >
+    Show that if a quadrilateral is inscribed in a circle, each pair of
+    opposite angles sums to 180 degrees.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "join the centre to two opposite vertices: the two inscribed angles are halves of the two central angles, which together make 360"
+  category: decomposition
+  summary: >
+    The angles at B and D of cyclic quadrilateral ABCD are inscribed angles
+    subtending the arcs ADC and ABC respectively. By the inscribed angle
+    theorem each is half of the corresponding central angle, and the two
+    central angles together make a full turn. So angle B + angle D = 360/2 =
+    180.
+
+intuitive_proof:
+  explanation: >
+    Let O be the centre. The inscribed angle ABC subtends the arc ADC and
+    equals half the central angle AOC measured on that side; the inscribed
+    angle ADC subtends the arc ABC and equals half the central angle AOC
+    measured on the other side. The two central angles are the two parts
+    into which the rays OA and OC divide the full angle at O, so they sum to
+    360 degrees. Hence angle ABC + angle ADC = 180 degrees, and similarly
+    for the other pair. The converse holds too: a point D inside the circle
+    sees AC under a larger angle and a point outside under a smaller angle
+    than a point on the arc, so supplementary opposite angles force D onto
+    the circle.
+
+reasoning_structure:
+  naive_approach: >
+    Compute angles with coordinates or trigonometry.
+  crucial_observation: >
+    Opposite inscribed angles look at complementary arcs, and the inscribed
+    angle theorem halves each central angle.
+  why_it_simplifies: >
+    The inscribed angle theorem applied twice gives the result at once; the
+    converse is the standard test for four points being concyclic.
+
+related:
+  - inscribed_angle_theorem_central_angle
+  - orthocentre_reflection_circumcircle
+
+tags:
+  - decomposition
+  - inscribed angles
+  - cyclic quadrilateral
+  - circle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

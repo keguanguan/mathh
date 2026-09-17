@@ -1,0 +1,82 @@
+id: cassini_identity_matrix_determinant
+
+title: Cassini's Identity from a Determinant
+
+aliases:
+  - Cassini's identity
+  - F(n+1)F(n-1) - F(n)^2 = (-1)^n
+  - Fibonacci Q-matrix
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/algebra/CassinisIdentity.shtml
+  original_title: Cassini's Identity
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/arithmetic/algebra/FibonacciMatrix.shtml
+    original_title: Fibonacci Identities with Matrices
+    author: Alexander Bogomolny
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Cassini_and_Catalan_identities
+    original_title: Cassini and Catalan identities
+
+problem:
+  statement: >
+    Show that F_{n+1} F_{n-1} - F_n^2 = (-1)^n for the Fibonacci numbers.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the Fibonacci numbers are the entries of powers of the matrix Q = [[1,1],[1,0]], and det(Q^n) = (det Q)^n = (-1)^n
+  category: algebraic_encoding
+  summary: >
+    Let Q = [[1, 1], [1, 0]]. Induction shows Q^n = [[F_{n+1}, F_n], [F_n,
+    F_{n-1}]]. Taking determinants, F_{n+1} F_{n-1} - F_n^2 = det(Q^n) =
+    (det Q)^n = (-1)^n.
+
+intuitive_proof:
+  explanation: >
+    Define Q = [[1, 1], [1, 0]]. Then Q^1 = [[F_2, F_1], [F_1, F_0]], and if
+    Q^n = [[F_{n+1}, F_n], [F_n, F_{n-1}]] then Q^{n+1} = Q^n Q = [[F_{n+1}
+    + F_n, F_{n+1}], [F_n + F_{n-1}, F_n]] = [[F_{n+2}, F_{n+1}], [F_{n+1},
+    F_n]], completing the induction. Since the determinant is
+    multiplicative, det(Q^n) = (det Q)^n = (-1)^n, and det(Q^n) = F_{n+1}
+    F_{n-1} - F_n^2. Hence Cassini's identity. The same matrix gives F_{m+n}
+    = F_m F_{n+1} + F_{m-1} F_n by multiplying Q^m Q^n.
+
+reasoning_structure:
+  naive_approach: >
+    Prove the identity by induction with algebraic manipulation, or via
+    Binet's formula.
+  crucial_observation: >
+    Fibonacci numbers are matrix entries, and a determinant of a power is a
+    power of a determinant.
+  why_it_simplifies: >
+    An algebraic encoding turns a mysterious identity into the
+    multiplicativity of the determinant; it explains the alternating sign
+    and the 64 = 65 dissection fallacy.
+
+related:
+  - curry_paradox_missing_square
+  - fibonacci_tilings_identity
+
+tags:
+  - algebraic encoding
+  - Fibonacci
+  - determinant
+  - matrices
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

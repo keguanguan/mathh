@@ -1,0 +1,73 @@
+id: seven_reals_arctan_pigeonhole
+
+title: Seven Real Numbers and the Tangent Subtraction Formula
+
+aliases:
+  - (x - y)/(1 + xy) between 0 and 1/sqrt3
+  - arctan pigeonhole
+  - seven reals tangent
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+    original_title: Pigeonhole principle
+
+problem:
+  statement: >
+    Show that among any seven real numbers there are two, x and y, with 0 <=
+    (x - y)/(1 + xy) <= 1/sqrt(3).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: write each number as tan of an angle in (-90, 90) degrees; the expression is tan of the difference of angles
+  category: pigeonhole
+  summary: >
+    Put x_i = tan(t_i) with t_i in (-pi/2, pi/2). Then (x - y)/(1 + xy) =
+    tan(t_x - t_y). Seven angles in an interval of length pi have two within
+    pi/6 of each other, and tan of a difference in [0, pi/6] lies in [0,
+    1/sqrt(3)].
+
+intuitive_proof:
+  explanation: >
+    Every real number is tan(t) for a unique t in (-pi/2, pi/2). Divide this
+    interval into six half-open subintervals of length pi/6. Among seven
+    angles two, t_x >= t_y, lie in the same subinterval, so 0 <= t_x - t_y <
+    pi/6. By the tangent subtraction formula, (x - y)/(1 + xy) = tan(t_x -
+    t_y), which lies in [0, tan(pi/6)) = [0, 1/sqrt(3)).
+
+reasoning_structure:
+  naive_approach: >
+    Manipulate the inequality algebraically or order the numbers and compare
+    neighbours.
+  crucial_observation: >
+    The strange expression is the tangent subtraction formula in disguise,
+    which turns a nonlinear condition into a difference of angles.
+  why_it_simplifies: >
+    After the substitution the problem is pigeonhole on an interval; the
+    number 7 and the constant 1/sqrt(3) explain each other.
+
+tags:
+  - pigeonhole
+  - trigonometric substitution
+  - representation change
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

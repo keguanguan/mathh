@@ -1,0 +1,82 @@
+id: kissing_number_plane_six
+
+title: At Most Six Unit Circles Can Touch a Given Unit Circle
+
+aliases:
+  - kissing number in the plane
+  - six pennies around a penny
+  - angle counting for tangent circles
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Kissing_number
+  original_title: Kissing number (two dimensions)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that at most six non-overlapping unit circles can simultaneously
+    touch a fixed unit circle, and that six is possible.
+  domain: geometry
+  answer: "6"
+
+key_idea:
+  name: the centres of two touching circles subtend an angle of at least 60 degrees at the central circle's centre, and 360/60 = 6
+  category: pigeonhole
+  summary: >
+    The centres of the touching circles lie on a circle of radius 2 around
+    the central centre O. Two touching circles that do not overlap have
+    centres at distance at least 2, so the angle they subtend at O is at
+    least 60 degrees (equilateral triangle). Non-overlapping angular sectors
+    of at least 60 degrees each fit at most 360/60 = 6 times around O. The
+    hexagonal arrangement achieves six.
+
+intuitive_proof:
+  explanation: >
+    Let O be the centre of the fixed circle and C_1, ..., C_k the centres of
+    the touching circles; each C_i is at distance 2 from O. For i != j, the
+    circles do not overlap, so |C_i C_j| >= 2, and in triangle O C_i C_j
+    with two sides equal to 2 and the third at least 2, the angle at O is at
+    least 60 degrees. The k angles between consecutive centres (in angular
+    order around O) are each at least 60 degrees and sum to 360 degrees, so
+    k <= 6. Placing centres at the vertices of a regular hexagon of
+    circumradius 2 gives six touching circles with consecutive centres
+    exactly 2 apart.
+
+reasoning_structure:
+  naive_approach: >
+    Try to squeeze a seventh coin around a central coin and fail.
+  crucial_observation: >
+    Non-overlap is an angular constraint at the centre, and angles around a
+    point are limited to 360 degrees.
+  why_it_simplifies: >
+    Converting distances to angles turns a packing question into division of
+    360 by 60; in three dimensions the same question (kissing number 12) is
+    famously harder.
+
+related:
+  - regular_polygon_tilings_of_plane
+
+tags:
+  - pigeonhole
+  - angle counting
+  - packing
+  - circles
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

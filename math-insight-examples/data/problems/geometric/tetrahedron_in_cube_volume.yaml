@@ -1,0 +1,74 @@
+id: tetrahedron_in_cube_volume
+
+title: The Volume of the Regular Tetrahedron in a Cube
+
+aliases:
+  - tetrahedron inscribed in a cube
+  - cube minus four corner pyramids
+  - volume one third of the cube
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tetrahedron
+  original_title: Tetrahedron (regular tetrahedron in a cube)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Four vertices of a unit cube, no two adjacent, form a regular
+    tetrahedron. Find its volume.
+  domain: geometry
+  answer: 1/3
+
+key_idea:
+  name: the cube is the tetrahedron plus four congruent corner pyramids, each of volume 1/6
+  category: decomposition
+  summary: >
+    Removing the tetrahedron from the cube leaves four congruent
+    right-corner pyramids, each with three mutually perpendicular unit
+    edges, hence of volume (1/3) * (1/2) * 1 = 1/6. So the tetrahedron has
+    volume 1 - 4/6 = 1/3.
+
+intuitive_proof:
+  explanation: >
+    Take the cube [0,1]^3 and the tetrahedron with vertices (0,0,0),
+    (1,1,0), (1,0,1), (0,1,1). The complement in the cube consists of four
+    pieces, one at each of the remaining vertices; each is a pyramid whose
+    base is a right isosceles triangle of area 1/2 (half a face) and whose
+    height is 1, so its volume is (1/3)(1/2)(1) = 1/6. Therefore the
+    tetrahedron has volume 1 - 4 * (1/6) = 1/3.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the edge length sqrt(2), then apply the formula for the volume
+    of a regular tetrahedron, or set up a triple integral.
+  crucial_observation: >
+    The complement is simpler than the object: it is made of corner pieces
+    whose volume is immediate.
+  why_it_simplifies: >
+    Decomposing the cube (or equivalently considering the complement)
+    replaces formulas with subtraction.
+
+tags:
+  - decomposition
+  - complement
+  - volume
+  - tetrahedron
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

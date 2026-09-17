@@ -1,0 +1,73 @@
+id: seven_cups_flip_four
+
+title: Seven Cups, Flipping Four at a Time
+
+aliases:
+  - cup flipping puzzle
+  - turn over four of seven cups
+  - coin flipping k at a time
+
+source:
+  name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+  url: https://bookstore.ams.org/mcl-7
+  original_title: Chapter on parity
+  author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Parity_%28mathematics%29
+    original_title: Parity (mathematics)
+
+problem:
+  statement: >
+    Seven cups stand upside down on a table. A move turns over exactly four
+    of them. Can all seven end up right side up?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: the number of upside-down cups changes by an even amount
+  category: parity_invariant
+  summary: >
+    Turning four cups changes the count of upside-down cups by 4 - 2j for
+    some j, an even number. That count starts at 7 (odd) and would have to
+    reach 0 (even).
+
+intuitive_proof:
+  explanation: >
+    Suppose a move turns over j cups that were upside down and 4 - j that
+    were right side up. The number of upside-down cups changes by (4 - j) -
+    j = 4 - 2j, which is even. So the parity of the number of upside-down
+    cups never changes. It is odd at the start (7) and would be even at the
+    end (0), so the goal is unreachable. With an odd number of cups flipped
+    per move the parity argument fails, and the goal is reachable.
+
+reasoning_structure:
+  naive_approach: >
+    Experiment with sequences of flips hoping to find one that works, or try
+    to organise flips cleverly.
+  crucial_observation: >
+    Each move changes the count of upside-down cups by an even number.
+  why_it_simplifies: >
+    A single parity bit rules out every sequence of moves at once.
+
+tags:
+  - parity
+  - invariant
+  - puzzle
+  - flipping
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The general rule: with n objects and k flipped per move, all can be turned
+  iff n is even or k is odd (and k <= n).

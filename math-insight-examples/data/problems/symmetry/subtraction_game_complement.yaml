@@ -1,0 +1,87 @@
+id: subtraction_game_complement
+
+title: "The Subtraction Game (Take 1 to k): Complement to k + 1"
+
+aliases:
+  - Bachet's game
+  - take-away game 1 to k
+  - 21 game / 100 game
+  - nim with one heap and a maximum take
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Subtraction_game
+  original_title: Subtraction game
+  accessed: 2026-09-16
+  notes: The game and its solution appear in Bachet's Problemes plaisants et delectables (1612).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/ctk/OnePile.shtml
+    original_title: Single Pile Games
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    notes: Chapter on games (winning positions and pairing strategies).
+
+problem:
+  statement: >
+    A pile has n counters. Players alternately remove between 1 and k
+    counters. Whoever takes the last counter wins. Who wins, and how?
+  domain: combinatorial games
+  answer: >
+    The player to move loses if and only if n is a multiple of k + 1;
+    otherwise they win by moving to a multiple of k + 1 and thereafter
+    answering each removal of m with a removal of k + 1 - m.
+
+key_idea:
+  name: pair the moves so that each round removes exactly k + 1 counters
+  category: pairing_strategy
+  summary: >
+    Whatever m in 1..k the opponent takes, reply with k + 1 - m, which is
+    also in 1..k. Each pair of moves removes exactly k + 1 counters, so from
+    a multiple of k + 1 the replying player always faces a multiple of k + 1
+    and eventually takes the last counter.
+
+intuitive_proof:
+  explanation: >
+    Call n "safe" if k + 1 divides n. From a safe position any move
+    removes m with 1 <= m <= k and lands on a non-safe position. From a
+    non-safe position the player can remove n mod (k + 1), which lies in
+    1..k, landing on a safe position. Since 0 is safe and is a loss for the
+    player to move, safe positions are exactly the losing ones. The winning
+    strategy is the pairing: after reaching a multiple of k + 1, answer
+    each m by k + 1 - m, so the pile shrinks by exactly k + 1 per round.
+
+reasoning_structure:
+  naive_approach: >
+    Compute winning and losing positions backwards from 0 for specific k
+    and notice the period k + 1, then argue by induction.
+  crucial_observation: >
+    Moves can be paired into rounds of fixed total size, so the pile
+    counts down in steps of k + 1 regardless of the opponent.
+  why_it_simplifies: >
+    One pairing rule replaces the whole game tree and works for every n
+    and k at once.
+
+related:
+  - nim
+  - coins_on_round_table
+
+tags:
+  - pairing strategy
+  - game
+  - modular arithmetic
+  - winning positions
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The additive twin of the mirror strategy in coins_on_round_table: there
+  the pairing is geometric, here it is arithmetic.

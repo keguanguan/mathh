@@ -1,0 +1,83 @@
+id: halting_problem_diagonal
+
+title: The Halting Problem Is Undecidable (Diagonalisation)
+
+aliases:
+  - halting problem
+  - Turing's undecidability proof
+  - self-referential program
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Halting_problem
+  original_title: Halting problem (proof concept)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Sets, functions, and the continuum hypothesis"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that there is no program H that, given any program P and input x,
+    always halts and correctly reports whether P halts on x.
+  domain: combinatorics
+  answer: proved (no such H exists)
+
+key_idea:
+  name: "build a program D that asks H about itself and does the opposite: D halts on input D iff H says it does not"
+  category: diagonalization
+  summary: >
+    If H existed, define D(P): run H(P, P); if H says 'halts', loop forever;
+    otherwise halt. Now run D on itself. If D(D) halts, then H(D, D) said
+    'halts', so D loops: contradiction. If D(D) loops, H(D, D) said 'does
+    not halt', so D halts: contradiction. So H cannot exist.
+
+intuitive_proof:
+  explanation: >
+    Suppose H(P, x) always halts and outputs whether P halts on x. Programs
+    are finite strings, so a program can be given its own text as input.
+    Define D by: on input P, compute H(P, P); if the answer is 'halts',
+    enter an infinite loop; if 'does not halt', stop. Consider D run on
+    input D. If D(D) halts, then by construction H(D, D) reported 'does not
+    halt', which is wrong. If D(D) does not halt, then H(D, D) reported
+    'halts', again wrong. Either way H errs on the input (D, D),
+    contradicting its assumed correctness. Hence no such H exists.
+
+reasoning_structure:
+  naive_approach: >
+    Try to design an analyser that detects loops by simulation, which itself
+    may never halt.
+  crucial_observation: >
+    Self-application plus negation defeats any proposed decider on one
+    specially constructed input, exactly as Cantor's diagonal defeats any
+    list of reals.
+  why_it_simplifies: >
+    A single self-referential construction disposes of all possible programs
+    H; the same diagonal pattern gives Cantor's theorem and Godel's
+    incompleteness.
+
+related:
+  - cantor_diagonal_uncountable
+
+tags:
+  - diagonalization
+  - self-reference
+  - computability
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Turing (1936). Rice's theorem extends the argument to every non-trivial
+  semantic property of programs.

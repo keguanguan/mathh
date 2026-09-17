@@ -1,0 +1,74 @@
+id: squares_circles_triangles
+
+title: Squares, Circles and Triangles
+
+aliases:
+  - three-shape replacement game
+  - squares circles and triangles
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/sct.shtml
+  original_title: Squares, Circles, and Triangles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    A row contains squares, circles and triangles. A move picks two shapes of
+    different kinds and replaces them by a single shape of the third kind.
+    Starting from s squares, c circles and t triangles, can the row be
+    reduced to a single triangle?
+  domain: combinatorics
+  answer: >
+    Only if s and c have the same parity (and the reduction is then possible
+    as long as the configuration is not trivially stuck).
+
+key_idea:
+  name: pairwise differences of the counts are invariant mod 2
+  category: parity_invariant
+  summary: >
+    A move changes each of s, c, t by +-1 (two decrease, one increases), so
+    every difference s - c, c - t, t - s changes by 0 or +-2 and is invariant
+    mod 2. A lone triangle has s = c = 0, so s and c must start with equal
+    parity.
+
+intuitive_proof:
+  explanation: >
+    Represent the row by the triple (s, c, t). A move takes one of the
+    forms (s-1, c-1, t+1), (s-1, c+1, t-1) or (s+1, c-1, t-1). In each case
+    all three coordinates change by an odd number, so any difference of two
+    coordinates changes by an even number. Hence s - c mod 2 is invariant.
+    The target (0, 0, 1) has s - c even, so a starting position with s - c
+    odd can never reach it.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of replacements by hand and try to explain failures
+    case by case.
+  crucial_observation: >
+    The counts of the three shapes all move by one at each step, so their
+    differences move by an even amount.
+  why_it_simplifies: >
+    A parity condition on the initial counts decides reachability without
+    exploring any moves.
+
+tags:
+  - parity
+  - invariant
+  - replacement game
+  - modular arithmetic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The mod-3 cousin is chameleons, where the counts change by (-1,-1,+2)
+  and the differences are invariant mod 3.

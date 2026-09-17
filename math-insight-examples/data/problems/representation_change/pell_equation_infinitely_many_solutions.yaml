@@ -1,0 +1,80 @@
+id: pell_equation_infinitely_many_solutions
+
+title: x^2 - 2y^2 = 1 Has Infinitely Many Solutions
+
+aliases:
+  - Pell's equation
+  - units of Z[sqrt 2]
+  - (3 + 2 sqrt 2)^n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pell%27s_equation
+  original_title: Pell's equation (fundamental solution)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that x^2 - 2y^2 = 1 has infinitely many solutions in positive
+    integers.
+  domain: number theory
+  answer: >
+    proved: (x_n, y_n) given by x_n + y_n sqrt 2 = (3 + 2 sqrt 2)^n
+
+key_idea:
+  name: x^2 - 2y^2 is the norm of x + y sqrt 2, and norms are multiplicative, so powers of one solution are solutions
+  category: algebraic_encoding
+  summary: >
+    Write N(x + y sqrt 2) = (x + y sqrt 2)(x - y sqrt 2) = x^2 - 2y^2. Norms
+    multiply, so if N(a) = 1 then N(a^n) = 1 for all n. Since 3 + 2 sqrt 2
+    has norm 9 - 8 = 1, its powers give infinitely many solutions (they are
+    distinct because 3 + 2 sqrt 2 > 1).
+
+intuitive_proof:
+  explanation: >
+    For numbers a = x + y sqrt 2 with integers x, y define the conjugate a'
+    = x - y sqrt 2 and the norm N(a) = a a' = x^2 - 2y^2. Conjugation
+    respects multiplication, so N(ab) = N(a) N(b). The number 3 + 2 sqrt 2
+    has norm 1, hence so does (3 + 2 sqrt 2)^n = x_n + y_n sqrt 2 for every
+    n >= 1, i.e. x_n^2 - 2y_n^2 = 1. Since 3 + 2 sqrt 2 > 1, the powers are
+    strictly increasing and the solutions are all different: (3, 2), (17,
+    12), (99, 70), .... (In fact these are all the positive solutions.)
+
+reasoning_structure:
+  naive_approach: >
+    Search for solutions numerically and hope to see a pattern (3, 2), (17,
+    12), (99, 70), which is hard to prove directly.
+  crucial_observation: >
+    The quadratic form x^2 - 2y^2 is a norm, and norms of products multiply,
+    so one solution breeds infinitely many.
+  why_it_simplifies: >
+    Encoding the equation in the ring Z[sqrt 2] turns 'generate solutions'
+    into 'take powers'.
+
+related:
+  - brahmagupta_fibonacci_identity
+
+tags:
+  - algebraic encoding
+  - Pell's equation
+  - norm
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Ratios x_n/y_n are the convergents of sqrt 2.

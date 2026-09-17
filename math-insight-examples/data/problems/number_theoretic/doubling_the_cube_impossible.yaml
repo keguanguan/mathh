@@ -1,0 +1,84 @@
+id: doubling_the_cube_impossible
+
+title: Doubling the Cube Is Impossible with Straightedge and Compass
+
+aliases:
+  - Delian problem
+  - cube root of 2 is not constructible
+  - constructible numbers have degree a power of 2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Doubling_the_cube
+  original_title: Doubling the cube (impossibility)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/arithmetic/cubic.shtml
+    original_title: Doubling a cube
+    author: Alexander Bogomolny
+  - name: Courant & Robbins - What Is Mathematics?
+    notes: Chapter III, constructions
+
+problem:
+  statement: >
+    Show that a segment of length cube root of 2 cannot be constructed from
+    a unit segment with straightedge and compass.
+  domain: algebra
+  answer: proved (impossible)
+
+key_idea:
+  name: every constructible number lies in a tower of quadratic extensions, so its degree over Q is a power of 2, but cube root of 2 has degree 3
+  category: number_theoretic_structure
+  summary: >
+    Each construction step (intersecting lines and circles) solves at most a
+    quadratic equation over the numbers already available. So a
+    constructible number lies in a field obtained from Q by successive
+    quadratic extensions, of degree 2^k. The minimal polynomial of cube root
+    of 2 is x^3 - 2, irreducible over Q, so its degree is 3, not a power of
+    2.
+
+intuitive_proof:
+  explanation: >
+    Coordinates of points obtained by intersecting two lines, a line and a
+    circle, or two circles, whose equations have coefficients in a field F,
+    lie in F or in a quadratic extension F(sqrt(d)). Hence any constructible
+    number lies in a field Q = F_0 < F_1 < ... < F_k with [F_{i+1} : F_i] =
+    2, so [F_k : Q] = 2^k, and the degree of the number over Q divides 2^k.
+    The polynomial x^3 - 2 has no rational root (a rational root would be an
+    integer dividing 2, and none works), so it is irreducible and cube root
+    of 2 has degree 3 over Q. Since 3 does not divide any power of 2, cube
+    root of 2 is not constructible.
+
+reasoning_structure:
+  naive_approach: >
+    Search for clever constructions, as was done for two thousand years.
+  crucial_observation: >
+    Constructions only ever extract square roots, so an algebraic invariant
+    (the degree) can never become divisible by 3.
+  why_it_simplifies: >
+    A single invariant of the construction process settles an ancient
+    problem; trisecting the angle fails for the same reason (cos 20 degrees
+    has degree 3).
+
+tags:
+  - field extensions
+  - constructibility
+  - impossibility
+  - invariant
+  - degree
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Wantzel (1837). Squaring the circle also fails because pi is
+  transcendental (Lindemann, 1882).

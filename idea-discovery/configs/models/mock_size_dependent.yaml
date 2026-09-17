@@ -1,0 +1,8 @@
+name: mock_size_dependent
+provider: mock
+model: mock-v1
+parameters:
+  policy: size_dependent
+  seed: 1
+  size_slope: 0.04
+  size_intercept: 1.1

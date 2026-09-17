@@ -1,0 +1,81 @@
+id: bridge_and_torch
+
+title: The Bridge and Torch Problem
+
+aliases:
+  - bridge crossing puzzle
+  - four people one flashlight 17 minutes
+  - torch puzzle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bridge_and_torch_problem
+  original_title: Bridge and torch problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+
+problem:
+  statement: >
+    Four people who take 1, 2, 5 and 10 minutes to cross a bridge must all
+    cross at night with one torch; at most two may cross at a time, at the
+    pace of the slower, and the torch must be carried back. Show that 17
+    minutes suffice and are necessary.
+  domain: combinatorics
+  answer: 17 minutes
+
+key_idea:
+  name: send the two slowest across together so that only one of their times counts, and use the two fastest as torch carriers
+  category: structural_obstruction
+  summary: >
+    Sending 5 and 10 across together costs 10 instead of 15, but only pays
+    off if the two fastest are positioned to carry the torch back: 1 and 2
+    cross (2), 1 returns (1), 5 and 10 cross (10), 2 returns (2), 1 and 2
+    cross (2), total 17. A short case split shows 17 cannot be beaten.
+
+intuitive_proof:
+  explanation: >
+    Upper bound: 1+2 over (2 min), 1 back (1), 5+10 over (10), 2 back (2),
+    1+2 over (2), total 17. Lower bound: five crossings are needed (three
+    forward trips carrying at most two people each, plus two returns). If 5
+    and 10 cross separately, their forward trips cost at least 5 + 10 = 15
+    and the other crossings at least 1 + 1 + 1 = 3, total at least 18. If 5
+    and 10 cross together (cost 10), that trip cannot be the first (the
+    torch would return with a slow person) nor the last (someone must have
+    crossed before and returned), so it is the middle forward trip; the two
+    returns must be made by people already across, so both 1 and 2 must have
+    crossed before and one must return afterwards: the trips are then forced
+    up to symmetry and cost 2 + 1 + 10 + 2 + 2 = 17.
+
+reasoning_structure:
+  naive_approach: >
+    Assume the fastest person should always carry the torch, giving 1+2, 1,
+    1+5, 1, 1+10 = 19 minutes.
+  crucial_observation: >
+    The two slow people should share one trip, and the cost of arranging
+    that is small if the two fast people set it up.
+  why_it_simplifies: >
+    Identifying the single structural fact (slow people together, fast
+    people as shuttles) gives both the schedule and, with a short case
+    split, the optimality.
+
+tags:
+  - optimisation
+  - scheduling
+  - puzzle
+  - lower bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The general problem is solved by alternating the 'fastest escorts' and
+  'two slowest together' strategies.

@@ -1,0 +1,82 @@
+id: hh_versus_ht_waiting_times
+
+title: Waiting for HH Takes Longer than Waiting for HT
+
+aliases:
+  - expected flips until HH
+  - HH versus HT
+  - pattern waiting times
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Penney%27s_game
+  original_title: Penney's game (waiting times)
+  accessed: 2026-09-16
+  notes: The HH/HT comparison is a standard exercise in probability courses.
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+    notes: Chapter XIII, recurrent events
+
+problem:
+  statement: >
+    A fair coin is tossed repeatedly. Show that the expected number of
+    tosses until the first appearance of the pattern HH is 6, while for HT
+    it is 4.
+  domain: probability
+  answer: 6 for HH, 4 for HT
+
+key_idea:
+  name: "condition on the last toss: after an H, a T sends HH back to the start but leaves HT waiting only for one more T"
+  category: recursive_structure
+  summary: >
+    For HT: wait for the first H (mean 2), then for the first T (mean 2): 4
+    in total, since a further H does not hurt. For HH: let E be the expected
+    time from scratch. After the first H (mean 2 tosses), the next toss
+    finishes with probability 1/2 and otherwise resets everything, so E = 2
+    + 1/2 * 1 + 1/2 * (1 + E), giving E = 6.
+
+intuitive_proof:
+  explanation: >
+    HT: the pattern is complete as soon as a T follows some H. Wait for the
+    first H (geometric, mean 2), then for the first T after it (mean 2); any
+    extra H's in between are harmless. Total 4. HH: let E be the expected
+    waiting time. First wait for an H, mean 2. The next toss is H with
+    probability 1/2 (done, one more toss) or T with probability 1/2, after
+    which we are back at the start, having used one more toss. So E = 2 +
+    (1/2)(1) + (1/2)(1 + E), i.e. E = 3 + E/2, so E = 6.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate sequences or set up a Markov chain with several states and
+    solve linear equations.
+  crucial_observation: >
+    A failure while waiting for HT costs nothing (the H stays useful), while
+    a failure while waiting for HH destroys progress; conditioning on the
+    last toss captures exactly this.
+  why_it_simplifies: >
+    A one-line restart equation for each pattern exposes the asymmetry that
+    makes the two waiting times differ.
+
+related:
+  - geometric_waiting_time_conditioning
+
+tags:
+  - recursion
+  - conditioning
+  - expected value
+  - patterns
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Conway's formula gives the expected waiting time of any pattern from its
+  self-overlaps: HH overlaps itself, HT does not.

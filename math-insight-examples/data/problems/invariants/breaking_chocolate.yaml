@@ -1,0 +1,80 @@
+id: breaking_chocolate
+
+title: Breaking a Chocolate Bar
+
+aliases:
+  - chocolate bar breaking problem
+  - minimum number of breaks of a chocolate bar
+  - breaking chocolate bars
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/chocolad.shtml
+  original_title: Breaking Chocolate Bars
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Algebra/BreakingChocolateBars.shtml
+    original_title: Breaking Chocolate Bars (An Interactive Gizmo)
+
+problem:
+  statement: >
+    A rectangular chocolate bar is scored into an m x n grid of unit squares.
+    A break consists of taking one piece and snapping it along a full grid line
+    into two pieces. What is the smallest number of breaks needed to separate
+    the bar into its mn unit squares, and does the order of the breaks matter?
+  domain: combinatorics
+  answer: exactly mn - 1 breaks, regardless of the order
+
+key_idea:
+  name: count pieces, not breaks
+  category: invariant
+  summary: >
+    Every break increases the number of pieces by exactly one. Starting from
+    one piece and ending with mn pieces therefore takes exactly mn - 1 breaks,
+    whatever strategy is used.
+
+intuitive_proof:
+  explanation: >
+    A break acts on a single piece and turns it into two, so the number of
+    pieces on the table goes up by exactly one per break. At the start there
+    is one piece; at the end there are mn. Hence any complete sequence of
+    breaks has length mn - 1. There is no "clever" order: every order is
+    optimal, and no order can do better.
+
+reasoning_structure:
+  naive_approach: >
+    Try to be clever about the order of breaks, for instance breaking the bar
+    in half repeatedly to reuse breaks, or comparing strategies for small bars
+    and looking for a pattern.
+  crucial_observation: >
+    Breaks cannot be shared between pieces, so the only quantity that changes
+    is the piece count, and it changes by exactly one each time.
+  why_it_simplifies: >
+    The answer becomes a difference between the initial and final values of a
+    single counter; the entire space of breaking strategies collapses to one
+    number.
+
+tags:
+  - invariant
+  - counting
+  - move-count invariant
+  - games
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same "each move changes a counter by exactly one" idea solves
+  tennis_tournament_matches and is the additive prototype of the invariant
+  method. Cut-the-Knot also records the two-player version in which the last
+  player able to break wins: the outcome depends only on the parity of mn - 1.

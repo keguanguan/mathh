@@ -1,0 +1,85 @@
+id: rational_root_theorem_divisibility
+
+title: "The Rational Root Theorem: Clear Denominators and Compare Divisibility"
+
+aliases:
+  - rational root theorem
+  - rational root test
+  - sqrt(2) is irrational via monic polynomials
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Rational_root_theorem
+  original_title: Rational root theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Niven, Zuckerman, Montgomery - An Introduction to the Theory of Numbers
+    notes: Section 9.1
+
+problem:
+  statement: >
+    Show that if p/q in lowest terms is a root of a_n x^n + ... + a_1 x +
+    a_0 with integer coefficients, then p divides a_0 and q divides a_n.
+    Deduce that a monic integer polynomial has no non-integer rational
+    roots, so sqrt 2, cube root of 2, and sqrt 2 + sqrt 3 are irrational.
+  domain: algebra / number theory
+  answer: proved
+
+key_idea:
+  name: multiply the equation by q^n; every term except a_0 q^n is divisible by p, and every term except a_n p^n is divisible by q
+  category: number_theoretic_structure
+  summary: >
+    Substituting x = p/q and multiplying by q^n gives a_n p^n + a_{n-1}
+    p^{n-1} q + ... + a_0 q^n = 0. All terms but the last contain p, so p
+    divides a_0 q^n, and since gcd(p, q) = 1, p divides a_0. Symmetrically q
+    divides a_n p^n, so q divides a_n. For a monic polynomial q divides 1,
+    so any rational root is an integer; x^2 - 2 has no integer root, so sqrt
+    2 is irrational.
+
+intuitive_proof:
+  explanation: >
+    Let p/q be a root with gcd(p, q) = 1. Multiplying a_n (p/q)^n + ... +
+    a_0 = 0 by q^n gives the integer identity a_n p^n + a_{n-1} p^{n-1} q +
+    ... + a_1 p q^{n-1} + a_0 q^n = 0. Every term except a_0 q^n has a
+    factor p, so p divides a_0 q^n; as p and q are coprime, p divides a_0.
+    Likewise every term except a_n p^n has a factor q, so q divides a_n p^n
+    and hence q divides a_n. If a_n = 1 then q = 1 and the root is an
+    integer. Applications: x^2 - 2 and x^3 - 2 have no integer roots (the
+    integer would have to divide 2, and 1, 2 fail), so sqrt 2 and cube root
+    of 2 are irrational; sqrt 2 + sqrt 3 is a root of x^4 - 10x^2 + 1, whose
+    only candidate integer roots are 1 and -1, neither of which works.
+
+reasoning_structure:
+  naive_approach: >
+    Prove each irrationality separately by a bespoke parity or descent
+    argument.
+  crucial_observation: >
+    After clearing denominators, divisibility by p and by q isolates the
+    constant and leading coefficients.
+  why_it_simplifies: >
+    One divisibility observation gives a uniform test for rational roots and
+    a one-line proof of many classical irrationalities.
+
+related:
+  - sqrt2_irrational_descent
+  - sqrt2_plus_sqrt3_irrational
+  - log2_of_3_irrational
+
+tags:
+  - number theory
+  - divisibility
+  - polynomials
+  - irrationality
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,83 @@
+id: derangement_recursion_hat_of_first_person
+
+title: The Derangement Recursion by Following One Hat
+
+aliases:
+  - D(n) = (n-1)(D(n-1) + D(n-2))
+  - derangement recurrence
+  - where does the first person's hat go
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Derangement
+  original_title: Derangement (recurrence relations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let D(n) be the number of permutations of n objects with no fixed point.
+    Show that D(n) = (n - 1)(D(n - 1) + D(n - 2)).
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: person 1's hat goes to some person k (n - 1 choices); either k's hat goes to 1 (a swap, leaving n - 2 people) or not (then k 'becomes' person 1 in a derangement of n - 1)
+  category: recursive_structure
+  summary: >
+    In a derangement, person 1 receives the hat of some k != 1, n - 1
+    choices. Case A: k receives hat 1; the other n - 2 people are deranged
+    among themselves, D(n - 2) ways. Case B: k does not receive hat 1;
+    relabel hat 1 as 'hat k': the remaining n - 1 people (all but person 1)
+    must be deranged with respect to these hats, D(n - 1) ways.
+
+intuitive_proof:
+  explanation: >
+    Fix a derangement and let k be the owner of the hat that person 1
+    receives; there are n - 1 possibilities. Either person k receives hat 1,
+    in which case 1 and k have swapped and the remaining n - 2 people form a
+    derangement of their own hats: D(n - 2) ways. Or person k does not
+    receive hat 1; then remove person 1 and hat k, and give hat 1 the name
+    'hat k': the n - 1 remaining people must each avoid their own hat, where
+    the constraint 'k must not get hat 1' has become 'k must not get hat k'.
+    This is a bijection with derangements of n - 1 objects: D(n - 1) ways.
+    Summing over the two cases and the n - 1 choices of k gives the
+    recursion.
+
+reasoning_structure:
+  naive_approach: >
+    Compute D(n) by inclusion-exclusion and verify the recursion
+    algebraically.
+  crucial_observation: >
+    Following where a single hat goes splits derangements into two
+    self-similar families.
+  why_it_simplifies: >
+    A case split on one element produces the recursion directly, with a
+    small relabelling trick doing all the work.
+
+related:
+  - derangements_inclusion_exclusion
+
+tags:
+  - recursion
+  - derangements
+  - bijection
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same recursion shows D(n) = n D(n - 1) + (-1)^n.

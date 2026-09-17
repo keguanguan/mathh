@@ -1,0 +1,79 @@
+id: pairs_of_heaps_gcd_reachability
+
+title: Which Pairs Can Be Reached from (1, 1) by Adding One Number to the Other?
+
+aliases:
+  - Calkin-Wilf moves
+  - reachable pairs are coprime
+  - (a,b) to (a+b,b) or (a,a+b)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Calkin%E2%80%93Wilf_tree
+  original_title: Calkin–Wilf tree
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/EuclidAlg.shtml
+    original_title: Euclid's Game
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Start with the pair (1, 1). A move replaces (a, b) by (a + b, b) or (a,
+    a + b). Which pairs of positive integers can be reached?
+  domain: number theory
+  answer: exactly the pairs (m, n) with gcd(m, n) = 1
+
+key_idea:
+  name: gcd is invariant, and running the process backwards is the subtractive Euclidean algorithm
+  category: gcd_structure
+  summary: >
+    gcd(a + b, b) = gcd(a, b), so every reachable pair is coprime.
+    Conversely, from a coprime pair (m, n) with m > n the unique predecessor
+    is (m - n, n); repeating this is Euclid's algorithm, which ends at (1,
+    1) precisely because the gcd is 1.
+
+intuitive_proof:
+  explanation: >
+    Since gcd(a + b, b) = gcd(a, b), the gcd never changes and stays 1: only
+    coprime pairs are reachable. For the converse take a coprime pair (m, n)
+    with m != n. Exactly one of the two moves could have produced it, giving
+    the predecessor (m - n, n) or (m, n - m). Iterating, the entries
+    decrease and the gcd stays 1, so the process cannot stop at a pair (d,
+    d) with d > 1; it stops at (1, 1). Reversing the steps gives a path from
+    (1, 1) to (m, n).
+
+reasoning_structure:
+  naive_approach: >
+    Generate reachable pairs breadth-first and guess the pattern.
+  crucial_observation: >
+    The moves are the steps of the subtractive Euclidean algorithm read
+    backwards.
+  why_it_simplifies: >
+    The invariant gives necessity, and reversing the process (which is
+    deterministic) gives sufficiency, both in one line.
+
+related:
+  - euclids_game
+
+tags:
+  - gcd
+  - invariant
+  - reversing the process
+  - Euclidean algorithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The tree of reachable pairs is the Calkin-Wilf tree, which enumerates the
+  positive rationals.

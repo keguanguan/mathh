@@ -1,0 +1,84 @@
+id: interval_scheduling_earliest_finish
+
+title: Earliest Finish Time First Is Optimal for Interval Scheduling
+
+aliases:
+  - interval scheduling
+  - activity selection
+  - greedy stays ahead
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Interval_scheduling
+  original_title: Interval scheduling (greedy algorithm)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Kleinberg & Tardos - Algorithm Design
+    notes: Section 4.1
+
+problem:
+  statement: >
+    Given intervals on a line, choose as many pairwise disjoint ones as
+    possible. Show that repeatedly picking the interval with the earliest
+    finishing time among those compatible with the picks so far is optimal.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: the greedy choice finishes no later than the first interval of any optimal solution, so it can be exchanged in without loss; induct
+  category: smoothing
+  summary: >
+    Let the greedy picks be g_1, g_2, ... and an optimal solution be o_1,
+    o_2, ... ordered by finish time. By induction, g_k finishes no later
+    than o_k: g_1 finishes earliest overall, and if g_{k-1} finishes before
+    o_{k-1} then o_k is available to the greedy algorithm at step k, so g_k
+    finishes no later than o_k. Hence the greedy algorithm never runs out of
+    options before the optimal solution does, and picks at least as many
+    intervals.
+
+intuitive_proof:
+  explanation: >
+    Sort by finish time. Let the greedy algorithm select g_1, ..., g_m and
+    let o_1, ..., o_M be an optimal selection, both listed in order of
+    finish time. Claim: finish(g_k) <= finish(o_k) for all k <= m. For k =
+    1, g_1 has the earliest finish time of all intervals. If finish(g_{k-1})
+    <= finish(o_{k-1}), then o_k starts after finish(o_{k-1}) >=
+    finish(g_{k-1}), so o_k is compatible with g_1, ..., g_{k-1} and was a
+    candidate at step k; greedy chose the candidate with the earliest
+    finish, so finish(g_k) <= finish(o_k). Now if M > m, then o_{m+1} starts
+    after finish(o_m) >= finish(g_m), so it would have been a candidate
+    after step m and greedy would not have stopped. Hence m = M.
+
+reasoning_structure:
+  naive_approach: >
+    Try other greedy rules (shortest interval first, fewest conflicts
+    first), which fail on small examples, or use dynamic programming.
+  crucial_observation: >
+    Finishing early is the only resource that matters for future
+    compatibility, so the greedy choice dominates any other choice step by
+    step.
+  why_it_simplifies: >
+    An exchange/'stays ahead' argument proves optimality of the greedy rule
+    in one induction.
+
+related:
+  - cut_property_minimum_spanning_tree
+
+tags:
+  - smoothing
+  - greedy algorithm
+  - exchange argument
+  - scheduling
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

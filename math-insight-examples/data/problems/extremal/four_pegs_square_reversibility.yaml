@@ -1,0 +1,90 @@
+id: four_pegs_square_reversibility
+
+title: Four Pegs on a Grid Cannot Form a Larger Square
+
+aliases:
+  - four pegs that form a square
+  - peg jumping square puzzle
+  - reversible moves and minimal square
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/PegSquare.shtml
+  original_title: Four Pegs That Form a Square
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 1, The Invariance Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Four pegs stand at the corners of a unit square of a square grid. A move
+    lets one peg jump over another, landing at the point symmetric to its
+    start with respect to the peg jumped over (which stays in place). Can
+    the pegs ever form a larger square?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: every move is reversible, so a sequence producing a larger square could be run backwards to shrink a square; but a square of lattice points cannot be shrunk below the unit square
+  category: infinite_descent
+  summary: >
+    A jump P -> 2Q - P is undone by jumping back over Q, and jumps commute
+    with scaling. If some sequence of jumps took the unit square to a square
+    of side s > 1, then the reversed sequence, scaled by 1/s and started
+    from the unit square, would produce a square of side 1/s < 1 with all
+    pegs still on lattice points, which is impossible.
+
+intuitive_proof:
+  explanation: >
+    A jump sends a peg at P over a peg at Q to 2Q - P; it is reversed by
+    jumping back over Q, and it commutes with every homothety h (h(2Q - P) =
+    2h(Q) - h(P)). Suppose a sequence of jumps takes the unit square S_1 to
+    a lattice square S_2 of side s > 1. The reversed jumps take S_2 back to
+    S_1. Let h be the homothety scaling by 1/s that maps S_2 onto S_1 (a
+    unit square); conjugating the reversed sequence by h gives a legal
+    sequence of jumps that starts from S_1 and ends at h(S_1), a square of
+    side 1/s < 1. But jumps from lattice points land on lattice points (2Q -
+    P has integer coordinates), so every configuration reached from S_1
+    consists of lattice points, and two distinct lattice points are at least
+    1 apart. Contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of jumps and observe that the pegs seem confined, without
+    a proof.
+  crucial_observation: >
+    Reversibility of the moves plus scale invariance of the rules turns
+    'enlarge' into 'shrink', and shrinking is blocked by the discreteness of
+    the lattice.
+  why_it_simplifies: >
+    Instead of an invariant one uses the symmetry of the move set (each move
+    has an inverse) and minimality of the unit square: a two-line descent.
+
+related:
+  - regular_pentagon_lattice_descent
+
+tags:
+  - reversible moves
+  - infinite descent
+  - lattice
+  - puzzle
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The same reversal argument shows the pegs can never form a square of any
+  size other than the original.

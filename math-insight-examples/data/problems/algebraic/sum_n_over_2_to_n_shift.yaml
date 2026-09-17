@@ -1,0 +1,75 @@
+id: sum_n_over_2_to_n_shift
+
+title: Summing n/2^n by the Shift Trick
+
+aliases:
+  - arithmetico-geometric series
+  - sum of n/2^n equals 2
+  - subtract the halved series
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Arithmetico-geometric_sequence
+  original_title: Arithmetico-geometric sequence (sum to infinity)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Evaluate S = 1/2 + 2/4 + 3/8 + 4/16 + ... = sum of n/2^n.
+  domain: algebra
+  answer: "2"
+
+key_idea:
+  name: "subtract S/2 from S: the difference is a plain geometric series"
+  category: telescoping
+  summary: >
+    S/2 = 1/4 + 2/8 + 3/16 + .... Subtracting term by term, S - S/2 = 1/2 +
+    1/4 + 1/8 + ... = 1, since the coefficients n - (n - 1) = 1. So S/2 = 1
+    and S = 2.
+
+intuitive_proof:
+  explanation: >
+    Write S = sum over n >= 1 of n/2^n and S/2 = sum over n >= 1 of
+    n/2^{n+1} = sum over n >= 2 of (n - 1)/2^n. Subtracting (both series
+    converge absolutely), S - S/2 = 1/2 + sum over n >= 2 of (n - (n -
+    1))/2^n = sum over n >= 1 of 1/2^n = 1. Hence S = 2. Equivalently, S is
+    the expected number of coin tosses until the first head.
+
+reasoning_structure:
+  naive_approach: >
+    Compute partial sums numerically and guess 2, or differentiate the
+    geometric series sum x^n = 1/(1 - x) and set x = 1/2.
+  crucial_observation: >
+    Shifting the series by one term and subtracting removes the linear
+    factor n.
+  why_it_simplifies: >
+    The same shift that sums a geometric series sums an
+    arithmetico-geometric one; repeated shifts handle n^2/2^n and beyond.
+
+related:
+  - geometric_series_shift
+  - geometric_waiting_time_conditioning
+
+tags:
+  - telescoping
+  - series
+  - shift trick
+  - geometric series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

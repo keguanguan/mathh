@@ -1,0 +1,90 @@
+id: negative_coconuts_monkey
+
+title: "The Monkey and the Coconuts: Negative Coconuts"
+
+aliases:
+  - monkey and coconuts problem
+  - "-4 coconuts trick"
+  - five sailors and a monkey
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/NegativeCoconuts.shtml
+  original_title: Negative Coconuts
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/The_monkey_and_the_coconuts
+    original_title: The monkey and the coconuts
+
+problem:
+  statement: >
+    Five sailors gather coconuts. During the night each sailor in turn
+    divides the pile into five equal parts with one coconut left over, gives
+    the extra coconut to a monkey, hides his fifth, and puts the rest back.
+    In the morning the remaining pile again divides into five with one left
+    for the monkey. What is the smallest possible original number of
+    coconuts?
+  domain: number theory
+  answer: >
+    15621 in Williams's version (each of the six divisions leaves one
+    coconut for the monkey); 3121 if the morning division is exact
+
+key_idea:
+  name: the pile of -4 coconuts is a fixed point of the night's operation, and solutions of a linear recurrence differ from a fixed point by multiples of 5^6
+  category: auxiliary_object
+  summary: >
+    Each sailor's action sends a pile of N coconuts to 4(N - 1)/5. The pile
+    N = -4 is a fixed point of this map: 4(-4 - 1)/5 = -4, so it formally
+    satisfies every division condition. Two solutions differ by a multiple
+    of 5^6 (six divisions), so the smallest positive solution is -4 + 5^6 =
+    15621.
+
+intuitive_proof:
+  explanation: >
+    Let f(N) = 4(N - 1)/5 describe one sailor's action. The conditions are
+    that N, f(N), ..., f^5(N) are all congruent to 1 mod 5 (so that each of
+    the six divisions, five at night and one in the morning, leaves one
+    coconut for the monkey). The value N = -4 satisfies f(-4) = -4, so it
+    satisfies all six conditions. If N and N' both satisfy them, then f^k(N)
+    - f^k(N') = (4/5)^k (N - N') is an integer for k = 0, ..., 5, and f^5(N)
+    = f^5(N') mod 5, which together force 5^6 to divide N - N'. Hence every
+    solution is N = -4 + 5^6 m, and the smallest positive one is 15621. In
+    the version where the morning division is exact (no coconut for the
+    monkey), the conditions are N, ..., f^4(N) congruent to 1 mod 5 and
+    f^5(N) congruent to 0 mod 5; the same reasoning gives N = -4 + 5^5 m
+    with m = 1 mod 5, so the smallest solution is 3121.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the six divisibility conditions and solve them by brute force or
+    by a long chain of Diophantine equations.
+  crucial_observation: >
+    An impossible-looking pile size (-4) satisfies every condition, and all
+    solutions are shifts of it by the period of the process.
+  why_it_simplifies: >
+    Introducing a formal fixed point collapses a chain of Diophantine
+    conditions to a single congruence.
+
+tags:
+  - auxiliary object
+  - fixed point
+  - Diophantine equation
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Popularised by Gardner; the -4 trick is attributed to Dirac by legend. The
+  two classical versions (whether the morning split leaves a coconut for the
+  monkey) give 3121 and 15621.

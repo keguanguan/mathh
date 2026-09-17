@@ -1,0 +1,91 @@
+id: eulerian_circuit_longest_trail
+
+title: Even Degrees Imply an Eulerian Circuit (via a Longest Trail)
+
+aliases:
+  - Euler's theorem on Eulerian circuits
+  - converse of the Konigsberg argument
+  - maximal trail argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Eulerian_path
+  original_title: Eulerian path (properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that a connected graph in which every vertex has even degree has a
+    closed trail using every edge exactly once.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: take a longest trail; even degrees force it to be closed, and connectivity plus maximality force it to use every edge
+  category: extremal_principle
+  summary: >
+    Let T be a longest trail (no repeated edges). If it ended at a vertex
+    other than its start, that vertex would have used an odd number of its
+    edges, leaving an unused edge to extend T; so T is closed. If some edge
+    were unused, connectivity gives an unused edge e at a vertex v of T;
+    starting the closed trail T at v and then continuing along e gives a
+    longer trail. So T uses all edges.
+
+intuitive_proof:
+  explanation: >
+    Choose a trail T = v_0 e_1 v_1 ... e_m v_m of maximum length (edges are
+    distinct, vertices may repeat). Suppose v_m != v_0. Every visit to v_m
+    by the trail, other than the final arrival, uses two edges at v_m, and
+    the final arrival uses one, so T uses an odd number of edges at v_m;
+    since the degree of v_m is even, some edge at v_m is unused, and
+    appending it lengthens T, contradicting maximality. Hence v_0 = v_m and
+    T is closed. Now suppose some edge is not in T. Since the graph is
+    connected, walk from an endpoint of an unused edge to a vertex of T
+    along a path; the first edge of this path that touches T, or the unused
+    edge itself if the path is empty, gives an unused edge e incident to a
+    vertex v of T (if every edge along the path lay in T, all its vertices
+    would be on T, and the unused edge at its start would be incident to T).
+    Rotate the closed trail T to start and end at v, then append e: this is
+    a longer trail, again contradicting maximality. So T contains every
+    edge: an Eulerian circuit.
+
+reasoning_structure:
+  naive_approach: >
+    Try to trace a circuit greedily, which can get stuck, and then patch it
+    with detours (Hierholzer's algorithm, which is essentially this proof
+    made constructive).
+  crucial_observation: >
+    A maximal trail cannot be extended, and even degrees mean that stopping
+    anywhere but the start leaves an unused edge.
+  why_it_simplifies: >
+    The extremal principle gives existence in a few lines; together with the
+    Konigsberg parity argument it characterises Eulerian graphs completely.
+
+related:
+  - bridges_of_konigsberg
+  - longest_path_min_degree_cycle
+  - de_bruijn_sequence_eulerian
+
+tags:
+  - extremal principle
+  - Eulerian circuit
+  - graph theory
+  - longest trail
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

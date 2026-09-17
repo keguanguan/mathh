@@ -1,0 +1,81 @@
+id: prime_divides_binomial_coefficient
+
+title: A Prime p Divides C(p, k) for 0 < k < p
+
+aliases:
+  - p divides binomial coefficients
+  - freshman's dream
+  - (a + b)^p = a^p + b^p mod p
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binomial_coefficient
+  original_title: Binomial coefficient (divisibility properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that for a prime p and 0 < k < p, the binomial coefficient C(p, k)
+    is divisible by p. Deduce that (a + b)^p = a^p + b^p mod p.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: in k! C(p, k) = p (p - 1) ... (p - k + 1) the prime p divides the right side but not k!
+  category: factorisation
+  summary: >
+    The identity C(p, k) = p(p - 1)...(p - k + 1)/k! shows that k! C(p, k)
+    is divisible by p. Since k < p, none of the factors of k! is divisible
+    by p, so p does not divide k!, and as p is prime it must divide C(p, k).
+    Expanding (a + b)^p, all the middle binomial terms vanish mod p.
+
+intuitive_proof:
+  explanation: >
+    From the formula, k! C(p, k) = p (p - 1) ... (p - k + 1), and the right
+    side has the factor p. The prime p does not divide k! because k! is a
+    product of integers less than p (and p is prime, so it cannot divide a
+    product of smaller numbers). Since p divides the product k! C(p, k) and
+    is coprime to k!, it divides C(p, k). Consequently, in the binomial
+    expansion of (a + b)^p every term except a^p and b^p has a coefficient
+    divisible by p, giving (a + b)^p = a^p + b^p mod p. Induction on a then
+    gives a^p = a mod p, Fermat's little theorem.
+
+reasoning_structure:
+  naive_approach: >
+    Compute rows of Pascal's triangle for small primes and observe the
+    divisibility.
+  crucial_observation: >
+    The prime appears in the numerator of the binomial coefficient but
+    cannot appear in the denominator.
+  why_it_simplifies: >
+    A one-line factorisation argument gives the divisibility, and the
+    'freshman's dream' plus induction gives Fermat's little theorem for
+    free.
+
+related:
+  - fermat_little_theorem_necklaces
+  - lucas_theorem_binomial_parity
+
+tags:
+  - factorisation
+  - binomial coefficients
+  - primes
+  - Fermat's little theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

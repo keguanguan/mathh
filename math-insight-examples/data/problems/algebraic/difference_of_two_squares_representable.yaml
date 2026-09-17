@@ -1,0 +1,77 @@
+id: difference_of_two_squares_representable
+
+title: Which Integers Are Differences of Two Squares
+
+aliases:
+  - difference of squares representation
+  - n = x^2 - y^2
+  - numbers 2 mod 4 are not differences of squares
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Difference_of_two_squares
+    original_title: Difference of two squares (integers)
+
+problem:
+  statement: >
+    Which positive integers can be written as x^2 - y^2 with integers x, y?
+  domain: number theory
+  answer: >
+    exactly those not congruent to 2 mod 4 (odd numbers and multiples of 4)
+
+key_idea:
+  name: x^2 - y^2 = (x - y)(x + y), and the two factors have the same parity
+  category: factorisation
+  summary: >
+    Factor n = (x - y)(x + y). The factors x - y and x + y have the same
+    parity, so n is odd or divisible by 4. Conversely, an odd n = 1 * n
+    gives x = (n+1)/2, y = (n-1)/2, and n = 4m = 2 * 2m gives x = m + 1, y =
+    m - 1.
+
+intuitive_proof:
+  explanation: >
+    If n = x^2 - y^2 = (x - y)(x + y), the two factors differ by 2y, so they
+    are both odd or both even; their product is then odd or a multiple of 4,
+    never 2 mod 4. Conversely, if n = ab with a, b of the same parity and a
+    >= b, then x = (a + b)/2 and y = (a - b)/2 are integers with x^2 - y^2 =
+    ab. For odd n take a = n, b = 1; for n = 4m take a = 2m, b = 2. So every
+    number not 2 mod 4 is a difference of two squares.
+
+reasoning_structure:
+  naive_approach: >
+    Test small numbers and guess the pattern; or analyse squares mod 4
+    without seeing the constructive half.
+  crucial_observation: >
+    The factorisation turns the equation into a choice of two factors of
+    equal parity.
+  why_it_simplifies: >
+    One factorisation gives both the obstruction and the construction, and
+    even counts the representations (pairs of same-parity factors).
+
+related:
+  - squares_mod_four_obstruction
+
+tags:
+  - factorisation
+  - squares
+  - parity
+  - Diophantine equation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

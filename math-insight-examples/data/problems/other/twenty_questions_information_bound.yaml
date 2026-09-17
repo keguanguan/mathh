@@ -1,0 +1,89 @@
+id: twenty_questions_information_bound
+
+title: Twenty Questions Can Distinguish at Most 2^20 Objects
+
+aliases:
+  - twenty questions
+  - binary search lower bound
+  - yes/no questions information
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Twenty_questions
+  original_title: Twenty questions (computers, scientific method and situation puzzles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Binary_search
+    original_title: Binary search (performance)
+
+problem:
+  statement: >
+    Show that with k yes/no questions one can identify an unknown object
+    among at most 2^k candidates, and that no strategy does better; in
+    particular 20 questions suffice for about a million objects and 7
+    questions for the numbers 1 to 100.
+  domain: combinatorics
+  answer: >
+    at most 2^k objects; achieved by halving the candidate set at every
+    question
+
+key_idea:
+  name: each answer is one bit, so k answers form at most 2^k distinct answer sequences, and each object must correspond to a distinct sequence
+  category: information_counting_bound
+  summary: >
+    A strategy maps each object to the sequence of k answers it produces;
+    different objects must give different sequences, otherwise they cannot
+    be told apart. There are only 2^k sequences, so at most 2^k objects can
+    be handled. Conversely, always asking a question that splits the
+    remaining candidates in half identifies one of 2^k objects in k
+    questions.
+
+intuitive_proof:
+  explanation: >
+    Lower bound: fix any strategy (the questions may depend on earlier
+    answers). Each object determines the sequence of k answers, and if two
+    objects gave the same sequence the questioner could not distinguish
+    them. So the number of objects is at most the number of binary sequences
+    of length k, namely 2^k. Upper bound: with N <= 2^k candidates, ask each
+    time whether the object is in a fixed half of the remaining candidates;
+    after each answer at most half remain, so after k questions at most
+    N/2^k <= 1 candidate remains. For N = 100, 2^7 = 128 >= 100 suffices
+    while 2^6 = 64 does not.
+
+reasoning_structure:
+  naive_approach: >
+    Ask specific questions ('is it a dog?') that eliminate one candidate at
+    a time.
+  crucial_observation: >
+    Answers are bits, and k bits carry at most 2^k possibilities regardless
+    of the cleverness of the questions.
+  why_it_simplifies: >
+    A counting bound proves optimality of halving without analysing
+    strategies; it is the basic lower bound of information theory and of
+    comparison-based search.
+
+related:
+  - nine_coins_two_weighings_ternary
+  - binary_search_loop_invariant
+
+tags:
+  - information bound
+  - binary search
+  - counting
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With one lie allowed (Ulam's game) the count changes to sequences with at
+  most one error, i.e. about 2^k/(k + 1) objects.

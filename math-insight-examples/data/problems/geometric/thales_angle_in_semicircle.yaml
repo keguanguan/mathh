@@ -1,0 +1,71 @@
+id: thales_angle_in_semicircle
+
+title: The Angle in a Semicircle Is Right (Thales)
+
+aliases:
+  - Thales' theorem
+  - angle in a semicircle
+  - inscribed angle on a diameter
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Thales%27s_theorem
+  original_title: Thales's theorem (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book III, Proposition 31
+
+problem:
+  statement: >
+    A, B are the endpoints of a diameter of a circle and C is any other
+    point on the circle. Show that angle ACB is a right angle.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "join C to the centre: the radius splits the triangle into two isosceles triangles whose base angles add up to the angle at C"
+  category: decomposition
+  summary: >
+    Let O be the centre. OA = OB = OC, so triangles OAC and OBC are
+    isosceles with base angles a and b. The angles of triangle ABC are a, b
+    and a + b, and their sum is 180, so a + b = 90.
+
+intuitive_proof:
+  explanation: >
+    Let O be the midpoint of AB, the centre of the circle. Since OA = OC,
+    angle OAC = angle OCA =: a; since OB = OC, angle OBC = angle OCB =: b.
+    The angle at C is a + b, and the angle sum of triangle ABC gives a + b +
+    (a + b) = 180, so angle ACB = a + b = 90 degrees.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates and dot products, or the general inscribed angle
+    theorem.
+  crucial_observation: >
+    A radius to the third vertex decomposes the triangle into two isosceles
+    triangles, whose equal angles make the angle at C half the total.
+  why_it_simplifies: >
+    One auxiliary segment reduces the statement to the angle sum of a
+    triangle.
+
+tags:
+  - decomposition
+  - circle
+  - isosceles triangles
+  - angle chasing
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The converse (a right angle subtends a diameter) follows similarly, and
+  the general inscribed angle theorem uses the same split.

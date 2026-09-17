@@ -1,0 +1,87 @@
+id: nine_point_circle_homothety
+
+title: The Nine-Point Circle via a Homothety at the Orthocentre
+
+aliases:
+  - nine-point circle
+  - Feuerbach circle
+  - homothety with ratio 1/2 at H
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Nine-point_circle
+  original_title: Nine-point circle (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the midpoints of the three sides, the feet of the three
+    altitudes, and the midpoints of the segments from the orthocentre to the
+    three vertices all lie on one circle, of radius half the circumradius.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the homothety with centre the orthocentre H and ratio 1/2 maps the circumcircle to a circle of half the radius, and all nine points are images of points known to lie on the circumcircle
+  category: homothety_or_inversion
+  summary: >
+    Let h be the homothety with centre H and ratio 1/2. The reflections of H
+    in the sides and in the midpoints of the sides all lie on the
+    circumcircle, and h sends them to the feet of the altitudes and the
+    midpoints of the sides respectively, while sending the vertices to the
+    midpoints of HA, HB, HC. So all nine points lie on h(circumcircle), a
+    circle of radius R/2.
+
+intuitive_proof:
+  explanation: >
+    Two facts about the orthocentre H: (1) the reflection of H in side BC
+    lies on the circumcircle; (2) the reflection of H in the midpoint of BC
+    is the point A' diametrically opposite A on the circumcircle (since A'B
+    is perpendicular to AB and hence parallel to CH, and similarly A'C is
+    parallel to BH, so BHCA' is a parallelogram). Apply the homothety h with
+    centre H and ratio 1/2, which maps the circumcircle to a circle of
+    radius R/2 centred at the midpoint of OH. The vertex A maps to the
+    midpoint of HA. The reflection of H in BC (on the circumcircle by (1))
+    maps to the foot of the altitude from A, the midpoint of H and its
+    reflection. The point A' (on the circumcircle by (2)) maps to the
+    midpoint of HA', which is the midpoint of BC. The same for the other two
+    sides. Hence all nine points lie on h(circumcircle).
+
+reasoning_structure:
+  naive_approach: >
+    Prove that the nine points are concyclic in groups by angle chasing and
+    cyclic quadrilaterals, a long classical argument.
+  crucial_observation: >
+    Each of the nine points is the midpoint of H and a point on the
+    circumcircle, i.e. its image under one homothety.
+  why_it_simplifies: >
+    A single homothety carries a known circle to the nine points at once;
+    the same map explains the Euler line and Feuerbach's theorem.
+
+related:
+  - euler_line_homothety
+  - orthocentre_reflection_circumcircle
+
+tags:
+  - homothety
+  - nine-point circle
+  - orthocentre
+  - circumcircle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

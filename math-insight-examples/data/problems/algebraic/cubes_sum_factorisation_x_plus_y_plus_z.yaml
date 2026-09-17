@@ -1,0 +1,79 @@
+id: cubes_sum_factorisation_x_plus_y_plus_z
+
+title: If x + y + z = 0 Then x^3 + y^3 + z^3 = 3xyz
+
+aliases:
+  - sum of cubes identity
+  - x^3 + y^3 + z^3 - 3xyz factorisation
+  - cube identity when the sum is zero
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Factorization
+  original_title: Factorization (sum of cubes)
+  accessed: 2026-09-16
+  notes: >
+    The factorisation x^3 + y^3 + z^3 - 3xyz = (x + y + z)(x^2 + y^2 + z^2 -
+    xy - yz - zx) is classical.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities / algebra
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that if x + y + z = 0 then x^3 + y^3 + z^3 = 3xyz. Deduce that (a -
+    b)^3 + (b - c)^3 + (c - a)^3 = 3(a - b)(b - c)(c - a).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the polynomial x^3 + y^3 + z^3 - 3xyz has the factor x + y + z
+  category: factorisation
+  summary: >
+    x^3 + y^3 + z^3 - 3xyz = (x + y + z)(x^2 + y^2 + z^2 - xy - yz - zx), as
+    expansion verifies. If x + y + z = 0 the right side vanishes. The
+    differences a - b, b - c, c - a sum to zero, so the second identity is a
+    special case.
+
+intuitive_proof:
+  explanation: >
+    Expanding (x + y + z)(x^2 + y^2 + z^2 - xy - yz - zx) gives x^3 + y^3 +
+    z^3 - 3xyz (all mixed terms cancel in pairs). Hence when x + y + z = 0
+    the left side is zero and x^3 + y^3 + z^3 = 3xyz. Substituting x = a -
+    b, y = b - c, z = c - a, whose sum is 0, gives the second identity at
+    once. (The factorisation can be discovered by noting that x = -(y + z)
+    is a root of the cubic in x, so x + y + z divides it.)
+
+reasoning_structure:
+  naive_approach: >
+    Substitute z = -x - y and expand (x + y)^3, which works but hides the
+    symmetric structure.
+  crucial_observation: >
+    The expression is divisible by x + y + z, which is visible from the fact
+    that setting z = -x - y kills it.
+  why_it_simplifies: >
+    A symmetric factorisation settles the identity and all its
+    specialisations at once.
+
+tags:
+  - factorisation
+  - symmetric polynomials
+  - algebraic identity
+  - cubes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The second factor equals (1/2)((x - y)^2 + (y - z)^2 + (z - x)^2), which
+  gives the AM-GM inequality for three variables.

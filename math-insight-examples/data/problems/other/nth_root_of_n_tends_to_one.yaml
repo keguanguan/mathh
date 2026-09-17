@@ -1,0 +1,74 @@
+id: nth_root_of_n_tends_to_one
+
+title: The n-th Root of n Tends to 1
+
+aliases:
+  - n^(1/n) tends to 1
+  - limit of n^(1/n)
+  - binomial bound for roots
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Nth_root
+  original_title: Nth root (limits)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that n^{1/n} tends to 1 as n grows.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: "write n^{1/n} = 1 + e_n and expand (1 + e_n)^n by the binomial theorem: the term C(n, 2) e_n^2 alone already exceeds n unless e_n is small"
+  category: auxiliary_object
+  summary: >
+    Let e_n = n^{1/n} - 1 >= 0. Then n = (1 + e_n)^n >= 1 + C(n, 2) e_n^2 >=
+    n(n - 1) e_n^2/2, so e_n^2 <= 2/(n - 1) and e_n -> 0.
+
+intuitive_proof:
+  explanation: >
+    Since n >= 1, e_n = n^{1/n} - 1 is non-negative. By the binomial
+    theorem, n = (1 + e_n)^n = 1 + n e_n + C(n, 2) e_n^2 + ... >= C(n, 2)
+    e_n^2 = n(n - 1) e_n^2/2 for n >= 2. Hence e_n^2 <= 2/(n - 1), so e_n <=
+    sqrt(2/(n - 1)) -> 0, i.e. n^{1/n} -> 1.
+
+reasoning_structure:
+  naive_approach: >
+    Take logarithms and use (ln n)/n -> 0, which requires knowing that limit
+    or L'Hopital's rule.
+  crucial_observation: >
+    Introducing the deviation e_n and keeping a single well-chosen term of
+    the binomial expansion gives an explicit bound.
+  why_it_simplifies: >
+    An auxiliary variable plus one term of a binomial expansion proves the
+    limit with an explicit rate and no calculus.
+
+related:
+  - bernoulli_inequality_induction
+  - e_sequence_increasing_am_gm
+
+tags:
+  - auxiliary object
+  - binomial theorem
+  - limits
+  - sequences
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same expansion shows a^{1/n} -> 1 for any fixed a > 0.

@@ -1,0 +1,73 @@
+id: geometric_series_half_square_picture
+
+title: 1/2 + 1/4 + 1/8 + ... = 1 by Halving a Square
+
+aliases:
+  - geometric series proof without words
+  - halving a square repeatedly
+  - sum of 1/2^n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF
+  original_title: 1/2 + 1/4 + 1/8 + 1/16 + ⋯ (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Nelsen - Proofs Without Words
+    notes: MAA, 1993
+
+problem:
+  statement: >
+    Show that 1/2 + 1/4 + 1/8 + ... = 1.
+  domain: analysis
+  answer: "1"
+
+key_idea:
+  name: cut a unit square in half, then half of the remainder, and so on; the pieces have areas 1/2, 1/4, 1/8, ... and exhaust the square
+  category: decomposition
+  summary: >
+    Take a unit square and shade half of it (area 1/2), then half of the
+    unshaded part (1/4), then half of what remains (1/8), and so on. After n
+    steps the unshaded part has area 1/2^n, which tends to 0, so the shaded
+    pieces fill the square: the series sums to 1.
+
+intuitive_proof:
+  explanation: >
+    At each step the unshaded region is a rectangle of area 1/2^n, and the
+    next piece has half its area, 1/2^{n+1}. The pieces are disjoint and
+    their union after n steps has area 1 - 1/2^n. Since 1/2^n -> 0, the
+    total area of all pieces is 1, which is the sum of the series. The same
+    picture with a square cut into quarters gives 1/4 + 1/16 + ... = 1/3.
+
+reasoning_structure:
+  naive_approach: >
+    Compute partial sums 1/2, 3/4, 7/8, ... and argue about the limit
+    algebraically.
+  crucial_observation: >
+    Each term is exactly half of what is left, so the remainder shrinks
+    geometrically and the pieces exhaust the whole.
+  why_it_simplifies: >
+    A decomposition of the unit square makes the sum visible and gives the
+    limit without the formula for geometric series.
+
+related:
+  - geometric_series_shift
+
+tags:
+  - decomposition
+  - geometric series
+  - proof without words
+  - area
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

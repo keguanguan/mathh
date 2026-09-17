@@ -1,0 +1,86 @@
+id: ant_on_a_rubber_rope
+
+title: The Ant on a Rubber Rope
+
+aliases:
+  - ant on a rubber band
+  - worm on a rubber rope
+  - inchworm on a stretching band
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ant_on_a_rubber_rope
+  original_title: Ant on a rubber rope
+  accessed: 2026-09-16
+  notes: Popularised by Martin Gardner (Scientific American, 1975) and Gamow.
+
+additional_sources:
+  - name: Gardner - Time Travel and Other Mathematical Bewilderments
+    notes: W. H. Freeman, 1988.
+
+problem:
+  statement: >
+    An ant starts at one end of a 1 km rubber rope and crawls toward the
+    other end at 1 cm per second. At the end of every second the rope is
+    stretched uniformly by another 1 km (so after t seconds it is
+    (1 + t) km long, and the ant is carried along proportionally). Does the
+    ant ever reach the far end?
+  domain: dynamical systems
+  answer: >
+    Yes, after roughly e^{100000} seconds: the ant reaches the end once the
+    harmonic sum 1 + 1/2 + ... + 1/t exceeds 100000.
+
+key_idea:
+  name: measure the ant's position as a fraction of the rope's current length
+  category: coordinate_transformation
+  summary: >
+    Stretching does not change the fraction of the rope that lies behind
+    the ant. During second t the rope is t km long, so the ant's crawl adds
+    1 cm / t km = 1/(100000 t) to that fraction. The fractions add up to a
+    harmonic series, which diverges, so the fraction eventually reaches 1.
+
+intuitive_proof:
+  explanation: >
+    Use the "rubber coordinate": the proportion of the rope between the
+    start and the ant. Uniform stretching moves every point of the rope
+    proportionally, so it leaves this proportion unchanged; only the ant's
+    own crawling changes it. During the t-th second the rope has length
+    t km = 100000 t cm, and the ant crawls 1 cm, increasing the proportion
+    by 1/(100000 t). After T seconds the proportion is
+    (1/100000)(1 + 1/2 + ... + 1/T). Since the harmonic series diverges,
+    this eventually exceeds 1, at which moment the ant has reached the far
+    end. (With continuous stretching the sum becomes ln(1 + T) and the
+    arrival time is about e^{100000} seconds.)
+
+reasoning_structure:
+  naive_approach: >
+    Compare the ant's speed (1 cm/s) with the speed of the far end
+    (1 km/s) and conclude it can never catch up; or attempt to track the
+    ant's absolute position, which is a messy recurrence.
+  crucial_observation: >
+    In coordinates that stretch with the rope, the stretching vanishes and
+    the ant's progress is a simple sum.
+  why_it_simplifies: >
+    The right coordinate turns a two-effect process into a one-effect
+    process, and the question reduces to divergence of the harmonic series.
+
+tags:
+  - coordinate transformation
+  - harmonic series
+  - dynamical systems
+  - scaling
+  - counterintuitive
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The rubber coordinate is the same idea as comoving coordinates in
+  cosmology; the answer is "yes" only because the harmonic series diverges.

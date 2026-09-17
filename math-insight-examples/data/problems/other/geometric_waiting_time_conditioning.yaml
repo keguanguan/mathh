@@ -1,0 +1,78 @@
+id: geometric_waiting_time_conditioning
+
+title: The Expected Number of Trials until the First Success Is 1/p
+
+aliases:
+  - expectation of the geometric distribution
+  - waiting time for success
+  - renewal argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Geometric_distribution
+  original_title: Geometric distribution (expected value)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on probability
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Independent trials each succeed with probability p. Show that the
+    expected number of trials up to and including the first success is 1/p.
+  domain: probability
+  answer: 1/p
+
+key_idea:
+  name: "condition on the first trial: after a failure the situation restarts, so E = 1 + (1 - p) E"
+  category: recursive_structure
+  summary: >
+    Let E be the expected number of trials. The first trial is always
+    performed. With probability p it succeeds and we stop; with probability
+    1 - p it fails and, by independence, the expected number of further
+    trials is again E. So E = 1 + (1 - p)E, giving E = 1/p.
+
+intuitive_proof:
+  explanation: >
+    Let E be the expectation (finite, since the tail probabilities decay
+    geometrically). Condition on the outcome of the first trial: if it
+    succeeds (probability p) the count is 1; if it fails (probability 1 - p)
+    the count is 1 plus the number of further trials, which has the same
+    distribution as the original count by memorylessness. Hence E = p * 1 +
+    (1 - p)(1 + E) = 1 + (1 - p)E, so pE = 1 and E = 1/p.
+
+reasoning_structure:
+  naive_approach: >
+    Sum the series sum of k p (1 - p)^{k-1} by differentiating a geometric
+    series.
+  crucial_observation: >
+    After a failure the process is a fresh copy of itself, so the
+    expectation satisfies a one-line equation.
+  why_it_simplifies: >
+    Self-similarity replaces the evaluation of an infinite series by solving
+    a linear equation; the same 'restart' idea gives expected waiting times
+    for patterns and random walks.
+
+related:
+  - coupon_collector_linearity
+
+tags:
+  - recursion
+  - conditioning
+  - expected value
+  - memorylessness
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

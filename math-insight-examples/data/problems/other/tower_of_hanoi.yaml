@@ -1,0 +1,89 @@
+id: tower_of_hanoi
+
+title: Tower of Hanoi Needs 2^n - 1 Moves
+
+aliases:
+  - Tower of Hanoi
+  - Towers of Hanoi
+  - Lucas tower puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/recurrence/hanoi.shtml
+  original_title: Tower of Hanoi
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The puzzle was invented by Edouard Lucas in 1883.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+    original_title: Tower of Hanoi
+  - name: Graham, Knuth, Patashnik - Concrete Mathematics
+    notes: Section 1.1.
+
+problem:
+  statement: >
+    n discs of distinct sizes are stacked on one of three pegs, largest at
+    the bottom. A move transfers the top disc of one peg to another peg,
+    but a disc may never be placed on a smaller disc. What is the minimum
+    number of moves needed to transfer the whole tower to another peg?
+  domain: combinatorics
+  answer: 2^n - 1
+
+key_idea:
+  name: the largest disc can move only when the other n - 1 form a tower on the third peg
+  category: recursive_structure
+  summary: >
+    To move the biggest disc from peg A to peg C, all smaller discs must
+    sit on peg B, and afterwards they must come from B to C. So any
+    solution contains two complete solutions of the (n-1)-disc problem
+    plus one move: T(n) >= 2T(n-1) + 1, and the obvious strategy attains
+    it.
+
+intuitive_proof:
+  explanation: >
+    Look at the moment the largest disc moves for the first time. At that
+    moment its source and destination pegs hold nothing else (the disc is
+    on top of its peg and can only land on an empty peg), so all n - 1
+    smaller discs are stacked on the third peg: at least T(n-1) moves have
+    already been spent. After the largest disc finally settles on the
+    target peg, the n - 1 smaller discs must again be moved on top of it,
+    another T(n-1) moves at least. Hence T(n) >= 2T(n-1) + 1, and the
+    strategy "move n - 1 discs aside, move the big disc, move n - 1 discs
+    back on top" shows T(n) = 2T(n-1) + 1. With T(1) = 1 this gives
+    T(n) = 2^n - 1.
+
+reasoning_structure:
+  naive_approach: >
+    Solve the puzzle for 1, 2, 3, 4 discs by hand, tabulate 1, 3, 7, 15,
+    guess 2^n - 1 and try to argue optimality by considering all move
+    sequences.
+  crucial_observation: >
+    The biggest disc is a bottleneck that forces the rest of the puzzle to
+    be solved completely before and after it moves.
+  why_it_simplifies: >
+    Both the lower bound and the strategy come from the same recursive
+    picture; nothing about the smaller discs' actual moves needs to be
+    tracked.
+
+tags:
+  - recursion
+  - induction
+  - lower bound
+  - puzzle
+  - recurrence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The move sequence is also a Gray code and a walk on the Sierpinski
+  graph, further representation changes worth knowing.

@@ -1,0 +1,75 @@
+id: consecutive_product_divisible_by_factorial
+
+title: The Product of k Consecutive Integers Is Divisible by k!
+
+aliases:
+  - product of consecutive integers divisible by factorial
+  - binomial coefficients are integers
+  - k! divides n(n+1)...(n+k-1)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binomial_coefficient
+  original_title: Binomial coefficient (divisibility properties)
+  accessed: 2026-09-16
+  notes: A standard exercise in elementary number theory; the combinatorial proof is folklore.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 6 (Number Theory) and Chapter 5 (Enumerative Combinatorics).
+
+problem:
+  statement: >
+    Show that the product of any k consecutive positive integers is
+    divisible by k!.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the quotient counts something
+  category: combinatorial_interpretation
+  summary: >
+    n(n+1)...(n+k-1)/k! equals the binomial coefficient C(n+k-1, k), which
+    counts the k-element subsets of an (n+k-1)-element set. A number that
+    counts subsets is an integer.
+
+intuitive_proof:
+  explanation: >
+    Write the product as (n+k-1)!/(n-1)!. Dividing by k! gives
+    (n+k-1)!/((n-1)! k!) = C(n+k-1, k), the number of ways to choose k
+    objects out of n+k-1. That number is obviously a non-negative integer,
+    since it counts a finite set. Hence k! divides the product.
+
+reasoning_structure:
+  naive_approach: >
+    Show that for each prime p the exponent of p in k! is at most its
+    exponent in the product, using Legendre's formula, or argue by
+    induction on k and n using Pascal's rule.
+  crucial_observation: >
+    The quotient in question is a binomial coefficient, i.e. the size of a
+    set.
+  why_it_simplifies: >
+    Integrality is immediate from the counting interpretation; no
+    prime-by-prime analysis is needed.
+
+tags:
+  - combinatorial interpretation
+  - binomial coefficients
+  - divisibility
+  - number theory
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The general principle: to prove a rational expression is an integer,
+  find something it counts. The same trick shows (2n)!/(n!)^2 and the
+  multinomial coefficients are integers.

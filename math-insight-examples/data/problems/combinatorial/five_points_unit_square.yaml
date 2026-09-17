@@ -1,0 +1,76 @@
+id: five_points_unit_square
+
+title: Five Points in a Unit Square, Two Are Close
+
+aliases:
+  - five points in a square
+  - two points within distance sqrt(2)/2
+  - partition the square into four quarters
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: Standard introductory example of the geometric pigeonhole principle.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/pigeon.shtml
+    original_title: Pigeonhole Principle
+
+problem:
+  statement: >
+    Five points are placed in a unit square. Show that two of them are at
+    distance at most sqrt(2)/2.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: cut the square into four quarter-squares
+  category: pigeonhole
+  summary: >
+    Divide the square into four squares of side 1/2. Five points in four
+    squares put two points in the same quarter, whose diameter (its
+    diagonal) is sqrt(2)/2.
+
+intuitive_proof:
+  explanation: >
+    Split the unit square into four closed squares of side 1/2. By the
+    pigeonhole principle two of the five points lie in the same small
+    square. Any two points of a square of side 1/2 are at most a diagonal
+    apart, i.e. at most sqrt(2)/2.
+
+reasoning_structure:
+  naive_approach: >
+    Try to spread five points as far apart as possible (four corners and the
+    centre) and argue that this configuration is optimal, which requires a
+    genuine optimisation.
+  crucial_observation: >
+    The bound sqrt(2)/2 is the diameter of a natural piece into which the
+    square splits into fewer than five parts.
+  why_it_simplifies: >
+    A partition into four pieces of small diameter makes the claim a direct
+    pigeonhole count, with no optimisation.
+
+tags:
+  - pigeonhole
+  - geometry
+  - partition
+  - diameter
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The template "partition into pieces of small diameter, then pigeonhole"
+  solves a whole family of "points in a region" problems, e.g. 10 points in
+  an equilateral triangle.

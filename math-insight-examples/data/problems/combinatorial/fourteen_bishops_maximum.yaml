@@ -1,0 +1,81 @@
+id: fourteen_bishops_maximum
+
+title: At Most 14 Non-Attacking Bishops on a Chessboard
+
+aliases:
+  - maximum bishops on a chessboard
+  - bishops independence number
+  - diagonals pigeonhole
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mathematical_chess_problem
+  original_title: Mathematical chess problem (domination and independence)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    What is the largest number of bishops that can be placed on an 8x8
+    chessboard so that no two attack each other?
+  domain: combinatorics
+  answer: "14"
+
+key_idea:
+  name: there are 15 diagonals in one direction, but the two single-square end diagonals lie on the same diagonal of the other direction
+  category: pigeonhole
+  summary: >
+    Bishops must occupy distinct diagonals of one direction, of which there
+    are 15. The two corner squares a1 and h8 are each a whole diagonal of
+    that direction, yet they lie on the same long diagonal of the other
+    direction, so at most one of them can be used: at most 14 bishops.
+    Fourteen are easily placed (e.g. eight on the first row and six on the
+    last row, avoiding the corners on the last row).
+
+intuitive_proof:
+  explanation: >
+    The 15 diagonals running from lower left to upper right partition the
+    board, and two bishops on the same such diagonal attack each other, so
+    at most 15 bishops fit, at most one per diagonal. The extreme diagonals
+    of this family are the single squares a1 and h8, which lie together on
+    the other long diagonal a1-h8; at most one can hold a bishop. Hence at
+    most 14 bishops. Placing eight bishops along the first rank and six
+    along the eighth rank excluding its two corners gives 14 mutually
+    non-attacking bishops.
+
+reasoning_structure:
+  naive_approach: >
+    Search by trial for a large placement and hope it is optimal.
+  crucial_observation: >
+    The diagonals of one direction are the boxes, and one pair of boxes is
+    mutually exclusive.
+  why_it_simplifies: >
+    A pigeonhole count with one extra observation gives an exact answer; the
+    construction matches the bound.
+
+related:
+  - thirty_two_knights_maximum
+
+tags:
+  - pigeonhole
+  - chess
+  - bishops
+  - extremal
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  On an n x n board the maximum is 2n - 2.

@@ -1,0 +1,85 @@
+id: gray_code_hypercube_hamiltonian
+
+title: Gray Codes and Hamiltonian Cycles in the Hypercube
+
+aliases:
+  - Gray code
+  - reflected binary code
+  - Hamiltonian cycle in the n-cube
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Gray_code
+  original_title: Gray code (constructing an n-bit Gray code)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Hypercube_graph
+    original_title: Hypercube graph (Hamiltonicity)
+
+problem:
+  statement: >
+    Show that the 2^n binary strings of length n can be arranged in a cyclic
+    order in which consecutive strings differ in exactly one bit (for n >=
+    2).
+  domain: combinatorics
+  answer: proved (the reflected Gray code)
+
+key_idea:
+  name: take the order for n - 1 bits, follow it by its reversal, and prefix 0 to the first half and 1 to the second
+  category: recursive_structure
+  summary: >
+    If L is a valid cyclic list for n - 1 bits, then 0L followed by
+    1L-reversed is a list for n bits: inside each half consecutive strings
+    differ in one bit, at the junction the same (n-1)-string appears with
+    prefixes 0 and 1, and the last string 1L_1 differs from the first 0L_1
+    only in the prefix.
+
+intuitive_proof:
+  explanation: >
+    For n = 1 use 0, 1. Given a list L_1, ..., L_m (m = 2^{n-1}) of
+    (n-1)-bit strings in which consecutive strings and also L_m, L_1 differ
+    in one bit, form the list 0L_1, ..., 0L_m, 1L_m, ..., 1L_1. Consecutive
+    entries within the first half differ in one bit, likewise within the
+    second half; the junction 0L_m, 1L_m differs only in the prefix, as does
+    the wrap-around 1L_1, 0L_1. All 2^n strings appear exactly once. In
+    graph language, the n-cube is two (n-1)-cubes joined by a perfect
+    matching, and two Hamiltonian cycles of the halves are spliced along a
+    matching edge.
+
+reasoning_structure:
+  naive_approach: >
+    Try to write down such an order for n = 3 or 4 by hand and hope to see a
+    pattern.
+  crucial_observation: >
+    The hypercube is two copies of the smaller hypercube joined by parallel
+    edges, so a cycle in the smaller one can be doubled and reflected.
+  why_it_simplifies: >
+    The recursive structure of the cube makes the construction automatic and
+    the proof a three-line induction.
+
+related:
+  - tower_of_hanoi
+  - cube_vertex_walk_parity
+
+tags:
+  - recursion
+  - Gray code
+  - hypercube
+  - Hamiltonian cycle
+  - induction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The sequence of bit positions that change in the Gray code is the same as
+  the sequence of discs moved in the Tower of Hanoi.

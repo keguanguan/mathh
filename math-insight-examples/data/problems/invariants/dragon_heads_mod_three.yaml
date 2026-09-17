@@ -1,0 +1,67 @@
+id: dragon_heads_mod_three
+
+title: Killing the Dragon (Heads Mod 3)
+
+aliases:
+  - dragon with 100 heads
+  - hydra heads puzzle
+  - knight cutting heads
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    A dragon has 100 heads. A knight can cut off 15, 17, 20 or 5 heads with
+    one blow, after which 24, 2, 14 or 17 heads respectively grow back. The
+    dragon dies only if all heads are cut off exactly. Can the knight kill
+    it?
+  domain: number theory
+  answer: impossible
+
+key_idea:
+  name: the number of heads modulo 3 never changes
+  category: modular_invariant
+  summary: >
+    The four blows change the head count by +9, -15, -6 and +12, all
+    multiples of 3. Since 100 is not a multiple of 3, the count can never
+    reach 0.
+
+intuitive_proof:
+  explanation: >
+    A blow of 15 heads with 24 regrowing changes the count by +9; the others
+    change it by -15, -6 and +12. Every change is divisible by 3, so the
+    number of heads modulo 3 is invariant. Initially it is 100 = 1 mod 3,
+    while a dead dragon has 0 heads, which is 0 mod 3. Hence the dragon
+    cannot be killed.
+
+reasoning_structure:
+  naive_approach: >
+    Try combinations of blows to reduce the count to zero, treating it as a
+    search over sums of the four net changes.
+  crucial_observation: >
+    All net changes share the common factor 3.
+  why_it_simplifies: >
+    A residue computed once decides the question for all sequences of blows.
+
+tags:
+  - modular arithmetic
+  - invariant
+  - impossibility
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

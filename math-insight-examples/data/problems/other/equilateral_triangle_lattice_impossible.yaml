@@ -1,0 +1,83 @@
+id: equilateral_triangle_lattice_impossible
+
+title: No Equilateral Triangle Has All Vertices on the Integer Lattice
+
+aliases:
+  - lattice equilateral triangle impossible
+  - equilateral triangle with integer coordinates
+  - irrational area obstruction
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Equilateral_triangle
+  original_title: Equilateral triangle (section on lattice points)
+  accessed: 2026-09-16
+  notes: A classical exercise; also a corollary of Pick's theorem.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pick%27s_theorem
+    original_title: Pick's theorem
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 6 (Number Theory) / Chapter 12 (Geometry) exercises.
+
+problem:
+  statement: >
+    Show that no equilateral triangle in the plane has all three vertices
+    at points with integer coordinates.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: compute the area in two ways; one is rational, the other is irrational
+  category: structural_obstruction
+  summary: >
+    A triangle with integer vertices has area equal to half an integer
+    (shoelace formula, or Pick's theorem). An equilateral triangle with
+    side s has area s^2 sqrt(3)/4, and s^2 is an integer (a sum of two
+    squares of integers). Half an integer cannot equal an integer times
+    sqrt(3)/4, since sqrt(3) is irrational.
+
+intuitive_proof:
+  explanation: >
+    Suppose the vertices are integer points. By the shoelace formula the
+    area is |x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)|/2, a
+    rational number. On the other hand the side length s satisfies s^2 =
+    (x_1 - x_2)^2 + (y_1 - y_2)^2, an integer, and the area of an
+    equilateral triangle is s^2 sqrt(3)/4, an irrational number (a nonzero
+    rational times sqrt(3)). A number cannot be both rational and
+    irrational, so no such triangle exists.
+
+reasoning_structure:
+  naive_approach: >
+    Try to place the third vertex by rotating one lattice point about
+    another by 60 degrees and study when the result is a lattice point,
+    which requires knowing cos 60 and sin 60 and some case analysis.
+  crucial_observation: >
+    One quantity, the area, is forced to be rational by the lattice and
+    irrational by equilaterality.
+  why_it_simplifies: >
+    The two computations are each one line; their incompatibility settles
+    all cases at once.
+
+tags:
+  - structural obstruction
+  - area
+  - irrationality
+  - lattice points
+  - two computations
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Same reasoning shows a regular n-gon on the integer lattice exists only
+  for n = 4. Computing one thing in two incompatible ways is double
+  counting's continuous cousin.

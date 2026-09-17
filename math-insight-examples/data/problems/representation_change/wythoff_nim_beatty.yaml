@@ -1,0 +1,97 @@
+id: wythoff_nim_beatty
+
+title: Wythoff's Nim and the Golden Ratio
+
+aliases:
+  - Wythoff's game
+  - queen on a chessboard game
+  - Beatty sequences and Wythoff
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/pythagoras/withoff.shtml
+  original_title: Wythoff's Nim
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Wythoff%27s_game
+    original_title: Wythoff's game
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    Two heaps of counters. A move removes any number from one heap, or the
+    same number from both. The player taking the last counter wins. Which
+    positions are losing for the player to move?
+  domain: combinatorial games
+  answer: >
+    the pairs (floor(k phi), floor(k phi^2)) for k = 0, 1, 2, ..., where phi
+    is the golden ratio: (0,0), (1,2), (3,5), (4,7), (6,10), ...
+
+key_idea:
+  name: the losing positions are generated greedily (each uses the smallest unused first coordinate, with difference k), and the two coordinate sequences are complementary Beatty sequences, which forces the golden ratio
+  category: algebraic_encoding
+  summary: >
+    Losing positions (a_k, b_k) have distinct first coordinates, distinct
+    second coordinates and distinct differences, and every integer occurs as
+    a coordinate; so they are generated greedily with b_k = a_k + k. Two
+    complementary sequences floor(k alpha), floor(k beta) require 1/alpha +
+    1/beta = 1 (Beatty), and beta = alpha + 1 forces alpha = phi.
+
+intuitive_proof:
+  explanation: >
+    Call P the set of losing positions. (0,0) is in P. A position is in P
+    iff no move leads to P. From (a, b) with a < b one can reach any pair
+    with a smaller first coordinate and the same b, the same a and any
+    smaller b, or both reduced by the same amount; so P contains at most one
+    pair with a given first coordinate, one with a given second coordinate,
+    and one with a given difference. Conversely, if some integer m never
+    appeared as a coordinate of P, the position (m, huge) could not move to
+    P yet would not be in P, contradiction. Hence P is generated greedily:
+    a_k = least integer not among earlier a_i, b_i and b_k = a_k + k.
+    Beatty's theorem says the sequences floor(k alpha) and floor(k beta)
+    with irrational alpha, beta partition the positive integers iff 1/alpha
+    + 1/beta = 1; with beta = alpha + 1 this gives alpha^2 = alpha + 1,
+    alpha = phi. Checking that the greedy sequences satisfy the same
+    recursion (a_k is the least unused integer, b_k = a_k + k) identifies P
+    with the Beatty pairs.
+
+reasoning_structure:
+  naive_approach: >
+    Compute losing positions by dynamic programming and observe the pattern
+    without explaining it.
+  crucial_observation: >
+    The structural constraints on losing positions determine them greedily,
+    and complementary greedy sequences are Beatty sequences.
+  why_it_simplifies: >
+    An encoding by Beatty sequences turns the game into a two-line theorem
+    about floor functions, with the golden ratio emerging from 1/alpha +
+    1/beta = 1.
+
+related:
+  - nim
+  - subtraction_game_complement
+
+tags:
+  - combinatorial game
+  - golden ratio
+  - Beatty sequence
+  - algebraic encoding
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Equivalently: a queen moving only left, down, or diagonally down-left
+  toward the corner; the losing squares lie near the lines of slope phi and
+  1/phi.

@@ -1,0 +1,79 @@
+id: viviani_theorem
+
+title: Viviani's Theorem
+
+aliases:
+  - Viviani
+  - sum of distances to the sides of an equilateral triangle
+  - constant distance sum in an equilateral triangle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Geometry/Viviani.shtml
+  original_title: Viviani's Theorem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Named after Vincenzo Viviani (1622-1703).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Viviani%27s_theorem
+    original_title: Viviani's theorem
+
+problem:
+  statement: >
+    Show that for any point inside an equilateral triangle, the sum of its
+    distances to the three sides equals the altitude of the triangle.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: split the triangle into three triangles with the point as apex and compare areas
+  category: decomposition
+  summary: >
+    Joining the interior point P to the vertices cuts the triangle into
+    three triangles whose bases are the sides (all of length s) and whose
+    heights are the three distances. Their areas add to the whole area
+    (1/2) s h, so (1/2) s (d_1 + d_2 + d_3) = (1/2) s h.
+
+intuitive_proof:
+  explanation: >
+    Let the triangle have side s and altitude h, and let P be inside with
+    distances d_1, d_2, d_3 to the sides. The segments from P to the three
+    vertices divide the triangle into three smaller triangles, each having
+    one side of the big triangle as base and the corresponding d_i as
+    height. Their areas, (1/2) s d_1, (1/2) s d_2 and (1/2) s d_3, add up to
+    the area (1/2) s h of the whole. Cancelling (1/2) s gives
+    d_1 + d_2 + d_3 = h.
+
+reasoning_structure:
+  naive_approach: >
+    Set up coordinates, write the three distances as linear functions of
+    the point's coordinates, and add them up.
+  crucial_observation: >
+    Distances to sides are heights of triangles on those sides, and the
+    equal side lengths turn a sum of heights into a sum of areas.
+  why_it_simplifies: >
+    One area decomposition replaces all computation, and the same picture
+    generalises to equiangular polygons and to weighted sums for arbitrary
+    triangles.
+
+tags:
+  - decomposition
+  - area
+  - geometry
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The area argument shows why "equilateral" matters: the side lengths must
+  be equal so that they factor out of the sum.

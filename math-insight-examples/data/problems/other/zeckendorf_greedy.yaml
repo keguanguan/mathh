@@ -1,0 +1,84 @@
+id: zeckendorf_greedy
+
+title: Zeckendorf's Theorem by the Greedy Algorithm
+
+aliases:
+  - Zeckendorf representation
+  - sum of non-consecutive Fibonacci numbers
+  - Fibonacci base
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem
+  original_title: Zeckendorf's theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 8, The Induction Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every positive integer is a sum of distinct, non-consecutive
+    Fibonacci numbers, in exactly one way.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: subtract the largest Fibonacci number not exceeding n; the remainder is smaller than the previous Fibonacci number, so consecutive terms never appear
+  category: induction
+  summary: >
+    If F_k <= n < F_{k+1}, then n - F_k < F_{k+1} - F_k = F_{k-1}, so the
+    greedy remainder uses only Fibonacci numbers below F_{k-1}: no
+    consecutive pair arises. Uniqueness follows because non-consecutive
+    Fibonacci numbers below F_{k+1} sum to less than F_{k+1}, so the largest
+    term is forced.
+
+intuitive_proof:
+  explanation: >
+    Existence by strong induction: for n >= 1 let F_k be the largest
+    Fibonacci number with F_k <= n. If n = F_k we are done. Otherwise n -
+    F_k < F_{k+1} - F_k = F_{k-1}, and by induction n - F_k is a sum of
+    non-consecutive Fibonacci numbers all less than F_{k-1}, hence at most
+    F_{k-2}; adjoining F_k keeps the representation non-consecutive.
+    Uniqueness: a sum of distinct non-consecutive Fibonacci numbers with
+    largest term F_j is at most F_j + F_{j-2} + F_{j-4} + ... = F_{j+1} - 1
+    < F_{j+1}. So the largest term in any representation of n must be the
+    largest Fibonacci number not exceeding n, and induction on n gives
+    uniqueness.
+
+reasoning_structure:
+  naive_approach: >
+    Try representations for small n and search for a pattern, or argue about
+    binary-like digit systems in general.
+  crucial_observation: >
+    The greedy choice leaves a remainder too small to reach the neighbouring
+    Fibonacci number, and the tail bound F_j + F_{j-2} + ... < F_{j+1}
+    forces the greedy choice.
+  why_it_simplifies: >
+    One inequality does both existence (greedy works) and uniqueness (greedy
+    is forced).
+
+related:
+  - fibonacci_tilings_identity
+
+tags:
+  - induction
+  - greedy algorithm
+  - Fibonacci
+  - number systems
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Zeckendorf representations give a winning strategy for Fibonacci Nim.

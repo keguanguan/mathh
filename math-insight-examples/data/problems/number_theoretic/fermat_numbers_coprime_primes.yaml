@@ -1,0 +1,78 @@
+id: fermat_numbers_coprime_primes
+
+title: Fermat Numbers Are Pairwise Coprime, so Primes Are Infinite
+
+aliases:
+  - Goldbach's proof of infinitude of primes
+  - Fermat numbers pairwise coprime
+  - F_n = 2^(2^n) + 1
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter 1, Six proofs of the infinity of primes
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fermat_number
+    original_title: Fermat number (basic properties)
+
+problem:
+  statement: >
+    Let F_n = 2^{2^n} + 1. Show that any two Fermat numbers are coprime, and
+    deduce that there are infinitely many primes.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the recursion F_0 F_1 ... F_{n-1} = F_n - 2 forces any common divisor to divide 2
+  category: number_theoretic_structure
+  summary: >
+    Telescoping (x - 1)(x + 1) = x^2 - 1 repeatedly gives F_0 F_1 ...
+    F_{n-1} = F_n - 2. A prime dividing F_k and F_n (k < n) divides the
+    product and hence divides 2; but Fermat numbers are odd. So each F_n has
+    a prime factor that no other F_m has.
+
+intuitive_proof:
+  explanation: >
+    By induction, F_0 ... F_{n-1} = F_n - 2: for n = 1 this reads 3 = 5 - 2,
+    and multiplying both sides by F_n gives (F_n - 2) F_n = (2^{2^n} -
+    1)(2^{2^n} + 1) = 2^{2^{n+1}} - 1 = F_{n+1} - 2. Now if a prime p
+    divides F_k and F_n with k < n, then p divides the product F_0 ...
+    F_{n-1} and hence divides F_n - (F_n - 2) = 2. Since all F_n are odd, no
+    such p exists. Choosing one prime factor of each F_n therefore gives
+    infinitely many distinct primes.
+
+reasoning_structure:
+  naive_approach: >
+    Try to show Fermat numbers are prime (false: F_5 = 641 * 6700417).
+  crucial_observation: >
+    A product identity links all previous Fermat numbers to the next one
+    with an error term of 2.
+  why_it_simplifies: >
+    Pairwise coprimality of an explicit infinite sequence yields infinitely
+    many primes with no divisibility search.
+
+related:
+  - infinitely_many_primes_euclid
+
+tags:
+  - number theory
+  - primes
+  - Fermat numbers
+  - telescoping product
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Goldbach's argument in a 1730 letter to Euler.

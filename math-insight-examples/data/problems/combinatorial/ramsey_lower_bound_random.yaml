@@ -1,0 +1,92 @@
+id: ramsey_lower_bound_random
+
+title: Erdos's Probabilistic Lower Bound for Ramsey Numbers
+
+aliases:
+  - R(k,k) > 2^{k/2}
+  - random colouring Ramsey bound
+  - Erdos 1947
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Probability makes counting (sometimes) easy"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Erdos (1947), the birth of the probabilistic method.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Ramsey%27s_theorem
+    original_title: Ramsey's theorem (lower bounds)
+  - name: Alon & Spencer - The Probabilistic Method
+    notes: Chapter 1.
+
+problem:
+  statement: >
+    Show that for k >= 3 there is a red/blue colouring of the edges of the
+    complete graph on n = floor(2^{k/2}) vertices with no monochromatic
+    complete subgraph on k vertices; i.e. the Ramsey number R(k, k) exceeds
+    2^{k/2}.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: colour every edge by a coin flip and show the expected number of monochromatic k-sets is less than 1
+  category: probabilistic_argument
+  summary: >
+    A fixed k-set is monochromatic with probability 2^{1 - C(k,2)}. There
+    are C(n, k) k-sets, so the expected number of monochromatic ones is
+    C(n,k) 2^{1 - C(k,2)}, which is less than 1 for n = 2^{k/2}. Some
+    colouring therefore has none.
+
+intuitive_proof:
+  explanation: >
+    Colour each of the C(n,2) edges red or blue independently with
+    probability 1/2. For a particular set S of k vertices, all C(k,2)
+    edges inside S have the same colour with probability 2 * 2^{-C(k,2)}.
+    By linearity of expectation, the expected number of monochromatic
+    k-sets is C(n,k) 2^{1 - C(k,2)}. With n = 2^{k/2}, using
+    C(n,k) < n^k / k! = 2^{k^2/2} / k!, this expectation is at most
+    2^{1 + k/2} / k!, which is less than 1 for k >= 3. A random variable
+    with expectation below 1 that takes non-negative integer values is 0
+    with positive probability, so some colouring has no monochromatic
+    k-set at all.
+
+reasoning_structure:
+  naive_approach: >
+    Construct explicit colourings (e.g. from quadratic residues or
+    algebraic structures); explicit constructions give far weaker bounds
+    and are much harder.
+  crucial_observation: >
+    Most colourings are good, and this is easy to prove by computing an
+    expectation, even though no specific good colouring is known.
+  why_it_simplifies: >
+    A two-line expectation calculation beats every known explicit
+    construction; existence is established without exhibiting the object.
+
+related:
+  - bipartite_subgraph_half_edges
+  - party_of_six_ramsey
+
+tags:
+  - probabilistic method
+  - expectation
+  - Ramsey theory
+  - non-constructive
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Finding explicit colourings with no monochromatic clique of size
+  O(log n) remains a famous open problem, which makes the contrast with
+  the two-line proof especially striking.

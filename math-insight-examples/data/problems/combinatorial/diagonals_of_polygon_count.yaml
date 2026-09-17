@@ -1,0 +1,74 @@
+id: diagonals_of_polygon_count
+
+title: A Convex n-gon Has n(n - 3)/2 Diagonals
+
+aliases:
+  - number of diagonals of a polygon
+  - n(n-3)/2 diagonals
+  - each vertex sees n - 3 diagonals
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Diagonal
+  original_title: Diagonal (polygons)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many diagonals does a convex polygon with n vertices have?
+  domain: combinatorics
+  answer: n(n - 3)/2
+
+key_idea:
+  name: each vertex is an endpoint of n - 3 diagonals, and each diagonal has two endpoints
+  category: double_counting
+  summary: >
+    From each of the n vertices, n - 3 diagonals leave (to all vertices
+    except itself and its two neighbours). Counting endpoints, n(n - 3)
+    counts every diagonal exactly twice, so there are n(n - 3)/2 diagonals.
+    Equivalently: C(n, 2) segments between vertices minus the n sides.
+
+intuitive_proof:
+  explanation: >
+    Count pairs (vertex, diagonal at that vertex). Each vertex v is joined
+    by a diagonal to every vertex other than v and its two neighbours,
+    giving n - 3 diagonals at v and n(n - 3) pairs in total. Each diagonal
+    is counted twice, once from each end, so the number of diagonals is n(n
+    - 3)/2. Check: a quadrilateral has 4 * 1/2 = 2, a pentagon 5 * 2/2 = 5.
+
+reasoning_structure:
+  naive_approach: >
+    Draw polygons and count diagonals for n = 4, 5, 6, then guess.
+  crucial_observation: >
+    Endpoints of diagonals can be counted per vertex, and every diagonal has
+    exactly two.
+  why_it_simplifies: >
+    The most basic double count gives a closed formula immediately.
+
+related:
+  - handshake_lemma
+  - counting_diagonals_convex_polygon
+
+tags:
+  - double counting
+  - polygon
+  - counting
+  - diagonals
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,82 @@
+id: tournament_hamiltonian_path
+
+title: Every Tournament Has a Hamiltonian Path
+
+aliases:
+  - Redei's theorem
+  - ranking players in a round-robin tournament
+  - Hamiltonian path in a tournament
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tournament_(graph_theory)
+  original_title: Tournament (graph theory), paths and cycles
+  accessed: 2026-09-16
+  notes: The theorem is due to L. Redei (1934).
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Appears in the chapters on the extremal principle and on graphs.
+
+problem:
+  statement: >
+    In a round-robin tournament every pair of players meets once and one of
+    them wins. Show that the players can be lined up so that each player
+    beat the player immediately after them in the line.
+  domain: graph theory
+  answer: proved (a Hamiltonian path always exists)
+
+key_idea:
+  name: take a longest chain; any player outside it can be inserted
+  category: extremal_principle
+  summary: >
+    Take a longest sequence p_1, ..., p_k in which each player beat the
+    next. If some player q is not in it, then q lost to p_1 (else q could be
+    prepended) and beat p_k (else q could be appended), so somewhere along
+    the chain the results switch from "beat q" to "lost to q", and q can be
+    inserted there, contradicting maximality.
+
+intuitive_proof:
+  explanation: >
+    Among all chains p_1 -> p_2 -> ... -> p_k (each beat the next), choose a
+    longest one. Suppose a player q is missing. If q beat p_1, then
+    q -> p_1 -> ... is a longer chain; so p_1 beat q. If p_k beat q, then
+    ... -> p_k -> q is longer; so q beat p_k. Walking along the chain, the
+    results against q start with "p_1 beat q" and end with "q beat p_k", so
+    there is a first index i with p_i beating q and q beating p_{i+1}.
+    Insert q between them: p_i -> q -> p_{i+1} extends the chain, again
+    contradicting maximality. So the longest chain contains everyone.
+
+reasoning_structure:
+  naive_approach: >
+    Induct on the number of players, removing one and reinserting them into
+    the path of the rest; that works, but the extremal version makes the
+    insertion step appear by itself.
+  crucial_observation: >
+    A maximal chain absorbs every outsider, because the outsider's results
+    along the chain must switch direction somewhere.
+  why_it_simplifies: >
+    Choosing a maximal object supplies the hypothesis needed for the
+    insertion argument; no explicit construction is required.
+
+tags:
+  - extremal principle
+  - graph theory
+  - tournament
+  - Hamiltonian path
+  - induction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same "switch point" idea shows that a tournament has a king (a player
+  who beats everyone directly or through an intermediary): take a player
+  with the most wins.

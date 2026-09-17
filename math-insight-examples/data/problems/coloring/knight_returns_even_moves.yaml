@@ -1,0 +1,77 @@
+id: knight_returns_even_moves
+
+title: A Knight Returns to Its Square Only after an Even Number of Moves
+
+aliases:
+  - knight parity
+  - knight cannot return in odd moves
+  - no closed knight's tour on odd boards
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Knight%27s_tour
+  original_title: Knight's tour (parity)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 2, Coloring Proofs
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a chess knight cannot return to its starting square after an
+    odd number of moves. Deduce that a board with an odd number of squares
+    has no closed knight's tour.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: every knight move changes the colour of the square
+  category: coloring_invariant
+  summary: >
+    A knight moves from a square to one of the opposite colour. After k
+    moves it is on the starting colour iff k is even. A closed tour of an
+    n-square board returns after n moves, so n must be even.
+
+intuitive_proof:
+  explanation: >
+    A knight move changes one coordinate by 1 and the other by 2, so the sum
+    of the coordinates changes by an odd number and the square's colour
+    flips. After an odd number of moves the knight is on a square of the
+    opposite colour from its start, hence not the starting square. A closed
+    tour of a board with an odd number n of squares would be a closed walk
+    of n moves, contradicting this.
+
+reasoning_structure:
+  naive_approach: >
+    Trace knight paths and try to find a short odd cycle.
+  crucial_observation: >
+    The knight's graph is bipartite: the chessboard colouring is the
+    bipartition.
+  why_it_simplifies: >
+    Every closed walk in a bipartite graph has even length, settling all
+    boards at once.
+
+related:
+  - knights_tour_4xn_closed
+
+tags:
+  - coloring
+  - parity
+  - bipartite
+  - knight
+  - chess
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

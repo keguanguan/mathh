@@ -1,0 +1,77 @@
+id: lines_in_general_position_regions
+
+title: n Lines in General Position Divide the Plane into 1 + n + C(n,2) Regions
+
+aliases:
+  - regions formed by n lines
+  - lazy caterer in the plane
+  - lines dividing the plane
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/LinesDividePlane.shtml
+  original_title: Number of Regions N Lines Divide Plane
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Arrangement_of_lines
+    original_title: Arrangement of lines (counting regions)
+
+problem:
+  statement: >
+    n lines in the plane, no two parallel and no three concurrent, divide
+    the plane into how many regions?
+  domain: combinatorics
+  answer: 1 + n + n(n-1)/2
+
+key_idea:
+  name: the k-th line is cut by the previous k - 1 lines into k pieces, each of which splits one region
+  category: induction
+  summary: >
+    Adding a line that meets the k - 1 existing lines in k - 1 distinct
+    points cuts it into k segments, and each segment divides an existing
+    region into two. So the count grows by k when the k-th line is added,
+    giving 1 + (1 + 2 + ... + n).
+
+intuitive_proof:
+  explanation: >
+    One region with no lines. When the k-th line is added it crosses the k -
+    1 earlier lines at k - 1 distinct points (general position), which
+    divide the new line into k pieces (two rays and k - 2 segments). Each
+    piece lies inside exactly one old region and splits it into two, so the
+    number of regions increases by exactly k. Hence the total is 1 + 1 + 2 +
+    ... + n = 1 + n(n + 1)/2 = 1 + n + C(n, 2). (Alternatively: regions
+    correspond bijectively to 'the empty set, a line, or a pair of lines' by
+    taking the lowest vertex of each region.)
+
+reasoning_structure:
+  naive_approach: >
+    Draw the cases n = 1, 2, 3, 4, guess the formula 2, 4, 7, 11 and try to
+    justify it globally.
+  crucial_observation: >
+    Each new line adds as many regions as the number of pieces into which
+    the old lines cut it.
+  why_it_simplifies: >
+    The increment is forced by the intersection count, so a one-line
+    recursion proves the formula; the same idea counts regions cut by planes
+    in space.
+
+tags:
+  - induction
+  - counting
+  - line arrangement
+  - recursion
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,81 @@
+id: gaussian_integral_squared_polar
+
+title: The Gaussian Integral via Squaring and Polar Coordinates
+
+aliases:
+  - Gaussian integral
+  - integral of e^(-x^2) equals sqrt pi
+  - Poisson's polar coordinate trick
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Gaussian_integral
+  original_title: Gaussian integral (by polar coordinates)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on analysis / integrals
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that the integral of e^{-x^2} over the whole real line equals
+    sqrt(pi).
+  domain: analysis
+  answer: sqrt(pi)
+
+key_idea:
+  name: square the integral to get a double integral over the plane, then switch to polar coordinates, where the radial integral is elementary
+  category: coordinate_transformation
+  summary: >
+    Let I be the integral. Then I^2 is the double integral of e^{-x^2 - y^2}
+    over the plane. In polar coordinates the integrand is e^{-r^2} and the
+    area element is r dr d(theta); the extra factor r makes the radial
+    integral elementary: integral of r e^{-r^2} dr from 0 to infinity is
+    1/2, and the angle contributes 2 pi. So I^2 = pi.
+
+intuitive_proof:
+  explanation: >
+    Set I = integral over R of e^{-x^2} dx. Then I^2 = (integral of e^{-x^2}
+    dx)(integral of e^{-y^2} dy) = double integral over R^2 of e^{-(x^2 +
+    y^2)} dx dy (Fubini). Change to polar coordinates x = r cos t, y = r sin
+    t, dx dy = r dr dt: I^2 = integral from 0 to 2 pi of integral from 0 to
+    infinity of e^{-r^2} r dr dt = 2 pi * [-(1/2) e^{-r^2}] from 0 to
+    infinity = 2 pi * 1/2 = pi. Since I > 0, I = sqrt(pi).
+
+reasoning_structure:
+  naive_approach: >
+    Search for an antiderivative of e^{-x^2}, which does not exist in
+    elementary terms.
+  crucial_observation: >
+    The product of two copies of the integral is a rotationally symmetric
+    integral over the plane, and rotational symmetry supplies the missing
+    factor r that makes the integrand integrable in closed form.
+  why_it_simplifies: >
+    A change of coordinates in the squared problem succeeds where the
+    original problem is hopeless; a model of 'solve a symmetric bigger
+    problem'.
+
+related:
+  - integral_symmetry_sin_over_sin_plus_cos
+
+tags:
+  - coordinate transformation
+  - polar coordinates
+  - Gaussian integral
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Attributed to Poisson; Laplace's proof uses a different substitution.

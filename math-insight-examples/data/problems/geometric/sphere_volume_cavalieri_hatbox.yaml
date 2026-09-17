@@ -1,0 +1,81 @@
+id: sphere_volume_cavalieri_hatbox
+
+title: The Volume of a Sphere by Cavalieri's Principle
+
+aliases:
+  - Archimedes' hat-box
+  - hemisphere equals cylinder minus cone
+  - volume of a ball is 4/3 pi r^3
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cavalieri%27s_principle
+  original_title: Cavalieri's principle (spheres)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Polya - Mathematics and Plausible Reasoning
+    notes: Volume 1
+
+problem:
+  statement: >
+    Show that a ball of radius r has volume (4/3) pi r^3 without
+    integration, given the volumes of cylinders and cones.
+  domain: geometry
+  answer: (4/3) pi r^3
+
+key_idea:
+  name: at every height, the cross-section of a hemisphere has the same area as the cross-section of a cylinder with a cone removed
+  category: decomposition
+  summary: >
+    At height h a hemisphere of radius r is cut in a disc of area pi(r^2 -
+    h^2), while a cylinder of radius r and height r with an inverted cone
+    removed is cut in an annulus of the same area pi r^2 - pi h^2. Equal
+    slices at every height give equal volumes: pi r^3 - pi r^3/3 = 2 pi
+    r^3/3 for the hemisphere.
+
+intuitive_proof:
+  explanation: >
+    Place the hemisphere and the cylinder-minus-cone on the same base plane.
+    At height h (0 <= h <= r) the hemisphere is cut in a disc of radius
+    sqrt(r^2 - h^2), area pi(r^2 - h^2). The cylinder is cut in a disc of
+    radius r and the inverted cone (apex at the centre of the base, widening
+    to radius r at height r) in a disc of radius h, so the difference has
+    area pi r^2 - pi h^2. The two solids have equal cross-sectional areas at
+    every height, so by Cavalieri's principle they have equal volumes:
+    volume of hemisphere = pi r^2 * r - (1/3) pi r^2 * r = (2/3) pi r^3.
+    Doubling gives (4/3) pi r^3.
+
+reasoning_structure:
+  naive_approach: >
+    Set up an integral of pi(r^2 - h^2) dh, which is the same computation
+    dressed as calculus.
+  crucial_observation: >
+    A clever companion solid has the same slices as the hemisphere, and its
+    volume is elementary.
+  why_it_simplifies: >
+    Cavalieri's principle plus one auxiliary solid replaces integration;
+    Archimedes was proud enough of the related cylinder-sphere ratio to have
+    it carved on his tomb.
+
+related:
+  - napkin_ring
+  - pyramid_volume_one_third_prism
+
+tags:
+  - decomposition
+  - Cavalieri's principle
+  - volume
+  - auxiliary object
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

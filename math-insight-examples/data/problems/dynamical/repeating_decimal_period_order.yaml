@@ -1,0 +1,85 @@
+id: repeating_decimal_period_order
+
+title: The Period of 1/p Is the Order of 10 Modulo p
+
+aliases:
+  - period of a repeating decimal
+  - 1/7 = 0.142857 repeating
+  - long division remainders cycle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Repeating_decimal
+  original_title: Repeating decimal (period)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Explain why the decimal expansion of 1/n (with n coprime to 10) is
+    purely periodic, and show that its period is the least k with 10^k = 1
+    mod n; for example 1/7 has period 6.
+  domain: number theory
+  answer: the period is the multiplicative order of 10 modulo n
+
+key_idea:
+  name: long division is a deterministic map on the finite set of remainders, and it is invertible when 10 is invertible mod n
+  category: finite_state_periodicity
+  summary: >
+    Each step of long division sends a remainder r to 10r mod n. This is a
+    map on the finite set of nonzero residues, so it cycles; since 10 is
+    invertible mod n the map is a bijection, so the cycle returns to the
+    starting remainder 1 and the expansion is periodic from the start. The
+    cycle length is the least k with 10^k = 1 mod n.
+
+intuitive_proof:
+  explanation: >
+    Dividing 1 by n, the remainder after k digits is 10^k mod n, and the
+    k-th digit is floor(10 r_{k-1}/n). The digits repeat from position k
+    onward exactly when the remainders repeat, i.e. when 10^k = 10^j mod n
+    for some j < k. Since gcd(10, n) = 1, 10 is invertible mod n and we can
+    cancel: 10^{k-j} = 1 mod n. So the remainders cycle back to 1 and the
+    expansion is purely periodic with period equal to the least k with 10^k
+    = 1 mod n, the order of 10 mod n, which divides phi(n). For n = 7:
+    10^1..10^6 mod 7 are 3, 2, 6, 4, 5, 1, so the period is 6 and 1/7 =
+    0.142857142857....
+
+reasoning_structure:
+  naive_approach: >
+    Perform the long division and observe the repetition without knowing why
+    it must happen or what the period is.
+  crucial_observation: >
+    Long division is iteration of multiplication by 10 on residues: a
+    reversible map on a finite set, hence purely periodic.
+  why_it_simplifies: >
+    The finite-state viewpoint explains periodicity, its pure (non-mixed)
+    form when gcd(n, 10) = 1, and the exact period, in one stroke.
+
+related:
+  - fibonacci_mod_m_periodic
+  - last_digit_of_tower_of_sevens
+
+tags:
+  - periodicity
+  - decimal expansion
+  - modular arithmetic
+  - order
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  When n shares a factor with 10 the map is not invertible and the expansion
+  has a pre-period.

@@ -1,0 +1,95 @@
+id: lights_out_linear_algebra
+
+title: Lights Out Is Linear Algebra over GF(2)
+
+aliases:
+  - Lights Out puzzle
+  - Merlin's magic squares
+  - button-pressing puzzle mod 2
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/Merlin5x5.shtml
+  original_title: Lights Out
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/ctk/Merlin.shtml
+    original_title: Merlin's Magic Squares
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Lights_Out_(game)
+    original_title: Lights Out (game)
+
+problem:
+  statement: >
+    A 5x5 grid of lights is given, some on and some off. Pressing a light
+    toggles it together with its (up to four) orthogonal neighbours. Which
+    starting patterns can be turned completely off, and how does one find
+    the presses?
+  domain: combinatorial games
+  answer: >
+    Exactly the patterns in the column space of the 25x25 toggle matrix
+    over GF(2); for the 5x5 board this is a 23-dimensional subspace, so
+    only 1/4 of all patterns are solvable, and a solution is found by
+    solving a linear system mod 2.
+
+key_idea:
+  name: presses commute and cancel in pairs, so a solution is a 0/1 vector and the puzzle is a linear system mod 2
+  category: algebraic_encoding
+  summary: >
+    Each press toggles a fixed set of lights, toggling is addition mod 2,
+    and additions commute. So only the set of buttons pressed an odd number
+    of times matters, and the effect of a press-set is the sum of the
+    corresponding columns of a 0/1 matrix A. Turning a pattern b off means
+    solving A x = b over GF(2).
+
+intuitive_proof:
+  explanation: >
+    Represent a light pattern as a vector in GF(2)^25 (1 = on). Pressing
+    button j adds a fixed vector a_j (1s at j and its neighbours) modulo 2.
+    Addition mod 2 is commutative and every vector is its own negative, so
+    the order of presses is irrelevant and pressing a button twice is the
+    same as not pressing it. Therefore any sequence of presses is
+    equivalent to a set of buttons, encoded as x in GF(2)^25, with total
+    effect A x where A has columns a_j. The starting pattern b can be
+    turned off exactly when A x = b has a solution, which Gaussian
+    elimination over GF(2) decides and constructs. For the 5x5 board A has
+    rank 23, so solvable patterns form a subspace of index 4, and a
+    pattern is solvable iff it is orthogonal to the two "quiet patterns"
+    spanning the kernel.
+
+reasoning_structure:
+  naive_approach: >
+    Press buttons by trial and error, or search the game tree of press
+    sequences, which appears to have 25^k branches at depth k.
+  crucial_observation: >
+    Commutativity and self-inverse toggles collapse all sequences to
+    subsets, and the effect of a subset is linear.
+  why_it_simplifies: >
+    The puzzle becomes a linear system over a field; solvability,
+    the number of solutions, and the solutions themselves all follow from
+    standard linear algebra, and the "chasing the lights" strategy is
+    just elimination in disguise.
+
+tags:
+  - algebraic encoding
+  - linear algebra
+  - GF(2)
+  - commutativity
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Cut-the-Knot's Merlin's Magic Squares (3x3) is the same puzzle with a
+  different toggle rule; both are instances of "sigma-games" on graphs.

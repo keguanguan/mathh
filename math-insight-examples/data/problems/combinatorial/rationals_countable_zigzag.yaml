@@ -1,0 +1,79 @@
+id: rationals_countable_zigzag
+
+title: The Rational Numbers Are Countable
+
+aliases:
+  - countability of the rationals
+  - Cantor's zigzag
+  - enumerating fractions
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Countable_set
+  original_title: Countable set (the rationals)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Sets, functions, and the continuum hypothesis"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that the positive rational numbers can be listed in a sequence q_1,
+    q_2, q_3, ... that contains every one of them.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: arrange the fractions p/q in a grid by (p, q) and walk through the grid along successive anti-diagonals
+  category: bijection
+  summary: >
+    Place p/q at row p, column q. Each anti-diagonal p + q = s is finite, so
+    listing the anti-diagonals in order s = 2, 3, 4, ... (skipping repeats)
+    reaches every fraction after finitely many steps.
+
+intuitive_proof:
+  explanation: >
+    The pairs (p, q) of positive integers can be ordered by the sum p + q,
+    and within a fixed sum by p. Every pair has a finite position in this
+    order, since only finitely many pairs have a smaller sum. Map each pair
+    to the fraction p/q and delete any fraction already listed. Every
+    positive rational appears (as its reduced form p/q at position
+    determined by p + q), so the rationals are enumerated. (The Calkin-Wilf
+    tree gives an enumeration without repetitions.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to list the rationals in increasing order, which is impossible since
+    there is no next rational.
+  crucial_observation: >
+    Ordering by the sum of numerator and denominator makes every fraction
+    reachable after finitely many predecessors.
+  why_it_simplifies: >
+    A different ordering (by anti-diagonals rather than by size) makes an
+    apparently 'bigger' set countable; the same trick shows N x N is
+    countable.
+
+related:
+  - cantor_diagonal_uncountable
+  - pairs_of_heaps_gcd_reachability
+
+tags:
+  - bijection
+  - countability
+  - enumeration
+  - set theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

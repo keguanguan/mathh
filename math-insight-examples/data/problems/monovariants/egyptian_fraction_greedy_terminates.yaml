@@ -1,0 +1,89 @@
+id: egyptian_fraction_greedy_terminates
+
+title: Fibonacci's Greedy Algorithm for Egyptian Fractions Terminates
+
+aliases:
+  - Egyptian fractions greedy algorithm
+  - Fibonacci-Sylvester algorithm
+  - every fraction is a sum of distinct unit fractions
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Greedy_algorithm_for_Egyptian_fractions
+  original_title: Greedy algorithm for Egyptian fractions
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Egyptian_fraction
+    original_title: Egyptian fraction
+
+problem:
+  statement: >
+    Show that every fraction p/q with 0 < p < q can be written as a sum of
+    distinct unit fractions 1/n_1 + 1/n_2 + ... by repeatedly subtracting
+    the largest unit fraction not exceeding the remainder.
+  domain: number theory
+  answer: >
+    proved: the numerators of the remainders strictly decrease, so the
+    process stops after at most p steps
+
+key_idea:
+  name: subtracting the largest unit fraction 1/n <= p/q leaves a fraction whose numerator, before reduction, is smaller than p
+  category: monovariant
+  summary: >
+    Let n be the least integer with 1/n <= p/q, so that 1/(n - 1) > p/q,
+    i.e. p(n - 1) < q. The remainder is p/q - 1/n = (pn - q)/(qn), and its
+    numerator pn - q = p(n - 1) - q + p < p. Numerators strictly decrease
+    and stay positive, so after at most p steps the remainder is 0.
+    Denominators strictly increase, so the unit fractions are distinct.
+
+intuitive_proof:
+  explanation: >
+    Given p/q in lowest terms with 0 < p < q, let n = ceiling(q/p), the
+    least integer with 1/n <= p/q. Minimality gives 1/(n - 1) > p/q, i.e.
+    p(n - 1) < q, i.e. pn - q < p. The new remainder is p/q - 1/n = (pn -
+    q)/(qn), with numerator pn - q >= 0 and, by the inequality just proved,
+    strictly smaller than p (after reducing the fraction the numerator can
+    only get smaller still). Thus the numerator is a non-negative integer
+    that strictly decreases at each step, so the algorithm terminates after
+    at most p steps with remainder 0. The new remainder is less than 1/(n -
+    1) - 1/n = 1/(n(n - 1)) < 1/n, so the next denominator exceeds n: the
+    denominators strictly increase and the unit fractions are distinct.
+    Example: 4/13 = 1/4 + 1/18 + 1/468.
+
+reasoning_structure:
+  naive_approach: >
+    Try to prove termination by tracking the remainder's value, which
+    decreases but not by a controlled amount, or by tracking denominators,
+    which grow.
+  crucial_observation: >
+    The right quantity to watch is the numerator of the remainder, which
+    drops by at least 1 each step.
+  why_it_simplifies: >
+    A monovariant on the numerator turns an infinite-looking process into
+    one with at most p steps.
+
+related:
+  - zeckendorf_greedy
+  - euclid_gcd_algorithm_invariant
+
+tags:
+  - monovariant
+  - Egyptian fractions
+  - greedy algorithm
+  - termination
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The greedy expansion can have huge denominators; other methods give
+  shorter representations.

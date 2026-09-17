@@ -1,0 +1,90 @@
+id: inspection_paradox_bus_waiting
+
+title: "The Inspection Paradox: Random Arrivals See Longer Gaps"
+
+aliases:
+  - inspection paradox
+  - waiting time paradox
+  - bus waiting time paradox
+  - length-biased sampling
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Renewal_theory
+  original_title: Renewal theory (inspection paradox)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 2
+    notes: Chapter I
+
+problem:
+  statement: >
+    Buses arrive with gaps that average 10 minutes, but the gaps vary: half
+    are 5 minutes and half are 15 minutes. A passenger arrives at a
+    uniformly random time. Show that the expected gap the passenger lands in
+    is 12.5 minutes, not 10, and that the expected wait is 6.25 minutes.
+  domain: probability
+  answer: expected gap 12.5 minutes, expected wait 6.25 minutes
+
+key_idea:
+  name: "a random time falls into a gap with probability proportional to the gap's length, so long gaps are over-represented: the sampled gap has the length-biased distribution"
+  category: representation_change
+  summary: >
+    Over a long period with equally many 5-minute and 15-minute gaps, the
+    15-minute gaps cover three quarters of the time. A random arrival is
+    therefore in a 15-minute gap with probability 3/4 and in a 5-minute gap
+    with probability 1/4: expected gap 3/4 * 15 + 1/4 * 5 = 12.5. The wait
+    is uniform within the gap, so its expectation is half of that, 6.25
+    minutes. In general the sampled gap has mean E[X^2]/E[X] >= E[X].
+
+intuitive_proof:
+  explanation: >
+    Consider a long stretch of time with n gaps of 5 minutes and n gaps of
+    15 minutes, total length 20n. The 15-minute gaps occupy 15n of these
+    minutes, so a uniformly random time lies in a 15-minute gap with
+    probability 15n/20n = 3/4, and in a 5-minute gap with probability 1/4.
+    The expected length of the gap containing the arrival is (3/4)(15) +
+    (1/4)(5) = 12.5 minutes. Conditional on the gap, the arrival time is
+    uniform within it, so the expected remaining wait is half the gap: 6.25
+    minutes, compared with 5 minutes if all gaps were exactly 10. In
+    general, if gaps are i.i.d. with distribution X, the gap containing a
+    random time has density proportional to x times the density of X
+    (length-biased), with mean E[X^2]/E[X], which exceeds E[X] unless X is
+    constant. The same phenomenon explains why the average class size
+    experienced by students exceeds the average class size, and why one's
+    friends have more friends on average.
+
+reasoning_structure:
+  naive_approach: >
+    Argue that the passenger's gap is a typical gap, averaging 10 minutes,
+    so the wait is 5 minutes.
+  crucial_observation: >
+    Sampling by time is not sampling by gap: the probability of landing in a
+    gap is weighted by its length.
+  why_it_simplifies: >
+    Changing from the 'per gap' distribution to the 'per unit time'
+    (length-biased) distribution is the entire content of the paradox, and
+    it gives the exact answer immediately.
+
+related:
+  - friendship_paradox_cauchy_schwarz
+  - simpson_paradox_weighted_averages
+
+tags:
+  - representation change
+  - length-biased sampling
+  - renewal theory
+  - paradox
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

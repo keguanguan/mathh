@@ -1,0 +1,76 @@
+id: handshake_lemma
+
+title: The Number of People Who Shook Hands an Odd Number of Times Is Even
+
+aliases:
+  - handshaking lemma
+  - degree sum formula
+  - odd-degree vertices come in pairs
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Handshaking_lemma
+  original_title: Handshaking lemma
+  accessed: 2026-09-16
+  notes: Goes back to Euler's 1736 paper on the bridges of Konigsberg.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/graphs.shtml
+    original_title: Graphs Fundamentals
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 1 and the graph theory chapter.
+
+problem:
+  statement: >
+    At a party some pairs of people shake hands. Show that the number of
+    people who shook hands an odd number of times is even.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: count handshake-ends two ways
+  category: double_counting
+  summary: >
+    Each handshake has two ends, so the sum over people of their handshake
+    counts is twice the number of handshakes, an even number. An even sum
+    must contain an even number of odd terms.
+
+intuitive_proof:
+  explanation: >
+    Let d(P) be the number of handshakes person P took part in. Summing d(P)
+    over all people counts every handshake twice, once for each participant,
+    so the sum is 2 x (number of handshakes), which is even. A sum of
+    integers is even only if an even number of its terms are odd. Hence the
+    number of people with odd d(P) is even.
+
+reasoning_structure:
+  naive_approach: >
+    Add handshakes one at a time and track how the parities change, or
+    attempt to pair up the odd people directly.
+  crucial_observation: >
+    Each handshake contributes exactly 2 to the total degree count.
+  why_it_simplifies: >
+    A global parity fact (the sum is even) forces the local conclusion
+    without following any individual person.
+
+tags:
+  - double counting
+  - parity
+  - graph theory
+  - degree
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The lemma underlies the Konigsberg argument (bridges_of_konigsberg),
+  Sperner's lemma, and the existence of a second Hamiltonian cycle in cubic
+  graphs (Smith's theorem).

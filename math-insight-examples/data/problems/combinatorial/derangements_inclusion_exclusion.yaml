@@ -1,0 +1,81 @@
+id: derangements_inclusion_exclusion
+
+title: Derangements and the Hat-Check Problem
+
+aliases:
+  - hat-check problem
+  - derangements
+  - probability that no one gets their own hat
+  - 1/e limit
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Derangement
+  original_title: Derangement (counting derangements)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    n people check their hats and receive them back in random order. How
+    many of the n! orders give nobody their own hat, and what is the
+    probability as n grows?
+  domain: combinatorics
+  answer: >
+    D(n) = n! sum over k of (-1)^k / k!, probability tending to 1/e
+
+key_idea:
+  name: count the complement with inclusion-exclusion over the set of people who do get their own hat
+  category: inclusion_exclusion
+  summary: >
+    Let A_i be the set of orders in which person i gets their hat. The
+    number of orders avoiding all A_i is, by inclusion-exclusion, sum over k
+    of (-1)^k C(n,k) (n-k)!, since any k specified people getting their hats
+    leaves (n-k)! orders. Simplifying gives n! times the partial sum of the
+    series for e^{-1}.
+
+intuitive_proof:
+  explanation: >
+    By inclusion-exclusion, the number of orders in none of the A_i equals
+    sum over subsets S of (-1)^{|S|} |intersection of A_i for i in S|. If
+    |S| = k, the k people in S have their hats and the rest are arbitrary:
+    (n - k)! orders. There are C(n, k) subsets of size k, so D(n) = sum over
+    k of (-1)^k C(n,k) (n-k)! = n! sum over k of (-1)^k / k!. Dividing by
+    n!, the probability is the partial sum of the series for e^{-1}, which
+    tends to 1/e = 0.3679 as n grows.
+
+reasoning_structure:
+  naive_approach: >
+    Compute derangements for small n by listing them, or set up the
+    recursion D(n) = (n-1)(D(n-1) + D(n-2)) and try to solve it.
+  crucial_observation: >
+    The forbidden events are easy to intersect, so counting the complement
+    by inclusion-exclusion is mechanical.
+  why_it_simplifies: >
+    Inclusion-exclusion gives an explicit formula whose structure (the
+    series for 1/e) explains the surprising limit.
+
+tags:
+  - inclusion-exclusion
+  - derangements
+  - probability
+  - e
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The recursion D(n) = (n-1)(D(n-1) + D(n-2)) has its own one-idea proof:
+  look at where person 1's hat goes.

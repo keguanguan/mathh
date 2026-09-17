@@ -1,0 +1,80 @@
+id: jensen_inequality_tangent_line
+
+title: Jensen's Inequality by the Tangent Line at the Mean
+
+aliases:
+  - Jensen's inequality
+  - tangent line trick
+  - convex function and averages
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Jensen%27s_inequality
+  original_title: Jensen's inequality (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let f be convex and differentiable, and let m be the average of x_1,
+    ..., x_n. Show that the average of f(x_1), ..., f(x_n) is at least f(m).
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: a convex function lies above its tangent line at m; apply the tangent inequality at each x_i and average
+  category: auxiliary_object
+  summary: >
+    Convexity means f(x) >= f(m) + f'(m)(x - m) for all x (the graph lies
+    above the tangent at m). Plugging in x = x_i and averaging, the linear
+    terms average to f'(m)(m - m) = 0, leaving average of f(x_i) >= f(m).
+
+intuitive_proof:
+  explanation: >
+    For a convex differentiable f the tangent line at any point lies below
+    the graph: f(x) >= f(m) + f'(m)(x - m) for all x. Apply this with x =
+    x_1, ..., x_n and add: sum f(x_i) >= n f(m) + f'(m)(sum x_i - n m) = n
+    f(m), because sum x_i = n m. Dividing by n gives the inequality; with
+    weights the same computation works. For f(x) = -ln x this is AM-GM, for
+    f(x) = x^2 it is the QM-AM inequality.
+
+reasoning_structure:
+  naive_approach: >
+    Prove Jensen's inequality by induction on n from the two-point
+    definition of convexity, which is longer and less transparent.
+  crucial_observation: >
+    Only the tangent line at the mean is needed: the deviations from the
+    mean cancel exactly.
+  why_it_simplifies: >
+    One auxiliary line converts convexity into a family of linear
+    inequalities whose average telescopes; the 'tangent line trick' proves
+    many olympiad inequalities directly.
+
+related:
+  - am_gm_cauchy_forward_backward_induction
+  - am_gm_two_variables_square
+
+tags:
+  - auxiliary object
+  - convexity
+  - Jensen's inequality
+  - inequality
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For non-differentiable convex functions use a supporting line instead of
+  the tangent.

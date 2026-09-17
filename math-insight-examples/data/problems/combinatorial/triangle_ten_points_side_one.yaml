@@ -1,0 +1,72 @@
+id: triangle_ten_points_side_one
+
+title: Ten Points in an Equilateral Triangle of Side 1
+
+aliases:
+  - ten points in a triangle
+  - two points within distance 1/3
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the pigeonhole principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Ten points are placed inside an equilateral triangle of side 1. Show
+    that two of them are at distance at most 1/3.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: cut the triangle into nine equilateral triangles of side 1/3
+  category: pigeonhole
+  summary: >
+    Lines parallel to the sides divide the triangle into 9 congruent
+    triangles of side 1/3. Ten points in nine triangles put two in the same
+    one, and the diameter of that small triangle is 1/3.
+
+intuitive_proof:
+  explanation: >
+    Drawing the lines parallel to each side at distances 1/3 and 2/3 splits
+    the triangle into nine equilateral triangles of side 1/3. By pigeonhole
+    two of the ten points lie in the same small triangle (closed, so
+    boundary points are covered). Two points in an equilateral triangle of
+    side s are at most s apart, so the distance is at most 1/3.
+
+reasoning_structure:
+  naive_approach: >
+    Spread the points evenly and try to prove no better arrangement exists.
+  crucial_observation: >
+    The natural subdivision into nine pieces has diameter exactly 1/3.
+  why_it_simplifies: >
+    Partition plus pigeonhole; the piece count 9 and the bound 1/3 arise
+    together.
+
+related:
+  - five_points_unit_square
+
+tags:
+  - pigeonhole
+  - geometry
+  - partition
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

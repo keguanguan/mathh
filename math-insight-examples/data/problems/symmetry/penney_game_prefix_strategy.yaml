@@ -1,0 +1,93 @@
+id: penney_game_prefix_strategy
+
+title: "Penney's Game: Always Pick the Pattern That Beats the Opponent's"
+
+aliases:
+  - Penney's game
+  - non-transitive coin sequences
+  - HTH versus THT
+  - Conway's prefix rule
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Penney%27s_game
+  original_title: Penney's game
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - Time Travel and Other Mathematical Bewilderments
+    notes: Chapter 5
+
+problem:
+  statement: >
+    Two players each choose a sequence of three coin outcomes (such as HTH);
+    a fair coin is tossed repeatedly and the player whose sequence appears
+    first wins. Show that the second player can always choose a sequence
+    that beats the first player's choice with probability greater than 1/2.
+  domain: probability
+  answer: >
+    if the first player picks XYZ, the second picks (not Y) X Y; this wins
+    with probability at least 2/3 in every case
+
+key_idea:
+  name: the second player's pattern ends with the first two symbols of the opponent's pattern, so whenever the opponent's pattern is about to complete, the second player's has usually just completed
+  category: symmetry
+  summary: >
+    Against XYZ choose WXY with W = not Y. Whenever XYZ is about to
+    complete, the toss before its X was either W, in which case WXY already
+    occurred and the second player has won, or Y, which is rarer. A short
+    Markov-chain computation gives the second player's winning probability
+    as 2/3 or 3/4 for the six mixed patterns and 7/8 against HHH or TTT.
+    Every pattern is beaten by some other pattern: the relation is
+    non-transitive.
+
+intuitive_proof:
+  explanation: >
+    Let the first player choose XYZ and the second choose WXY with W = not
+    Y. Consider the first occurrence of XYZ in the toss sequence and the
+    toss immediately preceding its X. If that toss is W, then WXY occurred
+    earlier and the second player has already won. So the first player wins
+    only if this occurrence of XYZ starts at toss 1 (probability 1/8) or is
+    preceded by Y, and in the latter case the tosses Y X Y Z must appear
+    before any W X Y; the analysis repeats one step further back. Running
+    the game as a Markov chain on the last two tosses gives exact values:
+    the second player wins with probability 2/3 against HTH, THT, HHT, TTH,
+    3/4 against HTT and THH, and 7/8 against HHH and TTT. In all eight cases
+    the probability exceeds 1/2. The beating relation is cyclic (for example
+    HHT beats HTT, HTT beats TTH, TTH beats THH, THH beats HHT), so no
+    pattern is best: whoever chooses second has the advantage.
+
+reasoning_structure:
+  naive_approach: >
+    Assume all patterns of the same length are equally good because each has
+    probability 1/8 on any given triple of tosses.
+  crucial_observation: >
+    The winning chances depend on overlaps between patterns, and a pattern
+    can be tailored to 'ambush' the opponent's by sharing its beginning.
+  why_it_simplifies: >
+    Exploiting the overlap structure gives the second player a uniform
+    advantage; the non-transitivity is a symmetry-breaking surprise
+    explained entirely by the prefix trick.
+
+related:
+  - hh_versus_ht_waiting_times
+
+tags:
+  - symmetry
+  - non-transitivity
+  - patterns
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Conway's formula computes the exact odds from the 'leading numbers' of the
+  two patterns.

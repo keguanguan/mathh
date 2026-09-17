@@ -1,0 +1,78 @@
+id: rectangles_on_chessboard_choose_lines
+
+title: Counting Rectangles on a Grid by Choosing Grid Lines
+
+aliases:
+  - rectangles on a chessboard 1296
+  - C(9,2)^2 rectangles
+  - choose two horizontal and two vertical lines
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 5, Enumerative Combinatorics
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Rectangle
+    original_title: Rectangle (counting rectangles in a grid)
+
+problem:
+  statement: >
+    How many rectangles (of any size and position, sides along the grid) are
+    there on an 8x8 chessboard?
+  domain: combinatorics
+  answer: C(9, 2)^2 = 36^2 = 1296
+
+key_idea:
+  name: a rectangle is exactly a choice of two of the nine horizontal grid lines and two of the nine vertical ones
+  category: bijection
+  summary: >
+    The board has 9 horizontal and 9 vertical lines. A rectangle is
+    determined by its top and bottom lines (a pair of horizontal lines) and
+    its left and right lines (a pair of vertical lines), and every such
+    choice gives a rectangle. So there are C(9, 2) * C(9, 2) = 1296
+    rectangles.
+
+intuitive_proof:
+  explanation: >
+    Map each rectangle to the pair (set of its two horizontal boundary
+    lines, set of its two vertical boundary lines). This map is a bijection
+    between rectangles and pairs of 2-subsets of the 9 horizontal and 9
+    vertical lines: different rectangles have different boundaries, and any
+    two horizontal lines together with any two vertical lines bound exactly
+    one rectangle. Hence the count is C(9,2)^2 = 36^2 = 1296. On an m x n
+    board it is C(m+1, 2) C(n+1, 2).
+
+reasoning_structure:
+  naive_approach: >
+    Count rectangles size by size, summing (9 - a)(9 - b) over all a, b,
+    which gives the same answer with more work.
+  crucial_observation: >
+    A rectangle is the same thing as two horizontal and two vertical lines.
+  why_it_simplifies: >
+    The bijection makes the count a product of two binomial coefficients
+    with no summation.
+
+related:
+  - squares_on_a_chessboard_204
+
+tags:
+  - bijection
+  - counting
+  - rectangles
+  - binomial coefficients
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

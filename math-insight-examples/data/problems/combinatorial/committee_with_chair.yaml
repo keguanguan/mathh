@@ -1,0 +1,72 @@
+id: committee_with_chair
+
+title: Sum of k C(n, k) by Choosing a Chair
+
+aliases:
+  - committee with chairperson
+  - sum k C(n,k) = n 2^(n-1)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binomial_coefficient
+  original_title: Binomial coefficient (identities involving binomial coefficients)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that sum over k of k C(n, k) = n 2^{n-1}.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: count committees with a designated chair in two ways
+  category: double_counting
+  summary: >
+    A committee of size k with a chair can be formed by choosing the
+    committee (C(n,k) ways) then the chair (k ways), or by choosing the
+    chair first (n ways) and then any subset of the other n - 1 people
+    (2^{n-1} ways).
+
+intuitive_proof:
+  explanation: >
+    Count pairs (committee, chair) where the committee is any non-empty
+    subset of n people and the chair is a member of it. Choosing the
+    committee of size k and then its chair gives sum over k of C(n, k) * k.
+    Choosing the chair first (n ways) and then deciding for each of the
+    remaining n - 1 people whether they join gives n 2^{n-1}. The two counts
+    agree.
+
+reasoning_structure:
+  naive_approach: >
+    Differentiate (1 + x)^n and set x = 1, or use k C(n,k) = n C(n-1, k-1)
+    and sum.
+  crucial_observation: >
+    Choosing the special element first decouples the choice from the
+    committee size.
+  why_it_simplifies: >
+    Reordering the choices collapses a weighted sum into a product.
+
+tags:
+  - double counting
+  - binomial identity
+  - committees
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Similarly sum of k(k-1) C(n,k) = n(n-1) 2^{n-2}: choose a chair and a
+  secretary.

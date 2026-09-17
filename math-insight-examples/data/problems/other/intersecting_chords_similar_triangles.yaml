@@ -1,0 +1,79 @@
+id: intersecting_chords_similar_triangles
+
+title: The Intersecting Chords Theorem by Similar Triangles
+
+aliases:
+  - intersecting chords theorem
+  - power of a point
+  - PA * PB = PC * PD
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/IntersectingChordsTheorem.shtml
+  original_title: Intersecting Chords Theorem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Intersecting_chords_theorem
+    original_title: Intersecting chords theorem (proof)
+
+problem:
+  statement: >
+    Two chords AB and CD of a circle meet at a point P inside the circle.
+    Show that PA * PB = PC * PD.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "draw AC and BD: the triangles PAC and PDB are similar by the inscribed angle theorem"
+  category: auxiliary_object
+  summary: >
+    Join A to C and B to D. Angles PAC and PDB are inscribed angles on the
+    same arc CB, hence equal; angles APC and DPB are vertical angles. So
+    triangles PAC and PDB are similar, giving PA/PD = PC/PB, i.e. PA * PB =
+    PC * PD.
+
+intuitive_proof:
+  explanation: >
+    Draw the segments AC and BD. The inscribed angles CAB and CDB subtend
+    the same arc CB, so angle PAC = angle PDB. The angles at P are
+    vertically opposite, so angle APC = angle DPB. Hence triangles APC and
+    DPB are similar (two angles), and corresponding sides are proportional:
+    PA/PD = PC/PB. Cross-multiplying gives PA * PB = PC * PD. The same
+    argument with P outside the circle proves the power-of-a-point theorem
+    for secants.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates for the circle and the chords and expand.
+  crucial_observation: >
+    Two auxiliary segments create a pair of similar triangles whose
+    proportion is exactly the claim.
+  why_it_simplifies: >
+    The inscribed angle theorem supplies the similarity, and the product
+    formula is its cross-multiplied form; the same picture defines the power
+    of a point.
+
+related:
+  - inscribed_angle_theorem_central_angle
+  - ptolemy_inequality_via_similar_triangles
+
+tags:
+  - auxiliary object
+  - similar triangles
+  - inscribed angles
+  - circle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

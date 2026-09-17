@@ -1,0 +1,75 @@
+id: nicomachus_sum_of_cubes
+
+title: Sum of Cubes Is the Square of the Sum (Nicomachus)
+
+aliases:
+  - Nicomachus's theorem
+  - squared triangular number
+  - 1^3 + 2^3 + ... + n^3 = (1 + 2 + ... + n)^2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Squared_triangular_number
+  original_title: Squared triangular number
+  accessed: 2026-09-16
+  notes: Known to Nicomachus (c. 100 AD); the "L-shaped gnomon" double count is classical.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 8, The Induction Principle (as an induction exercise) and Chapter 5.
+
+problem:
+  statement: >
+    Show that 1^3 + 2^3 + ... + n^3 = (1 + 2 + ... + n)^2.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: expand the square as a sum over pairs (i, j) and group the pairs by max(i, j)
+  category: double_counting
+  summary: >
+    (1 + ... + n)^2 is the sum of i*j over all pairs (i, j) in
+    {1..n}^2. The pairs with max(i, j) = k form an L-shaped gnomon whose
+    total is k*(1 + ... + (k-1)) * 2 + k*k = k * k^2 = k^3.
+
+intuitive_proof:
+  explanation: >
+    Write (1 + 2 + ... + n)^2 = sum over i and j of i*j, a sum over the
+    n x n multiplication table. Split the table into L-shaped gnomons: the
+    k-th gnomon consists of the entries with max(i, j) = k, namely
+    k*1, k*2, ..., k*(k-1) along the row, the same along the column, and
+    k*k at the corner. Its total is 2k(1 + 2 + ... + (k-1)) + k^2 =
+    2k * k(k-1)/2 + k^2 = k^3 - k^2 + k^2 = k^3. Summing the gnomons for
+    k = 1..n gives 1^3 + ... + n^3.
+
+reasoning_structure:
+  naive_approach: >
+    Prove the identity by induction on n, which verifies it but explains
+    nothing; or expand both sides with the formula for sums of powers.
+  crucial_observation: >
+    The square of a sum is a sum over a square table, and the natural
+    decomposition of a square table is into gnomons, each of which is a
+    cube.
+  why_it_simplifies: >
+    A picture (nested squares in the multiplication table) makes the
+    identity visible with one line of arithmetic per gnomon.
+
+tags:
+  - double counting
+  - proof without words
+  - gnomon
+  - summation identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Equivalent picture: a square of side 1 + ... + n tiled by k copies of
+  k x k squares for each k (with one square split in half when k is even).

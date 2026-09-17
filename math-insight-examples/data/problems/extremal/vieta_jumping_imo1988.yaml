@@ -1,0 +1,91 @@
+id: vieta_jumping_imo1988
+
+title: Vieta Jumping (IMO 1988 Problem 6)
+
+aliases:
+  - IMO 1988 problem 6
+  - Vieta jumping
+  - root flipping
+  - (a^2 + b^2)/(ab + 1) is a perfect square
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Vieta_jumping
+  original_title: Vieta jumping
+  accessed: 2026-09-16
+  notes: >
+    Problem 6 of the 1988 International Mathematical Olympiad, proposed by
+    Stephan Beck (West Germany); famous for being unsolved by the problem
+    committee within the allotted time.
+
+additional_sources:
+  - name: Art of Problem Solving
+    url: https://artofproblemsolving.com/wiki/index.php/1988_IMO_Problems/Problem_6
+    original_title: 1988 IMO Problems/Problem 6
+  - name: Engel - Problem-Solving Strategies
+    notes: Discussed in the chapter on number theory / extremal principle.
+
+problem:
+  statement: >
+    Let a and b be positive integers such that ab + 1 divides a^2 + b^2.
+    Show that (a^2 + b^2)/(ab + 1) is a perfect square.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: from a minimal solution, Vieta's formulas produce a smaller one
+  category: infinite_descent
+  summary: >
+    Fix the quotient k and take a solution (a, b) with a >= b and a + b
+    minimal. Viewing a^2 - kb*a + (b^2 - k) = 0 as a quadratic in a, the
+    other root a' = kb - a = (b^2 - k)/a is an integer, is smaller than a,
+    and is non-negative; if a' > 0 then (a', b) is a smaller solution,
+    contradiction, so a' = 0 and k = b^2.
+
+intuitive_proof:
+  explanation: >
+    Suppose k = (a^2 + b^2)/(ab + 1) is a positive integer that is not a
+    perfect square, and among all positive solutions (a, b) of
+    a^2 + b^2 = k(ab + 1) pick one with a + b as small as possible, say
+    a >= b. The equation is a quadratic in a: a^2 - (kb)a + (b^2 - k) = 0.
+    By Vieta, its second root a' satisfies a + a' = kb and a*a' = b^2 - k,
+    so a' is an integer. Since k is not a square, b^2 - k is nonzero, so
+    a' is nonzero; and a'^2 + b^2 = k(a'b + 1) > 0 forces a' > 0
+    (if a' < 0 the right side would be at most k(1 - b) <= 0 while the left
+    is positive). Finally a' = (b^2 - k)/a < b^2/a <= a. So (a', b) is a
+    positive solution with a' + b < a + b, contradicting minimality. Hence
+    k must be a perfect square.
+
+reasoning_structure:
+  naive_approach: >
+    Search for solutions numerically, or try to factor a^2 + b^2 modulo
+    ab + 1; the divisibility condition resists direct algebraic attack.
+  crucial_observation: >
+    A solution is a root of a quadratic whose other root is also a
+    solution, and that other root is smaller; minimality is violated unless
+    the descent stops at zero.
+  why_it_simplifies: >
+    The extremal choice converts an intractable divisibility question into
+    a two-line Vieta computation; the same descent solves a whole family of
+    "quadratic Diophantine" olympiad problems.
+
+tags:
+  - infinite descent
+  - extremal principle
+  - Vieta's formulas
+  - Diophantine equation
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Geometrically the solutions lie on a hyperbola and the descent walks down
+  a chain of lattice points via reflections in the axes of symmetry.

@@ -1,0 +1,86 @@
+id: gomory_opposite_colour_squares
+
+title: Gomory's Theorem, Removing Two Opposite-Coloured Squares Leaves a Tileable Board
+
+aliases:
+  - Gomory's theorem
+  - chessboard minus two squares of different colours
+  - rook tour domino tiling
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/do_you_know/chessboard.shtml
+  original_title: Covering A Chessboard With Domino
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The argument is due to Ralph Gomory and was published by Martin Gardner.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Mutilated_chessboard_problem
+    original_title: Mutilated chessboard problem (Gomory's theorem)
+
+problem:
+  statement: >
+    Two squares of opposite colours are removed from an 8x8 chessboard.
+    Show that the remaining 62 squares can always be tiled by dominoes.
+  domain: tiling
+  answer: proved (always possible)
+
+key_idea:
+  name: thread a closed rook's tour through the board and cut it at the two holes
+  category: auxiliary_object
+  summary: >
+    Draw a closed path that visits every square once, moving between
+    adjacent squares (a "Hamiltonian cycle" of the grid). Removing two
+    squares of opposite colours cuts the cycle into two paths, each of even
+    length, and a path of even length is tiled by dominoes laid along it.
+
+intuitive_proof:
+  explanation: >
+    Draw a closed loop through all 64 squares, stepping only between
+    adjacent squares (for instance, snake up and down the columns and
+    return along the first column). Along the loop, colours alternate.
+    Removing two squares of opposite colours splits the loop into two
+    paths (or one, if the squares are adjacent along the loop); because
+    the loop alternates colours and the removed squares have different
+    colours, each of the remaining paths contains an even number of
+    squares. Lay dominoes along each path, covering consecutive pairs of
+    squares. This tiles the board.
+
+reasoning_structure:
+  naive_approach: >
+    Try to tile around the two holes by hand for each of the many
+    positions of the holes, or argue by a complicated induction on the
+    board.
+  crucial_observation: >
+    A single auxiliary cycle through the board converts the two-dimensional
+    tiling problem into tiling one-dimensional paths, where only parity of
+    length matters.
+  why_it_simplifies: >
+    The colour condition guarantees even path lengths, and even paths are
+    trivially tileable; one picture handles all 32 x 32 hole positions.
+
+related:
+  - mutilated_checkerboard
+
+tags:
+  - auxiliary object
+  - Hamiltonian cycle
+  - tiling
+  - dominoes
+  - parity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The exact converse of mutilated_checkerboard: colouring shows same-colour
+  holes are fatal, the rook tour shows opposite-colour holes are harmless.

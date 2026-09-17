@@ -1,0 +1,82 @@
+id: frog_jumps_increasing_lengths_return
+
+title: A Frog Jumping 1, 2, 3, ..., n Units Returns Home Only if n Is 0 or 3 mod 4
+
+aliases:
+  - frog jumps of increasing length
+  - plus minus 1 to n equals zero
+  - triangular number parity
+
+source:
+  name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+  url: https://bookstore.ams.org/mcl-7
+  original_title: Chapter on parity
+  author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 1, The Invariance Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    A frog on a line makes jumps of lengths 1, 2, ..., n in this order, each
+    to the left or to the right. For which n can it end where it started?
+  domain: number theory
+  answer: >
+    exactly when n(n + 1)/2 is even, i.e. n = 0 or 3 mod 4 (and then it is
+    possible)
+
+key_idea:
+  name: the final position is a signed sum +-1 +-2 ... +-n, whose parity is that of 1 + 2 + ... + n regardless of the signs
+  category: parity_invariant
+  summary: >
+    The final position is a signed sum of 1, 2, ..., n, and changing signs
+    alters it by even amounts, so its parity is that of n(n+1)/2. Returning
+    home needs the sum 0, so n(n+1)/2 must be even, i.e. n = 0 or 3 mod 4;
+    conversely blocks of four consecutive lengths signed +, -, -, + sum to
+    0.
+
+intuitive_proof:
+  explanation: >
+    Necessity: sum of e_k k = sum of k - 2 sum of the k with e_k = -1, which
+    is congruent to n(n+1)/2 mod 2. For the sum to be 0 the triangular
+    number must be even; n(n+1)/2 is even iff n = 0 or 3 mod 4. Sufficiency:
+    for n = 3 use +1 +2 -3 = 0; for n = 4 use +1 -2 -3 +4 = 0; for larger n,
+    any four consecutive lengths k, k+1, k+2, k+3 can be signed +, -, -, +
+    to sum to 0, so after handling the first 3 or 4 jumps, group the rest in
+    fours.
+
+reasoning_structure:
+  naive_approach: >
+    Search sign patterns for small n and try to guess the rule.
+  crucial_observation: >
+    Signs only change the sum by even amounts, so the parity of the
+    triangular number is the whole obstruction.
+  why_it_simplifies: >
+    A parity invariant gives necessity and a block construction gives
+    sufficiency, settling all n.
+
+related:
+  - plus_or_minus
+  - erase_two_write_difference
+
+tags:
+  - parity
+  - invariant
+  - signed sums
+  - construction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

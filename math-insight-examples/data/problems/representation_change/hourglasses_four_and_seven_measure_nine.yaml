@@ -1,0 +1,86 @@
+id: hourglasses_four_and_seven_measure_nine
+
+title: Measuring 9 Minutes with a 4-Minute and a 7-Minute Hourglass
+
+aliases:
+  - hourglass puzzle
+  - two sand timers
+  - measure 9 minutes with 4 and 7
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Water_pouring_puzzle
+  original_title: Water pouring puzzle (related puzzles)
+  accessed: 2026-09-16
+  notes: >
+    Classic timer puzzle; structurally an integer combination problem like
+    the water jugs.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    Using only a 4-minute and a 7-minute hourglass, measure exactly 9
+    minutes.
+  domain: combinatorics
+  answer: >
+    start both timers; at 4 minutes flip the 4-timer; at 7 flip the 7-timer;
+    at 8 the 4-timer empties and the 7-timer holds 1 minute of sand, so flip
+    it: it runs out at 9
+
+key_idea:
+  name: every moment at which a timer runs out is an integer combination of 4 and 7, so any integer time is reachable in principle; the puzzle is to realise 9 = 2 * 7 - 4 - 1 with flips that keep sand states known
+  category: representation_change
+  summary: >
+    Timers add and subtract fixed amounts, and a partially run timer stores
+    a remainder that a flip makes available. Here the useful decomposition
+    is 9 = 8 + 1: at time 8 (two runs of the 4-timer) the 7-timer, flipped
+    at 7, has run for exactly 1 minute, so flipping it back leaves 1 minute
+    of sand.
+
+intuitive_proof:
+  explanation: >
+    Run both timers from time 0. Events: t = 4 (4-timer empty; flip it), t =
+    7 (7-timer empty; flip it), t = 8 (4-timer empty; the 7-timer has been
+    running 1 minute since its flip, so its top holds 6 minutes and its
+    bottom 1 minute). Flip the 7-timer at t = 8: now 1 minute of sand is on
+    top, and it runs out at t = 9. All actions are triggered by a timer
+    emptying, so no external clock is needed. The general principle:
+    reachable times are integer combinations of 4 and 7 with sand states
+    tracked, and since gcd(4, 7) = 1 all integers occur (Bezout), though a
+    specific schedule must be found.
+
+reasoning_structure:
+  naive_approach: >
+    Flip timers at random and hope to hit 9, or attempt to measure 1 minute
+    directly.
+  crucial_observation: >
+    A partially run timer stores a remainder (here 1 minute) that can be
+    reused by flipping, turning the problem into arithmetic with 4s and 7s.
+  why_it_simplifies: >
+    Reinterpreting timers as adders and subtractors of fixed amounts, with
+    flips recovering remainders, reduces the puzzle to Bezout's identity
+    plus a short schedule.
+
+related:
+  - three_five_jug_water_pouring
+  - burning_ropes_forty_five_minutes
+
+tags:
+  - representation change
+  - Bezout
+  - timing puzzle
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

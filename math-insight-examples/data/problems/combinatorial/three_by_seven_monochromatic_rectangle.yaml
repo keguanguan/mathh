@@ -1,0 +1,75 @@
+id: three_by_seven_monochromatic_rectangle
+
+title: A 2-Coloured 3x7 Grid Contains a Monochromatic Rectangle
+
+aliases:
+  - monochromatic rectangle in a coloured grid
+  - 3 by 7 grid two colours rectangle
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+    original_title: Pigeonhole principle
+
+problem:
+  statement: >
+    Each cell of a 3x7 grid is coloured black or white. Show that some four
+    cells of the same colour form the corners of an axis-parallel rectangle.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: a column of three cells has two of the same colour; there are only 6 such (pair of rows, colour) patterns for 7 columns
+  category: pigeonhole
+  summary: >
+    Each column has a majority colour occupying at least two of its three
+    cells; record the colour and a pair of rows carrying it: at most 2 * 3 =
+    6 possibilities. Two of the seven columns share the record, and their
+    four cells form a monochromatic rectangle.
+
+intuitive_proof:
+  explanation: >
+    In each column, some colour appears at least twice; choose two rows in
+    that column with that colour. This associates to the column a pair
+    (colour, pair of rows), and there are 2 * C(3, 2) = 6 such pairs. Among
+    7 columns two get the same pair, say colour c in rows i and j. Then the
+    cells (i, col_1), (j, col_1), (i, col_2), (j, col_2) all have colour c
+    and form a rectangle.
+
+reasoning_structure:
+  naive_approach: >
+    Try to colour the grid avoiding rectangles and argue case by case that
+    it fails.
+  crucial_observation: >
+    Each column can be summarised by one of six labels, and equal labels
+    create the rectangle.
+  why_it_simplifies: >
+    Pigeonhole on labels replaces a 2^21-case search.
+
+tags:
+  - pigeonhole
+  - coloring
+  - grid
+  - Ramsey theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The 3x6 grid can be 2-coloured without a monochromatic rectangle (use the
+  six column patterns with distinct majority pairs), so seven columns is
+  sharp.

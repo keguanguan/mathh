@@ -1,0 +1,77 @@
+id: imo1987_permutations_fixed_points_sum
+
+title: Summing Fixed Points over All Permutations (IMO 1987 Problem 1)
+
+aliases:
+  - IMO 1987 problem 1
+  - sum of k p_n(k) = n!
+  - counting (permutation, fixed point) pairs
+
+source:
+  name: International Mathematical Olympiad 1987, Problem 1
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1987 Problem 1
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Random_permutation_statistics
+    original_title: Random permutation statistics (fixed points)
+
+problem:
+  statement: >
+    Let p_n(k) be the number of permutations of {1, ..., n} with exactly k
+    fixed points. Show that the sum over k of k p_n(k) equals n!.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: the sum counts pairs (permutation, fixed point of it); count them by choosing the fixed point first
+  category: double_counting
+  summary: >
+    Each permutation with k fixed points contributes k pairs (permutation,
+    fixed point), so the sum is the number of such pairs. Alternatively,
+    choose the fixed point i (n ways) and then any permutation of the other
+    n - 1 elements ((n-1)! ways): n (n-1)! = n! pairs.
+
+intuitive_proof:
+  explanation: >
+    Count the set S of pairs (sigma, i) where sigma is a permutation of
+    {1..n} and sigma(i) = i. Grouping by sigma: a permutation with exactly k
+    fixed points appears in k pairs, so |S| = sum over k of k p_n(k).
+    Grouping by i: for each of the n choices of i, the permutations fixing i
+    are the permutations of the remaining n - 1 elements, (n-1)! of them, so
+    |S| = n (n-1)! = n!.
+
+reasoning_structure:
+  naive_approach: >
+    Compute p_n(k) via derangement numbers (p_n(k) = C(n,k) D(n-k)) and
+    manipulate the resulting sum.
+  crucial_observation: >
+    A weighted sum over permutations is a count of incidences, which can be
+    counted from the other side.
+  why_it_simplifies: >
+    Double counting gives the identity in two lines with no formulas for
+    p_n(k); it is the statement 'expected number of fixed points is 1' in
+    disguise.
+
+related:
+  - random_permutation_fixed_points_expectation
+
+tags:
+  - double counting
+  - permutations
+  - fixed points
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

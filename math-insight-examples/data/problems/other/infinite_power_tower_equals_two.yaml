@@ -1,0 +1,88 @@
+id: infinite_power_tower_equals_two
+
+title: Solving x^(x^(x^...)) = 2 by Self-Similarity
+
+aliases:
+  - infinite power tower
+  - tetration equation
+  - x to the x to the x equals 2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tetration
+  original_title: Tetration (infinite heights)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9, Sequences
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Find x > 0 such that the infinite tower x^{x^{x^{...}}} equals 2, and
+    explain why the same reasoning applied to the value 4 is suspicious.
+  domain: dynamical systems
+  answer: >
+    x = sqrt 2 (and the tower with x = sqrt 2 does converge to 2; the value
+    4 is not attained because the tower converges only for x <= e^(1/e),
+    with limit at most e)
+
+key_idea:
+  name: if the tower converges to T, then the tower is also x^T, so x^T = T; the self-similarity gives x = T^{1/T}, but convergence must be checked separately
+  category: recursive_structure
+  summary: >
+    If the tower converges to T, the exponent above the bottom x is again
+    the whole tower, so T = x^T; with T = 2 this gives x = sqrt 2. The same
+    equation with T = 4 also gives sqrt 2, so convergence must be checked:
+    for x = sqrt 2 the iterates increase and stay below 2, hence converge,
+    and the limit is the fixed point 2.
+
+intuitive_proof:
+  explanation: >
+    Define a_1 = x and a_{n+1} = x^{a_n}. If a_n converges to T then, by
+    continuity, T = x^T. For T = 2 this forces x = 2^{1/2} = sqrt 2. To
+    verify, take x = sqrt 2: by induction a_n < 2 (since sqrt 2^{a_n} < sqrt
+    2^2 = 2) and a_n is increasing (a_1 = sqrt 2 < a_2 = sqrt 2^{sqrt 2} and
+    the map t -> sqrt 2^t is increasing), so a_n converges to some T <= 2
+    with T = sqrt 2^T; the equation t = sqrt 2^t has the solutions 2 and 4,
+    and as T <= 2 we get T = 2. The 'solution' x = sqrt 2 for T = 4 is
+    spurious: 4 is a fixed point of the map but not the limit of the
+    iteration. In general the tower converges iff e^{-e} <= x <= e^{1/e},
+    and its limit is at most e.
+
+reasoning_structure:
+  naive_approach: >
+    Take the equation x^T = T at face value for any T, obtaining
+    contradictory answers.
+  crucial_observation: >
+    The tower is a fixed point of t -> x^t, which determines the limit once
+    convergence is known, and monotone boundedness supplies convergence.
+  why_it_simplifies: >
+    Self-similarity reduces an infinite expression to one equation;
+    separating 'what the limit must be' from 'does it exist' avoids the
+    classic fallacy.
+
+related:
+  - nested_radical_fixed_point
+  - cosine_iteration_contraction
+
+tags:
+  - recursion
+  - fixed point
+  - self-similarity
+  - convergence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Euler determined the convergence range e^{-e} <= x <= e^{1/e}.

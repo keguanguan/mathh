@@ -1,0 +1,77 @@
+id: number_of_divisors_at_most_2_sqrt_n
+
+title: A Number n Has at Most 2 sqrt(n) Divisors
+
+aliases:
+  - divisor count bound
+  - divisors pair up around sqrt n
+  - d(n) <= 2 sqrt n
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Divisor_function
+    original_title: Divisor function (growth rate)
+
+problem:
+  statement: >
+    Show that a positive integer n has at most 2 sqrt(n) positive divisors.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: pair each divisor d with n/d; in each pair one member is at most sqrt(n)
+  category: involution_parity
+  summary: >
+    The involution d -> n/d pairs the divisors, and in every pair {d, n/d}
+    the smaller one is at most sqrt(n). So the divisors are determined by
+    their small members, of which there are at most sqrt(n); hence at most 2
+    sqrt(n) divisors in total.
+
+intuitive_proof:
+  explanation: >
+    If d divides n then so does n/d, and d * (n/d) = n implies min(d, n/d)
+    <= sqrt(n). Every divisor is therefore either at most sqrt(n) or of the
+    form n/d for a divisor d <= sqrt(n). The divisors at most sqrt(n) are
+    among the integers 1, ..., floor(sqrt(n)), so there are at most sqrt(n)
+    of them, and the map d -> n/d covers all the rest. Hence n has at most 2
+    sqrt(n) divisors. (The bound is far from sharp for large n: d(n) =
+    n^{o(1)}.)
+
+reasoning_structure:
+  naive_approach: >
+    Bound the number of divisors through the prime factorisation formula,
+    which requires bounding a product.
+  crucial_observation: >
+    Divisors come in pairs straddling sqrt(n).
+  why_it_simplifies: >
+    A pairing (involution) argument gives a clean bound with no
+    factorisation; it is also the reason trial division up to sqrt(n)
+    suffices for primality testing.
+
+related:
+  - divisors_odd_iff_square
+
+tags:
+  - involution
+  - divisors
+  - bound
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

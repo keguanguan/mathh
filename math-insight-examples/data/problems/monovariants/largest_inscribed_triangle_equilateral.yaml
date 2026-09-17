@@ -1,0 +1,83 @@
+id: largest_inscribed_triangle_equilateral
+
+title: The Largest Triangle Inscribed in a Circle Is Equilateral
+
+aliases:
+  - maximum area inscribed triangle
+  - equilateral triangle maximises area in a circle
+  - smoothing on a circle
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 7, Inequalities (smoothing)
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Equilateral_triangle
+    original_title: Equilateral triangle (optimality)
+
+problem:
+  statement: >
+    Among all triangles inscribed in a given circle, show that the
+    equilateral triangle has the largest area.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: if two sides are unequal, moving the common vertex to the midpoint of its arc increases the area; so a maximiser has all sides equal
+  category: smoothing
+  summary: >
+    Fix vertices B and C. The area is (1/2) BC times the distance from A to
+    line BC, which is largest when A is the midpoint of the arc BC (farthest
+    from the chord), where AB = AC. So a maximal triangle (which exists by
+    compactness) is isosceles with respect to every side, hence equilateral.
+
+intuitive_proof:
+  explanation: >
+    Let ABC be a triangle of maximum area inscribed in the circle (a maximum
+    exists since the set of inscribed triangles is compact and area is
+    continuous). Keeping B and C fixed, the area (1/2) |BC| h is maximised
+    when the distance h from A to the line BC is largest, i.e. when A is the
+    midpoint of the arc BC on its own side of the chord, the point where the
+    tangent is parallel to BC; there AB = AC. If AB != AC, moving A to that
+    arc midpoint would strictly increase the area, contradicting maximality.
+    So AB = AC, and applying the same argument to the other two sides gives
+    AB = BC = CA.
+
+reasoning_structure:
+  naive_approach: >
+    Parametrise the triangle by three angles on the circle and maximise a
+    trigonometric expression with two variables.
+  crucial_observation: >
+    A local improvement (move one vertex to the arc midpoint) is always
+    available unless the triangle is equilateral.
+  why_it_simplifies: >
+    Smoothing reduces a two-parameter optimisation to 'no improvement is
+    possible only at the symmetric configuration', with existence of a
+    maximum supplied by compactness.
+
+related:
+  - fixed_sum_maximise_product_smoothing
+
+tags:
+  - smoothing
+  - optimisation
+  - circle
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same argument shows the regular n-gon has the largest area among
+  n-gons inscribed in a circle.

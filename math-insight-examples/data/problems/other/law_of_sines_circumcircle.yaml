@@ -1,0 +1,78 @@
+id: law_of_sines_circumcircle
+
+title: The Law of Sines from the Circumcircle
+
+aliases:
+  - law of sines
+  - a = 2R sin A
+  - extended law of sines
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Law_of_sines
+  original_title: Law of sines (proof via the circumcircle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that in any triangle a/sin A = b/sin B = c/sin C = 2R, where R is
+    the circumradius.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: draw the diameter from B; the inscribed angle theorem moves angle A to a right triangle with hypotenuse 2R
+  category: auxiliary_object
+  summary: >
+    Let BD be a diameter of the circumcircle. The angle BDC equals angle BAC
+    (inscribed angles on the arc BC) and angle BCD is a right angle
+    (Thales). In the right triangle BCD, sin(angle BDC) = BC/BD, i.e. sin A
+    = a/(2R). The same for the other angles.
+
+intuitive_proof:
+  explanation: >
+    Let O be the circumcentre and D the point diametrically opposite B, so
+    BD = 2R. By the inscribed angle theorem, angle BDC = angle BAC = A (if A
+    is obtuse, angle BDC = 180 - A, with the same sine). By Thales, angle
+    BCD = 90 degrees. In the right triangle BCD, sin(angle BDC) = BC/BD =
+    a/(2R). Hence a/sin A = 2R, and by symmetry the same holds for b/sin B
+    and c/sin C.
+
+reasoning_structure:
+  naive_approach: >
+    Drop an altitude and express it in two ways as b sin C = c sin B, which
+    proves the ratios are equal but not that the common value is 2R.
+  crucial_observation: >
+    A diameter turns the triangle's angle into an angle of a right triangle
+    whose hypotenuse is 2R.
+  why_it_simplifies: >
+    One auxiliary diameter gives the law of sines together with its
+    geometric meaning.
+
+related:
+  - thales_angle_in_semicircle
+  - inscribed_angle_theorem_central_angle
+
+tags:
+  - auxiliary object
+  - circumcircle
+  - inscribed angles
+  - trigonometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

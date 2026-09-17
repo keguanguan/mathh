@@ -1,0 +1,98 @@
+id: power_of_two_with_prescribed_leading_digits
+
+title: Some Power of Two Begins with Any Given Digit String
+
+aliases:
+  - power of 2 starting with 7
+  - powers of two begin with any prefix
+  - Kronecker density of n log 2 mod 1
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle (Kronecker/Dirichlet examples)
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: >
+    A classical olympiad problem ("does some power of 2 begin with 7?", also
+    "with 2005?"); the density of {n*alpha} for irrational alpha is
+    Kronecker's theorem, whose short proof is the pigeonhole principle.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Equidistribution_theorem
+    original_title: Equidistribution theorem
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Three-gap_theorem
+    original_title: Three-gap theorem
+    notes: Finer structure of the gaps of the orbit {n*alpha}.
+
+problem:
+  statement: >
+    Show that for any finite string of decimal digits (say 2026) there is a
+    power of 2 whose decimal expansion begins with that string.
+  domain: dynamical systems
+  answer: proved (such a power always exists, in fact infinitely many)
+
+key_idea:
+  name: the orbit of an irrational rotation is dense, by pigeonhole
+  category: circle_rotation
+  summary: >
+    2^n begins with the string S exactly when the fractional part of
+    n*log10(2) falls in the arc [log10(S), log10(S+1)) of the circle. The
+    points {n*alpha}, alpha irrational, are all distinct, so by pigeonhole
+    two of them are closer than the arc's length; their difference is a
+    tiny step {m*alpha}, and multiples of that step land in every arc.
+
+intuitive_proof:
+  explanation: >
+    Let alpha = log10(2), irrational, and let S be the target string, with
+    L = log10(S+1) - log10(S) > 0 the length of the arc of the circle R/Z
+    in which the fractional part {n*alpha} must lie for 2^n to begin with
+    S. Choose N with 1/N < L and look at the N + 1 points {0}, {alpha},
+    ..., {N*alpha} on the circle. They are distinct (alpha is irrational),
+    and by pigeonhole two of them lie in the same one of N arcs of length
+    1/N, so some {m*alpha} = delta is within 1/N of 0 (a positive step
+    smaller than L, or its negative). Then the points {k*m*alpha} for
+    k = 1, 2, 3, ... move around the circle in steps of size less than L,
+    so one of them lands inside the target arc. That k*m is an exponent
+    whose power of 2 begins with S.
+
+reasoning_structure:
+  naive_approach: >
+    Compute powers of two until one starts with the required digits; this
+    works for short strings but gives no proof, and for long strings the
+    search is hopeless.
+  crucial_observation: >
+    In log scale the question is whether a rotation orbit visits a given
+    arc, and a rotation with a very small step visits every arc.
+  why_it_simplifies: >
+    Pigeonhole produces the small step at once, and existence for every
+    digit string follows uniformly; equidistribution (see the Benford
+    entry) then even gives the frequency.
+
+related:
+  - benford_leading_digits_powers_of_two
+
+tags:
+  - dynamical systems
+  - circle rotation
+  - pigeonhole
+  - density
+  - logarithms
+  - Kronecker's theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Existence (this entry) needs only pigeonhole; frequency (the Benford
+  entry) needs Weyl equidistribution. Together they are the standard
+  first encounter with rotations of the circle.

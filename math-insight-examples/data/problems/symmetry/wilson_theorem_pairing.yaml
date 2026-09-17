@@ -1,0 +1,82 @@
+id: wilson_theorem_pairing
+
+title: Wilson's Theorem by Pairing Each Residue with Its Inverse
+
+aliases:
+  - Wilson's theorem
+  - (p-1)! = -1 mod p
+  - pairing inverses modulo p
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Wilson%27s_theorem
+  original_title: Wilson's theorem
+  accessed: 2026-09-16
+  notes: Stated by Wilson/Waring (1770), first proved by Lagrange (1771); the pairing proof is standard.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/Wilson.shtml
+    original_title: Wilson's Theorem
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: Appears in the chapter on quadratic reciprocity / Fermat's two-squares theorem.
+
+problem:
+  statement: >
+    Show that for every prime p, (p - 1)! = -1 mod p.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: pair each residue with its multiplicative inverse; only 1 and -1 are self-paired
+  category: involution_parity
+  summary: >
+    Modulo a prime every nonzero residue x has a unique inverse, and
+    x is its own inverse only if x^2 = 1, i.e. x = 1 or x = -1. So in the
+    product 1 * 2 * ... * (p-1) all other factors cancel in inverse pairs,
+    leaving 1 * (-1) = -1.
+
+intuitive_proof:
+  explanation: >
+    Modulo p the nonzero residues 1, ..., p - 1 form a group, so each has a
+    unique inverse among them. The map x -> x^{-1} is an involution; its
+    fixed points satisfy x^2 = 1, i.e. (x - 1)(x + 1) = 0 mod p, so x = 1
+    or x = p - 1 (p being prime). Every other residue is paired with a
+    different residue, its inverse, and each such pair contributes a factor
+    1 to the product. Hence (p - 1)! = 1 * (p - 1) = -1 mod p.
+
+reasoning_structure:
+  naive_approach: >
+    Check small primes and try to prove the congruence through properties
+    of factorials or polynomial identities such as x^{p-1} - 1 =
+    product of (x - k) (which also works, but is heavier).
+  crucial_observation: >
+    The factors of the product can be grouped into cancelling pairs by an
+    involution with exactly two fixed points.
+  why_it_simplifies: >
+    A pairing argument replaces any computation; the residual factors are
+    exactly the fixed points of the involution.
+
+related:
+  - fermat_little_theorem_necklaces
+
+tags:
+  - involution
+  - pairing
+  - number theory
+  - group theory
+  - Wilson
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The involution-with-few-fixed-points pattern is pushed much further in
+  zagier_two_squares_involution.

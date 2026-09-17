@@ -1,0 +1,81 @@
+id: two_by_two_block_flips_row_product
+
+title: Flipping 2x2 Blocks Preserves Every Row Product
+
+aliases:
+  - 2x2 block sign flips
+  - row product invariant
+  - single minus one cannot be removed by block flips
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on invariants
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    A rectangular grid contains +1 in every cell except one cell containing
+    -1. A move flips the signs of all four cells of some 2x2 block. Can all
+    cells be made +1?
+  domain: combinatorics
+  answer: impossible
+
+key_idea:
+  name: a 2x2 flip changes exactly two entries in each of two rows, so the product of every row is invariant
+  category: algebraic_invariant
+  summary: >
+    A 2x2 block meets two rows in two cells each. Flipping it multiplies
+    each of those row products by (-1)^2 = 1. So all row products are
+    invariant; the row containing the -1 has product -1 forever, while the
+    all-+1 grid has all row products +1.
+
+intuitive_proof:
+  explanation: >
+    Let r_i be the product of the entries in row i. A 2x2 block occupies two
+    adjacent cells in row i and two in row i + 1; flipping it changes two
+    signs in each of these rows, leaving r_i and r_{i+1} unchanged, and does
+    not touch other rows. Hence every r_i is invariant under all moves.
+    Initially the row containing the single -1 has product -1; in the target
+    all rows have product +1. So the target is unreachable. (Column products
+    are invariant too; together with the row products they give a complete
+    set of obstructions for grids with at least two rows and columns.)
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of block flips and observe that a lone -1 always survives
+    somewhere.
+  crucial_observation: >
+    Each move touches an even number of cells in every row it meets.
+  why_it_simplifies: >
+    A family of products, one per row, is invariant, and one of them already
+    separates start from target.
+
+related:
+  - rectangle_corner_product_invariant
+  - changing_colors_rows_columns
+
+tags:
+  - invariant
+  - products
+  - row operations
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,87 @@
+id: pentagon_sign_flipping_imo1986
+
+title: Sign-Flipping on a Pentagon Terminates (IMO 1986 Problem 3)
+
+aliases:
+  - IMO 1986 problem 3
+  - pentagon with integers at vertices
+  - negative vertex flipping process
+
+source:
+  name: International Mathematical Olympiad 1986, Problem 3
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1986 Problem 3
+  accessed: 2026-09-16
+  notes: >
+    The sum-of-squared-differences potential is the standard solution; it is
+    discussed in Engel, Problem-Solving Strategies, Chapter 1 (Invariance
+    Principle).
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 1, The Invariance Principle.
+  - name: Art of Problem Solving
+    url: https://artofproblemsolving.com/wiki/index.php/1986_IMO_Problems/Problem_3
+    original_title: 1986 IMO Problems/Problem 3
+
+problem:
+  statement: >
+    Integers are assigned to the five vertices of a pentagon so that their
+    sum is positive. If three consecutive vertices carry x, y, z with y < 0,
+    one may replace them by x + y, -y, z + y. Show that this operation can
+    only be applied finitely many times, whatever choices are made.
+  domain: algebra
+  answer: proved (the process always terminates)
+
+key_idea:
+  name: the sum of squared second differences strictly decreases
+  category: monovariant
+  summary: >
+    With vertices x_1..x_5 (indices mod 5) and total S > 0, the quantity
+    f = sum of (x_i - x_{i+2})^2 changes by exactly 2yS < 0 at every
+    operation. Since f is a non-negative integer it cannot decrease forever.
+
+intuitive_proof:
+  explanation: >
+    Note first that the sum S of the five numbers is invariant: the change is
+    y + (-2y) + y = 0. Now consider f = sum over i of (x_i - x_{i+2})^2. A
+    direct expansion shows that applying the operation at a vertex holding
+    y changes f by 2yS. Because y < 0 and S > 0, f strictly decreases by at
+    least 2S >= 2 each time. But f is a sum of squares of integers, hence a
+    non-negative integer, so only finitely many operations are possible.
+
+reasoning_structure:
+  naive_approach: >
+    Try to show some vertex value must eventually stop being negative, or
+    track how the negative values move around the pentagon; sequences can be
+    long and irregular.
+  crucial_observation: >
+    Although the sum is invariant, a suitable sum of squares of differences
+    is a strict monovariant, and the invariant sum is exactly what makes its
+    decrease sign-definite.
+  why_it_simplifies: >
+    Termination follows from a non-negative integer decreasing at every step;
+    no information about the actual sequence of moves is needed.
+
+tags:
+  - monovariant
+  - potential function
+  - termination
+  - olympiad
+  - sum of squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Famously, a jury member found this potential; several other monovariants
+  work as well (e.g. sum of |x_i| type quantities). The "find a quantity
+  that strictly decreases" pattern is the template for all termination
+  proofs of this kind.

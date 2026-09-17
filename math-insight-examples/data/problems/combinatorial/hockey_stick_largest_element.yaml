@@ -1,0 +1,69 @@
+id: hockey_stick_largest_element
+
+title: The Hockey-Stick Identity by the Largest Element
+
+aliases:
+  - hockey stick identity
+  - Christmas stocking identity
+  - sum of C(k, r) over k
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hockey-stick_identity
+  original_title: Hockey-stick identity (combinatorial proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that C(r, r) + C(r + 1, r) + ... + C(n, r) = C(n + 1, r + 1).
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: classify (r+1)-subsets of {1, ..., n+1} by their largest element
+  category: double_counting
+  summary: >
+    An (r+1)-subset of {1, ..., n+1} with largest element k + 1 consists of
+    that element together with an r-subset of {1, ..., k}; there are C(k, r)
+    of them. Summing over k from r to n counts all C(n+1, r+1) subsets.
+
+intuitive_proof:
+  explanation: >
+    Count the (r+1)-element subsets of {1, 2, ..., n + 1}: there are C(n +
+    1, r + 1). Alternatively, sort them by their largest element k + 1,
+    where r <= k <= n. Such a subset is the largest element together with
+    any r elements chosen from {1, ..., k}, so there are C(k, r) of them.
+    Summing over k gives the left side.
+
+reasoning_structure:
+  naive_approach: >
+    Apply Pascal's rule repeatedly, absorbing terms one at a time.
+  crucial_observation: >
+    Fixing the maximum element splits the subsets into disjoint classes
+    counted by the summands.
+  why_it_simplifies: >
+    One classification proves the identity for all n and r simultaneously;
+    'classify by the largest element' is a general tool.
+
+tags:
+  - double counting
+  - binomial identity
+  - largest element
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

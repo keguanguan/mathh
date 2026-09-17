@@ -1,0 +1,75 @@
+id: gcd_times_lcm_exponents
+
+title: gcd(a, b) * lcm(a, b) = ab via Prime Exponents
+
+aliases:
+  - gcd lcm product formula
+  - min plus max equals sum
+  - prime factorisation of gcd and lcm
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Least_common_multiple
+  original_title: Least common multiple (relation with gcd)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that gcd(a, b) * lcm(a, b) = ab for positive integers a and b.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: in terms of prime exponents, gcd takes the minimum and lcm the maximum, and min + max = sum
+  category: algebraic_encoding
+  summary: >
+    Write a = product of p^{alpha_p} and b = product of p^{beta_p}. Then gcd
+    has exponents min(alpha_p, beta_p) and lcm has max(alpha_p, beta_p). For
+    every prime, min + max = alpha_p + beta_p, which is the exponent of p in
+    ab.
+
+intuitive_proof:
+  explanation: >
+    By unique factorisation, a divisor of a number is determined by
+    exponents at most those of the number, so gcd(a, b) has exponent
+    min(alpha_p, beta_p) at each prime p and lcm(a, b) has max(alpha_p,
+    beta_p). Multiplying gcd and lcm gives exponent min + max at p, and for
+    any two numbers min(x, y) + max(x, y) = x + y = alpha_p + beta_p, the
+    exponent of p in ab. Since the two sides agree at every prime, they are
+    equal.
+
+reasoning_structure:
+  naive_approach: >
+    Prove it via the Euclidean algorithm and properties of lcm as ab/gcd,
+    which is circular unless done carefully.
+  crucial_observation: >
+    Prime exponents turn gcd and lcm into coordinate-wise min and max.
+  why_it_simplifies: >
+    A representation change (exponent vectors) reduces a multiplicative
+    identity to the trivial identity min + max = sum.
+
+tags:
+  - algebraic encoding
+  - prime factorisation
+  - gcd
+  - lcm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  In the same picture, divisibility of positive integers is a product of
+  chains (one per prime), with gcd and lcm as meet and join.

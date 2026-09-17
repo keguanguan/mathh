@@ -1,0 +1,81 @@
+id: sign_flipping_rows_columns
+
+title: Making All Row and Column Sums Non-Negative by Sign Flips
+
+aliases:
+  - sign flipping in a matrix
+  - flip a row or column with negative sum
+  - table of numbers with non-negative line sums
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 1, The Invariance Principle (monovariant examples)
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A classical olympiad problem (e.g. USSR olympiads of the 1960s).
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    notes: Chapter on invariants and monovariants.
+
+problem:
+  statement: >
+    An m x n table contains real numbers. One may change the signs of all
+    entries in a row, or of all entries in a column. Show that by repeating
+    such moves one can reach a table in which every row sum and every
+    column sum is non-negative.
+  domain: algebra
+  answer: proved (always possible)
+
+key_idea:
+  name: flipping a line with negative sum strictly increases the total of all entries
+  category: monovariant
+  summary: >
+    Whenever some row or column has negative sum, flip it: the total of all
+    entries increases by twice the absolute value of that sum. The total
+    can take only finitely many values (each entry is +- its original
+    value), so the flipping must stop, and it stops exactly when no line
+    has negative sum.
+
+intuitive_proof:
+  explanation: >
+    Consider S, the sum of all entries of the table. Flipping a row whose
+    sum is s < 0 changes S by -2s > 0. So as long as some row or column has
+    negative sum we can make a move that strictly increases S. But the
+    table can only be in finitely many states (each entry is either its
+    original value or its negative), so S takes finitely many values and
+    cannot increase forever. Hence after finitely many moves no row or
+    column has negative sum.
+
+reasoning_structure:
+  naive_approach: >
+    Try to fix rows first and then columns, and worry that fixing a column
+    ruins a row; an explicit schedule is hard to prove correct.
+  crucial_observation: >
+    Each "repair" move improves one global quantity, the total sum, so
+    repairs cannot cycle.
+  why_it_simplifies: >
+    Termination of any greedy repair sequence is automatic; the terminal
+    state is the desired one by definition of the moves.
+
+tags:
+  - monovariant
+  - greedy repair
+  - termination
+  - linear algebra
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Same pattern as two_rooms_half_friends: "fix any local violation; a
+  global potential increases".

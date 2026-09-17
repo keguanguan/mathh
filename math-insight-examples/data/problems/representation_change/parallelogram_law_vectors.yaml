@@ -1,0 +1,78 @@
+id: parallelogram_law_vectors
+
+title: The Parallelogram Law via Vectors
+
+aliases:
+  - parallelogram law
+  - sum of squares of diagonals equals sum of squares of sides
+  - "|u+v|^2 + |u-v|^2 = 2|u|^2 + 2|v|^2"
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Parallelogram_law
+  original_title: Parallelogram law (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that in any parallelogram the sum of the squares of the two
+    diagonals equals the sum of the squares of the four sides.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the diagonals are u + v and u - v; expand the squared lengths with the dot product and the cross terms cancel
+  category: complex_or_vector_coordinates
+  summary: >
+    If the sides are the vectors u and v, the diagonals are u + v and u - v.
+    Then |u + v|^2 + |u - v|^2 = (|u|^2 + 2u.v + |v|^2) + (|u|^2 - 2u.v +
+    |v|^2) = 2|u|^2 + 2|v|^2, the sum of the squares of the four sides.
+
+intuitive_proof:
+  explanation: >
+    Represent the parallelogram by vectors u and v along two adjacent sides;
+    the diagonals are u + v and u - v. Using |w|^2 = w.w, |u + v|^2 = |u|^2
+    + 2 u.v + |v|^2 and |u - v|^2 = |u|^2 - 2 u.v + |v|^2. Adding cancels
+    the dot products: |u + v|^2 + |u - v|^2 = 2|u|^2 + 2|v|^2 = |u|^2 +
+    |v|^2 + |u|^2 + |v|^2, the sum of the squares of the four sides.
+
+reasoning_structure:
+  naive_approach: >
+    Apply the law of cosines to the two triangles formed by each diagonal
+    and add, noting cos(180 - t) = -cos t.
+  crucial_observation: >
+    The diagonals are the sum and difference of the side vectors, and the
+    mixed terms in their squares are opposite.
+  why_it_simplifies: >
+    Vector algebra makes the identity a two-line expansion and reveals it as
+    the defining property of inner-product norms (Jordan-von Neumann).
+
+related:
+  - varignon_parallelogram
+  - centroid_minimises_sum_of_squared_distances
+
+tags:
+  - vectors
+  - dot product
+  - parallelogram
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Apollonius's median-length formula is the same identity applied to a
+  triangle.

@@ -1,0 +1,33 @@
+# Named test-time-compute conditions. Each maps onto explicit, provider-specific
+# parameters; nothing pretends that providers expose identical "reasoning tokens".
+# `rank` orders the conditions for plotting I(c) and S(c).
+#
+# anthropic: current Claude models (Opus 5 / Sonnet 5) control reasoning depth with
+#   thinking {type: adaptive} + output_config.effort (low|medium|high|xhigh|max);
+#   the parameters are passed to the Messages API verbatim.
+# mock: ignores parameters; the compute_dependent policy uses `rank`.
+default:
+  rank: 0
+  provider_parameters:
+    mock: {}
+    anthropic: {thinking: {type: adaptive}, output_config: {effort: medium}}
+low:
+  rank: 0
+  provider_parameters:
+    mock: {level: low}
+    anthropic: {thinking: {type: adaptive}, output_config: {effort: low}}
+medium:
+  rank: 1
+  provider_parameters:
+    mock: {level: medium}
+    anthropic: {thinking: {type: adaptive}, output_config: {effort: medium}}
+high:
+  rank: 2
+  provider_parameters:
+    mock: {level: high}
+    anthropic: {thinking: {type: adaptive}, output_config: {effort: high}}
+max:
+  rank: 3
+  provider_parameters:
+    mock: {level: max}
+    anthropic: {thinking: {type: adaptive}, output_config: {effort: max}}

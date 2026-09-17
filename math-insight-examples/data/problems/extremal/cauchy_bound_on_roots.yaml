@@ -1,0 +1,80 @@
+id: cauchy_bound_on_roots
+
+title: A Bound on the Roots of a Polynomial from Its Coefficients
+
+aliases:
+  - Cauchy's bound
+  - roots have modulus at most 1 + max coefficient ratio
+  - polynomials with coefficients plus or minus one
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Geometrical_properties_of_polynomial_roots
+  original_title: Geometrical properties of polynomial roots (bounds on all roots)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every complex root z of x^n + a_{n-1} x^{n-1} + ... + a_0
+    satisfies |z| < 1 + max |a_i|. Deduce that a polynomial with all
+    coefficients equal to +-1 has all roots of modulus less than 2.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: at a root, the leading term |z|^n must be balanced by the lower terms, whose total is at most M(|z|^{n-1} + ... + 1) < M|z|^n/(|z| - 1); this is impossible when |z| >= 1 + M
+  category: extremal_principle
+  summary: >
+    If z is a root with |z| >= 1 + M, where M = max |a_i|, then |z|^n =
+    |a_{n-1} z^{n-1} + ... + a_0| <= M(|z|^{n-1} + ... + 1) = M(|z|^n -
+    1)/(|z| - 1) < M|z|^n/(|z| - 1) <= |z|^n, a contradiction.
+
+intuitive_proof:
+  explanation: >
+    Let M = max |a_i| and suppose z is a root with |z| >= 1 + M > 1. From
+    z^n = -(a_{n-1} z^{n-1} + ... + a_0) and the triangle inequality, |z|^n
+    <= M(|z|^{n-1} + ... + |z| + 1) = M (|z|^n - 1)/(|z| - 1) < M |z|^n/(|z|
+    - 1). Since |z| - 1 >= M, the right side is at most |z|^n, giving |z|^n
+    < |z|^n. Contradiction, so |z| < 1 + M. For coefficients +-1 (with
+    leading coefficient 1), M = 1 and all roots have modulus below 2;
+    applying the same bound to the reversed polynomial shows they also have
+    modulus above 1/2.
+
+reasoning_structure:
+  naive_approach: >
+    Try to locate roots numerically or bound them using specific properties
+    of the polynomial.
+  crucial_observation: >
+    At a root the largest term cannot be dominated by the sum of the others,
+    and a geometric series bounds that sum.
+  why_it_simplifies: >
+    A single triangle-inequality estimate with the geometric series gives a
+    universal, explicit root bound.
+
+related:
+  - geometric_series_shift
+  - odd_degree_polynomial_real_root
+
+tags:
+  - extremal principle
+  - polynomials
+  - roots
+  - geometric series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

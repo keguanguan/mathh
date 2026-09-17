@@ -1,0 +1,81 @@
+id: two_monks_mountain
+
+title: The Monk Climbing the Mountain
+
+aliases:
+  - monk on the mountain
+  - mountain climbing problem (same time both days)
+  - two travellers meet
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Intermediate_value_theorem
+  original_title: Intermediate value theorem (applications)
+  accessed: 2026-09-16
+  notes: >
+    Popularised by Arthur Koestler (The Act of Creation, 1964) and Martin
+    Gardner; a standard puzzle illustrating the intermediate value theorem.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+    notes: W. W. Norton, 2006.
+
+problem:
+  statement: >
+    A monk starts at dawn up a mountain path, reaching the temple at the top
+    at sunset. Some days later he starts at dawn down the same path,
+    reaching the bottom at sunset. Show that there is a point on the path
+    that he passes at exactly the same time of day on both journeys.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: "superimpose the two days: two monks on the same day must meet"
+  category: geometric_reinterpretation
+  summary: >
+    Run both journeys on the same day: one monk ascending, another
+    descending, both from dawn to sunset. They are on the same path going
+    in opposite directions, so at some moment they are at the same point.
+
+intuitive_proof:
+  explanation: >
+    Imagine both journeys happening on one day: one monk walks up from the
+    bottom, a second monk walks down from the top, both starting at dawn
+    and ending at sunset. At dawn the ascending monk is below the
+    descending one, at sunset above him. Since both move continuously, at
+    some moment they are at the same point of the path, and that moment is
+    the required time of day. (Formally: the difference of the two
+    height functions changes sign, so by the intermediate value theorem it
+    vanishes somewhere.)
+
+reasoning_structure:
+  naive_approach: >
+    Reason about speeds, rests and pauses, trying to rule out that the monk
+    could "avoid" the coincidence by walking differently on the two days.
+  crucial_observation: >
+    The two journeys can be drawn on the same time axis, where the question
+    becomes whether two paths in opposite directions must cross.
+  why_it_simplifies: >
+    A confusing statement about one person on two days becomes an obvious
+    statement about two people on one day; all details of speed vanish.
+
+tags:
+  - representation change
+  - intermediate value theorem
+  - continuity
+  - superposition
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  A model of "introduce a second copy of the object and compare"; the same
+  move proves fixed-point statements in one dimension.

@@ -1,0 +1,87 @@
+id: rubiks_cube_single_edge_flip
+
+title: A Single Flipped Edge on a Rubik's Cube Is Unsolvable
+
+aliases:
+  - Rubik's cube parity
+  - edge orientation invariant
+  - impossible cube positions
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Rubik%27s_Cube_group
+  original_title: Rubik's Cube group (orientation and permutation constraints)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Joyner - Adventures in Group Theory
+    notes: Johns Hopkins University Press
+
+problem:
+  statement: >
+    Take apart a Rubik's cube and reassemble it with exactly one edge piece
+    flipped in place. Show that the cube can no longer be solved by legal
+    face turns.
+  domain: combinatorial games
+  answer: proved (impossible)
+
+key_idea:
+  name: the sum of the edge orientations modulo 2 is invariant under every face turn
+  category: group_invariant
+  summary: >
+    Mark each edge piece with an orientation bit relative to a fixed
+    convention. A quarter turn of a face moves four edges and flips the
+    orientation bits of an even number of them (0 or 4 depending on the
+    convention), so the total orientation mod 2 is invariant. A single
+    flipped edge has total 1, while the solved cube has total 0.
+
+intuitive_proof:
+  explanation: >
+    Choose for each of the twelve edge positions a reference facelet, and
+    call an edge piece 'good' if its own reference sticker sits on the
+    reference facelet. With the standard convention (reference stickers on
+    the up/down faces, and on the front/back faces for the four middle-layer
+    edges), turns of the up, down, front and back faces preserve all
+    orientation bits, while a quarter turn of the left or right face flips
+    exactly the four edges it moves. Either way the number of flipped edges
+    changes by an even amount, so its parity is invariant. The solved state
+    has 0 flipped edges; the reassembled cube has 1. Hence no sequence of
+    turns solves it.
+
+reasoning_structure:
+  naive_approach: >
+    Try to flip the edge by long sequences of turns, or search by computer
+    over the ~4 x 10^19 positions.
+  crucial_observation: >
+    Orientation bits transform in a way that preserves their sum mod 2 under
+    every generator of the group.
+  why_it_simplifies: >
+    A group-valued invariant (here Z/2, with Z/3 for corner twists and a
+    permutation sign linking corners and edges) partitions all assemblies
+    into 12 classes and legal moves never cross between them.
+
+related:
+  - fifteen_puzzle
+  - peg_solitaire
+
+tags:
+  - group invariant
+  - parity
+  - orientation
+  - Rubik's cube
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same reasoning for corner twists mod 3 and for the joint permutation
+  parity explains the factor 12 between the number of assemblies and the
+  number of solvable positions.

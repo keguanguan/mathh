@@ -1,0 +1,82 @@
+id: candy_sharing_circle
+
+title: Candy Sharing in a Circle Equalises
+
+aliases:
+  - candy game
+  - integer iterations on a circle
+  - pass half your candy to the right
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Algebra/IntergerIterationsOnACircle.shtml
+  original_title: "A Candy Game: Integer Iterations on a Circle"
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    Students sit in a circle, each holding an even number of candies. At a
+    whistle every student simultaneously gives half of their candies to the
+    student on their right. Anyone who then holds an odd number receives one
+    extra candy from the teacher. Show that after finitely many whistles all
+    students hold the same number of candies.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: the maximum never increases, the minimum never decreases, and the number of minimum-holders shrinks
+  category: monovariant
+  summary: >
+    After a whistle each student holds the average of two even numbers,
+    which lies between the old minimum m and maximum M; the extra candy
+    cannot push anyone above M (M is even). So M never increases, m never
+    decreases, and unless everyone holds m, the set of students holding m
+    strictly shrinks; when it empties, m rises by at least 2.
+
+intuitive_proof:
+  explanation: >
+    Let m and M be the current minimum and maximum (both even). After
+    sharing, a student who had a and whose left neighbour had b holds
+    a/2 + b/2, which is between m and M. If this is odd it is at most M - 1,
+    so the teacher's candy keeps it at most M. Hence M never increases and
+    m never decreases. A student still holds exactly m only if both they and
+    their left neighbour held m before. Going around the circle, if not
+    everyone holds m there is an m-holder whose left neighbour holds more,
+    and that student leaves the minimum. So the set of m-holders shrinks at
+    every step until it is empty, at which point the minimum rises (by at
+    least 2, since counts are even). The minimum cannot rise forever, being
+    bounded by the non-increasing M, so eventually m = M and everyone is
+    equal.
+
+reasoning_structure:
+  naive_approach: >
+    Simulate examples, or try to write a closed formula for the candy counts
+    after k rounds; the teacher's parity correction makes formulas hopeless.
+  crucial_observation: >
+    Averaging pulls everything between the current extremes, and the parity
+    fix can never create a new maximum.
+  why_it_simplifies: >
+    Two monotone quantities squeezed between each other must meet; the
+    argument never needs to know the actual numbers.
+
+tags:
+  - monovariant
+  - averaging
+  - termination
+  - extremes
+  - parity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  A standard example of a "squeeze" monovariant: max non-increasing, min
+  non-decreasing, and a tie-breaking count that strictly decreases.

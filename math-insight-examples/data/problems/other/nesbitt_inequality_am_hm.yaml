@@ -1,0 +1,78 @@
+id: nesbitt_inequality_am_hm
+
+title: Nesbitt's Inequality via AM-HM
+
+aliases:
+  - Nesbitt's inequality
+  - a/(b+c) + b/(c+a) + c/(a+b) >= 3/2
+  - add 1 to each fraction
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Nesbitt%27s_inequality
+  original_title: Nesbitt's inequality (proof by AM-HM)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For positive a, b, c show that a/(b + c) + b/(c + a) + c/(a + b) >= 3/2.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: "add 1 to each term: the sum becomes (a + b + c)(1/(b+c) + 1/(c+a) + 1/(a+b)), and the AM-HM inequality for the three denominators finishes"
+  category: auxiliary_object
+  summary: >
+    Adding 1 to each fraction gives (a + b + c)/(b + c) and so on, so the
+    left side plus 3 equals (a + b + c) times the sum of reciprocals of b +
+    c, c + a, a + b. By AM-HM that sum of reciprocals is at least 9/(2(a + b
+    + c)), so the left side is at least 9/2 - 3 = 3/2.
+
+intuitive_proof:
+  explanation: >
+    Let x = b + c, y = c + a, z = a + b, so x + y + z = 2(a + b + c) = 2s.
+    Then a/(b + c) + 1 = s/x, and similarly for the others, so the left side
+    equals s(1/x + 1/y + 1/z) - 3. The AM-HM inequality (or Cauchy-Schwarz)
+    gives (x + y + z)(1/x + 1/y + 1/z) >= 9, i.e. 1/x + 1/y + 1/z >= 9/(2s).
+    Hence the left side is at least s * 9/(2s) - 3 = 9/2 - 3 = 3/2, with
+    equality iff x = y = z, i.e. a = b = c.
+
+reasoning_structure:
+  naive_approach: >
+    Clear denominators and expand, obtaining a symmetric polynomial
+    inequality of degree 3 to verify.
+  crucial_observation: >
+    Adding 1 to each term produces a common numerator, after which a
+    standard mean inequality applies to the denominators.
+  why_it_simplifies: >
+    One auxiliary rewriting reduces the inequality to AM-HM in three
+    variables; the same 'add 1' trick handles many cyclic fraction
+    inequalities.
+
+related:
+  - am_gm_three_variables_cubes
+  - cauchy_schwarz_discriminant
+
+tags:
+  - auxiliary object
+  - inequality
+  - AM-HM
+  - Nesbitt
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

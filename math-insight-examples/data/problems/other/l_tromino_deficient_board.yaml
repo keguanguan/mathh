@@ -1,0 +1,85 @@
+id: l_tromino_deficient_board
+
+title: Tiling a Deficient 2^n x 2^n Board with L-Trominoes (Golomb)
+
+aliases:
+  - Golomb's tromino theorem
+  - deficient chessboard tromino tiling
+  - L-tromino tiling by induction
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/TrominoPuzzle.shtml
+  original_title: "Tromino Puzzle: Interactive Illustration of Golomb's Theorem"
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: S. W. Golomb, "Checker boards and polyominoes", American Mathematical Monthly 61 (1954).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/TriggTromino.shtml
+    original_title: Covering a Chessboard with a Hole with L-Trominoes
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tromino
+    original_title: Tromino
+
+problem:
+  statement: >
+    From a 2^n x 2^n board one arbitrary square is removed. Show that the
+    rest can be tiled by L-shaped trominoes (three squares in an L).
+  domain: tiling
+  answer: proved (always possible)
+
+key_idea:
+  name: one tromino at the centre turns one deficient board into four
+  category: induction
+  summary: >
+    Divide the board into four 2^{n-1} x 2^{n-1} quadrants. The missing
+    square is in one of them; place a single L-tromino at the centre so
+    that it takes one square from each of the other three quadrants. Now
+    all four quadrants are deficient boards of half the size, tiled by
+    induction.
+
+intuitive_proof:
+  explanation: >
+    For n = 1 the board is 2x2 with one square missing, which is itself an
+    L-tromino. For larger n, cut the board into four quadrants. One quadrant
+    contains the missing square. Around the centre point of the board lie
+    four squares, one from each quadrant; cover the three of them that lie
+    in the other three quadrants with one L-tromino. Each quadrant now has
+    exactly one square unavailable, so each is a deficient board of size
+    2^{n-1}, and by the induction hypothesis each can be tiled. Together
+    with the central tromino this tiles the whole board.
+
+reasoning_structure:
+  naive_approach: >
+    Try to tile specific boards by hand, or count squares (a 2^n x 2^n
+    board minus one square has a number of squares divisible by 3, which is
+    necessary but says nothing about arrangement).
+  crucial_observation: >
+    The induction step must produce four deficient sub-boards, and a single
+    well-placed tromino creates exactly the three missing "holes" needed.
+  why_it_simplifies: >
+    The right induction hypothesis (any square may be missing) makes the
+    step nearly automatic; the proof is also a recursive algorithm.
+
+tags:
+  - induction
+  - recursion
+  - tiling
+  - polyomino
+  - divide and conquer
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  A classic illustration that strengthening the statement (any missing
+  square, not just a corner) makes the induction work.

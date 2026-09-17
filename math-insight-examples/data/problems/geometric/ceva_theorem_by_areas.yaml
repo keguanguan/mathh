@@ -1,0 +1,82 @@
+id: ceva_theorem_by_areas
+
+title: Ceva's Theorem by Ratios of Areas
+
+aliases:
+  - Ceva's theorem
+  - concurrent cevians
+  - area ratio proof of Ceva
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ceva%27s_theorem
+  original_title: Ceva's theorem (proof using areas)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Generalization/CevaPlus.shtml
+    original_title: "Ceva's Theorem: A Matter of Appreciation"
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    In triangle ABC, points D, E, F lie on sides BC, CA, AB. Show that the
+    cevians AD, BE, CF are concurrent if and only if (BD/DC)(CE/EA)(AF/FB) =
+    1.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: a ratio of segments on a side equals a ratio of areas of triangles with a common apex, and the three area ratios telescope
+  category: decomposition
+  summary: >
+    If the cevians meet at P, then BD/DC = area(ABD)/area(ADC) =
+    area(PBD)/area(PDC) = area(APB)/area(APC) (subtracting). Similarly for
+    the other two ratios, each a ratio of two of the three triangles PBC,
+    PCA, PAB. Multiplying, everything cancels to 1. The converse follows by
+    uniqueness of the point D given the product condition.
+
+intuitive_proof:
+  explanation: >
+    Suppose AD, BE, CF meet at P. Triangles ABD and ADC share the altitude
+    from A, so BD/DC = [ABD]/[ADC]; likewise BD/DC = [PBD]/[PDC].
+    Subtracting numerators and denominators, BD/DC = [ABP]/[APC]. In the
+    same way CE/EA = [BCP]/[BPA] and AF/FB = [CAP]/[CPB]. Multiplying the
+    three ratios, each of the areas [ABP], [BCP], [CAP] appears once in a
+    numerator and once in a denominator, so the product is 1. Conversely, if
+    the product is 1, let AD' be the cevian through the intersection of BE
+    and CF; then BD'/D'C = BD/DC, so D' = D and the cevians concur.
+
+reasoning_structure:
+  naive_approach: >
+    Use coordinates or Menelaus' theorem with lengthy computations.
+  crucial_observation: >
+    Ratios along a side are area ratios, and area ratios with a common
+    vertex P cancel cyclically.
+  why_it_simplifies: >
+    Decomposing the triangle into the three triangles at P makes the product
+    identity a telescoping cancellation.
+
+related:
+  - viviani_theorem
+
+tags:
+  - decomposition
+  - area ratios
+  - Ceva
+  - triangle geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The concurrence of medians, angle bisectors and altitudes are immediate
+  corollaries.

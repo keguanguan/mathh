@@ -1,0 +1,75 @@
+id: expected_number_of_runs_linearity
+
+title: The Expected Number of Runs in n Coin Tosses
+
+aliases:
+  - expected runs
+  - runs in a random sequence
+  - indicator for a change of symbol
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Wald%E2%80%93Wolfowitz_runs_test
+  original_title: Wald–Wolfowitz runs test (runs)
+  accessed: 2026-09-16
+  notes: Standard textbook exercise on linearity of expectation.
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+
+problem:
+  statement: >
+    A fair coin is tossed n times. A run is a maximal block of equal
+    outcomes. Show that the expected number of runs is (n + 1)/2.
+  domain: probability
+  answer: (n + 1)/2
+
+key_idea:
+  name: a new run starts at position k > 1 exactly when toss k differs from toss k - 1, which has probability 1/2
+  category: linearity_of_expectation
+  summary: >
+    The number of runs is 1 plus the number of positions k = 2..n at which
+    the outcome changes. Each change happens with probability 1/2, so by
+    linearity the expectation is 1 + (n - 1)/2 = (n + 1)/2.
+
+intuitive_proof:
+  explanation: >
+    Let I_k (k = 2, ..., n) indicate that toss k differs from toss k - 1.
+    The number of runs equals 1 + I_2 + ... + I_n, since each run after the
+    first begins at a change point. For a fair coin P(I_k = 1) = 1/2
+    regardless of the other tosses. By linearity of expectation, E[runs] = 1
+    + (n - 1)/2 = (n + 1)/2. For a coin with heads probability p the same
+    argument gives 1 + 2(n - 1)p(1 - p).
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate the 2^n sequences and count runs, or derive the distribution
+    of the number of runs (a classical but involved computation).
+  crucial_observation: >
+    Runs are counted by change points, and each change point is a simple
+    indicator.
+  why_it_simplifies: >
+    Linearity over dependent indicators gives the mean instantly; the
+    distribution is unnecessary.
+
+related:
+  - random_permutation_fixed_points_expectation
+  - records_in_random_sequence_harmonic
+
+tags:
+  - linearity of expectation
+  - indicator variables
+  - runs
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

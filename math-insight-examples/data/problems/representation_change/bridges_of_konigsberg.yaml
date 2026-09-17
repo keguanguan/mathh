@@ -1,0 +1,80 @@
+id: bridges_of_konigsberg
+
+title: The Seven Bridges of Konigsberg
+
+aliases:
+  - Konigsberg bridges
+  - Euler path problem
+  - Eulerian trail impossibility
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg
+  original_title: Seven Bridges of Konigsberg
+  accessed: 2026-09-16
+  notes: Solved by Euler in 1736; the founding problem of graph theory.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/graphs.shtml
+    original_title: Graphs Fundamentals
+
+problem:
+  statement: >
+    The city of Konigsberg had two river banks and two islands connected by
+    seven bridges. Is there a walk that crosses every bridge exactly once?
+  domain: graph theory
+  answer: impossible
+
+key_idea:
+  name: replace land masses by dots and bridges by lines; count line-ends at each dot
+  category: graph_reinterpretation
+  summary: >
+    Only the connection pattern matters, so shrink each land mass to a
+    vertex and each bridge to an edge. A walk using every edge once enters
+    and leaves each intermediate vertex equally often, so every vertex
+    except possibly the two ends must have even degree. In Konigsberg all
+    four vertices have odd degree.
+
+intuitive_proof:
+  explanation: >
+    Shrink each land mass to a point and draw each bridge as a line between
+    the points it connects; the question is unchanged. In any walk that
+    uses each line exactly once, every time the walk passes through a
+    point it uses two lines there (one in, one out). So a point that is
+    neither the start nor the end of the walk has an even number of lines.
+    At most two points (start and end) can have an odd number. In
+    Konigsberg the four land masses have 5, 3, 3 and 3 bridges: four odd
+    points. So no such walk exists.
+
+reasoning_structure:
+  naive_approach: >
+    Try routes on the map, or enumerate orders in which the seven bridges
+    could be crossed.
+  crucial_observation: >
+    Geometry is irrelevant; only incidences matter, and a walk pairs up the
+    edges at every intermediate vertex.
+  why_it_simplifies: >
+    A parity count of edge-ends at each vertex decides the question for any
+    map at once, with no route search.
+
+tags:
+  - graph theory
+  - representation change
+  - parity
+  - Eulerian path
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The converse (a connected graph with 0 or 2 odd vertices has such a walk)
+  is also true; the abstraction to a graph is the celebrated step.

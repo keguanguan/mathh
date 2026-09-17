@@ -1,0 +1,84 @@
+id: countable_union_of_countable_sets
+
+title: A Countable Union of Countable Sets Is Countable
+
+aliases:
+  - countable union of countable sets
+  - enumerating a grid by diagonals
+  - N x N is countable
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Countable_set
+  original_title: Countable set (basic properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Halmos - Naive Set Theory
+    notes: Section 13
+
+problem:
+  statement: >
+    Show that if A_1, A_2, A_3, ... are countable sets, then their union is
+    countable.
+  domain: set theory
+  answer: proved
+
+key_idea:
+  name: arrange the elements in an infinite grid, a_{ij} = the j-th element of A_i, and walk the grid along successive anti-diagonals
+  category: bijection
+  summary: >
+    List each A_i as a_{i1}, a_{i2}, .... The elements form an infinite
+    table indexed by pairs (i, j), and the pairs can be enumerated by
+    anti-diagonals: (1,1), then (1,2), (2,1), then (1,3), (2,2), (3,1), and
+    so on, since each anti-diagonal i + j = s is finite. This lists every
+    element of the union (skipping repeats), so the union is countable.
+
+intuitive_proof:
+  explanation: >
+    Enumerate each set as A_i = {a_{i1}, a_{i2}, ...} (finite sets are
+    padded by repetition). Every element of the union is some a_{ij}, so it
+    suffices to enumerate the index pairs (i, j) of positive integers. Group
+    the pairs by the sum s = i + j: the group for s contains the s - 1 pairs
+    (1, s - 1), (2, s - 2), ..., (s - 1, 1). Listing the groups for s = 2,
+    3, 4, ... in order, and each group by increasing i, every pair appears
+    at a finite position (pair (i, j) has position (i + j - 2)(i + j - 1)/2
+    + i). Walking through this list and skipping elements already seen gives
+    an enumeration of the union, so it is countable. The same argument shows
+    that N x N, the rationals, and the set of finite sequences of natural
+    numbers are countable.
+
+reasoning_structure:
+  naive_approach: >
+    Try to list A_1 completely before starting A_2, which never gets to A_2.
+  crucial_observation: >
+    An infinite grid can be exhausted by finite anti-diagonals, so a
+    two-dimensional index set is really one-dimensional.
+  why_it_simplifies: >
+    The diagonal enumeration is an explicit bijection N -> N x N, which is
+    all that countability of the union requires.
+
+related:
+  - rationals_countable_zigzag
+  - hilbert_hotel_infinite_guests
+  - cantor_diagonal_uncountable
+
+tags:
+  - bijection
+  - countability
+  - set theory
+  - diagonal enumeration
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Choosing an enumeration of each A_i simultaneously uses the axiom of
+  countable choice.

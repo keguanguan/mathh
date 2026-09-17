@@ -1,0 +1,83 @@
+id: quicksort_expected_comparisons_indicators
+
+title: Randomised Quicksort Makes about 2n ln n Comparisons
+
+aliases:
+  - expected comparisons of quicksort
+  - quicksort analysis with indicator variables
+  - elements i and j are compared with probability 2/(j - i + 1)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Quicksort
+  original_title: Quicksort (average-case analysis using indicator variables)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cormen, Leiserson, Rivest, Stein - Introduction to Algorithms
+    notes: Section 7.4.2
+
+problem:
+  statement: >
+    Quicksort picks a uniformly random pivot, partitions the elements around
+    it, and recurses on the two sides. Show that the expected number of
+    comparisons on n distinct elements is at most 2n H_n, about 2n ln n.
+  domain: probability
+  answer: 2 sum over i < j of 1/(j - i + 1) < 2n H_n
+
+key_idea:
+  name: the i-th and j-th smallest elements are compared iff one of them is the first pivot chosen among the elements between them, which happens with probability 2/(j - i + 1)
+  category: linearity_of_expectation
+  summary: >
+    Two elements are compared at most once, and only when one of them is a
+    pivot while both are still in the same sub-array. Consider the elements
+    of ranks i, ..., j: the first of them to become a pivot separates the
+    rest, and i and j are compared iff that first pivot is i or j itself,
+    probability 2/(j - i + 1). Summing over pairs by linearity gives the
+    bound.
+
+intuitive_proof:
+  explanation: >
+    Let X_{ij} indicate that the elements of rank i and rank j (i < j) are
+    compared during the sort. They are compared at most once, when one of
+    them is chosen as pivot while both lie in the current sub-array.
+    Consider the block of elements of ranks i, i + 1, ..., j; all stay
+    together until the first of them is chosen as a pivot (pivots outside
+    the block send the whole block to one side). If that first pivot is i or
+    j, the two are compared; if it is strictly between, they are separated
+    and never compared. Since pivots are uniform, P(X_{ij} = 1) = 2/(j - i +
+    1). By linearity, the expected number of comparisons is sum over i < j
+    of 2/(j - i + 1) = sum over k = 1..n-1 of 2(n - k)/(k + 1) <= 2n H_n.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the recurrence T(n) = n - 1 + (2/n) sum T(k) for the expected
+    cost and solve it, which works but is heavier.
+  crucial_observation: >
+    Whether two specific elements are ever compared depends only on which of
+    the elements between them is chosen first.
+  why_it_simplifies: >
+    Indicator variables plus linearity convert the analysis of a recursive
+    process into a double sum with a closed-form bound.
+
+related:
+  - random_permutation_fixed_points_expectation
+  - coupon_collector_linearity
+
+tags:
+  - linearity of expectation
+  - indicator variables
+  - algorithm analysis
+  - quicksort
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

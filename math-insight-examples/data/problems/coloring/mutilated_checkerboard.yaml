@@ -1,0 +1,95 @@
+id: mutilated_checkerboard
+
+title: Mutilated Checkerboard
+
+aliases:
+  - mutilated chessboard problem
+  - domino tiling of a board with two opposite corners removed
+  - Gomory's checkerboard (complementary result)
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/do_you_know/pigeon.shtml
+  original_title: Pigeonhole Principle (section on covering a chessboard with dominoes)
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    The problem is usually credited to Max Black (Critical Thinking, 1946) and
+    was popularised by Gamow and Stern (Puzzle-Math, 1958) and Martin Gardner.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/chessboard.shtml
+    original_title: Covering A Chessboard With Domino
+    notes: Discusses the converse (Gomory's theorem) for removed squares of opposite colors.
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Mutilated_chessboard_problem
+    original_title: Mutilated chessboard problem
+
+problem:
+  statement: >
+    Two diagonally opposite corner squares are removed from an ordinary 8x8
+    chessboard, leaving 62 squares. Can the remaining board be tiled exactly
+    by 31 dominoes, each covering two adjacent squares?
+  domain: tiling
+  answer: impossible
+
+key_idea:
+  name: checkerboard coloring
+  category: coloring_invariant
+  summary: >
+    Every domino covers exactly one black and one white square, so any tiled
+    region has equally many squares of each color. Two diagonally opposite
+    corners have the same color, so the mutilated board does not.
+
+intuitive_proof:
+  explanation: >
+    Color the board in the usual chessboard pattern. Wherever a domino lies,
+    horizontally or vertically, it covers two adjacent squares, and adjacent
+    squares always have different colors. Hence 31 dominoes cover exactly 31
+    black and 31 white squares. But the two removed corners are the same
+    color (both ends of a main diagonal), so the mutilated board has 32 squares
+    of one color and 30 of the other. No tiling can exist.
+
+reasoning_structure:
+  naive_approach: >
+    Start placing dominoes and search for an arrangement, or reason locally
+    about which squares near the missing corners can be covered. The search
+    space is enormous and local reasoning never yields a clean contradiction.
+  crucial_observation: >
+    A domino is color-balanced no matter where it is placed, so the only thing
+    that matters about a region is the difference between its black and white
+    counts.
+  why_it_simplifies: >
+    A single global count (32 versus 30) rules out every one of the
+    astronomically many candidate arrangements at once; no case analysis is
+    needed.
+
+related:
+  - gomory_opposite_colour_squares
+  - vertical_horizontal_dominoes_even
+  - straight_tetromino_10x10
+
+tags:
+  - invariant
+  - parity
+  - coloring
+  - tiling
+  - dominoes
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The converse (Gomory): if the two removed squares have opposite colors, a
+  tiling always exists; see the entry gomory_opposite_color_squares. The same
+  coloring idea generalises to any board and any polyomino whose color balance
+  is forced.

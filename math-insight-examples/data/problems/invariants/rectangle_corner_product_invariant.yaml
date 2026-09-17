@@ -1,0 +1,87 @@
+id: rectangle_corner_product_invariant
+
+title: Sign Flips of Rows and Columns Preserve the Product of Any Rectangle's Corners
+
+aliases:
+  - row and column sign flips invariant
+  - 2x2 minor sign invariant
+  - corner product invariant
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/JChangingColors.shtml
+  original_title: Changing Colors II
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 1, The Invariance Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    A grid of +1s and -1s may be changed by flipping the sign of an entire
+    row or column. Show that the product of the four entries at the corners
+    of any axis-parallel rectangle is invariant, and use it to decide
+    whether the 4x4 grid with a single -1 in the top-left corner can be made
+    all +1.
+  domain: combinatorics
+  answer: >
+    invariant proved; the single -1 grid cannot be cleared, since a
+    rectangle containing that corner has corner product -1 while the
+    all-ones grid gives +1
+
+key_idea:
+  name: each row or column flip changes exactly two of the four corners of any rectangle
+  category: algebraic_invariant
+  summary: >
+    A row flip changes the two corners lying in that row (or none), a column
+    flip the two corners in that column. Two sign changes leave the product
+    unchanged. The all-+1 grid has all corner products +1, so any grid with
+    some rectangle of corner product -1 is unreachable.
+
+intuitive_proof:
+  explanation: >
+    Take any rectangle with corners in rows r_1, r_2 and columns c_1, c_2.
+    Flipping a row changes the signs of the two corners in that row (if the
+    row is r_1 or r_2) or none of them; likewise columns. In either case an
+    even number of the four corner signs change, so their product is
+    invariant. In the target all-+1 grid every corner product is +1. In the
+    given grid, the 2x2 rectangle in the top-left has corners -1, +1, +1, +1
+    with product -1. Hence the target is unreachable. In general, a grid is
+    clearable iff all its 2x2 corner products are +1.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of flips, or count the number of -1s, whose parity is
+    invariant for even-sized grids but does not decide this instance.
+  crucial_observation: >
+    Row and column operations act on any rectangle's corners in pairs.
+  why_it_simplifies: >
+    A family of local invariants (one per rectangle) gives a complete
+    reachability criterion, not just a single obstruction.
+
+related:
+  - changing_colors_rows_columns
+
+tags:
+  - invariant
+  - row and column operations
+  - products
+  - reachability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The 2x2 corner products generate all the invariants: the reachable grids
+  are exactly those of the form a_i b_j.

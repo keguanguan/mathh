@@ -1,0 +1,86 @@
+id: coins_in_a_row_parity_strategy
+
+title: "The Coins-in-a-Row Game: Take All the Odd Positions or All the Even Ones"
+
+aliases:
+  - coins in a row game
+  - end-coin game
+  - first player never loses the coin game
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/Coins.shtml
+  original_title: A Game With Coins
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+
+problem:
+  statement: >
+    An even number of coins of various values lie in a row. Two players
+    alternately take a coin from either end of the row. Show that the first
+    player can always secure at least half the total value.
+  domain: combinatorial games
+  answer: >
+    colour the positions alternately; the first player can take all coins of
+    whichever colour class has the larger total
+
+key_idea:
+  name: the first player can always take a coin of a chosen parity class, and can force the second player to expose only coins of the other class
+  category: pairing_strategy
+  summary: >
+    Number the positions 1..2n. The end coins are positions 1 and 2n, one
+    odd and one even. If the first player takes an odd-position coin, the
+    exposed ends are both even; whatever the second player takes, the new
+    end is again odd, and the first player takes it. So the first player
+    collects exactly the odd positions (or, symmetrically, the even ones)
+    and picks the class with the larger sum.
+
+intuitive_proof:
+  explanation: >
+    Label the coins by position 1 to 2n and compare the total value at odd
+    positions with the total at even positions; suppose odd is at least as
+    large. The first player takes coin 1 (odd). Now the row is positions
+    2..2n, with both ends even. The second player takes an even coin,
+    exposing an odd coin at that end while the other end stays even; the
+    first player takes the odd coin, restoring a row with both ends even.
+    Repeating, the first player takes every odd coin and the second every
+    even coin, so the first player ends with the larger half. In the even
+    case start with coin 2n.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the game by dynamic programming over intervals (which finds the
+    optimal play but is far more work).
+  crucial_observation: >
+    Positions split into two parity classes, and the first player controls
+    which class the opponent is forced into.
+  why_it_simplifies: >
+    A pairing of positions gives a guarantee with no lookahead; the strategy
+    is not always optimal but always safe.
+
+related:
+  - coins_on_round_table
+  - subtraction_game_complement
+
+tags:
+  - pairing strategy
+  - parity
+  - game
+  - coins
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With an odd number of coins the second player may have the advantage; the
+  parity trick then fails.

@@ -1,0 +1,82 @@
+id: dirichlet_approximation
+
+title: Dirichlet's Approximation Theorem
+
+aliases:
+  - Dirichlet approximation
+  - "|q alpha - p| < 1/N"
+  - rational approximation by pigeonhole
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dirichlet%27s_approximation_theorem
+  original_title: Dirichlet's approximation theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Pigeon-hole and double counting"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Let alpha be a real number and N a positive integer. Show that there are
+    integers p and q with 1 <= q <= N and |q alpha - p| < 1/N.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the N + 1 fractional parts {0}, {alpha}, ..., {N alpha} fall into N intervals of length 1/N
+  category: pigeonhole
+  summary: >
+    Two of the N + 1 numbers {k alpha}, 0 <= k <= N, lie in the same
+    interval [j/N, (j+1)/N). Their difference is (k_2 - k_1) alpha minus an
+    integer, of absolute value less than 1/N, with 1 <= k_2 - k_1 <= N.
+
+intuitive_proof:
+  explanation: >
+    Divide [0, 1) into N half-open intervals of length 1/N. The N + 1
+    fractional parts {k alpha} for k = 0, ..., N are N + 1 points in N
+    intervals, so two of them, {k_1 alpha} and {k_2 alpha} with k_1 < k_2,
+    are within 1/N of each other. Writing {k alpha} = k alpha - floor(k
+    alpha), the difference is q alpha - p with q = k_2 - k_1 in [1, N] and p
+    an integer, and |q alpha - p| < 1/N.
+
+reasoning_structure:
+  naive_approach: >
+    Use continued fractions, which give the result but require their whole
+    theory.
+  crucial_observation: >
+    Fractional parts of multiples of alpha are points on a circle, and more
+    points than boxes forces two to be close.
+  why_it_simplifies: >
+    A pure counting argument yields the fundamental approximation inequality
+    in three lines.
+
+related:
+  - power_of_two_with_prescribed_leading_digits
+
+tags:
+  - pigeonhole
+  - Diophantine approximation
+  - fractional parts
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The corollary |alpha - p/q| < 1/q^2 for infinitely many p/q when alpha is
+  irrational follows immediately.

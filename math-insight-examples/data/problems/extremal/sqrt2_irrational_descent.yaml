@@ -1,0 +1,85 @@
+id: sqrt2_irrational_descent
+
+title: Irrationality of the Square Root of 2 by Descent
+
+aliases:
+  - square root of 2 is irrational
+  - irrationality of sqrt 2
+  - minimal denominator descent proof
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/sq_root.shtml
+  original_title: Square root of 2 is irrational
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    The page collects many proofs; the entry records the "smallest positive
+    n with n*sqrt(2) an integer" descent, which goes back at least to
+    Dedekind and is popularised by Conway and Guy.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Square_root_of_2
+    original_title: Square root of 2 (section on proofs of irrationality)
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: The chapter on irrationality uses closely related descent ideas.
+
+problem:
+  statement: >
+    Prove that the square root of 2 is not a ratio of two integers.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a smallest integer n with n*sqrt(2) an integer would produce a smaller one
+  category: infinite_descent
+  summary: >
+    If sqrt(2) were rational there would be a least positive integer n such
+    that n*sqrt(2) is an integer. Then m = n*(sqrt(2) - 1) is a smaller
+    positive integer with m*sqrt(2) = 2n - n*sqrt(2) also an integer,
+    contradicting minimality.
+
+intuitive_proof:
+  explanation: >
+    Suppose sqrt(2) = p/q. Then the set of positive integers n for which
+    n*sqrt(2) is an integer is non-empty (it contains q), so it has a least
+    element n. Put m = n*sqrt(2) - n. Since 1 < sqrt(2) < 2, we have
+    0 < m < n, and m is an integer because n*sqrt(2) is. Moreover
+    m*sqrt(2) = 2n - n*sqrt(2) is again an integer. So m is a smaller
+    positive integer with the same property, which is impossible. Hence no
+    such n exists and sqrt(2) is irrational.
+
+reasoning_structure:
+  naive_approach: >
+    The usual proof: write sqrt(2) = p/q in lowest terms, square, and argue
+    that p and q are both even; this needs the notion of lowest terms and
+    unique factorisation or a parity lemma.
+  crucial_observation: >
+    Multiplying by sqrt(2) - 1, a number strictly between 0 and 1, sends an
+    integer witness to a strictly smaller integer witness.
+  why_it_simplifies: >
+    Only the well-ordering of the positive integers and elementary
+    arithmetic are used; the same descent works for sqrt(k) whenever k is not
+    a perfect square.
+
+tags:
+  - infinite descent
+  - extremal principle
+  - well-ordering
+  - irrationality
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Geometric version: from an isosceles right triangle with integer sides one
+  cuts off a smaller one with integer sides (Apostol's proof).

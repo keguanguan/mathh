@@ -1,0 +1,77 @@
+id: qm_am_inequality_sum_of_squares
+
+title: The Quadratic Mean Exceeds the Arithmetic Mean
+
+aliases:
+  - QM-AM inequality
+  - root mean square inequality
+  - sum of squares at least square of sum over n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Generalized_mean
+  original_title: Generalized mean (QM-AM inequality)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that sqrt((x_1^2 + ... + x_n^2)/n) >= (x_1 + ... + x_n)/n for all
+    real x_i.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: n sum x_i^2 - (sum x_i)^2 = sum over pairs of (x_i - x_j)^2, a sum of squares
+  category: algebraic_identity
+  summary: >
+    Expanding, n sum x_i^2 - (sum x_i)^2 = sum over i < j of (x_i - x_j)^2
+    >= 0. Dividing by n^2 and taking square roots gives QM >= AM, with
+    equality iff all x_i are equal.
+
+intuitive_proof:
+  explanation: >
+    Compute (sum x_i)^2 = sum x_i^2 + 2 sum over i < j of x_i x_j, and sum
+    over i < j of (x_i - x_j)^2 = (n - 1) sum x_i^2 - 2 sum over i < j of
+    x_i x_j. Adding the second identity to the first gives n sum x_i^2 =
+    (sum x_i)^2 + sum over i < j of (x_i - x_j)^2, so n sum x_i^2 >= (sum
+    x_i)^2 with equality iff all x_i coincide. Dividing by n^2 and taking
+    square roots yields the inequality between the quadratic and arithmetic
+    means. In probability language: variance is non-negative.
+
+reasoning_structure:
+  naive_approach: >
+    Apply Cauchy-Schwarz with the vector (1, ..., 1), which works but hides
+    the equality case.
+  crucial_observation: >
+    The gap between the two sides is literally a sum of squared differences.
+  why_it_simplifies: >
+    A sum-of-squares identity is a complete certificate; it also identifies
+    the gap as n^2 times the variance.
+
+related:
+  - sum_of_squares_inequality
+  - cauchy_schwarz_discriminant
+
+tags:
+  - algebraic identity
+  - sum of squares
+  - inequality
+  - variance
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

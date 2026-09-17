@@ -1,0 +1,78 @@
+id: mislabeled_boxes_one_draw
+
+title: Three Mislabeled Boxes, One Draw
+
+aliases:
+  - mislabeled boxes puzzle
+  - apples and oranges boxes
+  - every label is wrong
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/PickLabel.shtml
+  original_title: Box Labels
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Induction_puzzles
+    original_title: Induction puzzles
+
+problem:
+  statement: >
+    Three boxes contain apples, oranges, and a mixture respectively, and
+    each is labelled, but every label is wrong. Taking one fruit from one
+    box (without looking inside), determine the contents of all three boxes.
+  domain: combinatorics
+  answer: >
+    draw from the box labelled 'mixed'; it is pure, and the other two boxes
+    are then forced
+
+key_idea:
+  name: the box labelled 'mixed' is pure, so one draw identifies it, and 'all labels wrong' then fixes the rest
+  category: information_counting_bound
+  summary: >
+    The box labelled 'mixed' cannot be mixed, so one fruit from it reveals
+    whether it is all apples or all oranges. The other two labels are also
+    wrong, which leaves exactly one consistent assignment for the remaining
+    two boxes.
+
+intuitive_proof:
+  explanation: >
+    Since every label is wrong, the box labelled 'mixed' is either all
+    apples or all oranges; a single fruit tells which, say apples. The
+    remaining contents, oranges and mixed, go into the boxes labelled
+    'apples' and 'oranges'. The box labelled 'oranges' cannot contain
+    oranges, so it holds the mixture, and the box labelled 'apples' holds
+    the oranges. The draw from a box labelled 'apples' or 'oranges' would
+    not suffice: drawing an orange from the 'apples' box leaves two
+    possibilities.
+
+reasoning_structure:
+  naive_approach: >
+    Consider drawing from each box and enumerate all consistent labellings.
+  crucial_observation: >
+    Only 2 of the 6 permutations have every label wrong, so one bit of
+    information suffices, and the 'mixed' box is the only box whose single
+    draw is informative.
+  why_it_simplifies: >
+    Counting the consistent configurations (2) shows one binary observation
+    is enough, and the structure of derangements says which box to open.
+
+tags:
+  - information
+  - derangement
+  - logic puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

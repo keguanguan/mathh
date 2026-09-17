@@ -1,0 +1,78 @@
+id: seventeen_points_three_colours
+
+title: Seventeen Points, Three Colours, a Monochromatic Triangle
+
+aliases:
+  - R(3,3,3) <= 17
+  - three-colour Ramsey
+  - 17 scientists correspond on three topics
+
+source:
+  name: International Mathematical Olympiad 1964, Problem 4
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1964 Problem 4
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Ramsey%27s_theorem
+    original_title: Ramsey's theorem (multicolour)
+
+problem:
+  statement: >
+    Seventeen scientists correspond in pairs, each pair on exactly one of
+    three topics. Show that three of them correspond pairwise on the same
+    topic.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: "apply pigeonhole twice: a vertex has 6 edges of one colour, and among those 6 endpoints the two-colour party-of-six argument applies"
+  category: pigeonhole
+  summary: >
+    A fixed person has 16 correspondents, so at least 6 on the same topic A.
+    If any two of those six use topic A we are done; otherwise they use only
+    two topics, and among six people with two topics there is a
+    monochromatic triangle by the friends-and-strangers theorem.
+
+intuitive_proof:
+  explanation: >
+    Pick a scientist P. Of P's 16 correspondents, by pigeonhole at least 6
+    share a topic, say topic 1; call them S. If two members of S correspond
+    on topic 1, they form a topic-1 triangle with P. Otherwise all pairs
+    within S use topics 2 or 3, and the six-person two-colour theorem
+    (R(3,3) = 6) gives a monochromatic triangle inside S.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate colourings of the 136 pairs, or attempt a direct construction
+    avoiding triangles.
+  crucial_observation: >
+    Concentrating on one vertex reduces the number of colours by one, and
+    the two-colour case is already known.
+  why_it_simplifies: >
+    Two pigeonhole steps chain the three-colour statement to the two-colour
+    one; the same recursion bounds all multicolour Ramsey numbers.
+
+related:
+  - party_of_six_ramsey
+
+tags:
+  - pigeonhole
+  - Ramsey theory
+  - graph coloring
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  It is unknown whether 16 points suffice; R(3,3,3) = 17 is known, i.e. 16
+  do not.

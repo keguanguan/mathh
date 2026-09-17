@@ -1,0 +1,76 @@
+id: imo1962_moving_last_digit_to_front
+
+title: The Smallest Number That Quadruples When Its Last Digit Moves to the Front (IMO 1962 Problem 1)
+
+aliases:
+  - IMO 1962 problem 1
+  - cyclic number 153846
+  - digit rotation multiplies by 4
+
+source:
+  name: International Mathematical Olympiad 1962, Problem 1
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1962 Problem 1
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Parasitic_number
+    original_title: Parasitic number
+
+problem:
+  statement: >
+    Find the smallest positive integer ending in 6 such that moving the
+    final 6 to the front produces a number four times as large.
+  domain: number theory
+  answer: "153846"
+
+key_idea:
+  name: write the number as 10x + 6 with x having k digits; the condition becomes 6 * 10^k + x = 4(10x + 6), i.e. 39x = 6 * 10^k - 24
+  category: algebraic_encoding
+  summary: >
+    If the number is N = 10x + 6 with x having k digits, moving the 6 to the
+    front gives 6 * 10^k + x. Setting this equal to 4N gives 13x = 2 * 10^k
+    - 8, so 10^k must be 4 mod 13. The least such k is 5, giving x = 15384
+    and N = 153846.
+
+intuitive_proof:
+  explanation: >
+    Let N = 10x + 6 where x has k digits. The rotated number is 6 * 10^k +
+    x. The condition 6 * 10^k + x = 4(10x + 6) gives 39x = 6 * 10^k - 24,
+    i.e. 13x = 2 * 10^k - 8, so we need 10^k = 4 mod 13. The powers of 10
+    mod 13 are 10, 9, 12, 3, 4, ..., so the least k is 5, giving x = (200000
+    - 8)/13 = 15384 and N = 153846. Check: 615384 = 4 * 153846.
+
+reasoning_structure:
+  naive_approach: >
+    Search numbers ending in 6 one by one, or perform the long
+    multiplication digit by digit from the right (which is actually a
+    reasonable alternative method).
+  crucial_observation: >
+    Digit manipulation is an algebraic identity once the number is written
+    as 10x + 6, and the search collapses to a congruence 10^k = 4 mod 13.
+  why_it_simplifies: >
+    Encoding the digit operation algebraically reduces a search over
+    integers to finding the order-related exponent k in a small cyclic
+    group.
+
+tags:
+  - algebraic encoding
+  - digits
+  - modular arithmetic
+  - olympiad
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  153846 = 6 * 25641, and 1/13 = 0.076923..., whose period underlies the
+  cyclic behaviour.

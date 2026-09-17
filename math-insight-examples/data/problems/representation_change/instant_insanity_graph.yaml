@@ -1,0 +1,93 @@
+id: instant_insanity_graph
+
+title: Instant Insanity Solved by a Graph
+
+aliases:
+  - Instant Insanity
+  - four coloured cubes puzzle
+  - Carteblanche's graph method
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Instant_Insanity
+  original_title: Instant Insanity (solution)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 4
+
+problem:
+  statement: >
+    Four cubes have faces coloured with four colours. Stack them in a column
+    so that each of the four long sides of the column shows all four
+    colours. How can one find a solution without trying the tens of
+    thousands of arrangements?
+  domain: combinatorics
+  answer: >
+    draw the graph with the four colours as vertices and an edge for each
+    cube joining the colours of opposite faces; find two edge-disjoint
+    subgraphs using one edge from each cube in which every vertex has degree
+    2
+
+key_idea:
+  name: each cube contributes three opposite-face pairs; the front/back and left/right of the column are two independent choices of one opposite pair per cube, and 'all four colours on both sides' means every colour appears exactly twice among the chosen pairs
+  category: graph_reinterpretation
+  summary: >
+    Represent each cube by three edges on the four colour vertices, one per
+    pair of opposite faces. The front/back pairs of the four cubes must form
+    a subgraph in which every colour has degree 2 (once in front, once at
+    the back), with one edge per cube; the left/right pairs must form a
+    second such subgraph using different edges. With only 12 edges the
+    search is tiny.
+
+intuitive_proof:
+  explanation: >
+    A stacking is determined by which opposite-face pair of each cube is
+    oriented front/back and which is left/right (the remaining pair points
+    up/down and is irrelevant). The front side shows all four colours and so
+    does the back iff the four front/back pairs, viewed as edges between
+    colours, form a subgraph where each colour vertex has degree exactly 2
+    (it appears exactly once on the front and once on the back: orienting
+    each edge front->back gives each vertex in-degree and out-degree 1,
+    which is possible for any 2-regular subgraph by orienting its cycles).
+    The same holds for left/right with a different edge from each cube. So a
+    solution is exactly a pair of edge-disjoint 2-regular subgraphs each
+    containing one edge from each cube. The graph has 12 edges, and the
+    candidate 2-regular subgraphs with one edge per cube can be listed by
+    hand in minutes.
+
+reasoning_structure:
+  naive_approach: >
+    Try physical arrangements: 3 orientations x 8 rotations per cube give
+    41472 essentially different stackings.
+  crucial_observation: >
+    Only opposite-face pairs matter, and the two sides of the column are
+    independent constraints of the same form, each a degree condition on a
+    small graph.
+  why_it_simplifies: >
+    The graph encoding collapses a huge search into finding two small
+    2-regular subgraphs, a task solvable by inspection.
+
+related:
+  - petersen_word_puzzle_hamiltonian
+  - wolf_goat_cabbage_state_graph
+
+tags:
+  - graph reinterpretation
+  - puzzle
+  - 2-regular subgraph
+  - search reduction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Carteblanche (1947); the puzzle was marketed as Instant Insanity in 1967.

@@ -1,0 +1,70 @@
+id: n_consecutive_composites
+
+title: Arbitrarily Long Runs of Composite Numbers
+
+aliases:
+  - prime gaps
+  - n consecutive composite numbers
+  - n! + 2 to n! + n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Prime_gap
+  original_title: Prime gap (simple observations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that for every n there are n consecutive positive integers none of
+    which is prime.
+  domain: number theory
+  answer: proved (e.g. (n+1)! + 2, ..., (n+1)! + n + 1)
+
+key_idea:
+  name: add k to a number divisible by every k up to n + 1
+  category: auxiliary_object
+  summary: >
+    (n+1)! is divisible by 2, 3, ..., n + 1. Hence (n+1)! + k is divisible
+    by k for 2 <= k <= n + 1, giving n consecutive composites.
+
+intuitive_proof:
+  explanation: >
+    Let M = (n + 1)!. For each k from 2 to n + 1, k divides M and k divides
+    k, so k divides M + k; since M + k > k, the number M + k is composite.
+    The n numbers M + 2, M + 3, ..., M + n + 1 are therefore consecutive
+    composites.
+
+reasoning_structure:
+  naive_approach: >
+    Search prime tables for long gaps, which gives examples but no proof for
+    all n.
+  crucial_observation: >
+    A single number divisible by all small integers turns each small shift
+    into a witnessed composite.
+  why_it_simplifies: >
+    One auxiliary object (the factorial) produces the whole run at once.
+
+tags:
+  - auxiliary object
+  - primes
+  - factorial
+  - prime gaps
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The least common multiple of 1..n+1 works as well and is much smaller.

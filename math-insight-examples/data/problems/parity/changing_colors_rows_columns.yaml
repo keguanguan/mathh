@@ -1,0 +1,76 @@
+id: changing_colors_rows_columns
+
+title: Changing Colors by Flipping Rows and Columns
+
+aliases:
+  - changing colors
+  - row and column flipping puzzle
+  - all but one square white
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/pythagoras/colorchange.shtml
+  original_title: Changing Colors, an Interactive Activity
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/JChangingColors.shtml
+    original_title: Changing Colors II
+
+problem:
+  statement: >
+    An n x n board is colored black and white like a chessboard, with n even.
+    A move inverts the colors of every square in one full row or one full
+    column. Can one reach a position in which all squares but one are white?
+  domain: combinatorics
+  answer: impossible for even n
+
+key_idea:
+  name: parity of the number of black squares is invariant
+  category: parity_invariant
+  summary: >
+    A line with a black and b white squares has a + b = n. Flipping it changes
+    the black count by b - a = n - 2a, an even number when n is even. The board
+    starts with n^2/2 black squares (even), so it can never have exactly one.
+
+intuitive_proof:
+  explanation: >
+    Consider any row or column; say it has a black and b = n - a white
+    squares. After inverting, it has b black squares, so the total number of
+    black squares changes by b - a = n - 2a. For even n this is even, so the
+    parity of the black count is invariant. Initially the count is n^2/2,
+    which is even, so the count stays even forever and can never equal 1.
+
+reasoning_structure:
+  naive_approach: >
+    Experiment with sequences of row and column flips hoping to isolate a
+    single black square, or reason about which flips cancel.
+  crucial_observation: >
+    Every flip changes the number of black squares by an even amount.
+  why_it_simplifies: >
+    One parity, fixed at the start, excludes the target without examining
+    any sequence of moves.
+
+tags:
+  - parity
+  - invariant
+  - coloring
+  - row and column operations
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  For odd n the parity argument fails; Cut-the-Knot notes that a finer
+  invariant is needed there (the puzzle is still unsolvable). A related
+  invariant: the pattern "row i flipped xor column j flipped" means the
+  4 corners of any rectangle are flipped an even number of times in total.

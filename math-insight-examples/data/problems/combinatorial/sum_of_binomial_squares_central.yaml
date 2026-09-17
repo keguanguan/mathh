@@ -1,0 +1,76 @@
+id: sum_of_binomial_squares_central
+
+title: The Sum of Squares of Binomial Coefficients
+
+aliases:
+  - sum of C(n,k)^2 = C(2n,n)
+  - central binomial coefficient identity
+  - paths through the middle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Vandermonde%27s_identity
+  original_title: Vandermonde's identity (special case)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that C(n,0)^2 + C(n,1)^2 + ... + C(n,n)^2 = C(2n, n).
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: choose n objects from n red and n blue ones, classified by how many are red; or count lattice paths by where they cross the middle anti-diagonal
+  category: double_counting
+  summary: >
+    C(2n, n) counts n-subsets of a set of n red and n blue objects. A subset
+    with k red objects has n - k blue ones, and there are C(n, k) C(n, n-k)
+    = C(n,k)^2 such subsets. Summing over k gives the identity.
+
+intuitive_proof:
+  explanation: >
+    Count the ways to choose n objects from a collection of n red and n blue
+    objects: C(2n, n). Classify by the number k of red objects chosen: C(n,
+    k) ways to pick the reds and C(n, n - k) = C(n, k) ways to pick the n -
+    k blues. Summing over k counts every choice once, giving sum of
+    C(n,k)^2. Alternatively, a monotone lattice path from (0,0) to (n,n)
+    crosses the anti-diagonal x + y = n at exactly one point (k, n - k),
+    reached in C(n, k) ways and continued in C(n, k) ways.
+
+reasoning_structure:
+  naive_approach: >
+    Expand (1 + x)^{2n} = (1 + x)^n (1 + x)^n and compare the coefficient of
+    x^n, which works but is less transparent.
+  crucial_observation: >
+    The symmetric special case of Vandermonde becomes a natural
+    classification by colour count.
+  why_it_simplifies: >
+    Double counting gives the identity and its lattice-path picture in a few
+    lines.
+
+related:
+  - vandermonde_committees
+  - lattice_paths_binomial
+
+tags:
+  - double counting
+  - binomial identity
+  - lattice paths
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

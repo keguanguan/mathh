@@ -1,0 +1,92 @@
+id: fault_free_6x6_domino_tiling
+
+title: Every Domino Tiling of a 6x6 Board Has a Fault Line
+
+aliases:
+  - fault-free rectangle
+  - 6x6 board cannot be tiled fault-free by dominoes
+  - every domino tiling of 6x6 has a straight cut
+
+source:
+  name: Wolfram MathWorld
+  url: https://mathworld.wolfram.com/Fault-FreeRectangle.html
+  original_title: Fault-Free Rectangle
+  accessed: 2026-09-16
+  notes: >
+    The 6x6 result and its counting proof are due to S. W. Golomb
+    (Polyominoes, 1965; 2nd ed. Princeton 1994); popularised by Martin
+    Gardner.
+
+additional_sources:
+  - name: Golomb - Polyominoes
+    notes: Princeton University Press, 2nd edition 1994, chapter on fault-free rectangles.
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Combinatorics/DominoCovering.shtml
+    original_title: Dominoes on a Chessboard
+
+problem:
+  statement: >
+    A 6x6 board is tiled by 18 dominoes. Show that some straight grid line
+    (one of the five horizontal or five vertical interior lines) crosses no
+    domino, i.e. the tiling has a "fault line" along which it splits in two.
+  domain: tiling
+  answer: proved (no fault-free 6x6 domino tiling exists)
+
+key_idea:
+  name: every grid line must be crossed by an even number of dominoes, hence by at least two
+  category: structural_obstruction
+  summary: >
+    A grid line cuts the board into two parts with even numbers of squares.
+    Dominoes crossing the line contribute one square to each side, and the
+    rest of each side is covered by whole dominoes, so the number of
+    crossing dominoes is even. If no line is a fault, each of the 10 lines
+    is crossed by at least 2 dominoes; each domino crosses exactly one line;
+    that needs 20 dominoes, but there are only 18.
+
+intuitive_proof:
+  explanation: >
+    Take any of the 10 interior grid lines; it splits the board into a
+    6 x k part and a 6 x (6-k) part, each with an even number of squares.
+    The squares of the 6 x k part are covered either by dominoes lying
+    wholly inside it (2 squares each) or by dominoes straddling the line
+    (1 square each), so the number of straddling dominoes is even. Suppose
+    no line is a fault line: then each line is straddled by at least 2
+    dominoes. Every domino straddles exactly one line (the line between its
+    two squares), so the 10 lines account for at least 10 x 2 = 20 distinct
+    dominoes. But a 6x6 board holds only 18 dominoes. Contradiction; some
+    line is a fault line.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a fault-free tiling by hand and fail repeatedly, or
+    enumerate all 6728 tilings of the 6x6 board by computer.
+  crucial_observation: >
+    Parity forces each non-fault line to be crossed twice, and dominoes
+    cannot be shared between lines, so a simple count exceeds the supply.
+  why_it_simplifies: >
+    A counting inequality (20 > 18) settles the question for all tilings
+    at once and explains why 6x6 is the critical case: for 5x6 and 6x8
+    fault-free tilings do exist.
+
+tags:
+  - counting
+  - parity
+  - tiling
+  - dominoes
+  - contradiction
+  - double counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Golomb's theorem: an a x b rectangle has a fault-free domino tiling iff
+  ab is even, a, b >= 5 and (a, b) is not (6, 6). The 6x6 impossibility is
+  the delicate part, proved exactly by this count.

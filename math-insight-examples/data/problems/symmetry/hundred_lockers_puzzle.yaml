@@ -1,0 +1,74 @@
+id: hundred_lockers_puzzle
+
+title: The Hundred Lockers Puzzle
+
+aliases:
+  - 100 lockers 100 students
+  - which lockers remain open
+  - locker toggling puzzle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divisor_function
+  original_title: Divisor function (the locker problem)
+  accessed: 2026-09-16
+  notes: A classic puzzle; the divisor-pairing solution is folklore.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    100 lockers are closed. Student k (for k = 1 to 100) toggles every k-th
+    locker. Which lockers are open at the end?
+  domain: number theory
+  answer: >
+    lockers 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 (the perfect squares)
+
+key_idea:
+  name: locker n is toggled once per divisor of n, and only perfect squares have an odd number of divisors
+  category: involution_parity
+  summary: >
+    Locker n is toggled by student k exactly when k divides n, so it is
+    toggled d(n) times and ends open iff d(n) is odd. Divisors pair off as d
+    and n/d, so d(n) is odd only when n is a square (when sqrt(n) pairs with
+    itself).
+
+intuitive_proof:
+  explanation: >
+    Student k touches locker n iff k | n, so locker n changes state once for
+    each divisor of n and ends open iff its number of divisors is odd. The
+    involution d -> n/d on the divisors has a fixed point only if n = d^2,
+    so the number of divisors is odd exactly for perfect squares. Hence the
+    open lockers are the ten squares up to 100.
+
+reasoning_structure:
+  naive_approach: >
+    Simulate all 100 students on all 100 lockers.
+  crucial_observation: >
+    The toggling count is the divisor count, and divisors come in pairs
+    except for square roots.
+  why_it_simplifies: >
+    A representation (toggles = divisors) plus an involution parity argument
+    answers the puzzle for any number of lockers.
+
+related:
+  - divisors_odd_iff_square
+
+tags:
+  - involution
+  - parity
+  - divisors
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

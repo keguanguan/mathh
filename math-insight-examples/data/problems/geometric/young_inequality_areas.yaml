@@ -1,0 +1,83 @@
+id: young_inequality_areas
+
+title: Young's Inequality from Two Areas
+
+aliases:
+  - Young's inequality
+  - ab <= a^p/p + b^q/q
+  - areas under a curve and its inverse
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Young%27s_inequality_for_products
+  original_title: Young's inequality for products (proof using areas)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    For a, b >= 0 and p, q > 1 with 1/p + 1/q = 1, show that ab <= a^p/p +
+    b^q/q.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: the rectangle [0, a] x [0, b] is covered by the region under y = x^{p-1} from 0 to a and the region to the left of x = y^{q-1} from 0 to b
+  category: decomposition
+  summary: >
+    The curve y = x^{p-1} is the same as x = y^{q-1}, since (p - 1)(q - 1) =
+    1. The area under it from 0 to a is a^p/p, and the area between it and
+    the y-axis from 0 to b is b^q/q. Together the two regions cover the
+    rectangle of area ab, with equality exactly when the curve passes
+    through the corner (a, b), i.e. b = a^{p-1}.
+
+intuitive_proof:
+  explanation: >
+    Since 1/p + 1/q = 1 we have (p - 1)(q - 1) = 1, so the curve y = x^{p-1}
+    is also the curve x = y^{q-1}. Consider the rectangle with corners (0,
+    0) and (a, b). The region under the curve for 0 <= x <= a has area
+    integral of x^{p-1} dx = a^p/p; the region to the left of the curve for
+    0 <= y <= b has area integral of y^{q-1} dy = b^q/q. Every point of the
+    rectangle lies in at least one of the two regions (a point (x, y) with y
+    > x^{p-1} satisfies x < y^{q-1}), so ab <= a^p/p + b^q/q, with equality
+    exactly when the curve passes through the corner (a, b), i.e. b =
+    a^{p-1}.
+
+reasoning_structure:
+  naive_approach: >
+    Use the concavity of the logarithm (which is also fine) or calculus in
+    one variable.
+  crucial_observation: >
+    The two terms on the right are areas of complementary regions bounded by
+    a curve and its inverse, and together they cover the rectangle.
+  why_it_simplifies: >
+    A picture replaces the calculus; the inequality, its equality case, and
+    its generalisation to any increasing function (Young's integral
+    inequality) are all visible.
+
+related:
+  - am_gm_two_variables_square
+
+tags:
+  - decomposition
+  - area
+  - Young's inequality
+  - convexity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Young's inequality is the one-line input to Holder's inequality.

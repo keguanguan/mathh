@@ -1,0 +1,83 @@
+id: arbelos_area_equals_circle_on_altitude
+
+title: "Archimedes' Arbelos: Its Area Equals the Circle on the Altitude"
+
+aliases:
+  - arbelos
+  - shoemaker's knife
+  - area of the arbelos
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/arbelos.shtml
+  original_title: The Shoemaker's Knife
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Arbelos
+    original_title: Arbelos (area)
+
+problem:
+  statement: >
+    A semicircle of diameter AB has two smaller semicircles on AC and CB
+    removed (C on AB). Show that the remaining region (the arbelos) has the
+    same area as the circle whose diameter is the segment CD, where D is the
+    point of the large semicircle directly above C.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the area of the arbelos is (pi/8)(AB^2 - AC^2 - CB^2) = (pi/4) AC * CB, and CD^2 = AC * CB by the altitude theorem in the right triangle ADB
+  category: algebraic_identity
+  summary: >
+    With AC = 2a and CB = 2b, the arbelos has area (pi/2)((a + b)^2 - a^2 -
+    b^2) = pi a b. The triangle ADB is right-angled at D (Thales), so the
+    altitude CD satisfies CD^2 = AC * CB = 4ab, and the circle with diameter
+    CD has area (pi/4) * 4ab = pi ab.
+
+intuitive_proof:
+  explanation: >
+    Let AC = 2a and CB = 2b, so AB = 2(a + b). The arbelos is the big
+    half-disc minus the two small half-discs: area = (pi/2)(a + b)^2 -
+    (pi/2)a^2 - (pi/2)b^2 = pi ab. By Thales' theorem the angle ADB is
+    right, and in a right triangle the altitude to the hypotenuse is the
+    geometric mean of the two segments it cuts off: CD^2 = AC * CB = 4ab.
+    The circle with diameter CD has radius CD/2 = sqrt(ab) and area pi ab,
+    the same as the arbelos.
+
+reasoning_structure:
+  naive_approach: >
+    Compute both areas in coordinates.
+  crucial_observation: >
+    The cross term 2ab in (a + b)^2 is exactly what the two small
+    semicircles fail to cover, and ab is exactly the square of half the
+    altitude.
+  why_it_simplifies: >
+    One expansion of a square and the altitude theorem identify the two
+    areas; the same cross term underlies all arbelos results.
+
+related:
+  - thales_angle_in_semicircle
+  - napkin_ring
+
+tags:
+  - algebraic identity
+  - Archimedes
+  - circle areas
+  - altitude theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Archimedes' Book of Lemmas contains this and the twin circles of the
+  arbelos.

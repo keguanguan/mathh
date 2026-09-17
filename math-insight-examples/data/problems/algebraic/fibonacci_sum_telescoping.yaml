@@ -1,0 +1,74 @@
+id: fibonacci_sum_telescoping
+
+title: F_1 + F_2 + ... + F_n = F_{n+2} - 1
+
+aliases:
+  - sum of Fibonacci numbers
+  - Fibonacci partial sums
+  - telescoping with the Fibonacci recursion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fibonacci_sequence
+  original_title: Fibonacci sequence (identities)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 8, The Induction Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that F_1 + F_2 + ... + F_n = F_{n+2} - 1 for the Fibonacci numbers.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: "write each term as a difference: F_k = F_{k+2} - F_{k+1}"
+  category: telescoping
+  summary: >
+    The recursion F_{k+2} = F_{k+1} + F_k says F_k = F_{k+2} - F_{k+1}.
+    Summing from k = 1 to n telescopes: (F_3 - F_2) + (F_4 - F_3) + ... +
+    (F_{n+2} - F_{n+1}) = F_{n+2} - F_2 = F_{n+2} - 1.
+
+intuitive_proof:
+  explanation: >
+    By the defining recursion, F_k = F_{k+2} - F_{k+1} for every k. Summing
+    over k = 1, ..., n, consecutive terms cancel and only F_{n+2} - F_2 =
+    F_{n+2} - 1 survives. The same trick gives F_1 + F_3 + ... + F_{2n-1} =
+    F_{2n} (use F_{2k-1} = F_{2k} - F_{2k-2}) and F_2 + F_4 + ... + F_{2n} =
+    F_{2n+1} - 1.
+
+reasoning_structure:
+  naive_approach: >
+    Verify the identity for small n and prove it by induction, which
+    explains nothing.
+  crucial_observation: >
+    The recursion itself expresses each Fibonacci number as a difference of
+    two later ones.
+  why_it_simplifies: >
+    Telescoping via the recursion proves a whole family of Fibonacci sum
+    identities in one line each.
+
+related:
+  - fibonacci_tilings_identity
+  - sum_k_times_k_factorial
+
+tags:
+  - telescoping
+  - Fibonacci
+  - identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

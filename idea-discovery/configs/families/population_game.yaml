@@ -1,0 +1,19 @@
+family_id: population_game
+idea_type: modular_invariant
+domain: combinatorial processes / invariants
+parameters:
+  possible_fraction: 0.35
+  n_classes: 3
+  moduli: [3, 4, 5]
+  min_nonzero_coefficients: 2
+size_parameter: total population N (conserved); state space ~ N^(k-1)
+ground_truth_answer: possible | impossible (exact BFS over the conserved-total state space)
+canonical_idea: linear form alpha . x (mod m) unchanged by every move, separating initial from targets
+certificate_type: modular_invariant
+verification_method: local_rule (alpha . v == 0 mod m for every move), exact; expression forms exhaustive/sampled
+generation_method: seeded (m, alpha); moves sampled from the kernel of alpha mod m; unreachable-but-unseparated instances rejected
+transfer_surfaces:
+  0: classical 13/15/17 chameleons
+  1: coloured tokens with remove/add operations
+  2: commutative string rewriting over a small alphabet
+seed_problem: three-colour chameleons (Tournament of Towns 1985)

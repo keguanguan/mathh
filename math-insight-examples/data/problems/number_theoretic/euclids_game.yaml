@@ -1,0 +1,87 @@
+id: euclids_game
+
+title: Euclid's Game
+
+aliases:
+  - Euclid game
+  - difference game
+  - subtraction game on two numbers
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/EuclidAlg.shtml
+  original_title: Euclid's Game
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/EuclidGameExtension.shtml
+    original_title: Extension of Euclid's Game
+
+problem:
+  statement: >
+    Two distinct positive integers M < N are written on a board. Players
+    alternate; a move writes down the positive difference of two numbers
+    already on the board, provided that difference is not there yet. The
+    player who cannot move loses. Who wins, and does it depend on how the
+    players play?
+  domain: number theory
+  answer: >
+    The game always lasts exactly N/gcd(M,N) - 2 moves, so the first player
+    wins if and only if N/gcd(M,N) is odd; the players' choices are irrelevant.
+
+key_idea:
+  name: the reachable numbers are exactly the multiples of the gcd
+  category: gcd_structure
+  summary: >
+    Every difference of multiples of g = gcd(M,N) is a multiple of g, and
+    repeated subtraction produces every multiple of g up to N. So the final
+    board is forced to be {g, 2g, ..., N} no matter how the game is played,
+    and the number of moves is fixed.
+
+intuitive_proof:
+  explanation: >
+    Let g = gcd(M,N). Nothing but multiples of g can ever appear, since a
+    difference of two multiples of g is a multiple of g. Conversely, the game
+    cannot stop before g itself appears: if the smallest number s on the board
+    exceeded g, some number x on the board would not be a multiple of s
+    (otherwise g would be a multiple of s), and subtracting s from x
+    repeatedly would eventually produce x mod s, a legal move. Once g is on
+    the board, subtracting g from N repeatedly shows that every multiple of g
+    up to N must appear before the game ends. Hence the final board is always
+    {g, 2g, ..., N}, which has N/g numbers, two of which were given. Exactly
+    N/g - 2 moves are made in every play; the first player wins precisely
+    when this number is odd.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the game tree, looking for good and bad moves, or tabulate small
+    cases to guess a winning strategy.
+  crucial_observation: >
+    The set of numbers eventually written is determined in advance: it is the
+    set of multiples of gcd(M,N) up to N.
+  why_it_simplifies: >
+    The length of the game is a fixed number, so there is no strategy at all;
+    the winner is read off from the parity of N/gcd(M,N).
+
+tags:
+  - gcd
+  - Euclidean algorithm
+  - invariant
+  - game
+  - parity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Cut-the-Knot's extension replaces "difference" by "remainder on division",
+  where strategy does matter and golden-ratio thresholds appear.

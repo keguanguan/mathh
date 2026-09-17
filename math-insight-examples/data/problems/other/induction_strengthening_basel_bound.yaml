@@ -1,0 +1,84 @@
+id: induction_strengthening_basel_bound
+
+title: Proving 1/1^2 + ... + 1/n^2 < 2 by Strengthening the Claim
+
+aliases:
+  - strengthening the induction hypothesis
+  - sum of reciprocal squares bounded by 2
+  - inventor's paradox in induction
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 8, The Induction Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: The standard illustration that a stronger statement can be easier to prove by induction (Polya's "inventor's paradox").
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Mathematical_induction
+    original_title: Mathematical induction
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Basel_problem
+    original_title: Basel problem
+
+problem:
+  statement: >
+    Show that 1/1^2 + 1/2^2 + ... + 1/n^2 < 2 for every positive integer n.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: prove the stronger statement that the sum is at most 2 - 1/n
+  category: induction
+  summary: >
+    Induction on "sum < 2" fails because the hypothesis gives no room for
+    the next term. Instead prove sum <= 2 - 1/n: the step needs
+    2 - 1/n + 1/(n+1)^2 <= 2 - 1/(n+1), i.e. 1/(n+1)^2 <= 1/n - 1/(n+1) =
+    1/(n(n+1)), which is true.
+
+intuitive_proof:
+  explanation: >
+    Claim: for all n >= 1, 1/1^2 + ... + 1/n^2 <= 2 - 1/n. For n = 1 both
+    sides equal 1. Assume it for n. Then the sum up to n + 1 is at most
+    2 - 1/n + 1/(n+1)^2, and since 1/(n+1)^2 < 1/(n(n+1)) = 1/n - 1/(n+1),
+    this is less than 2 - 1/(n+1). So the claim holds for n + 1. The
+    claim implies the original inequality since 2 - 1/n < 2.
+
+reasoning_structure:
+  naive_approach: >
+    Attempt induction on the statement "sum < 2" as given; the inductive
+    step cannot go through because the hypothesis "< 2" leaves no
+    quantitative slack to absorb the next term.
+  crucial_observation: >
+    A sharper statement with an explicit error term 1/n gives the
+    induction step exactly the slack it needs, and the slack telescopes.
+  why_it_simplifies: >
+    The seemingly harder statement proves itself in two lines; the choice
+    of the strengthening is the whole insight (the true sum is pi^2/6).
+
+related:
+  - telescoping_reciprocal_products
+
+tags:
+  - induction
+  - strengthening the hypothesis
+  - telescoping
+  - inequality
+  - inventor's paradox
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same telescoping bound 1/n^2 < 1/(n-1) - 1/n gives the direct
+  (non-inductive) proof; the entry is included for the "strengthen to
+  induct" idea, which is the reusable part.

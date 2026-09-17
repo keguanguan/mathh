@@ -1,0 +1,93 @@
+id: lucas_theorem_binomial_parity
+
+title: C(n, k) Is Odd Exactly When the Binary Digits of k Are Contained in Those of n
+
+aliases:
+  - Lucas's theorem mod 2
+  - parity of binomial coefficients
+  - Sierpinski triangle in Pascal's triangle
+  - Kummer's theorem
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/combinatorics/LucasTheorem.shtml
+  original_title: Lucas' Theorem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Lucas%27s_theorem
+    original_title: Lucas's theorem
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Kummer%27s_theorem
+    original_title: Kummer's theorem
+
+problem:
+  statement: >
+    Show that the binomial coefficient C(n, k) is odd if and only if every
+    binary digit of k is at most the corresponding binary digit of n. Deduce
+    that the row n of Pascal's triangle consists entirely of odd numbers iff
+    n = 2^m - 1.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: modulo 2, (1 + x)^{2^j} = 1 + x^{2^j}, so (1 + x)^n factors according to the binary digits of n and the coefficient of x^k is 1 iff k picks one term from each factor
+  category: algebraic_encoding
+  summary: >
+    Modulo 2, (1 + x)^{2^j} = 1 + x^{2^j}, so if J is the set of binary
+    digits of n then (1 + x)^n = product over j in J of (1 + x^{2^j}).
+    Expanding, the coefficient of x^k is 1 mod 2 exactly when k is a sum of
+    distinct powers 2^j with j in J, i.e. when the binary digits of k lie
+    inside those of n.
+
+intuitive_proof:
+  explanation: >
+    Work modulo 2. The freshman's dream (1 + x)^2 = 1 + 2x + x^2 = 1 + x^2
+    mod 2 gives (1 + x)^{2^j} = 1 + x^{2^j} by induction. If n has binary
+    digits 1 exactly at positions j in J, then (1 + x)^n = product over j in
+    J of (1 + x)^{2^j} = product over j in J of (1 + x^{2^j}). Expanding the
+    product, each term is x^{sum of a subset of {2^j : j in J}}, and by
+    uniqueness of binary representation different subsets give different
+    exponents, so every coefficient is 0 or 1 mod 2, with the coefficient of
+    x^k equal to 1 iff k is a sum of a subset of the powers in J. This is
+    Lucas's theorem mod 2. Row n is all odd iff every k in 0..n has digits
+    inside those of n, iff n's binary digits are all 1, i.e. n = 2^m - 1.
+
+reasoning_structure:
+  naive_approach: >
+    Compute Pascal's triangle mod 2 and observe the Sierpinski pattern; or
+    use Legendre's formula for the power of 2 in factorials.
+  crucial_observation: >
+    Squaring is additive mod 2, so (1 + x)^n splits into factors indexed by
+    the binary digits of n, and the product structure is exactly binary
+    addition without carries.
+  why_it_simplifies: >
+    A generating-function identity over GF(2) encodes the whole parity
+    pattern in one product; Kummer's theorem (the power of p dividing C(n,k)
+    is the number of carries when adding k and n - k in base p) is the same
+    idea for every prime.
+
+related:
+  - subsets_binary_strings
+  - partitions_odd_parts_equal_distinct_parts
+
+tags:
+  - algebraic encoding
+  - binomial coefficients
+  - binary
+  - generating functions
+  - Pascal's triangle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

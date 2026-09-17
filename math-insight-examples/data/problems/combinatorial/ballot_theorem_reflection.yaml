@@ -1,0 +1,91 @@
+id: ballot_theorem_reflection
+
+title: Bertrand's Ballot Theorem by the Reflection Principle
+
+aliases:
+  - ballot problem
+  - Andre's reflection method
+  - reflection principle for lattice paths
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Bertrand%27s_ballot_theorem
+  original_title: Bertrand's ballot theorem
+  accessed: 2026-09-16
+  notes: >
+    Posed by Bertrand (1887); the reflection proof is attributed to Desire
+    Andre (1887). Presented in Feller, An Introduction to Probability
+    Theory and Its Applications, vol. 1, III.1.
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+    notes: Chapter III, the reflection principle.
+
+problem:
+  statement: >
+    In an election candidate A receives p votes and B receives q votes,
+    p > q. The votes are counted in random order. Show that the
+    probability that A is strictly ahead throughout the count is
+    (p - q)/(p + q).
+  domain: combinatorics
+  answer: (p - q)/(p + q)
+
+key_idea:
+  name: reflect the initial segment of a bad path across the axis
+  category: bijection
+  summary: >
+    Draw the count as a path of +1 (A) and -1 (B) steps. Bad paths are
+    those touching 0 after the start. Bad paths starting with A biject with
+    paths starting with B (reflect the part up to the first return to 0),
+    and every path starting with B is bad. So the number of good paths is
+    (paths starting with A) - (paths starting with B).
+
+intuitive_proof:
+  explanation: >
+    Encode a counting order as a lattice path from (0,0) with p up-steps
+    and q down-steps; "A always ahead" means the path stays strictly above
+    the axis after the start. A good path must start with an up-step.
+    Among paths that start with an up-step, the bad ones touch the axis
+    somewhere; reflect the portion of such a path up to its first touch of
+    the axis (swap up and down steps there). This produces a path that
+    starts with a down-step, and the operation is reversible: any path
+    starting with a down-step must touch the axis (it ends at height
+    p - q > 0), and reflecting its initial portion up to the first touch
+    gives back a bad path starting with an up-step. Hence bad paths
+    starting up correspond exactly to all paths starting down, and the
+    number of good paths is (paths starting up) - (paths starting down) =
+    C(p+q-1, q) - C(p+q-1, q-1). Dividing by C(p+q, q) and simplifying
+    gives (p - q)/(p + q).
+
+reasoning_structure:
+  naive_approach: >
+    Condition on the first few votes and set up a recursion, or enumerate
+    orders for small p and q and guess the formula.
+  crucial_observation: >
+    Reflection at the first return to zero is a bijection between two
+    families of paths, one of which is trivial to count.
+  why_it_simplifies: >
+    The count of "always ahead" orders becomes a difference of two
+    binomial coefficients with no recursion; the same reflection counts
+    Dyck paths and gives the Catalan numbers.
+
+tags:
+  - bijection
+  - reflection principle
+  - lattice paths
+  - probability
+  - Catalan numbers
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Geometric reflection used as a combinatorial bijection; compare
+  herons_shortest_path where reflection straightens a path instead.

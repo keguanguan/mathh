@@ -1,0 +1,83 @@
+id: fibonacci_gcd_identity
+
+title: gcd(F_m, F_n) = F_gcd(m, n)
+
+aliases:
+  - Fibonacci gcd property
+  - strong divisibility sequence
+  - Euclid's algorithm on Fibonacci indices
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/algebra/FibonacciGCD.shtml
+  original_title: GCD of Fibonacci Numbers
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fibonacci_sequence
+    original_title: Fibonacci sequence (divisibility properties)
+
+problem:
+  statement: >
+    Show that the greatest common divisor of two Fibonacci numbers is a
+    Fibonacci number: gcd(F_m, F_n) = F_{gcd(m,n)}.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the addition formula F_{m+n} = F_m F_{n+1} + F_{m-1} F_n lets Euclid's algorithm on the indices run in parallel with Euclid's algorithm on the values
+  category: gcd_structure
+  summary: >
+    From F_{m+n} = F_m F_{n+1} + F_{m-1} F_n, any common divisor of F_m and
+    F_n divides F_{m+n}, and conversely gcd(F_{m+n}, F_n) = gcd(F_m F_{n+1},
+    F_n) = gcd(F_m, F_n) because F_{n+1} is coprime to F_n. So gcd(F_a, F_b)
+    = gcd(F_{a-b}, F_b): the indices undergo Euclid's subtractive algorithm,
+    ending at gcd(F_d, F_0) = F_d with d = gcd(m, n).
+
+intuitive_proof:
+  explanation: >
+    Two facts: (1) consecutive Fibonacci numbers are coprime, since a common
+    divisor of F_{n+1} and F_n divides F_{n-1} and so on down to F_1 = 1;
+    (2) the addition formula F_{a} = F_{a-b} F_{b+1} + F_{a-b-1} F_b for a >
+    b, provable by induction (or from the tiling interpretation). From (2),
+    gcd(F_a, F_b) = gcd(F_{a-b} F_{b+1}, F_b) = gcd(F_{a-b}, F_b) using (1).
+    Thus the pair of indices (a, b) may be replaced by (a - b, b), exactly
+    the subtractive Euclidean algorithm, which terminates at (d, 0) with d =
+    gcd(m, n). Hence gcd(F_m, F_n) = gcd(F_d, F_0) = F_d.
+
+reasoning_structure:
+  naive_approach: >
+    Compute gcds of Fibonacci numbers numerically and notice they are
+    Fibonacci numbers, without a mechanism.
+  crucial_observation: >
+    The addition formula makes the Fibonacci sequence compatible with the
+    subtraction step of Euclid's algorithm.
+  why_it_simplifies: >
+    Running Euclid on indices while the identity runs Euclid on values
+    proves the theorem in three lines; it is the prototype of a strong
+    divisibility sequence.
+
+related:
+  - fibonacci_tilings_identity
+  - euclids_game
+
+tags:
+  - gcd
+  - Fibonacci
+  - Euclidean algorithm
+  - divisibility sequence
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Corollary: F_m divides F_n whenever m divides n.

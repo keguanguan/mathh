@@ -1,0 +1,85 @@
+id: even_number_of_heads_biased_coin
+
+title: Probability of an Even Number of Heads via (q + p)^n and (q - p)^n
+
+aliases:
+  - even number of heads
+  - parity of binomial count
+  - (1 + (1 - 2p)^n)/2
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Binomial_distribution
+  original_title: Binomial distribution (properties)
+  accessed: 2026-09-16
+  notes: >
+    Classic exercise; the generating-function trick appears in Feller and in
+    many problem books.
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+    notes: Chapter VI exercises
+
+problem:
+  statement: >
+    A coin shows heads with probability p. It is tossed n times. Show that
+    the probability of an even number of heads is (1 + (1 - 2p)^n)/2.
+  domain: probability
+  answer: (1 + (1 - 2p)^n)/2
+
+key_idea:
+  name: the generating function of the number of heads is (q + p t)^n; evaluating at t = 1 and t = -1 and averaging extracts the even coefficients
+  category: generating_function
+  summary: >
+    Let q = 1 - p. The probability of exactly k heads is the coefficient of
+    t^k in (q + pt)^n. Substituting t = -1 flips the sign of the odd terms,
+    so (q + p)^n + (q - p)^n = 2 * (sum of the even-k probabilities). Since
+    q + p = 1, the even probability is (1 + (q - p)^n)/2 = (1 + (1 -
+    2p)^n)/2.
+
+intuitive_proof:
+  explanation: >
+    Let P_k be the probability of exactly k heads. The binomial expansion
+    gives sum over k of P_k t^k = (q + p t)^n. Setting t = 1 gives sum P_k =
+    1 and setting t = -1 gives sum (-1)^k P_k = (q - p)^n. Adding, 2 sum
+    over even k of P_k = 1 + (q - p)^n, so the probability of an even number
+    of heads is (1 + (1 - 2p)^n)/2. For a fair coin this is 1/2 for every n
+    >= 1; for a biased coin it tends to 1/2 exponentially fast. An
+    alternative argument: condition on the last toss; the recursion E_n = (1
+    - p) E_{n-1} + p (1 - E_{n-1}) gives E_n - 1/2 = (1 - 2p)(E_{n-1} -
+    1/2).
+
+reasoning_structure:
+  naive_approach: >
+    Sum the binomial probabilities over even k directly, which has no
+    obvious closed form.
+  crucial_observation: >
+    Substituting t = -1 into a generating function annihilates the odd
+    terms, and (q + p)^n and (q - p)^n are both easy to evaluate.
+  why_it_simplifies: >
+    The generating function turns a parity filter into two evaluations of a
+    known polynomial.
+
+related:
+  - even_and_odd_subsets
+  - n_heads_in_a_row_expected_tosses
+
+tags:
+  - generating function
+  - parity
+  - binomial distribution
+  - roots of unity filter
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Evaluating at all m-th roots of unity extracts the coefficients with k
+  divisible by m.

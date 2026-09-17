@@ -1,0 +1,84 @@
+id: ellipse_reflection_property_heron
+
+title: The Reflection Property of the Ellipse from Heron's Principle
+
+aliases:
+  - ellipse focal property
+  - tangent bisects the exterior angle at the foci
+  - whispering gallery
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ellipse
+  original_title: Ellipse (reflection property)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/HeronsProblem.shtml
+    original_title: Heron's Problem
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Show that the tangent to an ellipse at a point P makes equal angles with
+    the lines from P to the two foci.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the tangent line touches the ellipse only at P, so P minimises the sum of distances to the foci among points of the tangent line, and by Heron's principle the minimiser has equal angles
+  category: reflection
+  summary: >
+    Every point of the tangent line other than P lies outside the ellipse,
+    so it has focal distance sum greater than 2a, while P has sum exactly
+    2a. Hence P is the point of the tangent line minimising F_1 X + F_2 X.
+    By Heron's problem, the minimiser on a line is where the two segments
+    make equal angles with the line.
+
+intuitive_proof:
+  explanation: >
+    Let the ellipse have foci F_1, F_2 and constant sum 2a, and let t be the
+    tangent at P. Points strictly outside the ellipse have F_1 X + F_2 X >
+    2a, and the tangent line meets the ellipse only at P, so for every X on
+    t other than P, F_1 X + F_2 X > 2a = F_1 P + F_2 P. Thus P minimises the
+    sum of distances to F_1 and F_2 over the line t. Heron's problem says
+    that the point of a line minimising the sum of distances to two points
+    on the same side is the point where the two segments make equal angles
+    with the line (reflect one focus across t and take the straight
+    segment). Hence t makes equal angles with PF_1 and PF_2, which is why a
+    ray from one focus reflects off the ellipse to the other.
+
+reasoning_structure:
+  naive_approach: >
+    Differentiate the parametric equations of the ellipse and compute angles
+    with dot products.
+  crucial_observation: >
+    Tangency is a minimisation statement, and minimisation of a distance sum
+    on a line is Heron's problem.
+  why_it_simplifies: >
+    A known extremal characterisation (Heron) transfers to the ellipse
+    through the definition by distance sum; no calculus is needed.
+
+related:
+  - herons_shortest_path
+
+tags:
+  - reflection
+  - ellipse
+  - optimisation
+  - Heron's problem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same argument with a difference of distances gives the reflection
+  property of the hyperbola.

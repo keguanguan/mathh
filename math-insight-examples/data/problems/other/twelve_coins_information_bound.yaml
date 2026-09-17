@@ -1,0 +1,90 @@
+id: twelve_coins_information_bound
+
+title: "Twelve Coins, Three Weighings: Why Three Are Needed"
+
+aliases:
+  - twelve coin problem
+  - counterfeit coin balance puzzle
+  - 3^3 >= 24 bound
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/weight1.shtml
+  original_title: Weighing 12 coins, an Odd Ball puzzle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Balance_puzzle
+    original_title: Balance puzzle
+
+problem:
+  statement: >
+    Twelve coins look identical, but one is counterfeit and either lighter
+    or heavier. Using a balance scale, show that at least three weighings
+    are needed to find the counterfeit and its type, and that 13 coins
+    cannot be handled in three weighings if the type must also be
+    determined.
+  domain: combinatorics
+  answer: >
+    three weighings are necessary (and sufficient); 13 coins with type
+    identification is impossible in three
+
+key_idea:
+  name: each weighing has three outcomes, so k weighings distinguish at most 3^k cases, while there are 2n cases
+  category: information_counting_bound
+  summary: >
+    Each weighing tips left, tips right or balances: three outcomes, so k
+    weighings distinguish at most 3^k cases. Twelve coins give 12 * 2 = 24
+    cases (which coin, lighter or heavier), more than 3^2 = 9 but at most
+    3^3 = 27. For 13 coins the 26 cases fit numerically, but no first
+    weighing splits them into three groups of at most 9.
+
+intuitive_proof:
+  explanation: >
+    A strategy is a decision tree with three branches per weighing, so after
+    k weighings there are at most 3^k leaves, and each of the 2n (coin,
+    type) possibilities must reach a distinct leaf. For n = 12, 2n = 24 > 9
+    = 3^2, so two weighings are insufficient, while 27 >= 24 leaves room for
+    three (an explicit strategy exists). For n = 13, 2n = 26 <= 27 is not
+    excluded by this count alone; the refined argument looks at the first
+    weighing: if k coins are placed on each pan and it balances, the 2(13 -
+    2k) possibilities among the remaining coins must be resolved in two
+    weighings, requiring 2(13 - 2k) <= 9; if it tips, the 2k possibilities
+    (k coins could be heavy, k light) must satisfy 2k <= 9. Both force k <=
+    4 and 13 - 2k <= 4, i.e. k >= 5: contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Try to design weighing schemes for various numbers of coins without a
+    bound on what is possible.
+  crucial_observation: >
+    A weighing is a ternary question, so the number of distinguishable cases
+    grows like 3^k.
+  why_it_simplifies: >
+    Counting outcomes gives a lower bound with no knowledge of clever
+    strategies, and the refined count locates exactly where 13 coins fail.
+
+related:
+  - poisoned_wine_binary_testing
+  - bachet_weights_balanced_ternary
+
+tags:
+  - information bound
+  - counting
+  - decision tree
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The actual 12-coin strategy is a classic; the bound shows it is optimal.

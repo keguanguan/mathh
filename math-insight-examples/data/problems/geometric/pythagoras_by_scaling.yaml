@@ -1,0 +1,87 @@
+id: pythagoras_by_scaling
+
+title: The Pythagorean Theorem by Similarity and Scaling
+
+aliases:
+  - Einstein's proof of the Pythagorean theorem
+  - Pythagoras via similar triangles
+  - altitude splits the triangle into similar copies
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pythagorean_theorem
+  original_title: Pythagorean theorem (proof using similar triangles)
+  accessed: 2026-09-16
+  notes: >
+    The similar-triangle proof is in Euclid VI.31; the "area scales with
+    the square of the hypotenuse" phrasing is often attributed to the young
+    Einstein (Schneior, 1979) and is presented by Polya.
+
+additional_sources:
+  - name: Polya - Mathematics and Plausible Reasoning
+    notes: Volume 1, chapter on generalisation, "Pythagoras's theorem".
+
+problem:
+  statement: >
+    Prove that in a right triangle with legs a, b and hypotenuse c,
+    a^2 + b^2 = c^2.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the altitude to the hypotenuse cuts the triangle into two triangles similar to it, and areas of similar figures scale with the square of any corresponding length
+  category: decomposition
+  summary: >
+    The altitude from the right angle splits the triangle into two smaller
+    right triangles, each similar to the whole, with hypotenuses a and b.
+    A right triangle of a given shape has area k times the square of its
+    hypotenuse, for a constant k depending only on the shape. Adding the
+    two small areas gives k a^2 + k b^2 = k c^2.
+
+intuitive_proof:
+  explanation: >
+    Drop the altitude from the right-angle vertex onto the hypotenuse.
+    Each of the two pieces shares an acute angle with the original
+    triangle and has a right angle, so both are similar to the original.
+    Their hypotenuses are the original legs a and b. For triangles of a
+    fixed shape, area is proportional to the square of the hypotenuse, say
+    area = k * (hypotenuse)^2. The two pieces together make up the whole,
+    so k a^2 + k b^2 = k c^2, and dividing by k gives a^2 + b^2 = c^2.
+
+reasoning_structure:
+  naive_approach: >
+    Rearrangement proofs with four copies of the triangle in a square,
+    or Euclid's I.47 with auxiliary squares and congruent triangles, both
+    requiring a specific and somewhat lucky picture.
+  crucial_observation: >
+    The triangle is made of two scaled copies of itself, and the scaling
+    law for area is quadratic.
+  why_it_simplifies: >
+    No auxiliary squares: the theorem is the additivity of area combined
+    with the quadratic scaling of area, which also explains why the
+    theorem is really about any similar figures on the three sides.
+
+related:
+  - viviani_theorem
+
+tags:
+  - decomposition
+  - similarity
+  - scaling
+  - area
+  - Pythagorean theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Polya uses this proof to illustrate generalisation: the statement about
+  squares on the sides is a special case of the statement about any
+  similar figures, and the general statement is the easier one to prove.

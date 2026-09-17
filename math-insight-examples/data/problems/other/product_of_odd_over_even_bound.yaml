@@ -1,0 +1,78 @@
+id: product_of_odd_over_even_bound
+
+title: (1/2)(3/4)(5/6)...(99/100) < 1/10
+
+aliases:
+  - product of odd over even fractions
+  - Wallis-type product bound
+  - pair the product with its shifted partner
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/inequality.shtml
+  original_title: "An Inequality: 1/2 * 3/4 * ... * 99/100 < 1/10"
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that A = (1/2)(3/4)(5/6)...(99/100) is less than 1/10.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: "compare A with its shifted partner B = (2/3)(4/5)...(98/99)(100/101): each factor of B exceeds the corresponding factor of A, and AB telescopes to 1/101"
+  category: auxiliary_object
+  summary: >
+    Let B = (2/3)(4/5)...(100/101). Factor by factor, k/(k+1) < (k+1)/(k+2),
+    so A < B. The product AB = (1/2)(2/3)(3/4)...(100/101) = 1/101. Hence
+    A^2 < AB = 1/101 < 1/100, so A < 1/10.
+
+intuitive_proof:
+  explanation: >
+    Define B = (2/3)(4/5)(6/7)...(100/101). Since (2k-1)/(2k) < (2k)/(2k+1)
+    for every k (cross-multiply: (2k-1)(2k+1) = 4k^2 - 1 < 4k^2), each
+    factor of A is smaller than the corresponding factor of B, so A < B.
+    Multiplying A and B interleaves the fractions: AB =
+    (1/2)(2/3)(3/4)...(99/100)(100/101), which telescopes to 1/101.
+    Therefore A^2 < AB = 1/101 < 1/100, giving A < 1/10.
+
+reasoning_structure:
+  naive_approach: >
+    Multiply out the 50 fractions numerically, or try to bound each factor
+    separately (which only gives A < 1).
+  crucial_observation: >
+    The product has a natural partner that is slightly larger and whose
+    product with it telescopes.
+  why_it_simplifies: >
+    An auxiliary product turns an opaque inequality into a telescoping
+    computation and a square root.
+
+related:
+  - telescoping_product_one_minus_reciprocal_squares
+
+tags:
+  - auxiliary object
+  - telescoping
+  - inequality
+  - products
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same pairing gives the two-sided estimate 1/(2 sqrt n) <
+  (1/2)(3/4)...((2n-1)/(2n)) < 1/sqrt(2n + 1).

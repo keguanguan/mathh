@@ -1,0 +1,83 @@
+id: splitting_piles
+
+title: Splitting Piles and Summing Products
+
+aliases:
+  - splitting piles
+  - pile splitting sum of products
+  - n(n-1)/2 magic trick
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/piles.shtml
+  original_title: Splitting piles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites A. Engel, Exploring Mathematics with Your Computer, MAA 1993.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/arithmetic/rapid/piles.shtml
+    original_title: Splitting Piles
+    notes: Presented as a magic trick, with an inductive proof.
+
+problem:
+  statement: >
+    A pile of n chips is split into two piles of sizes k and n - k, and the
+    product k(n - k) is recorded. Any pile with more than one chip is split
+    again, recording the product of the two new sizes, until every pile has
+    one chip. Show that the sum of all recorded products is always
+    n(n-1)/2, whatever splits are chosen.
+  domain: combinatorics
+  answer: proved; the total is always n(n-1)/2
+
+key_idea:
+  name: each product counts the threads cut between the two parts
+  category: conservation_law
+  summary: >
+    Join every pair of chips by a thread: n(n-1)/2 threads. Splitting a pile
+    into parts of sizes x and y cuts exactly xy threads. Every thread is cut
+    exactly once by the end, so the products add up to the number of threads.
+
+intuitive_proof:
+  explanation: >
+    Imagine a thread between every pair of chips, n(n-1)/2 threads in all.
+    When a pile is split into parts of x and y chips, the threads running
+    between the two parts, exactly xy of them, are cut, and the number xy is
+    what gets recorded. A thread joining two chips is cut at precisely the
+    moment those chips are first separated, which happens exactly once over
+    the whole process since the process ends with all chips in separate
+    piles. So the recorded products add up to the total number of threads,
+    n(n-1)/2, regardless of the order of splitting.
+
+reasoning_structure:
+  naive_approach: >
+    Compute examples, guess n(n-1)/2, and prove it by strong induction on n
+    with algebra: k(n-k) + k(k-1)/2 + (n-k)(n-k-1)/2 = n(n-1)/2.
+  crucial_observation: >
+    The product xy is the number of pairs with one element on each side, so
+    each recorded number counts pairs being separated.
+  why_it_simplifies: >
+    Order-independence becomes obvious: each pair of chips is separated
+    exactly once, so the sum counts pairs; no algebra or induction is needed.
+
+tags:
+  - conservation law
+  - double counting
+  - pairs
+  - invariant
+  - magic trick
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  Also classifiable as double counting (pairs counted split by split versus
+  all at once). The "threads" are an auxiliary object made explicit.

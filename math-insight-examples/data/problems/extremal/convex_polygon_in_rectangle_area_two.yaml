@@ -1,0 +1,78 @@
+id: convex_polygon_in_rectangle_area_two
+
+title: A Convex Polygon of Area 1 Fits in a Rectangle of Area 2
+
+aliases:
+  - convex set in a rectangle of double area
+  - diameter and supporting lines
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Convex_set
+    original_title: Convex set
+
+problem:
+  statement: >
+    Show that every convex polygon of area 1 is contained in a rectangle of
+    area at most 2.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: take the two vertices at maximal distance; the polygon lies in the strip between the perpendiculars at those vertices, and the supporting lines parallel to the diameter complete a rectangle of twice the area of an inscribed quadrilateral
+  category: extremal_principle
+  summary: >
+    Let AB be a longest chord (diameter) of the polygon. The polygon lies
+    between the lines through A and B perpendicular to AB. Draw the
+    supporting lines parallel to AB touching the polygon at C and D on
+    either side. The rectangle formed has area AB * (dist(C, AB) + dist(D,
+    AB)) = 2 * area(ACBD) <= 2 * area(polygon) = 2.
+
+intuitive_proof:
+  explanation: >
+    Choose vertices A, B of the polygon with |AB| maximal. Every point P of
+    the polygon satisfies |PA|, |PB| <= |AB|, so P lies in the strip bounded
+    by the perpendiculars to AB at A and B. Let l_1 and l_2 be the two
+    supporting lines of the polygon parallel to AB, touching it at points C
+    and D. The rectangle bounded by the two perpendiculars and l_1, l_2
+    contains the polygon and has area |AB| * (h_1 + h_2), where h_1, h_2 are
+    the distances of C and D from line AB. The quadrilateral ACBD lies
+    inside the polygon (convexity) and has area |AB| (h_1 + h_2)/2. Hence
+    the rectangle's area is 2 * area(ACBD) <= 2 * area(polygon) = 2.
+
+reasoning_structure:
+  naive_approach: >
+    Try to bound the width and length of the polygon separately, or search
+    for the worst case among triangles.
+  crucial_observation: >
+    The diameter and the supporting lines parallel to it produce a rectangle
+    that is exactly twice an inscribed quadrilateral.
+  why_it_simplifies: >
+    The extremal chord organises the picture so that the bound is a single
+    area comparison.
+
+tags:
+  - extremal principle
+  - convexity
+  - covering
+  - area
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Triangles show the constant 2 is sharp.

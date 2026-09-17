@@ -1,0 +1,18 @@
+family_id: domino_tiling
+idea_type: coloring_invariant
+domain: combinatorial geometry / tiling
+parameters:
+  possible_fraction: 0.35        # share of 'possible' balance-control instances
+  tile: domino
+  removed_cells: "max(2, n // 2), adjusted so the remaining cell count is even"
+size_parameter: board side n (n x n grid)
+ground_truth_answer: possible | impossible (colour imbalance => impossible; bipartite matching => possible)
+canonical_idea: checkerboard weighting w(r, c) = (-1)^(r + c); every domino has weight 0
+certificate_type: coloring_invariant
+verification_method: local_rule (every legal placement), exact
+generation_method: seeded random removal + rejection sampling; balanced-but-untileable boards rejected
+transfer_surfaces:
+  0: classical 8x8 chessboard with opposite corners removed
+  1: n x n grid with listed removed coordinates
+  2: abstract graph with random vertex labels; perfect pairing along edges
+seed_problem: mutilated chessboard

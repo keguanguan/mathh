@@ -1,0 +1,75 @@
+id: squares_on_a_chessboard_204
+
+title: How Many Squares Are on a Chessboard?
+
+aliases:
+  - squares on a chessboard 204
+  - counting squares of all sizes
+  - sum of squares 1 to 8
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Square_pyramidal_number
+  original_title: Square pyramidal number (squares on a chessboard)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many squares of all sizes (1x1 up to 8x8) can be found on an 8x8
+    chessboard?
+  domain: combinatorics
+  answer: 204 = 1 + 4 + 9 + ... + 64
+
+key_idea:
+  name: a k x k square is determined by its top-left corner, which can be any of the (9 - k)^2 cells whose row and column are at most 9 - k
+  category: bijection
+  summary: >
+    For each size k, the top-left cell of a k x k square must lie in the
+    top-left (9 - k) x (9 - k) region, so there are (9 - k)^2 such squares.
+    Summing over k = 1..8 gives 8^2 + 7^2 + ... + 1^2 = 204.
+
+intuitive_proof:
+  explanation: >
+    A k x k square on the board is determined by its top-left corner cell
+    (i, j), which must satisfy i <= 9 - k and j <= 9 - k so that the square
+    fits. Thus there are (9 - k)^2 squares of side k, and the total is the
+    sum of m^2 for m = 1..8, namely 8 * 9 * 17/6 = 204.
+
+reasoning_structure:
+  naive_approach: >
+    Count squares by drawing them, or count only the 64 unit squares.
+  crucial_observation: >
+    Each square corresponds to one corner cell, and the corner cells of
+    size-k squares form a smaller board.
+  why_it_simplifies: >
+    A bijection between squares and corner cells turns the count into a sum
+    of perfect squares.
+
+related:
+  - sum_of_squares_formula_telescoping_cubes
+
+tags:
+  - bijection
+  - counting
+  - chessboard
+  - sum of squares
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Rectangles are counted by choosing two horizontal and two vertical grid
+  lines: C(9,2)^2 = 1296.

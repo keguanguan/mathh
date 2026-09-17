@@ -1,0 +1,96 @@
+id: ducci_four_number_game
+
+title: The Four-Number Game (Ducci Sequence) Always Reaches Zero
+
+aliases:
+  - Ducci sequence
+  - four-number game
+  - difference game on a square
+  - absolute difference iteration
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Ducci_sequence
+  original_title: Ducci sequence
+  accessed: 2026-09-16
+  notes: >
+    Named after Enrico Ducci; studied by Ciamberlini and Marengoni (1937).
+    The mod-2 plus rescaling argument is the standard proof.
+
+additional_sources:
+  - name: Wolfram MathWorld
+    url: https://mathworld.wolfram.com/DucciSequence.html
+    original_title: Ducci Sequence
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 1, The Invariance Principle, treats the four-number game.
+
+problem:
+  statement: >
+    Four non-negative integers a, b, c, d are written at the corners of a
+    square. At each step every number is replaced by the absolute
+    difference of itself and its clockwise neighbour: (a, b, c, d) ->
+    (|a-b|, |b-c|, |c-d|, |d-a|). Show that the four numbers always become
+    0 after finitely many steps.
+  domain: dynamical systems
+  answer: proved
+
+key_idea:
+  name: "modulo 2 the map is linear and nilpotent: after four steps everything is even, then rescale"
+  category: attracting_structure
+  summary: >
+    Modulo 2, |x - y| = x + y, so the step is the linear map I + S with S
+    the cyclic shift, and (I + S)^4 = I + S^4 = 0 mod 2: after 4 steps all
+    entries are even. Halving commutes with the step and the maximum never
+    increases, so after 4k steps all entries are multiples of 2^k bounded
+    by the original maximum, hence eventually 0.
+
+intuitive_proof:
+  explanation: >
+    Two facts. First, the maximum entry never increases, since each new
+    entry is a difference of two old non-negative entries. Second, work
+    modulo 2, where absolute difference equals sum. The step becomes the
+    linear map v -> (I + S)v over the field with two elements, S being the
+    cyclic shift of the four coordinates. Expanding with binomial
+    coefficients, (I + S)^4 = I + 4S + 6S^2 + 4S^3 + S^4 = I + S^4 = I + I
+    = 0 mod 2, because S^4 = I. So after four steps every entry is even.
+    The step map is homogeneous: halving all entries and stepping gives the
+    same as stepping and halving. Hence after 4k steps every entry is
+    divisible by 2^k, yet no larger than the original maximum M. As soon as
+    2^k > M, the only possibility is that all entries are 0.
+
+reasoning_structure:
+  naive_approach: >
+    Run examples, notice they die out quickly, and try to prove termination
+    by tracking the maximum, which can stay constant for several steps.
+  crucial_observation: >
+    Parity turns the nonlinear absolute-difference map into a linear
+    nilpotent map on four bits; combined with the non-increasing maximum
+    this forces collapse to zero.
+  why_it_simplifies: >
+    A four-step look-ahead modulo 2, plus a scaling symmetry, replaces any
+    analysis of the actual values; the proof shows why 4 (a power of 2)
+    is special: for 3 or 5 numbers the game can cycle forever.
+
+tags:
+  - dynamical systems
+  - parity
+  - monovariant
+  - linear algebra over GF(2)
+  - nilpotent map
+  - scaling symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The orbit is attracted to the fixed point 0 for any 2^k numbers; for
+  other lengths (e.g. 3) the sequence (1, 1, 0) -> (0, 1, 1) -> (1, 0, 1)
+  cycles. A nice example where a mod-2 invariant and a monovariant work
+  together.

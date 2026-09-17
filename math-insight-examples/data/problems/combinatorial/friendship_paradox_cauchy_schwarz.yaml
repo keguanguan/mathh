@@ -1,0 +1,78 @@
+id: friendship_paradox_cauchy_schwarz
+
+title: "The Friendship Paradox: Your Friends Have More Friends than You"
+
+aliases:
+  - friendship paradox
+  - average degree of a neighbour
+  - Feld's paradox
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Friendship_paradox
+  original_title: Friendship paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: S. Feld - Why your friends have more friends than you do
+    notes: American Journal of Sociology 96 (1991)
+
+problem:
+  statement: >
+    In any friendship network, show that the average, over all people, of
+    the average number of friends of their friends is at least the average
+    number of friends.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: averaging over friendships weights each person by their degree, and the degree-weighted average of degrees is at least the plain average (Cauchy-Schwarz)
+  category: double_counting
+  summary: >
+    Pick a random person, then a random friend of theirs; the friend is
+    chosen with probability proportional to their degree. The expected
+    degree of a degree-weighted random vertex is (sum of d^2)/(sum of d),
+    and by Cauchy-Schwarz (sum of d^2)/(sum of d) >= (sum of d)/n, the
+    ordinary average degree.
+
+intuitive_proof:
+  explanation: >
+    Let the degrees be d_1, ..., d_n with sum D = 2E. The total number of
+    (person, friend) pairs is D, and in these pairs person i appears as
+    'friend' exactly d_i times. So the average degree of a friend, averaged
+    over all friendship pairs, is (sum of d_i^2)/D. By the Cauchy-Schwarz
+    inequality (or the fact that variance is non-negative), sum of d_i^2 >=
+    (sum of d_i)^2/n = D^2/n, so (sum of d_i^2)/D >= D/n, which is the
+    average degree. Equality holds iff all degrees are equal.
+
+reasoning_structure:
+  naive_approach: >
+    Look for a sociological explanation, or test on example networks.
+  crucial_observation: >
+    Sampling friends samples people in proportion to their degree, and
+    size-biased averages exceed plain averages.
+  why_it_simplifies: >
+    A double count identifies the biased average, and one inequality
+    finishes; the 'paradox' is a statement about variance.
+
+related:
+  - handshake_lemma
+  - cauchy_schwarz_discriminant
+
+tags:
+  - double counting
+  - Cauchy-Schwarz
+  - graph theory
+  - averaging
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

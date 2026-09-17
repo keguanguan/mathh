@@ -1,0 +1,78 @@
+id: surjections_inclusion_exclusion
+
+title: Counting Onto Functions by Inclusion-Exclusion
+
+aliases:
+  - number of surjections
+  - onto functions count
+  - Stirling numbers via inclusion-exclusion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle
+  original_title: Inclusion–exclusion principle (counting surjections)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many functions from an n-element set onto a k-element set are there?
+  domain: combinatorics
+  answer: sum over j of (-1)^j C(k, j) (k - j)^n
+
+key_idea:
+  name: count all functions and subtract those missing at least one target value, using inclusion-exclusion over the set of missed values
+  category: inclusion_exclusion
+  summary: >
+    Let A_i be the set of functions whose image misses value i. Functions
+    missing a prescribed set of j values number (k - j)^n. By
+    inclusion-exclusion the number of functions missing no value is sum over
+    j of (-1)^j C(k, j)(k - j)^n.
+
+intuitive_proof:
+  explanation: >
+    There are k^n functions in all. For a set S of j target values, exactly
+    (k - j)^n functions avoid all of S (each of the n inputs maps into the
+    other k - j values). By the inclusion-exclusion principle, the number of
+    functions avoiding none of the values, i.e. the surjections, is sum over
+    S of (-1)^{|S|} (k - |S|)^n = sum over j = 0..k of (-1)^j C(k, j)(k -
+    j)^n. Dividing by k! gives the Stirling number of the second kind S(n,
+    k), the number of partitions of an n-set into k non-empty blocks.
+
+reasoning_structure:
+  naive_approach: >
+    Count surjections directly by choosing the preimage sizes, which leads
+    to sums of multinomial coefficients.
+  crucial_observation: >
+    'Onto' is 'misses nothing', and 'misses a given set' is trivial to
+    count, so the complement is an inclusion-exclusion over missed sets.
+  why_it_simplifies: >
+    Inclusion-exclusion converts a hard 'all values hit' condition into easy
+    'these values avoided' counts.
+
+related:
+  - derangements_inclusion_exclusion
+  - euler_phi_inclusion_exclusion
+
+tags:
+  - inclusion-exclusion
+  - surjections
+  - Stirling numbers
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,81 @@
+id: fundamental_theorem_arithmetic_uniqueness
+
+title: Uniqueness of Prime Factorisation by Minimal Counterexample
+
+aliases:
+  - fundamental theorem of arithmetic
+  - unique factorisation without Euclid's lemma
+  - Zermelo's proof
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic
+  original_title: Fundamental theorem of arithmetic (proof of uniqueness)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on the infinity of primes and factorisation
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that every integer greater than 1 factors into primes in only one
+    way (up to order).
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a smallest number with two factorisations yields a smaller one
+  category: infinite_descent
+  summary: >
+    Let n be the least number with two distinct factorisations p_1 ... p_r =
+    q_1 ... q_s. No prime is shared (else cancel and get a smaller
+    counterexample). With p_1 < q_1, the number n - p_1 q_2 ... q_s is
+    smaller than n, positive, divisible by p_1 and by q_2 ... q_s, and its
+    two resulting factorisations differ, contradicting minimality.
+
+intuitive_proof:
+  explanation: >
+    Existence is by strong induction (a non-prime splits into smaller
+    factors). For uniqueness suppose a counterexample exists and let n be
+    the smallest, with factorisations p_1 <= ... <= p_r and q_1 <= ... <=
+    q_s. If some p_i equals some q_j, cancelling gives a smaller
+    counterexample, so the two lists are disjoint; assume p_1 < q_1. Put m =
+    (q_1 - p_1) q_2 ... q_s = n - p_1 q_2 ... q_s. Then 0 < m < n, and m is
+    divisible by p_1 (as n is). Factor q_1 - p_1 into primes; since p_1 does
+    not divide q_1 it does not divide q_1 - p_1, so the factorisation of m
+    obtained from (q_1 - p_1) q_2 ... q_s contains no p_1, while the
+    factorisation of m through p_1 * (n/p_1 - q_2 ... q_s) does. Two
+    different factorisations of m < n contradict minimality.
+
+reasoning_structure:
+  naive_approach: >
+    Prove Euclid's lemma (p | ab implies p | a or p | b) via Bezout, then
+    induct; correct but requires the machinery of gcds.
+  crucial_observation: >
+    A minimal counterexample can be perturbed into a smaller counterexample
+    by subtracting a cross product.
+  why_it_simplifies: >
+    Well-ordering alone, with elementary arithmetic, gives uniqueness; the
+    construction of m is the one idea.
+
+tags:
+  - infinite descent
+  - minimal counterexample
+  - prime factorisation
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  This is Zermelo's proof (1934), also attributed to Hasse and Lindemann.

@@ -1,0 +1,71 @@
+id: vertical_horizontal_dominoes_even
+
+title: Horizontal and Vertical Dominoes Come in Even Numbers
+
+aliases:
+  - number of horizontal dominoes in a tiling is even
+  - domino tiling parity of orientations
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/NumberOfDominoes.shtml
+  original_title: Vertical and Horizontal Dominoes on a Chessboard
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites E. G. Kozlova, Tales and Hints, MCCME 2004, problem 110.
+
+problem:
+  statement: >
+    An 8x8 board is tiled by 2x1 dominoes. Prove that the number of
+    horizontal dominoes is even, and so is the number of vertical ones.
+  domain: tiling
+  answer: proved
+
+key_idea:
+  name: color the board in vertical stripes
+  category: coloring_invariant
+  summary: >
+    Color the columns alternately black and white. A horizontal domino covers
+    one square of each colour; a vertical domino covers two squares of the
+    same colour. The 32 black squares are covered by all H horizontal
+    dominoes plus pairs from vertical ones, so H is even.
+
+intuitive_proof:
+  explanation: >
+    Paint columns 1, 3, 5, 7 black and the others white, 32 black squares in
+    all. Every horizontal domino covers exactly one black square; every
+    vertical domino covers 0 or 2 black squares. Counting black squares:
+    32 = H + 2(number of vertical dominoes on black columns), so H is even.
+    Painting rows instead of columns shows that the number of vertical
+    dominoes is even too.
+
+reasoning_structure:
+  naive_approach: >
+    Argue row by row about how vertical dominoes split each row into pieces,
+    or attempt an induction on tilings.
+  crucial_observation: >
+    A striped colouring makes the two orientations behave differently:
+    one orientation is colour-balanced, the other is not.
+  why_it_simplifies: >
+    A single count of black squares yields the parity directly; no structure
+    of the tiling is needed.
+
+tags:
+  - coloring
+  - parity
+  - tiling
+  - dominoes
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  A good companion to mutilated_checkerboard: the same object (a domino)
+  under a different colouring yields a different invariant.

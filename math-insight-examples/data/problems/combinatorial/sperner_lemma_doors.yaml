@@ -1,0 +1,91 @@
+id: sperner_lemma_doors
+
+title: Sperner's Lemma via Counting Doors
+
+aliases:
+  - Sperner's lemma
+  - rainbow triangle in a Sperner colouring
+  - trapdoor / door argument
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three applications of Euler's formula" / Brouwer fixed point chapter
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Sperner (1928); the parity ("door") proof is the standard one and is also in Engel's graph chapter.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Sperner%27s_lemma
+    original_title: Sperner's lemma
+
+problem:
+  statement: >
+    A big triangle with vertices coloured 1, 2, 3 is subdivided into small
+    triangles. Every vertex of the subdivision is coloured 1, 2 or 3 so
+    that vertices on the big side joining colours i and j receive only
+    colour i or j. Show that some small triangle has all three colours.
+  domain: combinatorics
+  answer: proved (in fact the number of such triangles is odd)
+
+key_idea:
+  name: call a 1-2 edge a door and count doors with the handshake lemma
+  category: double_counting
+  summary: >
+    Treat every small triangle as a room and every 1-2 edge as a door. A
+    room has exactly one door iff it is a rainbow (1-2-3) room, otherwise
+    0 or 2. Outer doors lie on the 1-2 side of the big triangle, where the
+    colour changes an odd number of times. Counting door-ends two ways,
+    the number of one-door rooms is odd, hence nonzero.
+
+intuitive_proof:
+  explanation: >
+    A small triangle with colours 1-2-3 has exactly one edge coloured
+    {1,2}; one with colours 1-1-2 or 1-2-2 has exactly two such edges; any
+    other has none. Count pairs (triangle, {1,2}-edge of that triangle).
+    Each interior {1,2}-edge is counted twice (once from each side), each
+    boundary {1,2}-edge once. Boundary {1,2}-edges can only lie on the big
+    side between the corners coloured 1 and 2; walking along that side the
+    colour starts at 1 and ends at 2, so it changes an odd number of
+    times: an odd number of boundary doors. Therefore the total count is
+    odd, and since two-door rooms contribute even amounts, the number of
+    one-door rooms, the rainbow triangles, is odd. In particular at least
+    one exists.
+
+reasoning_structure:
+  naive_approach: >
+    Try to locate a rainbow triangle by following colours inward, or by
+    induction on the subdivision.
+  crucial_observation: >
+    Rainbow triangles are exactly the rooms with an odd number of doors,
+    and the handshake lemma controls the parity of odd-door rooms via the
+    boundary.
+  why_it_simplifies: >
+    A parity count that only looks at one side of the big triangle proves
+    existence for every subdivision and every admissible colouring; the
+    same argument gives Brouwer's fixed point theorem.
+
+related:
+  - handshake_lemma
+
+tags:
+  - double counting
+  - parity
+  - handshake lemma
+  - Sperner
+  - fixed point
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The one-dimensional case (a path from 1 to 2 has an odd number of 1-2
+  edges) is the base of the argument and a nice warm-up.

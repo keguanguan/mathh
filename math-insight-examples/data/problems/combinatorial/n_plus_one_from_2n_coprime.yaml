@@ -1,0 +1,73 @@
+id: n_plus_one_from_2n_coprime
+
+title: Among n+1 Numbers from 1 to 2n, Two Are Coprime
+
+aliases:
+  - consecutive integers are coprime
+  - n+1 of 2n coprime pair
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Pigeon-hole and double counting"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Choose any n + 1 distinct integers from {1, 2, ..., 2n}. Show that two
+    of them are coprime.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: partition into the n pairs {1,2}, {3,4}, ..., {2n-1, 2n}; consecutive integers are coprime
+  category: pigeonhole
+  summary: >
+    With n boxes {2k-1, 2k} and n + 1 numbers, two chosen numbers fall into
+    the same box, so they are consecutive and hence coprime.
+
+intuitive_proof:
+  explanation: >
+    Any common divisor of consecutive integers m and m + 1 divides their
+    difference 1, so consecutive integers are coprime. Split {1, ..., 2n}
+    into the n pairs of consecutive integers {2k - 1, 2k}. Among n + 1
+    chosen numbers two lie in the same pair by pigeonhole, and they are
+    coprime.
+
+reasoning_structure:
+  naive_approach: >
+    Consider prime factors of the chosen numbers and try to force a coprime
+    pair by counting divisibility.
+  crucial_observation: >
+    The right boxes are pairs of consecutive integers.
+  why_it_simplifies: >
+    One choice of boxes makes the statement a direct pigeonhole count; the
+    companion problem (one divides another) uses different boxes.
+
+related:
+  - n_plus_one_from_2n_divisibility
+
+tags:
+  - pigeonhole
+  - coprime
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Erdos posed both this and the divisibility version to the young Posa.

@@ -1,0 +1,85 @@
+id: ten_coins_triangle_invert_three_moves
+
+title: Inverting a Triangle of Ten Coins in Three Moves
+
+aliases:
+  - invert the coin triangle
+  - ten coins triangle puzzle
+  - overlap argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Puzzle
+  original_title: Puzzle
+  accessed: 2026-09-16
+  notes: >
+    A classic Gardner puzzle: ten coins in a triangle pointing up must be
+    rearranged to point down by moving as few coins as possible.
+
+additional_sources:
+  - name: Gardner - Mathematical Puzzles and Diversions
+
+problem:
+  statement: >
+    Ten coins are arranged in a triangle with rows of 1, 2, 3, 4 coins
+    pointing up. By sliding coins, turn the triangle upside down. Show that
+    three moves suffice and that two do not.
+  domain: combinatorics
+  answer: >
+    3 moves: move the top coin to the centre below the bottom row, and move
+    the two end coins of the bottom row up to flank the second row
+
+key_idea:
+  name: the number of moves is the number of coins not in the intersection of the original and target triangles, so choose the target position to maximise the overlap
+  category: extremal_principle
+  summary: >
+    A coin that already sits on a position of the target triangle need not
+    move; the coins that must move are those outside the overlap. Placing
+    the inverted triangle so that it shares the largest possible set of
+    positions with the original gives an overlap of 7 coins (the middle
+    hexagon-like core), so 3 coins must move, and any placement overlaps in
+    at most 7 positions.
+
+intuitive_proof:
+  explanation: >
+    Position the inverted triangle over the original. The coins that need
+    not move are exactly those lying on common positions, so the number of
+    moves is 10 minus the size of the overlap. Sliding the inverted triangle
+    across the original, the overlap is maximised when the two triangles
+    share the central seven positions (the second and third rows of the
+    original together with the middle two coins of the fourth row); any
+    other placement overlaps in fewer positions, as a short check of the
+    finitely many translations shows. Thus at least 3 coins must move, and
+    moving the top coin to the centre below the bottom row and the two
+    bottom corners up to flank the second row achieves the inversion in
+    exactly 3 moves.
+
+reasoning_structure:
+  naive_approach: >
+    Slide coins by trial until the triangle is inverted, without knowing
+    whether fewer moves are possible.
+  crucial_observation: >
+    Minimising moves is maximising the overlap between the two
+    configurations, a finite extremal search.
+  why_it_simplifies: >
+    Reformulating 'fewest moves' as 'largest common sub-configuration' gives
+    both the lower bound and the strategy.
+
+tags:
+  - extremal principle
+  - overlap
+  - puzzle
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For the triangle with rows 1..n the minimum is floor(n(n+1)/6) moves.

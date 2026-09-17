@@ -1,0 +1,77 @@
+id: broken_line_in_triangle
+
+title: A Point inside a Triangle Is Closer to Two Vertices than the Third Is
+
+aliases:
+  - broken line in a triangle
+  - AO + BO < AC + BC
+  - triangle inequality applied twice
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/PointInTriangle.shtml
+  original_title: Broken Line in Triangle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let O be a point inside triangle ABC. Show that AO + BO < AC + BC.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: extend AO to meet BC at D and apply the triangle inequality in triangles BOD and ACD
+  category: auxiliary_object
+  summary: >
+    Let AO meet BC at D. In triangle BOD, BO < OD + DB; in triangle ACD, AD
+    < AC + CD. Adding and using AD = AO + OD gives AO + BO < AC + CD + DB =
+    AC + BC.
+
+intuitive_proof:
+  explanation: >
+    Extend the segment AO beyond O until it meets side BC at D (it must,
+    since O is inside). The triangle inequality in BOD gives BO < OD + DB,
+    and in ACD gives AD = AO + OD < AC + CD. Adding, AO + OD + BO < AC + CD
+    + DB + OD, and cancelling OD and using CD + DB = BC yields AO + BO < AC
+    + BC. Equality would require degenerate triangles, impossible for O
+    strictly inside.
+
+reasoning_structure:
+  naive_approach: >
+    Compare distances using coordinates or trigonometry.
+  crucial_observation: >
+    A single auxiliary point on the boundary splits the broken path into two
+    pieces, each controlled by one triangle inequality.
+  why_it_simplifies: >
+    The extension of AO is the whole proof; the argument generalises to
+    nested convex polygons (the inner one has the smaller perimeter).
+
+related:
+  - herons_shortest_path
+
+tags:
+  - auxiliary object
+  - triangle inequality
+  - geometry
+  - convexity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Alternative view: the ellipses with foci A and B are nested, and C lies
+  outside the one through O.

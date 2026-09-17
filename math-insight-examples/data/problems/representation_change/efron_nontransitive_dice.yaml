@@ -1,0 +1,89 @@
+id: efron_nontransitive_dice
+
+title: "Efron's Dice: 'Beats' Is Not Transitive"
+
+aliases:
+  - non-transitive dice
+  - intransitive dice
+  - Efron's dice
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Intransitive_dice
+  original_title: Intransitive dice (Efron's dice)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Mathematics
+    notes: Chapter 22
+
+problem:
+  statement: >
+    Four dice have faces A = (4,4,4,4,0,0), B = (3,3,3,3,3,3), C =
+    (6,6,2,2,2,2), D = (5,5,5,1,1,1). Show that A beats B, B beats C, C
+    beats D and D beats A, each with probability 2/3, so that whichever die
+    an opponent chooses you can choose one that is more likely to win.
+  domain: probability
+  answer: >
+    each die in the cycle A > B > C > D > A wins with probability 2/3
+
+key_idea:
+  name: "'X beats Y' compares the whole joint distribution of a pair, not a single number like the mean, so the relation need not be an ordering"
+  category: representation_change
+  summary: >
+    A beats B iff A shows 4 (2/3); B beats C iff C shows 2 (2/3); C beats D
+    if it shows 6, or shows 2 while D shows 1 (1/3 + 1/3); D beats A if it
+    shows 5, or shows 1 while A shows 0 (1/2 + 1/6). Each is 2/3, and the
+    cycle A > B > C > D > A cannot be captured by any single score such as
+    the mean.
+
+intuitive_proof:
+  explanation: >
+    Compute each pair by conditioning on the more structured die. A vs B: B
+    always shows 3, so A wins exactly when it shows 4: probability 4/6 =
+    2/3. B vs C: B shows 3, and wins when C shows 2: probability 4/6 = 2/3.
+    C vs D: if C shows 6 (probability 1/3) it wins outright; if C shows 2
+    (probability 2/3) it wins when D shows 1 (probability 1/2). Total 1/3 +
+    1/3 = 2/3. D vs A: if D shows 5 (probability 1/2) it beats both 4 and 0;
+    if D shows 1 (probability 1/2) it wins when A shows 0 (probability 1/3).
+    Total 1/2 + 1/6 = 2/3. Thus the beating relation contains the cycle A >
+    B > C > D > A. A transitive relation could not contain a cycle, so
+    'beats with probability more than 1/2' is not an ordering of dice: it
+    depends on the joint distribution of each pair, unlike the mean, which
+    orders dice linearly (here the means are 8/3, 3, 10/3, 3, so the means
+    do not even respect the pairwise results).
+
+reasoning_structure:
+  naive_approach: >
+    Rank the dice by expected value and assume the die with the highest mean
+    is the best choice.
+  crucial_observation: >
+    Pairwise winning probabilities are two-argument quantities that cannot
+    in general be derived from a one-argument score, so cycles are possible.
+  why_it_simplifies: >
+    Recognising that 'beats' lives on pairs rather than on individual dice
+    removes the expectation that it should be transitive, and the direct
+    computation confirms the cycle.
+
+related:
+  - penney_game_prefix_strategy
+
+tags:
+  - representation change
+  - non-transitivity
+  - dice
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Condorcet's voting paradox is the same phenomenon for majority
+  preferences.

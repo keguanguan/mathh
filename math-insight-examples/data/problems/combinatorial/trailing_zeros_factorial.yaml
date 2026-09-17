@@ -1,0 +1,77 @@
+id: trailing_zeros_factorial
+
+title: Trailing Zeros of n! by Counting Multiples of 5
+
+aliases:
+  - number of zeros at the end of 100!
+  - Legendre's formula for 5
+  - trailing zeros of a factorial
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Trailing_zero
+  original_title: Trailing zero (factorial)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Legendre%27s_formula
+    original_title: Legendre's formula
+
+problem:
+  statement: >
+    How many zeros end the decimal expansion of 100!?
+  domain: number theory
+  answer: "24"
+
+key_idea:
+  name: count factors of 5, since factors of 2 are plentiful; count multiples of 5, of 25, of 125, ... and add
+  category: double_counting
+  summary: >
+    Each trailing zero needs a factor 10 = 2 * 5, and 2s outnumber 5s, so
+    the answer is the exponent of 5 in 100!. Every multiple of 5 up to 100
+    contributes one factor 5 (20 numbers) and every multiple of 25
+    contributes a second (4 numbers): 24.
+
+intuitive_proof:
+  explanation: >
+    The number of trailing zeros of n! is the exponent of 10 in n!, which is
+    the minimum of the exponents of 2 and 5; since every second number is
+    even and only every fifth is a multiple of 5, it is the exponent of 5.
+    Count that exponent by counting, for each number 1..n, the number of
+    factors 5 it carries: the multiples of 5 contribute at least one each
+    (floor(n/5) of them), the multiples of 25 contribute a second
+    (floor(n/25)), and so on. For n = 100: 20 + 4 = 24.
+
+reasoning_structure:
+  naive_approach: >
+    Multiply out 100! (158 digits) or track factors of 10 among the numbers
+    1..100 one by one.
+  crucial_observation: >
+    Trailing zeros count factors of 5, and the factors of 5 among 1..n are
+    counted layer by layer: multiples of 5, of 25, of 125...
+  why_it_simplifies: >
+    Double counting the factors of 5 (by number versus by power of 5) gives
+    Legendre's formula instantly.
+
+tags:
+  - double counting
+  - factorial
+  - Legendre's formula
+  - divisibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

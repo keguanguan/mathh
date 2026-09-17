@@ -1,0 +1,20 @@
+# Milestone-2 pilot: very small, inspect raw responses by hand before scaling.
+# 5 families x 2 sizes x 2 instances x 1 model x 1 compute x 4 calls per trial = 80 calls.
+experiment_id: pilot_anthropic_v0
+description: Small real-model pilot for manual inspection of responses and extraction quality.
+families: [domino_tiling, population_game, sliding_puzzle, subtraction_game, difference_board]
+models: [claude_opus_5]
+instance_sizes:
+  domino_tiling: [8, 12]
+  population_game: [24, 48]
+  sliding_puzzle: [4, 5]
+  subtraction_game: [16, 32]
+  difference_board: [100, 200]
+transfer_levels: [1]
+compute_conditions: [medium]
+repetitions: 1
+instances_per_cell: 2
+generation_seeds: {base_seed: 2026}
+conditions: {free_solve: true, posthoc: true, supplied_idea: true, recognition: true}
+model_settings: {max_output_tokens: 16000}
+output_dir: data/raw_runs

@@ -1,0 +1,75 @@
+id: fibonacci_tilings_identity
+
+title: Fibonacci Identities from Tilings by Squares and Dominoes
+
+aliases:
+  - Fibonacci tilings
+  - F(m+n) identity by tilings
+  - Benjamin-Quinn proofs that really count
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fibonacci_sequence
+  original_title: Fibonacci sequence (combinatorial identities)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Benjamin & Quinn - Proofs That Really Count
+    notes: MAA, 2003
+
+problem:
+  statement: >
+    Let f_n be the number of ways to tile a 1 x n strip with 1x1 squares and
+    1x2 dominoes (so f_n = F_{n+1}). Show that f_{m+n} = f_m f_n + f_{m-1}
+    f_{n-1}.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: a tiling of length m + n either is breakable at position m or has a domino straddling it
+  category: combinatorial_interpretation
+  summary: >
+    Tilings of the (m+n)-strip split into those with a break between cells m
+    and m+1 (a tiling of the first m cells times a tiling of the last n) and
+    those with a domino covering cells m and m+1 (a tiling of the first m-1
+    cells times a tiling of the last n-1).
+
+intuitive_proof:
+  explanation: >
+    Consider a tiling of the strip of length m + n and look at cells m and m
+    + 1. Either no tile covers both, in which case the tiling is a tiling of
+    the first m cells followed by a tiling of the remaining n cells (f_m f_n
+    possibilities), or a domino covers both, and removing it leaves
+    independent tilings of lengths m - 1 and n - 1 (f_{m-1} f_{n-1}
+    possibilities). These cases are exclusive and exhaustive.
+
+reasoning_structure:
+  naive_approach: >
+    Prove the identity by induction using the recursion F_{k+1} = F_k +
+    F_{k-1}, which is mechanical and unilluminating; or use Binet's formula.
+  crucial_observation: >
+    Fibonacci numbers count tilings, and a tiling can be inspected at any
+    position.
+  why_it_simplifies: >
+    Once the sequence counts something, identities become case distinctions;
+    dozens of Fibonacci identities follow the same way.
+
+tags:
+  - combinatorial interpretation
+  - Fibonacci
+  - tilings
+  - identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same tilings give F_{2n} = F_n L_n and Cassini's identity via a
+  sign-reversing involution.

@@ -1,0 +1,85 @@
+id: happy_ending_five_points_convex_quadrilateral
+
+title: Any Five Points in General Position Contain a Convex Quadrilateral
+
+aliases:
+  - happy ending problem
+  - Esther Klein's problem
+  - five points convex quadrilateral
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Happy_ending_problem
+  original_title: Happy ending problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on convex polygons / Erdos-Szekeres
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Five points lie in the plane with no three collinear. Show that four of
+    them are the vertices of a convex quadrilateral.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: "look at the convex hull: if it has 4 or 5 vertices we are done; if it is a triangle, the two interior points and the line through them cut off two hull vertices on one side, forming a convex quadrilateral"
+  category: extremal_principle
+  summary: >
+    The convex hull of the five points is a triangle, quadrilateral or
+    pentagon. Pentagon or quadrilateral: take four hull vertices. Triangle:
+    the two interior points P, Q lie inside; the line PQ meets two sides of
+    the triangle, so two hull vertices A, B lie on the same side of line PQ,
+    and then A, B, P, Q form a convex quadrilateral.
+
+intuitive_proof:
+  explanation: >
+    Consider the convex hull. If it is a pentagon, any four of its vertices
+    form a convex quadrilateral; if it is a quadrilateral, its vertices do.
+    If it is a triangle ABC with P and Q inside, the line PQ crosses the
+    triangle and (no three points being collinear) leaves one vertex on one
+    side and two vertices, say A and B, on the other. Then A, B, P, Q are in
+    convex position: the segment AB lies entirely on one side of line PQ and
+    the segment PQ lies inside the triangle, so neither segment separates
+    the other two points, and no one of the four points lies inside the
+    triangle formed by the other three. Hence they are the vertices of a
+    convex quadrilateral.
+
+reasoning_structure:
+  naive_approach: >
+    Consider many configurations of five points and check each for a convex
+    quadrilateral.
+  crucial_observation: >
+    The extremal structure (the convex hull) reduces the problem to three
+    cases, and in the hard case a single line does the separation.
+  why_it_simplifies: >
+    Classifying by the hull's size turns a continuous problem into a
+    three-case check; this is the base case of the Erdos-Szekeres convex
+    polygon theorem.
+
+related:
+  - erdos_szekeres_monotone_subsequence
+
+tags:
+  - extremal principle
+  - convex hull
+  - combinatorial geometry
+  - Ramsey theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Nine points force a convex pentagon; the general count is the
+  Erdos-Szekeres conjecture, essentially settled by Suk (2017).

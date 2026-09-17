@@ -1,0 +1,92 @@
+id: fagnano_orthic_triangle
+
+title: Fagnano's Problem, the Inscribed Triangle of Minimum Perimeter
+
+aliases:
+  - Fagnano's problem
+  - orthic triangle minimises perimeter
+  - Schwarz's reflection proof
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fagnano%27s_problem
+  original_title: Fagnano's problem
+  accessed: 2026-09-16
+  notes: Posed and solved by Fagnano (1775); the reflection proof is H. A. Schwarz's, the two-reflection variant Fejer's.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Geometry/Fagnano.shtml
+    original_title: "Fagnano's Problem: Schwarz's solution"
+  - name: Courant & Robbins - What Is Mathematics?
+    notes: Chapter VII, Schwarz's triangle problem.
+
+problem:
+  statement: >
+    In an acute triangle ABC, find the inscribed triangle (one vertex on
+    each side) of smallest perimeter.
+  domain: geometry
+  answer: the orthic triangle, whose vertices are the feet of the altitudes
+
+key_idea:
+  name: fix one vertex and reflect it in the other two sides; the perimeter becomes a broken path between two fixed points
+  category: reflection
+  summary: >
+    Fix P on BC and reflect it in AB and AC to get P' and P''. For any Q on
+    AB and R on AC, the perimeter PQ + QR + RP equals P'Q + QR + RP'', a
+    path from P' to P'', minimised by the straight segment P'P''. Its
+    length is 2 AP sin A, so the best P is the foot of the altitude from
+    A; by symmetry Q and R are the other altitude feet.
+
+intuitive_proof:
+  explanation: >
+    Fix P on side BC. Reflect P in line AB to P' and in line AC to P''.
+    Reflections preserve length, so for any Q on AB and R on AC we have
+    PQ = P'Q and RP = RP''. The perimeter of PQR is therefore
+    P'Q + QR + RP'', the length of a path from P' to P'' through Q and R,
+    which is at least the straight distance P'P'', with equality when Q and
+    R are the crossings of segment P'P'' with AB and AC. Now
+    AP' = AP = AP'' and angle P'AP'' = 2 * angle A (each reflection copies
+    the angle at A), so P'P'' = 2 AP sin A. This is smallest when AP is
+    smallest, i.e. when P is the foot of the altitude from A. Repeating the
+    argument from each vertex shows that the minimal inscribed triangle
+    has all three vertices at the feet of the altitudes: the orthic
+    triangle.
+
+reasoning_structure:
+  naive_approach: >
+    Parametrise the three points along the sides and minimise a sum of
+    three square-root expressions in three variables.
+  crucial_observation: >
+    Two reflections unfold the closed inscribed triangle into a single
+    path between two fixed points, whose length depends on only one
+    parameter.
+  why_it_simplifies: >
+    A three-variable minimisation becomes "straight line is shortest"
+    followed by a one-variable observation (shortest AP).
+
+related:
+  - herons_shortest_path
+  - fermat_point_rotation
+
+tags:
+  - reflection
+  - geometric transformation
+  - optimisation
+  - orthic triangle
+  - billiards
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The orthic triangle is also the unique periodic billiard path of period
+  three in an acute triangle, which is the same reflection picture read
+  as dynamics (compare square_billiards_unfolding).

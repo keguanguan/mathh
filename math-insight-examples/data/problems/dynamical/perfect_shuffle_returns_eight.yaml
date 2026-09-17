@@ -1,0 +1,82 @@
+id: perfect_shuffle_returns_eight
+
+title: Eight Perfect Shuffles Restore a Deck of 52 Cards
+
+aliases:
+  - faro shuffle order
+  - perfect out-shuffle period
+  - riffle shuffle returns
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Faro_shuffle
+  original_title: Faro shuffle (mathematics)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Diaconis, Graham, Kantor - The mathematics of perfect shuffles
+    notes: Advances in Applied Mathematics 4 (1983)
+
+problem:
+  statement: >
+    A perfect out-shuffle splits a 52-card deck into two halves of 26 and
+    interleaves them exactly, the top card staying on top. Show that eight
+    such shuffles return the deck to its original order.
+  domain: combinatorics
+  answer: "proved: 8 shuffles"
+
+key_idea:
+  name: number the positions 0..51; an out-shuffle sends position i to 2i mod 51, so the order of the shuffle is the order of 2 modulo 51
+  category: finite_state_periodicity
+  summary: >
+    With positions 0 to 51, the out-shuffle sends the card at position i to
+    position 2i mod 51 (the top and bottom cards stay fixed). So k shuffles
+    send i to 2^k i mod 51, and the deck is restored once 2^k = 1 mod 51.
+    Since 2^8 = 256 = 5 * 51 + 1, eight shuffles suffice, and no smaller k
+    works because 2^k mod 51 for k < 8 is not 1.
+
+intuitive_proof:
+  explanation: >
+    Label positions 0, ..., 51 from the top. After an out-shuffle the top
+    half occupies the even positions in order and the bottom half the odd
+    positions, so a card at position i < 26 goes to 2i and a card at
+    position i >= 26 goes to 2i - 51; both are 2i mod 51 (with position 51
+    fixed). Hence k shuffles send position i to 2^k i mod 51. The deck
+    returns to its original order when 2^k = 1 mod 51, and the least such k
+    is the multiplicative order of 2 mod 51 = 3 * 17, which is lcm(order mod
+    3, order mod 17) = lcm(2, 8) = 8. So exactly eight out-shuffles restore
+    the deck.
+
+reasoning_structure:
+  naive_approach: >
+    Track a few cards through repeated shuffles by hand.
+  crucial_observation: >
+    The shuffle is multiplication by 2 in a finite cyclic group, so its
+    period is a multiplicative order.
+  why_it_simplifies: >
+    An algebraic encoding of positions turns the permutation's order into a
+    number-theory calculation; the same formula gives the period for any
+    deck size (order of 2 mod n - 1).
+
+related:
+  - repeating_decimal_period_order
+
+tags:
+  - periodicity
+  - permutation order
+  - modular arithmetic
+  - card shuffling
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  In-shuffles (top card goes second) correspond to 2i + 1 mod 53 and need 52
+  shuffles.

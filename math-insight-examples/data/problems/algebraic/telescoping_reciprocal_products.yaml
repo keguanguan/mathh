@@ -1,0 +1,69 @@
+id: telescoping_reciprocal_products
+
+title: Summing 1/(k(k+1)) by Telescoping
+
+aliases:
+  - telescoping series
+  - sum of 1/(k(k+1))
+  - partial fractions collapse
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Telescoping_series
+  original_title: Telescoping series
+  accessed: 2026-09-16
+  notes: A standard first example of a telescoping sum.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 9, Sequences, and the summation techniques it collects.
+
+problem:
+  statement: >
+    Evaluate 1/(1*2) + 1/(2*3) + 1/(3*4) + ... + 1/(n(n+1)).
+  domain: algebra
+  answer: n/(n+1); the infinite series sums to 1
+
+key_idea:
+  name: write each term as a difference of consecutive quantities
+  category: telescoping
+  summary: >
+    1/(k(k+1)) = 1/k - 1/(k+1). Summing, every intermediate term cancels
+    with its neighbour, leaving 1 - 1/(n+1).
+
+intuitive_proof:
+  explanation: >
+    Since 1/k - 1/(k+1) = (k+1-k)/(k(k+1)) = 1/(k(k+1)), the sum equals
+    (1 - 1/2) + (1/2 - 1/3) + ... + (1/n - 1/(n+1)). Each negative term
+    cancels the next positive one, so only the first and last survive:
+    1 - 1/(n+1) = n/(n+1). Letting n grow, the series converges to 1.
+
+reasoning_structure:
+  naive_approach: >
+    Compute partial sums 1/2, 2/3, 3/4, guess n/(n+1) and prove it by
+    induction, or bring everything to a common denominator.
+  crucial_observation: >
+    Each term is a difference f(k) - f(k+1) for a single function f.
+  why_it_simplifies: >
+    The sum of differences is the difference of the end values; the entire
+    middle of the sum disappears.
+
+tags:
+  - telescoping
+  - algebraic identity
+  - partial fractions
+  - series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Telescoping is the discrete fundamental theorem of calculus; the
+  difficulty in harder problems is only to find the function f.

@@ -1,0 +1,83 @@
+id: ferry_boats_meeting_distances
+
+title: The Two Ferries Problem
+
+aliases:
+  - two ferries puzzle
+  - ferry boats crossing a river
+  - width of the river from two meetings
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Martin_Gardner
+  original_title: Martin Gardner
+  accessed: 2026-09-16
+  notes: >
+    From Gardner's 'My Best Mathematical and Logic Puzzles'; the
+    total-distance argument is the classical 'aha' solution.
+
+additional_sources:
+  - name: Gardner - My Best Mathematical and Logic Puzzles
+    notes: Dover, 1994
+
+problem:
+  statement: >
+    Two ferries start simultaneously from opposite banks of a river, each at
+    a constant speed, and first meet 720 metres from one bank. Each
+    continues to the far bank, turns around instantly, and they meet again
+    400 metres from the other bank. How wide is the river?
+  domain: algebra
+  answer: 1760 metres
+
+key_idea:
+  name: "count the combined distance travelled by both ferries: one river width at the first meeting, three river widths at the second"
+  category: auxiliary_object
+  summary: >
+    At the first meeting the ferries have together covered exactly one width
+    W, and ferry A has covered 720. At the second meeting they have together
+    covered 3W (each has crossed once and they have together covered another
+    W), so ferry A, at the same fraction of the total, has covered 3 * 720 =
+    2160, which equals W + 400. Hence W = 1760.
+
+intuitive_proof:
+  explanation: >
+    Let W be the width and let the ferries move at constant speeds.
+    Distances covered by the two ferries are always in the same ratio. At
+    the first meeting their combined distance is W and ferry A has gone 720
+    m. At the second meeting their combined distance is 3W (both have
+    reached the far bank, W + W, and then closed the gap again, another W),
+    so ferry A has gone three times as far as at the first meeting: 2160 m.
+    But ferry A has crossed the river (W) and come back 400 m, so 2160 = W +
+    400 and W = 1760 m.
+
+reasoning_structure:
+  naive_approach: >
+    Introduce the two speeds and the width as unknowns and solve
+    simultaneous equations.
+  crucial_observation: >
+    The combined distance at the meetings is a fixed multiple of the width,
+    so one ferry's distance scales accordingly.
+  why_it_simplifies: >
+    Counting total distance travelled eliminates the speeds entirely; the
+    answer follows from one proportion.
+
+related:
+  - two_trains_and_a_fly
+
+tags:
+  - auxiliary object
+  - kinematics
+  - proportion
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

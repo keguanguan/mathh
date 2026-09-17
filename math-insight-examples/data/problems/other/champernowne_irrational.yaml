@@ -1,0 +1,80 @@
+id: champernowne_irrational
+
+title: 0.123456789101112... Is Irrational
+
+aliases:
+  - Champernowne constant irrational
+  - concatenation of integers is irrational
+  - non-periodic decimal
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Champernowne_constant
+  original_title: Champernowne constant (irrationality)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the number 0.123456789101112131415... obtained by writing the
+    positive integers one after another is irrational.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a rational number has an eventually periodic decimal expansion, but this expansion contains arbitrarily long blocks of zeros separated by nonzero digits
+  category: structural_obstruction
+  summary: >
+    If the expansion were eventually periodic with period p, then beyond
+    some point every block of p consecutive digits would contain a nonzero
+    digit (unless the number is eventually 0, which it is not). But the
+    expansion contains the number 10^p written out, contributing p
+    consecutive zeros, arbitrarily far out.
+
+intuitive_proof:
+  explanation: >
+    A decimal expansion is eventually periodic iff the number is rational.
+    Suppose the expansion of the given number is eventually periodic with
+    period p from position N on. The period cannot consist only of zeros
+    (the digits never become all zero), so every block of p consecutive
+    digits after position N contains a nonzero digit. But the integers 10^k
+    for large k appear in the expansion beyond position N and each
+    contributes a run of k >= p consecutive zeros. Contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Try to prove it is not a fraction p/q by some arithmetic property of q.
+  crucial_observation: >
+    Periodicity forbids arbitrarily long runs of a repeated digit, while the
+    construction produces them.
+  why_it_simplifies: >
+    A structural feature of the digit string (unbounded zero runs)
+    contradicts periodicity at once.
+
+related:
+  - log2_of_3_irrational
+
+tags:
+  - irrationality
+  - decimal expansion
+  - periodicity
+  - structural obstruction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Mahler proved the number is transcendental; the irrationality is the
+  elementary part.

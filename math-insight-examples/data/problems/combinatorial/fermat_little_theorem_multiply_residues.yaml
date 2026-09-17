@@ -1,0 +1,79 @@
+id: fermat_little_theorem_multiply_residues
+
+title: Fermat's Little Theorem by Multiplying All Residues by a
+
+aliases:
+  - Fermat's little theorem via permutation of residues
+  - a, 2a, ..., (p-1)a are a permutation
+  - Ivory's proof
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem
+  original_title: Proofs of Fermat's little theorem (proof using the permutation of residues)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/Fermat.shtml
+    original_title: Fermat's Little Theorem
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Show that if p is prime and p does not divide a, then a^{p-1} = 1 mod p.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: multiplication by a permutes the nonzero residues mod p, so the product of a, 2a, ..., (p-1)a equals (p-1)! mod p
+  category: bijection
+  summary: >
+    The numbers a, 2a, ..., (p-1)a are pairwise incongruent mod p (a
+    difference ka - ja = (k - j)a is not divisible by p) and none is 0, so
+    they are the nonzero residues in some order. Multiplying them,
+    a^{p-1}(p-1)! = (p-1)! mod p, and cancelling (p-1)!, which is coprime to
+    p, gives a^{p-1} = 1.
+
+intuitive_proof:
+  explanation: >
+    Consider the residues a, 2a, ..., (p-1)a modulo p. If ka = ja mod p with
+    1 <= j < k <= p - 1, then p divides (k - j)a, and since p is prime and
+    does not divide a it divides k - j, impossible as 0 < k - j < p. So the
+    p - 1 residues are distinct and nonzero: they are 1, 2, ..., p - 1 in
+    some order. Taking the product of both lists, a^{p-1} (p - 1)! = (p -
+    1)! mod p. Since (p - 1)! is coprime to p it can be cancelled, leaving
+    a^{p-1} = 1 mod p.
+
+reasoning_structure:
+  naive_approach: >
+    Prove a^p = a by induction on a via the binomial theorem, or verify
+    numerically.
+  crucial_observation: >
+    Multiplication by a unit is a bijection of the residues, and a bijection
+    preserves the product of all elements.
+  why_it_simplifies: >
+    One bijection and one cancellation prove the theorem; the identical
+    argument for the units mod n gives Euler's theorem a^{phi(n)} = 1.
+
+related:
+  - fermat_little_theorem_necklaces
+  - wilson_theorem_pairing
+
+tags:
+  - bijection
+  - Fermat's little theorem
+  - modular arithmetic
+  - permutation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

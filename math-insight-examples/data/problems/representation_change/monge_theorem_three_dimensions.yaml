@@ -1,0 +1,89 @@
+id: monge_theorem_three_dimensions
+
+title: Monge's Theorem by Lifting to Three Dimensions
+
+aliases:
+  - Monge's theorem
+  - three circles external tangents collinear
+  - cones and a plane
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Monge%27s_theorem
+  original_title: Monge's theorem (proofs)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Three circles of different radii lie in a plane, none inside another.
+    For each pair, the two external common tangents meet at a point. Show
+    that the three points so obtained are collinear.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: replace each circle by a sphere of the same radius; the external tangent lines become tangent cones, and the three apex points lie in the plane touching all three spheres from above, as well as in the original plane
+  category: geometric_reinterpretation
+  summary: >
+    Place spheres on the circles as equators. The external tangents of two
+    circles are generators of the cone tangent to both spheres, with apex at
+    the tangents' intersection. A plane touching all three spheres from
+    above contains all three apexes, and so does the original plane, so the
+    apexes lie on the intersection line of the two planes.
+
+intuitive_proof:
+  explanation: >
+    Build on each circle a sphere having it as a great circle. For two
+    spheres of different radii, the external common tangents of their
+    equatorial circles are two generators of the cone tangent to both
+    spheres, and the apex of the cone is the intersection point of the two
+    tangents; the apex is also the centre of the homothety mapping one
+    sphere onto the other. Now take a plane tangent to all three spheres on
+    the same side (it exists because the radii differ and no sphere contains
+    another). For any two of the spheres, this plane is a common tangent
+    plane, and the homothety centred at their cone apex maps one sphere to
+    the other and hence maps the tangent plane to a parallel tangent plane
+    on the same side, i.e. to itself; a plane fixed by a homothety with
+    ratio different from 1 passes through the centre. So the plane contains
+    all three apexes. The apexes also lie in the plane of the circles, and
+    two distinct planes meet in a line, so the three apexes are collinear.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the three intersection points in coordinates and verify
+    collinearity with a determinant, a messy calculation.
+  crucial_observation: >
+    A planar configuration is the shadow of a three-dimensional one in which
+    the collinearity is a trivial intersection of two planes.
+  why_it_simplifies: >
+    Adding a dimension makes the theorem a two-line observation; the same
+    lifting proves Desargues's theorem.
+
+related:
+  - straightedge_alone_center_impossible
+
+tags:
+  - geometric reinterpretation
+  - homothety
+  - three dimensions
+  - tangent lines
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The apex is the external homothety centre of the two circles; Monge's
+  theorem is the statement that three such centres are collinear.

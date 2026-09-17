@@ -1,0 +1,80 @@
+id: n_edges_n_vertices_cycle
+
+title: A Graph with n Vertices and n Edges Contains a Cycle
+
+aliases:
+  - n edges force a cycle
+  - forests have fewer edges than vertices
+  - tree edge bound corollary
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter on graph theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Tree_%28graph_theory%29
+    original_title: Tree (graph theory) (properties)
+
+problem:
+  statement: >
+    Show that any graph with n vertices and at least n edges contains a
+    cycle.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: a graph without cycles (a forest) with c components has exactly n - c <= n - 1 edges
+  category: structural_obstruction
+  summary: >
+    If the graph had no cycle it would be a forest, and each of its c
+    components is a tree with (number of vertices) - 1 edges. Summing, a
+    forest has n - c <= n - 1 edges. A graph with n edges therefore cannot
+    be a forest and must contain a cycle.
+
+intuitive_proof:
+  explanation: >
+    Suppose the graph has no cycle. Each connected component is then a tree;
+    a tree on m vertices has m - 1 edges (leaf removal induction). Summing
+    over the c components, the total number of edges is n - c <= n - 1 < n.
+    This contradicts the assumption that there are at least n edges. Hence
+    the graph contains a cycle. (Constructively: repeatedly remove leaves;
+    since each removal deletes one vertex and one edge, the edge surplus
+    persists and the process stops at a non-empty graph with all degrees at
+    least 2, which contains a cycle.)
+
+reasoning_structure:
+  naive_approach: >
+    Search for a cycle explicitly, or argue about degrees without a clean
+    bound.
+  crucial_observation: >
+    Acyclic graphs are extremely sparse (at most n - 1 edges), so any excess
+    edge is a structural obstruction to acyclicity.
+  why_it_simplifies: >
+    A single counting bound for forests decides the question for every graph
+    with n edges.
+
+related:
+  - tree_has_n_minus_one_edges
+  - longest_path_min_degree_cycle
+
+tags:
+  - structural obstruction
+  - cycles
+  - trees
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

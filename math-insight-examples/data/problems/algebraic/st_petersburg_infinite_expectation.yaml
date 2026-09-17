@@ -1,0 +1,77 @@
+id: st_petersburg_infinite_expectation
+
+title: The St. Petersburg Game Has Infinite Expected Value
+
+aliases:
+  - St. Petersburg paradox
+  - double the pot until tails
+  - infinite expectation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/St._Petersburg_paradox
+  original_title: St. Petersburg paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+
+problem:
+  statement: >
+    A fair coin is tossed until it shows heads; if this happens on the k-th
+    toss you receive 2^k dollars. Show that the expected payout is infinite.
+  domain: probability
+  answer: "infinite: each term of the expectation sum equals 1"
+
+key_idea:
+  name: the probability of stopping at toss k is 2^{-k}, exactly cancelling the payout 2^k, so every term of the expectation is 1 and there are infinitely many terms
+  category: grouping_terms
+  summary: >
+    P(first head at toss k) = 2^{-k} and the payout is 2^k, so the k-th
+    contribution to the expectation is 2^k * 2^{-k} = 1. The expectation is
+    1 + 1 + 1 + ..., which diverges.
+
+intuitive_proof:
+  explanation: >
+    The game stops at toss k with probability (1/2)^k (k - 1 tails followed
+    by a head). The expected payout is sum over k >= 1 of 2^k (1/2)^k = sum
+    over k >= 1 of 1 = infinity. Truncating the payout at 2^N (a bank with
+    finite capital) gives expectation N, so a bank worth a million dollars
+    makes the game worth about 20 dollars, which is why nobody would pay
+    much to play.
+
+reasoning_structure:
+  naive_approach: >
+    Try to compute a finite expected value or simulate the game, where the
+    sample mean grows without settling.
+  crucial_observation: >
+    The payouts grow exactly as fast as the probabilities shrink, so the
+    expectation is a sum of equal terms.
+  why_it_simplifies: >
+    Grouping the expectation term by term reveals a divergent series of 1s;
+    the paradox is about the inadequacy of expected value as a measure of
+    worth, not about the computation.
+
+related:
+  - harmonic_series_diverges_grouping
+  - geometric_waiting_time_conditioning
+
+tags:
+  - grouping
+  - expected value
+  - paradox
+  - divergent series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Bernoulli's resolution: use expected utility (e.g. logarithmic), which is
+  finite.

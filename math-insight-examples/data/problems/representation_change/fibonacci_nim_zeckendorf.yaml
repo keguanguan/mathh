@@ -1,0 +1,97 @@
+id: fibonacci_nim_zeckendorf
+
+title: Fibonacci Nim and the Zeckendorf Representation
+
+aliases:
+  - Fibonacci Nim
+  - take at most twice the previous move
+  - Zeckendorf strategy
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/TakeAway.shtml
+  original_title: Take-Away Games
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Fibonacci_nim
+    original_title: Fibonacci nim (strategy)
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 3
+
+problem:
+  statement: >
+    A pile has n counters. The first player takes any number but not all;
+    thereafter each player takes at least one and at most twice the number
+    the opponent just took. The player taking the last counter wins. Who
+    wins, and how?
+  domain: combinatorial games
+  answer: >
+    the second player wins iff n is a Fibonacci number; otherwise the first
+    player wins by taking the smallest term of the Zeckendorf representation
+    of n
+
+key_idea:
+  name: write n as a sum of non-consecutive Fibonacci numbers; taking the smallest term leaves the opponent unable to take the next term in one move
+  category: algebraic_encoding
+  summary: >
+    Let z(n) be the smallest term of the Zeckendorf representation of n.
+    Lemma: if t < z(n) then z(n - t) <= 2t. Taking z(n) leaves a pile whose
+    smallest term exceeds twice the take, so the opponent cannot remove it,
+    and after any reply t the mover can again take the smallest term.
+    Fibonacci piles have z(n) = n, so the first player cannot begin this
+    way.
+
+intuitive_proof:
+  explanation: >
+    Let z(n) denote the smallest term in the Zeckendorf representation of n.
+    Lemma: if 0 < t < z(n) then z(n - t) <= 2t; this follows by induction
+    from F_k = F_{k-1} + F_{k-2}, since subtracting t from the smallest
+    block F_k of n breaks it into Zeckendorf terms of which the smallest is
+    at most 2t. Strategy from a non-Fibonacci pile n: take z(n). The
+    remaining pile n' has z(n') >= F_{k+2} > 2 z(n) when z(n) = F_k (indices
+    in a Zeckendorf representation are non-consecutive), so the opponent,
+    limited to 2 z(n), cannot take z(n') whole; whatever amount t < z(n')
+    the opponent takes, the lemma gives z(n' - t) <= 2t, so the first player
+    may again take the smallest Zeckendorf term and the situation repeats.
+    Piles shrink, so the first player eventually takes the last counters. If
+    n = F_k is a Fibonacci number, any legal first move t < n leaves n - t
+    with z(n - t) <= 2t by the lemma, handing the winning situation to the
+    opponent.
+
+reasoning_structure:
+  naive_approach: >
+    Compute winning and losing positions by exhaustive search over (pile,
+    last move) pairs and search for a pattern in the losing positions.
+  crucial_observation: >
+    The constraint 'at most twice the previous move' interacts with the
+    Fibonacci growth F_{k+2} > 2F_k, so Zeckendorf blocks are exactly the
+    units the opponent can never finish.
+  why_it_simplifies: >
+    The right number system (Zeckendorf) makes both the losing positions and
+    the winning move visible, replacing an opaque table.
+
+related:
+  - zeckendorf_greedy
+  - wythoff_nim_beatty
+
+tags:
+  - algebraic encoding
+  - Zeckendorf
+  - Fibonacci
+  - combinatorial game
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Whinihan (1963).

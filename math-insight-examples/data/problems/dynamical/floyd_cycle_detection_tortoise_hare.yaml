@@ -1,0 +1,83 @@
+id: floyd_cycle_detection_tortoise_hare
+
+title: Cycle Detection with a Tortoise and a Hare
+
+aliases:
+  - Floyd's cycle-finding algorithm
+  - tortoise and hare
+  - two pointers meet in a cycle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cycle_detection
+  original_title: Cycle detection (Floyd's tortoise and hare)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Knuth - The Art of Computer Programming, vol. 2
+    notes: Exercise 3.1.6
+
+problem:
+  statement: >
+    A function f maps a finite set to itself, and the sequence x_0, f(x_0),
+    f(f(x_0)), ... is eventually periodic. Show that one can detect the
+    cycle using only two current values: one advancing one step at a time,
+    the other two steps at a time, until they coincide.
+  domain: dynamical systems
+  answer: >
+    the tortoise x_i and the hare x_{2i} coincide for some i > 0; the first
+    such i is a multiple of the cycle length
+
+key_idea:
+  name: once both are on the cycle, the hare gains one position per step on the tortoise, so it laps it within one cycle length
+  category: finite_state_periodicity
+  summary: >
+    Let the sequence become periodic with period L after mu steps. For i >=
+    mu both x_i and x_{2i} are on the cycle, and x_{2i} = x_i exactly when L
+    divides 2i - i = i. So the first i >= mu that is a multiple of L works,
+    and it exists (take the smallest multiple of L that is at least mu).
+    Only two values are stored, regardless of the sequence's length.
+
+intuitive_proof:
+  explanation: >
+    The sequence has a pre-period mu and a period L: x_{i+L} = x_i for all i
+    >= mu. For i >= mu, x_{2i} = x_i iff L divides 2i - i = i. Choose i to
+    be the least multiple of L that is at least mu (and positive); then i >=
+    mu and L | i, so x_{2i} = x_i, and the tortoise (position i) meets the
+    hare (position 2i). The meeting happens after at most mu + L steps,
+    using constant memory. Given the meeting index, the pre-period and the
+    period can be recovered with two more passes.
+
+reasoning_structure:
+  naive_approach: >
+    Store all visited values and check for repeats, which needs memory
+    proportional to mu + L.
+  crucial_observation: >
+    On a cycle, relative speed matters: a pointer moving one step faster
+    than another laps it within one period.
+  why_it_simplifies: >
+    The finite-state periodicity of the orbit plus a relative-motion
+    argument yields an algorithm with constant memory.
+
+related:
+  - fibonacci_mod_m_periodic
+  - clock_hands_overlap_eleven
+
+tags:
+  - periodicity
+  - algorithm
+  - relative motion
+  - dynamical systems
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Used in Pollard's rho factorisation and in linked-list cycle detection.

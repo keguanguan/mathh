@@ -1,0 +1,76 @@
+id: birthday_paradox_complement
+
+title: The Birthday Paradox via the Complement
+
+aliases:
+  - birthday problem
+  - 23 people same birthday
+  - probability of a shared birthday
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Birthday_problem
+  original_title: Birthday problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on probability
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many people are needed in a room for it to be more likely than not
+    that two share a birthday (365 equally likely days)?
+  domain: probability
+  answer: "23"
+
+key_idea:
+  name: compute the probability that all birthdays are different, a product of shrinking factors, and subtract from 1
+  category: probabilistic_argument
+  summary: >
+    The chance that n people all have distinct birthdays is
+    (364/365)(363/365)...((366 - n)/365). Multiplying these factors, the
+    product drops below 1/2 at n = 23. The 'paradox' dissolves on noticing
+    there are C(23,2) = 253 pairs, each a potential match.
+
+intuitive_proof:
+  explanation: >
+    Order the people. The second has a birthday different from the first
+    with probability 364/365; the third differs from both with probability
+    363/365; and so on. The probability that all n differ is the product of
+    (365 - k)/365 for k = 0..n-1. Using 1 - x <= e^{-x}, the product is at
+    most exp(-(0 + 1 + ... + (n-1))/365) = exp(-n(n-1)/730), which is below
+    1/2 once n(n-1) > 730 ln 2 = 506, i.e. n >= 23; direct computation
+    confirms 0.493 for n = 23 and 0.524 for n = 22.
+
+reasoning_structure:
+  naive_approach: >
+    Try to compute the probability of at least one coincidence directly by
+    inclusion-exclusion over pairs, triples, ..., which is messy.
+  crucial_observation: >
+    The complementary event 'all distinct' is a chain of independent-looking
+    conditional steps whose probabilities multiply.
+  why_it_simplifies: >
+    Complement plus product rule gives a one-line formula, and the
+    exponential approximation explains the square-root scaling (about sqrt(2
+    * 365 ln 2)).
+
+tags:
+  - probability
+  - complement
+  - birthday problem
+  - counting pairs
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

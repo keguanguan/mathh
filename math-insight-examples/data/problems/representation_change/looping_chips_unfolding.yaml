@@ -1,0 +1,85 @@
+id: looping_chips_unfolding
+
+title: "Looping Chips: Unfold the Jumps into a Single Cycle"
+
+aliases:
+  - looping chips puzzle
+  - chips jumping five squares on a ring of twelve
+  - cyclic order invariant
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/Looping.shtml
+  original_title: Looping Chips
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/SimpleGames/Horse.shtml
+    original_title: Four Knights Puzzle
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Twelve squares form a ring; four differently coloured chips occupy
+    squares 1 to 4. A chip may jump to the square five places away (in
+    either direction) if it is empty. Can the chips be returned to squares 1
+    to 4 in reverse order?
+  domain: combinatorial games
+  answer: "impossible: the cyclic order of the chips is invariant"
+
+key_idea:
+  name: jumps of five on a ring of twelve visit all squares in one cycle (gcd(5, 12) = 1), so on the unfolded cycle chips slide between neighbouring squares and cannot pass each other
+  category: graph_reinterpretation
+  summary: >
+    Draw the graph joining squares that differ by 5 mod 12: since gcd(5, 12)
+    = 1 it is a single 12-cycle 1, 6, 11, 4, 9, 2, 7, 12, 5, 10, 3, 8.
+    Relabel the squares in this cyclic order. A jump is now a move to an
+    adjacent empty square on the cycle, which can never change the cyclic
+    order of the four chips. Reversing the order would change it.
+
+intuitive_proof:
+  explanation: >
+    Stepping by 5 around 12 squares visits every square before returning, so
+    the moves form a Hamiltonian cycle C of the twelve squares. On C, a
+    legal move takes a chip to an adjacent empty vertex; chips never jump
+    over one another, so their cyclic order along C is invariant. In the
+    starting position the chips at squares 1, 2, 3, 4 appear along C in the
+    order 1, 4, 2, 3 (reading the cycle 1, 6, 11, 4, 9, 2, 7, 12, 5, 10, 3,
+    8). Reversing them on squares 1..4 would place the colours in the cyclic
+    order corresponding to 4, 3, 2, 1, i.e. 4, 1, 3, 2 along C, which is the
+    reverse cyclic order and hence a different cyclic arrangement. So the
+    target is unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of jumps on the ring as drawn.
+  crucial_observation: >
+    A confusing move rule is adjacency on a hidden cycle, and adjacency
+    moves preserve cyclic order.
+  why_it_simplifies: >
+    The same unfolding as in Guarini's knights puzzle makes the invariant
+    obvious.
+
+related:
+  - guarini_four_knights
+  - seven_coins_star_polygon
+
+tags:
+  - graph reinterpretation
+  - cyclic order
+  - invariant
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: ""

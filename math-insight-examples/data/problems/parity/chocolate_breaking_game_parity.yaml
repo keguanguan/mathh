@@ -1,0 +1,78 @@
+id: chocolate_breaking_game_parity
+
+title: The Chocolate Breaking Game Is Decided by Parity
+
+aliases:
+  - chocolate bar game last break wins
+  - who wins the breaking game
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/chocolad.shtml
+  original_title: Breaking Chocolate Bars
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Algebra/BreakingChocolateBars.shtml
+    original_title: Breaking Chocolate Bars (An Interactive Gizmo)
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Two players alternately break an m x n chocolate bar along a grid line
+    (one piece per break). The player who makes the last break wins. Who
+    wins?
+  domain: combinatorial games
+  answer: >
+    the game always lasts mn - 1 breaks, so the first player wins iff mn is
+    even
+
+key_idea:
+  name: every break increases the number of pieces by exactly one, so the length of the game is fixed
+  category: parity_invariant
+  summary: >
+    Each break turns one piece into two, so the game ends after exactly mn -
+    1 breaks no matter how anyone plays. The first player makes the
+    odd-numbered breaks, so they make the last one iff mn - 1 is odd, i.e.
+    iff mn is even.
+
+intuitive_proof:
+  explanation: >
+    The number of pieces starts at 1, increases by exactly 1 per break, and
+    the game ends at mn pieces: exactly mn - 1 breaks are made regardless of
+    strategy. Breaks alternate between the players starting with the first,
+    so the last break is the first player's iff mn - 1 is odd. There is no
+    strategy at all; the outcome is fixed by the parity of mn.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the game tree of breaking choices, which looks enormous.
+  crucial_observation: >
+    The move count is an invariant of the process, so the 'game' has no
+    decisions that matter.
+  why_it_simplifies: >
+    A counting invariant collapses the game to a parity check.
+
+related:
+  - breaking_chocolate
+  - euclids_game
+
+tags:
+  - parity
+  - invariant
+  - game
+  - move count
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

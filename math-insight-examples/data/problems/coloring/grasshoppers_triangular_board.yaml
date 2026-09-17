@@ -1,0 +1,74 @@
+id: grasshoppers_triangular_board
+
+title: 100 Grasshoppers on a Triangular Board
+
+aliases:
+  - grasshoppers on a triangle
+  - hopping on triangular cells
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/arithmetic/Grasshoppers.shtml
+  original_title: 100 Grasshoppers on a Triangular Board
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    An equilateral triangle is cut by lines parallel to its sides into 100
+    small triangular cells (10 rows). Each cell holds one grasshopper. At a
+    signal every grasshopper hops to a cell sharing a side with its own.
+    This happens 9 times. Prove that afterwards at least 10 cells are empty.
+  domain: combinatorics
+  answer: proved (at least 10 empty cells after any odd number of hops)
+
+key_idea:
+  name: two-colour the cells; hops always change colour
+  category: coloring_invariant
+  summary: >
+    Colour upward-pointing cells red and downward-pointing ones brown; every
+    hop goes from one colour to the other. There are 55 red and 45 brown
+    cells, so after an odd number of hops all grasshoppers that started red
+    are on brown cells and vice versa: at most 45 red cells are occupied,
+    leaving at least 10 empty.
+
+intuitive_proof:
+  explanation: >
+    Neighbouring cells point in opposite directions, so colouring "up" cells
+    red and "down" cells brown makes every hop change colour. In a triangle
+    with n rows there are n(n+1)/2 red and n(n-1)/2 brown cells; for n = 10
+    that is 55 and 45. After one hop the 45 brown grasshoppers occupy at
+    most 45 red cells, so at least 10 red cells are empty; the same holds
+    after any odd number of hops, since the grasshoppers' colours alternate.
+    The number 9 is a red herring: only its parity matters.
+
+reasoning_structure:
+  naive_approach: >
+    Try to follow how grasshoppers could crowd or spread, or analyse the
+    board row by row.
+  crucial_observation: >
+    Hops alternate between two colour classes of unequal size.
+  why_it_simplifies: >
+    The imbalance 55 - 45 = 10 immediately forces empty cells, whatever the
+    grasshoppers do.
+
+tags:
+  - coloring
+  - parity
+  - counting
+  - red herring
+  - bipartite
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The adjacency graph of the cells is bipartite with unequal parts; the
+  argument is the pigeonhole principle on a bipartite graph.

@@ -1,0 +1,70 @@
+id: rope_around_the_earth
+
+title: A Rope Around the Earth Lengthened by One Metre
+
+aliases:
+  - string around the earth puzzle
+  - rope around the equator
+  - circumference and radius are linearly related
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/String_girdling_Earth
+  original_title: String girdling Earth
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    A rope fits snugly around the equator. It is lengthened by 1 metre and
+    lifted uniformly off the ground. How high off the ground is it? Does the
+    answer depend on the size of the planet?
+  domain: geometry
+  answer: >
+    about 16 cm (1/(2 pi) metres), independent of the planet's radius
+
+key_idea:
+  name: circumference is a linear function of the radius, so a fixed change in circumference gives a fixed change in radius
+  category: algebraic_identity
+  summary: >
+    C = 2 pi r, so a change of 1 m in C changes r by 1/(2 pi) m, about 16
+    cm, no matter what r was. The Earth's size cancels completely.
+
+intuitive_proof:
+  explanation: >
+    If the rope of length C = 2 pi r is lengthened to C + 1 and kept
+    circular and concentric, its new radius satisfies 2 pi r' = 2 pi r + 1,
+    so r' - r = 1/(2 pi) = 0.159 m. The original radius r does not appear in
+    the answer; the same 16 cm gap would result for a rope around a tennis
+    ball.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the Earth's radius from its circumference, add 1 m, recompute
+    the radius and subtract, expecting a tiny answer.
+  crucial_observation: >
+    Linear relations transmit differences unchanged; the intuition that 1 m
+    is negligible compared with 40,000 km confuses ratios with differences.
+  why_it_simplifies: >
+    Seeing the formula as linear kills the calculation and explains the
+    counterintuitive scale-independence.
+
+tags:
+  - linearity
+  - scaling
+  - puzzle
+  - counterintuitive
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,87 @@
+id: inversion_circle_through_centre_to_line
+
+title: Inversion Sends Circles through the Centre to Lines
+
+aliases:
+  - circle inversion basic property
+  - inversion maps circles to lines
+  - similar triangles under inversion
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inversive_geometry
+  original_title: Inversive geometry (circles through the centre)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/proofs/PtolemyByInversion.shtml
+    original_title: Ptolemy by Inversion
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    Inversion in a circle with centre O and radius r sends each point P != O
+    to the point P' on ray OP with OP * OP' = r^2. Show that a circle
+    through O is mapped to a line not through O, and vice versa.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: OP * OP' = OQ * OQ' makes triangles OPQ and OQ'P' similar, so a right angle at Q (Thales, when OQ is a diameter) becomes a right angle at P'
+  category: homothety_or_inversion
+  summary: >
+    OP * OP' = OQ * OQ' makes triangles OPQ and OQ'P' similar. For a circle
+    through O with diameter OA, Thales gives a right angle at any point P of
+    the circle, and the similarity turns it into a right angle at P' in
+    triangle OA'P', so all images lie on the line through A' perpendicular
+    to OA.
+
+intuitive_proof:
+  explanation: >
+    Let P, Q be points with inverses P', Q'. From OP * OP' = OQ * OQ' = r^2
+    we get OP/OQ' = OQ/OP', and the triangles OPQ and OQ'P' share the angle
+    at O, so they are similar (with the vertex correspondence P <-> Q', Q
+    <-> P'). Now let C be a circle through O and let OA be its diameter
+    through O. For any other point P on C, angle OPA is right by Thales.
+    Applying the similarity with Q = A: angle OA'P' = angle OPA = 90
+    degrees. Thus every image point P' lies on the line L through A'
+    perpendicular to OA. Since inversion is an involution, the points of L
+    invert back onto C, so the image of C is exactly L (minus the point at
+    infinity corresponding to O).
+
+reasoning_structure:
+  naive_approach: >
+    Compute with coordinates: substitute the inversion formulas into a
+    circle equation and simplify.
+  crucial_observation: >
+    The defining product OP * OP' = const is a similarity condition between
+    triangles at O, and similarity transports right angles.
+  why_it_simplifies: >
+    One pair of similar triangles proves the fundamental property of
+    inversion, which in turn gives short proofs of Ptolemy's theorem and
+    many tangency results.
+
+related:
+  - thales_angle_in_semicircle
+  - ptolemy_inequality_via_similar_triangles
+
+tags:
+  - inversion
+  - similar triangles
+  - circles
+  - geometric transformation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Circles not through O map to circles not through O by the same similarity
+  argument applied twice.

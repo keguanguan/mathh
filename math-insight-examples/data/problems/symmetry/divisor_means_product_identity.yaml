@@ -1,0 +1,77 @@
+id: divisor_means_product_identity
+
+title: The Arithmetic and Harmonic Means of the Divisors Multiply to n
+
+aliases:
+  - averages of divisors
+  - A(n) H(n) = n
+  - divisor pairing d and n/d
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/average.shtml
+  original_title: Averages of divisors of a given integer
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Divisor_function
+    original_title: Divisor function
+
+problem:
+  statement: >
+    Let A(n) be the arithmetic mean and H(n) the harmonic mean of all
+    positive divisors of n. Show that A(n) H(n) = n.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the map d -> n/d permutes the divisors, so the sum of 1/d equals (1/n) times the sum of d
+  category: involution_parity
+  summary: >
+    Since d -> n/d is a bijection of the divisor set, sum over d of 1/d =
+    sum over d of 1/(n/d) = (1/n) sum over d of d. With k divisors, H(n) =
+    k/(sum 1/d) = kn/(sum d) = n/A(n).
+
+intuitive_proof:
+  explanation: >
+    Let the divisors be d_1, ..., d_k, with sum S. The map d -> n/d is a
+    bijection from the set of divisors to itself, so the multiset {n/d_i}
+    equals {d_i}. Hence sum of 1/d_i = sum of (1/n)(n/d_i) = (1/n) sum of
+    (n/d_i) = S/n. The harmonic mean is H(n) = k/(sum of 1/d_i) = kn/S, and
+    the arithmetic mean is A(n) = S/k. Multiplying, A(n) H(n) = n.
+
+reasoning_structure:
+  naive_approach: >
+    Compute both means for several n and observe the pattern, or use the
+    divisor-sum formula, which is unnecessary.
+  crucial_observation: >
+    Reciprocals of divisors are divisors divided by n, because of the
+    pairing d <-> n/d.
+  why_it_simplifies: >
+    The involution on divisors converts the harmonic sum into the ordinary
+    sum with a factor 1/n, and the identity is immediate for every n without
+    knowing the divisors.
+
+related:
+  - divisors_odd_iff_square
+  - number_of_divisors_at_most_2_sqrt_n
+
+tags:
+  - involution
+  - divisors
+  - means
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

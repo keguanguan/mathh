@@ -1,0 +1,85 @@
+id: am_gm_cauchy_forward_backward_induction
+
+title: AM-GM by Cauchy's Forward-Backward Induction
+
+aliases:
+  - Cauchy induction
+  - forward-backward induction
+  - AM-GM for n variables
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+  original_title: Inequality of arithmetic and geometric means (proof by Cauchy using forward-backward induction)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that for non-negative x_1, ..., x_n the arithmetic mean is at least
+    the geometric mean: (x_1 + ... + x_n)/n >= (x_1 ... x_n)^{1/n}.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: prove the case n = 2, go up along powers of two by pairing, then come back down by padding with the mean
+  category: induction
+  summary: >
+    The two-variable case is (sqrt a - sqrt b)^2 >= 0. If the inequality
+    holds for n it holds for 2n by applying it to two groups of n and then
+    to the two group-means. If it holds for n it holds for n - 1: add the
+    mean m of x_1..x_{n-1} as an n-th variable; the n-variable inequality
+    then gives m >= (x_1 ... x_{n-1} m)^{1/n}, i.e. m^{n-1} >= x_1 ...
+    x_{n-1}.
+
+intuitive_proof:
+  explanation: >
+    Step 1 (n = 2): (a + b)/2 - sqrt(ab) = (sqrt a - sqrt b)^2/2 >= 0. Step
+    2 (n to 2n): for 2n numbers, let A, B be the arithmetic means of the two
+    halves and G, H their geometric means; then the overall arithmetic mean
+    (A + B)/2 >= sqrt(AB) >= sqrt(GH), which is the overall geometric mean.
+    So the inequality holds for all powers of two. Step 3 (n to n - 1):
+    given x_1, ..., x_{n-1} with mean m, apply the n-variable inequality to
+    x_1, ..., x_{n-1}, m: the arithmetic mean is again m, so m >= (x_1 ...
+    x_{n-1} m)^{1/n}, and raising to the n-th power and dividing by m gives
+    m^{n-1} >= x_1 ... x_{n-1}. Every n lies below some power of two, so
+    Steps 2 and 3 cover all n.
+
+reasoning_structure:
+  naive_approach: >
+    Ordinary induction from n to n + 1, which does not go through directly
+    for AM-GM without extra tricks (e.g. smoothing).
+  crucial_observation: >
+    The inequality composes well under doubling and can be 'padded' downward
+    by inserting the mean itself as an extra variable.
+  why_it_simplifies: >
+    A non-standard induction pattern (up by doubling, down by one) proves
+    the result with only the two-variable case as input.
+
+related:
+  - am_gm_two_variables_square
+  - fixed_sum_maximise_product_smoothing
+
+tags:
+  - induction
+  - AM-GM
+  - inequality
+  - forward-backward induction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Cauchy, Cours d'analyse (1821).

@@ -1,0 +1,87 @@
+id: lozenge_tiling_hexagon_three_orientations
+
+title: Lozenge Tilings of a Hexagon Use Equally Many Tiles of Each Orientation
+
+aliases:
+  - lozenge tilings
+  - rhombus tiling of a hexagon
+  - David-Tomei proof without words
+  - stack of cubes
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/Romb3dPuzzle.shtml
+  original_title: Tiling a Triangulated Hexagon
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Lozenge
+    original_title: Lozenge (tilings)
+  - name: G. David, C. Tomei - The problem of the calissons
+    notes: American Mathematical Monthly 96 (1989)
+
+problem:
+  statement: >
+    A regular hexagon of side n is cut into unit equilateral triangles and
+    tiled by lozenges (pairs of adjacent triangles). Lozenges come in three
+    orientations. Show that any tiling uses the same number of lozenges of
+    each orientation.
+  domain: tiling
+  answer: "proved: n^2 lozenges of each orientation"
+
+key_idea:
+  name: view the tiling as a picture of stacked unit cubes in a corner; the three orientations are the three visible face directions
+  category: geometric_reinterpretation
+  summary: >
+    Shade the three orientations differently and the tiling becomes a
+    picture of unit cubes stacked in the corner of an n x n x n box. The
+    lozenges of each orientation are the visible faces perpendicular to one
+    axis, and those project exactly onto the corresponding n x n wall of the
+    box. So each orientation occurs n^2 times.
+
+intuitive_proof:
+  explanation: >
+    Interpret each lozenge as the projection of a unit square face of a cube
+    in three-dimensional space, the three orientations corresponding to
+    faces perpendicular to the three axes. A lozenge tiling of the hexagon
+    of side n is the projection of a stack of unit cubes filling an order
+    ideal in the n x n x n box (this is the standard bijection between
+    lozenge tilings and plane partitions). Looking along the projection
+    direction, the lozenges of a fixed orientation are exactly the visible
+    faces perpendicular to one axis, and these project bijectively onto the
+    n x n face of the box perpendicular to that axis: every line of sight
+    parallel to the axis meets the surface of the stack exactly once. Hence
+    each orientation is used exactly n^2 times.
+
+reasoning_structure:
+  naive_approach: >
+    Prove the count by induction on n, or by an invariant argument sliding
+    tiles.
+  crucial_observation: >
+    A two-dimensional tiling is the shadow of a three-dimensional pile of
+    cubes.
+  why_it_simplifies: >
+    The reinterpretation makes the theorem visible at a glance: three walls
+    of a box, each of area n^2, seen from a corner.
+
+tags:
+  - geometric reinterpretation
+  - tiling
+  - plane partitions
+  - proof without words
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The picture appears as a proof without words in the Monthly (David and
+  Tomei, 1989).

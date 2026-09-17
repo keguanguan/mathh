@@ -1,0 +1,80 @@
+id: triangle_fixed_perimeter_equilateral_heron
+
+title: "Fixed Perimeter, Maximal Area: the Equilateral Triangle (Heron plus AM-GM)"
+
+aliases:
+  - isoperimetric problem for triangles
+  - Heron's formula and AM-GM
+  - largest triangle with given perimeter
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 7, Inequalities
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Heron%27s_formula
+    original_title: Heron's formula (applications)
+
+problem:
+  statement: >
+    Among all triangles with a given perimeter 2s, show that the equilateral
+    triangle has the largest area.
+  domain: geometry
+  answer: "proved: maximum area s^2/(3 sqrt 3)"
+
+key_idea:
+  name: Heron's formula makes the area a product s(s - a)(s - b)(s - c) with (s - a) + (s - b) + (s - c) = s fixed, and AM-GM maximises a product with fixed sum when the factors are equal
+  category: algebraic_identity
+  summary: >
+    By Heron, area^2 = s(s - a)(s - b)(s - c). The three factors s - a, s -
+    b, s - c are positive and sum to 3s - 2s = s, so by AM-GM their product
+    is at most (s/3)^3, with equality iff s - a = s - b = s - c, i.e. a = b
+    = c.
+
+intuitive_proof:
+  explanation: >
+    Heron's formula gives Area^2 = s(s - a)(s - b)(s - c), where s is the
+    semiperimeter. The numbers x = s - a, y = s - b, z = s - c are positive
+    (triangle inequality) and x + y + z = 3s - (a + b + c) = s, a constant.
+    By the AM-GM inequality xyz <= ((x + y + z)/3)^3 = (s/3)^3, with
+    equality iff x = y = z, i.e. a = b = c. Hence Area^2 <= s (s/3)^3 =
+    s^4/27, so Area <= s^2/(3 sqrt 3), attained exactly by the equilateral
+    triangle.
+
+reasoning_structure:
+  naive_approach: >
+    Use calculus with two side lengths as variables and the perimeter
+    constraint (Lagrange multipliers).
+  crucial_observation: >
+    Heron's formula converts area into a product of three quantities with a
+    fixed sum.
+  why_it_simplifies: >
+    An algebraic representation of the area plus the one-line AM-GM
+    inequality gives the optimum and the equality case.
+
+related:
+  - fixed_sum_maximise_product_smoothing
+  - am_gm_three_variables_cubes
+  - largest_inscribed_triangle_equilateral
+
+tags:
+  - algebraic identity
+  - Heron's formula
+  - AM-GM
+  - optimisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

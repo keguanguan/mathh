@@ -1,0 +1,74 @@
+id: cantor_diagonal_uncountable
+
+title: The Real Numbers Are Uncountable (Cantor's Diagonal Argument)
+
+aliases:
+  - Cantor's diagonal argument
+  - uncountability of the reals
+  - diagonalisation
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cantor%27s_diagonal_argument
+  original_title: Cantor's diagonal argument
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Sets, functions, and the continuum hypothesis"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that there is no list r_1, r_2, r_3, ... containing every real
+    number in (0, 1).
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: build a number whose k-th digit differs from the k-th digit of r_k
+  category: diagonalization
+  summary: >
+    Write each r_k in decimal. Define d to have k-th digit 5 if the k-th
+    digit of r_k is not 5, and 6 otherwise. Then d differs from every r_k in
+    the k-th place, so d is not on the list.
+
+intuitive_proof:
+  explanation: >
+    Suppose r_1, r_2, ... lists all reals in (0, 1), and write r_k =
+    0.a_{k1} a_{k2} a_{k3} .... Define a number d = 0.d_1 d_2 d_3 ... by d_k
+    = 5 if a_{kk} != 5 and d_k = 6 if a_{kk} = 5. The digits 5 and 6 avoid
+    the ambiguity of expansions ending in 0s or 9s, so d has a unique
+    expansion. For each k, d differs from r_k in the k-th digit, so d !=
+    r_k. Thus d is a real number in (0, 1) not on the list, a contradiction.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct an explicit enumeration of the reals, as one can for
+    the rationals (zigzag), and fail.
+  crucial_observation: >
+    A list can be defeated all at once by an object that disagrees with the
+    k-th entry in the k-th coordinate.
+  why_it_simplifies: >
+    The diagonal construction refutes every conceivable list simultaneously;
+    the same self-referential idea proves the halting problem undecidable
+    and Godel's incompleteness theorem.
+
+tags:
+  - diagonalization
+  - uncountability
+  - self-reference
+  - set theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

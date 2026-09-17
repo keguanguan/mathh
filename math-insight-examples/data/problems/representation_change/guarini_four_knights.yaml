@@ -1,0 +1,90 @@
+id: guarini_four_knights
+
+title: Guarini's Four Knights Puzzle
+
+aliases:
+  - four knights puzzle
+  - Guarini's problem
+  - swap knights on a 3x3 board
+  - knight-move graph unfolded into a cycle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/Horse.shtml
+  original_title: Four Knights Puzzle
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The puzzle is from Paolo Guarini di Forli (1512).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Knight%27s_graph
+    original_title: Knight's graph
+    notes: Guarini's puzzle is the classic example of using the knight's graph.
+
+problem:
+  statement: >
+    On a 3x3 board two white knights stand on the top corners and two black
+    knights on the bottom corners. Using ordinary knight moves (one knight
+    per square), exchange the white and black knights. Can the two white
+    knights end up on adjacent corners, i.e. can the order be changed?
+  domain: combinatorial games
+  answer: >
+    The exchange is possible (in 16 moves); the cyclic order of the four
+    knights can never change, so any arrangement that changes it is
+    impossible.
+
+key_idea:
+  name: draw the knight-move graph; it is an 8-cycle
+  category: graph_reinterpretation
+  summary: >
+    Join two squares whenever a knight can move between them. The centre is
+    isolated and the other eight squares form a single cycle. Knights
+    moving along a cycle without passing each other keep their cyclic
+    order, so the puzzle is just sliding four beads around a ring.
+
+intuitive_proof:
+  explanation: >
+    Mark the eight non-central squares and connect two whenever a knight
+    move joins them. Each such square has exactly two knight moves, and
+    following them visits all eight squares in one closed loop; the centre
+    has no knight moves at all. So the knights are beads on a ring of eight
+    positions that may slide into adjacent empty positions but never jump
+    over each other. On the ring the knights alternate white, black,
+    white, black in the starting position. Sliding beads around the ring
+    cannot change their cyclic order, so the exchange (which rotates the
+    pattern by two ring positions) is achieved simply by moving every knight
+    forward around the ring, while any target with two whites adjacent on
+    the ring is unreachable.
+
+reasoning_structure:
+  naive_approach: >
+    Search over sequences of knight moves on the board, which quickly
+    becomes confusing because knight moves look geometrically irregular.
+  crucial_observation: >
+    The adjacency structure of knight moves on this board is a simple
+    cycle, and cyclic order on a cycle is invariant under sliding.
+  why_it_simplifies: >
+    A "topological" picture makes both the solution and the impossibility
+    result obvious at once.
+
+tags:
+  - graph theory
+  - representation change
+  - cyclic order
+  - invariant
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Dudeney called this method of "unfolding" the board "buttons and string";
+  it is the standard tool for sliding puzzles on small boards.

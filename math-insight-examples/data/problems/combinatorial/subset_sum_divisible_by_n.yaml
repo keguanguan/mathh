@@ -1,0 +1,77 @@
+id: subset_sum_divisible_by_n
+
+title: Among n Integers, Some Consecutive Block Sums to a Multiple of n
+
+aliases:
+  - n integers subset sum divisible by n
+  - prefix sums pigeonhole
+  - Erdos-Ginzburg-Ziv (weak form)
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: A standard first example of pigeonhole applied to residues.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/pigeon.shtml
+    original_title: Pigeonhole Principle
+
+problem:
+  statement: >
+    Given any n integers a_1, ..., a_n, show that some non-empty subset of
+    them has a sum divisible by n. (In fact a block of consecutive terms
+    will do.)
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: look at the n partial sums modulo n
+  category: pigeonhole
+  summary: >
+    The partial sums s_1, ..., s_n (s_k = a_1 + ... + a_k) either include one
+    that is 0 mod n, or two of them agree mod n; in the latter case their
+    difference, a block of consecutive terms, is divisible by n.
+
+intuitive_proof:
+  explanation: >
+    Form the partial sums s_k = a_1 + ... + a_k for k = 1, ..., n. If some
+    s_k is divisible by n we are done. Otherwise the n partial sums take at
+    most n - 1 nonzero residues mod n, so two of them, s_i and s_j with
+    i < j, are congruent mod n. Their difference s_j - s_i =
+    a_{i+1} + ... + a_j is then divisible by n and is a non-empty sum of the
+    given integers.
+
+reasoning_structure:
+  naive_approach: >
+    Consider all 2^n - 1 subsets and their residues, or attempt an induction
+    on n by adjusting elements.
+  crucial_observation: >
+    Restricting attention to the n prefix sums already gives enough objects
+    for pigeonhole on n residues, and differences of prefix sums are sums.
+  why_it_simplifies: >
+    A well-chosen family of only n candidates replaces the exponential
+    family of all subsets.
+
+tags:
+  - pigeonhole
+  - modular arithmetic
+  - partial sums
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The much deeper Erdos-Ginzburg-Ziv theorem says that among 2n - 1
+  integers some n of them sum to a multiple of n.

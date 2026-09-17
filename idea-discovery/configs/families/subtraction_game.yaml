@@ -1,0 +1,19 @@
+family_id: subtraction_game
+idea_type: xor_invariant
+domain: combinatorial game theory
+parameters:
+  n_heaps: 3
+  second_fraction: 0.4
+  max_take_range: [2, 7]
+size_parameter: maximum heap size n (3 heaps; state box ~ n^3)
+ground_truth_answer: first | second (player with a winning strategy; Sprague-Grundy theorem, DP-confirmed in tests)
+canonical_idea: XOR of (heap size mod (max_take + 1)) is 0 exactly at losing positions
+certificate_type: xor_invariant
+verification_method: exhaustive over the state box (never uses the theorem), exact; keep n <= 64 for speed
+generation_method: seeded heaps and max_take; losing-class forcing for 'second' instances
+transfer_surfaces:
+  0: classical Nim (3, 5, 7)
+  1: heaps with bounded take
+  2: tokens on numbered tracks moving towards 0
+seed_problem: nim (math-insight-examples)
+notes: every instance is idea-bearing; the idea is also the algorithm (no execution left), so expect a different size-scaling signature

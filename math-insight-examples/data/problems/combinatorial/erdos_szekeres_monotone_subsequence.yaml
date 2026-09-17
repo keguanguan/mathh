@@ -1,0 +1,89 @@
+id: erdos_szekeres_monotone_subsequence
+
+title: Erdos-Szekeres, Every Sequence of mn + 1 Numbers Has a Monotone Subsequence
+
+aliases:
+  - Erdos-Szekeres theorem
+  - monotone subsequence theorem
+  - increasing or decreasing subsequence
+  - Seidenberg's proof
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Pigeon-hole and double counting"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Theorem of Erdos and Szekeres (1935); the labelling proof is Seidenberg's (1959).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/pigeonhole/seq.shtml
+    original_title: Increasing or decreasing subsequence
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Szekeres_theorem
+    original_title: Erdos-Szekeres theorem
+
+problem:
+  statement: >
+    Show that any sequence of mn + 1 distinct real numbers contains an
+    increasing subsequence of length m + 1 or a decreasing subsequence of
+    length n + 1.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: label each term by the lengths of the longest increasing and decreasing subsequences ending there; labels are distinct
+  category: pigeonhole
+  summary: >
+    Give term x the pair (i, d): the length of the longest increasing and
+    the longest decreasing subsequence ending at x. For two terms x before
+    y, either y > x (then y's i is larger) or y < x (then y's d is larger),
+    so all mn + 1 pairs are distinct. If all i <= m and all d <= n there
+    are only mn possible pairs: contradiction.
+
+intuitive_proof:
+  explanation: >
+    Suppose there is no increasing subsequence of length m + 1 and no
+    decreasing one of length n + 1. For each term x let i(x) be the length
+    of the longest increasing subsequence ending at x and d(x) the length
+    of the longest decreasing one ending at x; then 1 <= i(x) <= m and
+    1 <= d(x) <= n, so the pair (i(x), d(x)) takes at most mn values. But
+    if x comes before y in the sequence, then either y > x, in which case
+    appending y to the best increasing subsequence ending at x gives
+    i(y) >= i(x) + 1, or y < x, giving d(y) >= d(x) + 1. Either way the
+    pairs differ. So mn + 1 terms have mn + 1 distinct pairs among mn
+    possibilities, which is impossible.
+
+reasoning_structure:
+  naive_approach: >
+    Try to build a long monotone subsequence greedily, or argue by
+    induction on the length, both of which get tangled.
+  crucial_observation: >
+    A two-coordinate label that is forced to change between any two terms
+    turns the problem into a counting of labels.
+  why_it_simplifies: >
+    Pigeonhole on labels gives the theorem in one paragraph, with the
+    sharp bound (mn terms can avoid both conclusions).
+
+tags:
+  - pigeonhole
+  - monotone subsequence
+  - labelling
+  - Ramsey theory
+  - sharp bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Also provable from Dilworth's theorem; the labelling proof is the
+  shortest known and is the model for "pigeonhole on cleverly chosen
+  labels".

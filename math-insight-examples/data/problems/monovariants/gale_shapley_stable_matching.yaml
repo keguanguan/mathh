@@ -1,0 +1,91 @@
+id: gale_shapley_stable_matching
+
+title: Deferred Acceptance Always Produces a Stable Matching
+
+aliases:
+  - Gale-Shapley algorithm
+  - stable marriage
+  - deferred acceptance
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm
+  original_title: Gale–Shapley algorithm (proof of correctness)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gale & Shapley - College admissions and the stability of marriage
+    notes: American Mathematical Monthly 69 (1962)
+
+problem:
+  statement: >
+    n men and n women each rank the other group. Show that there is a
+    matching with no 'blocking pair' (a man and a woman who prefer each
+    other to their assigned partners), and give an algorithm that finds one.
+  domain: combinatorics
+  answer: >
+    proved: repeatedly let each unmatched man propose to his most preferred
+    woman who has not yet rejected him; a woman keeps the best proposal
+    received so far
+
+key_idea:
+  name: women only ever trade up and men only ever move down their lists, so the process terminates, and any blocking pair would contradict a rejection that already happened
+  category: monovariant
+  summary: >
+    Each unmatched man proposes to the next woman on his list; each woman
+    keeps her best proposer so far. Proposals are never repeated, so the
+    process ends with everyone matched. If M preferred W to his final
+    partner, he proposed to W earlier and was rejected for someone she
+    prefers, and her partners only improve, so W does not prefer M: no
+    blocking pair.
+
+intuitive_proof:
+  explanation: >
+    Termination: each man proposes to each woman at most once, so at most
+    n^2 proposals are made. A woman who has received a proposal stays
+    matched from then on (she only ever swaps one partner for a better one).
+    If some man were unmatched at the end he would have proposed to all n
+    women, so all n women would be matched, to n distinct men, leaving no
+    man unmatched: contradiction. Stability: suppose M and W form a blocking
+    pair, with M preferring W to his final partner W' and W preferring M to
+    her final partner M'. Since M ranks W above W', he proposed to W before
+    proposing to W'. W rejected M at some point in favour of a man she
+    prefers, and afterwards only replaced her partner by better men, so her
+    final partner M' is preferred to M. This contradicts W preferring M.
+    Hence the matching is stable.
+
+reasoning_structure:
+  naive_approach: >
+    Search over all n! matchings for a stable one, or try local improvements
+    that may cycle.
+  crucial_observation: >
+    Proposals give a monovariant for termination, and the one-directional
+    movement (women improve, men descend) makes every potential blocking
+    pair inconsistent with a past rejection.
+  why_it_simplifies: >
+    Two monotonicity observations give both termination and correctness; the
+    same algorithm is used in real matching markets (Nobel Prize 2012).
+
+related:
+  - two_rooms_half_friends
+  - sign_flipping_rows_columns
+
+tags:
+  - monovariant
+  - matching
+  - algorithm
+  - stability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The resulting matching is optimal for the proposing side among all stable
+  matchings.

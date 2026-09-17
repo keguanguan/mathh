@@ -1,0 +1,92 @@
+id: shortest_bisecting_arc_equilateral_triangle
+
+title: The Shortest Curve Bisecting an Equilateral Triangle Is a Circular Arc
+
+aliases:
+  - bisecting arcs
+  - shortest bisector of a triangle
+  - Polya's bisecting arc problem
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/bisect.shtml
+  original_title: Bisecting Arcs
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Polya - Mathematics and Plausible Reasoning
+    notes: Volume 1, p. 186
+
+problem:
+  statement: >
+    Among all curves that divide an equilateral triangle into two parts of
+    equal area, which is the shortest? (Neither the altitude nor the chord
+    parallel to a side.)
+  domain: geometry
+  answer: >
+    an arc of a circle centred at a vertex, of radius such that the sector
+    has half the triangle's area
+
+key_idea:
+  name: reflect the triangle repeatedly around a vertex to form a regular hexagon; a curve cutting off a corner region of the triangle becomes, with its five reflections, a closed curve in the hexagon, and the isoperimetric inequality makes the circle optimal
+  category: reflection
+  summary: >
+    A bisecting curve cutting off a region at vertex A, together with its
+    five images under reflection of the triangle around A, forms a closed
+    curve in a regular hexagon enclosing half the hexagon. The isoperimetric
+    inequality says the shortest such closed curve is a circle centred at A,
+    so the shortest bisector is a circular arc, which beats both the
+    altitude and the parallel chord.
+
+intuitive_proof:
+  explanation: >
+    Consider first bisecting curves that separate one vertex A from the
+    opposite side. Reflect the triangle in its sides through A repeatedly:
+    the six images fit around A into a regular hexagon, and the curve and
+    its five reflections form a closed curve C of six times the length
+    enclosing six times the area, i.e. half the hexagon. By the
+    isoperimetric inequality the shortest such C is a circle centred at A
+    (the enclosed region is symmetric about A, and a circle of the required
+    area centred at A is admissible). Its sixth, an arc centred at A with
+    sector area equal to half the triangle, has length (pi/3) r with r^2
+    pi/6 = (sqrt 3/8) s^2, i.e. r = s sqrt(3 sqrt 3/(4 pi)), giving length
+    about 0.673 s. The altitude has length 0.866 s and the parallel chord
+    bisecting the area has length s/sqrt 2 = 0.707 s, both longer. Curves
+    that separate two vertices from the third are handled by an analogous
+    reflection argument and turn out longer. Hence the arc is shortest.
+
+reasoning_structure:
+  naive_approach: >
+    Guess the altitude or the chord parallel to a side, as Newman did in
+    Klamkin's anecdote.
+  crucial_observation: >
+    Reflecting the triangle around a vertex turns a bisecting curve into a
+    closed curve, for which the isoperimetric inequality is available.
+  why_it_simplifies: >
+    Symmetrisation by reflection reduces a constrained shortest-curve
+    problem to the isoperimetric inequality, and exposes why the intuitive
+    straight answers are wrong.
+
+related:
+  - shortest_fence_quarter_circle_reflection
+
+tags:
+  - reflection
+  - isoperimetric inequality
+  - symmetry
+  - optimisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The same method shows that the shortest bisector of a square is a segment
+  parallel to a side through the centre, and that of a disc is a diameter.

@@ -1,0 +1,90 @@
+id: buffon_needle_barbier
+
+title: Buffon's Needle via Linearity of Expectation (Barbier's Argument)
+
+aliases:
+  - Buffon's needle
+  - Buffon's noodle
+  - Barbier's solution of Buffon's needle
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Buffon's needle problem"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Buffon (1777); the expectation argument is E. Barbier's (1860).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Buffon%27s_needle_problem
+    original_title: Buffon's needle problem
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/fta/Buffon/buffon9.shtml
+    original_title: Buffon's Needle Problem
+
+problem:
+  statement: >
+    A floor is ruled with parallel lines a distance d apart. A needle of
+    length L <= d is dropped at random. Show that the probability that it
+    crosses a line is 2L/(pi d).
+  domain: probability
+  answer: 2L/(pi d)
+
+key_idea:
+  name: the expected number of crossings is additive in length, so compute it for a circle
+  category: probabilistic_argument
+  summary: >
+    For a needle of length L <= d, the probability of crossing equals the
+    expected number of crossings E(L). Bending or chaining needles does not
+    change the expectation of the total (linearity), so E is proportional to
+    length: E(L) = cL. A circle of diameter d, a "noodle" of length pi d,
+    crosses the lines exactly twice always, so c * pi d = 2.
+
+intuitive_proof:
+  explanation: >
+    Let E(L) be the expected number of crossings for a randomly dropped
+    needle of length L (for L <= d this is at most one crossing, so E(L)
+    is the probability we want). Two needles joined end to end, dropped
+    together, have expected crossings E(L_1) + E(L_2) by linearity of
+    expectation, whatever the angle between them, so E is additive, hence
+    E(L) = cL for a constant c; by approximation the same holds for any
+    curve of length L, straight or bent. Now drop a circle of diameter d:
+    however it lands it crosses the lines exactly twice, so
+    2 = c * (pi d), giving c = 2/(pi d). Hence a needle of length L <= d
+    crosses a line with probability 2L/(pi d).
+
+reasoning_structure:
+  naive_approach: >
+    Parametrise the needle by its centre's distance to the nearest line
+    and its angle, and integrate sin over the angle, a calculus
+    computation that hides why pi appears.
+  crucial_observation: >
+    Expectation is linear even for dependent pieces, so the problem is
+    determined by a single constant, and a circle fixes the constant
+    without any integral.
+  why_it_simplifies: >
+    A choice of the right test object (the circle) replaces the integral;
+    the argument also proves Barbier's theorem that all curves of constant
+    width have the same perimeter.
+
+tags:
+  - probabilistic method
+  - linearity of expectation
+  - geometric probability
+  - auxiliary object
+  - pi
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The circle is an auxiliary object in the sense of the taxonomy: it is
+  not part of the problem, but its crossing count is known exactly.

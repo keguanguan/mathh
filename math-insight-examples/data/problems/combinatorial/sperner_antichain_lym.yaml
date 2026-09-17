@@ -1,0 +1,90 @@
+id: sperner_antichain_lym
+
+title: Sperner's Theorem on Antichains via Counting Maximal Chains (LYM)
+
+aliases:
+  - Sperner's theorem
+  - LYM inequality
+  - largest antichain in the Boolean lattice
+  - Lubell's proof
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three famous theorems on finite sets"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: Sperner (1928); the chain-counting proof is Lubell's (1966), also Yamamoto and Meshalkin.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Sperner%27s_theorem
+    original_title: Sperner's theorem
+
+problem:
+  statement: >
+    A family of subsets of an n-element set is an antichain if no member
+    contains another. Show that an antichain has at most C(n, floor(n/2))
+    members.
+  domain: combinatorics
+  answer: proved (the middle layer attains the bound)
+
+key_idea:
+  name: count the pairs (member of the antichain, maximal chain through it)
+  category: double_counting
+  summary: >
+    A maximal chain is an ordering of the n elements added one at a time;
+    there are n! of them. A k-set lies on k!(n-k)! maximal chains, and a
+    maximal chain passes through at most one member of an antichain.
+    Hence sum over members of k!(n-k)! <= n!, i.e. sum of 1/C(n, |A|) <= 1,
+    and since C(n, |A|) <= C(n, floor(n/2)) the antichain has at most
+    C(n, floor(n/2)) members.
+
+intuitive_proof:
+  explanation: >
+    A maximal chain empty set = C_0 < C_1 < ... < C_n = whole set
+    corresponds to a permutation of the n elements (the order in which
+    they are added), so there are n! maximal chains. A fixed set A of size
+    k lies on exactly k!(n-k)! of them (order the elements of A first, then
+    the rest). Two members of an antichain cannot lie on the same chain,
+    because sets on a chain are nested. So counting pairs (A, chain) with
+    A in the antichain and A on the chain gives sum over A of
+    |A|!(n-|A|)! <= n!. Dividing by n!: sum over A of 1/C(n,|A|) <= 1 (the
+    LYM inequality). Each term is at least 1/C(n, floor(n/2)), so the
+    number of members is at most C(n, floor(n/2)).
+
+reasoning_structure:
+  naive_approach: >
+    Try to show that replacing sets of non-middle size by middle-size
+    sets never decreases the family, via a matching between adjacent
+    layers (Sperner's original, workable but longer).
+  crucial_observation: >
+    Maximal chains are easy to count, a set's share of them depends only
+    on its size, and an antichain meets each chain at most once.
+  why_it_simplifies: >
+    A single double count gives the weighted LYM inequality, which is
+    stronger than the theorem and takes three lines.
+
+related:
+  - even_and_odd_subsets
+
+tags:
+  - double counting
+  - antichain
+  - Boolean lattice
+  - LYM inequality
+  - extremal set theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The probabilistic rephrasing: a random maximal chain meets the
+  antichain with probability sum of 1/C(n,|A|) <= 1.

@@ -1,0 +1,78 @@
+id: bags_of_coins_one_weighing
+
+title: Finding the Bag of Fake Coins with One Weighing
+
+aliases:
+  - ten bags of coins one weighing
+  - counterfeit bag puzzle
+  - take k coins from bag k
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Balance_puzzle
+  original_title: Balance puzzle (variants)
+  accessed: 2026-09-16
+  notes: A classic puzzle found in Gardner and many collections.
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    Ten bags each contain many coins. Genuine coins weigh 10 g; all coins in
+    exactly one bag are fakes weighing 11 g. Using a scale that shows the
+    exact weight, identify the fake bag with a single weighing.
+  domain: combinatorics
+  answer: >
+    take 1 coin from bag 1, 2 from bag 2, ..., 10 from bag 10 and weigh them
+    together: the excess over 550 g in grams is the number of the fake bag
+
+key_idea:
+  name: give each bag a distinct 'signature' number of coins so that the excess weight encodes the bag's identity
+  category: algebraic_encoding
+  summary: >
+    Weighing 1 + 2 + ... + 10 = 55 coins gives 550 g if all were genuine.
+    Bag k contributes k fake coins, each 1 g heavier, so the weight is 550 +
+    k grams and k is read off directly.
+
+intuitive_proof:
+  explanation: >
+    Take k coins from bag k for k = 1, ..., 10 and weigh all 55 together. If
+    bag k is the fake one, exactly k of the coins are fake, each 1 g
+    overweight, so the total is 550 + k grams; different k give different
+    totals, so the reading identifies the bag. With several possible fake
+    bags, use 1, 2, 4, 8, ... coins instead so that the excess in binary
+    encodes which bags are fake.
+
+reasoning_structure:
+  naive_approach: >
+    Weigh one coin from each bag separately, which needs up to nine
+    weighings.
+  crucial_observation: >
+    A single measurement can carry many bits if the samples are chosen with
+    distinct weights.
+  why_it_simplifies: >
+    Encoding the unknown into the measurement design turns a search into one
+    read-out; the binary version handles multiple unknowns.
+
+related:
+  - poisoned_wine_binary_testing
+  - twelve_coins_information_bound
+
+tags:
+  - algebraic encoding
+  - weighing
+  - puzzle
+  - information
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

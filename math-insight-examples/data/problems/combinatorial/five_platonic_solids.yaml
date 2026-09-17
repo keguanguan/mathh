@@ -1,0 +1,79 @@
+id: five_platonic_solids
+
+title: Why There Are Exactly Five Platonic Solids
+
+aliases:
+  - Platonic solids classification
+  - regular polyhedra via Euler
+  - 1/p + 1/q > 1/2
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three applications of Euler's formula"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Platonic_solid
+    original_title: Platonic solid (classification)
+
+problem:
+  statement: >
+    Show that there are at most five convex polyhedra all of whose faces are
+    congruent regular p-gons with q faces meeting at every vertex.
+  domain: geometry
+  answer: the five pairs (p, q) = (3,3), (4,3), (3,4), (5,3), (3,5)
+
+key_idea:
+  name: count edges from faces and from vertices, plug into Euler's formula, and get 1/p + 1/q > 1/2
+  category: double_counting
+  summary: >
+    Each face has p edges and each edge lies in 2 faces, so pF = 2E; each
+    vertex has q edges and each edge has 2 ends, so qV = 2E. Euler gives
+    2E/q - E + 2E/p = 2, so 1/p + 1/q = 1/2 + 1/E > 1/2. With p, q >= 3 only
+    five pairs satisfy this.
+
+intuitive_proof:
+  explanation: >
+    Let the polyhedron have V vertices, E edges, F faces. Counting edge-face
+    incidences, pF = 2E; counting edge-vertex incidences, qV = 2E.
+    Substituting V = 2E/q and F = 2E/p into V - E + F = 2 gives 2E/q + 2E/p
+    - E = 2, i.e. 1/p + 1/q = 1/2 + 1/E > 1/2. Since p, q >= 3, the
+    possibilities are (3,3), (3,4), (4,3), (3,5), (5,3): the tetrahedron,
+    octahedron, cube, icosahedron and dodecahedron. E is then determined by
+    1/E = 1/p + 1/q - 1/2.
+
+reasoning_structure:
+  naive_approach: >
+    Consider angle sums at a vertex (q copies of the interior angle of a
+    p-gon must total less than 360 degrees), a valid but different geometric
+    argument; or attempt to construct solids case by case.
+  crucial_observation: >
+    Two incidence counts turn the topological invariant into an inequality
+    in p and q.
+  why_it_simplifies: >
+    An inequality with a handful of integer solutions classifies all cases
+    at once, without geometry.
+
+related:
+  - euler_formula_planar
+
+tags:
+  - double counting
+  - Euler's formula
+  - polyhedra
+  - classification
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

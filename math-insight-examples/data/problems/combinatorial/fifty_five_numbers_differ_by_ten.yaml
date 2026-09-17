@@ -1,0 +1,73 @@
+id: fifty_five_numbers_differ_by_ten
+
+title: Among 55 Numbers from 1 to 100, Two Differ by Exactly 10
+
+aliases:
+  - 55 numbers differ by 10
+  - pairs differing by ten pigeonhole
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the pigeonhole principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Fifty-five distinct numbers are chosen from 1, 2, ..., 100. Show that
+    two of them differ by exactly 10.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: split into blocks of 20, each of which is 10 pairs {k, k+10}
+  category: pigeonhole
+  summary: >
+    The five blocks 1-20, 21-40, ..., 81-100 each consist of ten pairs {k, k
+    + 10}. Some block contains at least 11 chosen numbers, so two of them
+    lie in the same pair.
+
+intuitive_proof:
+  explanation: >
+    Divide {1, ..., 100} into five blocks of 20 consecutive numbers.
+    Fifty-five numbers in five blocks put at least 11 in some block. That
+    block splits into the 10 pairs {k, k + 10} with k its first ten numbers,
+    so two of the 11 chosen numbers fall in the same pair and differ by
+    exactly 10.
+
+reasoning_structure:
+  naive_approach: >
+    Try to choose 55 numbers avoiding difference 10 (e.g. take blocks of ten
+    alternately, which gives only 50).
+  crucial_observation: >
+    Pairs at distance 10 tile the range into boxes of size 2, grouped into
+    blocks so that the count works.
+  why_it_simplifies: >
+    Two nested pigeonhole steps give the result, and the construction with
+    50 numbers shows 55 cannot be lowered to 50.
+
+tags:
+  - pigeonhole
+  - differences
+  - combinatorics
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The analogous statement for difference 9 also holds with 55 numbers, while
+  for difference 11 or 13 it does not.

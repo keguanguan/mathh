@@ -1,0 +1,80 @@
+id: six_divides_n_cubed_minus_n
+
+title: 6 Divides n^3 - n, and 30 Divides n^5 - n
+
+aliases:
+  - n^3 - n divisible by 6
+  - product of three consecutive integers
+  - n^5 - n divisible by 30
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Divisibility
+    original_title: Divisibility (examples)
+
+problem:
+  statement: >
+    Show that n^3 - n is divisible by 6 for every integer n, and n^5 - n by
+    30.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: n^3 - n = (n - 1) n (n + 1) is a product of three consecutive integers, one divisible by 2 and one by 3
+  category: factorisation
+  summary: >
+    n^3 - n = (n - 1)n(n + 1). Among three consecutive integers one is a
+    multiple of 3 and at least one is even, so the product is divisible by
+    6. For n^5 - n = (n - 1)n(n + 1)(n^2 + 1), the factor 5 comes from
+    Fermat's little theorem or from checking n mod 5.
+
+intuitive_proof:
+  explanation: >
+    Factor: n^3 - n = n(n^2 - 1) = (n - 1) n (n + 1). Any three consecutive
+    integers include a multiple of 2 and a multiple of 3, so their product
+    is divisible by 6. Similarly n^5 - n = (n - 1) n (n + 1)(n^2 + 1) is
+    divisible by 6, and by 5 because n^5 = n mod 5 (Fermat), or directly: if
+    n is 0, 1, 4 mod 5 one of the three consecutive factors is divisible by
+    5, and if n is 2 or 3 mod 5 then n^2 + 1 = 5 or 10 = 0 mod 5. Hence 30 |
+    n^5 - n.
+
+reasoning_structure:
+  naive_approach: >
+    Check residues of n^3 - n modulo 6 for n = 0..5, which works but does
+    not explain the factorisation.
+  crucial_observation: >
+    The polynomial factors into consecutive integers, and consecutive
+    integers cover all residues.
+  why_it_simplifies: >
+    Factorisation turns a divisibility claim into a statement about
+    consecutive integers, which is immediate; it is also the k = 3 case of
+    'k! divides a product of k consecutive integers'.
+
+related:
+  - consecutive_product_divisible_by_factorial
+  - prime_divides_binomial_coefficient
+
+tags:
+  - factorisation
+  - divisibility
+  - consecutive integers
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

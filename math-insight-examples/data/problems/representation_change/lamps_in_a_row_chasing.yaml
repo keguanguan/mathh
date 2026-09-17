@@ -1,0 +1,93 @@
+id: lamps_in_a_row_chasing
+
+title: "Lamps in a Row: the Presses Are Forced from Left to Right"
+
+aliases:
+  - one-dimensional Lights Out
+  - chasing the lights
+  - toggle a lamp and its neighbours
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/Merlin4x4.shtml
+  original_title: Mini Lights Out
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Lights_Out_%28game%29
+    original_title: Lights Out (game) (mathematics)
+
+problem:
+  statement: >
+    n lamps stand in a row. Pressing lamp i toggles lamps i - 1, i and i + 1
+    (those that exist). Show that whether a given pattern can be switched
+    off entirely can be decided by checking at most two candidate press
+    sequences.
+  domain: combinatorics
+  answer: >
+    decide whether lamp 1 is pressed (two choices); thereafter lamp i + 1
+    must be pressed iff lamp i is still on after the presses of lamps 1..i:
+    so at most two sequences need to be tried
+
+key_idea:
+  name: only lamp i and lamp i + 1 can still change lamp i's state after lamps 1..i - 1 have been decided, so the state of lamp i forces the decision for lamp i + 1
+  category: algebraic_encoding
+  summary: >
+    A solution is a set of lamps to press (order is irrelevant, double
+    presses cancel). Once the presses of lamps 1..i are decided, the only
+    remaining press that affects lamp i is lamp i + 1, so lamp i's state
+    forces that decision. Hence the whole press set is determined by the
+    choice for lamp 1, and the pattern is solvable iff one of the two forced
+    sequences also turns off the last lamp.
+
+intuitive_proof:
+  explanation: >
+    Each lamp is toggled by presses of itself and its neighbours, toggles
+    commute and cancel in pairs, so a strategy is a subset P of lamps to
+    press, and lamp i ends off iff the number of pressed lamps among {i - 1,
+    i, i + 1} has the parity of lamp i's initial state. Process lamps left
+    to right. Whether lamp 1 is in P is a free binary choice. Given the
+    decisions for lamps 1, ..., i, the parity condition for lamp i involves
+    exactly one undecided lamp, i + 1, and therefore determines whether i +
+    1 is in P. Continuing, P is completely determined by the choice for lamp
+    1, and the only condition not yet enforced is the one for lamp n. Hence
+    the pattern is solvable iff at least one of the two forced sequences
+    satisfies lamp n's condition. In particular the all-on pattern of n
+    lamps is solvable exactly when n is not congruent to 2 modulo 3.
+
+reasoning_structure:
+  naive_approach: >
+    Search over the 2^n subsets of lamps to press, or press lamps by
+    intuition.
+  crucial_observation: >
+    The toggle rule is local, so a left-to-right sweep forces every decision
+    after the first.
+  why_it_simplifies: >
+    Encoding strategies as press sets over GF(2) and exploiting the locality
+    of the rule reduces exponential search to two linear checks; the same
+    'chasing' idea solves the 5x5 Lights Out row by row.
+
+related:
+  - lights_out_linear_algebra
+
+tags:
+  - algebraic encoding
+  - GF(2)
+  - forced moves
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The two candidate sequences reflect the fact that the tridiagonal toggle
+  matrix of a path has kernel of dimension at most 1 over GF(2).

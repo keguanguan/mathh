@@ -1,0 +1,77 @@
+id: records_in_random_sequence_harmonic
+
+title: The Expected Number of Records Is the Harmonic Number
+
+aliases:
+  - records in a random permutation
+  - left-to-right maxima
+  - expected number of new maxima
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Record_value
+  original_title: Record value (expected number of records)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Graham, Knuth, Patashnik - Concrete Mathematics
+    notes: Chapter 6, Stirling numbers of the first kind
+
+problem:
+  statement: >
+    n distinct numbers are revealed in random order. A number is a record if
+    it exceeds all earlier ones. Show that the expected number of records is
+    1 + 1/2 + ... + 1/n.
+  domain: probability
+  answer: H_n = 1 + 1/2 + ... + 1/n
+
+key_idea:
+  name: the k-th number is a record iff it is the largest of the first k, which has probability 1/k; add these up
+  category: linearity_of_expectation
+  summary: >
+    Let I_k indicate that the k-th number is a record. Among the first k
+    numbers each is equally likely to be the largest, so P(I_k = 1) = 1/k.
+    By linearity, the expected number of records is the sum of 1/k.
+
+intuitive_proof:
+  explanation: >
+    The k-th revealed number is a record exactly when it is the maximum of
+    the first k numbers. By symmetry (all orderings of those k numbers are
+    equally likely) this has probability 1/k. Writing the number of records
+    as I_1 + ... + I_n with I_k the indicator of 'k-th number is a record',
+    linearity of expectation gives E = 1 + 1/2 + ... + 1/n = H_n, which is
+    about ln n.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate permutations by their number of records (Stirling numbers of
+    the first kind) and average.
+  crucial_observation: >
+    Each position has a simple record probability, and expectations add
+    regardless of dependence.
+  why_it_simplifies: >
+    Indicators plus symmetry give the answer in two lines and explain the
+    logarithmic growth.
+
+related:
+  - random_permutation_fixed_points_expectation
+
+tags:
+  - linearity of expectation
+  - records
+  - harmonic numbers
+  - symmetry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Same argument: the expected number of times a running 'best so far' is
+  updated in a random scan.

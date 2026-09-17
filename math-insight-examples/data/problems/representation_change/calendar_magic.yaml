@@ -1,0 +1,79 @@
+id: calendar_magic
+
+title: Calendar Magic (Transversal Sums in a Calendar Square)
+
+aliases:
+  - calendar magic
+  - calendar square trick
+  - one date per row and column sum
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/Calendar.shtml
+  original_title: Calendar Magic
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    On a monthly calendar (7 columns, one per weekday) a spectator outlines
+    any k x k block of dates and then picks k dates in the block with
+    exactly one in each row and each column. Show that the sum of the chosen
+    dates depends only on the block, not on the choice, and find it.
+  domain: algebra
+  answer: >
+    The sum is k*a + 8*k(k-1)/2 = k*a + 4k(k-1), where a is the date in the
+    top-left corner of the block; in particular it is k times the centre
+    date when k is odd.
+
+key_idea:
+  name: write each date as corner + 7*(row) + (column)
+  category: algebraic_encoding
+  summary: >
+    The date in row i, column j of the block (0-indexed) is a + 7i + j.
+    Choosing one date per row and per column means the i's are 0..k-1 in
+    some order and so are the j's, so the sum is k*a + 7(0+...+(k-1)) +
+    (0+...+(k-1)) whatever the permutation.
+
+intuitive_proof:
+  explanation: >
+    Dates in a calendar increase by 1 across a row and by 7 down a column,
+    so the entry in row i and column j of the block is a + 7i + j, with a
+    the top-left date. A selection with one date per row and column is a
+    permutation p: the chosen dates are a + 7i + p(i) for i = 0, ..., k-1.
+    Their sum is k*a + 7 * sum(i) + sum(p(i)), and since p merely reorders
+    0, ..., k-1, both sums equal k(k-1)/2. Hence the total is
+    k*a + 8 * k(k-1)/2 = k*a + 4k(k-1), independent of the selection.
+
+reasoning_structure:
+  naive_approach: >
+    Compute several selections, observe the constant sum, and try to prove
+    it by swapping choices two at a time.
+  crucial_observation: >
+    The calendar is an additive grid (rank-one structure: row term plus
+    column term), and a transversal uses every row term and every column
+    term exactly once.
+  why_it_simplifies: >
+    Once dates are written as row-part plus column-part, the permutation
+    disappears from the sum by commutativity.
+
+tags:
+  - algebraic encoding
+  - permutation
+  - magic trick
+  - additive grid
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The same reasoning explains "magic" squares of the form r_i + c_j used in
+  many parlour tricks, and why the trace-like transversal sum is invariant.

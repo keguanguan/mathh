@@ -1,0 +1,78 @@
+id: divisibility_by_eleven_alternating_sum
+
+title: Divisibility by 11 and the Alternating Digit Sum
+
+aliases:
+  - divisibility rule for 11
+  - alternating sum of digits
+  - 10 is -1 mod 11
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Divisibility_rule
+  original_title: Divisibility rule (11)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a number is divisible by 11 iff the alternating sum of its
+    digits (units minus tens plus hundreds ...) is divisible by 11.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: 10 = -1 mod 11, so 10^k = (-1)^k mod 11
+  category: modular_invariant
+  summary: >
+    A number is sum of d_k 10^k. Since 10 = -1 mod 11, 10^k = (-1)^k mod 11,
+    so the number is congruent to d_0 - d_1 + d_2 - ... mod 11. Divisibility
+    of the number is therefore equivalent to divisibility of the alternating
+    digit sum.
+
+intuitive_proof:
+  explanation: >
+    Reduce n = sum over k of d_k 10^k modulo 11. Because 10 = -1 mod 11,
+    each power satisfies 10^k = (-1)^k mod 11, so n = sum over k of (-1)^k
+    d_k mod 11, the alternating digit sum. Two numbers congruent mod 11 are
+    simultaneously divisible by 11 or not. The same reasoning with 10 = 1
+    mod 9 gives the rule for 9 (and 3), and with 100 = -1 mod 101 a rule for
+    101.
+
+reasoning_structure:
+  naive_approach: >
+    Memorise the rule without proof, or test it on examples.
+  crucial_observation: >
+    The base is congruent to -1 modulo 11, so positional weights alternate
+    in sign.
+  why_it_simplifies: >
+    One congruence for the base explains the rule and generates rules for
+    other divisors (7, 13 via 1001 = 7 * 11 * 13).
+
+related:
+  - digit_reversal_divisible_by_nine
+
+tags:
+  - modular arithmetic
+  - digits
+  - divisibility rule
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Since 1001 = 7 * 11 * 13, grouping digits in threes with alternating signs
+  tests divisibility by 7, 11 and 13 at once.

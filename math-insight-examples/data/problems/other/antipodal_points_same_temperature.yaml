@@ -1,0 +1,81 @@
+id: antipodal_points_same_temperature
+
+title: Two Antipodal Points on the Equator Have the Same Temperature
+
+aliases:
+  - antipodal points equal temperature
+  - Borsuk-Ulam in one dimension
+  - f(x) = f(x + pi) on a circle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Borsuk%E2%80%93Ulam_theorem
+  original_title: Borsuk–Ulam theorem (one-dimensional case)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on the intermediate value theorem
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Temperature varies continuously along the equator. Show that some pair
+    of diametrically opposite points have exactly the same temperature.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: the auxiliary function g(x) = f(x) - f(x + pi) satisfies g(x + pi) = -g(x), so it changes sign
+  category: auxiliary_object
+  summary: >
+    Let f be the temperature as a function of the angle x. Set g(x) = f(x) -
+    f(x + pi). Then g(x + pi) = f(x + pi) - f(x) = -g(x). So g(0) and g(pi)
+    are negatives of each other; if either is zero we are done, otherwise g
+    changes sign on [0, pi] and vanishes somewhere by the intermediate value
+    theorem.
+
+intuitive_proof:
+  explanation: >
+    Parametrise the equator by the angle x in [0, 2 pi) and let f(x) be the
+    temperature, a continuous periodic function. Define g(x) = f(x) - f(x +
+    pi), continuous, with g(x + pi) = -g(x). If g(0) = 0 the points at
+    angles 0 and pi have equal temperature. Otherwise g(0) and g(pi) = -g(0)
+    have opposite signs, and by the intermediate value theorem there is x in
+    (0, pi) with g(x) = 0, i.e. f(x) = f(x + pi).
+
+reasoning_structure:
+  naive_approach: >
+    Argue by continuity vaguely, or try to locate the points by the maximum
+    and minimum of the temperature.
+  crucial_observation: >
+    Comparing a function with its half-turn shift produces an odd function,
+    and odd continuous functions on a circle have zeros.
+  why_it_simplifies: >
+    One auxiliary function converts the statement into a sign change; this
+    is the one-dimensional Borsuk-Ulam theorem.
+
+related:
+  - universal_chord_theorem
+  - two_monks_mountain
+
+tags:
+  - intermediate value theorem
+  - auxiliary object
+  - antipodal
+  - continuity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  In two dimensions the full Borsuk-Ulam theorem says two antipodal points
+  of the Earth have the same temperature and the same pressure.

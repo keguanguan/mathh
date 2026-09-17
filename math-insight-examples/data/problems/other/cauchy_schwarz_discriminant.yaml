@@ -1,0 +1,76 @@
+id: cauchy_schwarz_discriminant
+
+title: Cauchy-Schwarz via a Quadratic That Never Goes Negative
+
+aliases:
+  - Cauchy-Schwarz inequality
+  - discriminant proof
+  - (sum a_i b_i)^2 <= (sum a_i^2)(sum b_i^2)
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality
+  original_title: Cauchy–Schwarz inequality (proof via the discriminant)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that (a_1 b_1 + ... + a_n b_n)^2 <= (a_1^2 + ... + a_n^2)(b_1^2 +
+    ... + b_n^2) for all real numbers.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: the quadratic sum of (a_i t - b_i)^2 in t is non-negative, so its discriminant is at most 0
+  category: auxiliary_object
+  summary: >
+    For every real t, f(t) = sum of (a_i t - b_i)^2 >= 0. Expanding, f(t) =
+    A t^2 - 2 B t + C with A = sum a_i^2, B = sum a_i b_i, C = sum b_i^2. A
+    non-negative quadratic has discriminant 4B^2 - 4AC <= 0, which is the
+    inequality.
+
+intuitive_proof:
+  explanation: >
+    Consider f(t) = sum over i of (a_i t - b_i)^2, a sum of squares, hence
+    f(t) >= 0 for all real t. Expanding gives f(t) = (sum a_i^2) t^2 - 2
+    (sum a_i b_i) t + (sum b_i^2) = A t^2 - 2 B t + C. If A = 0 all a_i
+    vanish and the inequality is trivial. Otherwise a quadratic with
+    positive leading coefficient that is never negative has no two distinct
+    real roots, so its discriminant satisfies (2B)^2 - 4AC <= 0, i.e. B^2 <=
+    AC. Equality holds iff f has a root, i.e. the vectors are proportional.
+
+reasoning_structure:
+  naive_approach: >
+    Prove it by induction on n, or by Lagrange's identity, which requires
+    guessing the identity sum of (a_i b_j - a_j b_i)^2.
+  crucial_observation: >
+    An auxiliary quadratic function encodes the inequality in its
+    discriminant.
+  why_it_simplifies: >
+    One auxiliary object turns an n-variable inequality into a fact about
+    parabolas; the same trick proves the integral and inner-product versions
+    verbatim.
+
+tags:
+  - inequality
+  - Cauchy-Schwarz
+  - auxiliary object
+  - discriminant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,82 @@
+id: universal_chord_theorem
+
+title: The Universal Chord Theorem (Horizontal Chords of Length 1/n)
+
+aliases:
+  - universal chord theorem
+  - Levy's chord theorem
+  - horizontal chord of length 1/n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Universal_chord_theorem
+  original_title: Universal chord theorem
+  accessed: 2026-09-16
+  notes: Due to Paul Levy (1934); the converse (only lengths 1/n are universal) is also Levy's.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 3 / analysis exercises on the intermediate value theorem.
+
+problem:
+  statement: >
+    A continuous function f on [0, 1] satisfies f(0) = f(1). Show that for
+    every positive integer n there is a horizontal chord of length 1/n:
+    a point x with f(x + 1/n) = f(x).
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: the auxiliary function g(x) = f(x + 1/n) - f(x) has values summing to zero along a chain
+  category: auxiliary_object
+  summary: >
+    Put g(x) = f(x + 1/n) - f(x) on [0, 1 - 1/n]. Then g(0) + g(1/n) +
+    ... + g((n-1)/n) telescopes to f(1) - f(0) = 0. So the n values are not
+    all of the same strict sign; by the intermediate value theorem g has a
+    zero.
+
+intuitive_proof:
+  explanation: >
+    Define g(x) = f(x + 1/n) - f(x), continuous on [0, 1 - 1/n]. Sum g at
+    the points 0, 1/n, 2/n, ..., (n-1)/n: consecutive terms cancel and the
+    total is f(1) - f(0) = 0. If some term is zero we are done. Otherwise
+    the terms are not all positive and not all negative, so g takes both
+    signs; being continuous, g vanishes somewhere in between by the
+    intermediate value theorem. At that point f(x + 1/n) = f(x).
+
+reasoning_structure:
+  naive_approach: >
+    Try to locate the chord directly from the shape of the graph, or
+    argue about maxima and minima of f.
+  crucial_observation: >
+    The differences over a chain of n steps of length 1/n telescope to
+    zero, forcing a sign change in the difference function.
+  why_it_simplifies: >
+    One auxiliary function and one telescoping sum reduce the problem to
+    the intermediate value theorem; the argument also explains why only
+    lengths 1/n work in general (other lengths admit counterexamples).
+
+related:
+  - two_monks_mountain
+  - telescoping_reciprocal_products
+
+tags:
+  - auxiliary object
+  - intermediate value theorem
+  - telescoping
+  - continuity
+  - chords
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The case n = 2 is the "two monks" idea; the general case adds the
+  telescoping chain.

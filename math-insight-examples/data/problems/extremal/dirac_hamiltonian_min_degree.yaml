@@ -1,0 +1,87 @@
+id: dirac_hamiltonian_min_degree
+
+title: "Dirac's Theorem: Minimum Degree n/2 Forces a Hamiltonian Cycle"
+
+aliases:
+  - Dirac's theorem
+  - Hamiltonian cycle from minimum degree
+  - longest path rotation argument
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dirac%27s_theorem_on_Hamiltonian_cycles
+  original_title: Dirac's theorem on Hamiltonian cycles (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter on graph theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that a graph on n >= 3 vertices in which every vertex has degree at
+    least n/2 has a Hamiltonian cycle.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: take a longest path; its endpoints have all their neighbours on the path, and by pigeonhole there is a 'crossing' pair of edges that closes the path into a cycle of the same length, which must then be Hamiltonian
+  category: extremal_principle
+  summary: >
+    Let P = v_1 ... v_k be a longest path; all neighbours of its endpoints
+    lie on P. The index sets I = {i : v_1 ~ v_{i+1}} and J = {i : v_k ~ v_i}
+    each have at least n/2 elements inside {1, ..., k-1}, so they share an
+    index i, and v_1 ... v_i v_k ... v_{i+1} v_1 is a cycle on all of P. A
+    missed vertex would, by connectivity, extend P, so the cycle is
+    Hamiltonian.
+
+intuitive_proof:
+  explanation: >
+    The graph is connected: two non-adjacent vertices have at least n/2
+    neighbours each among the other n - 2 vertices, so they share one. Let P
+    = v_1 v_2 ... v_k be a longest path. Every neighbour of v_1 and of v_k
+    is on P, otherwise the path could be extended. Let I = {i in 1..k-1 :
+    v_1 is adjacent to v_{i+1}} and J = {i in 1..k-1 : v_k is adjacent to
+    v_i}. Both have at least n/2 elements and lie in a set of size k - 1 <=
+    n - 1 < n, so I and J intersect at some i. Then C = v_1 v_2 ... v_i v_k
+    v_{k-1} ... v_{i+1} v_1 is a cycle on the k vertices of P. If k < n,
+    connectivity gives a vertex w outside C adjacent to some vertex of C;
+    opening C at that vertex and appending w gives a path of length k + 1,
+    contradicting maximality. So k = n and C is a Hamiltonian cycle.
+
+reasoning_structure:
+  naive_approach: >
+    Try to build a Hamiltonian cycle greedily and repair it, or search over
+    all cycles.
+  crucial_observation: >
+    The extremal path cannot be extended, and the degree condition forces a
+    crossing pair of chords by pigeonhole.
+  why_it_simplifies: >
+    Longest path plus pigeonhole is the entire proof; the rotation trick
+    reappears in most Hamiltonicity theorems (Ore, Posa).
+
+related:
+  - longest_path_min_degree_cycle
+  - tournament_hamiltonian_path
+
+tags:
+  - extremal principle
+  - pigeonhole
+  - Hamiltonian cycle
+  - graph theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Dirac (1952). Ore's condition d(u) + d(v) >= n for non-adjacent u, v has
+  the same proof.

@@ -1,0 +1,81 @@
+id: varignon_parallelogram
+
+title: "Varignon's Theorem: the Midpoints of Any Quadrilateral Form a Parallelogram"
+
+aliases:
+  - Varignon parallelogram
+  - midpoint quadrilateral
+  - midsegment theorem applied twice
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Varignon%27s_theorem
+  original_title: Varignon's theorem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the midpoints of the sides of any quadrilateral (even a
+    non-convex or skew one) are the vertices of a parallelogram, of half the
+    quadrilateral's area in the planar case.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: with position vectors, the midpoint of AB is (a + b)/2, and consecutive midpoints differ by half a diagonal
+  category: complex_or_vector_coordinates
+  summary: >
+    Let the vertices be a, b, c, d. The midpoints are (a+b)/2, (b+c)/2,
+    (c+d)/2, (d+a)/2. Consecutive differences are (c - a)/2, (d - b)/2, (a -
+    c)/2, (b - d)/2: opposite sides are equal and parallel, both parallel to
+    a diagonal. The parallelogram's sides are half the diagonals, and its
+    area is half the quadrilateral's.
+
+intuitive_proof:
+  explanation: >
+    Using position vectors, the midpoints are M_1 = (a + b)/2, M_2 = (b +
+    c)/2, M_3 = (c + d)/2, M_4 = (d + a)/2. Then M_2 - M_1 = (c - a)/2 and
+    M_3 - M_4 = (c - a)/2, so M_1 M_2 and M_4 M_3 are equal and parallel (to
+    the diagonal AC); likewise M_3 - M_2 = (d - b)/2 = M_4 - M_1, parallel
+    to BD. Hence M_1 M_2 M_3 M_4 is a parallelogram, valid even for a skew
+    quadrilateral in space. In the plane its area is |(c - a)/2 x (d - b)/2|
+    = (1/4)|AC x BD|, and since the area of any quadrilateral is (1/2)|AC x
+    BD|, the Varignon parallelogram has half the area.
+
+reasoning_structure:
+  naive_approach: >
+    Use the midsegment theorem in triangles ABC and ADC (a fine synthetic
+    proof) or coordinates with many variables.
+  crucial_observation: >
+    Midpoints are averages, and differences of averages are half-differences
+    of the original vertices.
+  why_it_simplifies: >
+    The vector representation makes the theorem a two-line computation and
+    shows it holds in any dimension.
+
+related:
+  - centroid_minimises_sum_of_squared_distances
+
+tags:
+  - vectors
+  - midpoints
+  - parallelogram
+  - quadrilateral
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

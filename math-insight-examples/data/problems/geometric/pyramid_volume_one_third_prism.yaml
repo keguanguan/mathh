@@ -1,0 +1,81 @@
+id: pyramid_volume_one_third_prism
+
+title: A Triangular Prism Splits into Three Pyramids of Equal Volume
+
+aliases:
+  - volume of a pyramid is one third
+  - Euclid XII.7
+  - prism into three tetrahedra
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pyramid_%28geometry%29
+  original_title: Pyramid (geometry) (volume)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book XII, Proposition 7
+
+problem:
+  statement: >
+    Show that a pyramid with triangular base has volume one third of the
+    prism with the same base and height.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: cut the prism into three tetrahedra that pairwise share a base and a height
+  category: decomposition
+  summary: >
+    Cut the prism ABC-A'B'C' into the tetrahedra A'ABC, A'B'C'C and A'BCB'.
+    The first two have congruent bases (the two triangular faces) and the
+    prism's height; the last two share the apex A' and have as bases the two
+    halves of the parallelogram face BCC'B'. So all three have equal volume,
+    one third of the prism.
+
+intuitive_proof:
+  explanation: >
+    Let the prism have bottom face ABC and top face A'B'C'. Removing the
+    tetrahedron T_1 = A'ABC leaves the pyramid with apex A' over the
+    parallelogram face BCC'B'; cutting that face along the diagonal B'C
+    splits the pyramid into T_2 = A'B'C'C and T_3 = A'BCB'. T_1 (base ABC,
+    apex A') and T_2 (base A'B'C', apex C) have congruent bases and the same
+    height, the height of the prism, so they have equal volumes. T_2 and T_3
+    both have apex A' and their bases B'C'C and BCB' are the two halves of
+    the parallelogram BCC'B', so they too have equal volumes. Hence each
+    tetrahedron is one third of the prism. Since the volume of a pyramid
+    depends only on its base area and height (Cavalieri), every triangular
+    pyramid is one third of the prism on the same base with the same height.
+
+reasoning_structure:
+  naive_approach: >
+    Integrate cross-sectional areas, which scale as the square of the
+    distance from the apex.
+  crucial_observation: >
+    The prism is three pyramids that can be paired off by 'same base, same
+    height'.
+  why_it_simplifies: >
+    A decomposition plus the base-height principle gives the factor 1/3 with
+    no calculus.
+
+related:
+  - tetrahedron_in_cube_volume
+
+tags:
+  - decomposition
+  - volume
+  - pyramid
+  - Cavalieri
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

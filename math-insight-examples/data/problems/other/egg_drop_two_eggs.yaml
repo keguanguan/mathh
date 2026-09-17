@@ -1,0 +1,82 @@
+id: egg_drop_two_eggs
+
+title: The Two-Egg Drop Problem
+
+aliases:
+  - egg drop problem
+  - two eggs 100 floors
+  - 14 drops
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Dynamic_programming
+  original_title: Dynamic programming (egg dropping puzzle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+
+problem:
+  statement: >
+    You have two identical eggs and a 100-storey building. Eggs break when
+    dropped from some unknown floor or higher and survive below it. What is
+    the minimum number of drops that guarantees finding the critical floor?
+  domain: combinatorics
+  answer: "14"
+
+key_idea:
+  name: after the first egg breaks, the second must be dropped floor by floor; so the gaps between first-egg drops must decrease by one each time to keep the total constant
+  category: structural_obstruction
+  summary: >
+    Once the first egg breaks, the second must be dropped floor by floor
+    within the last gap. To keep the worst case equal to N for every
+    possible breaking gap, the gaps must be N, N - 1, N - 2, ..., reaching
+    N(N + 1)/2 floors in total. The least N with N(N + 1)/2 >= 100 is 14.
+
+intuitive_proof:
+  explanation: >
+    Lower bound: with N drops in total, suppose the first egg is first
+    dropped from floor f. If it breaks, the remaining N - 1 drops must be
+    made one floor at a time from floor 1 upward with the second egg, so f
+    <= N. If it survives, the same reasoning applied to the building above
+    floor f with N - 1 drops shows the next gap is at most N - 1, and so on:
+    at most N + (N - 1) + ... + 1 = N(N+1)/2 floors can be resolved. Since
+    13 * 14/2 = 91 < 100 <= 14 * 15/2 = 105, at least 14 drops are needed.
+    Upper bound: drop the first egg from floors 14, 27, 39, 50, 60, 69, 77,
+    84, 90, 95, 99, 100 (gaps 14, 13, 12, ...); whenever it breaks, test the
+    floors in the last gap one at a time with the second egg. Every case
+    uses at most 14 drops.
+
+reasoning_structure:
+  naive_approach: >
+    Binary search, which wastes the first egg immediately; or dropping every
+    10 floors, which needs up to 19 drops.
+  crucial_observation: >
+    The constraint that the second egg forces linear search makes each
+    successive gap one smaller, so the reach is a triangular number.
+  why_it_simplifies: >
+    Identifying the structural obstruction (linear search after a break)
+    turns the optimisation into 'smallest N with N(N+1)/2 >= 100'.
+
+related:
+  - twelve_coins_information_bound
+
+tags:
+  - optimisation
+  - search
+  - triangular numbers
+  - puzzle
+  - lower bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  With k eggs the reach after N drops is the sum of C(N, j) for j = 1..k.

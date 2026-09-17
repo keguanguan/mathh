@@ -1,0 +1,74 @@
+id: polyhedron_two_faces_same_edge_count
+
+title: Every Polyhedron Has Two Faces with the Same Number of Edges
+
+aliases:
+  - two faces with equally many sides
+  - polyhedron faces pigeonhole
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Fomin, Genkin, Itenberg - Mathematical Circles (Russian Experience)
+    url: https://bookstore.ams.org/mcl-7
+    original_title: Chapter on the pigeonhole principle
+    author: Dmitri Fomin, Sergey Genkin, Ilia Itenberg
+
+problem:
+  statement: >
+    Show that every convex polyhedron has two faces with the same number of
+    edges.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the face with the most edges, m, has m neighbours, giving m + 1 faces whose edge counts lie in {3, ..., m}
+  category: pigeonhole
+  summary: >
+    Let F be a face with the maximum number of edges, m. Each of its m edges
+    borders another face, giving m distinct neighbouring faces. Together
+    with F there are m + 1 faces, each with between 3 and m edges: only m -
+    2 possible values, so two coincide.
+
+intuitive_proof:
+  explanation: >
+    Choose a face F with the largest number of edges, say m. F has m
+    distinct neighbouring faces (one across each edge; two edges of F cannot
+    border the same face in a convex polyhedron). These m faces and F itself
+    have edge counts in {3, 4, ..., m}, a set of m - 2 values. Since m + 1 >
+    m - 2, two of the faces have the same number of edges.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct a polyhedron with all face sizes different (e.g. a
+    triangle, a quadrilateral, a pentagon, ...) and fail.
+  crucial_observation: >
+    Maximality gives many faces (m + 1) in a small range (m - 2 values).
+  why_it_simplifies: >
+    The extremal face manufactures the pigeonhole situation; the same
+    argument shows two vertices have the same degree.
+
+related:
+  - same_number_of_acquaintances
+
+tags:
+  - pigeonhole
+  - extremal principle
+  - polyhedra
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

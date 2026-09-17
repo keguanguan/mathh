@@ -1,0 +1,76 @@
+id: integral_symmetry_sin_over_sin_plus_cos
+
+title: An Integral Evaluated by Reflection
+
+aliases:
+  - integral of sin/(sin+cos) from 0 to pi/2
+  - reverse-and-add for integrals
+  - substitution x -> a - x
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Integration_by_substitution
+  original_title: Integration by substitution (symmetry)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 9 / calculus exercises
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Evaluate the integral from 0 to pi/2 of sin x / (sin x + cos x) dx.
+  domain: analysis
+  answer: pi/4
+
+key_idea:
+  name: the substitution x -> pi/2 - x swaps sin and cos, so the integral equals its partner with cos on top; the two add to the integral of 1
+  category: symmetry
+  summary: >
+    Let I be the integral and J the same with cos x in the numerator. The
+    substitution x -> pi/2 - x turns I into J, so I = J. But I + J is the
+    integral of 1 over [0, pi/2], which is pi/2. Hence I = pi/4.
+
+intuitive_proof:
+  explanation: >
+    Substituting x = pi/2 - u in I = integral of sin x/(sin x + cos x) gives
+    I = integral from 0 to pi/2 of cos u/(cos u + sin u) du = J. Adding, I +
+    J = integral of (sin x + cos x)/(sin x + cos x) dx = pi/2. Since I = J,
+    I = pi/4. No antiderivative is ever needed.
+
+reasoning_structure:
+  naive_approach: >
+    Find an antiderivative by writing sin x = (1/2)(sin x + cos x) +
+    (1/2)(sin x - cos x) and integrating the logarithmic term, a messier
+    computation.
+  crucial_observation: >
+    The integrand has a partner under the reflection of the interval, and
+    integrand plus partner is trivial.
+  why_it_simplifies: >
+    Symmetry replaces integration; the same 'reverse and add' idea is
+    Gauss's trick for sums, now for integrals.
+
+related:
+  - gauss_pairing_sum
+
+tags:
+  - symmetry
+  - integral
+  - substitution
+  - reverse and add
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  General form: integral from a to b of f(x)/(f(x) + f(a + b - x)) dx = (b -
+  a)/2.

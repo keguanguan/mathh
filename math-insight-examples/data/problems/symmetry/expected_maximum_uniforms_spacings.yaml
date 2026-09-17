@@ -1,0 +1,79 @@
+id: expected_maximum_uniforms_spacings
+
+title: The Expected Maximum of n Uniform Random Numbers Is n/(n + 1)
+
+aliases:
+  - expected maximum of uniforms
+  - spacings are exchangeable
+  - order statistics by symmetry
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Order_statistic
+  original_title: Order statistic (uniform distribution)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 2
+    notes: Chapter I, spacings
+
+problem:
+  statement: >
+    n numbers are chosen independently and uniformly from [0, 1]. Show that
+    the expected value of the largest one is n/(n + 1).
+  domain: probability
+  answer: n/(n + 1)
+
+key_idea:
+  name: the n points cut [0, 1] into n + 1 gaps that are exchangeable, so each gap has expected length 1/(n + 1)
+  category: symmetry
+  summary: >
+    The n points divide [0, 1] into n + 1 gaps whose joint distribution is
+    symmetric under permuting the gaps (by the symmetry of the uniform
+    distribution). Since the gaps sum to 1, each has expected length 1/(n +
+    1). The maximum is 1 minus the last gap, so its expectation is 1 - 1/(n
+    + 1) = n/(n + 1).
+
+intuitive_proof:
+  explanation: >
+    Place n independent uniform points on a circle of circumference 1
+    together with one extra uniform point O; by rotational symmetry the n +
+    1 gaps between consecutive points are exchangeable. Cutting the circle
+    at O turns the other n points into n independent uniforms on [0, 1] and
+    the gaps into the n + 1 spacings of [0, 1] determined by them.
+    Exchangeability gives E[each gap] = 1/(n + 1). The maximum of the n
+    points is 1 minus the final gap, so E[max] = n/(n + 1); likewise E[min]
+    = 1/(n + 1) and the k-th smallest has expectation k/(n + 1).
+
+reasoning_structure:
+  naive_approach: >
+    Compute the distribution function P(max <= x) = x^n and integrate x
+    times its derivative.
+  crucial_observation: >
+    The spacings created by uniform points are exchangeable, and
+    exchangeable pieces of a fixed total have equal means.
+  why_it_simplifies: >
+    Symmetry replaces integration and simultaneously gives every order
+    statistic's mean.
+
+related:
+  - first_ace_expected_position_symmetry
+
+tags:
+  - symmetry
+  - exchangeability
+  - order statistics
+  - expected value
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The same circle trick shows the spacings have a Dirichlet distribution.

@@ -1,0 +1,76 @@
+id: even_and_odd_subsets
+
+title: As Many Even-Sized Subsets as Odd-Sized Subsets
+
+aliases:
+  - even subsets equal odd subsets
+  - alternating sum of binomial coefficients is zero
+  - toggle-an-element bijection
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Pigeon-hole and double counting" (bijection examples)
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+  notes: A standard textbook example of proof by bijection; also in Stanley's Enumerative Combinatorics.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Bijective_proof
+    original_title: Bijective proof
+
+problem:
+  statement: >
+    Show that a non-empty finite set has exactly as many subsets of even
+    size as subsets of odd size; equivalently, the alternating sum
+    C(n,0) - C(n,1) + C(n,2) - ... equals 0 for n >= 1.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: toggle a fixed element in or out
+  category: bijection
+  summary: >
+    Fix one element x. Mapping a subset S to S with x added (if absent) or
+    removed (if present) changes the size by one, so it pairs each even
+    subset with an odd subset and is its own inverse.
+
+intuitive_proof:
+  explanation: >
+    Choose an element x of the set. For any subset S let f(S) be S with x
+    toggled: remove x if it is in S, add it otherwise. Then f(f(S)) = S, so f
+    is a bijection on the family of subsets, and |f(S)| = |S| +- 1, so f
+    swaps even-sized and odd-sized subsets. A bijection between two finite
+    families shows they have the same size.
+
+reasoning_structure:
+  naive_approach: >
+    Expand (1 - 1)^n by the binomial theorem, or induct on n using Pascal's
+    rule.
+  crucial_observation: >
+    Parity of size is flipped by a single involution that is obviously a
+    bijection.
+  why_it_simplifies: >
+    No algebra: the equality of two counts is exhibited directly by a
+    matching, which also shows why the statement fails for the empty set.
+
+tags:
+  - bijection
+  - involution
+  - parity
+  - binomial coefficients
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Sign-reversing involutions of this kind are the engine behind many
+  identities in enumerative combinatorics.

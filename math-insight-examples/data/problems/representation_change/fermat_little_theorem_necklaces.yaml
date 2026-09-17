@@ -1,0 +1,87 @@
+id: fermat_little_theorem_necklaces
+
+title: Fermat's Little Theorem by Counting Necklaces
+
+aliases:
+  - necklace proof of Fermat's little theorem
+  - a^p - a divisible by p
+  - Golomb's combinatorial proof
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem
+  original_title: Proofs of Fermat's little theorem (proof by counting necklaces)
+  accessed: 2026-09-16
+  notes: The counting proof is due to S. W. Golomb, American Mathematical Monthly 63 (1956).
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/blue/Fermat.shtml
+    original_title: Fermat's Little Theorem
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: The chapter on Fermat/Wilson-type results uses related group-action counts.
+
+problem:
+  statement: >
+    Let p be prime and a a positive integer. Show that p divides a^p - a.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a^p - a counts strings of p beads in a colours that are not constant, and rotation groups them into orbits of size exactly p
+  category: combinatorial_interpretation
+  summary: >
+    There are a^p strings of p beads coloured with a colours, of which a
+    are constant. Rotating a non-constant string gives p distinct strings
+    (because p is prime, a string cannot have a period strictly between 1
+    and p). So the a^p - a non-constant strings fall into orbits of size
+    p, and p divides a^p - a.
+
+intuitive_proof:
+  explanation: >
+    Consider all a^p sequences of length p over a colours, and let the
+    cyclic group of rotations act on them. A sequence fixed by a rotation
+    by k positions (0 < k < p) has period gcd(k, p) = 1, so it is constant.
+    Hence every non-constant sequence has an orbit of exactly p distinct
+    rotations. The a^p - a non-constant sequences are partitioned into
+    orbits of size p, which means p divides a^p - a. (Each orbit is one
+    necklace, hence the name.)
+
+reasoning_structure:
+  naive_approach: >
+    Prove the theorem by induction on a using the binomial theorem and the
+    fact that p divides C(p, k) for 0 < k < p, or via the group of units mod
+    p.
+  crucial_observation: >
+    a^p - a is the size of a set, and that set carries a free action of a
+    group of prime order p.
+  why_it_simplifies: >
+    Divisibility by p becomes "the set splits into orbits of size p",
+    visible at once; no algebra is needed and the proof explains why
+    primality matters.
+
+related:
+  - consecutive_product_divisible_by_factorial
+  - wilson_theorem_pairing
+
+tags:
+  - combinatorial interpretation
+  - group action
+  - orbits
+  - number theory
+  - Fermat
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The orbit-counting viewpoint generalises to Euler's theorem and to
+  Lucas-type congruences; it is the combinatorial face of Lagrange's
+  theorem.

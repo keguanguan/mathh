@@ -1,0 +1,80 @@
+id: party_of_six_ramsey
+
+title: Among Six People, Three Mutual Acquaintances or Three Mutual Strangers
+
+aliases:
+  - theorem on friends and strangers
+  - party problem
+  - R(3,3) = 6
+  - two-coloured K6 has a monochromatic triangle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Theorem_on_friends_and_strangers
+  original_title: Theorem on friends and strangers
+  accessed: 2026-09-16
+  notes: Putnam Competition 1953; the simplest case of Ramsey's theorem.
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/do_you_know/pigeon.shtml
+    original_title: Pigeonhole Principle
+    notes: Discusses this and other pigeonhole applications.
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: Chapter on Ramsey / probabilistic ideas gives the general context.
+
+problem:
+  statement: >
+    Any two of six people are either acquainted or strangers. Show that
+    there are three people who are mutually acquainted or three who are
+    mutual strangers.
+  domain: graph theory
+  answer: proved
+
+key_idea:
+  name: one person has three relations of the same kind; then look at those three
+  category: pigeonhole
+  summary: >
+    Fix a person P. Of the other five, at least three are related to P in
+    the same way, say acquainted. If any two of those three are acquainted,
+    they form a triangle with P; if none are, the three are mutual strangers.
+
+intuitive_proof:
+  explanation: >
+    Pick any person P. P has five relationships, each of two kinds, so by
+    pigeonhole at least three are of the same kind; say P knows A, B and C
+    (the other case is symmetric). Now consider the pairs among A, B, C. If
+    some pair, say A and B, are acquainted, then P, A, B are three mutual
+    acquaintances. Otherwise A, B, C are pairwise strangers. Either way the
+    required triple exists.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate colourings of the 15 pairs (2^15 of them) or argue through
+    many cases.
+  crucial_observation: >
+    Concentrate on one vertex; pigeonhole forces three same-coloured edges,
+    and the triangle among their endpoints is then unavoidable either way.
+  why_it_simplifies: >
+    Two applications of "either/or" replace a 32768-case search; five people
+    do not suffice, so the bound is sharp.
+
+tags:
+  - pigeonhole
+  - Ramsey theory
+  - graph coloring
+  - case analysis
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The five-person counterexample is the pentagon with its diagonals in the
+  other colour.

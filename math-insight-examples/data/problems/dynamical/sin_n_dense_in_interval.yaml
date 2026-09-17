@@ -1,0 +1,80 @@
+id: sin_n_dense_in_interval
+
+title: The Values sin 1, sin 2, sin 3, ... Are Dense in [-1, 1]
+
+aliases:
+  - sin n dense
+  - integers mod 2 pi are dense
+  - irrational rotation by one radian
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Equidistribution_theorem
+  original_title: Equidistribution theorem (applications)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle (Kronecker)
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that every number in [-1, 1] is a limit of a subsequence of sin 1,
+    sin 2, sin 3, ... (arguments in radians).
+  domain: dynamical systems
+  answer: proved
+
+key_idea:
+  name: the integers reduced mod 2 pi are the orbit of a rotation by an irrational angle, hence dense on the circle
+  category: circle_rotation
+  summary: >
+    Because pi is irrational, the rotation of the circle by 1 radian has no
+    periodic points, and by the pigeonhole argument its orbit {n mod 2 pi}
+    comes arbitrarily close to every angle. Since sin is continuous, sin n
+    comes arbitrarily close to sin t for every t.
+
+intuitive_proof:
+  explanation: >
+    Think of the angles n mod 2 pi as points on the circle of circumference
+    2 pi. The map t -> t + 1 is a rotation by 1/(2 pi) of a turn, an
+    irrational fraction because pi is irrational. Among N + 1 points of the
+    orbit two lie within 2 pi/N of each other, so some multiple m has {m}
+    within 2 pi/N of 0 mod 2 pi; the multiples of m then step around the
+    circle in tiny steps and enter every arc. So the orbit is dense. For any
+    y in [-1, 1] pick t with sin t = y; integers n with n mod 2 pi
+    arbitrarily close to t give sin n arbitrarily close to y by continuity.
+
+reasoning_structure:
+  naive_approach: >
+    Try to control sin n through trigonometric identities for integer
+    arguments.
+  crucial_observation: >
+    Integer arguments modulo the period form an irrational rotation orbit,
+    and rotations by irrational angles are dense.
+  why_it_simplifies: >
+    A reduction to the circle plus pigeonhole settles density;
+    equidistribution even gives the limiting distribution of the values.
+
+related:
+  - power_of_two_with_prescribed_leading_digits
+  - benford_leading_digits_powers_of_two
+
+tags:
+  - circle rotation
+  - density
+  - irrational rotation
+  - trigonometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

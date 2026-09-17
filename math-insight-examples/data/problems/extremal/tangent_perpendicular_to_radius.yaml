@@ -1,0 +1,75 @@
+id: tangent_perpendicular_to_radius
+
+title: A Tangent Is Perpendicular to the Radius at the Point of Contact
+
+aliases:
+  - tangent perpendicular to radius
+  - shortest segment from a point to a line
+  - Euclid III.18
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tangent_lines_to_circles
+  original_title: Tangent lines to circles (tangent line to a circle)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book III, Proposition 18
+
+problem:
+  statement: >
+    Show that the tangent to a circle at a point P is perpendicular to the
+    radius OP.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: P is the point of the tangent line closest to the centre, and the closest point of a line is the foot of the perpendicular
+  category: extremal_principle
+  summary: >
+    Every point of the tangent line other than P lies outside the circle, so
+    it is farther from O than the radius |OP|. Thus P is the point on the
+    line nearest to O. The nearest point of a line to O is the foot of the
+    perpendicular from O (Pythagoras: any other point X has |OX|^2 = |OF|^2
+    + |FX|^2 > |OF|^2). So OP is that perpendicular.
+
+intuitive_proof:
+  explanation: >
+    Let t be the tangent at P. Since t meets the circle only at P, every
+    other point X of t is outside the circle: |OX| > r = |OP|. Hence P
+    minimises the distance from O among points of t. Let F be the foot of
+    the perpendicular from O to t; for any X on t, |OX|^2 = |OF|^2 + |FX|^2
+    by Pythagoras, so F is the unique nearest point. Therefore P = F and OP
+    is perpendicular to t.
+
+reasoning_structure:
+  naive_approach: >
+    Argue with limits of secants (calculus) or with coordinates.
+  crucial_observation: >
+    Tangency is an extremal condition (nearest point), and extremal points
+    on a line are perpendicular feet.
+  why_it_simplifies: >
+    The extremal principle converts a statement about tangency into the
+    elementary fact that the perpendicular is shortest.
+
+related:
+  - ellipse_reflection_property_heron
+
+tags:
+  - extremal principle
+  - tangent
+  - circle
+  - Pythagorean theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

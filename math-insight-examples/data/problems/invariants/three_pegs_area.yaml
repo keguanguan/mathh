@@ -1,0 +1,75 @@
+id: three_pegs_area
+
+title: Three Pegs Sliding Parallel to the Opposite Side
+
+aliases:
+  - three pegs question
+  - area-preserving peg moves
+  - shear invariant puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Geometry/ThreePegInvariant.shtml
+  original_title: A Three Pegs Question
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Bogomolny cites A Decade of the Berkeley Mathematical Circle, vol. I
+    (Stankova, Rike, eds.), AMS/MSRI 2008, p. 96.
+
+problem:
+  statement: >
+    Three pegs in the plane form an isosceles right triangle with legs of
+    length 3. A move slides one peg any distance along the line through it
+    parallel to the segment joining the other two. Can the pegs be brought to
+    the vertices of a right triangle with legs 2 and 4?
+  domain: geometry
+  answer: impossible
+
+key_idea:
+  name: the area of the triangle is invariant
+  category: geometric_invariant
+  summary: >
+    Moving a vertex parallel to the opposite side keeps the base and the
+    height, hence the area, fixed. The initial area is 9/2, the target area
+    is 4.
+
+intuitive_proof:
+  explanation: >
+    Take the segment joining the two unmoved pegs as the base. The moving peg
+    travels on a line parallel to that base, so its distance to the base, the
+    height, is unchanged; therefore the area of the triangle formed by the
+    three pegs is unchanged. Initially the area is 3 * 3 / 2 = 4.5; the
+    target triangle has area 2 * 4 / 2 = 4. Since the area never changes,
+    the target cannot be reached.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of slides in coordinates, or reason about lengths and
+    angles that the moves might achieve.
+  crucial_observation: >
+    Each move is a shear, and shears preserve area.
+  why_it_simplifies: >
+    A single number (the area) settles reachability for every possible
+    sequence of moves.
+
+tags:
+  - invariant
+  - area
+  - shear
+  - geometry
+  - impossibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  A geometric invariant rather than an arithmetic one; the same shear
+  argument underlies Euclid's proof of the Pythagorean theorem.

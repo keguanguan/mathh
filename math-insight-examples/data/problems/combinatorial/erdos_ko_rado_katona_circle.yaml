@@ -1,0 +1,87 @@
+id: erdos_ko_rado_katona_circle
+
+title: Erdos-Ko-Rado via Katona's Circle Argument
+
+aliases:
+  - Erdos-Ko-Rado theorem
+  - intersecting families
+  - Katona's cyclic proof
+
+source:
+  name: Aigner & Ziegler - Proofs from THE BOOK
+  url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+  original_title: Chapter "Three famous theorems on finite sets"
+  author: Martin Aigner, Gunter M. Ziegler
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Ko%E2%80%93Rado_theorem
+    original_title: Erdős–Ko–Rado theorem (Katona's proof)
+
+problem:
+  statement: >
+    Let n >= 2k. A family of k-element subsets of {1, ..., n} in which every
+    two members intersect has at most C(n - 1, k - 1) members.
+  domain: combinatorics
+  answer: proved (attained by all k-sets containing a fixed element)
+
+key_idea:
+  name: arrange the n elements on a circle; among the n arcs of length k at most k belong to the family; average over all circular arrangements
+  category: double_counting
+  summary: >
+    Arrange the n elements on a circle and look at the n arcs of k
+    consecutive elements. Pairwise intersecting arcs number at most k.
+    Counting pairs (cyclic arrangement, arc belonging to F) in two ways,
+    each of the (n-1)! arrangements contributes at most k while each member
+    of F is an arc in k!(n-k)! arrangements, so |F| k! (n-k)! <= k (n-1)!,
+    i.e. |F| <= C(n-1, k-1).
+
+intuitive_proof:
+  explanation: >
+    Fix a cyclic arrangement of {1..n} and call an arc a set of k cyclically
+    consecutive elements; there are n arcs. Claim: at most k arcs of a given
+    arrangement belong to the intersecting family F. If the arc A starting
+    at position 0 is in F, every other arc of F meets A and hence starts at
+    one of the positions -(k-1), ..., -1, 1, ..., k-1. The arcs starting at
+    i and at i + k (for 1 <= i <= k - 1, taking i - k on the negative side)
+    are disjoint, so at most one of each of these k - 1 pairs is in F; with
+    A itself that gives at most k. Now count pairs (cyclic arrangement, arc
+    of F). There are (n-1)! cyclic arrangements, each contributing at most k
+    pairs. On the other hand a fixed k-set S is an arc in exactly k! (n-k)!
+    of the cyclic arrangements (order S consecutively, then the rest). Hence
+    |F| k! (n-k)! <= k (n-1)!, so |F| <= k (n-1)!/(k! (n-k)!) = C(n-1, k-1).
+
+reasoning_structure:
+  naive_approach: >
+    Try to show that the best family is a 'star' by exchange arguments or
+    induction on n, which is delicate (the original proof uses shifting).
+  crucial_observation: >
+    Restricting to arcs of a circle makes the intersecting condition a
+    simple geometric constraint, and averaging over circles recovers the
+    general family.
+  why_it_simplifies: >
+    A double count over cyclic arrangements gives the sharp bound in a few
+    lines.
+
+related:
+  - sperner_antichain_lym
+
+tags:
+  - double counting
+  - intersecting families
+  - averaging
+  - extremal set theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Katona (1972).

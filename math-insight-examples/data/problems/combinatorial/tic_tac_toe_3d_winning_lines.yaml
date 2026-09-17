@@ -1,0 +1,84 @@
+id: tic_tac_toe_3d_winning_lines
+
+title: Counting Winning Lines in 3D Tic-Tac-Toe (Moser's Shell)
+
+aliases:
+  - number of lines in an n x n x n tic-tac-toe cube
+  - Leo Moser's shell argument
+  - X's and O's in three dimensions
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/tictactoe.shtml
+  original_title: Tic-Tac-Toe in 3D
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Bogomolny excerpts R. Honsberger, Mathematical Morsels (MAA, 1978), who
+    attributes the argument to Leo Moser.
+
+additional_sources:
+  - name: Honsberger - Mathematical Morsels
+    notes: MAA, 1978.
+
+problem:
+  statement: >
+    Tic-tac-toe is played on an 8x8x8 cube of unit cells; a player wins by
+    filling 8 cells in a straight line (parallel to an edge, a face diagonal,
+    or a space diagonal). How many such winning lines are there?
+  domain: combinatorics
+  answer: 244; in general ((k+2)^n - k^n)/2 for a k^n board in n dimensions
+
+key_idea:
+  name: extend each line one step beyond the cube and count the shell cells it hits
+  category: bijection
+  summary: >
+    Surround the 8x8x8 cube by a shell of unit cells, making a 10x10x10 cube.
+    Extending a winning line by one cell at each end lands in exactly two
+    shell cells, and every shell cell is hit by exactly one line. Winning
+    lines are therefore in bijection with pairs of shell cells, so there are
+    (10^3 - 8^3)/2 of them.
+
+intuitive_proof:
+  explanation: >
+    Embed the 8x8x8 cube in a 10x10x10 cube so that it is wrapped by a
+    one-cell-thick shell. Each winning line, prolonged one step in both
+    directions, exits the inner cube into two distinct shell cells. Conversely,
+    a shell cell determines its line: its position tells, for each coordinate,
+    whether the line is constant (coordinate strictly inside 1..8), increasing
+    (coordinate 0) or decreasing (coordinate 9), and at least one coordinate is
+    0 or 9 because the cell is in the shell. So each shell cell is an end of
+    exactly one winning line. Winning lines correspond to unordered pairs of
+    shell cells, and their number is (1000 - 512)/2 = 244.
+
+reasoning_structure:
+  naive_approach: >
+    Count lines by type: 3 x 64 axis-parallel lines, face diagonals in each
+    of three orientations and two directions, and four space diagonals; this
+    works but is error-prone and does not generalise gracefully.
+  crucial_observation: >
+    A line is determined by where it leaves the cube, and the "leaving
+    points" form a set that is trivial to count: the shell.
+  why_it_simplifies: >
+    A case-by-case enumeration becomes a single subtraction of cube volumes;
+    the formula immediately generalises to any board size and dimension.
+
+tags:
+  - bijection
+  - counting
+  - auxiliary object
+  - generalisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Also a fine example of an auxiliary object (the shell) that is not part of
+  the problem yet carries the whole proof.

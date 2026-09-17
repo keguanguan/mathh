@@ -1,0 +1,80 @@
+id: e_sequence_increasing_am_gm
+
+title: (1 + 1/n)^n Is Increasing, by AM-GM
+
+aliases:
+  - monotonicity of (1 + 1/n)^n
+  - definition of e
+  - AM-GM with n copies and a 1
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/E_%28mathematical_constant%29
+  original_title: E (mathematical constant) (properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 7, Inequalities
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the sequence a_n = (1 + 1/n)^n is increasing.
+  domain: analysis
+  answer: proved
+
+key_idea:
+  name: apply AM-GM to the n + 1 numbers 1 + 1/n (n times) and 1
+  category: auxiliary_object
+  summary: >
+    The geometric mean of n copies of 1 + 1/n and one copy of 1 is
+    a_n^{1/(n+1)}, while their arithmetic mean is (n + 1 + 1)/(n + 1) = 1 +
+    1/(n+1). AM-GM gives a_n^{1/(n+1)} <= 1 + 1/(n+1), i.e. a_n <= a_{n+1}.
+
+intuitive_proof:
+  explanation: >
+    Consider the n + 1 positive numbers x_1 = ... = x_n = 1 + 1/n and
+    x_{n+1} = 1. Their arithmetic mean is (n(1 + 1/n) + 1)/(n + 1) = (n +
+    2)/(n + 1) = 1 + 1/(n + 1), and their geometric mean is ((1 +
+    1/n)^n)^{1/(n+1)}. By AM-GM (strict, since the numbers are not all
+    equal), (1 + 1/n)^{n/(n+1)} < 1 + 1/(n + 1), and raising to the power n
+    + 1 gives (1 + 1/n)^n < (1 + 1/(n + 1))^{n+1}. The same trick applied to
+    n copies of 1 - 1/n and one copy of 1 shows that (1 - 1/n)^n is
+    increasing, whose reciprocal (1 + 1/(n - 1))^n is therefore decreasing;
+    so (1 + 1/n)^n increases, (1 + 1/n)^{n+1} decreases, and both converge
+    to the common limit e.
+
+reasoning_structure:
+  naive_approach: >
+    Expand by the binomial theorem and compare terms, which works but is
+    laborious.
+  crucial_observation: >
+    The comparison between consecutive terms is an AM-GM inequality for a
+    cleverly chosen multiset that includes a 1.
+  why_it_simplifies: >
+    One auxiliary number (the extra 1) makes a well-known inequality do the
+    whole job.
+
+related:
+  - am_gm_cauchy_forward_backward_induction
+  - bernoulli_inequality_induction
+
+tags:
+  - auxiliary object
+  - AM-GM
+  - sequences
+  - e
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

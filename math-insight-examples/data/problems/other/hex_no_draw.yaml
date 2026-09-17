@@ -1,0 +1,90 @@
+id: hex_no_draw
+
+title: Hex Cannot End in a Draw
+
+aliases:
+  - Hex theorem
+  - no draws in Hex
+  - Hex and Brouwer
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hex_%28board_game%29
+  original_title: Hex (board game) (no draw theorem)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gale - The game of Hex and the Brouwer fixed-point theorem
+    notes: American Mathematical Monthly 86 (1979)
+
+problem:
+  statement: >
+    In Hex, two players colour the hexagons of a rhombus-shaped board red
+    and blue, red trying to connect the left and right sides and blue the
+    top and bottom. Show that when the board is completely filled exactly
+    one player has a winning connection.
+  domain: combinatorial games
+  answer: proved (never a draw, never two winners)
+
+key_idea:
+  name: walk along the boundary between the red and blue regions starting from a corner; the walk must end at another corner and separates the board
+  category: structural_obstruction
+  summary: >
+    Start at the corner where the left (red) edge meets the top (blue) edge
+    and walk along edges of hexagons keeping red cells on the left and blue
+    on the right. The walk cannot revisit or end inside, so it ends at
+    another corner, and which corner it reaches decides who has connected.
+    The red cells on one side of the walk form the connection.
+
+intuitive_proof:
+  explanation: >
+    Colour the board's own sides too: left and right red, top and bottom
+    blue. Start at the corner where the left side meets the top side and
+    walk along the edges between hexagons, always keeping red on your left
+    and blue on your right. At every vertex three cells meet, so exactly one
+    continuation obeys the rule: the walk never branches. It cannot return
+    to a vertex already visited (that would need a third admissible entry
+    there), so it must end on the boundary, at another corner. The red cells
+    (and red side) on the left of the walk form a connected chain starting
+    at the left side, and the blue cells on the right form a connected chain
+    starting at the top side. If the walk ends on the right side, the red
+    chain joins left to right and red has won; if it ends on the bottom
+    side, the blue chain joins top to bottom and blue has won. Both cannot
+    happen, since a red left-to-right chain blocks every blue top-to-bottom
+    chain.
+
+reasoning_structure:
+  naive_approach: >
+    Case analysis over board positions, or attempts to design a filled board
+    with no winner, which always fail.
+  crucial_observation: >
+    The red/blue boundary is a non-branching path that must exit somewhere,
+    and its exit corner names the winner.
+  why_it_simplifies: >
+    A single boundary-following walk replaces all case analysis and works
+    for every board size; the same argument is equivalent to Brouwer's fixed
+    point theorem in the plane.
+
+related:
+  - chomp_strategy_stealing
+  - sperner_lemma_doors
+
+tags:
+  - structural obstruction
+  - topology
+  - games
+  - Hex
+  - boundary walk
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Combined with strategy stealing, this shows the first player wins Hex.

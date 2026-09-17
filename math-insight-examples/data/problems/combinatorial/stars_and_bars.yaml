@@ -1,0 +1,72 @@
+id: stars_and_bars
+
+title: Stars and Bars
+
+aliases:
+  - stars and bars
+  - distributing identical balls into boxes
+  - compositions of n into k parts
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Stars_and_bars_%28combinatorics%29
+  original_title: Stars and bars (combinatorics)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    In how many ways can n identical balls be placed into k distinguishable
+    boxes (boxes may be empty)?
+  domain: combinatorics
+  answer: C(n + k - 1, k - 1)
+
+key_idea:
+  name: write the balls as stars in a row and separate the boxes by k - 1 bars
+  category: bijection
+  summary: >
+    A distribution is a row of n stars and k - 1 bars: the stars before the
+    first bar go in box 1, and so on. The row has n + k - 1 symbols of which
+    k - 1 are bars, giving C(n + k - 1, k - 1) rows.
+
+intuitive_proof:
+  explanation: >
+    Given a distribution, write the balls of box 1 as stars, then a bar,
+    then the balls of box 2, and so on, ending with the balls of box k; this
+    uses n stars and k - 1 bars. Conversely any arrangement of n stars and k
+    - 1 bars determines a distribution by reading the stars between
+    consecutive bars. The arrangements are determined by the positions of
+    the bars among n + k - 1 slots: C(n + k - 1, k - 1). For boxes required
+    to be non-empty, first put one ball in each box.
+
+reasoning_structure:
+  naive_approach: >
+    Set up a k-fold recursion or generate cases for small n and k.
+  crucial_observation: >
+    A distribution of identical objects is a pattern of separators.
+  why_it_simplifies: >
+    The encoding turns an allocation problem into choosing positions, a
+    single binomial coefficient.
+
+tags:
+  - bijection
+  - counting
+  - compositions
+  - binomial coefficients
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,85 @@
+id: pythagorean_triple_divisibility_3_4_5
+
+title: In Every Pythagorean Triple, 3, 4 and 5 Divide a Side
+
+aliases:
+  - Pythagorean triples divisibility
+  - 60 divides abc
+  - squares modulo 3, 4 and 5
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pythagorean_triple
+  original_title: Pythagorean triple (elementary properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 6, Number Theory
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let a^2 + b^2 = c^2 with positive integers a, b, c. Show that 3 divides
+    a or b, 4 divides a or b, and 5 divides one of a, b, c; hence 60 divides
+    abc.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: squares take few values modulo 3, 4 (or 8) and 5, and the equation is impossible unless one of the variables carries the zero residue
+  category: modular_invariant
+  summary: >
+    Squares are 0 or 1 mod 3, so two legs not divisible by 3 give a^2 + b^2
+    = 2 mod 3, not a square. Squares are 0, 1, 4 mod 5, and if none of a, b,
+    c is a multiple of 5 no combination fits. Odd squares are 1 mod 8: both
+    legs odd is impossible, and with one even leg a^2 = c^2 - b^2 = 0 mod 8
+    gives 4 | a.
+
+intuitive_proof:
+  explanation: >
+    Modulo 3: squares are 0 or 1. If 3 divides neither a nor b, then c^2 = 1
+    + 1 = 2 mod 3, impossible; so 3 | ab. Modulo 5: squares are 0, 1, 4. If
+    5 divides none of a, b, c, then a^2 + b^2 is 1 + 1 = 2, 1 + 4 = 0 or 4 +
+    4 = 3 mod 5, while c^2 is 1 or 4; no case matches, so 5 | abc. Modulo 8:
+    an odd square is 1 mod 8. If a and b were both odd, a^2 + b^2 = 2 mod 4
+    would not be a square, so some leg is even. If a is even and b odd, then
+    c is odd and a^2 = c^2 - b^2 = 1 - 1 = 0 mod 8, so 4 | a. If both legs
+    are even, so is c; dividing the triple by 2 and repeating eventually
+    reaches a triple with exactly one even leg, which is divisible by 4, and
+    then the original even leg is too. Hence 4 | ab, and 60 = 3 * 4 * 5
+    divides abc.
+
+reasoning_structure:
+  naive_approach: >
+    Check many triples (3,4,5), (5,12,13), (8,15,17), ... and observe the
+    pattern.
+  crucial_observation: >
+    For each small modulus, the set of squares is so thin that the equation
+    forces a zero residue somewhere.
+  why_it_simplifies: >
+    Three residue tables settle divisibility for all triples at once; the
+    parametrisation a = m^2 - n^2, b = 2mn gives a second proof.
+
+related:
+  - squares_mod_four_obstruction
+  - pythagorean_triples_rational_points
+
+tags:
+  - modular arithmetic
+  - Pythagorean triples
+  - squares
+  - divisibility
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

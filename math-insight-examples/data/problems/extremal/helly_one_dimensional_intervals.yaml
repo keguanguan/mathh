@@ -1,0 +1,74 @@
+id: helly_one_dimensional_intervals
+
+title: Pairwise Intersecting Intervals Have a Common Point
+
+aliases:
+  - Helly's theorem in one dimension
+  - intervals with pairwise intersections
+  - max of left endpoints
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Helly%27s_theorem
+  original_title: Helly's theorem (one dimension)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 3, The Extremal Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Finitely many closed intervals on a line have the property that any two
+    of them intersect. Show that all of them have a common point.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: the largest left endpoint is at most the smallest right endpoint
+  category: extremal_principle
+  summary: >
+    Let L be the largest left endpoint and R the smallest right endpoint. If
+    L > R, the interval starting at L and the interval ending at R would be
+    disjoint. So L <= R, and every interval contains the point L (its left
+    endpoint is at most L and its right endpoint is at least R >= L).
+
+intuitive_proof:
+  explanation: >
+    Let the intervals be [a_i, b_i]. Set L = max a_i, attained by interval
+    I, and R = min b_i, attained by interval J. Since I and J intersect, a_I
+    <= b_J, i.e. L <= R. Now every interval satisfies a_i <= L <= R <= b_i,
+    so L lies in all of them.
+
+reasoning_structure:
+  naive_approach: >
+    Induct on the number of intervals, or try to construct the common point
+    by intersecting one interval at a time.
+  crucial_observation: >
+    Two extremal endpoints determine everything: the only way to fail is for
+    the extreme left endpoint to pass the extreme right one, which one pair
+    already forbids.
+  why_it_simplifies: >
+    The extremal principle reduces 'all pairs intersect implies all
+    intersect' to a single comparison; Helly's theorem in higher dimensions
+    generalises this with d + 1 in place of 2.
+
+tags:
+  - extremal principle
+  - intervals
+  - Helly
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

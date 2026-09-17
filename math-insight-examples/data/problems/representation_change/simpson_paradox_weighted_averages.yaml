@@ -1,0 +1,90 @@
+id: simpson_paradox_weighted_averages
+
+title: "Simpson's Paradox: Averages of Averages Are Weighted"
+
+aliases:
+  - Simpson's paradox
+  - Yule-Simpson effect
+  - reversal of proportions when aggregating
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Simpson%27s_paradox
+  original_title: Simpson's paradox
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Pearl - Causality
+    notes: Chapter 6
+
+problem:
+  statement: >
+    Treatment A has a higher success rate than treatment B for small stones
+    and also for large stones, yet B has the higher overall success rate.
+    Explain how this can happen.
+  domain: probability / statistics
+  answer: >
+    the overall rate is a weighted average of the group rates, and A was
+    used mostly on the hard cases (large stones) while B was used mostly on
+    easy ones
+
+key_idea:
+  name: a fraction a/b + c/d is not (a + c)/(b + d); the aggregate is a weighted mean of the group rates, with weights given by group sizes that differ between treatments
+  category: representation_change
+  summary: >
+    The overall success rate is the average of the group rates weighted by
+    how many patients each treatment had in each group. If A treats mostly
+    large (hard) stones and B mostly small (easy) ones, A's overall rate is
+    pulled toward its hard-group rate and B's toward its easy-group rate,
+    and the order can flip: A has 81/87 and 192/263 (78% overall), B has
+    234/270 and 55/80 (83% overall).
+
+intuitive_proof:
+  explanation: >
+    Let treatment A have success rates p_1 > q_1 on small stones and p_2 >
+    q_2 on large stones, where q_i are B's rates. A's overall rate is w p_1
+    + (1 - w) p_2 where w is the fraction of A's patients with small stones;
+    B's is w' q_1 + (1 - w') q_2. With p_1 = 0.93, p_2 = 0.73, w = 0.25 (A
+    mostly treats large stones) and q_1 = 0.87, q_2 = 0.69, w' = 0.77 (B
+    mostly treats small stones), A's overall rate is 0.25 * 0.93 + 0.75 *
+    0.73 = 0.78 while B's is 0.77 * 0.87 + 0.23 * 0.69 = 0.83. The vector
+    sums (81 + 192)/(87 + 263) versus (234 + 55)/(270 + 80) realise these
+    numbers. The inequality p_i > q_i for each i does not imply an
+    inequality between different weighted averages; in the plane, this is
+    the statement that the slope of a sum of vectors lies between the slopes
+    of the summands, and two such sums can cross.
+
+reasoning_structure:
+  naive_approach: >
+    Assume that being better in every subgroup implies being better overall,
+    because 'the whole is the sum of the parts'.
+  crucial_observation: >
+    Rates are ratios, and ratios add as vectors (numerator, denominator), so
+    the aggregate rate is a weighted average whose weights differ between
+    the two treatments.
+  why_it_simplifies: >
+    Representing each rate as a vector (successes, trials) in the plane
+    makes the reversal a visible geometric fact about slopes of vector sums.
+
+related:
+  - average_speed_uphill_downhill
+  - friendship_paradox_cauchy_schwarz
+
+tags:
+  - representation change
+  - weighted average
+  - statistics
+  - paradox
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The numbers are the classic kidney-stone data (Charig et al., 1986).

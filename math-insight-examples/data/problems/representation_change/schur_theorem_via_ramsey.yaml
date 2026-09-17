@@ -1,0 +1,82 @@
+id: schur_theorem_via_ramsey
+
+title: "Schur's Theorem: Monochromatic x + y = z from Ramsey's Theorem"
+
+aliases:
+  - Schur's theorem
+  - monochromatic solution of x + y = z
+  - colouring integers and Ramsey
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Schur%27s_theorem
+  original_title: Schur's theorem (Ramsey theory)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter on Ramsey theory
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that for every colouring of {1, 2, ..., N} with r colours, if N is
+    large enough, there are x, y, z of the same colour with x + y = z.
+  domain: combinatorics
+  answer: >
+    proved (N = R(3, 3, ..., 3), the r-colour Ramsey number, suffices)
+
+key_idea:
+  name: colour the edge {i, j} of the complete graph on {1, ..., N} with the colour of |i - j|; a monochromatic triangle i < j < k gives x = j - i, y = k - j, z = k - i
+  category: graph_reinterpretation
+  summary: >
+    Turn the colouring of numbers into a colouring of edges by colouring {i,
+    j} with the colour of |i - j|. If N is at least the r-colour Ramsey
+    number for triangles, there is a monochromatic triangle with vertices i
+    < j < k. Then j - i, k - j and k - i all have the same colour and (j -
+    i) + (k - j) = k - i.
+
+intuitive_proof:
+  explanation: >
+    Given a colouring c of {1, ..., N}, colour the edge between vertices i <
+    j of the complete graph K_N with c(j - i). By Ramsey's theorem for r
+    colours, if N >= R_r(3) there is a monochromatic triangle i < j < k.
+    Setting x = j - i, y = k - j, z = k - i, all three numbers have the same
+    colour and x + y = z.
+
+reasoning_structure:
+  naive_approach: >
+    Try to colour the integers to avoid monochromatic sums (possible for
+    small N: 1..4 with two colours) and hope no colouring works for large N,
+    without a mechanism.
+  crucial_observation: >
+    Differences of a triple of numbers form a triangle of edges, and a sum
+    relation among differences is automatic.
+  why_it_simplifies: >
+    The graph reinterpretation transfers a theorem about triangles in
+    coloured graphs to an additive statement about integers in three lines.
+
+related:
+  - party_of_six_ramsey
+  - seventeen_points_three_colours
+
+tags:
+  - graph reinterpretation
+  - Ramsey theory
+  - Schur's theorem
+  - additive combinatorics
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  With two colours, N = 5 already forces a monochromatic solution (S(2) =
+  5).

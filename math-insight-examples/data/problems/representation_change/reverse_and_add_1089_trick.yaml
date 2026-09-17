@@ -1,0 +1,80 @@
+id: reverse_and_add_1089_trick
+
+title: "The 1089 Trick: Reverse, Subtract, Reverse, Add"
+
+aliases:
+  - 1089 trick
+  - reverse and subtract three-digit number
+  - magic number 1089
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/1089_%28number%29
+  original_title: 1089 (number) (in magic)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - Mathematics, Magic and Mystery
+    notes: Dover, 1956, Chapter 8
+
+problem:
+  statement: >
+    Take a three-digit number whose first and last digits differ by at least
+    2, reverse its digits and subtract the smaller from the larger, then add
+    the result to its own reversal. Show the answer is always 1089.
+  domain: number theory / recreational
+  answer: "1089"
+
+key_idea:
+  name: write the number as 100a + 10b + c; the first difference is 99(a - c), whose digits are (a - c - 1), 9, (10 - a + c), and this three-digit pattern plus its reversal is always 1089
+  category: algebraic_encoding
+  summary: >
+    With digits a > c, the number minus its reversal is 99(a - c). For k = a
+    - c between 2 and 9, 99k has digits k - 1, 9, 10 - k; adding its
+    reversal 10 - k, 9, k - 1 gives digit sums 9, 18, 9, i.e. 1089,
+    independent of k.
+
+intuitive_proof:
+  explanation: >
+    Let the number be 100a + 10b + c with a > c (otherwise swap roles) and a
+    - c >= 2. Its reversal is 100c + 10b + a, and the difference is 99(a -
+    c). Put k = a - c, so 2 <= k <= 9. Then 99k = 100k - k = 100(k - 1) +
+    (100 - k) = 100(k - 1) + 90 + (10 - k), so the difference has hundreds
+    digit k - 1, tens digit 9 and units digit 10 - k (all in the range 0 to
+    9, and it is a genuine three-digit number since k >= 2). Its reversal
+    has digits 10 - k, 9, k - 1. Adding: hundreds (k - 1) + (10 - k) = 9,
+    tens 9 + 9 = 18, units (10 - k) + (k - 1) = 9, so the sum is 900 + 180 +
+    9 = 1089. If a - c = 1 the difference is 099 and the trick needs the
+    leading zero to be kept.
+
+reasoning_structure:
+  naive_approach: >
+    Verify the trick on several examples and remain mystified.
+  crucial_observation: >
+    Reversal and subtraction kill the middle digit and leave a multiple of
+    99 whose digit pattern is rigid.
+  why_it_simplifies: >
+    Encoding the digits algebraically shows the outcome depends only on a -
+    c, and the final addition cancels even that dependence.
+
+related:
+  - digit_reversal_divisible_by_nine
+  - imo1962_moving_last_digit_to_front
+
+tags:
+  - algebraic encoding
+  - digits
+  - recreational mathematics
+  - multiples of 99
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

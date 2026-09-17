@@ -1,0 +1,83 @@
+id: longest_segment_through_circle_intersection
+
+title: The Longest Segment through the Intersection of Two Circles
+
+aliases:
+  - longest chord through the intersection point of two circles
+  - line through common point maximising the enclosed segment
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/longest.shtml
+  original_title: The Longest Segment in Intersecting Circles
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Larsen - Misunderstanding My Mazy Mazes May Make Me Miserable
+    notes: in The Lighter Side of Mathematics, MAA 1994
+
+problem:
+  statement: >
+    Two circles meet at A and D. A line through A meets the circles again at
+    B and C. In which direction is the segment BC longest?
+  domain: geometry
+  answer: >
+    when BC is parallel to the line of centres, i.e. when DB and DC are
+    diameters
+
+key_idea:
+  name: "join B and C to the other intersection point D: the angles of triangle DBC at B and C are inscribed angles that do not depend on the line, so all such triangles are similar and BC is longest when DC (or DB) is longest, i.e. a diameter"
+  category: auxiliary_object
+  summary: >
+    Join B and C to the second intersection point D. The angles of triangle
+    DBC at B and C are inscribed angles on fixed arcs, so all triangles DBC
+    are similar and BC is longest when DC is longest, i.e. when DC is a
+    diameter. Then BC is perpendicular to the common chord DA, hence
+    parallel to the line of centres.
+
+intuitive_proof:
+  explanation: >
+    Let D be the second intersection point of the circles. For any line
+    through A meeting the circles again at B and C, the angle DBC = angle
+    DBA is an inscribed angle on the fixed arc DA of the first circle, hence
+    constant; likewise angle DCB is constant. All triangles DBC are
+    therefore similar to one another, and BC is longest when DC is longest.
+    DC is a chord of the second circle through the fixed point D, so it is
+    longest when it is a diameter, and then angle DAC is a right angle, i.e.
+    BC is perpendicular to the common chord DA at A. The line of centres is
+    also perpendicular to the common chord, so the optimal BC is parallel to
+    the line of centres (and DB is then a diameter of the first circle as
+    well).
+
+reasoning_structure:
+  naive_approach: >
+    Parametrise the line by its angle and maximise the resulting expression
+    with calculus.
+  crucial_observation: >
+    The second intersection point D turns the moving segment into a side of
+    a triangle of fixed shape.
+  why_it_simplifies: >
+    One auxiliary point converts the optimisation into 'the longest chord is
+    a diameter'.
+
+related:
+  - inscribed_angle_theorem_central_angle
+
+tags:
+  - auxiliary object
+  - inscribed angles
+  - similar triangles
+  - optimisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: ""

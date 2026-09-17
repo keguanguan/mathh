@@ -1,0 +1,78 @@
+id: flipping_n_minus_one_of_n_triangles
+
+title: Flipping N - 1 of N Triangles at a Time
+
+aliases:
+  - flipping items simultaneously
+  - turn over all but one
+  - Trigg's flipping puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Arithmetic/FlipThem.shtml
+  original_title: Flipping Items Simultaneously
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Trigg - Mathematical Quickies
+    notes: Dover, 1985, #22
+
+problem:
+  statement: >
+    N triangles point upward. A move turns over exactly N - 1 of them. For
+    which N can all triangles be made to point downward?
+  domain: combinatorics
+  answer: possible iff N is even
+
+key_idea:
+  name: each move flips an odd number of triangles when N is even and an even number when N is odd, so for odd N the parity of the number of downward triangles never changes
+  category: parity_invariant
+  summary: >
+    For odd N, N - 1 is even, so the number of downward-pointing triangles
+    changes by an even amount at each move and stays even; N (odd) is
+    unreachable. For even N, flipping all but the k-th triangle for k = 1,
+    ..., N flips each triangle N - 1 times, an odd number, so all end up
+    downward.
+
+intuitive_proof:
+  explanation: >
+    Let D be the number of downward triangles. A move flips N - 1 triangles,
+    of which j were downward: D changes by (N - 1 - j) - j = N - 1 - 2j,
+    which has the parity of N - 1. If N is odd, D stays even forever and can
+    never equal N. If N is even, perform N moves, the k-th omitting triangle
+    k; triangle k is flipped in all moves except the k-th, i.e. N - 1 times,
+    which is odd, so it ends downward. Hence all N triangles point downward
+    after N moves.
+
+reasoning_structure:
+  naive_approach: >
+    Try sequences of flips by hand for small N.
+  crucial_observation: >
+    Parity of the flip count per move decides the impossibility, and a
+    symmetric schedule gives the construction.
+  why_it_simplifies: >
+    One parity invariant and one symmetric construction settle every N.
+
+related:
+  - seven_cups_flip_four
+
+tags:
+  - parity
+  - invariant
+  - puzzle
+  - flipping
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The general problem (flip M of N) is solvable iff N is even or M is odd,
+  provided M <= N.

@@ -1,0 +1,72 @@
+id: binary_strings_no_consecutive_ones
+
+title: Binary Strings without Two Consecutive 1s
+
+aliases:
+  - strings with no adjacent ones
+  - Fibonacci strings
+  - no two consecutive 1s count
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Fibonacci_sequence
+  original_title: Fibonacci sequence (combinatorial identities)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 5, Enumerative Combinatorics
+    author: Arthur Engel
+
+problem:
+  statement: >
+    How many binary strings of length n contain no two consecutive 1s?
+  domain: combinatorics
+  answer: F_{n+2} (2, 3, 5, 8, 13, ...)
+
+key_idea:
+  name: "classify by the last bit: a 0 can follow anything, a 1 must be preceded by a 0"
+  category: recursive_structure
+  summary: >
+    A valid string of length n ends in 0, preceded by any valid string of
+    length n - 1, or ends in 01, preceded by any valid string of length n -
+    2. So a(n) = a(n-1) + a(n-2) with a(1) = 2, a(2) = 3.
+
+intuitive_proof:
+  explanation: >
+    Let a(n) be the count. If the string ends in 0, deleting it leaves an
+    arbitrary valid string of length n - 1. If it ends in 1, the previous
+    bit must be 0, and deleting the final 01 leaves an arbitrary valid
+    string of length n - 2. The two cases are disjoint and cover everything,
+    so a(n) = a(n-1) + a(n-2). Since a(1) = 2 and a(2) = 3, a(n) = F_{n+2}.
+
+reasoning_structure:
+  naive_approach: >
+    List the strings for n = 1, 2, 3, 4 and guess the pattern.
+  crucial_observation: >
+    The constraint is local, so removing the last one or two bits reduces
+    the problem to itself.
+  why_it_simplifies: >
+    A two-case split on the ending produces the Fibonacci recursion at once.
+
+related:
+  - domino_tilings_2xn_fibonacci
+
+tags:
+  - recursion
+  - binary strings
+  - Fibonacci
+  - counting
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,84 @@
+id: depressed_cubic_substitution
+
+title: Killing the Quadratic Term of a Cubic by Shifting the Variable
+
+aliases:
+  - depressed cubic
+  - Tschirnhaus substitution
+  - x = y - a/3
+  - completing the cube
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Cubic_equation
+  original_title: Cubic equation (depressed cubic)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cardano - Ars Magna
+    notes: "1545"
+
+problem:
+  statement: >
+    Show that any cubic x^3 + a x^2 + b x + c = 0 can be transformed by a
+    substitution x = y - a/3 into a cubic with no y^2 term, and explain the
+    analogy with completing the square.
+  domain: algebra
+  answer: >
+    y^3 + p y + q = 0 with p = b - a^2/3 and q = c - ab/3 + 2a^3/27
+
+key_idea:
+  name: the sum of the roots is -a, so shifting every root by a/3 makes the roots sum to zero, which is exactly the vanishing of the y^2 coefficient
+  category: coordinate_transformation
+  summary: >
+    By Vieta the coefficient of x^2 is minus the sum of the roots.
+    Translating the variable by a/3 shifts each root by -a/3, making the new
+    roots sum to -a + 3(a/3) = 0, so the y^2 coefficient vanishes. Expanding
+    (y - a/3)^3 + a(y - a/3)^2 + ... confirms this and gives p and q.
+    Completing the square for a quadratic is the same idea: shift by half
+    the coefficient to centre the roots at zero.
+
+intuitive_proof:
+  explanation: >
+    Substitute x = y - a/3: (y - a/3)^3 = y^3 - a y^2 + (a^2/3) y - a^3/27
+    and a(y - a/3)^2 = a y^2 - (2a^2/3) y + a^3/9. Adding these with b(y -
+    a/3) + c, the y^2 terms cancel (-a + a = 0), leaving y^3 + (b - a^2/3) y
+    + (c - ab/3 + 2a^3/27) = 0. Conceptually, the roots r_i satisfy r_1 +
+    r_2 + r_3 = -a, and the shifted roots r_i + a/3 sum to 0, which by Vieta
+    is the statement that the y^2 coefficient is 0. The quadratic case x = y
+    - a/2 centres the two roots symmetrically about 0, which is completing
+    the square.
+
+reasoning_structure:
+  naive_approach: >
+    Attack the general cubic directly with Cardano's formula, whose
+    derivation is hard to motivate without the depressed form.
+  crucial_observation: >
+    A translation of the variable is a translation of the roots, and the
+    right translation makes the roots sum to zero.
+  why_it_simplifies: >
+    A coordinate change that centres the roots removes one coefficient for
+    free; every classical solution formula (quadratic, cubic, quartic)
+    starts with this move.
+
+related:
+  - vieta_jumping_imo1988
+  - isoperimetric_rectangle_am_gm
+
+tags:
+  - coordinate transformation
+  - polynomials
+  - Vieta's formulas
+  - cubic equation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

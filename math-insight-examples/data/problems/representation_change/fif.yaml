@@ -1,0 +1,83 @@
+id: fif
+
+title: The Game of Fif (Fifteen) Is Tic-Tac-Toe in Disguise
+
+aliases:
+  - Fif
+  - number scrabble
+  - pick numbers summing to 15
+  - fifteen game
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/blue/fif.shtml
+  original_title: The Game of Fif
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny credits Martin Gardner for the game; the name "Fif" is Bogomolny's.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Number_Scrabble
+    original_title: Number Scrabble
+
+problem:
+  statement: >
+    The digits 1 through 9 are on the table. Two players alternately take a
+    digit. The first player to hold three digits that sum to 15 wins. Is
+    there a winning strategy, and how should one play?
+  domain: combinatorial games
+  answer: >
+    With correct play the game is a draw; the strategy is to play tic-tac-toe
+    on the 3x3 magic square.
+
+key_idea:
+  name: recognise the game as tic-tac-toe on a magic square
+  category: isomorphism_to_another_problem
+  summary: >
+    The eight triples of distinct digits summing to 15 are exactly the eight
+    lines (rows, columns, diagonals) of the Lo Shu magic square. Taking a digit
+    is placing a mark on that cell, so Fif is tic-tac-toe.
+
+intuitive_proof:
+  explanation: >
+    Write the digits in the 3x3 magic square (4 9 2 / 3 5 7 / 8 1 6). Every
+    row, column and diagonal sums to 15, giving eight winning triples. One
+    checks that there are no other triples of distinct digits from 1..9
+    summing to 15, so the winning sets of Fif coincide exactly with the lines
+    of tic-tac-toe. Any strategy for tic-tac-toe therefore transfers move
+    for move; since tic-tac-toe is a draw with best play, so is Fif. A player
+    who sees the square plays "centre, corners, block" while the opponent
+    still juggles sums.
+
+reasoning_structure:
+  naive_approach: >
+    Enumerate the triples summing to 15 and reason about which digits block
+    which sums, or search the game tree of digit choices.
+  crucial_observation: >
+    The winning triples have the incidence structure of a 3x3 grid's lines,
+    made visible by the magic square.
+  why_it_simplifies: >
+    All arithmetic disappears; the game becomes a familiar one whose complete
+    theory is already known.
+
+tags:
+  - representation change
+  - isomorphism
+  - magic square
+  - game
+  - tic-tac-toe
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  A textbook example of "isomorphic games": the difficulty was purely one of
+  representation.

@@ -1,0 +1,101 @@
+id: pick_theorem_additivity
+
+title: Pick's Theorem via Additivity
+
+aliases:
+  - Pick's theorem
+  - area = I + B/2 - 1
+  - lattice polygon area
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/ctk/Pick.shtml
+  original_title: Pick's Theorem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/ctk/Pick_proof.shtml
+    original_title: Pick's Theorem, A Proof
+    author: Alexander Bogomolny
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pick%27s_theorem
+    original_title: Pick's theorem (proofs)
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    A simple polygon has all vertices on the integer lattice, I lattice
+    points strictly inside and B on its boundary. Show that its area is I +
+    B/2 - 1.
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: both the area and the expression I + B/2 - 1 are additive when two polygons are glued along a common edge, so it suffices to check the formula for triangles, and by further cutting for lattice triangles with no extra lattice points
+  category: induction
+  summary: >
+    Gluing two lattice polygons along a common edge adds their areas and
+    also adds their values of I + B/2 - 1, so Pick's expression is additive.
+    Every lattice polygon cuts into primitive lattice triangles, and a
+    primitive triangle has area 1/2 because it and its point reflection form
+    a lattice parallelogram of area 1. So the formula holds for the pieces
+    and hence for the whole.
+
+intuitive_proof:
+  explanation: >
+    Step 1 (additivity): if P and Q share an edge containing k lattice
+    points, then area(P + Q) = area(P) + area(Q); the k - 2 interior points
+    of the edge become interior points of the union, and the two endpoints
+    stay on the boundary, so I = I_P + I_Q + k - 2 and B = B_P + B_Q - 2(k -
+    2) - 2. Then I + B/2 - 1 = (I_P + B_P/2 - 1) + (I_Q + B_Q/2 - 1), so
+    Pick's expression is additive. Step 2: any lattice polygon can be cut by
+    lattice diagonals into lattice triangles, and each lattice triangle
+    further into primitive ones (join any interior or boundary lattice point
+    to the vertices and repeat); by Step 1 it suffices to prove the formula
+    for primitive triangles, i.e. that their area is 1/2. Step 3: a
+    primitive triangle together with its image under the point reflection
+    through the midpoint of one side forms a lattice parallelogram with no
+    lattice points other than its vertices; translates of such a
+    parallelogram by the lattice tile the plane without overlap, so its area
+    equals the area of a fundamental domain, 1. Hence a primitive triangle
+    has area 1/2 = 0 + 3/2 - 1, as Pick's formula predicts.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the area with the shoelace formula and count lattice points
+    separately, without seeing why they are related.
+  crucial_observation: >
+    Both sides of the formula behave additively under gluing, so a global
+    statement reduces to the smallest pieces.
+  why_it_simplifies: >
+    Additivity is the whole strategy; the only real computation is that a
+    primitive lattice triangle has area 1/2.
+
+related:
+  - equilateral_triangle_lattice_impossible
+  - euler_formula_planar
+
+tags:
+  - induction
+  - additivity
+  - lattice points
+  - area
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Aigner and Ziegler derive Pick's theorem from Euler's formula, another
+  route through additivity.

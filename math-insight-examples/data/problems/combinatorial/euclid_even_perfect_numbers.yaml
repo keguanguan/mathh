@@ -1,0 +1,77 @@
+id: euclid_even_perfect_numbers
+
+title: Euclid's Construction of Even Perfect Numbers
+
+aliases:
+  - perfect numbers
+  - Euclid-Euler theorem
+  - 2^(p-1)(2^p - 1) is perfect
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Perfect_number
+  original_title: Perfect number (Euclid-Euler theorem)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book IX, Proposition 36
+
+problem:
+  statement: >
+    Show that if 2^p - 1 is prime then N = 2^{p-1}(2^p - 1) is perfect, i.e.
+    equals the sum of its proper divisors.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: the divisors of N are 2^i and 2^i q (q = 2^p - 1 prime), two geometric progressions whose sums are easy
+  category: bijection
+  summary: >
+    With q = 2^p - 1 prime, the divisors of N = 2^{p-1} q are 2^i for 0 <= i
+    <= p - 1 and 2^i q for the same i. Their total is (1 + 2 + ... +
+    2^{p-1})(1 + q) = (2^p - 1) 2^p = 2N. A number whose divisors sum to
+    twice itself is perfect.
+
+intuitive_proof:
+  explanation: >
+    Since q = 2^p - 1 is prime and odd, the divisors of N = 2^{p-1} q are
+    exactly the products 2^i q^j with 0 <= i <= p - 1 and j in {0, 1}. The
+    sum of all divisors is therefore (1 + 2 + ... + 2^{p-1})(1 + q) = (2^p -
+    1)(2^p) = 2 * 2^{p-1}(2^p - 1) = 2N. Subtracting N itself, the proper
+    divisors sum to N, so N is perfect. (Euler proved the converse: every
+    even perfect number has this form.)
+
+reasoning_structure:
+  naive_approach: >
+    Verify 6 = 1 + 2 + 3 and 28 = 1 + 2 + 4 + 7 + 14 by hand and look for a
+    pattern.
+  crucial_observation: >
+    The divisor sum of a product of coprime factors is a product of divisor
+    sums, and here both factors have geometric divisor sums.
+  why_it_simplifies: >
+    The multiplicative structure of the divisor sum reduces perfection to a
+    one-line geometric series identity.
+
+related:
+  - divisor_functions_multiplicative_bijection
+  - mersenne_fermat_prime_shapes
+
+tags:
+  - bijection
+  - divisor sum
+  - perfect numbers
+  - geometric series
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Whether odd perfect numbers exist is an open problem.

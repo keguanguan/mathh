@@ -1,0 +1,75 @@
+id: triangle_angle_sum_parallel_line
+
+title: The Angles of a Triangle Sum to 180 Degrees
+
+aliases:
+  - angle sum of a triangle
+  - parallel line through a vertex
+  - Euclid I.32
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Sum_of_angles_of_a_triangle
+  original_title: Sum of angles of a triangle (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Euclid - Elements
+    notes: Book I, Proposition 32
+
+problem:
+  statement: >
+    Show that the interior angles of a triangle add up to a straight angle.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: draw the line through one vertex parallel to the opposite side; alternate angles copy the other two angles next to the vertex angle
+  category: auxiliary_object
+  summary: >
+    Through vertex A draw the line parallel to BC. The alternate angles it
+    makes with AB and AC equal the angles at B and C respectively. Together
+    with the angle at A they fill the straight angle at A.
+
+intuitive_proof:
+  explanation: >
+    Let l be the line through A parallel to BC. The transversal AB makes
+    equal alternate angles with the parallels l and BC, so the angle between
+    l and AB (on the side of B) equals angle ABC. Likewise the angle between
+    l and AC equals angle ACB. These two angles and angle BAC are adjacent
+    and together form the straight angle along l, so angle A + angle B +
+    angle C = 180 degrees.
+
+reasoning_structure:
+  naive_approach: >
+    Measure angles of many triangles, or tear the corners off a paper
+    triangle and fit them together (a demonstration, not a proof).
+  crucial_observation: >
+    A single auxiliary parallel line transports two of the angles to sit
+    beside the third.
+  why_it_simplifies: >
+    One auxiliary line and the alternate-angle property of parallels finish
+    the proof; the argument also shows the theorem depends on the parallel
+    postulate (on a sphere it fails).
+
+related:
+  - exterior_angles_sum_360
+  - spherical_triangle_area_lunes
+
+tags:
+  - auxiliary object
+  - parallel lines
+  - angles
+  - triangle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

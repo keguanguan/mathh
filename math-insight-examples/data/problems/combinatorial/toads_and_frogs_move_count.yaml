@@ -1,0 +1,87 @@
+id: toads_and_frogs_move_count
+
+title: Toads and Frogs Takes Exactly MN + M + N Moves
+
+aliases:
+  - toads and frogs puzzle
+  - hop skip jump puzzle
+  - sheep and goats puzzle
+  - traffic jam puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/FrogsAndToads.shtml
+  original_title: "Toads And Frogs puzzle: theory and solution"
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Toads_and_Frogs
+    original_title: Toads and Frogs
+
+problem:
+  statement: >
+    On a strip of M + N + 1 squares, N frogs occupy the leftmost N squares
+    and M toads the rightmost M; one square is empty. Frogs move only right,
+    toads only left, either by sliding into the adjacent empty square or by
+    jumping over one animal of the other kind into the empty square. Show
+    that exchanging the two groups takes exactly MN + M + N moves.
+  domain: combinatorics
+  answer: MN jumps and M + N slides, MN + M + N moves in all
+
+key_idea:
+  name: count total displacement and count crossings
+  category: double_counting
+  summary: >
+    Each frog must end M + 1 squares to the right and each toad N + 1
+    squares to the left, a total displacement of N(M+1) + M(N+1) =
+    2MN + M + N. Every frog-toad pair crosses exactly once, and only by a
+    jump (displacement 2), giving MN jumps; the remaining displacement
+    M + N must come from slides (displacement 1).
+
+intuitive_proof:
+  explanation: >
+    Number the squares 1 to M + N + 1. Initially frogs sit on 1..N, and at
+    the end on M+2..M+N+1, so each frog moves M + 1 squares right in total;
+    likewise each toad moves N + 1 squares left. The total distance covered
+    is N(M+1) + M(N+1) = 2MN + M + N. A frog and a toad can only pass each
+    other by a jump (they cannot occupy the same square, and slides only
+    move into empty squares), and each of the MN frog-toad pairs must pass
+    exactly once, so there are exactly MN jumps. A jump covers 2 squares and
+    a slide 1, so the slides account for the remaining M + N squares: there
+    are M + N slides. Total: MN + M + N moves, for every successful
+    solution.
+
+reasoning_structure:
+  naive_approach: >
+    Solve the puzzle by hand for small M, N, tabulate move counts, guess
+    the formula and try to prove it by induction on the configuration.
+  crucial_observation: >
+    Jumps are exactly the crossings of frog-toad pairs, and total
+    displacement is fixed by the start and end positions.
+  why_it_simplifies: >
+    Two independent global counts (crossings and displacement) determine
+    the number of each move type without any reference to the order of
+    moves.
+
+tags:
+  - double counting
+  - invariant
+  - puzzle
+  - displacement
+  - crossings
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  Cut-the-Knot also observes that the S/J move pattern of any solution is
+  a palindrome.

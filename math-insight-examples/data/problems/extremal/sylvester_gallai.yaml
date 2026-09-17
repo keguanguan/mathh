@@ -1,0 +1,89 @@
+id: sylvester_gallai
+
+title: Sylvester-Gallai Theorem via the Closest Point-Line Pair
+
+aliases:
+  - Sylvester's problem
+  - Sylvester-Gallai theorem
+  - ordinary line theorem
+  - Kelly's proof
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/Sylvester.shtml
+  original_title: Sylvester's Problem
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: >
+    Posed by J. J. Sylvester (1893), proved by T. Gallai (1944); the
+    extremal proof given here is L. M. Kelly's (1948).
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    notes: Chapter "Lines in the plane and decompositions of graphs".
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Sylvester%E2%80%93Gallai_theorem
+    original_title: Sylvester-Gallai theorem
+
+problem:
+  statement: >
+    A finite set of points in the plane is not all on one line. Prove that
+    some line passes through exactly two of the points.
+  domain: combinatorial geometry
+  answer: proved (such an "ordinary" line always exists)
+
+key_idea:
+  name: take the closest pair (point, connecting line) with the point off the line
+  category: extremal_principle
+  summary: >
+    Among all pairs (P, L) where L passes through two of the points and P is a
+    point of the set not on L, choose one with the smallest distance from P
+    to L. If L contained three points, one of them together with a suitable
+    line would give a strictly smaller distance, a contradiction.
+
+intuitive_proof:
+  explanation: >
+    Consider all lines through at least two of the points and all points of
+    the set not on them; since the points are not collinear there are such
+    pairs, and finitely many, so pick (P, L) with the distance from P to L
+    minimal. Drop the perpendicular from P to L with foot F. Suppose L
+    contained three points of the set; then two of them, say A and B, lie on
+    the same side of F (or one is F itself), with A closer to F than B (or
+    A = F). Now look at the line L' through P and B: the point A is not on
+    L', and its distance to L' is smaller than the distance from P to L
+    (A sits inside the triangle PFB, closer to PB than P is to FB). This
+    contradicts minimality. Hence L contains exactly two points.
+
+reasoning_structure:
+  naive_approach: >
+    Try to construct an ordinary line directly, or argue by counting
+    incidences; both are hard because nothing local distinguishes an ordinary
+    line.
+  crucial_observation: >
+    A minimising configuration cannot be improved, and a line with three
+    points always admits an improvement.
+  why_it_simplifies: >
+    Extremality supplies exactly the geometric constraint (the third point
+    would be too close to a new line) that a general configuration lacks; a
+    one-picture argument replaces any global analysis.
+
+tags:
+  - extremal principle
+  - combinatorial geometry
+  - incidence
+  - contradiction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Aigner and Ziegler present this as a model extremal-principle proof; the
+  statement fails in the projective plane over finite fields and in the
+  complex plane, which shows the argument genuinely uses distances.

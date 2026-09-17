@@ -1,0 +1,78 @@
+id: four_bugs_pursuit
+
+title: Four Bugs Chasing Each Other on a Square
+
+aliases:
+  - four bugs problem
+  - mice pursuit problem
+  - pursuit curve on a square
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mice_problem
+  original_title: Mice problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - Mathematical Puzzles and Diversions
+    notes: Chapter 'Nine Problems'
+
+problem:
+  statement: >
+    Four bugs start at the corners of a square of side 1 and each crawls at
+    unit speed directly toward the bug to its left. How far does each bug
+    travel before they meet at the centre?
+  domain: geometry
+  answer: exactly 1 (the side length)
+
+key_idea:
+  name: by symmetry the bugs always form a square, and each bug's velocity is perpendicular to its target's velocity, so the distance to the target shrinks at the full speed 1
+  category: coordinate_transformation
+  summary: >
+    At every moment the four bugs are at the corners of a (shrinking,
+    rotating) square, so each bug moves straight toward its target while the
+    target moves perpendicular to the line joining them. The target's motion
+    does not change the distance between them, so the separation decreases
+    at rate 1 and reaches 0 after time 1: each bug travels distance 1.
+
+intuitive_proof:
+  explanation: >
+    The configuration is symmetric under the 90-degree rotation about the
+    centre, and this symmetry is preserved by the motion, so the bugs always
+    occupy the vertices of a square. Consider bug A chasing bug B. A moves
+    toward B at speed 1. B moves toward C, i.e. along the side of the
+    current square, which is perpendicular to AB. A velocity perpendicular
+    to AB does not change the length AB to first order. So the distance AB
+    decreases at exactly rate 1, from 1 to 0, taking time 1. At unit speed
+    each bug travels length 1.
+
+reasoning_structure:
+  naive_approach: >
+    Set up the differential equations of the pursuit curves (logarithmic
+    spirals) and integrate their arc length.
+  crucial_observation: >
+    Symmetry keeps the picture a square, and in the right frame (relative to
+    the target) the chase is just a straight approach.
+  why_it_simplifies: >
+    Relative velocity along the line of sight is the whole story; no spiral
+    needs to be computed.
+
+tags:
+  - relative motion
+  - symmetry
+  - pursuit curve
+  - rate of change
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  For n bugs on a regular n-gon of side 1 the distance is 1/(1 - cos(2 pi /
+  n)).

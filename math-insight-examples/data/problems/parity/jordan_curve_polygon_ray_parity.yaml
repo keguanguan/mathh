@@ -1,0 +1,93 @@
+id: jordan_curve_polygon_ray_parity
+
+title: "Inside or Outside a Polygon: Count Ray Crossings"
+
+aliases:
+  - Jordan curve theorem for polygons
+  - ray casting parity
+  - even-odd rule
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Point_in_polygon
+  original_title: Point in polygon (ray casting algorithm)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Jordan_curve_theorem
+    original_title: Jordan curve theorem (proof for polygons)
+
+problem:
+  statement: >
+    A simple closed polygon divides the plane into an inside and an outside.
+    Show that a point not on the polygon is inside iff a ray from it
+    (avoiding vertices) crosses the polygon an odd number of times, and that
+    this parity does not depend on the ray.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: moving the ray continuously, crossings appear or disappear in pairs, so their parity is invariant; and the parity flips exactly when the point crosses the polygon
+  category: parity_invariant
+  summary: >
+    Rotating the ray about its start, the crossing count changes by 0 or 2
+    whenever the ray sweeps through a vertex, so its parity is independent
+    of the ray. Moving the point, the parity flips exactly when it crosses
+    an edge. Far-away points have parity 0, so the parity separates the
+    plane into outside (even) and inside (odd).
+
+intuitive_proof:
+  explanation: >
+    Fix a point P not on the polygon and a ray from P through no vertex.
+    Define c(ray) as the number of edges the ray crosses. Rotating the ray,
+    c changes only when the ray sweeps through a vertex V. Let the two edges
+    at V lie on the same side of the ray's line (a 'touch'): just before the
+    sweep the ray crosses both or neither of them, just after it crosses
+    neither or both, so c changes by 0 or +-2. If the two edges lie on
+    opposite sides (a genuine crossing at V), the ray crosses exactly one of
+    them before and exactly one after: c is unchanged. Thus c mod 2 is
+    independent of the ray. Now vary P: along a path avoiding the polygon,
+    the parity along a fixed direction changes exactly when P crosses an
+    edge (one crossing appears or disappears). So parity is constant on each
+    connected region avoiding the polygon, points far away have parity 0 (a
+    ray pointing away from the bounded polygon crosses nothing), and points
+    just across an edge from them have parity 1. Hence there are exactly two
+    classes, inside (odd) and outside (even), and the parity test decides
+    membership.
+
+reasoning_structure:
+  naive_approach: >
+    Try to decide 'inside' by looking at the picture, which fails for
+    complicated polygons; or attempt to trace the region's boundary.
+  crucial_observation: >
+    The crossing count is not invariant, but its parity is, because
+    crossings are created and destroyed in pairs.
+  why_it_simplifies: >
+    A parity invariant gives a rigorous definition of inside/outside and the
+    standard point-in-polygon algorithm at once.
+
+related:
+  - handshake_lemma
+  - sperner_lemma_doors
+
+tags:
+  - parity
+  - invariant
+  - Jordan curve
+  - algorithm
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The general Jordan curve theorem for arbitrary continuous curves is much
+  harder; the polygonal case is this parity argument plus a connectivity
+  check.

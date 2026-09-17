@@ -1,0 +1,73 @@
+id: moving_chips_in_pairs
+
+title: Moving Chips in Pairs Down a Checkerboard
+
+aliases:
+  - chips sliding down in pairs
+  - one chip per row puzzle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Arithmetic/MovingInpairs.shtml
+  original_title: Moving Chips in Pairs Down a Checkerboard
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+problem:
+  statement: >
+    N chips sit on an N x N board, one in each row. A move slides any two
+    chips one square down (a chip in the bottom row cannot move). Is it
+    always possible to bring all chips to the bottom row?
+  domain: combinatorics
+  answer: >
+    No. Numbering rows 0 (bottom) to N-1, it is possible if and only if the
+    total height of the chips is even; since the heights are 0, 1, ..., N-1
+    in some order, this holds exactly when N is 0 or 1 mod 4.
+
+key_idea:
+  name: parity of the total height is invariant
+  category: parity_invariant
+  summary: >
+    Each move lowers two chips by one, decreasing the total height by 2.
+    The target has total height 0, so the initial total height must be even;
+    that total is 0 + 1 + ... + (N-1) = N(N-1)/2.
+
+intuitive_proof:
+  explanation: >
+    Define the height of a configuration as the sum of the row numbers of
+    its chips (bottom row = 0). A move decreases the height by exactly 2, so
+    its parity is invariant. The goal has height 0, so the start must have
+    even height. With one chip per row the initial height is
+    0 + 1 + ... + (N-1) = N(N-1)/2, which is even exactly when N is 0 or 1
+    mod 4. (When it is even, the source gives a strategy that always
+    succeeds; the parity argument supplies the impossibility half.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to schedule pairs of moves cleverly, or study small boards one at a
+    time.
+  crucial_observation: >
+    Only the sum of the heights matters, and every move reduces it by 2.
+  why_it_simplifies: >
+    The impossibility half becomes a single parity check on N; the
+    possibility half needs only a greedy strategy.
+
+tags:
+  - parity
+  - invariant
+  - monovariant
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: medium
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The height is both an invariant mod 2 and a monovariant (it strictly
+  decreases), a useful pairing to point out.

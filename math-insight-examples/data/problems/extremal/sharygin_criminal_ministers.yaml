@@ -1,0 +1,91 @@
+id: sharygin_criminal_ministers
+
+title: Finding a Local Maximum on a Circle with Few Queries
+
+aliases:
+  - Sharygin's criminal ministers
+  - local maximum search
+  - 91 ministers 10 checks
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/ctk/Sharygin.shtml
+  original_title: I. Sharygin's Problem of Criminal Ministers
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Sharygin - Mathematical Vinaigrette
+    notes: problem collection
+
+problem:
+  statement: >
+    91 ministers sit around a table, each with a distinct bank balance. One
+    may check the balance of at most 10 ministers. Show how to find, with
+    certainty, a minister richer than both neighbours.
+  domain: combinatorics
+  answer: >
+    check three ministers spaced around the circle, then repeatedly probe
+    inside the arc whose checked interior point exceeds its checked
+    endpoints; the arc lengths can be chosen (Fibonacci-like) so that ten
+    checks pin down a local maximum
+
+key_idea:
+  name: an arc whose endpoints have been checked and found smaller than a checked interior point must contain a local maximum, because the largest balance in the arc is one
+  category: extremal_principle
+  summary: >
+    If A and B are checked and some checked C between them is richer than
+    both, then the richest minister strictly inside the arc from A to B
+    (which exists, and is not A or B) is richer than both neighbours: a
+    local maximum. Probing a new point inside the arc either finds an even
+    richer interior point or shrinks the arc, and the arc halves (or shrinks
+    by a golden-ratio factor) at each step.
+
+intuitive_proof:
+  explanation: >
+    Check any three ministers at roughly equal spacing; among them the
+    richest, C, exceeds the other two, which bound an arc containing C.
+    Invariant: we hold an arc with checked endpoints and a checked interior
+    point C richer than both endpoints. The richest minister of the whole
+    arc (endpoints included) is then interior, and being richer than his
+    neighbours in the arc he is richer than both of his table neighbours: a
+    local maximum exists in the arc. Now check a minister D inside the
+    larger of the two sub-arcs cut by C. If D is richer than C, replace C by
+    D and shrink the arc to the sub-arc containing D bounded by C and the
+    old endpoint; otherwise shrink to the sub-arc containing C bounded by D
+    and the other endpoint. The invariant is maintained and the arc loses a
+    constant fraction of its length. With arcs sized by Fibonacci numbers
+    (91 = 89 + 2 fits the tenth check), ten checks reduce the arc to a
+    single interior minister, who is the local maximum.
+
+reasoning_structure:
+  naive_approach: >
+    Check ministers one by one hoping to hit a local maximum, or attempt to
+    find the global maximum (which needs all 91 checks).
+  crucial_observation: >
+    Maximality on an arc with 'lower' endpoints gives a local maximum
+    without ever finding the global one, and the arc can be shrunk
+    geometrically.
+  why_it_simplifies: >
+    The extremal principle converts 'find a local maximum' into 'maintain an
+    arc with a peak inside', which is a binary-search-like process.
+
+tags:
+  - extremal principle
+  - search
+  - local maximum
+  - Fibonacci
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The same idea is the standard O(log n) algorithm for finding a peak in an
+  array.

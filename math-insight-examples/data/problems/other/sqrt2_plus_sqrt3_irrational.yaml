@@ -1,0 +1,77 @@
+id: sqrt2_plus_sqrt3_irrational
+
+title: sqrt 2 + sqrt 3 Is Irrational
+
+aliases:
+  - sum of square roots irrational
+  - irrationality of sqrt 2 + sqrt 3
+  - square the sum
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Irrational_number
+    original_title: Irrational number (proofs)
+
+problem:
+  statement: >
+    Show that sqrt 2 + sqrt 3 is irrational.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: if x = sqrt 2 + sqrt 3 were rational, then x^2 = 5 + 2 sqrt 6 would be rational, making sqrt 6 rational
+  category: auxiliary_object
+  summary: >
+    Squaring gives x^2 = 5 + 2 sqrt 6, so sqrt 6 = (x^2 - 5)/2 would be
+    rational if x were. But sqrt 6 is irrational (6 is not a perfect
+    square). Hence x is irrational.
+
+intuitive_proof:
+  explanation: >
+    Suppose x = sqrt 2 + sqrt 3 is rational. Then x^2 = 2 + 2 sqrt 6 + 3 is
+    rational, so sqrt 6 = (x^2 - 5)/2 is rational. Write sqrt 6 = p/q in
+    lowest terms; then p^2 = 6 q^2, so p is even, p = 2r, and 2r^2 = 3q^2
+    forces q even too, contradicting lowest terms. So sqrt 6 and hence x are
+    irrational.
+
+reasoning_structure:
+  naive_approach: >
+    Try to apply the sqrt 2 argument directly to a sum, which has no obvious
+    handle.
+  crucial_observation: >
+    Squaring isolates a single irrational square root with rational
+    coefficients.
+  why_it_simplifies: >
+    An auxiliary manipulation reduces a new irrationality to a known one;
+    the general method is to find a polynomial with integer coefficients
+    having x as a root and apply the rational root theorem (x^4 - 10x^2 + 1
+    = 0).
+
+related:
+  - sqrt2_irrational_descent
+  - log2_of_3_irrational
+
+tags:
+  - irrationality
+  - auxiliary object
+  - square roots
+  - rational root theorem
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

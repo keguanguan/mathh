@@ -1,0 +1,90 @@
+id: bachet_weights_balanced_ternary
+
+title: Bachet's Weights, Weighing 1 to 40 with Four Weights
+
+aliases:
+  - Bachet's weight problem
+  - powers of three weights
+  - balanced ternary weighing
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Balanced_ternary
+  original_title: Balanced ternary (Bachet's problem of the weights)
+  accessed: 2026-09-16
+  notes: Bachet (1612), earlier Fibonacci (1202); the balanced-ternary reading is classical.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    notes: Chapter 6, Number Theory (number systems).
+
+problem:
+  statement: >
+    A balance has two pans and weights may be placed on either pan. Show
+    that with the four weights 1, 3, 9, 27 one can weigh every integer
+    load from 1 to 40, and that no four weights do better.
+  domain: number theory
+  answer: >
+    Every integer from -40 to 40 is a sum of the form sum of e_i 3^i with
+    e_i in {-1, 0, 1}; four weights give at most 3^4 = 81 signed
+    combinations, hence at most 40 positive loads.
+
+key_idea:
+  name: a weight on the load's pan is a digit -1, on the other pan +1, absent 0; this is balanced ternary
+  category: algebraic_encoding
+  summary: >
+    A weighing assigns to each weight one of three roles: with the load
+    (-1), against it (+1), unused (0). So the loads that can be weighed
+    are exactly the numbers representable as sum of e_i w_i with digits
+    e_i in {-1, 0, 1}. With w_i = 3^i these are the balanced ternary
+    representations, which cover every integer from -(3^n - 1)/2 to
+    (3^n - 1)/2 exactly once.
+
+intuitive_proof:
+  explanation: >
+    Write a load L as a sum of e_i 3^i with e_i in {-1, 0, 1}: this is
+    balanced ternary, obtained from ordinary base 3 by replacing a digit
+    2 with -1 and carrying 1. Every integer with |L| <= (3^n - 1)/2 has
+    such a representation with n digits, uniquely. Putting weight 3^i on
+    the load's pan when e_i = -1 and on the other pan when e_i = +1 makes
+    the pans balance. With n = 4 this covers 1 to 40. Conversely, n
+    weights admit at most 3^n placements, which come in symmetric pairs
+    (swap pans) plus the empty one, so at most (3^n - 1)/2 positive loads
+    can be weighed; 1, 3, 9, 27 attain this bound.
+
+reasoning_structure:
+  naive_approach: >
+    Search over sets of four weights and check which loads each set can
+    produce, or reason about which weights are needed for small loads.
+  crucial_observation: >
+    Each weight contributes one of three signed values, so weighings are
+    numbers written in a signed base-3 system.
+  why_it_simplifies: >
+    Both the construction and the optimality bound come from counting
+    digit strings; nothing about the balance needs to be thought about
+    again.
+
+related:
+  - nim
+  - josephus_binary
+
+tags:
+  - algebraic encoding
+  - number systems
+  - balanced ternary
+  - puzzle
+  - counting bound
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  When weights may go on one pan only, the answer is binary (1, 2, 4, 8,
+  ...); the pan choice is what upgrades base 2 to balanced base 3.

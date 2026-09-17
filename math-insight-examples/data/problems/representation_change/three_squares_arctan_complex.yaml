@@ -1,0 +1,85 @@
+id: three_squares_arctan_complex
+
+title: "The Three Squares Problem: arctan 1 + arctan 1/2 + arctan 1/3 = 90 Degrees"
+
+aliases:
+  - three squares problem
+  - Langley's three squares
+  - arctan 1/2 + arctan 1/3 = 45 degrees
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+  original_title: Inverse trigonometric functions (arctangent addition)
+  accessed: 2026-09-16
+  notes: >
+    The 'three squares' configuration is a well-known puzzle popularised by
+    Martin Gardner; the complex-number solution is standard.
+
+additional_sources:
+  - name: Gardner - Mathematical Circus
+    notes: Chapter on geometric puzzles
+
+problem:
+  statement: >
+    Three unit squares are placed side by side. Show that the angles between
+    the bottom-left corner's diagonals to the top-right corners of the
+    first, second and third squares add up to 90 degrees: arctan 1 + arctan
+    1/2 + arctan 1/3 = pi/2.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "the angle of a complex number adds under multiplication: (1 + i)(2 + i)(3 + i) = 10i has argument 90 degrees"
+  category: complex_or_vector_coordinates
+  summary: >
+    The three angles are the arguments of 1 + i, 2 + i and 3 + i.
+    Multiplying, (1 + i)(2 + i) = 1 + 3i and (1 + 3i)(3 + i) = 10i, a
+    positive multiple of i, whose argument is pi/2. Since arguments add
+    under multiplication and each angle is less than pi/2, the sum is
+    exactly pi/2.
+
+intuitive_proof:
+  explanation: >
+    The angle from the positive x-axis to the vector (a, 1) is arctan(1/a) =
+    arg(a + i). Now (1 + i)(2 + i) = 2 + i + 2i + i^2 = 1 + 3i, and (1 +
+    3i)(3 + i) = 3 + i + 9i + 3i^2 = 10i. The argument of a product is the
+    sum of the arguments (mod 2 pi), so arctan 1 + arctan(1/2) + arctan(1/3)
+    = arg(10i) = pi/2 modulo 2 pi; as each term lies in (0, pi/2) and their
+    sum is in (0, 3 pi/2), it equals pi/2.
+
+reasoning_structure:
+  naive_approach: >
+    Use the tangent addition formula twice, or draw auxiliary squares to
+    find congruent triangles (the classical synthetic solution).
+  crucial_observation: >
+    Angles of lattice directions are arguments of Gaussian integers, and
+    arguments add when the numbers multiply.
+  why_it_simplifies: >
+    Multiplying three complex numbers replaces all trigonometry; the same
+    method finds any identity among arctangents of rationals (Machin-type
+    formulas).
+
+related:
+  - arctan_telescoping_sum
+  - napoleon_theorem_complex
+
+tags:
+  - complex numbers
+  - arctangent
+  - angles
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Machin's formula pi/4 = 4 arctan(1/5) - arctan(1/239) is verified the same
+  way: (5 + i)^4 = 476 + 480i and (5+i)^4 (239 - i) is a multiple of 1 + i.

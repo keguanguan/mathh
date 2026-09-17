@@ -1,0 +1,79 @@
+id: pentagram_angle_sum_turning
+
+title: The Five Tips of a Pentagram Have Angles Summing to 180 Degrees
+
+aliases:
+  - star pentagon angle sum
+  - pentagram angles
+  - turning number two
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 12, Geometry
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Pentagram
+    original_title: Pentagram (geometry)
+
+problem:
+  statement: >
+    Show that the angles at the five points of any pentagram (star pentagon,
+    not necessarily regular) sum to 180 degrees.
+  domain: geometry
+  answer: 180 degrees
+
+key_idea:
+  name: walking around the star, the direction of travel turns through two full revolutions, so the exterior angles sum to 720 and the interior tip angles to 5 * 180 - 720
+  category: geometric_invariant
+  summary: >
+    Traverse the five edges of the star in order. At each tip the direction
+    turns by 180 - (tip angle). Since the star winds twice around its
+    centre, the total turning is 2 * 360 = 720 degrees. So sum of (180 - tip
+    angle) = 720, i.e. the tip angles sum to 900 - 720 = 180.
+
+intuitive_proof:
+  explanation: >
+    Walk along the pentagram's edges. At each of the five tips the walker
+    turns through the exterior angle 180 - t_i, where t_i is the tip angle.
+    Returning to the start facing the original direction, the walker has
+    turned through a whole number of revolutions; following the star's path
+    shows it circles the centre twice, so the total turning is 720 degrees.
+    Hence sum of (180 - t_i) = 720, giving t_1 + ... + t_5 = 900 - 720 =
+    180. (Alternatively, triangulate: the five tips are the angles of
+    triangles whose other angles are angles of the inner pentagon.)
+
+reasoning_structure:
+  naive_approach: >
+    Assume the star is regular and compute 36 degrees per tip, or chase
+    angles through the inner pentagon with many auxiliary equations.
+  crucial_observation: >
+    The total turning of a closed path is 360 degrees times its winding
+    number, an invariant independent of the shape.
+  why_it_simplifies: >
+    A topological invariant (turning number 2) does the counting; the same
+    argument handles any star polygon {n/k} (turning number k).
+
+related:
+  - exterior_angles_sum_360
+
+tags:
+  - turning number
+  - angles
+  - star polygon
+  - invariant
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

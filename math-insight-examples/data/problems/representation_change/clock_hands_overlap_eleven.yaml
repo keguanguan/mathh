@@ -1,0 +1,72 @@
+id: clock_hands_overlap_eleven
+
+title: The Hands of a Clock Overlap Eleven Times in Twelve Hours
+
+aliases:
+  - clock hands overlap
+  - relative angular speed
+  - how often do the hands coincide
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Clock_angle_problem
+  original_title: Clock angle problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Gardner - The Colossal Book of Short Puzzles and Problems
+
+problem:
+  statement: >
+    How many times in 12 hours do the hour and minute hands of a clock point
+    in the same direction?
+  domain: algebra
+  answer: 11 times (every 12/11 hours)
+
+key_idea:
+  name: "work in the frame of the hour hand: the minute hand then rotates at 11 revolutions per 12 hours"
+  category: coordinate_transformation
+  summary: >
+    The minute hand makes 12 revolutions in 12 hours and the hour hand makes
+    1. Relative to the hour hand the minute hand makes 12 - 1 = 11
+    revolutions, and it overlaps once per relative revolution.
+
+intuitive_proof:
+  explanation: >
+    Measure angles in a rotating frame attached to the hour hand. In that
+    frame the hour hand is fixed and the minute hand moves at 12 - 1 = 11
+    revolutions per 12 hours, uniformly. An overlap is a moment when the
+    minute hand passes the fixed hour hand, which happens exactly once per
+    relative revolution, i.e. 11 times in 12 hours, at intervals of 12/11
+    hours = 65 minutes 27.3 seconds.
+
+reasoning_structure:
+  naive_approach: >
+    Solve the equation 6t = 0.5t + 360k for the minute-by-minute angles and
+    count solutions.
+  crucial_observation: >
+    Only the relative motion matters, and the relative motion is uniform
+    rotation.
+  why_it_simplifies: >
+    Changing to the moving frame turns a two-body problem into a one-body
+    count.
+
+tags:
+  - relative motion
+  - coordinate transformation
+  - clock
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The hands are perpendicular 22 times and opposite 11 times, by the same
+  reasoning.

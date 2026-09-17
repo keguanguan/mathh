@@ -1,0 +1,74 @@
+id: coupon_collector_linearity
+
+title: The Coupon Collector Needs about n log n Draws
+
+aliases:
+  - coupon collector problem
+  - expected draws to collect all n coupons
+  - n H_n
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Coupon_collector%27s_problem
+  original_title: Coupon collector's problem
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Feller - An Introduction to Probability Theory and Its Applications, vol. 1
+
+problem:
+  statement: >
+    Each box of cereal contains one of n coupon types, uniformly at random.
+    What is the expected number of boxes needed to collect all n types?
+  domain: probability
+  answer: n (1 + 1/2 + ... + 1/n) = n H_n, about n ln n
+
+key_idea:
+  name: "split the process into stages: while k types are held, each box is new with probability (n - k)/n, so the k-th stage takes n/(n - k) boxes on average"
+  category: linearity_of_expectation
+  summary: >
+    The waiting time for the (k+1)-st new type, given k types already, is
+    geometric with success probability (n - k)/n, so its mean is n/(n - k).
+    Summing over k = 0..n-1 by linearity gives n (1/n + 1/(n-1) + ... + 1) =
+    n H_n.
+
+intuitive_proof:
+  explanation: >
+    Let T_k be the number of boxes bought while exactly k distinct types are
+    held, until a new type appears. Each box is a new type with probability
+    p_k = (n - k)/n, independently, so T_k is geometric with mean 1/p_k =
+    n/(n - k). The total is T_0 + T_1 + ... + T_{n-1}, and linearity of
+    expectation gives sum of n/(n - k) = n (1 + 1/2 + ... + 1/n) = n H_n,
+    which is asymptotically n ln n + 0.577 n.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the distribution of the total via inclusion-exclusion over the
+    types, then its mean.
+  crucial_observation: >
+    The process decomposes into independent stages with geometric waiting
+    times, and expectations add.
+  why_it_simplifies: >
+    Linearity turns a complicated random total into a sum of simple means;
+    no distribution is needed.
+
+related:
+  - records_in_random_sequence_harmonic
+
+tags:
+  - linearity of expectation
+  - geometric distribution
+  - harmonic numbers
+  - probability
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

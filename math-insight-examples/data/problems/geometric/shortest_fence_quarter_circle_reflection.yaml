@@ -1,0 +1,90 @@
+id: shortest_fence_quarter_circle_reflection
+
+title: The Shortest Fence Halving a Quarter-Circle Pasture
+
+aliases:
+  - shortest fence in a quarter-circle pasture
+  - bisecting a quadrant with a curve of least length
+  - reflect to a full circle
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/proofs/HalfQuarterCircle.shtml
+  original_title: Shortest Fence in a Quarter-Circle Pasture
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Isoperimetric_inequality
+    original_title: Isoperimetric inequality (applications)
+
+problem:
+  statement: >
+    A pasture is a quarter of a disc. What is the shortest fence (a curve
+    inside the pasture, endpoints on its boundary) that divides it into two
+    parts of equal area?
+  domain: geometry
+  answer: >
+    an arc of a circle centred at the corner (the centre of the
+    quarter-disc), of radius R/sqrt(2)
+
+key_idea:
+  name: reflect the quarter-disc in its two straight edges to get a full disc; the fence and its reflections form a closed curve of four times the length enclosing half the disc's area, and the isoperimetric inequality says the shortest such curve is a circle
+  category: reflection
+  summary: >
+    Reflecting in both radii turns the quarter-disc into a full disc and the
+    fence into a closed curve of four times the fence's length, enclosing
+    four times the fenced area, namely half of the disc. Among closed curves
+    enclosing a given area the circle is shortest (isoperimetric
+    inequality), and the circle enclosing half the disc's area is concentric
+    with radius R/sqrt(2). Its quarter, an arc centred at the corner, is
+    therefore the shortest fence.
+
+intuitive_proof:
+  explanation: >
+    Let the pasture be the quarter-disc of radius R with corner O. Reflect
+    the pasture and any admissible fence in the two bounding radii (and
+    reflect again) to obtain the full disc together with a closed curve C
+    made of four congruent copies of the fence, joined at the fence's
+    endpoints on the radii. C encloses a region of area 4 * (half the
+    pasture) = pi R^2/2 and has length 4L, where L is the fence's length. By
+    the isoperimetric inequality, a closed curve enclosing area A has length
+    at least sqrt(4 pi A) = pi R sqrt 2, with equality only for a circle.
+    Hence 4L >= pi R sqrt 2, i.e. L >= pi R/(2 sqrt 2), and equality is
+    attained by the circle of radius R/sqrt 2 centred at O, whose quarter
+    arc lies in the pasture and bisects its area.
+
+reasoning_structure:
+  naive_approach: >
+    Compare a few candidate fences (a straight segment, a chord, an arc) by
+    computation, without a proof of optimality.
+  crucial_observation: >
+    Reflection removes the boundary constraints and produces a closed curve,
+    for which a global theorem (isoperimetric) is available.
+  why_it_simplifies: >
+    Symmetrising the problem by reflection lifts it to a setting where the
+    optimal shape is known, giving optimality with no calculus of
+    variations.
+
+related:
+  - herons_shortest_path
+  - isoperimetric_rectangle_am_gm
+
+tags:
+  - reflection
+  - isoperimetric inequality
+  - symmetry
+  - optimisation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: ""

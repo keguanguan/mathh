@@ -1,0 +1,71 @@
+id: multiple_with_only_ones_and_zeros
+
+title: Every Integer Has a Multiple Written with Only 0s and 1s
+
+aliases:
+  - repunit multiple
+  - multiple consisting of ones and zeros
+  - 1, 11, 111 pigeonhole
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 4, The Box Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Repunit
+    original_title: Repunit
+
+problem:
+  statement: >
+    Show that every positive integer n has a positive multiple whose decimal
+    digits are all 0 or 1.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: two of the repunits 1, 11, 111, ... agree mod n; their difference is a multiple of n made of 1s followed by 0s
+  category: pigeonhole
+  summary: >
+    Among the n + 1 numbers 1, 11, ..., 111...1 (n + 1 ones) two have the
+    same residue mod n. Their difference is 11...100...0, a multiple of n
+    with digits 0 and 1.
+
+intuitive_proof:
+  explanation: >
+    Consider the repunits R_k = 11...1 with k ones for k = 1, ..., n + 1. By
+    pigeonhole two of them, R_i and R_j with i < j, are congruent mod n.
+    Then R_j - R_i = 11...1 00...0 (j - i ones, i zeros) is divisible by n
+    and uses only the digits 1 and 0. If gcd(n, 10) = 1 one can even divide
+    out the trailing zeros to get a repunit multiple.
+
+reasoning_structure:
+  naive_approach: >
+    Multiply n by successive integers looking for a suitable product.
+  crucial_observation: >
+    A sequence with more terms than residues must repeat a residue, and
+    differences of repunits have the required shape.
+  why_it_simplifies: >
+    Existence follows from residue counting; no search or divisibility
+    analysis is needed.
+
+tags:
+  - pigeonhole
+  - residues
+  - digits
+  - number theory
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

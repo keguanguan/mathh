@@ -1,0 +1,81 @@
+id: centroid_minimises_sum_of_squared_distances
+
+title: The Centroid Minimises the Sum of Squared Distances
+
+aliases:
+  - Leibniz's formula for squared distances
+  - sum of squared distances to points
+  - centroid least squares
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Centroid
+  original_title: Centroid (properties)
+  accessed: 2026-09-16
+  notes: >
+    The identity sum |P - A_i|^2 = n|P - G|^2 + sum |G - A_i|^2 is sometimes
+    called Leibniz's or Lagrange's identity.
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry (vectors)
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Given points A_1, ..., A_n in the plane, find the point P minimising the
+    sum of the squared distances |PA_i|^2.
+  domain: geometry
+  answer: the centroid G = (A_1 + ... + A_n)/n
+
+key_idea:
+  name: with vectors, sum |P - A_i|^2 = n|P - G|^2 + sum |G - A_i|^2, because the cross terms sum to zero by the definition of G
+  category: complex_or_vector_coordinates
+  summary: >
+    Write P - A_i = (P - G) + (G - A_i) and expand the square. The cross
+    term 2(P - G) . sum(G - A_i) vanishes since sum (G - A_i) = nG - sum A_i
+    = 0. So the sum equals n|P - G|^2 plus a constant, minimised at P = G.
+
+intuitive_proof:
+  explanation: >
+    Use position vectors. For each i, |P - A_i|^2 = |(P - G) + (G - A_i)|^2
+    = |P - G|^2 + 2 (P - G) . (G - A_i) + |G - A_i|^2. Summing over i, the
+    middle terms give 2 (P - G) . (nG - sum A_i) = 0 by the definition of
+    the centroid. Hence sum |P - A_i|^2 = n |P - G|^2 + sum |G - A_i|^2,
+    which is smallest exactly when P = G, with minimum value sum |G -
+    A_i|^2.
+
+reasoning_structure:
+  naive_approach: >
+    Differentiate the sum with respect to the coordinates of P and solve,
+    which works but obscures the geometry and the value of the minimum.
+  crucial_observation: >
+    Centring the vectors at G kills the cross terms, turning the sum into a
+    perfect square plus a constant.
+  why_it_simplifies: >
+    One vector identity gives the minimiser, the minimum value and the
+    'parallel axis theorem' of mechanics simultaneously.
+
+related:
+  - regular_polygon_vectors_sum_zero
+
+tags:
+  - vectors
+  - centroid
+  - optimisation
+  - algebraic identity
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The same computation is the variance decomposition in statistics: mean
+  squared deviation is minimised at the mean.

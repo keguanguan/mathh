@@ -1,0 +1,82 @@
+id: parity_bit_single_error_detection
+
+title: A Parity Bit Detects Any Single Bit Error
+
+aliases:
+  - parity check bit
+  - even parity code
+  - single error detection
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Parity_bit
+  original_title: Parity bit
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Hamming - Coding and Information Theory
+
+problem:
+  statement: >
+    To each block of k bits append one bit chosen so that the total number
+    of 1s is even. Show that any single bit flip in transmission is
+    detected, that two flips are not, and that no single-bit code can do
+    better than detecting one error.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: a single flip changes the number of 1s by exactly one, so it changes the parity; the parity is the invariant being checked
+  category: parity_invariant
+  summary: >
+    Valid words have an even number of 1s. Flipping one bit changes the
+    count by +-1, making it odd: detected. Flipping two bits changes it by 0
+    or +-2, leaving it even: undetected. Since valid words differ in at
+    least 2 positions but some differ in exactly 2, no correction is
+    possible and double errors cannot be caught.
+
+intuitive_proof:
+  explanation: >
+    Let a word be valid iff its number of 1s is even. A single bit flip
+    changes the number of 1s by exactly 1, so a valid word becomes invalid
+    and the receiver detects an error. Two flips change the count by -2, 0
+    or +2, so parity is preserved and the corrupted word may be valid: two
+    errors can go undetected. The set of valid words contains pairs at
+    Hamming distance exactly 2 (flip any two bits of a valid word), so it
+    cannot correct even single errors and cannot detect double errors. Among
+    codes adding a single bit, the parity code is optimal: 2^k valid words
+    among 2^{k+1} means some valid words are at distance 2.
+
+reasoning_structure:
+  naive_approach: >
+    Send each bit twice, which doubles the length yet still cannot correct a
+    single error.
+  crucial_observation: >
+    Parity of the number of 1s is a one-bit invariant that every single flip
+    breaks.
+  why_it_simplifies: >
+    The simplest possible invariant gives single-error detection at the cost
+    of one bit; Hamming codes extend the idea with several parity checks to
+    locate the error.
+
+related:
+  - prisoners_hats_parity
+  - hamming_three_hats_strategy
+
+tags:
+  - parity
+  - invariant
+  - coding theory
+  - error detection
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

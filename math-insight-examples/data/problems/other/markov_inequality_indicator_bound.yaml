@@ -1,0 +1,77 @@
+id: markov_inequality_indicator_bound
+
+title: Markov's and Chebyshev's Inequalities from an Indicator Bound
+
+aliases:
+  - Markov's inequality
+  - Chebyshev's inequality
+  - tail bounds from expectations
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Markov%27s_inequality
+  original_title: Markov's inequality (proof)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Chebyshev%27s_inequality
+    original_title: Chebyshev's inequality
+
+problem:
+  statement: >
+    Show that for a non-negative random variable X and a > 0, P(X >= a) <=
+    E[X]/a, and deduce Chebyshev's inequality P(|X - m| >= t) <= Var(X)/t^2.
+  domain: probability
+  answer: proved
+
+key_idea:
+  name: the indicator of the event X >= a is at most X/a pointwise; take expectations
+  category: auxiliary_object
+  summary: >
+    Pointwise, 1_{X >= a} <= X/a: if X >= a the right side is at least 1,
+    and otherwise the left side is 0 while the right is non-negative. Taking
+    expectations gives P(X >= a) <= E[X]/a. Applying this to (X - m)^2 with
+    a = t^2 gives Chebyshev's inequality.
+
+intuitive_proof:
+  explanation: >
+    Let I be the indicator of the event {X >= a}. For every outcome, a I <=
+    X: when X >= a the left side is a and the right is at least a; when X <
+    a the left side is 0 and X >= 0. Taking expectations, a P(X >= a) <=
+    E[X]. For Chebyshev, apply this to the non-negative variable Y = (X -
+    m)^2 with threshold t^2: P(|X - m| >= t) = P(Y >= t^2) <= E[Y]/t^2 =
+    Var(X)/t^2. The weak law of large numbers follows by applying it to a
+    sample mean, whose variance is Var/n.
+
+reasoning_structure:
+  naive_approach: >
+    Try to bound tail probabilities from the specific distribution of X,
+    which is often unknown.
+  crucial_observation: >
+    An inequality between random variables, valid outcome by outcome,
+    becomes an inequality between expectations.
+  why_it_simplifies: >
+    One pointwise comparison with an auxiliary indicator variable yields the
+    fundamental tail bounds of probability theory.
+
+related:
+  - expected_value_argument_someone_above_average
+
+tags:
+  - auxiliary object
+  - inequality
+  - tail bound
+  - expectation
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

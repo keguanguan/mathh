@@ -1,0 +1,75 @@
+id: nearest_neighbour_graph_no_cycle
+
+title: Nearest-Neighbour Arrows Form No Cycle
+
+aliases:
+  - nearest neighbour graph is acyclic
+  - arrows to the closest point
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 3, The Extremal Principle
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Nearest_neighbor_graph
+    original_title: Nearest neighbor graph
+
+problem:
+  statement: >
+    Finitely many points in the plane have pairwise distinct distances. Each
+    point sends an arrow to its nearest neighbour. Show that the arrows form
+    no directed cycle of length more than 2 (in fact no cycle other than
+    mutual pairs).
+  domain: combinatorial geometry
+  answer: proved
+
+key_idea:
+  name: along a cycle of nearest-neighbour arrows the distances strictly decrease, which is impossible around a loop
+  category: extremal_principle
+  summary: >
+    If A -> B is an arrow then |AB| is the smallest distance from A.
+    Following a cycle A_1 -> A_2 -> ... -> A_k -> A_1, each step is the
+    nearest neighbour, so |A_2 A_3| <= |A_1 A_2| ... with strict inequality
+    when distances are distinct, giving |A_1 A_2| > |A_1 A_2|.
+
+intuitive_proof:
+  explanation: >
+    Suppose A_1 -> A_2 -> ... -> A_k -> A_1 is a cycle with k >= 3. Since
+    A_2's nearest neighbour is A_3 and A_1 is another point, |A_2 A_3| <
+    |A_2 A_1| (strict because all distances are distinct). Continuing around
+    the cycle, |A_1 A_2| > |A_2 A_3| > ... > |A_k A_1| > |A_1 A_2|, a
+    contradiction. (Alternatively, look at the longest arrow in the cycle:
+    its tail has a closer point, namely the head of the previous arrow,
+    contradiction.)
+
+reasoning_structure:
+  naive_approach: >
+    Analyse angles between arrows at a vertex; this bounds in-degree by 5
+    but does not directly exclude cycles.
+  crucial_observation: >
+    Following arrows never increases the distance, so a cycle would force a
+    distance to be smaller than itself.
+  why_it_simplifies: >
+    A monotone quantity around a loop is a contradiction in one line.
+
+tags:
+  - extremal principle
+  - monovariant
+  - nearest neighbour
+  - combinatorial geometry
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,81 @@
+id: proizvolov_identity
+
+title: Proizvolov's Identity
+
+aliases:
+  - Proizvolov's identity
+  - sum of |a_i - b_i| = n^2
+  - split 1..2n into two sorted halves
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Proizvolov%27s_identity
+  original_title: Proizvolov's identity
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/ProizvolovGame.shtml
+    original_title: Proizvolov's identity in a game format
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    The numbers 1, 2, ..., 2n are split into two sets of n. One set is
+    sorted increasingly, a_1 < ... < a_n, the other decreasingly, b_1 > ...
+    > b_n. Show that |a_1 - b_1| + ... + |a_n - b_n| = n^2.
+  domain: combinatorics
+  answer: n^2, independent of the split
+
+key_idea:
+  name: in every pair (a_i, b_i) exactly one number is at most n and the other exceeds n
+  category: pairing_strategy
+  summary: >
+    Claim: for each i, one of a_i, b_i is in {1..n} and the other in
+    {n+1..2n}. Then |a_i - b_i| = (large one) - (small one), and summing
+    over i, the large ones are exactly n+1, ..., 2n and the small ones
+    exactly 1, ..., n, so the sum is (n+1 + ... + 2n) - (1 + ... + n) = n^2.
+
+intuitive_proof:
+  explanation: >
+    Suppose both a_i and b_i are at most n. Then a_1, ..., a_i are i numbers
+    at most n (since the a's increase) and b_i, ..., b_n are n - i + 1
+    numbers at most n (since the b's decrease): i + (n - i + 1) = n + 1
+    distinct numbers in {1, ..., n}, impossible. Symmetrically both cannot
+    exceed n. So each pair has one small (<= n) and one large (> n) element,
+    and |a_i - b_i| = large - small. Over all i the large elements run
+    through n+1, ..., 2n and the small through 1, ..., n exactly once each,
+    so the total is sum of (n + k) - k over k = 1..n, which is n * n = n^2.
+
+reasoning_structure:
+  naive_approach: >
+    Compute examples, see n^2 every time, and try an induction that keeps
+    track of where 2n goes.
+  crucial_observation: >
+    The two orderings force every pair to straddle the midpoint n, after
+    which the sum is independent of the pairing.
+  why_it_simplifies: >
+    A pairing argument replaces case analysis: the absolute values resolve
+    uniformly and the sum telescopes to a constant.
+
+related:
+  - gauss_pairing_sum
+
+tags:
+  - pairing
+  - invariant
+  - combinatorics
+  - absolute values
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  Vyacheslav Proizvolov, All-Union Olympiad 1985.

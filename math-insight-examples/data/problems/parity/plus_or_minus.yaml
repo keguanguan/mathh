@@ -1,0 +1,74 @@
+id: plus_or_minus
+
+title: Plus or Minus Game
+
+aliases:
+  - plus or minus
+  - sign insertion game
+  - can 1 +- 2 +- ... +- n be zero
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/SimpleGames/pm.shtml
+  original_title: Plus or Minus Game
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: Bogomolny cites Fomin, Genkin, Itenberg, Mathematical Circles (Russian Experience).
+
+problem:
+  statement: >
+    A sequence of integers is written in a row. Two players alternately insert
+    a plus or a minus sign between two adjacent numbers until every gap is
+    filled; then the expression is evaluated. One player wins if the result
+    is odd, the other if it is even. Does either player have a strategy, and
+    which one?
+  domain: number theory
+  answer: >
+    Neither player can influence anything: the result is odd if and only if
+    the sequence contains an odd number of odd integers.
+
+key_idea:
+  name: signs do not affect parity
+  category: parity_invariant
+  summary: >
+    A + B and A - B differ by 2B, so they have the same parity. Hence the
+    parity of the final result is the parity of the plain sum, which depends
+    only on how many odd numbers there are.
+
+intuitive_proof:
+  explanation: >
+    Whatever signs are chosen, the value of the expression is congruent
+    modulo 2 to the sum of all the numbers, because changing a plus to a
+    minus in front of B changes the value by 2B. The sum of the numbers is
+    odd exactly when an odd number of them are odd. So the winner is decided
+    before the first sign is placed; the "game" is a fake.
+
+reasoning_structure:
+  naive_approach: >
+    Analyse the game tree of sign choices, or look for a move that "forces"
+    a parity.
+  crucial_observation: >
+    Subtracting instead of adding changes the total by an even number.
+  why_it_simplifies: >
+    All sign choices collapse to one parity computation on the initial
+    sequence; there are no strategic decisions to consider.
+
+tags:
+  - parity
+  - invariant
+  - game
+  - modular arithmetic
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: false
+  likely_widely_known: true
+
+notes: >
+  The classic corollary: 1 +- 2 +- ... +- n can equal 0 only if n(n+1)/2 is
+  even, i.e. n is 0 or 3 mod 4 (and then it can).

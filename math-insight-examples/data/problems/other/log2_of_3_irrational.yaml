@@ -1,0 +1,69 @@
+id: log2_of_3_irrational
+
+title: log_2 3 Is Irrational by Parity
+
+aliases:
+  - irrationality of log 3 / log 2
+  - 2^a = 3^b impossible
+  - logarithm irrational
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 6, Number Theory
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Irrational_number
+    original_title: Irrational number (logarithms)
+
+problem:
+  statement: >
+    Show that log_2 3 is irrational.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: a rational value p/q would give 2^p = 3^q, an even number equal to an odd number
+  category: structural_obstruction
+  summary: >
+    If log_2 3 = p/q with positive integers p, q, then 2^{p/q} = 3, so 2^p =
+    3^q. The left side is even and the right side is odd.
+
+intuitive_proof:
+  explanation: >
+    log_2 3 is positive, so a rational value would be p/q with positive
+    integers. Then 2^{p/q} = 3 gives 2^p = 3^q after raising to the q-th
+    power. But 2^p is even (p >= 1) and 3^q is odd: contradiction. Hence
+    log_2 3 is irrational.
+
+reasoning_structure:
+  naive_approach: >
+    Try to approximate the logarithm and look for a repeating decimal, or
+    use unique factorisation in full generality.
+  crucial_observation: >
+    Equality of a power of 2 and a power of 3 is a parity contradiction.
+  why_it_simplifies: >
+    The most basic invariant (parity) suffices; the same shape of argument
+    shows log_a b is irrational whenever a and b have different prime
+    factors.
+
+tags:
+  - irrationality
+  - parity
+  - logarithm
+  - structural obstruction
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

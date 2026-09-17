@@ -1,0 +1,75 @@
+id: sum_of_squares_inequality
+
+title: x^2 + y^2 + z^2 >= xy + yz + zx as a Sum of Squares
+
+aliases:
+  - sum of squares inequality
+  - SOS method
+  - a^2 + b^2 + c^2 >= ab + bc + ca
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 7, Inequalities
+  author: Arthur Engel
+  accessed: 2026-09-16
+  notes: The first inequality in most olympiad inequality courses.
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Polynomial_SOS
+    original_title: Polynomial SOS
+
+problem:
+  statement: >
+    Prove that x^2 + y^2 + z^2 >= xy + yz + zx for all real x, y, z, with
+    equality only when x = y = z.
+  domain: algebra
+  answer: proved
+
+key_idea:
+  name: twice the difference is a sum of three squares
+  category: algebraic_identity
+  summary: >
+    2(x^2 + y^2 + z^2 - xy - yz - zx) = (x-y)^2 + (y-z)^2 + (z-x)^2, which is
+    non-negative and vanishes only when x = y = z.
+
+intuitive_proof:
+  explanation: >
+    Expanding (x-y)^2 + (y-z)^2 + (z-x)^2 gives 2x^2 + 2y^2 + 2z^2 -
+    2xy - 2yz - 2zx, exactly twice the difference of the two sides. A sum
+    of squares of real numbers is at least 0, so the inequality holds, and
+    it is an equality only when each square is zero, i.e. x = y = z.
+
+reasoning_structure:
+  naive_approach: >
+    Try to apply a named inequality (AM-GM to each pair xy <= (x^2+y^2)/2
+    works, but obscures the equality case), or fix two variables and study
+    a quadratic in the third.
+  crucial_observation: >
+    The difference of the two sides is itself a sum of squares.
+  why_it_simplifies: >
+    Non-negativity and the equality case are both visible at a glance; the
+    "SOS" representation is the universal certificate for polynomial
+    inequalities of this type.
+
+tags:
+  - algebraic identity
+  - sum of squares
+  - inequality
+  - certificate
+
+quality:
+  clarity_of_key_idea: high
+  elegance: medium
+  naive_search_contrast: medium
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Included as the archetype of "rewrite so that non-negativity is
+  obvious"; the same idea proves Schur-type inequalities and underlies
+  semidefinite programming certificates.

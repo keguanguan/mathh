@@ -1,0 +1,77 @@
+id: orthocentre_reflection_circumcircle
+
+title: The Reflection of the Orthocentre in a Side Lies on the Circumcircle
+
+aliases:
+  - orthocentre reflection
+  - reflecting H across BC
+  - orthocentre and circumcircle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Altitude_%28triangle%29
+  original_title: Altitude (triangle) (orthocenter properties)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Let H be the orthocentre of triangle ABC. Show that the reflection of H
+    in the line BC lies on the circumcircle of ABC.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: the reflection H' satisfies angle BH'C = angle BHC = 180 - angle A, so B, H', C, A are concyclic
+  category: reflection
+  summary: >
+    Reflection preserves angles, so angle BH'C = angle BHC. Since HB and HC
+    are perpendicular to AC and AB respectively, angle BHC = 180 - A. Thus
+    angle BH'C + angle BAC = 180 with H' and A on opposite sides of BC,
+    which is exactly the condition for A, B, H', C to lie on a circle.
+
+intuitive_proof:
+  explanation: >
+    The altitudes from B and C are perpendicular to AC and AB, so in
+    quadrilateral formed by A, the feet and H, the angle BHC equals 180 -
+    angle A. Reflect H in BC to H'. Reflection in BC fixes B and C and
+    preserves angles, so angle BH'C = angle BHC = 180 - A. Points A and H'
+    lie on opposite sides of BC (H is inside for an acute triangle), and a
+    quadrilateral ABH'C with opposite angles at A and H' summing to 180 is
+    cyclic. Hence H' is on the circumcircle.
+
+reasoning_structure:
+  naive_approach: >
+    Compute the orthocentre and the circumcircle in coordinates.
+  crucial_observation: >
+    A reflection turns the unknown point into one whose angle to BC is
+    already known, and a supplementary-angle condition means concyclic.
+  why_it_simplifies: >
+    Angle chasing after a single reflection does everything; the same fact
+    gives the nine-point circle radius relation.
+
+related:
+  - euler_line_homothety
+
+tags:
+  - reflection
+  - orthocentre
+  - cyclic quadrilateral
+  - angle chasing
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

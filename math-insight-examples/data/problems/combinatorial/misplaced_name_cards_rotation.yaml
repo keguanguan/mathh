@@ -1,0 +1,74 @@
+id: misplaced_name_cards_rotation
+
+title: Rotating a Table of Misplaced Name Cards
+
+aliases:
+  - name cards round table
+  - rotate so that two people match
+  - averaging over rotations
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Pigeonhole_principle
+  original_title: Pigeonhole principle (examples)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    n guests sit at a round table with n name cards, and nobody sits in
+    front of their own card. Show that the table can be rotated so that at
+    least two guests are in front of their own cards.
+  domain: combinatorics
+  answer: proved
+
+key_idea:
+  name: "count the pairs (guest, rotation that seats them correctly): n pairs over n - 1 useful rotations"
+  category: pigeonhole
+  summary: >
+    Each guest is correctly placed by exactly one of the n rotations, giving
+    n correct placements in total. The zero rotation contributes none, so
+    the other n - 1 rotations share n placements, and one of them has at
+    least two.
+
+intuitive_proof:
+  explanation: >
+    For each guest there is exactly one rotation of the table (by the offset
+    between them and their card) that puts their card in front of them. So
+    over all n rotations the total number of (guest, correct placement)
+    pairs is n. The identity rotation contributes 0 pairs by hypothesis.
+    Hence the remaining n - 1 rotations contribute n pairs in total, and by
+    pigeonhole some rotation contributes at least 2.
+
+reasoning_structure:
+  naive_approach: >
+    Try rotations one at a time for small n and look for a general
+    construction.
+  crucial_observation: >
+    The total number of correct placements over all rotations is fixed (n),
+    independent of the arrangement.
+  why_it_simplifies: >
+    An averaging count replaces any search over rotations.
+
+tags:
+  - pigeonhole
+  - double counting
+  - averaging
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

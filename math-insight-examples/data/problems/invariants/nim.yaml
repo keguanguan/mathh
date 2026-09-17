@@ -1,0 +1,91 @@
+id: nim
+
+title: Nim and the Binary Digital Sum
+
+aliases:
+  - game of Nim
+  - Bouton's theorem
+  - nim-sum
+  - XOR strategy for Nim
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/nim_st.shtml
+  original_title: Nim
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+  notes: The theory is due to C. L. Bouton, Annals of Mathematics 3 (1901).
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Nim
+    original_title: Nim
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1, chapter on Nim and its relatives.
+
+problem:
+  statement: >
+    Several heaps of counters are on the table. A move removes any positive
+    number of counters from a single heap. The player who takes the last
+    counter wins. Which positions are winning for the player about to move,
+    and how should that player move?
+  domain: combinatorial games
+  answer: >
+    The player to move loses exactly when the bitwise XOR (nim-sum) of the
+    heap sizes is 0; otherwise a winning move is one that makes the nim-sum 0.
+
+key_idea:
+  name: encode heaps in binary and track the XOR
+  category: algebraic_invariant
+  summary: >
+    Write heap sizes in binary and XOR them column-wise. From nim-sum 0 every
+    move produces a nonzero nim-sum, and from nonzero nim-sum some move
+    restores 0. Since the terminal position has nim-sum 0, the player facing
+    nim-sum 0 loses.
+
+intuitive_proof:
+  explanation: >
+    Let S be the XOR of all heap sizes. A move changes exactly one heap, from
+    h to h' < h, and so changes S to S xor h xor h', which is nonzero when S
+    was 0 (because h xor h' is nonzero). Thus from a zero position every move
+    leads to a nonzero position. Conversely, if S is nonzero, look at its
+    leading 1-bit; some heap h has a 1 in that bit, and h' = h xor S is then
+    smaller than h. Reducing that heap to h' makes the new nim-sum
+    S xor h xor h' = 0. So from a nonzero position one can always move to a
+    zero position. The empty position has S = 0 and is a loss for the player
+    to move, so by induction: S = 0 loses, S != 0 wins.
+
+reasoning_structure:
+  naive_approach: >
+    Compute winning and losing positions by backward induction on the game
+    tree, heap by heap, and look for a pattern; for three or more heaps the
+    tables are bewildering.
+  crucial_observation: >
+    In binary, the winning condition is that each bit column contains an even
+    number of 1s, i.e. the XOR of the heap sizes is zero.
+  why_it_simplifies: >
+    The entire game tree is replaced by one arithmetic test; the same test
+    also produces the winning move. The representation (binary XOR) is the
+    whole solution.
+
+tags:
+  - combinatorial game
+  - XOR
+  - binary representation
+  - invariant
+  - strategy
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  By the Sprague-Grundy theorem every finite impartial game is equivalent to
+  a Nim heap, which is why disguised versions (turning_turtles, Northcott's
+  game, and others) reduce to this XOR test.

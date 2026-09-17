@@ -1,0 +1,97 @@
+id: hundred_prisoners_boxes_cycles
+
+title: The 100 Prisoners and 100 Boxes Problem
+
+aliases:
+  - 100 prisoners problem
+  - locker problem
+  - follow the permutation cycle strategy
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/100_prisoners_problem
+  original_title: 100 prisoners problem
+  accessed: 2026-09-16
+  notes: Posed by Peter Bro Miltersen (2003), the cycle strategy is due to Sven Skyum; popularised by Winkler and by Gardner-style expositions.
+
+additional_sources:
+  - name: Winkler - Mathematical Puzzles, A Connoisseur's Collection
+    notes: A K Peters, 2004 (as "the locker puzzle").
+
+problem:
+  statement: >
+    The numbers 1 to 100 are placed in 100 closed boxes in a random order.
+    Each of 100 prisoners, in turn and alone, may open 50 boxes looking
+    for their own number; boxes are closed again afterwards and no
+    communication is possible. All are freed only if every prisoner finds
+    their number. Random searching succeeds with probability 2^{-100}.
+    Find a strategy with a much larger success probability.
+  domain: combinatorics
+  answer: >
+    Follow the cycle: open the box with your own number, then the box
+    whose number you just found, and so on. All succeed iff the
+    permutation has no cycle longer than 50, which happens with
+    probability about 31%.
+
+key_idea:
+  name: read the boxes as a permutation and follow your own cycle
+  category: representation_change
+  summary: >
+    The arrangement of numbers in boxes is a permutation. A prisoner who
+    starts at the box labelled with their own number and always opens the
+    box named by the number just found walks along the cycle containing
+    their number and is guaranteed to find it within that cycle's length.
+    So everyone succeeds exactly when no cycle exceeds 50, an event of
+    probability 1 - (1/51 + 1/52 + ... + 1/100) = about 0.31.
+
+intuitive_proof:
+  explanation: >
+    Let s(b) be the number in box b; s is a random permutation of
+    1..100. Prisoner k opens box k, then box s(k), then box s(s(k)), and
+    so on. This traces the cycle of s through k, and the box containing k
+    is the last box on that cycle before returning to k. So prisoner k
+    succeeds within 50 openings iff the cycle containing k has length at
+    most 50. All prisoners succeed iff s has no cycle of length above 50.
+    The number of permutations of 100 elements with a cycle of length
+    exactly L > 50 is C(100, L)(L-1)!(100-L)! = 100!/L (such a cycle is
+    unique), so the failure probability is the sum of 1/L for L = 51..100,
+    approximately ln 2 = 0.69, and the success probability is about 0.31,
+    independent of what any individual prisoner does by luck.
+
+reasoning_structure:
+  naive_approach: >
+    Treat the prisoners' searches as independent events, each with
+    probability 1/2, and conclude that nothing better than 2^{-100} is
+    possible.
+  crucial_observation: >
+    The boxes define a permutation, and a strategy that follows the
+    permutation's own structure makes the prisoners' fates perfectly
+    correlated: all succeed or many fail together.
+  why_it_simplifies: >
+    A change of representation turns a hopeless independent search into a
+    question about the longest cycle of a random permutation, which has a
+    one-line answer; the strategy is provably optimal.
+
+related:
+  - fifteen_puzzle
+
+tags:
+  - representation change
+  - permutation cycles
+  - probability
+  - correlation
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Widely regarded as one of the most counterintuitive elementary puzzles;
+  the representation as a permutation is the entire idea.

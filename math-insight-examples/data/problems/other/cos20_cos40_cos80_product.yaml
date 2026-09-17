@@ -1,0 +1,69 @@
+id: cos20_cos40_cos80_product
+
+title: cos 20 cos 40 cos 80 = 1/8 by Multiplying by sin 20
+
+aliases:
+  - product of cosines
+  - cos 20 cos 40 cos 80 degrees
+  - double angle telescoping
+
+source:
+  name: Engel - Problem-Solving Strategies
+  url: https://link.springer.com/book/10.1007/b97682
+  original_title: Chapter 9, Sequences
+  author: Arthur Engel
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/List_of_trigonometric_identities
+    original_title: List of trigonometric identities (product identities)
+
+problem:
+  statement: >
+    Show that cos 20 * cos 40 * cos 80 = 1/8 (angles in degrees).
+  domain: algebra
+  answer: 1/8
+
+key_idea:
+  name: multiply by sin 20 and apply the double-angle formula three times
+  category: auxiliary_object
+  summary: >
+    Let P be the product. Then sin 20 * P = (1/2) sin 40 cos 40 cos 80 =
+    (1/4) sin 80 cos 80 = (1/8) sin 160 = (1/8) sin 20. Cancel sin 20.
+
+intuitive_proof:
+  explanation: >
+    Using 2 sin x cos x = sin 2x repeatedly: sin 20 cos 20 cos 40 cos 80 =
+    (1/2) sin 40 cos 40 cos 80 = (1/4) sin 80 cos 80 = (1/8) sin 160. Since
+    sin 160 = sin 20 and sin 20 != 0, dividing gives cos 20 cos 40 cos 80 =
+    1/8. In general cos x cos 2x ... cos 2^{n-1} x = sin(2^n x)/(2^n sin x).
+
+reasoning_structure:
+  naive_approach: >
+    Expand with product-to-sum formulas or compute the cosines numerically
+    and recognise 0.125.
+  crucial_observation: >
+    Each cosine in the product is 'waiting' for the sine of the same angle
+    to double it, and the angles form a doubling chain.
+  why_it_simplifies: >
+    One auxiliary factor sets off a chain reaction of three double-angle
+    steps and cancels itself at the end.
+
+tags:
+  - auxiliary object
+  - trigonometric identity
+  - double angle
+  - telescoping
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

@@ -1,0 +1,83 @@
+id: tower_of_hanoi_adjacent_moves
+
+title: Tower of Hanoi with Moves Only between Adjacent Pegs Needs 3^n - 1 Moves
+
+aliases:
+  - adjacent-peg Tower of Hanoi
+  - linear Tower of Hanoi
+  - 3^n - 1 moves
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Tower_of_Hanoi
+  original_title: Tower of Hanoi (variations)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/recurrence/hanoi.shtml
+    original_title: Tower of Hanoi
+    author: Alexander Bogomolny
+
+problem:
+  statement: >
+    In the Tower of Hanoi with pegs A, B, C in a row, a disc may only move
+    between adjacent pegs (A-B or B-C). Show that moving n discs from A to C
+    takes at least 3^n - 1 moves, and that this is achievable.
+  domain: combinatorics
+  answer: 3^n - 1
+
+key_idea:
+  name: "to move the largest disc from A to C it must pass through B, and each of its two moves requires all smaller discs to be moved to the far peg first: three full transfers of the smaller tower"
+  category: recursive_structure
+  summary: >
+    The largest disc must go A -> B -> C. Before A -> B, the n - 1 smaller
+    discs must all be on C; before B -> C, they must all be on A; and at the
+    end they must be on C. So the smaller tower makes three complete
+    end-to-end trips: T(n) = 3 T(n - 1) + 2 with T(1) = 2, giving T(n) = 3^n
+    - 1.
+
+intuitive_proof:
+  explanation: >
+    Lower bound: consider the first time the largest disc moves from A to B;
+    at that moment the other n - 1 discs are all on C, which required at
+    least T(n - 1) moves (a full transfer from A to C). Before the largest
+    disc moves from B to C the smaller discs must all be back on A: another
+    T(n - 1) moves at least. Finally they must return to C: T(n - 1) more.
+    With the two moves of the largest disc, T(n) >= 3 T(n - 1) + 2. The
+    obvious recursive strategy achieves equality, and T(1) = 2, so T(n) =
+    3^n - 1 (check: 3 * (3^{n-1} - 1) + 2 = 3^n - 1).
+
+reasoning_structure:
+  naive_approach: >
+    Try to adapt the classical 2^n - 1 solution and count moves by
+    experiment.
+  crucial_observation: >
+    The bottleneck disc must make two moves, each of which forces a complete
+    transfer of everything else to the far end.
+  why_it_simplifies: >
+    The same 'largest disc is the bottleneck' recursion as in the classical
+    puzzle, with three sub-transfers instead of two, gives the exact answer.
+
+related:
+  - tower_of_hanoi
+
+tags:
+  - recursion
+  - lower bound
+  - Tower of Hanoi
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  In this variant every one of the 3^n legal configurations is visited
+  exactly once along the optimal solution.

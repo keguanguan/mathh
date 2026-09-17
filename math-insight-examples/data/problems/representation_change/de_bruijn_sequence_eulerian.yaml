@@ -1,0 +1,85 @@
+id: de_bruijn_sequence_eulerian
+
+title: A Cyclic Binary Sequence Containing Every 3-Bit Word
+
+aliases:
+  - de Bruijn sequence
+  - rotating drum problem
+  - all binary words of length n on a circle
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/De_Bruijn_sequence
+  original_title: De Bruijn sequence (construction via Eulerian cycles)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Aigner & Ziegler - Proofs from THE BOOK
+    url: https://link.springer.com/book/10.1007/978-3-662-57265-8
+    original_title: Chapter "Three applications of Euler's formula"
+    author: Martin Aigner, Gunter M. Ziegler
+
+problem:
+  statement: >
+    Show that there is a cyclic sequence of 8 bits in which every 3-bit word
+    appears exactly once as a block of consecutive bits (for example
+    00010111), and in general a cyclic sequence of 2^n bits containing every
+    n-bit word.
+  domain: combinatorics
+  answer: proved (a de Bruijn sequence exists for every n)
+
+key_idea:
+  name: make a graph whose vertices are the (n-1)-bit words and whose edges are the n-bit words; a de Bruijn sequence is an Eulerian circuit
+  category: graph_reinterpretation
+  summary: >
+    Let the vertices be the 2^{n-1} words of length n - 1, and draw an edge
+    from w to w' labelled by the n-bit word whose first n - 1 bits are w and
+    last n - 1 bits are w'. Every vertex has in-degree and out-degree 2 and
+    the graph is connected, so it has an Eulerian circuit, which uses each
+    n-bit word exactly once; reading the edge labels around the circuit
+    gives the sequence.
+
+intuitive_proof:
+  explanation: >
+    Build the directed graph B with vertex set {0,1}^{n-1}; for each n-bit
+    word b_1 ... b_n draw an edge from b_1 ... b_{n-1} to b_2 ... b_n. Each
+    vertex has exactly two outgoing edges (append 0 or 1) and two incoming
+    edges (prepend 0 or 1), and any word can be reached from any other by
+    shifting in its bits one at a time, so B is connected. A directed graph
+    that is connected with in-degree equal to out-degree at every vertex has
+    an Eulerian circuit (Euler's theorem). Traversing the circuit and
+    recording the last bit of each edge produces a cyclic sequence of 2^n
+    bits; consecutive n-bit blocks are exactly the edges in order, each
+    appearing once.
+
+reasoning_structure:
+  naive_approach: >
+    Try to write down such a sequence by trial and error for n = 3 and 4,
+    with no way to see why it should exist for all n.
+  crucial_observation: >
+    Overlapping words are walks in a graph where each word is an edge, and
+    'use every word once' is 'Eulerian circuit'.
+  why_it_simplifies: >
+    The reinterpretation converts existence into a standard theorem, and
+    also counts the sequences (2^{2^{n-1} - n} of them, by BEST).
+
+related:
+  - bridges_of_konigsberg
+
+tags:
+  - graph reinterpretation
+  - Eulerian circuit
+  - de Bruijn
+  - sequences
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: ""

@@ -1,0 +1,85 @@
+id: reflection_across_two_parallel_lines_translation
+
+title: Two Reflections in Parallel Lines Make a Translation
+
+aliases:
+  - composition of reflections
+  - reflections in parallel mirrors
+  - translation by twice the distance
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Reflection_%28mathematics%29
+  original_title: Reflection (mathematics) (composition of reflections)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 12, Geometry (transformations)
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that reflecting a figure in a line l and then in a parallel line m
+    is the same as translating it by twice the distance from l to m,
+    perpendicular to the lines; and that reflecting in two lines meeting at
+    angle t is a rotation by 2t.
+  domain: geometry
+  answer: proved
+
+key_idea:
+  name: "track the signed distance to the lines: each reflection negates it relative to its own line, and two negations compose to a shift"
+  category: symmetry
+  summary: >
+    Use a coordinate x perpendicular to the lines, with l at x = 0 and m at
+    x = d. Reflection in l sends x to -x and reflection in m sends x to 2d -
+    x, so together they send x to x + 2d: a translation by 2d. For lines
+    meeting at angle t, the same bookkeeping on the polar angle gives a -> a
+    + 2t, a rotation by 2t.
+
+intuitive_proof:
+  explanation: >
+    Set up coordinates so that l is the line x = 0 and m the line x = d,
+    both perpendicular to the x-axis. Reflection in l is (x, y) -> (-x, y)
+    and reflection in m is (x, y) -> (2d - x, y). Composing (first l, then
+    m) gives (x, y) -> (2d + x, y), a translation by 2d perpendicular to the
+    lines, independent of the point. For lines through the origin at angles
+    0 and t, reflections act on the polar angle by a -> -a and a -> 2t - a,
+    so the composition is a -> a + 2t, a rotation by 2t about the
+    intersection point.
+
+reasoning_structure:
+  naive_approach: >
+    Draw a figure and its two images and observe the translation, or compute
+    with reflection matrices.
+  crucial_observation: >
+    In the coordinate along which a reflection acts, it is a negation about
+    a point, and two negations about different points make a shift.
+  why_it_simplifies: >
+    One-dimensional bookkeeping of a single coordinate explains both
+    results; it is the basis for classifying all plane isometries as
+    products of at most three reflections.
+
+related:
+  - point_reflections_return_after_six
+  - square_billiards_unfolding
+
+tags:
+  - symmetry
+  - reflection
+  - translation
+  - rotation
+  - composition of transformations
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

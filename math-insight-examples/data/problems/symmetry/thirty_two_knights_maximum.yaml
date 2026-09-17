@@ -1,0 +1,83 @@
+id: thirty_two_knights_maximum
+
+title: At Most 32 Non-Attacking Knights on a Chessboard
+
+aliases:
+  - maximum knights on a chessboard
+  - knights independence number
+  - pair the squares by knight moves
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Mathematical_chess_problem
+  original_title: Mathematical chess problem (domination and independence)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Engel - Problem-Solving Strategies
+    url: https://link.springer.com/book/10.1007/b97682
+    original_title: Chapter 4, The Box Principle
+    author: Arthur Engel
+
+problem:
+  statement: >
+    Show that the largest number of mutually non-attacking knights on an 8x8
+    board is 32.
+  domain: combinatorics
+  answer: 32 (all the white squares, for example)
+
+key_idea:
+  name: pair the 64 squares into 32 pairs joined by a knight's move; each pair holds at most one knight
+  category: pairing_strategy
+  summary: >
+    Every knight move joins squares of opposite colour, so 32 knights on the
+    white squares never attack each other. For the upper bound, partition
+    the board into 32 pairs of squares a knight's move apart (a closed
+    knight's tour gives such a pairing by taking alternate edges). Two
+    knights in the same pair would attack each other, so at most one knight
+    per pair: at most 32.
+
+intuitive_proof:
+  explanation: >
+    Lower bound: knights always move to a square of the opposite colour, so
+    the 32 knights on the white squares are mutually non-attacking. Upper
+    bound: the 8x8 board admits a closed knight's tour, a cycle through all
+    64 squares along knight moves; taking every other edge of the cycle
+    pairs the squares into 32 disjoint pairs, each pair a knight's move
+    apart. Any placement of non-attacking knights uses at most one square
+    from each pair, so it has at most 32 knights. (A pairing can also be
+    exhibited directly by tiling the board with 2x4 blocks, each of which
+    pairs up its eight squares by knight moves.)
+
+reasoning_structure:
+  naive_approach: >
+    Try to place 33 knights and fail, or count attacks.
+  crucial_observation: >
+    A perfect matching of the squares along knight moves is an upper bound
+    certificate, and the colour classes are a matching construction.
+  why_it_simplifies: >
+    A pairing argument (like the coins on the round table) turns an
+    optimisation over placements into a count of pairs.
+
+related:
+  - fourteen_bishops_maximum
+  - knight_returns_even_moves
+
+tags:
+  - pairing
+  - chess
+  - knights
+  - matching
+  - extremal
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: ""

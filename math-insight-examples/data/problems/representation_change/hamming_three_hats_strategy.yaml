@@ -1,0 +1,95 @@
+id: hamming_three_hats_strategy
+
+title: "Three Hats, One Guess: Winning 3/4 of the Time"
+
+aliases:
+  - three prisoners hat puzzle
+  - Ebert's hat problem
+  - Hamming code hat strategy
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/Hat_puzzle
+  original_title: Hat puzzle (the three-player game)
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Ebert - PhD thesis, UCSB (1998)
+    notes: origin of the hat game
+
+problem:
+  statement: >
+    Three players are each given a red or blue hat by fair coin flips. Each
+    sees the others' hats but not their own. Simultaneously, each either
+    guesses their own hat colour or passes. The team wins if at least one
+    player guesses and every guess is correct. Find a strategy winning with
+    probability 3/4, and explain why no strategy can beat it.
+  domain: probability
+  answer: >
+    if you see two hats of the same colour, guess the opposite colour;
+    otherwise pass. This wins in 6 of the 8 configurations
+
+key_idea:
+  name: "arrange for all wrong guesses to happen in the same few configurations: the two monochromatic ones"
+  category: algebraic_encoding
+  summary: >
+    With the rule 'seeing two equal hats, guess the other colour; otherwise
+    pass', in the six mixed configurations exactly one player guesses,
+    correctly, and in the two monochromatic ones all three guess wrongly:
+    6/8 wins. Every guess is right exactly half the time overall, so right
+    and wrong guesses are equally numerous; a losing configuration absorbs
+    at most three wrong guesses, which bounds the wins by 6.
+
+intuitive_proof:
+  explanation: >
+    Strategy: a player who sees two equal colours guesses the other colour;
+    a player who sees two different colours passes. If the hats are RRB (or
+    any configuration with two of one colour), the player with the odd hat
+    sees two equal hats and guesses correctly, while the other two see
+    different colours and pass: win. If all hats are equal, all three guess
+    wrongly: loss. Probability of winning 6/8 = 3/4. Optimality: for any
+    strategy, each individual guess (over all 8 configurations, weighted
+    equally) is correct exactly as often as it is incorrect, since flipping
+    the guesser's own hat flips correctness without changing what they see.
+    A winning configuration needs at least one correct guess and no wrong
+    one; a losing configuration can contain at most 3 wrong guesses. If W
+    configurations are won, there are at least W correct guesses, hence at
+    least W wrong guesses, spread over at most 8 - W losing configurations
+    with at most 3 each: W <= 3(8 - W), so W <= 6.
+
+reasoning_structure:
+  naive_approach: >
+    Have one designated player guess and the others pass, winning exactly
+    half the time; assume nothing better is possible because each guess is a
+    coin flip.
+  crucial_observation: >
+    Guesses are individually 50-50, but a strategy can correlate them so
+    that wrong guesses coincide in the same configurations.
+  why_it_simplifies: >
+    A counting bound (correct guesses = wrong guesses, and losses can absorb
+    three wrong guesses) shows 3/4 is optimal, and the covering-code
+    strategy achieves it; for 2^k - 1 players Hamming codes give 1 - 2^{-k}.
+
+related:
+  - prisoners_hats_parity
+
+tags:
+  - algebraic encoding
+  - Hamming code
+  - probability
+  - strategy
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: true
+  likely_widely_known: false
+
+notes: >
+  The monochromatic configurations are the codewords of the length-3
+  repetition code, a perfect covering code of radius 1.

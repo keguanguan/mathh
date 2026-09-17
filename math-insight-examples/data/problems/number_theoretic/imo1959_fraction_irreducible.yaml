@@ -1,0 +1,71 @@
+id: imo1959_fraction_irreducible
+
+title: (21n + 4)/(14n + 3) Is Irreducible (IMO 1959 Problem 1)
+
+aliases:
+  - IMO 1959 problem 1
+  - irreducible fraction for all n
+  - gcd via the Euclidean algorithm
+
+source:
+  name: International Mathematical Olympiad 1959, Problem 1
+  url: https://www.imo-official.org/problems.aspx
+  original_title: IMO 1959 Problem 1
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Wikipedia
+    url: https://en.wikipedia.org/wiki/Euclidean_algorithm
+    original_title: Euclidean algorithm
+
+problem:
+  statement: >
+    Show that the fraction (21n + 4)/(14n + 3) is in lowest terms for every
+    positive integer n.
+  domain: number theory
+  answer: proved
+
+key_idea:
+  name: "run the Euclidean algorithm on the two polynomials: gcd(21n + 4, 14n + 3) = gcd(7n + 1, 14n + 3) = gcd(7n + 1, 1) = 1"
+  category: gcd_structure
+  summary: >
+    Any common divisor of 21n + 4 and 14n + 3 divides their difference 7n +
+    1, and then divides (14n + 3) - 2(7n + 1) = 1. So the gcd is 1.
+
+intuitive_proof:
+  explanation: >
+    Let d be a common divisor of 21n + 4 and 14n + 3. Then d divides (21n +
+    4) - (14n + 3) = 7n + 1, and hence divides (14n + 3) - 2(7n + 1) = 1. So
+    d = 1 and the fraction is irreducible. Equivalently, 3(14n + 3) - 2(21n
+    + 4) = 1 is a Bezout relation.
+
+reasoning_structure:
+  naive_approach: >
+    Try to factor the numerator and denominator, or check many values of n.
+  crucial_observation: >
+    Subtracting multiples, as in Euclid's algorithm, reduces the pair to
+    (something, 1) in two steps.
+  why_it_simplifies: >
+    The Euclidean algorithm works symbolically in n, settling all n at once.
+
+related:
+  - euclids_game
+
+tags:
+  - gcd
+  - Euclidean algorithm
+  - olympiad
+  - Bezout
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  The very first IMO problem (1959).

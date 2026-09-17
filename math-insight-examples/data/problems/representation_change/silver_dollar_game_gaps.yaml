@@ -1,0 +1,96 @@
+id: silver_dollar_game_gaps
+
+title: The Silver Dollar Game (Bogus Nim)
+
+aliases:
+  - silver dollar game
+  - bogus Nim
+  - coins on a strip with no jumping
+
+source:
+  name: Cut-the-Knot
+  url: https://www.cut-the-knot.org/Curriculum/Games/SilverDollar.shtml
+  original_title: The Silver Dollar Game
+  author: Alexander Bogomolny
+  accessed: 2026-09-16
+
+additional_sources:
+  - name: Cut-the-Knot
+    url: https://www.cut-the-knot.org/Curriculum/Games/NoSilverDollar.shtml
+    original_title: Bogus Nim
+    author: Alexander Bogomolny
+  - name: Berlekamp, Conway, Guy - Winning Ways for Your Mathematical Plays
+    notes: Volume 1
+
+problem:
+  statement: >
+    Coins sit on distinct squares of a strip. A move slides one coin
+    leftward any distance but not past another coin, and no two coins may
+    share a square (except that the leftmost square, the 'pocket', holds any
+    number). Who wins with best play?
+  domain: combinatorial games
+  answer: >
+    count the gaps between consecutive coins from the right: the
+    odd-numbered gaps (rightmost gap first, then the third, ...) are Nim
+    heaps; play Nim on them
+
+key_idea:
+  name: alternate gaps behave like Nim heaps, and moves that enlarge an 'odd' gap by shrinking an 'even' one can be answered by shrinking the next gap
+  category: isomorphism_to_another_problem
+  summary: >
+    Number the gaps between coins 1, 2, 3, ... starting from the right.
+    Moving a coin shrinks the gap to its left and enlarges the gap to its
+    right. Treat the odd-numbered gaps as Nim heaps: a move that shrinks an
+    odd gap is a Nim move; a move that enlarges an odd gap (by moving the
+    coin on its left) can be answered by moving the next coin left by the
+    same amount, restoring the position's Nim value.
+
+intuitive_proof:
+  explanation: >
+    Number the coins 1, 2, 3, ... from the right and let g_k be the number
+    of empty squares between coin k and coin k + 1 (the last gap ends at the
+    pocket). Moving coin k left by d decreases g_k by d and increases
+    g_{k-1} by d (for k = 1 it only decreases g_1). Declare the odd-indexed
+    gaps g_1, g_3, g_5, ... to be Nim heaps. Moving an odd coin 2j + 1
+    decreases the heap g_{2j+1} and only changes the irrelevant even gap
+    g_{2j}: a legal Nim move. Moving an even coin 2j increases the heap
+    g_{2j-1} by d; the Nim player answers by moving coin 2j - 1 left by the
+    same d, which restores g_{2j-1} and only alters the even gap g_{2j-2}.
+    Such reversals are finite in number (coins only move left), so the
+    strategy 'keep the XOR of the odd gaps zero after your move, and undo
+    any increase' wins.
+
+reasoning_structure:
+  naive_approach: >
+    Try to analyse coin positions directly; there are too many interacting
+    constraints.
+  crucial_observation: >
+    Coins act on adjacent gaps in opposite directions, so alternate gaps
+    decouple into Nim heaps.
+  why_it_simplifies: >
+    A two-line change of variables (gaps instead of positions) plus the
+    reversible-move argument reduces a strange game to Nim.
+
+related:
+  - northcotts_game_nim
+  - nim
+
+tags:
+  - Nim
+  - isomorphism
+  - combinatorial game
+  - gaps
+
+quality:
+  clarity_of_key_idea: medium
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: medium
+
+familiarity:
+  famous: false
+  likely_widely_known: false
+
+notes: >
+  The Silver Dollar variant adds a special coin whose capture ends the game;
+  the analysis is the same with a shifted numbering.

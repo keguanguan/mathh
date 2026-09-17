@@ -1,0 +1,84 @@
+id: spider_and_fly
+
+title: The Spider and the Fly
+
+aliases:
+  - spider and fly problem
+  - Dudeney's spider and fly
+  - shortest path on the surface of a box
+
+source:
+  name: Wikipedia
+  url: https://en.wikipedia.org/wiki/The_spider_and_the_fly_problem
+  original_title: The spider and the fly problem
+  accessed: 2026-09-16
+  notes: Posed by Henry Dudeney in 1903 (The Canterbury Puzzles).
+
+additional_sources:
+  - name: Dudeney - The Canterbury Puzzles
+    notes: Problem 75.
+
+problem:
+  statement: >
+    A room is 30 ft long, 12 ft wide and 12 ft high. A spider is on an end
+    wall, on the centre line, 1 ft from the ceiling; a fly is on the
+    opposite end wall, on the centre line, 1 ft from the floor. What is the
+    shortest path along the surfaces (walls, floor, ceiling) from the
+    spider to the fly?
+  domain: geometry
+  answer: 40 ft (shorter than the "obvious" 42 ft route)
+
+key_idea:
+  name: unfold the room into a flat net and draw a straight line
+  category: unfolding
+  summary: >
+    A path on the surface of a box becomes a straight segment when the box
+    is unfolded along the faces the path crosses. Trying the different
+    nets, the shortest straight-line distance is sqrt(32^2 + 24^2) = 40,
+    achieved by a path that visits five of the six faces.
+
+intuitive_proof:
+  explanation: >
+    Any surface path crosses a sequence of faces; cutting the box along
+    edges and laying those faces flat turns the path into a plane curve
+    whose length is unchanged, and the shortest plane curve between two
+    points is a straight segment. The "obvious" route (up the wall, along
+    the ceiling, down the wall) unfolds to 1 + 30 + 11 = 42 ft. But
+    another unfolding, in which the path crosses an end wall, a side wall,
+    the ceiling, the other side wall and the other end wall, places the
+    spider and the fly at horizontal separation 32 and vertical separation
+    24 in the net, so a straight line of length sqrt(32^2 + 24^2) = 40 ft
+    connects them. Checking the remaining nets shows nothing shorter.
+
+reasoning_structure:
+  naive_approach: >
+    Compare a few "natural" routes such as straight over the ceiling or
+    across the floor, and conclude 42 ft; or attempt a calculus
+    minimisation over paths that bend at edges.
+  crucial_observation: >
+    Geodesics on a polyhedron are straight lines in an unfolding, so the
+    problem reduces to measuring segments in finitely many flat nets.
+  why_it_simplifies: >
+    A continuous optimisation over surface paths becomes a finite check of
+    straight-line distances.
+
+tags:
+  - unfolding
+  - geometric transformation
+  - shortest path
+  - geodesic
+  - puzzle
+
+quality:
+  clarity_of_key_idea: high
+  elegance: high
+  naive_search_contrast: high
+  pedagogical_value: high
+
+familiarity:
+  famous: true
+  likely_widely_known: true
+
+notes: >
+  Same "straighten the path" principle as herons_shortest_path, but the
+  transformation is an unfolding rather than a reflection.
